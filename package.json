@@ -6,8 +6,10 @@
     "build": "resolve-scripts build",
     "start": "resolve-scripts start",
     "dev": "resolve-scripts dev",
-    "lint": "eslint --ignore-path .gitignore ./",
-    "prettier": "prettier-eslint --write \"**/*.js\""
+    "lint": "eslint",
+    "lint-fix": "eslint --fix .",
+    "prettier": "prettier-eslint --write \"**/*.js\"",
+    "lint-staged": "lint-staged"
   },
   "pre-commit": [
     "lint-staged",
