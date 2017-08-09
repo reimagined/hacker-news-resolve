@@ -1,13 +1,14 @@
-import crypto from 'crypto'
-import jwt from 'jsonwebtoken'
-import passport from 'passport'
+import crypto from 'crypto';
+import jwt from 'jsonwebtoken';
+import passport from 'passport';
 import cookieParser from 'cookie-parser';
-import LocalStrategy from 'passport-local'
-import uuid from 'uuid'
+import LocalStrategy from 'passport-local';
+import uuid from 'uuid';
+import path from 'path';
 
-const authorizationSecret = 'auth-secret'
+const authorizationSecret = 'auth-secret';
 
-const cookieMiddleware = cookieParser()
+const cookieMiddleware = cookieParser();
 
 export default (express) => {
     express.use(passport.initialize());
@@ -33,7 +34,7 @@ export default (express) => {
             },
         )
     );
-
+    
     express.use('/api/commands/', cookieMiddleware, authorizationMiddleware);
 
     express.get('/auth', cookieMiddleware, passport.authenticate('local', { failureRedirect: '/unauthorized' }), async (req, res) => {
