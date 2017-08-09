@@ -10,5 +10,8 @@
             "error",
             "single"
         ]
-    }
+    },
+    "plugins": [
+        "prettier"
+    ]
 }

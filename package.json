@@ -6,7 +6,18 @@
     "build": "resolve-scripts build",
     "start": "resolve-scripts start",
     "dev": "resolve-scripts dev",
-    "lint": "eslint --ignore-path .gitignore ./"
+    "lint": "eslint --ignore-path .gitignore ./",
+    "prettier": "prettier-eslint --write \"**/*.js\""
+  },
+  "pre-commit": [
+    "lint-staged",
+    "lint"
+  ],
+  "lint-staged": {
+    "*.js": [
+      "prettier-eslint --write",
+      "git add"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -16,10 +27,11 @@
     "axios": "^0.16.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
-    "extract-text-webpack-plugin": "^3.0.0",
     "jsonwebtoken": "^7.4.2",
+    "lint-staged": "^4.0.3",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "pre-commit": "^1.2.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-helmet": "^5.1.3",
@@ -50,7 +62,11 @@
     "eslint-plugin-flowtype": "2.33.0",
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "5.0.3",
+    "eslint-plugin-prettier": "^2.1.2",
     "eslint-plugin-react": "7.0.1",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "prettier": "^1.5.3",
+    "prettier-eslint-cli": "^4.1.1",
     "style-loader": "^0.18.2"
   }
 }
