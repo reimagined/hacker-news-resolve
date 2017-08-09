@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux'
-import users from './users'
+import { combineReducers } from 'redux';
+import users from './users';
 
 const HackerNews = combineReducers({
     users
