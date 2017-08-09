@@ -8,6 +8,7 @@ import RootComponent from './client/components/RootComponent';
 import aggregates from './common/aggregates';
 import queries from './common/read-models';
 import events from './common/aggregates/users';
+import extendExpress from './server/extendExpress'
 
 async function getInitialState(executeQuery) {
     const resultOfQueries = await Promise.all(
@@ -42,5 +43,5 @@ export default {
     aggregates,
     events,
     queries,
-    extendExpress: () => { }
+    extendExpress
 };

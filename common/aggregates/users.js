@@ -1,30 +1,27 @@
 import Immutable from 'seamless-immutable';
 
-import type { UserCreated, UserUpdated } from '../events/users';
+import type { UserCreated } from '../events/users';
 import events from '../events/users';
 import { Event } from '../helpers';
 
-const { USER_CREATED, USER_UPDATED } = events;
-
-const throwErrorIfEmpty = (value, name) => {
-    if(value === null) {
-        throw new Error(`${name ? name : 'Value'} should not be empty`);
-    }
-}
+const { USER_CREATED } = events;
 
 const Aggregate = {
     name: 'users',
     initialState: Immutable({}),
+    eventHandlers: {
+        [USER_CREATED]: (state, event) =>  state.set('createdAt', event.timestamp)
+    },
     commands: {
-        createUser: (state: any, command: UserCreated) =>
-            new Event(USER_CREATED, command.aggregateId, {
+        createUser: (state: any, command: UserCreated) => {
+            if(state.createdAt) {
+                throw new Error('User already exists')
+            }
+            return new Event(USER_CREATED, command.aggregateId, {
                 name: command.payload.name,
-                password: command.payload.password
-            }),
-        updateUser: (state: any, command: UserUpdated) => {
-            const { password } = command.payload;
-            throwErrorIfEmpty(password);
-            return new Event(USER_UPDATED, command.aggregateId, { password });
+                passwordHash: command.payload.passwordHash,
+                id: command.aggregateId
+            })
         }
     }
 };
