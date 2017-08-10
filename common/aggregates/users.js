@@ -7,30 +7,30 @@ import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyE
 
 const { USER_CREATED } = events;
 
-export default  {
-    name: 'users',
-    initialState: Immutable({}),
-    eventHandlers: {
-        [USER_CREATED]: (state, event) =>  state.set('createdAt', event.timestamp)
-    },
-    commands: {
-        createUser: (state: any, command: UserCreated) => {
-            const { name, passwordHash } = command.payload;
+export default {
+  name: 'users',
+  initialState: Immutable({}),
+  eventHandlers: {
+    [USER_CREATED]: (state, event) => state.set('createdAt', event.timestamp)
+  },
+  commands: {
+    createUser: (state: any, command: UserCreated) => {
+      const { name, passwordHash } = command.payload;
 
-            throwIfAggregateAlreadyExists(state, command);
+      throwIfAggregateAlreadyExists(state, command);
 
-            if (!name) {
-                throw new Error('UserId is required');
-            }
+      if (!name) {
+        throw new Error('UserId is required');
+      }
 
-            if (!passwordHash) {
-                throw new Error('PasswordHash is required');
-            }
+      if (!passwordHash) {
+        throw new Error('PasswordHash is required');
+      }
 
-            return new Event(USER_CREATED, {
-                name,
-                passwordHash
-            });
-        }
+      return new Event(USER_CREATED, {
+        name,
+        passwordHash
+      });
     }
+  }
 };

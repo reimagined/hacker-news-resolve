@@ -5,6 +5,9 @@ import RootComponent from './client/containers/RootComponent';
 import createStore from './client/store';
 
 export default {
-    rootComponent: () => <BrowserRouter><RootComponent /></BrowserRouter>,
-    createStore
+  rootComponent: () =>
+    <BrowserRouter>
+      <RootComponent />
+    </BrowserRouter>,
+  createStore
 };

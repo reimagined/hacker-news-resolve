@@ -5,8 +5,8 @@ import comments from './comments';
 import news from './news';
 
 export default combineReducers({
-    user,
-    users,
-    comments,
-    news
+  user,
+  users,
+  comments,
+  news
 });
