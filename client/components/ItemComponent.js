@@ -10,7 +10,7 @@ function getHostname(link) {
     return (urlObj.hostname.split('.')[0] === 'www') ? urlObj.hostname.substr(4) : urlObj.hostname;
 };
 
-const ItemTitle = ({ title, link }) => {
+const Title = ({ title, link }) => {
     if (isExternalLink(link)) {
         return <div className="Item__title">
                 <a href={link}>{title}</a> <span className="Item__host">({getHostname(link)})</span>
@@ -21,24 +21,37 @@ const ItemTitle = ({ title, link }) => {
         </div>;
 };
 
+const Score = ({ score }) => {
+    return <span className="Item__score">{score} {plur('point', score)} </span>;
+};
 
-const ItemMeta = ({ user, date, score, commentCount, newCommentCount }) => {
+const PostedBy = ({ user }) => {
+    return <span className="Item__by">by <a href="#TODO">{user}</a> </span>;
+};
+
+const Comment = ({ commentCount, newCommentCount }) => {
+        return <span>
+                <span>| <Link to="#TODO">{(commentCount > 0) ? `${commentCount} ${plur('comment', commentCount)}` : 'discuss'}</Link> </span>
+                {(newCommentCount > 0) 
+                    ? <span className="ListItem__newcomments"><Link to="#TODO">{newCommentCount} new</Link> </span>
+                    : ''}
+            </span>;
+};
+
+const Meta = ({ user, date, score, commentCount, newCommentCount }) => {
     return <div className="Item__meta">
-        <span className="Item__score">{score} {plur('point', score)} </span>
-        <span className="Item__by">by <a href="#TODO">{user}</a> </span>
-        <span className="Item__time">{date.toLocaleString()} </span>
-        <span>| <Link to="#TODO">{(commentCount > 0) ? `${commentCount} ${plur('comment', commentCount)}` : 'discuss'}</Link> </span>
-        {(newCommentCount > 0) 
-            ? <span className="ListItem__newcomments"><Link to="#TODO">{newCommentCount} new</Link> </span>
-            : ''}
-    </div>;
+            {(score) ? <Score score={score} /> : ''}
+            {(user) ? <PostedBy user={user} /> : ''}
+            <span className="Item__time">{date.toLocaleString()} </span>
+            {(commentCount !== undefined) ? <Comment commentCount={commentCount} newCommentCount={newCommentCount} /> : ''}
+        </div>;
 };
 
 const ItemComponent = ({ title, link, user, date, score, commentCount, newCommentCount }) => {
     return <div className="Item">
         <div className="Item__content">
-            <ItemTitle title={title} link={link} />
-            <ItemMeta user={user} date={date} score={score} commentCount={commentCount} newCommentCount={newCommentCount} />
+            <Title title={title} link={link} />
+            <Meta user={user} date={date} score={score} commentCount={commentCount} newCommentCount={newCommentCount} />
         </div>
     </div>;
 };
