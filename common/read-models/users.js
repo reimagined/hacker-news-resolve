@@ -12,7 +12,8 @@ export default {
         [USER_CREATED]: (state: any, event: UserCreated) => {
             return state.set(event.aggregateId, {
                 ...event.payload,
-                id: event.aggregateId
+                id: event.aggregateId,
+                createdAt: event.timestamp
             });
         }
     }

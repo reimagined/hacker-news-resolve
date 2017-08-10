@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import users from './users';
+import comments from './comments';
 
-const HackerNews = combineReducers({
-    users
-})
-
-export default HackerNews
+export default combineReducers({
+    users,
+    comments
+});
