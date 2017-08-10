@@ -1,0 +1,82 @@
+import Immutable from 'seamless-immutable';
+
+import type {
+    NewsCreated,
+    NewsUpvoted,
+    NewsUnvoted,
+    NewsDeleted
+} from '../events/news';
+import type { CommentCreated, CommentRemoved } from '../events/comments';
+import newsEvents from '../events/news';
+import commentsEvents from '../events/comments';
+
+const {
+    NEWS_CREATED,
+    NEWS_UPVOTED,
+    NEWS_UNVOTED,
+    NEWS_DELETED
+} = newsEvents;
+const {
+    COMMENT_CREATED,
+    COMMENT_REMOVED
+} = commentsEvents;
+
+function getId(event) {
+    return event.aggregateId;
+}
+
+const eventHandlers = {
+    // News
+    [NEWS_CREATED]: (state: any, event: NewsCreated) => {
+        const id = getId(event);
+
+        const news = {
+            id,
+            title: event.payload.title,
+            userId: event.payload.userId,
+            createDate: event.timestamp,
+            comments: [],
+            voted: []
+        };
+
+        return state.setIn(['news', id], news);
+    },
+    [NEWS_UPVOTED]: (state: any, event: NewsUpvoted) =>
+        state.updateIn(['news', getId(event), 'voted'], list => list.concat(event.userId)),
+    [NEWS_UNVOTED]: (state: any, event: NewsUnvoted) =>
+        state.updateIn(['news', getId(event), 'voted'], list => list.filter(x => x !== event.userId)),
+    [NEWS_DELETED]: (state: any, event: NewsDeleted) =>
+        state.updateIn(['news'], obj => obj.without(getId(event))),
+
+    // Comments
+    [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
+        const id = getId(event);
+        const parentId = event.payload.parentId;
+
+        if (!Object.keys(state.news).includes(parentId)) {
+            return state;
+        }
+
+        return state.updateIn(['news', parentId, 'comments'], list => list.concat(id))
+    },
+    [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
+        const id = getId(event);
+        const parentId = event.payload.parentId;
+
+        if (!Object.keys(state.news).includes(parentId)) {
+            return state;
+        }
+
+        return state.updateIn(['news', parentId, 'comments'], list => list.filter(x => x !== id))
+    }
+}
+
+const initialState = Immutable({
+    news: {}
+});
+
+export default {
+    name: 'news',
+    initialState,
+    eventHandlers
+};
