@@ -13,16 +13,12 @@ import SubmitComponent from './SubmitComponent';
 
 import '../styles/style.css';
 
-const bundleCssSource = process.env.NODE_ENV === 'production'
-        ? '/static/bundle.css'
-        : 'http://localhost:3001/bundle.css';
-
 export default () => 
     <div className="App">
         <Helmet>
             <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-            <link rel="shortcut icon" type="image/x-icon" href={`/static/img/favicon.ico`} />
-            <link rel="stylesheet" type="text/css" href={bundleCssSource} />
+            <link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.ico"/>
+            <link rel="stylesheet" type="text/css" href="/static/bundle.css" />
         </Helmet>
         <div className="App__wrap">
             <div className="App__header">
