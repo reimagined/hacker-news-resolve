@@ -35,8 +35,9 @@ const eventHandlers = {
             title: event.payload.title,
             userId: event.payload.userId,
             createDate: event.timestamp,
+            link: event.payload.link,
             comments: [],
-            voted: []
+            voted: [event.payload.userId]
         };
 
         return state.setIn([id], news);

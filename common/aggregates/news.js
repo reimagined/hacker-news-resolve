@@ -66,6 +66,7 @@ const eventHandlers = {
             aggregateId: event.aggregateId,
             title: event.payload.title,
             userId: event.payload.userId,
+            link: event.payload.link,
             createDate: event.timestamp,
             comments: [],
             voted: []

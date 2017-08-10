@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux'
 
 import ItemComponent from './ItemComponent';
 
-const FlowComponent = ({ items }) => {
+const FlowComponent = (props) => {
     return <div>
         <div className="Items">
             <ol className="Items__list" start="1">
@@ -14,9 +15,20 @@ const FlowComponent = ({ items }) => {
                 <li className="ListItem"><ItemComponent id="6" title="Ask HN: How are 3D printing related startups doing lately?" link="/item?id=14976263" user="rm2904" date={new Date()} score={4} commentCount={1} newCommentCount={0} /></li>
                 <li className="ListItem"><ItemComponent id="7" title="SendBird (YC W16) Is Hiring Solution Engineers in Redwood City" link="https://angel.co/sendbird/jobs/228945-solutions-engineer"date={new Date()} /></li>
                 <li className="ListItem"><ItemComponent id="8" title="Drcrhono (YC W11) is hiring front- and back-end developers to fix healthcare" link="https://www.drchrono.com/careers/" date={new Date()} /></li>
+                {
+                    Object.keys(props.news).map(id => {
+                        const item = props.news[id];
+                        const userName = props.users[item.userId].name;
+                        return (<li key={id} className="ListItem">
+                            <ItemComponent id={id} title={item.title} link={item.link} date={new Date(item.createDate)} score={item.voted.length} user={userName} commentCount={item.comments.length} />
+                        </li>);
+                    })
+                }
             </ol>
         </div>
     </div>;
 };
 
-export default FlowComponent;
+export default connect(
+    state => ({news: state.news, users: state.users})
+)(FlowComponent);
