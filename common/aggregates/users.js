@@ -3,10 +3,11 @@ import Immutable from 'seamless-immutable';
 import type { UserCreated } from '../events/users';
 import events from '../events/users';
 import { Event } from '../helpers';
+import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists';
 
 const { USER_CREATED } = events;
 
-const Aggregate = {
+export default  {
     name: 'users',
     initialState: Immutable({}),
     eventHandlers: {
@@ -14,9 +15,8 @@ const Aggregate = {
     },
     commands: {
         createUser: (state: any, command: UserCreated) => {
-            if(state.createdAt) {
-                throw new Error('User already exists')
-            }
+            throwIfAggregateAlreadyExists(state, command);
+
             return new Event(USER_CREATED, command.aggregateId, {
                 name: command.payload.name,
                 passwordHash: command.payload.passwordHash,
@@ -25,5 +25,3 @@ const Aggregate = {
         }
     }
 };
-
-export default Aggregate;

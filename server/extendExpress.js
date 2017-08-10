@@ -4,7 +4,6 @@ import passport from 'passport';
 import cookieParser from 'cookie-parser';
 import LocalStrategy from 'passport-local';
 import uuid from 'uuid';
-import path from 'path';
 
 const authorizationSecret = 'auth-secret';
 
@@ -42,11 +41,15 @@ export default (express) => {
 
         let user;
         for(let id in users) {
-            if(
-                (users[id].name === req.user.name) &&
-                (users[id].passwordHash === req.user.passwordHash)
+            if (
+                (users[id].name === req.user.name)
             ) {
-                user = users[id];
+                if (users[id].passwordHash === req.user.passwordHash) {
+                    user = users[id];
+                } else {
+                    res.redirect('/error/?text=Incorrect Username or Password');
+                    return;
+                }
                 break;
             }
         }
@@ -95,7 +98,7 @@ export function authorizationMiddleware(req, res, next) {
         if(!user) {
             throw new Error('Unauthorized');
         }
-        req.body.user = user;
+        req.body.userId = user.id;
         next();
     } catch (error) {
         accessDenied(req, res);
