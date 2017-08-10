@@ -2,15 +2,24 @@ import React from 'react';
 import { StaticRouter } from 'react-router';
 import storageDriver from 'resolve-storage-file';
 import busDriver from 'resolve-bus-memory';
+import jwt from 'jsonwebtoken';
 
 import createStore from './client/store';
-import RootComponent from './client/components/RootComponent';
+import RootComponent from './client/containers/RootComponent';
 import aggregates from './common/aggregates';
 import queries from './common/read-models';
 import events from './common/aggregates/users';
 import extendExpress from './server/extendExpress'
+import authorizationSecret from './server/authorizationSecret'
 
-async function getInitialState(executeQuery) {
+async function getInitialState(executeQuery, { cookies }) {
+    let user;
+    try {
+        user = jwt.verify(cookies.authorizationToken, authorizationSecret);
+    } catch (error) {
+        user = {};
+    }
+
     const resultOfQueries = await Promise.all(
         queries.map(async ({ name }) => {
             const state = await executeQuery(name);
@@ -21,7 +30,7 @@ async function getInitialState(executeQuery) {
     return resultOfQueries.reduce((result, { state, name }) => {
         result[name] = state;
         return result;
-    }, {});
+    }, { user });
 }
 
 const dbPath = './storage.json';
@@ -39,7 +48,7 @@ export default {
         driver: storageDriver,
         params: { pathToFile: dbPath }
     },
-    initialState: query => getInitialState(query),
+    initialState: getInitialState,
     aggregates,
     events,
     queries,

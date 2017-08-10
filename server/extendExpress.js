@@ -4,12 +4,10 @@ import passport from 'passport';
 import cookieParser from 'cookie-parser';
 import LocalStrategy from 'passport-local';
 import uuid from 'uuid';
-
-const authorizationSecret = 'auth-secret';
-
-const cookieMiddleware = cookieParser();
+import authorizationSecret from './authorizationSecret'
 
 export default (express) => {
+    express.use(cookieParser());
     express.use(passport.initialize());
     passport.serializeUser((user, done) => done(null, user));
     passport.deserializeUser((user, done) => done(null, user));
@@ -34,9 +32,9 @@ export default (express) => {
         )
     );
     
-    express.use('/api/commands/', cookieMiddleware, authorizationMiddleware);
+    express.use('/api/commands/', authorizationMiddleware);
 
-    express.get('/auth', cookieMiddleware, passport.authenticate('local', { failureRedirect: '/unauthorized' }), async (req, res) => {
+    express.get('/auth', passport.authenticate('local', { failureRedirect: '/unauthorized' }), async (req, res) => {
         const users = await req.resolve.executeQuery('users');
 
         let user;
