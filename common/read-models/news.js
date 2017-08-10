@@ -39,44 +39,40 @@ const eventHandlers = {
             voted: []
         };
 
-        return state.setIn(['news', id], news);
+        return state.setIn([id], news);
     },
     [NEWS_UPVOTED]: (state: any, event: NewsUpvoted) =>
-        state.updateIn(['news', getId(event), 'voted'], list => list.concat(event.userId)),
+        state.updateIn([getId(event), 'voted'], list => list.concat(event.userId)),
     [NEWS_UNVOTED]: (state: any, event: NewsUnvoted) =>
-        state.updateIn(['news', getId(event), 'voted'], list => list.filter(x => x !== event.userId)),
+        state.updateIn([getId(event), 'voted'], list => list.filter(x => x !== event.userId)),
     [NEWS_DELETED]: (state: any, event: NewsDeleted) =>
-        state.updateIn(['news'], obj => obj.without(getId(event))),
+        state.updateIn(obj => obj.without(getId(event))),
 
     // Comments
     [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
         const id = getId(event);
         const parentId = event.payload.parentId;
 
-        if (!Object.keys(state.news).includes(parentId)) {
+        if (!Object.keys(state).includes(parentId)) {
             return state;
         }
 
-        return state.updateIn(['news', parentId, 'comments'], list => list.concat(id))
+        return state.updateIn([parentId, 'comments'], list => list.concat(id))
     },
     [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
         const id = getId(event);
         const parentId = event.payload.parentId;
 
-        if (!Object.keys(state.news).includes(parentId)) {
+        if (!Object.keys(state).includes(parentId)) {
             return state;
         }
 
-        return state.updateIn(['news', parentId, 'comments'], list => list.filter(x => x !== id))
+        return state.updateIn([parentId, 'comments'], list => list.filter(x => x !== id))
     }
 }
 
-const initialState = Immutable({
-    news: {}
-});
-
 export default {
     name: 'news',
-    initialState,
+    initialState: Immutable({}),
     eventHandlers
 };
