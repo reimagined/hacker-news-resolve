@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Switch, Route } from 'react-router';
 import { Helmet } from 'react-helmet';
 
@@ -27,12 +27,13 @@ export default () =>
         <div className="App__wrap">
             <div className="App__header">
                 <Link to="/" className="App__homelinkicon"><img src="/static/img/logo.png" width="16" height="16" alt="" /></Link>{' '}
-                <Link to="/" className="App__homelink">React HN</Link>{' '}
-                <Link to="/newest">new</Link>{' | '}
-                <Link to="/comments">comments</Link> {' | '}
-                <Link to="/show">show</Link>{' | '}
-                <Link to="/ask">ask</Link>{' | '}
-                <Link to="/jobs">jobs</Link>
+                <Link to="/" className="App__homelink">Resolve HN</Link>{' '}
+                <NavLink to="/newest" activeClassName="active">new</NavLink>{' | '}
+                <NavLink to="/comments" activeClassName="active">comments</NavLink> {' | '}
+                <NavLink to="/show" activeClassName="active">show</NavLink>{' | '}
+                <NavLink to="/ask" activeClassName="active">ask</NavLink>{' | '}
+                <NavLink to="/jobs" activeClassName="active">jobs</NavLink>{' | '}
+                <NavLink to="/submit" activeClassName="active">submit</NavLink>
             </div>
             <div className="App__content">
                 <Switch>
@@ -46,7 +47,7 @@ export default () =>
                 </Switch>
             </div>
             <div className="App__footer">
-                <a href="https://github.com/insin/react-hn">insin/react-hn</a>
+                <a href="https://github.com/reimagined/hacker-news-demo">reimagined/hacker-news-demo</a>
             </div>
         </div>
     </div>;
