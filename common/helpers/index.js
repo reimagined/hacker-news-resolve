@@ -1,5 +1,4 @@
-export const Event = (type, aggregateId, payload) => ({
+export const Event = (type, payload) => ({
     type,
-    aggregateId: aggregateId,
     payload
 });

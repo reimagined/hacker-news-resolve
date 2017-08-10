@@ -23,7 +23,7 @@ export default  {
         createComment: (state: any, command: CommentCreated) => {
             throwIfAggregateAlreadyExists(state, command);
 
-            return new Event(COMMENT_CREATED, command.aggregateId, {
+            return new Event(COMMENT_CREATED, {
                 text: command.payload.text,
                 parentId: command.payload.parentId
             });
@@ -32,7 +32,7 @@ export default  {
             throwIfAggregateIsNotExists(state, command);
             throwIfPermissionDenied(state, command);
 
-            return new Event(COMMENT_UPDATED, command.aggregateId, {
+            return new Event(COMMENT_UPDATED, {
                 text: command.payload.text,
             });
         },
@@ -40,7 +40,7 @@ export default  {
             throwIfAggregateIsNotExists(state, command);
             throwIfPermissionDenied(state, command);
 
-            return new Event(COMMENT_REMOVED, command.aggregateId, {});
+            return new Event(COMMENT_REMOVED, {});
         }
     }
 };

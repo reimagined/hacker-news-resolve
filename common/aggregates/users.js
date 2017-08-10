@@ -17,7 +17,7 @@ export default  {
         createUser: (state: any, command: UserCreated) => {
             throwIfAggregateAlreadyExists(state, command);
 
-            return new Event(USER_CREATED, command.aggregateId, {
+            return new Event(USER_CREATED, {
                 name: command.payload.name,
                 passwordHash: command.payload.passwordHash,
                 id: command.aggregateId
