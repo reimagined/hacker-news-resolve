@@ -42,7 +42,7 @@ const Meta = ({ itemId, user, date, score, commentCount, newCommentCount }) => {
     return <div className="Item__meta">
             {(score) ? <Score score={score} /> : ''}
             {(user) ? <PostedBy user={user} /> : ''}
-            <span className="Item__time">{date.toLocaleString()} </span>{/* TODO: timeAgo */}
+            <span className="Item__time">{date.toLocaleString('en-US')} </span>{/* TODO: timeAgo */}
             {(commentCount !== undefined) ? <Comment itemId={itemId} commentCount={commentCount} newCommentCount={newCommentCount} /> : ''}
         </div>;
 };
