@@ -21,26 +21,42 @@ export default  {
     },
     commands: {
         createComment: (state: any, command: CommentCreated) => {
+            const { text, parentId } = command.payload;
+
             throwIfAggregateAlreadyExists(state, command);
 
+            if (!text) {
+                throw new Error('Text is required');
+            }
+
+            if (!parentId) {
+                throw new Error('ParentId is required');
+            }
+
             return new Event(COMMENT_CREATED, {
-                text: command.payload.text,
-                parentId: command.payload.parentId
+                text,
+                parentId
             });
         },
         updateComment: (state: any, command: CommentUpdated) => {
+            const { text } = command.payload;
+
             throwIfAggregateIsNotExists(state, command);
             throwIfPermissionDenied(state, command);
 
+            if (!text) {
+                throw new Error('Text is required');
+            }
+
             return new Event(COMMENT_UPDATED, {
-                text: command.payload.text,
+                text
             });
         },
         removeComment: (state: any, command: CommentRemoved) => {
             throwIfAggregateIsNotExists(state, command);
             throwIfPermissionDenied(state, command);
 
-            return new Event(COMMENT_REMOVED, {});
+            return new Event(COMMENT_REMOVED);
         }
     }
 };

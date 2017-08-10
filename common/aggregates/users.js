@@ -15,11 +15,21 @@ export default  {
     },
     commands: {
         createUser: (state: any, command: UserCreated) => {
+            const { name, passwordHash } = command.payload;
+
             throwIfAggregateAlreadyExists(state, command);
 
+            if (!name) {
+                throw new Error('UserId is required');
+            }
+
+            if (!passwordHash) {
+                throw new Error('PasswordHash is required');
+            }
+
             return new Event(USER_CREATED, {
-                name: command.payload.name,
-                passwordHash: command.payload.passwordHash
+                name,
+                passwordHash
             });
         }
     }
