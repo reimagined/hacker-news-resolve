@@ -1,9 +1,4 @@
 import { createReducer } from 'resolve-redux';
-import readModels from '../../common/read-models';
+import news from '../../common/read-models/news';
 
-export default readModels.reduce(
-    (result, readModel) => {
-        result[readModel.name] = createReducer(readModel);
-        return result;
-    }
-);
+export default createReducer(news);
