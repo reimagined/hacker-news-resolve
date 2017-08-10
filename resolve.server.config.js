@@ -2,46 +2,58 @@ import React from 'react';
 import { StaticRouter } from 'react-router';
 import storageDriver from 'resolve-storage-file';
 import busDriver from 'resolve-bus-memory';
+import jwt from 'jsonwebtoken';
 
 import createStore from './client/store';
-import RootComponent from './client/components/RootComponent';
+import RootComponent from './client/containers/RootComponent';
 import aggregates from './common/aggregates';
 import queries from './common/read-models';
 import events from './common/aggregates/users';
-import extendExpress from './server/extendExpress'
+import extendExpress from './server/extendExpress';
+import authorizationSecret from './server/authorizationSecret';
 
-async function getInitialState(executeQuery) {
-    const resultOfQueries = await Promise.all(
-        queries.map(async ({ name }) => {
-            const state = await executeQuery(name);
-            return { state, name };
-        })
-    );
+async function getInitialState(executeQuery, { cookies }) {
+  let user;
+  try {
+    user = jwt.verify(cookies.authorizationToken, authorizationSecret);
+  } catch (error) {
+    user = {};
+  }
 
-    return resultOfQueries.reduce((result, { state, name }) => {
-        result[name] = state;
-        return result;
-    }, {});
+  const resultOfQueries = await Promise.all(
+    queries.map(async ({ name }) => {
+      const state = await executeQuery(name);
+      return { state, name };
+    })
+  );
+
+  return resultOfQueries.reduce(
+    (result, { state, name }) => {
+      result[name] = state;
+      return result;
+    },
+    { user }
+  );
 }
 
 const dbPath = './storage.json';
 
 export default {
-    entries: {
-        createStore,
-        rootComponent: (props, context) =>
-            <StaticRouter location={props.url} context={{}}>
-                <RootComponent />
-            </StaticRouter>
-    },
-    bus: { driver: busDriver },
-    storage: {
-        driver: storageDriver,
-        params: { pathToFile: dbPath }
-    },
-    initialState: query => getInitialState(query),
-    aggregates,
-    events,
-    queries,
-    extendExpress
+  entries: {
+    createStore,
+    rootComponent: (props, context) =>
+      <StaticRouter location={props.url} context={{}}>
+        <RootComponent />
+      </StaticRouter>
+  },
+  bus: { driver: busDriver },
+  storage: {
+    driver: storageDriver,
+    params: { pathToFile: dbPath }
+  },
+  initialState: getInitialState,
+  aggregates,
+  events,
+  queries,
+  extendExpress
 };

@@ -22,7 +22,7 @@ Access localhost:3000 then you can see the front page of Hacker News.
 
 | `npm run <script>` | Description |
 | ------------------ | ----------- |
-|`build`             | Builds the application to ./next |
+|`build`             | Builds the application to ./dist |
 |`dev`               | Serves your app at `localhost:3000` in development mode|
 |`start`             | Serves your app at `localhost:3000` in production mode |
 |`test`              | Runs unit tests with Jest |

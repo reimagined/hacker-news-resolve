@@ -1,20 +1,38 @@
 import axios from 'axios';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { sendCommandMiddleware } from 'resolve-redux';
+import createSagaMiddleware from 'redux-saga';
 import reducer from '../reducers';
+import rootSaga from '../sagas';
 
-const middleware = [sendCommandMiddleware({
-    sendCommand: async command => axios.post(`${window.__ROOT_DIRECTORY__}/api/commands`, command)
-})];
+const isClient = typeof window === 'object';
 
 const composeEnhancers =
-    typeof window === 'object' &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-        ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
-        : compose;
+  isClient && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+    : compose;
 
-const enhancer = composeEnhancers(
-    applyMiddleware(...middleware),
-);
+export default initialState => {
+  const middleware = [];
 
-export default (initialState) => createStore(reducer, initialState, enhancer);
+  const sagaMiddleware = isClient && createSagaMiddleware();
+
+  if (isClient) {
+    middleware.push(
+      sendCommandMiddleware({
+        sendCommand: command => axios.post('/api/commands', command)
+      }),
+      sagaMiddleware
+    );
+  }
+
+  const enhancer = composeEnhancers(applyMiddleware(...middleware));
+
+  const store = createStore(reducer, initialState, enhancer);
+
+  if (isClient) {
+    sagaMiddleware.run(rootSaga);
+  }
+
+  return store;
+};

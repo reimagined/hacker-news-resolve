@@ -1,16 +1,16 @@
 /* @flow */
 
 const events = {
-    USER_CREATED: 'UserCreated',
+  USER_CREATED: 'UserCreated'
 };
 
 export type UserCreated = {
-    aggregateId: string;
-    payload: {
-        name: string;
-        passwordHash: string;
-        id: string;
-    };
+  aggregateId: string,
+  timestamp: string,
+  payload: {
+    name: string,
+    passwordHash: string
+  }
 };
 
 export default events;

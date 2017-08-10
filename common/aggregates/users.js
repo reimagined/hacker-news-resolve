@@ -3,27 +3,34 @@ import Immutable from 'seamless-immutable';
 import type { UserCreated } from '../events/users';
 import events from '../events/users';
 import { Event } from '../helpers';
+import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists';
 
 const { USER_CREATED } = events;
 
-const Aggregate = {
-    name: 'users',
-    initialState: Immutable({}),
-    eventHandlers: {
-        [USER_CREATED]: (state, event) =>  state.set('createdAt', event.timestamp)
-    },
-    commands: {
-        createUser: (state: any, command: UserCreated) => {
-            if(state.createdAt) {
-                throw new Error('User already exists')
-            }
-            return new Event(USER_CREATED, command.aggregateId, {
-                name: command.payload.name,
-                passwordHash: command.payload.passwordHash,
-                id: command.aggregateId
-            })
-        }
-    }
-};
+export default {
+  name: 'users',
+  initialState: Immutable({}),
+  eventHandlers: {
+    [USER_CREATED]: (state, event) => state.set('createdAt', event.timestamp)
+  },
+  commands: {
+    createUser: (state: any, command: UserCreated) => {
+      const { name, passwordHash } = command.payload;
 
-export default Aggregate;
+      throwIfAggregateAlreadyExists(state, command);
+
+      if (!name) {
+        throw new Error('UserId is required');
+      }
+
+      if (!passwordHash) {
+        throw new Error('PasswordHash is required');
+      }
+
+      return new Event(USER_CREATED, {
+        name,
+        passwordHash
+      });
+    }
+  }
+};
