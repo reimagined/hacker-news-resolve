@@ -10,7 +10,10 @@ export default {
     initialState: Immutable({}),
     eventHandlers: {
         [USER_CREATED]: (state: any, event: UserCreated) => {
-            return state.set(event.aggregateId, event.payload);
+            return state.set(event.aggregateId, {
+                ...event.payload,
+                id: event.aggregateId
+            });
         }
     }
 };
