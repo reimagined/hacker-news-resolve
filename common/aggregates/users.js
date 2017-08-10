@@ -19,9 +19,8 @@ export default  {
 
             return new Event(USER_CREATED, {
                 name: command.payload.name,
-                passwordHash: command.payload.passwordHash,
-                id: command.aggregateId
-            })
+                passwordHash: command.payload.passwordHash
+            });
         }
     }
 };
