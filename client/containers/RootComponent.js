@@ -64,14 +64,12 @@ export const RootComponent = ({ user, logout, match }) => (
     </div>
 )
 
-export default RootComponent;
-//
-// export const mapStateToProps = ({ user }) => ({
-//     user
-// })
-//
-// export const mapDispatchToProps = (dispatch) => bindActionCreators({
-//     logout: userActions.logout
-// }, dispatch)
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(withRouter(RootComponent));
+export const mapStateToProps = ({ user }) => ({
+    user
+})
+
+export const mapDispatchToProps = (dispatch) => bindActionCreators({
+    logout: userActions.logout
+}, dispatch)
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RootComponent));
