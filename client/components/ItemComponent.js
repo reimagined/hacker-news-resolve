@@ -6,7 +6,7 @@ import plur from 'plur';
 const isExternalLink = link => link[0] !== '/';
 
 function getHostname(link) {
-    const urlObj = url.parse(link); //TODO: check is empty
+    const urlObj = url.parse(link);
     return (urlObj.hostname.split('.')[0] === 'www') ? urlObj.hostname.substr(4) : urlObj.hostname;
 };
 
@@ -26,32 +26,32 @@ const Score = ({ score }) => {
 };
 
 const PostedBy = ({ user }) => {
-    return <span className="Item__by">by <a href="#TODO">{user}</a> </span>;
+    return <span className="Item__by">by <a href={`/user?id=${user}`}>{user}</a> </span>;
 };
 
-const Comment = ({ commentCount, newCommentCount }) => {
+const Comment = ({ itemId, commentCount, newCommentCount }) => {
         return <span>
-                <span>| <Link to="#TODO">{(commentCount > 0) ? `${commentCount} ${plur('comment', commentCount)}` : 'discuss'}</Link> </span>
+                <span>| <Link to={`/item?id=${itemId}`}>{(commentCount > 0) ? `${commentCount} ${plur('comment', commentCount)}` : 'discuss'}</Link> </span>
                 {(newCommentCount > 0) 
-                    ? <span className="ListItem__newcomments"><Link to="#TODO">{newCommentCount} new</Link> </span>
+                    ? <span className="ListItem__newcomments"><Link to={`/item?id=${itemId}`}>{newCommentCount} new</Link> </span>
                     : ''}
             </span>;
 };
 
-const Meta = ({ user, date, score, commentCount, newCommentCount }) => {
+const Meta = ({ itemId, user, date, score, commentCount, newCommentCount }) => {
     return <div className="Item__meta">
             {(score) ? <Score score={score} /> : ''}
             {(user) ? <PostedBy user={user} /> : ''}
-            <span className="Item__time">{date.toLocaleString()} </span>
-            {(commentCount !== undefined) ? <Comment commentCount={commentCount} newCommentCount={newCommentCount} /> : ''}
+            <span className="Item__time">{date.toLocaleString()} </span>{/* TODO: timeAgo */}
+            {(commentCount !== undefined) ? <Comment itemId={itemId} commentCount={commentCount} newCommentCount={newCommentCount} /> : ''}
         </div>;
 };
 
-const ItemComponent = ({ title, link, user, date, score, commentCount, newCommentCount }) => {
+const ItemComponent = ({ id, title, link, user, date, score, commentCount, newCommentCount }) => {
     return <div className="Item">
         <div className="Item__content">
             <Title title={title} link={link} />
-            <Meta user={user} date={date} score={score} commentCount={commentCount} newCommentCount={newCommentCount} />
+            <Meta itemId={id} user={user} date={date} score={score} commentCount={commentCount} newCommentCount={newCommentCount} />
         </div>
     </div>;
 };
