@@ -1,7 +1,7 @@
 import Immutable from 'seamless-immutable';
 
-import type { CommentCreated, CommentUpdated, CommentRemoved } from '../events/users';
-import events from '../events/users';
+import type { CommentCreated, CommentUpdated, CommentRemoved } from '../events/comments';
+import events from '../events/comments';
 import { Event } from '../helpers';
 import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists';
 import throwIfAggregateIsNotExists from './validators/throwIfAggregateIsNotExists';
