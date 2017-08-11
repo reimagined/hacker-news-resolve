@@ -8,7 +8,7 @@ import createStore from './client/store';
 import RootComponent from './client/containers/RootComponent';
 import aggregates from './common/aggregates';
 import queries from './common/read-models';
-import events from './common/aggregates/users';
+import events from './common/events';
 import extendExpress from './server/extendExpress';
 import authorizationSecret from './server/authorizationSecret';
 
