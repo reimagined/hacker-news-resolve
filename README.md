@@ -12,9 +12,9 @@ git clone https://github.com/reimagined/hacker-news-demo.git
 cd hacker-news-demo
 npm install
 npm run dev
-```
+``` 
 or
-```
+``` bash
 npm run build
 npm run start
 ```
