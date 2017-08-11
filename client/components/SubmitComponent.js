@@ -21,71 +21,74 @@ class SubmitComponent extends Component {
   handleSubmit() {
     if (!this.state.text) {
       this.props.onAddNews(this.props.userId, this.state.title, this.state.url);
+      this.setState({
+        title: '',
+        url: '',
+        text: ''
+      });
     }
   }
 
   render() {
     return (
       <div className="App__form">
-        <form onSubmit={() => this.handleSubmit()}>
-          <table border="0">
-            <tbody>
-              <tr>
-                <td>Title</td>
-                <td>
-                  <input
-                    type="text"
-                    value={this.state.title}
-                    onChange={e => this.handleChange(e, 'title')}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>Url</td>
-                <td>
-                  <input
-                    size="50"
-                    type="text"
-                    value={this.state.url}
-                    onChange={e => this.handleChange(e, 'url')}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td />
-                <td>
-                  <b>or</b>
-                </td>
-              </tr>
-              <tr>
-                <td>Text</td>
-                <td>
-                  <textarea name="text" rows="4" cols="49" />
-                </td>
-              </tr>
-              <tr>
-                <td />
-                <td />
-              </tr>
-              <tr>
-                <td />
-                <td>
-                  <input type="submit" value="Submit" />
-                </td>
-              </tr>
-              <tr>
-                <td />
-                <td>
-                  <p>
-                    Leave url blank to submit a question for discussion. If
-                    there is no url, the text (if any) will appear at the top of
-                    the thread.
-                  </p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
+        <table border="0">
+          <tbody>
+            <tr>
+              <td>Title</td>
+              <td>
+                <input
+                  type="text"
+                  value={this.state.title}
+                  onChange={e => this.handleChange(e, 'title')}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Url</td>
+              <td>
+                <input
+                  size="50"
+                  type="text"
+                  value={this.state.url}
+                  onChange={e => this.handleChange(e, 'url')}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td />
+              <td>
+                <b>or</b>
+              </td>
+            </tr>
+            <tr>
+              <td>Text</td>
+              <td>
+                <textarea name="text" rows="4" cols="49" />
+              </td>
+            </tr>
+            <tr>
+              <td />
+              <td />
+            </tr>
+            <tr>
+              <td />
+              <td>
+                <button onClick={() => this.handleSubmit()}>Submit</button>
+              </td>
+            </tr>
+            <tr>
+              <td />
+              <td>
+                <p>
+                  Leave url blank to submit a question for discussion. If there
+                  is no url, the text (if any) will appear at the top of the
+                  thread.
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     );
   }
