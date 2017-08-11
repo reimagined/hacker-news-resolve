@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import ItemComponent from './ItemComponent';
 
-const ShowComponent = () => {
+const ShowComponent = props => {
   return (
     <div>
       <div className="Items">
@@ -30,6 +31,25 @@ const ShowComponent = () => {
               commentCount={23}
               newCommentCount={1}
             />
+            {Object.keys(props.news)
+              .filter(id => props.news[id].type === 'show')
+              .map(id => {
+                const item = props.news[id];
+                const userName = props.users[item.userId].name;
+                return (
+                  <li key={id} className="ListItem">
+                    <ItemComponent
+                      id={id}
+                      title={item.title}
+                      link={item.link}
+                      date={new Date(item.createDate)}
+                      score={item.voted.length}
+                      user={userName}
+                      commentCount={item.comments.length}
+                    />
+                  </li>
+                );
+              })}
           </li>
         </ol>
       </div>
@@ -37,4 +57,6 @@ const ShowComponent = () => {
   );
 };
 
-export default ShowComponent;
+export default connect(state => ({ news: state.news, users: state.users }))(
+  ShowComponent
+);

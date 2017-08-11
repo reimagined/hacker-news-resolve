@@ -22,6 +22,10 @@ const eventHandlers = {
   [NEWS_CREATED]: (state: any, event: NewsCreated) => {
     const id = getId(event);
 
+    const type = !event.payload.link
+      ? 'question'
+      : /^(Show HN)/.test(event.payload.title) ? 'show' : 'story';
+
     const news = {
       id,
       title: event.payload.title,
@@ -29,6 +33,7 @@ const eventHandlers = {
       createDate: event.timestamp,
       link: event.payload.link,
       comments: [],
+      type,
       voted: [event.payload.userId]
     };
 

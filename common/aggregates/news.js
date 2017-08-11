@@ -13,7 +13,7 @@ const { NEWS_CREATED, NEWS_UPVOTED, NEWS_UNVOTED, NEWS_DELETED } = events;
 
 const commands = {
   createNews: (state: any, command: NewsCreated) => {
-    const { title, link, userId } = command.payload;
+    const { title, link, userId, text } = command.payload;
 
     if (!title) {
       throw new Error('Title is required');
@@ -25,6 +25,7 @@ const commands = {
 
     return new Event(NEWS_CREATED, {
       title,
+      text,
       link,
       userId
     });

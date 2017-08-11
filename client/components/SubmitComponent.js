@@ -19,14 +19,17 @@ class SubmitComponent extends Component {
   }
 
   handleSubmit() {
-    if (!this.state.text) {
-      this.props.onAddNews(this.props.userId, this.state.title, this.state.url);
-      this.setState({
-        title: '',
-        url: '',
-        text: ''
-      });
-    }
+    this.props.onAddNews({
+      userId: this.props.userId,
+      title: this.state.title,
+      text: this.state.text,
+      link: this.state.url
+    });
+    this.setState({
+      title: '',
+      url: '',
+      text: ''
+    });
   }
 
   render() {
@@ -64,7 +67,13 @@ class SubmitComponent extends Component {
             <tr>
               <td>Text</td>
               <td>
-                <textarea name="text" rows="4" cols="49" />
+                <textarea
+                  name="text"
+                  rows="4"
+                  cols="49"
+                  value={this.state.text}
+                  onChange={e => this.handleChange(e, 'text')}
+                />
               </td>
             </tr>
             <tr>
@@ -102,10 +111,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onAddNews(userId, title, link) {
+    onAddNews({ userId, title, text, link }) {
       return dispatch(
         actions.createNews(uuid.v4(), {
           title,
+          text,
           link,
           userId
         })

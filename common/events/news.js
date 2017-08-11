@@ -12,6 +12,7 @@ export type NewsCreated = {
   timestamp: string,
   payload: {
     title: string,
+    text: string,
     userId: string,
     link: string
   }

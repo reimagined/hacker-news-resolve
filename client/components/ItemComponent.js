@@ -6,10 +6,9 @@ import plur from 'plur';
 const isExternalLink = link => link[0] !== '/';
 
 function getHostname(link) {
-  const urlObj = url.parse(link);
-  return urlObj.hostname.split('.')[0] === 'www'
-    ? urlObj.hostname.substr(4)
-    : urlObj.hostname;
+  return link.split('.')[0] === 'www'
+    ? link.substr(4)
+    : url.parse(link).hostname;
 }
 
 const Title = ({ title, link }) => {

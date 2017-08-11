@@ -33,13 +33,19 @@ const NewestComponent = props => {
           </li>
           {Object.keys(props.news).map(id => {
             const item = props.news[id];
+            const type = item.type;
+
+            const link = type === 'question' ? `/item?id=${id}` : item.link;
+            const title =
+              type === 'question' ? `Ask HN: ${item.title}` : item.title;
+
             const userName = props.users[item.userId].name;
             return (
               <li key={id} className="ListItem">
                 <ItemComponent
                   id={id}
-                  title={item.title}
-                  link={item.link}
+                  title={title}
+                  link={link}
                   date={new Date(item.createDate)}
                   score={item.voted.length}
                   user={userName}
