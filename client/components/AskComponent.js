@@ -41,7 +41,7 @@ const AskComponent = props => {
                     <ItemComponent
                       id={id}
                       title={`Ask HN: ${item.title}`}
-                      link={`/item?id=${id}`}
+                      link={`/item/id=${id}`}
                       date={new Date(item.createDate)}
                       score={item.voted.length}
                       user={userName}

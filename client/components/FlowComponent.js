@@ -99,7 +99,7 @@ const FlowComponent = props => {
             const item = props.news[id];
             const type = item.type;
 
-            const link = type === 'question' ? `/item?id=${id}` : item.link;
+            const link = type === 'question' ? `/item/id=${id}` : item.link;
             const title =
               type === 'question' ? `Ask HN: ${item.title}` : item.title;
 

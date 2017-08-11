@@ -29,6 +29,7 @@ const eventHandlers = {
     const news = {
       id,
       title: event.payload.title,
+      text: event.payload.text,
       userId: event.payload.userId,
       createDate: event.timestamp,
       link: event.payload.link,

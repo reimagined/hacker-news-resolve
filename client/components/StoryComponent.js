@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import uuid from 'uuid';
+import ItemComponent from './ItemComponent';
+import actions from '../actions/comments';
 
 const getLevelClassName = level => {
   // TODO: remove me!!!
@@ -52,7 +56,7 @@ const CommentComponent = ({
               {content}
             </div>
             <p>
-              <Link to={`/reply?id=${id}`}>reply</Link>
+              <Link to={`/reply/id=${id}`}>reply</Link>
             </p>
           </div>
         </div>
@@ -99,41 +103,121 @@ function getChilComponents({ parent, level, pool }) {
 
 const pool = { state: 'This my state variable' }; //TODO:
 
-const StoryComponent = ({ id }) => {
-  const title = 'My sample title'; // TODO: get from projection
-  return (
-    <div className="Item">
-      <div className="Item__content">
-        <div className="Item__title">
-          {title}
+class StoryComponent extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      text: ''
+    };
+  }
+
+  onAddComment(parentId, userId) {
+    this.props.onAddComment({
+      text: this.state.text,
+      parentId,
+      userId
+    });
+    this.setState({ text: '' });
+  }
+
+  render() {
+    const id = this.props.location.pathname.split('=')[1];
+    const story = this.props.news[id];
+    const userName = this.props.users[story.userId].name;
+    const link = story.type === 'question' ? `/item/id=${id}` : story.link;
+
+    return (
+      <div className="Item">
+        <ItemComponent
+          id={id}
+          title={story.title}
+          link={link}
+          date={new Date(story.createDate)}
+          score={story.voted.length}
+          user={userName}
+          commentCount={story.comments.length}
+        />
+        <div className="Item__content">
+          <div className="Item__title">
+            {story.text}
+          </div>
+          <textarea
+            name="text"
+            rows="6"
+            cols="70"
+            value={this.state.text}
+            onChange={e => this.setState({ text: e.target.value })}
+          />
+          <div>
+            <button onClick={() => this.onAddComment(id, this.props.user.id)}>
+              Add comment
+            </button>
+          </div>
+        </div>
+        <div className="Item__kids">
+          <CommentComponent
+            id={1}
+            content="Test comment 1"
+            user="roman"
+            date={new Date()}
+            getChilrenCallback={getChilComponents}
+            pool={pool}
+            expanded={1}
+          />
+          <CommentComponent
+            id={2}
+            content="Test comment 2"
+            user="roman"
+            date={new Date()}
+          />
+          <CommentComponent
+            id={2}
+            content="Test comment 2"
+            user="roman"
+            date={new Date()}
+            expanded={0}
+          />
+          {story.comments.map(commentId => {
+            const comment = this.props.comments[commentId];
+
+            return (
+              <CommentComponent
+                id={comment.id}
+                content={comment.text}
+                user={this.props.users[comment.createdBy].name}
+                date={new Date(comment.createdAt)}
+                expanded={10}
+              />
+            );
+          })}
         </div>
       </div>
-      <div className="Item__kids">
-        <CommentComponent
-          id={1}
-          content="Test comment 1"
-          user="roman"
-          date={new Date()}
-          getChilrenCallback={getChilComponents}
-          pool={pool}
-          expanded={1}
-        />
-        <CommentComponent
-          id={2}
-          content="Test comment 2"
-          user="roman"
-          date={new Date()}
-        />
-        <CommentComponent
-          id={2}
-          content="Test comment 2"
-          user="roman"
-          date={new Date()}
-          expanded={0}
-        />
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default StoryComponent;
+function mapStateToProps(state) {
+  return {
+    news: state.news,
+    users: state.users,
+    comments: state.comments,
+    user: state.user
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onAddComment({ parentId, text, userId }) {
+      return dispatch(
+        actions.createComment(uuid.v4(), {
+          text,
+          parentId,
+          userId
+        })
+      );
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(StoryComponent);

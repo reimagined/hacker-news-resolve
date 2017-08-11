@@ -26,7 +26,7 @@ export default {
   },
   commands: {
     createComment: (state: any, command: CommentCreated) => {
-      const { text, parentId } = command.payload;
+      const { text, parentId, userId } = command.payload;
 
       throwIfAggregateAlreadyExists(state, command);
 
@@ -40,7 +40,8 @@ export default {
 
       return new Event(COMMENT_CREATED, {
         text,
-        parentId
+        parentId,
+        userId
       });
     },
     updateComment: (state: any, command: CommentUpdated) => {

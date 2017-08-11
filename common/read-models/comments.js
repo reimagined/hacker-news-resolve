@@ -14,10 +14,10 @@ export default {
   initialState: Immutable({}),
   eventHandlers: {
     [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
-      return state.set(event.aggregateId, {
+      return state.setIn([event.aggregateId], {
         text: event.payload.text,
         id: event.aggregateId,
-        parentId: event.aggregateId,
+        parentId: event.payload.parentId,
         createdAt: event.timestamp,
         createdBy: event.payload.userId
       });
