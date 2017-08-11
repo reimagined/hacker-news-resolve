@@ -14,6 +14,7 @@ import NewestComponent from '../components/NewestComponent';
 import ShowComponent from '../components/ShowComponent';
 import SubmitComponent from '../components/SubmitComponent';
 import LoginComponent from '../components/LoginComponent';
+import StoryComponent from '../components/StoryComponent';
 import * as userActions from '../actions/userActions';
 
 import '../styles/style.css';
@@ -82,6 +83,7 @@ export const RootComponent = ({ user, logout, match }) =>
           <Route exact path="/jobs" component={JobsComponent} />
           <Route exact path="/submit" component={SubmitComponent} />
           <Route exact path="/login" component={LoginComponent} />
+          <Route exact path="/story" component={StoryComponent} />
           <Route component={FlowComponent} />
         </Switch>
       </div>

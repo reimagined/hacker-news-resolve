@@ -1,7 +1,7 @@
 import React from 'react';
 
 const LoginComponent = () =>
-  <div>
+  <div className="App__form">
     <h1>Login</h1>
     <form method="GET" action="/auth">
       <table>

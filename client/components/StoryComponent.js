@@ -7,10 +7,10 @@ const getLevelClassName = level => {
   return `Comment--level${level > 0 ? level : '0'}`;
 };
 
-const CollapseButton = ({ collapsed }) => {
+const ExpandButton = ({ expanded }) => {
   return (
     <span className="Comment__collapse" tabindex="0">
-      [{collapsed ? '+' : '–'}]
+      [{expanded ? '-' : '+'}]
     </span>
   );
 };
@@ -21,20 +21,20 @@ const CommentComponent = ({
   content,
   user,
   date,
-  collapsed,
+  expanded,
   getChilrenCallback,
   pool
 }) => {
   return (
     <div>
       <div
-        className={`Comment ${getLevelClassName(level)} ${collapsed
-          ? 'Comment--collapsed'
-          : null}`}
+        className={`Comment ${getLevelClassName(level)} ${expanded
+          ? null
+          : 'Comment--collapsed'}`}
       >
         <div className="Comment__content">
           <div className="Comment__meta">
-            <CollapseButton collapsed={collapsed} />
+            <ExpandButton expanded={expanded} />
             <span>
               {' '}<a className="Comment__user" href={`/user/${user}`}>
                 {user}
@@ -66,21 +66,22 @@ const CommentComponent = ({
 
 const getChildren = ({ parent, level, pool }) => {
   // TODO: state and remove level
-  if (level > 25) return [];
+  if (level > 5) return [];
   return [
     {
       id: 1,
       level,
       content: `Sub comment. level = ${level}. ${pool.state}`,
       user: 'sub user',
-      date: new Date()
+      date: new Date(),
+      expanded: true
     }
   ];
 };
 
 function getChilComponents({ parent, level, pool }) {
   const child = getChildren({ parent, level, pool });
-  return child.reduce((result, { id, content, user, date, collapsed }) => {
+  return child.reduce((result, { id, content, user, date, expanded }) => {
     return (
       <CommentComponent
         id={id}
@@ -88,7 +89,7 @@ function getChilComponents({ parent, level, pool }) {
         content={content}
         user={user}
         date={date}
-        collapsed={collapsed}
+        expanded={expanded}
         getChilrenCallback={getChilComponents}
         pool={pool}
       />
@@ -115,13 +116,20 @@ const StoryComponent = ({ id }) => {
           date={new Date()}
           getChilrenCallback={getChilComponents}
           pool={pool}
+          expanded={1}
         />
         <CommentComponent
           id={2}
           content="Test comment 2"
           user="roman"
           date={new Date()}
-          collapsed={0}
+        />
+        <CommentComponent
+          id={2}
+          content="Test comment 2"
+          user="roman"
+          date={new Date()}
+          expanded={0}
         />
       </div>
     </div>

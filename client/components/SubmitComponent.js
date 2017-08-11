@@ -26,7 +26,7 @@ class SubmitComponent extends Component {
 
   render() {
     return (
-      <div style={{ marginTop: 10 }}>
+      <div className="App__form">
         <form onSubmit={() => this.handleSubmit()}>
           <table border="0">
             <tbody>

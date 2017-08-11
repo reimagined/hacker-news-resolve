@@ -131,7 +131,7 @@ span.control:hover {
   text-decoration: underline;
 }
 
-.Items__list {
+.App__form, .Items__list {
   padding-left: 3em;
   padding-right: 1.25em;
   margin-top: 1em;
