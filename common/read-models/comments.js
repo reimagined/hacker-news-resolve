@@ -14,12 +14,21 @@ export default {
   initialState: Immutable({}),
   eventHandlers: {
     [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
-      return state.setIn([event.aggregateId], {
+      let newState = state;
+      if (newState[event.payload.parentId]) {
+        newState = newState.updateIn(
+          [event.payload.parentId, 'replies'],
+          list => list.concat(event.aggregateId)
+        );
+      }
+
+      return newState.setIn([event.aggregateId], {
         text: event.payload.text,
         id: event.aggregateId,
         parentId: event.payload.parentId,
         createdAt: event.timestamp,
-        createdBy: event.payload.userId
+        createdBy: event.payload.userId,
+        replies: []
       });
     },
     [COMMENT_UPDATED]: (state: any, event: CommentUpdated) => {
@@ -28,7 +37,15 @@ export default {
       );
     },
     [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
-      return state.without(event.aggregateId);
+      let newState = state;
+      const parentId = newState[event.payload.aggregateId].parentId;
+      if (newState[parentId]) {
+        newState = newState.updateIn([parentId, 'replies'], list =>
+          list.filter(item => item !== event.aggregateId)
+        );
+      }
+
+      return newState.without(event.aggregateId);
     }
   }
 };
