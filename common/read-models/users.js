@@ -11,9 +11,11 @@ export default {
   eventHandlers: {
     [USER_CREATED]: (state: any, event: UserCreated) => {
       return state.set(event.aggregateId, {
-        ...event.payload,
+        name: event.payload.name,
+        passwordHash: event.payload.passwordHash,
         id: event.aggregateId,
-        createdAt: event.timestamp
+        createdAt: event.timestamp,
+        karma: 0
       });
     }
   }

@@ -18,6 +18,7 @@ import StoryComponent from '../components/StoryComponent';
 import ErrorComponent from '../components/ErrorComponent';
 import ReplyComponent from '../components/ReplyComponent';
 import CommentContainer from './CommentContainer';
+import UserComponent from './UserComponent';
 import * as userActions from '../actions/userActions';
 
 import '../styles/style.css';
@@ -87,6 +88,7 @@ export const RootComponent = ({ user, logout, match }) =>
           <Route exact path="/jobs" component={JobsComponent} />
           <Route exact path="/submit" component={SubmitComponent} />
           <Route exact path="/login" component={LoginComponent} />
+          <Route exact path="/user" component={UserComponent} />
           <Route exact path="/error" component={ErrorComponent} />
           <Route path="/item/:id" component={StoryComponent} />
           <Route path="/reply/:id" component={ReplyComponent} />

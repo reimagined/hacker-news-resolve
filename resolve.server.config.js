@@ -15,7 +15,9 @@ import authorizationSecret from './server/authorizationSecret';
 async function getInitialState(executeQuery, { cookies }) {
   let user;
   try {
-    user = jwt.verify(cookies.authorizationToken, authorizationSecret);
+    user = (await executeQuery('users'))[
+      jwt.verify(cookies.authorizationToken, authorizationSecret).id
+    ];
   } catch (error) {
     user = {};
   }
