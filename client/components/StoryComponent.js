@@ -5,6 +5,7 @@ import ItemComponent from './ItemComponent';
 import actions from '../actions/comments';
 import CommentComponent from './CommentComponent';
 import ChildrenComments from './ChildrenComments';
+import getCommentsCount from '../helpers/getCommentsCount';
 
 class StoryComponent extends Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class StoryComponent extends Component {
           date={new Date(story.createDate)}
           score={story.voted.length}
           user={userName}
-          commentCount={story.comments.length}
+          commentCount={getCommentsCount(this.props.comments, story.comments)}
         />
         <div className="Item__content">
           <div className="Item__title">

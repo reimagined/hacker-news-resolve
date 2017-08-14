@@ -37,15 +37,15 @@ const CommentComponent = ({
           <div className="Comment__meta">
             <ExpandButton expanded={expanded} />
             <span>
-              {' '}<a className="Comment__user" href={`/user/${user}`}>
+              {' '}<Link className="Comment__user" to={`/user/${user}`}>
                 {user}
-              </a>
+              </Link>
             </span>
             <span>
               {' '}<time>{date.toLocaleString('en-US')}</time>
             </span>
             <span>
-              {' '}| <a href={`/comment/${id}`}>link</a>
+              {' '}| <Link to={`/comment/id=${id}`}>link</Link>
             </span>
           </div>
           <div className="Comment__text">

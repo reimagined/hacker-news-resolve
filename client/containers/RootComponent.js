@@ -17,6 +17,7 @@ import LoginComponent from '../components/LoginComponent';
 import StoryComponent from '../components/StoryComponent';
 import ErrorComponent from '../components/ErrorComponent';
 import ReplyComponent from '../components/ReplyComponent';
+import CommentContainer from './CommentContainer';
 import * as userActions from '../actions/userActions';
 
 import '../styles/style.css';
@@ -80,12 +81,12 @@ export const RootComponent = ({ user, logout, match }) =>
         <Switch>
           <Route exact path="/newest" component={NewestComponent} />
           <Route exact path="/comments" component={CommentsComponent} />
+          <Route exact path="/comment/:id" component={CommentContainer} />
           <Route exact path="/show" component={ShowComponent} />
           <Route exact path="/ask" component={AskComponent} />
           <Route exact path="/jobs" component={JobsComponent} />
           <Route exact path="/submit" component={SubmitComponent} />
           <Route exact path="/login" component={LoginComponent} />
-          <Route exact path="/story/*" component={StoryComponent} />
           <Route exact path="/error" component={ErrorComponent} />
           <Route path="/item/:id" component={StoryComponent} />
           <Route path="/reply/:id" component={ReplyComponent} />
