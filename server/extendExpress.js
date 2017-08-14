@@ -36,7 +36,9 @@ export default express => {
 
   express.get(
     '/auth',
-    passport.authenticate('local', { failureRedirect: '/unauthorized' }),
+    passport.authenticate('local', {
+      failureRedirect: '/error/?text=Unauthorized'
+    }),
     async (req, res) => {
       const users = await req.resolve.executeQuery('users');
 
@@ -82,7 +84,7 @@ export default express => {
 
         res.redirect(req.query.redirect || '/');
       } catch (error) {
-        res.redirect('/unauthorized/');
+        res.redirect('/error/?text=Unauthorized');
       }
     }
   );
