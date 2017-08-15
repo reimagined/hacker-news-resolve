@@ -1,6 +1,5 @@
-<img src="https://api.travis-ci.org/reimagined/hacker-news-demo.svg">
+# hacker-news-demo &middot; [![PRs Welcome](https://api.travis-ci.org/reimagined/hacker-news-demo.svg)](CONTRIBUTING.md#pull-requests)
 
-# hacker-news-demo
 A React & Redux & Resolve implementation of Hacker News 
 
 [<img src="https://facebook.github.io/react/img/logo.svg" height="100">](https://github.com/facebook/react)
