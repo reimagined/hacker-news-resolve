@@ -178,6 +178,12 @@ span.control:hover {
   text-decoration: underline;
 }
 
+.Paginator__disabled {
+  pointer-events: none;
+  cursor: default;
+  color: gray;
+}
+
 .Item__content,
 .Item--loading {
   padding: 1em 1.25em 0 1.25em;

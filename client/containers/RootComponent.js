@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router';
 
-import CommentsComponent from '../components/CommentsComponent';
+import CommentsContainer from './CommentsContainer';
 import JobsComponent from '../components/JobsComponent';
 import SubmitComponent from '../components/SubmitComponent';
 import LoginComponent from '../components/LoginComponent';
@@ -80,7 +80,7 @@ export const RootComponent = ({ user, logout, match }) =>
           <Route exact path="/newest" component={NewsContainer} />
           <Route exact path="/show" component={NewsContainer} />
           <Route exact path="/ask" component={NewsContainer} />
-          <Route exact path="/comments" component={CommentsComponent} />
+          <Route exact path="/comments" component={CommentsContainer} />
           <Route exact path="/comment" component={CommentContainer} />
           <Route exact path="/jobs" component={JobsComponent} />
           <Route exact path="/submit" component={SubmitComponent} />

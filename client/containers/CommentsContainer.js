@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CommentComponent from './CommentComponent';
+import queryString from 'query-string';
+import CommentComponent from '../components/CommentComponent';
+import { getPageItems, hasNextItems } from '../helpers/getPageItems';
+import Paginator from '../components/Paginator';
 
 function findRoot(id, comments) {
   if (comments[id]) {
@@ -10,9 +13,15 @@ function findRoot(id, comments) {
 }
 
 const CommentsComponent = props => {
+  let { page } = queryString.parse(props.location.search);
+  let comments = Object.keys(props.comments);
+
+  const hasNext = hasNextItems(comments, page);
+  comments = getPageItems(comments, page);
+
   return (
     <div>
-      {Object.keys(props.comments).map(id => {
+      {comments.map(id => {
         const comment = props.comments[id];
         const parentId = comment.parentId;
         const rootId = findRoot(parentId, props.comments);
@@ -37,6 +46,7 @@ const CommentsComponent = props => {
           />
         );
       })}
+      <Paginator page={page} hasNext={hasNext} location={props.location} />
     </div>
   );
 };

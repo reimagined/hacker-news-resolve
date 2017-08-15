@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import queryString from 'query-string';
 
 import ItemComponent from '../components/ItemComponent';
+import Paginator from '../components/Paginator';
 import getCommentsCount from '../helpers/getCommentsCount';
+import { getPageItems, hasNextItems } from '../helpers/getPageItems';
 import actions from '../actions/news';
 
 const NewsContainer = props => {
+  let { page } = queryString.parse(props.location.search);
+
   let news = Object.keys(props.news);
   if (props.location.pathname.includes('ask')) {
     news = news.filter(id => props.news[id].type === 'ask');
@@ -14,6 +19,9 @@ const NewsContainer = props => {
   } else if (props.location.pathname === '/') {
     // TODO sort flow news in some special order
   }
+
+  const hasNext = hasNextItems(news, page);
+  news = getPageItems(news, page);
 
   return (
     <div>
@@ -46,6 +54,7 @@ const NewsContainer = props => {
           })}
         </ol>
       </div>
+      <Paginator page={page} hasNext={hasNext} location={props.location} />
     </div>
   );
 };
