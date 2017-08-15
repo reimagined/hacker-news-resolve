@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
+import queryString from 'query-string';
 import ItemComponent from './ItemComponent';
 import actions from '../actions/comments';
 import CommentComponent from './CommentComponent';
@@ -26,10 +27,10 @@ class StoryComponent extends Component {
   }
 
   render() {
-    const id = this.props.location.pathname.split('=')[1];
+    const { id } = queryString.parse(this.props.location.search);
     const story = this.props.news[id];
     const userName = this.props.users[story.userId].name;
-    const link = story.type === 'ask' ? `/story/id=${id}` : story.link;
+    const link = story.type === 'ask' ? `/story?id=${id}` : story.link;
 
     return (
       <div className="Item">

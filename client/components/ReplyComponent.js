@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
+import queryString from 'query-string';
 import actions from '../actions/comments';
 import CommentComponent from './CommentComponent';
 
@@ -24,10 +25,9 @@ class ReplyComponent extends Component {
   }
 
   render() {
-    const { comments, users, user } = this.props;
-
-    const commentId = this.props.location.pathname.split('=')[1];
-    const comment = comments[commentId];
+    const { comments, users, user, location } = this.props;
+    const { id } = queryString.parse(location.search);
+    const comment = comments[id];
 
     return (
       <div>
@@ -49,9 +49,7 @@ class ReplyComponent extends Component {
               onChange={e => this.setState({ text: e.target.value })}
             />
             <div>
-              <button onClick={() => this.onReply(commentId, user.id)}>
-                Reply
-              </button>
+              <button onClick={() => this.onReply(id, user.id)}>Reply</button>
             </div>
           </div>
         </div>

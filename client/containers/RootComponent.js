@@ -81,14 +81,14 @@ export const RootComponent = ({ user, logout, match }) =>
           <Route exact path="/show" component={NewsContainer} />
           <Route exact path="/ask" component={NewsContainer} />
           <Route exact path="/comments" component={CommentsComponent} />
-          <Route exact path="/comment/:id" component={CommentContainer} />
+          <Route exact path="/comment" component={CommentContainer} />
           <Route exact path="/jobs" component={JobsComponent} />
           <Route exact path="/submit" component={SubmitComponent} />
           <Route exact path="/login" component={LoginComponent} />
           <Route exact path="/user" component={UserComponent} />
           <Route exact path="/error" component={ErrorComponent} />
-          <Route path="/story/:id" component={StoryComponent} />
-          <Route path="/reply/:id" component={ReplyComponent} />
+          <Route path="/story" component={StoryComponent} />
+          <Route path="/reply" component={ReplyComponent} />
           <Route component={NewsContainer} />
         </Switch>
       </div>

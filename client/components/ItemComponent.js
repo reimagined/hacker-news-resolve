@@ -54,7 +54,7 @@ const Comment = ({ storyId, commentCount, newCommentCount }) => {
     <span>
       <span>
         |{' '}
-        <Link to={`/story/id=${storyId}`}>
+        <Link to={`/story?id=${storyId}`}>
           {commentCount > 0
             ? `${commentCount} ${plur('comment', commentCount)}`
             : 'discuss'}
@@ -62,7 +62,7 @@ const Comment = ({ storyId, commentCount, newCommentCount }) => {
       </span>
       {newCommentCount > 0
         ? <span className="ListItem__newcomments">
-            <Link to={`/story/id=${storyId}`}>{newCommentCount} new</Link>{' '}
+            <Link to={`/story?id=${storyId}`}>{newCommentCount} new</Link>{' '}
           </span>
         : ''}
     </span>
