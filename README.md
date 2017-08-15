@@ -1,4 +1,4 @@
-# hacker-news-demo &middot; [![PRs Welcome](https://api.travis-ci.org/reimagined/hacker-news-demo.svg)](CONTRIBUTING.md#pull-requests)
+# hacker-news-demo &middot; [![Build Status](https://api.travis-ci.org/reimagined/hacker-news-demo.svg)](https://travis-ci.org/reimagined/hacker-news-demo)
 
 A React & Redux & Resolve implementation of Hacker News 
 
