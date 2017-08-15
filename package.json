@@ -1,7 +1,7 @@
 {
   "name": "hacker-news-demo",
   "version": "0.0.1",
-  "description": "",
+  "description": "A React & Redux & Resolve implementation of Hacker News",
   "scripts": {
     "build": "resolve-scripts build",
     "start": "resolve-scripts start",
@@ -9,7 +9,10 @@
     "lint": "eslint --ignore-path .gitignore .",
     "lint-fix": "eslint --ignore-path .gitignore --fix .",
     "prettier": "prettier-eslint --write \"**/*.js\"",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watchAll"
   },
   "pre-commit": [
     "lint-staged",
@@ -21,8 +24,8 @@
       "git add"
     ]
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["react", "redux", "resolve", "event-sourcing", "cqrs"],
+  "author": "reimagined team",
   "license": "MIT",
   "private": true,
   "dependencies": {
@@ -70,6 +73,7 @@
     "eslint-plugin-react": "7.0.1",
     "extract-text-webpack-plugin": "^3.0.0",
     "flow-bin": "^0.52.0",
+    "jest": "^20.0.4",
     "lint-staged": "^4.0.3",
     "pre-commit": "^1.2.2",
     "prettier": "^1.5.3",

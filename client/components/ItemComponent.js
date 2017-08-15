@@ -15,7 +15,7 @@ const Title = ({ title, link, onUpvote, voted }) => {
   if (isExternalLink(link)) {
     return (
       <div className="Item__title">
-        {!voted &&
+        {!voted && // eslint-disable-next-line jsx-a11y/anchor-has-content
           <a href="" onClick={onUpvote} className="votearrow" title="upvote" />}
         <a href={link}>{title}</a>{' '}
         <span className="Item__host">({getHostname(link)})</span>
@@ -24,7 +24,7 @@ const Title = ({ title, link, onUpvote, voted }) => {
   }
   return (
     <div className="Item__title">
-      {!voted &&
+      {!voted && // eslint-disable-next-line jsx-a11y/anchor-has-content
         <a href="" onClick={onUpvote} className="votearrow" title="upvote" />}
       <Link to={link}>
         {title}

@@ -38,6 +38,10 @@ export default {
         throw new Error('ParentId is required');
       }
 
+      if (!userId) {
+        throw new Error('UserId is required');
+      }
+
       return new Event(COMMENT_CREATED, {
         text,
         parentId,
