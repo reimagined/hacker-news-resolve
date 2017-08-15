@@ -29,7 +29,7 @@ class StoryComponent extends Component {
     const id = this.props.location.pathname.split('=')[1];
     const story = this.props.news[id];
     const userName = this.props.users[story.userId].name;
-    const link = story.type === 'question' ? `/item/id=${id}` : story.link;
+    const link = story.type === 'ask' ? `/item/id=${id}` : story.link;
 
     return (
       <div className="Item">
@@ -46,13 +46,15 @@ class StoryComponent extends Component {
           <div className="Item__title">
             {story.text}
           </div>
-          <textarea
-            name="text"
-            rows="6"
-            cols="70"
-            value={this.state.text}
-            onChange={e => this.setState({ text: e.target.value })}
-          />
+          <div className="Item__textarea">
+            <textarea
+              name="text"
+              rows="6"
+              cols="70"
+              value={this.state.text}
+              onChange={e => this.setState({ text: e.target.value })}
+            />
+          </div>
           <div>
             <button onClick={() => this.onAddComment(id, this.props.user.id)}>
               Add comment

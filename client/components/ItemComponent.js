@@ -11,10 +11,12 @@ function getHostname(link) {
     : url.parse(link).hostname;
 }
 
-const Title = ({ title, link }) => {
+const Title = ({ title, link, onUpvote, voted }) => {
   if (isExternalLink(link)) {
     return (
       <div className="Item__title">
+        {!voted &&
+          <a href="" onClick={onUpvote} className="votearrow" title="upvote" />}
         <a href={link}>{title}</a>{' '}
         <span className="Item__host">({getHostname(link)})</span>
       </div>
@@ -22,6 +24,8 @@ const Title = ({ title, link }) => {
   }
   return (
     <div className="Item__title">
+      {!voted &&
+        <a href="" onClick={onUpvote} className="votearrow" title="upvote" />}
       <Link to={link}>
         {title}
       </Link>
@@ -40,7 +44,7 @@ const Score = ({ score }) => {
 const PostedBy = ({ user }) => {
   return (
     <span className="Item__by">
-      by <a href={`/user?id=${user}`}>{user}</a>{' '}
+      by <a href={`/user?id=${user.id}`}>{user.name}</a>{' '}
     </span>
   );
 };
@@ -65,7 +69,17 @@ const Comment = ({ itemId, commentCount, newCommentCount }) => {
   );
 };
 
-const Meta = ({ itemId, user, date, score, commentCount, newCommentCount }) => {
+const Meta = props => {
+  const {
+    itemId,
+    user,
+    date,
+    score,
+    commentCount,
+    newCommentCount,
+    voted,
+    onUnvote
+  } = props;
   return (
     <div className="Item__meta">
       {score ? <Score score={score} /> : ''}
@@ -74,6 +88,13 @@ const Meta = ({ itemId, user, date, score, commentCount, newCommentCount }) => {
         {date.toLocaleString('en-US')}{' '}
       </span>
       {/* TODO: timeAgo */}
+      {voted &&
+        <span>
+          |{' '}
+          <a href="" onClick={onUnvote}>
+            unvote
+          </a>{' '}
+        </span>}
       {commentCount !== undefined
         ? <Comment
             itemId={itemId}
@@ -85,27 +106,34 @@ const Meta = ({ itemId, user, date, score, commentCount, newCommentCount }) => {
   );
 };
 
-const ItemComponent = ({
-  id,
-  title,
-  link,
-  user,
-  date,
-  score,
-  commentCount,
-  newCommentCount
-}) => {
+const ItemComponent = props => {
+  const {
+    id,
+    title,
+    link,
+    user,
+    date,
+    score,
+    commentCount,
+    newCommentCount,
+    onUpvote,
+    onUnvote,
+    voted
+  } = props;
+
   return (
     <div className="Item">
       <div className="Item__content">
-        <Title title={title} link={link} />
+        <Title voted={voted} onUpvote={onUpvote} title={title} link={link} />
         <Meta
+          voted={voted}
           itemId={id}
           user={user}
           date={date}
           score={score}
           commentCount={commentCount}
           newCommentCount={newCommentCount}
+          onUnvote={onUnvote}
         />
       </div>
     </div>

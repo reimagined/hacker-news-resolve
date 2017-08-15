@@ -53,6 +53,16 @@ span.control:hover {
   }
 }
 
+.votearrow {
+  width:      10px;
+  height:     10px;
+  border:     0px;
+  margin:     3px 2px 2px;
+  display: inline-block;
+  background: url("/static/img/grayarrow.gif")
+  no-repeat;
+}
+
 .App__wrap {
   width: 90%;
   max-width: 1280px;
@@ -175,7 +185,7 @@ span.control:hover {
 }
 .Item__title {
   color: #666;
-  font-size:18px;
+  font-size:14px;
 }
 .Item__title a {
   text-decoration: none;
@@ -186,6 +196,10 @@ span.control:hover {
 }
 .Item__title a:visited {
   color: #666;
+}
+.Item__textarea {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .Item__meta {
   color: #666;

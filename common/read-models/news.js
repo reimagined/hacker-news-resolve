@@ -23,7 +23,7 @@ const eventHandlers = {
     const id = getId(event);
 
     const type = !event.payload.link
-      ? 'question'
+      ? 'ask'
       : /^(Show HN)/.test(event.payload.title) ? 'show' : 'story';
 
     const news = {
@@ -41,10 +41,12 @@ const eventHandlers = {
     return state.setIn([id], news);
   },
   [NEWS_UPVOTED]: (state: any, event: NewsUpvoted) =>
-    state.updateIn([getId(event), 'voted'], list => list.concat(event.userId)),
+    state.updateIn([getId(event), 'voted'], list =>
+      list.concat(event.payload.userId)
+    ),
   [NEWS_UNVOTED]: (state: any, event: NewsUnvoted) =>
     state.updateIn([getId(event), 'voted'], list =>
-      list.filter(x => x !== event.userId)
+      list.filter(x => x !== event.payload.userId)
     ),
   [NEWS_DELETED]: (state: any, event: NewsDeleted) =>
     state.updateIn(obj => obj.without(getId(event))),
