@@ -49,12 +49,12 @@ const PostedBy = ({ user }) => {
   );
 };
 
-const Comment = ({ itemId, commentCount, newCommentCount }) => {
+const Comment = ({ storyId, commentCount, newCommentCount }) => {
   return (
     <span>
       <span>
         |{' '}
-        <Link to={`/item/id=${itemId}`}>
+        <Link to={`/story/id=${storyId}`}>
           {commentCount > 0
             ? `${commentCount} ${plur('comment', commentCount)}`
             : 'discuss'}
@@ -62,7 +62,7 @@ const Comment = ({ itemId, commentCount, newCommentCount }) => {
       </span>
       {newCommentCount > 0
         ? <span className="ListItem__newcomments">
-            <Link to={`/item/id=${itemId}`}>{newCommentCount} new</Link>{' '}
+            <Link to={`/story/id=${storyId}`}>{newCommentCount} new</Link>{' '}
           </span>
         : ''}
     </span>
@@ -71,7 +71,7 @@ const Comment = ({ itemId, commentCount, newCommentCount }) => {
 
 const Meta = props => {
   const {
-    itemId,
+    storyId,
     user,
     date,
     score,
@@ -97,7 +97,7 @@ const Meta = props => {
         </span>}
       {commentCount !== undefined
         ? <Comment
-            itemId={itemId}
+            storyId={storyId}
             commentCount={commentCount}
             newCommentCount={newCommentCount}
           />
@@ -127,7 +127,7 @@ const ItemComponent = props => {
         <Title voted={voted} onUpvote={onUpvote} title={title} link={link} />
         <Meta
           voted={voted}
-          itemId={id}
+          storyId={id}
           user={user}
           date={date}
           score={score}

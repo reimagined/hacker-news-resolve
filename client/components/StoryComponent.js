@@ -29,7 +29,7 @@ class StoryComponent extends Component {
     const id = this.props.location.pathname.split('=')[1];
     const story = this.props.news[id];
     const userName = this.props.users[story.userId].name;
-    const link = story.type === 'ask' ? `/item/id=${id}` : story.link;
+    const link = story.type === 'ask' ? `/story/id=${id}` : story.link;
 
     return (
       <div className="Item">

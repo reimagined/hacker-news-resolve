@@ -23,7 +23,7 @@ const NewsContainer = props => {
             const item = props.news[id];
             const type = item.type;
 
-            const link = type === 'ask' ? `/item/id=${id}` : item.link;
+            const link = type === 'ask' ? `/story/id=${id}` : item.link;
             const title = type === 'ask' ? `Ask HN: ${item.title}` : item.title;
 
             const user = props.users[item.userId];

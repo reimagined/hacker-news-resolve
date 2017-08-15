@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import CommentComponent from './CommentComponent';
 
 const ItemComponent = ({ id, content, user, date, rootLink, rootTitle }) => {
   return (
@@ -33,35 +35,80 @@ const ItemComponent = ({ id, content, user, date, rootLink, rootTitle }) => {
   );
 };
 
-const CommentsComponent = () => {
+function findRoot(id, comments) {
+  if (comments[id]) {
+    return findRoot(comments[id].parentId, comments);
+  }
+  return id;
+}
+
+const CommentsComponent = props => {
   return (
     <div>
-      <ItemComponent
-        id={3}
-        content="Test comment 3"
-        user="roman"
-        date={new Date()}
-        rootLink="/story/3"
-        rootTitle="Show HN: Transformation Invariant Reverse Image Search"
-      />
-      <ItemComponent
-        id={2}
-        content="Test comment 2"
-        user="roman"
-        date={new Date()}
-        rootLink="/story/2"
-        rootTitle="Offline GraphQL Queries with Redux Offline and Apollo "
-      />
-      <ItemComponent
-        id={1}
-        content="Test comment 1"
-        user="roman"
-        date={new Date()}
-        rootLink="/story/1"
-        rootTitle="Event Sourcing"
-      />
+      {Object.keys(props.comments).map(id => {
+        const comment = props.comments[id];
+        const parentId = comment.parentId;
+        const rootId = findRoot(parentId, props.comments);
+
+        const parent =
+          parentId === rootId
+            ? `/story/id=${parentId}`
+            : `/comment/id=${parentId}`;
+
+        const root = props.news[rootId];
+
+        return (
+          <CommentComponent
+            replies={comment.replies}
+            id={comment.id}
+            content={comment.text}
+            user={props.users[comment.createdBy].name}
+            date={new Date(comment.createdAt)}
+            parent={parent}
+            root={root}
+            expanded
+          />
+        );
+      })}
     </div>
   );
 };
 
-export default CommentsComponent;
+function mapStateToProps({ news, users, comments, user }) {
+  return {
+    news,
+    users,
+    comments
+  };
+}
+
+export default connect(mapStateToProps)(CommentsComponent);
+
+// (
+//   <div>
+//     <ItemComponent
+//       id={3}
+//       content="Test comment 3"
+//       user="roman"
+//       date={new Date()}
+//       rootLink="/story/3"
+//       rootTitle="Show HN: Transformation Invariant Reverse Image Search"
+//     />
+//     <ItemComponent
+//       id={2}
+//       content="Test comment 2"
+//       user="roman"
+//       date={new Date()}
+//       rootLink="/story/2"
+//       rootTitle="Offline GraphQL Queries with Redux Offline and Apollo "
+//     />
+//     <ItemComponent
+//       id={1}
+//       content="Test comment 1"
+//       user="roman"
+//       date={new Date()}
+//       rootLink="/story/1"
+//       rootTitle="Event Sourcing"
+//     />
+//   </div>
+// );
