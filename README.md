@@ -1,4 +1,4 @@
-[<img src="https://api.travis-ci.org/reimagined/hacker-news-demo.svg">](Build status)
+<img src="https://api.travis-ci.org/reimagined/hacker-news-demo.svg">
 # hacker-news-demo
 A React & Redux & Resolve implementation of Hacker News 
 
