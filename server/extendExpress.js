@@ -67,7 +67,6 @@ export default express => {
             payload: user
           });
         } catch (error) {
-          console.log(error);
           res.redirect(`/error/?text=${error.toString()}`);
           return;
         }
