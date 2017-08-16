@@ -1,4 +1,5 @@
 import Immutable from 'seamless-immutable';
+import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists';
 
 import type {
   NewsCreated,
@@ -11,70 +12,68 @@ import { Event } from '../helpers';
 
 const { NEWS_CREATED, NEWS_UPVOTED, NEWS_UNVOTED, NEWS_DELETED } = events;
 
-const commands = {
-  createNews: (state: any, command: NewsCreated) => {
-    const { title, link, userId, text } = command.payload;
-
-    if (!title) {
-      throw new Error('Title is required');
-    }
-
-    if (!userId) {
-      throw new Error('UserId is required');
-    }
-
-    return new Event(NEWS_CREATED, {
-      title,
-      text,
-      link,
-      userId
-    });
-  },
-  upvoteNews: (state: any, command: NewsUpvoted) => {
-    const { userId } = command.payload;
-
-    if (!userId) {
-      throw new Error('UserId is required');
-    }
-
-    return new Event(NEWS_UPVOTED, {
-      userId
-    });
-  },
-  unvoteNews: (state: any, command: NewsUnvoted) => {
-    const { userId } = command.payload;
-
-    if (!userId) {
-      throw new Error('UserId is required');
-    }
-
-    return new Event(NEWS_UNVOTED, {
-      userId
-    });
-  },
-  deleteNews: (state: any, command: NewsDeleted) => new Event(NEWS_DELETED, {})
-};
-
-const eventHandlers = {
-  [NEWS_CREATED]: (_, event) =>
-    Immutable({
-      aggregateId: event.aggregateId,
-      title: event.payload.title,
-      userId: event.payload.userId,
-      link: event.payload.link,
-      createDate: event.timestamp,
-      comments: [],
-      voted: []
-    }),
-  [NEWS_UPVOTED]: (state, event) =>
-    state.updateIn(['voted'], list => list.concat(event.userId)),
-  [NEWS_UNVOTED]: (state, event) =>
-    state.updateIn(['voted'], list => list.filter(x => x !== event.userId))
-};
-
 export default {
   name: 'news',
   initialState: Immutable({}),
-  eventHandlers,
-  commands
+  eventHandlers: {
+    [NEWS_CREATED]: (state, event) =>
+      state.merge({
+        createdAt: event.timestamp,
+        createdBy: event.payload.userId,
+        votedUsers: []
+      }),
+    [NEWS_UPVOTED]: (state, event) =>
+      state.update('votedUsers', votedUsers =>
+        votedUsers.concat(event.payload.userId)
+      ),
+    [NEWS_UNVOTED]: (state, event) =>
+      state.update('votedUsers', votedUsers =>
+        votedUsers.filter(userId => userId !== event.payload.userId)
+      )
+  },
+  commands: {
+    createNews: (state: any, command: NewsCreated) => {
+      const { title, link, userId, text } = command.payload;
+
+      throwIfAggregateAlreadyExists(state, command);
+
+      if (!title) {
+        throw new Error('Title is required');
+      }
+
+      if (!userId) {
+        throw new Error('UserId is required');
+      }
+
+      return new Event(NEWS_CREATED, {
+        title,
+        text,
+        link,
+        userId
+      });
+    },
+    upvoteNews: (state: any, command: NewsUpvoted) => {
+      const { userId } = command.payload;
+
+      if (!userId) {
+        throw new Error('UserId is required');
+      }
+
+      return new Event(NEWS_UPVOTED, {
+        userId
+      });
+    },
+    unvoteNews: (state: any, command: NewsUnvoted) => {
+      const { userId } = command.payload;
+
+      if (!userId) {
+        throw new Error('UserId is required');
+      }
+
+      return new Event(NEWS_UNVOTED, {
+        userId
+      });
+    },
+    deleteNews: (state: any, command: NewsDeleted) => new Event(NEWS_DELETED)
+  }
 };
