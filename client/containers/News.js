@@ -11,7 +11,7 @@ import actions from '../actions/news';
 const News = props => {
   let { page } = queryString.parse(props.location.search);
 
-  let news = Object.keys(props.news);
+  let news = Object.keys(props.news).reverse();
   if (props.location.pathname.includes('ask')) {
     news = news.filter(id => props.news[id].type === 'ask');
   } else if (props.location.pathname.includes('show')) {
