@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
 
-const UserComponent = ({ id, name, createdAt, karma }) => {
+const User = ({ id, name, createdAt, karma }) => {
   if (!id) {
     return (
       <div>
@@ -58,4 +58,4 @@ export const mapStateToProps = ({ user, users }, ownProps) => {
   return user;
 };
 
-export default connect(mapStateToProps)(UserComponent);
+export default connect(mapStateToProps)(User);

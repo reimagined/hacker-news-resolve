@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
-import CommentComponent from '../components/CommentComponent';
+import Comment from '../components/Comment';
 import { getPageItems, hasNextItems } from '../helpers/getPageItems';
 import Paginator from '../components/Paginator';
 
@@ -12,7 +12,7 @@ function findRoot(id, comments) {
   return id;
 }
 
-const CommentsComponent = props => {
+const Comments = props => {
   let { page } = queryString.parse(props.location.search);
   let comments = Object.keys(props.comments);
 
@@ -34,7 +34,7 @@ const CommentsComponent = props => {
         const root = props.news[rootId];
 
         return (
-          <CommentComponent
+          <Comment
             replies={comment.replies}
             id={comment.id}
             content={comment.text}
@@ -59,4 +59,4 @@ function mapStateToProps({ news, users, comments, user }) {
   };
 }
 
-export default connect(mapStateToProps)(CommentsComponent);
+export default connect(mapStateToProps)(Comments);

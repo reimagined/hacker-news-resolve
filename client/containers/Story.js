@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 import queryString from 'query-string';
-import ItemComponent from './ItemComponent';
+import Item from '../components/Item';
 import actions from '../actions/comments';
-import CommentComponent from './CommentComponent';
-import ChildrenComments from './ChildrenComments';
+import Comment from '../components/Comment';
+import ChildrenComments from '../components/ChildrenComments';
 import getCommentsCount from '../helpers/getCommentsCount';
 
-class StoryComponent extends Component {
+class Story extends Component {
   constructor(props) {
     super(props);
 
@@ -34,7 +34,7 @@ class StoryComponent extends Component {
 
     return (
       <div className="Item">
-        <ItemComponent
+        <Item
           id={id}
           title={story.title}
           link={link}
@@ -67,7 +67,7 @@ class StoryComponent extends Component {
             const comment = this.props.comments[commentId];
 
             return (
-              <CommentComponent
+              <Comment
                 replies={comment.replies}
                 id={comment.id}
                 content={comment.text}
@@ -109,4 +109,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(StoryComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(Story);

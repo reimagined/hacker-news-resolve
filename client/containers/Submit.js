@@ -3,7 +3,7 @@ import uuid from 'uuid';
 import { connect } from 'react-redux';
 import actions from '../actions/news';
 
-class SubmitComponent extends Component {
+class Submit extends Component {
   constructor(props) {
     super(props);
 
@@ -124,4 +124,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SubmitComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(Submit);

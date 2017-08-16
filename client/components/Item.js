@@ -106,7 +106,7 @@ const Meta = props => {
   );
 };
 
-const ItemComponent = props => {
+const Item = props => {
   const {
     id,
     title,
@@ -140,4 +140,4 @@ const ItemComponent = props => {
   );
 };
 
-export default ItemComponent;
+export default Item;

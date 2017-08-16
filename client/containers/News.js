@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
 
-import ItemComponent from '../components/ItemComponent';
+import Item from '../components/Item';
 import Paginator from '../components/Paginator';
 import getCommentsCount from '../helpers/getCommentsCount';
 import { getPageItems, hasNextItems } from '../helpers/getPageItems';
 import actions from '../actions/news';
 
-const NewsContainer = props => {
+const News = props => {
   let { page } = queryString.parse(props.location.search);
 
   let news = Object.keys(props.news);
@@ -37,7 +37,7 @@ const NewsContainer = props => {
             const user = props.users[item.userId];
             return (
               <li key={id} className="ListItem">
-                <ItemComponent
+                <Item
                   id={id}
                   title={title}
                   link={link}
@@ -87,4 +87,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(News);

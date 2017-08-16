@@ -1,14 +1,14 @@
 import React from 'react';
 
-import ItemComponent from './ItemComponent';
+import Item from './Item';
 
-const JobsComponent = () => {
+const Jobs = () => {
   return (
     <div>
       <div className="Items">
         <ol className="Items__list" start="1">
           <li className="ListItem">
-            <ItemComponent
+            <Item
               id="7"
               title="SendBird (YC W16) Is Hiring Solution Engineers in Redwood City"
               link="https://angel.co/sendbird/jobs/228945-solutions-engineer"
@@ -16,7 +16,7 @@ const JobsComponent = () => {
             />
           </li>
           <li className="ListItem">
-            <ItemComponent
+            <Item
               id="8"
               title="Drcrhono (YC W11) is hiring front- and back-end developers to fix healthcare"
               link="https://www.drchrono.com/careers/"
@@ -29,4 +29,4 @@ const JobsComponent = () => {
   );
 };
 
-export default JobsComponent;
+export default Jobs;
