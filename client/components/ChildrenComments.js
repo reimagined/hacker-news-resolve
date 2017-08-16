@@ -12,7 +12,6 @@ const ChildrenComments = ({ replies, level }, comments, users) => {
         content={text}
         user={users[createdBy].name}
         date={new Date(createdAt)}
-        expanded
         showReply
         getChilrenCallback={args => ChildrenComments(args, comments, users)}
       />

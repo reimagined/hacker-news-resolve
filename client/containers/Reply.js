@@ -39,7 +39,6 @@ class Reply extends Component {
               content={comment.text}
               user={users[comment.createdBy].name}
               date={new Date(comment.createdAt)}
-              expanded={10}
             />
             <textarea
               name="text"

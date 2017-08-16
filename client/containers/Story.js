@@ -73,7 +73,6 @@ class Story extends Component {
                 content={comment.text}
                 user={this.props.users[comment.createdBy].name}
                 date={new Date(comment.createdAt)}
-                expanded
                 showReply
                 getChilrenCallback={args =>
                   ChildrenComments(args, this.props.comments, this.props.users)}

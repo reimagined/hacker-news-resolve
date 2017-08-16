@@ -42,7 +42,6 @@ const Comments = props => {
             date={new Date(comment.createdAt)}
             parent={parent}
             root={root}
-            expanded
           />
         );
       })}

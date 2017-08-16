@@ -15,7 +15,6 @@ const CommentContainer = ({ comments, users, location }) => {
       content={comment.text}
       user={users[comment.createdBy].name}
       date={new Date(comment.createdAt)}
-      expanded
       showReply
       getChilrenCallback={args => ChildrenComments(args, comments, users)}
     />
