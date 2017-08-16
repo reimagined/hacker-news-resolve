@@ -1,0 +1,18 @@
+.paginator {
+    margin-left: 3em;
+    padding: .5em 0;
+  }
+  .paginator a {
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+  }
+  .paginator a:hover {
+    text-decoration: underline;
+  }
+
+  .paginator__disabled {
+    pointer-events: none;
+    cursor: default;
+    color: gray;
+  }

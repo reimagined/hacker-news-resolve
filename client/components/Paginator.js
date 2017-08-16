@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/paginator.css';
 
 const Paginator = ({ page = 1, hasNext, location }) => {
   const route = location.pathname;
@@ -11,11 +12,11 @@ const Paginator = ({ page = 1, hasNext, location }) => {
   if (page === 1 && !hasNext) {
     return null;
   }
-  const nextDisabledClassName = !hasNext && 'Paginator__disabled';
-  const prevDisabledClassName = page <= 1 && 'Paginator__disabled';
+  const nextDisabledClassName = !hasNext && 'paginator__disabled';
+  const prevDisabledClassName = page <= 1 && 'paginator__disabled';
 
   return (
-    <div className="Paginator">
+    <div className="paginator">
       <Link
         className={prevDisabledClassName}
         to={`${route}?page=${Number(page) - 1}`}

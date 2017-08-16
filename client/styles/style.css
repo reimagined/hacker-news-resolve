@@ -101,25 +101,6 @@ span.control:hover {
   margin-bottom: .75em;
 }
 
-.Paginator {
-  margin-left: 3em;
-  padding: .5em 0;
-}
-.Paginator a {
-  font-weight: bold;
-  color: #000;
-  text-decoration: none;
-}
-.Paginator a:hover {
-  text-decoration: underline;
-}
-
-.Paginator__disabled {
-  pointer-events: none;
-  cursor: default;
-  color: gray;
-}
-
 .Item__content,
 .Item--loading {
   padding: 1em 1.25em 0 1.25em;
