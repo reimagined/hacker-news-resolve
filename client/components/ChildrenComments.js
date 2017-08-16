@@ -1,11 +1,11 @@
 import React from 'react';
-import CommentComponent from './CommentComponent';
+import Comment from './Comment';
 
 function ChildrenComments({ replies, level }, comments, users) {
   return replies.map(replyId => {
     const { id, text, replies, createdAt, createdBy } = comments[replyId];
     return (
-      <CommentComponent
+      <Comment
         replies={replies}
         level={level}
         id={id}

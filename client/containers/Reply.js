@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import uuid from 'uuid';
 import queryString from 'query-string';
 import actions from '../actions/comments';
-import CommentComponent from './CommentComponent';
+import Comment from '../components/Comment';
 
-class ReplyComponent extends Component {
+class Reply extends Component {
   constructor(props) {
     super(props);
 
@@ -33,7 +33,7 @@ class ReplyComponent extends Component {
       <div>
         <div className="Item">
           <div className="Item__content">
-            <CommentComponent
+            <Comment
               showReply={false}
               id={comment.id}
               content={comment.text}
@@ -80,4 +80,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ReplyComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(Reply);

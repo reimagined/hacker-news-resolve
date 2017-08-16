@@ -6,16 +6,16 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router';
 
-import CommentsContainer from './CommentsContainer';
-import JobsComponent from '../components/JobsComponent';
-import SubmitComponent from '../components/SubmitComponent';
-import LoginComponent from '../components/LoginComponent';
-import StoryComponent from '../components/StoryComponent';
-import ErrorComponent from '../components/ErrorComponent';
-import ReplyComponent from '../components/ReplyComponent';
-import NewsContainer from './NewsContainer';
-import CommentContainer from './CommentContainer';
-import UserComponent from './UserComponent';
+import Comments from './Comments';
+import Jobs from '../components/Jobs';
+import Submit from './Submit';
+import Login from '../components/Login';
+import Story from './Story';
+import Error from '../components/Error';
+import Reply from './Reply';
+import News from './News';
+import Comment from './Comment';
+import User from './User';
 import * as userActions from '../actions/userActions';
 
 import '../styles/style.css';
@@ -77,19 +77,19 @@ export const RootComponent = ({ user, logout, match }) =>
       </div>
       <div className="App__content">
         <Switch>
-          <Route exact path="/newest" component={NewsContainer} />
-          <Route exact path="/show" component={NewsContainer} />
-          <Route exact path="/ask" component={NewsContainer} />
-          <Route exact path="/comments" component={CommentsContainer} />
-          <Route exact path="/comment" component={CommentContainer} />
-          <Route exact path="/jobs" component={JobsComponent} />
-          <Route exact path="/submit" component={SubmitComponent} />
-          <Route exact path="/login" component={LoginComponent} />
-          <Route exact path="/user" component={UserComponent} />
-          <Route exact path="/error" component={ErrorComponent} />
-          <Route path="/story" component={StoryComponent} />
-          <Route path="/reply" component={ReplyComponent} />
-          <Route component={NewsContainer} />
+          <Route exact path="/newest" component={News} />
+          <Route exact path="/show" component={News} />
+          <Route exact path="/ask" component={News} />
+          <Route exact path="/comments" component={Comments} />
+          <Route exact path="/comment" component={Comment} />
+          <Route exact path="/jobs" component={Jobs} />
+          <Route exact path="/submit" component={Submit} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/user" component={User} />
+          <Route exact path="/error" component={Error} />
+          <Route path="/story" component={Story} />
+          <Route path="/reply" component={Reply} />
+          <Route component={News} />
         </Switch>
       </div>
       <div className="App__footer">

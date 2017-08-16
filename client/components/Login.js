@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LoginComponent = () =>
+const Login = () =>
   <div className="App__form">
     <h1>Login</h1>
     <form method="GET" action="/auth">
@@ -25,4 +25,4 @@ const LoginComponent = () =>
     </form>
   </div>;
 
-export default LoginComponent;
+export default Login;

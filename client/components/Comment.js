@@ -15,7 +15,7 @@ const ExpandButton = ({ expanded, onClick }) => {
   );
 };
 
-class CommentComponent extends Component {
+class Comment extends Component {
   constructor(props) {
     super(props);
 
@@ -93,4 +93,4 @@ class CommentComponent extends Component {
   }
 }
 
-export default CommentComponent;
+export default Comment;
