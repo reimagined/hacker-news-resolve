@@ -1,4 +1,5 @@
 import uuid from 'uuid';
+import '../../common/aggregates';
 import news from '../../common/aggregates/news';
 import events from '../../common/events';
 import { Event } from '../../common/helpers';

@@ -1,4 +1,5 @@
 import uuid from 'uuid';
+import '../../common/aggregates';
 import comments from '../../common/aggregates/comments';
 import events from '../../common/events';
 import { Event } from '../../common/helpers';

@@ -1,6 +1,4 @@
 import Immutable from 'seamless-immutable';
-import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists';
-import throwIfAggregateIsNotExists from './validators/throwIfAggregateIsNotExists';
 
 import type {
   NewsCreated,
@@ -10,6 +8,8 @@ import type {
 } from '../events/news';
 import events from '../events/news';
 import { Event } from '../helpers';
+import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists';
+import throwIfAggregateIsNotExists from './validators/throwIfAggregateIsNotExists';
 
 const { NEWS_CREATED, NEWS_UPVOTED, NEWS_UNVOTED, NEWS_DELETED } = events;
 
