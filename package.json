@@ -13,7 +13,7 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watchAll",
-    "coveralls": "coveralls"
+    "coveralls": "cat ./coverage/lcov.info | coveralls --verbose"
   },
   "pre-commit": [
     "lint-staged",
