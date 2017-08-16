@@ -269,10 +269,10 @@ describe('aggregates', () => {
       const removedAt = Date.now() + 1;
       const userId = uuid.v4();
 
-      const state = {
+      const state = comments.initialState.merge({
         createdAt,
         createdBy: userId
-      };
+      });
       const event = {
         timestamp: removedAt
       };
