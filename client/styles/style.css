@@ -83,13 +83,6 @@ span.control:hover {
   margin-bottom: 0;
 }
 
-.ListItem {
-  margin-bottom: 16px;
-}
-.ListItem--loading {
-  min-height: 34px;
-}
-
 .Updates--loading {
   padding: 1em 1.25em 0 1.25em;
   margin-bottom: 1em;
@@ -99,64 +92,6 @@ span.control:hover {
 }
 .Updates {
   margin-bottom: .75em;
-}
-
-.Item__content,
-.Item--loading {
-  padding: 1em 1.25em 0 1.25em;
-  margin-bottom: 1em;
-}
-.Item__title {
-  color: #666;
-  font-size:14px;
-}
-.Items__list {
-  padding-left: 3em;
-  padding-right: 1.25em;
-  margin-top: 1em;
-  margin-bottom: .5em;
-}
-.Item__title a {
-  text-decoration: none;
-  color: #000;
-}
-.Item__title a:hover {
-  text-decoration: underline;
-}
-.Item__title a:visited {
-  color: #666;
-}
-.Item__textarea {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-.Item__meta {
-  color: #666;
-}
-.Item > .Item__meta {
-  margin-bottom: 1em;
-}
-.Item__meta a {
-  text-decoration: none;
-  color: inherit;
-}
-.Item__meta a:hover {
-  text-decoration: underline;
-}
-.Item__meta em {
-  font-style: normal;
-  background-color: #ffffde;
-  color: #000;
-}
-.Item__by a, .ListItem__newcomments a {
-  font-weight: bold;
-}
-.Item__text {
-  margin-top: 1em;
-}
-.Item__poll {
-  margin-top: 1em;
-  padding-left: 2.5em;
 }
 
 .PollOption {

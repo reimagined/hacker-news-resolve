@@ -7,6 +7,7 @@ import actions from '../actions/comments';
 import Comment from '../components/Comment';
 import ChildrenComments from '../components/ChildrenComments';
 import getCommentsCount from '../helpers/getCommentsCount';
+import '../styles/story.css';
 
 class Story extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class Story extends Component {
     const link = story.type === 'ask' ? `/story?id=${id}` : story.link;
 
     return (
-      <div className="Item">
+      <div className="story">
         <Item
           id={id}
           title={story.title}
@@ -43,11 +44,11 @@ class Story extends Component {
           user={userName}
           commentCount={getCommentsCount(this.props.comments, story.comments)}
         />
-        <div className="Item__content">
-          <div className="Item__title">
+        <div className="story__content">
+          <div className="story__title">
             {story.text}
           </div>
-          <div className="Item__textarea">
+          <div className="story__textarea">
             <textarea
               name="text"
               rows="6"
@@ -62,7 +63,7 @@ class Story extends Component {
             </button>
           </div>
         </div>
-        <div className="Item__kids">
+        <div>
           {story.comments.map(commentId => {
             const comment = this.props.comments[commentId];
 

@@ -1,0 +1,12 @@
+.story__content {
+  padding: 1em 1.25em 0 1.25em;
+  margin-bottom: 1em;
+}
+.story__title {
+  color: #666;
+  font-size:14px;
+}
+.story__textarea {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }

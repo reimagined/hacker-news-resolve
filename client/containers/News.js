@@ -7,6 +7,7 @@ import Paginator from '../components/Paginator';
 import getCommentsCount from '../helpers/getCommentsCount';
 import { getPageItems, hasNextItems } from '../helpers/getPageItems';
 import actions from '../actions/news';
+import '../styles/news.css';
 
 const News = props => {
   let { page } = queryString.parse(props.location.search);
@@ -25,8 +26,8 @@ const News = props => {
 
   return (
     <div>
-      <div className="Items">
-        <ol className="Items__list" start="1">
+      <div className="news">
+        <ol className="news__list" start="1">
           {news.map(id => {
             const item = props.news[id];
             const type = item.type;
@@ -36,7 +37,7 @@ const News = props => {
 
             const user = props.users[item.userId];
             return (
-              <li key={id} className="ListItem">
+              <li key={id} className="news__item">
                 <Item
                   id={id}
                   title={title}

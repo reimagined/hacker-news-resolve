@@ -1,0 +1,57 @@
+.item__content,
+.item--loading {
+  padding: 1em 1.25em 0 1.25em;
+  margin-bottom: 1em;
+}
+.item__title {
+  color: #666;
+  font-size:14px;
+}
+.items__list {
+  padding-left: 3em;
+  padding-right: 1.25em;
+  margin-top: 1em;
+  margin-bottom: .5em;
+}
+.item__title a {
+  text-decoration: none;
+  color: #000;
+}
+.item__title a:hover {
+  text-decoration: underline;
+}
+.item__title a:visited {
+  color: #666;
+}
+.item__textarea {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.item__meta {
+  color: #666;
+}
+.item > .item__meta {
+  margin-bottom: 1em;
+}
+.item__meta a {
+  text-decoration: none;
+  color: inherit;
+}
+.item__meta a:hover {
+  text-decoration: underline;
+}
+.item__meta em {
+  font-style: normal;
+  background-color: #ffffde;
+  color: #000;
+}
+.item__by a {
+  font-weight: bold;
+}
+.item__text {
+  margin-top: 1em;
+}
+.item__poll {
+  margin-top: 1em;
+  padding-left: 2.5em;
+}

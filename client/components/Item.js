@@ -2,6 +2,7 @@ import React from 'react';
 import url from 'url';
 import { Link } from 'react-router-dom';
 import plur from 'plur';
+import '../styles/item.css';
 
 const isExternalLink = link => link[0] !== '/';
 
@@ -14,16 +15,16 @@ function getHostname(link) {
 const Title = ({ title, link, onUpvote, voted }) => {
   if (isExternalLink(link)) {
     return (
-      <div className="Item__title">
+      <div className="item__title">
         {!voted && // eslint-disable-next-line jsx-a11y/anchor-has-content
           <a href="" onClick={onUpvote} className="votearrow" title="upvote" />}
         <a href={link}>{title}</a>{' '}
-        <span className="Item__host">({getHostname(link)})</span>
+        <span className="item__host">({getHostname(link)})</span>
       </div>
     );
   }
   return (
-    <div className="Item__title">
+    <div className="item__title">
       {!voted && // eslint-disable-next-line jsx-a11y/anchor-has-content
         <a href="" onClick={onUpvote} className="votearrow" title="upvote" />}
       <Link to={link}>
@@ -35,7 +36,7 @@ const Title = ({ title, link, onUpvote, voted }) => {
 
 const Score = ({ score }) => {
   return (
-    <span className="Item__score">
+    <span className="item__score">
       {score} {plur('point', score)}{' '}
     </span>
   );
@@ -43,13 +44,13 @@ const Score = ({ score }) => {
 
 const PostedBy = ({ user }) => {
   return (
-    <span className="Item__by">
+    <span className="item__by">
       by <a href={`/user?id=${user.id}`}>{user.name}</a>{' '}
     </span>
   );
 };
 
-const Comment = ({ storyId, commentCount, newCommentCount }) => {
+const Comment = ({ storyId, commentCount }) => {
   return (
     <span>
       <span>
@@ -60,31 +61,17 @@ const Comment = ({ storyId, commentCount, newCommentCount }) => {
             : 'discuss'}
         </Link>{' '}
       </span>
-      {newCommentCount > 0
-        ? <span className="ListItem__newcomments">
-            <Link to={`/story?id=${storyId}`}>{newCommentCount} new</Link>{' '}
-          </span>
-        : ''}
     </span>
   );
 };
 
 const Meta = props => {
-  const {
-    storyId,
-    user,
-    date,
-    score,
-    commentCount,
-    newCommentCount,
-    voted,
-    onUnvote
-  } = props;
+  const { storyId, user, date, score, commentCount, voted, onUnvote } = props;
   return (
-    <div className="Item__meta">
+    <div className="item__meta">
       {score ? <Score score={score} /> : ''}
       {user ? <PostedBy user={user} /> : ''}
-      <span className="Item__time">
+      <span className="item__time">
         {date.toLocaleString('en-US')}{' '}
       </span>
       {/* TODO: timeAgo */}
@@ -96,11 +83,7 @@ const Meta = props => {
           </a>{' '}
         </span>}
       {commentCount !== undefined
-        ? <Comment
-            storyId={storyId}
-            commentCount={commentCount}
-            newCommentCount={newCommentCount}
-          />
+        ? <Comment storyId={storyId} commentCount={commentCount} />
         : ''}
     </div>
   );
@@ -115,15 +98,14 @@ const Item = props => {
     date,
     score,
     commentCount,
-    newCommentCount,
     onUpvote,
     onUnvote,
     voted
   } = props;
 
   return (
-    <div className="Item">
-      <div className="Item__content">
+    <div className="item">
+      <div className="item__content">
         <Title voted={voted} onUpvote={onUpvote} title={title} link={link} />
         <Meta
           voted={voted}
@@ -132,7 +114,6 @@ const Item = props => {
           date={date}
           score={score}
           commentCount={commentCount}
-          newCommentCount={newCommentCount}
           onUnvote={onUnvote}
         />
       </div>

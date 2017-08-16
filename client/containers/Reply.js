@@ -4,6 +4,7 @@ import uuid from 'uuid';
 import queryString from 'query-string';
 import actions from '../actions/comments';
 import Comment from '../components/Comment';
+import '../styles/reply.css';
 
 class Reply extends Component {
   constructor(props) {
@@ -31,8 +32,8 @@ class Reply extends Component {
 
     return (
       <div>
-        <div className="Item">
-          <div className="Item__content">
+        <div className="reply">
+          <div className="reply__content">
             <Comment
               showReply={false}
               id={comment.id}
