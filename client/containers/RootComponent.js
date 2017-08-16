@@ -7,7 +7,6 @@ import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router';
 
 import Comments from './Comments';
-import Jobs from '../components/Jobs';
 import Submit from './Submit';
 import Login from '../components/Login';
 import Story from './Story';
@@ -58,10 +57,6 @@ const RootComponent = ({ user, logout, match }) =>
           ask
         </NavLink>
         {' | '}
-        <NavLink to="/jobs" activeClassName="active">
-          jobs
-        </NavLink>
-        {' | '}
         <NavLink to="/submit" activeClassName="active">
           submit
         </NavLink>
@@ -82,7 +77,6 @@ const RootComponent = ({ user, logout, match }) =>
           <Route exact path="/ask" component={News} />
           <Route exact path="/comments" component={Comments} />
           <Route exact path="/comment" component={Comment} />
-          <Route exact path="/jobs" component={Jobs} />
           <Route exact path="/submit" component={Submit} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/user" component={User} />
