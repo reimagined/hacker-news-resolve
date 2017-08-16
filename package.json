@@ -16,7 +16,8 @@
   },
   "pre-commit": [
     "lint-staged",
-    "lint"
+    "lint",
+    "test"
   ],
   "lint-staged": {
     "*.js": [
