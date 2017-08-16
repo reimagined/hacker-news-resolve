@@ -12,7 +12,8 @@
     "lint-staged": "lint-staged",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "coveralls": "coveralls"
   },
   "pre-commit": [
     "lint-staged",

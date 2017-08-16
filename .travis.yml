@@ -6,3 +6,5 @@ install:
 script:
   - npm run lint
   - npm run test:coverage
+after_script:
+  - npm run coveralls
