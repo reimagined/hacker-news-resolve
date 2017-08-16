@@ -1,7 +1,8 @@
 import React from 'react';
+import '../styles/login.css';
 
 const Login = () =>
-  <div className="App__form">
+  <div className="login">
     <h1>Login</h1>
     <form method="GET" action="/auth">
       <table>

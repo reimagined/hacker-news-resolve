@@ -18,9 +18,10 @@ import User from './User';
 import * as userActions from '../actions/userActions';
 
 import '../styles/style.css';
+import '../styles/root.css';
 
 const RootComponent = ({ user, logout, match }) =>
-  <div className="App">
+  <div className="app">
     <Helmet>
       <meta
         name="viewport"
@@ -33,12 +34,12 @@ const RootComponent = ({ user, logout, match }) =>
       />
       <link rel="stylesheet" type="text/css" href="/static/bundle.css" />
     </Helmet>
-    <div className="App__wrap">
-      <div className="App__header">
-        <Link to="/" className="App__homelinkicon">
+    <div className="app__wrap">
+      <div className="app__header">
+        <Link to="/" className="app__homelinkicon">
           <img src="/static/img/logo.png" width="16" height="16" alt="" />
         </Link>{' '}
-        <Link to="/" className="App__homelink">
+        <Link to="/" className="app__homelink">
           Resolve HN
         </Link>{' '}
         <NavLink to="/newest" activeClassName="active">
@@ -70,7 +71,7 @@ const RootComponent = ({ user, logout, match }) =>
               </NavLink>}
         </div>
       </div>
-      <div className="App__content">
+      <div className="app__content">
         <Switch>
           <Route exact path="/newest" component={News} />
           <Route exact path="/show" component={News} />
@@ -86,7 +87,7 @@ const RootComponent = ({ user, logout, match }) =>
           <Route component={News} />
         </Switch>
       </div>
-      <div className="App__footer">
+      <div className="app__footer">
         <a href="https://github.com/reimagined/hacker-news-demo">
           reimagined/hacker-news-demo
         </a>

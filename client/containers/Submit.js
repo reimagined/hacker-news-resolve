@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import uuid from 'uuid';
 import { connect } from 'react-redux';
 import actions from '../actions/news';
+import '../styles/submit.css';
 
 class Submit extends Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class Submit extends Component {
 
   render() {
     return (
-      <div className="App__form">
+      <div className="submit">
         <table border="0">
           <tbody>
             <tr>

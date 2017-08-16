@@ -63,29 +63,6 @@ span.control:hover {
   no-repeat;
 }
 
-.App__wrap {
-  width: 90%;
-  max-width: 1280px;
-  margin: 8px auto;
-  color: #000;
-  background-color: #f5f5f5;
-  font-size: 13.3333px;
-  font-family: Verdana, Geneva, sans-serif;
-}
-.App__header {
-  color: #00d8ff;
-  background-color: #222;
-  padding: 6px;
-  line-height: 18px;
-  vertical-align: middle;
-  position: relative;
-}
-.App__settings {
-  position: absolute;
-  top: 6px;
-  right: 10px;
-  cursor: pointer;
-}
 .Settings {
   box-sizing: border-box;
   padding: .75em;
@@ -105,48 +82,7 @@ span.control:hover {
 .Settings div:last-child > p:last-child {
   margin-bottom: 0;
 }
-.App__header img {
-  border: 1px solid #00d8ff;
-  margin-right: .25em;
-}
-.App__header a {
-  color: inherit;
-  text-decoration: none;
-}
-.App__header a.active {
-  color: #fff;
-}
-.App__homelink {
-  text-decoration: none;
-  font-weight: bold;
-  color: #00d8ff !important;
-  margin-right: .75em;
-}
-.App__homelink.active {
-  color: #fff !important;
-}
-.App__content {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-}
-.App__footer {
-  margin-top: 1em;
-  border-top: 1px solid #e7e7e7;
-  text-align: center;
-  color: #333;
-  padding: 6px 0;
-}
-.App__footer a {
-  color: inherit;
-  text-decoration: underline;
-}
 
-.App__form, .Items__list {
-  padding-left: 3em;
-  padding-right: 1.25em;
-  margin-top: 1em;
-  margin-bottom: .5em;
-}
 .ListItem {
   margin-bottom: 16px;
 }
@@ -192,6 +128,12 @@ span.control:hover {
 .Item__title {
   color: #666;
   font-size:14px;
+}
+.Items__list {
+  padding-left: 3em;
+  padding-right: 1.25em;
+  margin-top: 1em;
+  margin-bottom: .5em;
 }
 .Item__title a {
   text-decoration: none;
@@ -253,28 +195,4 @@ span.control:hover {
 }
 .UserProfile h4 {
   margin: 0 0 1em 0;
-}
-
-@media only screen and (max-width: 750px) and (min-width: 300px) {
-  .App__wrap {
-    width: 100%;
-    margin: 0px auto;
-  }
-
-  /* Hide the App title homelink on narrow viewports */
-  .App__homelink {
-    display: none;
-  }
-
-  /* Safari only fix to ensure Settings menu is full width */
-  _::-webkit-:not(:root:root), .Settings {
-    width: 100%;
-  }
-}
-
-/* Hide the Settings link on iPhone 5 */
-@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
-  .App__settings {
-    display: none;
-  }
 }
