@@ -21,15 +21,15 @@ export default {
       state.merge({
         createdAt: event.timestamp,
         createdBy: event.payload.userId,
-        votedUsers: []
+        voted: []
       }),
+
     [NEWS_UPVOTED]: (state, event) =>
-      state.update('votedUsers', votedUsers =>
-        votedUsers.concat(event.payload.userId)
-      ),
+      state.update('voted', voted => voted.concat(event.payload.userId)),
+
     [NEWS_UNVOTED]: (state, event) =>
-      state.update('votedUsers', votedUsers =>
-        votedUsers.filter(userId => userId !== event.payload.userId)
+      state.update('voted', voted =>
+        voted.filter(userId => userId !== event.payload.userId)
       )
   },
   commands: {
@@ -53,12 +53,13 @@ export default {
         userId
       });
     },
+
     upvoteNews: (state: any, command: NewsUpvoted) => {
       const { userId } = command.payload;
 
       throwIfAggregateIsNotExists(state, command);
 
-      if (state.votedUsers.includes(userId)) {
+      if (state.voted.includes(userId)) {
         throw new Error('User already voted');
       }
 
@@ -70,12 +71,13 @@ export default {
         userId
       });
     },
+
     unvoteNews: (state: any, command: NewsUnvoted) => {
       const { userId } = command.payload;
 
       throwIfAggregateIsNotExists(state, command);
 
-      if (!state.votedUsers.includes(userId)) {
+      if (!state.voted.includes(userId)) {
         throw new Error('User has not voted');
       }
 
@@ -87,6 +89,7 @@ export default {
         userId
       });
     },
+
     deleteNews: (state: any, command: NewsDeleted) => {
       throwIfAggregateIsNotExists(state, command);
 

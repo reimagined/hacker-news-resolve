@@ -108,7 +108,7 @@ describe('aggregates', () => {
       const state = {
         createdAt: Date.now(),
         createdBy: userId,
-        votedUsers: []
+        voted: []
       };
       const command = {
         payload: {
@@ -131,7 +131,7 @@ describe('aggregates', () => {
       const state = {
         createdAt: Date.now(),
         createdBy: userId,
-        votedUsers: [userId]
+        voted: [userId]
       };
       const command = {
         payload: {
@@ -165,7 +165,7 @@ describe('aggregates', () => {
       const state = {
         createdAt: Date.now(),
         createdBy: userId,
-        votedUsers: []
+        voted: []
       };
       const command = {
         payload: {
@@ -184,7 +184,7 @@ describe('aggregates', () => {
       const state = {
         createdAt: Date.now(),
         createdBy: userId,
-        votedUsers: [userId]
+        voted: [userId]
       };
       const command = {
         payload: {
@@ -207,7 +207,7 @@ describe('aggregates', () => {
       const state = {
         createdAt: Date.now(),
         createdBy: userId,
-        votedUsers: []
+        voted: []
       };
       const command = {
         payload: {
@@ -241,7 +241,7 @@ describe('aggregates', () => {
       const state = {
         createdAt: Date.now(),
         createdBy: userId,
-        votedUsers: [userId]
+        voted: [userId]
       };
       const command = {
         payload: {
@@ -279,7 +279,7 @@ describe('aggregates', () => {
       );
     });
 
-    it('eventHandler "NEWS_CREATED" should set createdAt, createdBy and votedUsers to state', () => {
+    it('eventHandler "NEWS_CREATED" should set createdAt, createdBy and voted to state', () => {
       const createdAt = Date.now();
       const userId = uuid.v4();
 
@@ -293,20 +293,20 @@ describe('aggregates', () => {
       const nextState = {
         createdAt,
         createdBy: userId,
-        votedUsers: []
+        voted: []
       };
 
       expect(news.eventHandlers[NEWS_CREATED](state, event)).toEqual(nextState);
     });
 
-    it('eventHandler "NEWS_UPVOTED" should add userId to state.votedUsers', () => {
+    it('eventHandler "NEWS_UPVOTED" should add userId to state.voted', () => {
       const createdAt = Date.now();
       const userId = uuid.v4();
 
       const state = news.initialState.merge({
         createdAt,
         createdBy: userId,
-        votedUsers: []
+        voted: []
       });
       const event = {
         payload: {
@@ -316,20 +316,20 @@ describe('aggregates', () => {
       const nextState = {
         createdAt,
         createdBy: userId,
-        votedUsers: [userId]
+        voted: [userId]
       };
 
       expect(news.eventHandlers[NEWS_UPVOTED](state, event)).toEqual(nextState);
     });
 
-    it('eventHandler "NEWS_UNVOTED" should remove userId from state.votedUsers', () => {
+    it('eventHandler "NEWS_UNVOTED" should remove userId from state.voted', () => {
       const createdAt = Date.now();
       const userId = uuid.v4();
 
       const state = news.initialState.merge({
         createdAt,
         createdBy: userId,
-        votedUsers: [userId]
+        voted: [userId]
       });
       const event = {
         payload: {
@@ -339,7 +339,7 @@ describe('aggregates', () => {
       const nextState = {
         createdAt,
         createdBy: userId,
-        votedUsers: []
+        voted: []
       };
 
       expect(news.eventHandlers[NEWS_UNVOTED](state, event)).toEqual(nextState);

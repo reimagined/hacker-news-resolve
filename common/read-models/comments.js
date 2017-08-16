@@ -31,11 +31,13 @@ export default {
         replies: []
       });
     },
+
     [COMMENT_UPDATED]: (state: any, event: CommentUpdated) => {
       return state.update(event.aggregateId, comment =>
         comment.set('text', event.payload.text)
       );
     },
+
     [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
       let newState = state;
       const parentId = newState[event.payload.aggregateId].parentId;

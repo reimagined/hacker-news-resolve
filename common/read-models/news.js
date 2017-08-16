@@ -13,71 +13,65 @@ import commentsEvents from '../events/comments';
 const { NEWS_CREATED, NEWS_UPVOTED, NEWS_UNVOTED, NEWS_DELETED } = newsEvents;
 const { COMMENT_CREATED, COMMENT_REMOVED } = commentsEvents;
 
-function getId(event) {
-  return event.aggregateId;
-}
-
-const eventHandlers = {
-  // News
-  [NEWS_CREATED]: (state: any, event: NewsCreated) => {
-    const id = getId(event);
-
-    const type = !event.payload.link
-      ? 'ask'
-      : /^(Show HN)/.test(event.payload.title) ? 'show' : 'story';
-
-    const news = {
-      id,
-      title: event.payload.title,
-      text: event.payload.text,
-      userId: event.payload.userId,
-      createDate: event.timestamp,
-      link: event.payload.link,
-      comments: [],
-      type,
-      voted: [event.payload.userId]
-    };
-
-    return state.setIn([id], news);
-  },
-  [NEWS_UPVOTED]: (state: any, event: NewsUpvoted) =>
-    state.updateIn([getId(event), 'voted'], list =>
-      list.concat(event.payload.userId)
-    ),
-  [NEWS_UNVOTED]: (state: any, event: NewsUnvoted) =>
-    state.updateIn([getId(event), 'voted'], list =>
-      list.filter(x => x !== event.payload.userId)
-    ),
-  [NEWS_DELETED]: (state: any, event: NewsDeleted) =>
-    state.updateIn(obj => obj.without(getId(event))),
-
-  // Comments
-  [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
-    const id = getId(event);
-    const parentId = event.payload.parentId;
-
-    if (!Object.keys(state).includes(parentId)) {
-      return state;
-    }
-
-    return state.updateIn([parentId, 'comments'], list => list.concat(id));
-  },
-  [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
-    const id = getId(event);
-    const parentId = event.payload.parentId;
-
-    if (!Object.keys(state).includes(parentId)) {
-      return state;
-    }
-
-    return state.updateIn([parentId, 'comments'], list =>
-      list.filter(x => x !== id)
-    );
-  }
-};
-
 export default {
   name: 'news',
   initialState: Immutable({}),
-  eventHandlers
+  eventHandlers: {
+    [NEWS_CREATED]: (state: any, event: NewsCreated) => {
+      const type = !event.payload.link
+        ? 'ask'
+        : /^(Show HN)/.test(event.payload.title) ? 'show' : 'story';
+
+      return state.set(event.aggregateId, {
+        id: event.aggregateId,
+        type,
+        title: event.payload.title,
+        text: event.payload.text,
+        userId: event.payload.userId,
+        createDate: event.timestamp,
+        link: event.payload.link,
+        comments: [],
+        voted: [event.payload.userId]
+      });
+    },
+
+    [NEWS_UPVOTED]: (state: any, event: NewsUpvoted) =>
+      state.updateIn([event.aggregateId, 'voted'], voted =>
+        voted.concat(event.payload.userId)
+      ),
+
+    [NEWS_UNVOTED]: (state: any, event: NewsUnvoted) =>
+      state.updateIn([event.aggregateId, 'voted'], voted =>
+        voted.filter(x => x !== event.payload.userId)
+      ),
+
+    [NEWS_DELETED]: (state: any, event: NewsDeleted) =>
+      state.updateIn(obj => obj.without(event.aggregateId)),
+
+    [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
+      const id = event.aggregateId;
+      const parentId = event.payload.parentId;
+
+      if (!Object.keys(state).includes(parentId)) {
+        return state;
+      }
+
+      return state.updateIn([parentId, 'comments'], comments =>
+        comments.concat(id)
+      );
+    },
+
+    [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
+      const id = event.aggregateId;
+      const parentId = event.payload.parentId;
+
+      if (!Object.keys(state).includes(parentId)) {
+        return state;
+      }
+
+      return state.updateIn([parentId, 'comments'], comments =>
+        comments.filter(x => x !== id)
+      );
+    }
+  }
 };

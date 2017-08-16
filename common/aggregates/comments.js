@@ -22,6 +22,7 @@ export default {
         createdAt: event.timestamp,
         createdBy: event.payload.userId
       }),
+
     [COMMENT_REMOVED]: (state, event) => state.set('removedAt', event.timestamp)
   },
   commands: {
@@ -48,6 +49,7 @@ export default {
         userId
       });
     },
+
     updateComment: (state: any, command: CommentUpdated) => {
       const { text } = command.payload;
 
@@ -62,6 +64,7 @@ export default {
         text
       });
     },
+
     removeComment: (state: any, command: CommentRemoved) => {
       throwIfAggregateIsNotExists(state, command);
       throwIfPermissionDenied(state, command);
