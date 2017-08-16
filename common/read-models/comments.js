@@ -33,17 +33,15 @@ export default {
     },
 
     [COMMENT_UPDATED]: (state: any, event: CommentUpdated) => {
-      return state.update(event.aggregateId, comment =>
-        comment.set('text', event.payload.text)
-      );
+      return state.setIn([event.aggregateId, 'text'], event.payload.text);
     },
 
     [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
       let nextState = state;
-      const parentId = nextState[event.payload.aggregateId].parentId;
+      const parentId = nextState[event.aggregateId].parentId;
       if (nextState[parentId]) {
-        nextState = nextState.updateIn([parentId, 'replies'], list =>
-          list.filter(item => item !== event.aggregateId)
+        nextState = nextState.updateIn([parentId, 'replies'], replies =>
+          replies.filter(id => id !== event.aggregateId)
         );
       }
 
