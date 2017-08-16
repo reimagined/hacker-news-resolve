@@ -55,3 +55,12 @@
   margin-top: 1em;
   padding-left: 2.5em;
 }
+.item__votearrow {
+  width:      10px;
+  height:     10px;
+  border:     0px;
+  margin:     3px 2px 2px;
+  display: inline-block;
+  background: url("/static/img/grayarrow.gif")
+  no-repeat;
+}

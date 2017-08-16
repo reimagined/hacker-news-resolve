@@ -17,7 +17,12 @@ const Title = ({ title, link, onUpvote, voted }) => {
     return (
       <div className="item__title">
         {!voted && // eslint-disable-next-line jsx-a11y/anchor-has-content
-          <a href="" onClick={onUpvote} className="votearrow" title="upvote" />}
+          <a
+            href=""
+            onClick={onUpvote}
+            className="item__votearrow"
+            title="upvote"
+          />}
         <a href={link}>{title}</a>{' '}
         <span className="item__host">({getHostname(link)})</span>
       </div>
@@ -26,7 +31,12 @@ const Title = ({ title, link, onUpvote, voted }) => {
   return (
     <div className="item__title">
       {!voted && // eslint-disable-next-line jsx-a11y/anchor-has-content
-        <a href="" onClick={onUpvote} className="votearrow" title="upvote" />}
+        <a
+          href=""
+          onClick={onUpvote}
+          className="item__votearrow"
+          title="upvote"
+        />}
       <Link to={link}>
         {title}
       </Link>
