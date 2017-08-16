@@ -103,13 +103,13 @@ class Submit extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     userId: state.user.id
   };
-}
+};
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
   return {
     onAddNews({ userId, title, text, link }) {
       return dispatch(
@@ -122,6 +122,6 @@ function mapDispatchToProps(dispatch) {
       );
     }
   };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Submit);

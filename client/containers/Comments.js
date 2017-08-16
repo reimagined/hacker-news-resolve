@@ -5,12 +5,12 @@ import Comment from '../components/Comment';
 import { getPageItems, hasNextItems } from '../helpers/getPageItems';
 import Paginator from '../components/Paginator';
 
-function findRoot(id, comments) {
+const findRoot = (id, comments) => {
   if (comments[id]) {
     return findRoot(comments[id].parentId, comments);
   }
   return id;
-}
+};
 
 const Comments = props => {
   let { page } = queryString.parse(props.location.search);
@@ -51,12 +51,12 @@ const Comments = props => {
   );
 };
 
-function mapStateToProps({ news, users, comments, user }) {
+const mapStateToProps = ({ news, users, comments, user }) => {
   return {
     news,
     users,
     comments
   };
-}
+};
 
 export default connect(mapStateToProps)(Comments);

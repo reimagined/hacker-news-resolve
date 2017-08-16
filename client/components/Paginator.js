@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Paginator({ page = 1, hasNext, location }) {
+const Paginator = ({ page = 1, hasNext, location }) => {
   const route = location.pathname;
   const onClick = () =>
     setTimeout(function() {
@@ -33,6 +33,6 @@ function Paginator({ page = 1, hasNext, location }) {
       </Link>
     </div>
   );
-}
+};
 
 export default Paginator;

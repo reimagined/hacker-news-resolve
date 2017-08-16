@@ -59,16 +59,16 @@ const News = props => {
   );
 };
 
-function mapStateToProps({ news, users, comments, user }) {
+const mapStateToProps = ({ news, users, comments, user }) => {
   return {
     news,
     users,
     user,
     comments
   };
-}
+};
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
   return {
     onUpvote(id, userId) {
       return dispatch(
@@ -85,6 +85,6 @@ function mapDispatchToProps(dispatch) {
       );
     }
   };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(News);

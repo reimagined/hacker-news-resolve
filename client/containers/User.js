@@ -46,7 +46,7 @@ const User = ({ id, name, createdAt, karma }) => {
   );
 };
 
-export const mapStateToProps = ({ user, users }, ownProps) => {
+const mapStateToProps = ({ user, users }, ownProps) => {
   const { location } = ownProps;
 
   const { id } = queryString.parse(location.search);

@@ -58,7 +58,7 @@ class Reply extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
   return {
     onReply({ parentId, text, userId }) {
       return dispatch(
@@ -70,14 +70,14 @@ function mapDispatchToProps(dispatch) {
       );
     }
   };
-}
+};
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     comments: state.comments,
     users: state.users,
     user: state.user
   };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Reply);

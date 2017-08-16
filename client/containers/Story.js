@@ -86,16 +86,16 @@ class Story extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     news: state.news,
     users: state.users,
     comments: state.comments,
     user: state.user
   };
-}
+};
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
   return {
     onAddComment({ parentId, text, userId }) {
       return dispatch(
@@ -107,6 +107,6 @@ function mapDispatchToProps(dispatch) {
       );
     }
   };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Story);

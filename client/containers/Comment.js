@@ -4,7 +4,7 @@ import queryString from 'query-string';
 import ChildrenComments from '../components/ChildrenComments';
 import Comment from '../components/Comment';
 
-function CommentContainer({ comments, users, location }) {
+const CommentContainer = ({ comments, users, location }) => {
   const { id } = queryString.parse(location.search);
   const comment = comments[id];
 
@@ -20,9 +20,9 @@ function CommentContainer({ comments, users, location }) {
       getChilrenCallback={args => ChildrenComments(args, comments, users)}
     />
   );
-}
+};
 
-export const mapStateToProps = ({ users, comments }) => ({
+const mapStateToProps = ({ users, comments }) => ({
   users,
   comments
 });

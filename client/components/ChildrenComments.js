@@ -1,7 +1,7 @@
 import React from 'react';
 import Comment from './Comment';
 
-function ChildrenComments({ replies, level }, comments, users) {
+const ChildrenComments = ({ replies, level }, comments, users) => {
   return replies.map(replyId => {
     const { id, text, replies, createdAt, createdBy } = comments[replyId];
     return (
@@ -18,6 +18,6 @@ function ChildrenComments({ replies, level }, comments, users) {
       />
     );
   });
-}
+};
 
 export default ChildrenComments;
