@@ -20,7 +20,7 @@ export default {
     [COMMENT_CREATED]: (state, event) =>
       state.merge({
         createdAt: event.timestamp,
-        createdBy: event.user.id
+        createdBy: event.payload.userId
       }),
     [COMMENT_REMOVED]: (state, event) => state.set('removedAt', event.timestamp)
   },

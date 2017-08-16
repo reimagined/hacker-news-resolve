@@ -24,7 +24,14 @@
       "git add"
     ]
   },
-  "keywords": ["react", "redux", "resolve", "event-sourcing", "cqrs"],
+  "keywords": [
+    "react",
+    "redux",
+    "resolve",
+    "hackernews",
+    "event-sourcing",
+    "cqrs"
+  ],
   "author": "reimagined team",
   "license": "MIT",
   "private": true,
@@ -63,6 +70,7 @@
   },
   "devDependencies": {
     "babel-eslint": "7.2.3",
+    "coveralls": "^2.13.1",
     "css-loader": "^0.28.4",
     "eslint": "3.19.0",
     "eslint-config-react-app": "^1.0.4",
