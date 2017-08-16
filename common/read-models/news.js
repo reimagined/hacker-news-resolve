@@ -31,7 +31,7 @@ export default {
         createDate: event.timestamp,
         link: event.payload.link,
         comments: [],
-        voted: [event.payload.userId]
+        voted: []
       });
     },
 
@@ -42,35 +42,33 @@ export default {
 
     [NEWS_UNVOTED]: (state: any, event: NewsUnvoted) =>
       state.updateIn([event.aggregateId, 'voted'], voted =>
-        voted.filter(x => x !== event.payload.userId)
+        voted.filter(id => id !== event.payload.userId)
       ),
 
     [NEWS_DELETED]: (state: any, event: NewsDeleted) =>
-      state.updateIn(obj => obj.without(event.aggregateId)),
+      state.without(event.aggregateId),
 
     [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
-      const id = event.aggregateId;
-      const parentId = event.payload.parentId;
+      const { parentId } = event.payload;
 
-      if (!Object.keys(state).includes(parentId)) {
+      if (!state[parentId]) {
         return state;
       }
 
       return state.updateIn([parentId, 'comments'], comments =>
-        comments.concat(id)
+        comments.concat(event.aggregateId)
       );
     },
 
     [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
-      const id = event.aggregateId;
-      const parentId = event.payload.parentId;
+      const { parentId } = event.payload;
 
-      if (!Object.keys(state).includes(parentId)) {
+      if (!state[parentId]) {
         return state;
       }
 
       return state.updateIn([parentId, 'comments'], comments =>
-        comments.filter(x => x !== id)
+        comments.filter(id => id !== event.aggregateId)
       );
     }
   }

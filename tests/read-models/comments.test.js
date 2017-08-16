@@ -1,6 +1,6 @@
 import uuid from 'uuid';
 
-import '../../common/aggregates';
+import '../../common/read-models';
 import comments from '../../common/read-models/comments';
 import events from '../../common/events';
 
