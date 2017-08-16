@@ -1,5 +1,6 @@
 import Immutable from 'seamless-immutable';
 import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists';
+import throwIfAggregateIsNotExists from './validators/throwIfAggregateIsNotExists';
 
 import type {
   NewsCreated,
@@ -55,6 +56,12 @@ export default {
     upvoteNews: (state: any, command: NewsUpvoted) => {
       const { userId } = command.payload;
 
+      throwIfAggregateIsNotExists(state, command);
+
+      if (state.votedUsers.includes(userId)) {
+        throw new Error('User already voted');
+      }
+
       if (!userId) {
         throw new Error('UserId is required');
       }
@@ -66,6 +73,12 @@ export default {
     unvoteNews: (state: any, command: NewsUnvoted) => {
       const { userId } = command.payload;
 
+      throwIfAggregateIsNotExists(state, command);
+
+      if (!state.votedUsers.includes(userId)) {
+        throw new Error('User has not voted');
+      }
+
       if (!userId) {
         throw new Error('UserId is required');
       }
@@ -74,6 +87,10 @@ export default {
         userId
       });
     },
-    deleteNews: (state: any, command: NewsDeleted) => new Event(NEWS_DELETED)
+    deleteNews: (state: any, command: NewsDeleted) => {
+      throwIfAggregateIsNotExists(state, command);
+
+      return new Event(NEWS_DELETED);
+    }
   }
 };

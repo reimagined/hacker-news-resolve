@@ -104,7 +104,11 @@ describe('aggregates', () => {
     it('command "upvoteNews" should create an event to upvote the news', () => {
       const userId = uuid.v4();
 
-      const state = {};
+      const state = {
+        createdAt: Date.now(),
+        createdBy: userId,
+        votedUsers: []
+      };
       const command = {
         payload: {
           userId
@@ -120,10 +124,67 @@ describe('aggregates', () => {
       );
     });
 
-    it('command "unvoteNews" should create an event to unvote the news', () => {
+    it('command "upvoteNews" should throw Error "User already voted"', () => {
+      const userId = uuid.v4();
+
+      const state = {
+        createdAt: Date.now(),
+        createdBy: userId,
+        votedUsers: [userId]
+      };
+      const command = {
+        payload: {
+          userId
+        }
+      };
+
+      expect(() => news.commands.upvoteNews(state, command)).toThrowError(
+        'User already voted'
+      );
+    });
+
+    it('command "upvoteNews" should throw Error "Aggregate is not exist"', () => {
       const userId = uuid.v4();
 
       const state = {};
+      const command = {
+        payload: {
+          userId
+        }
+      };
+
+      expect(() => news.commands.upvoteNews(state, command)).toThrowError(
+        'Aggregate is not exist'
+      );
+    });
+
+    it('command "upvoteNews" should throw Error "UserId is required"', () => {
+      const userId = undefined;
+
+      const state = {
+        createdAt: Date.now(),
+        createdBy: userId,
+        votedUsers: []
+      };
+      const command = {
+        payload: {
+          userId
+        }
+      };
+
+      expect(() => news.commands.upvoteNews(state, command)).toThrowError(
+        'UserId is required'
+      );
+    });
+
+    it('command "unvoteNews" should create an event to unvote the news', () => {
+      const userId = uuid.v4();
+
+      const state = {
+        createdAt: Date.now(),
+        createdBy: userId,
+        votedUsers: [userId]
+      };
       const command = {
         payload: {
           userId
@@ -139,13 +200,148 @@ describe('aggregates', () => {
       );
     });
 
-    it('command "deleteNews" should create an event to delete the news', () => {
+    it('command "unvoteNews" should throw Error "User has not voted"', () => {
+      const userId = uuid.v4();
+
+      const state = {
+        createdAt: Date.now(),
+        createdBy: userId,
+        votedUsers: []
+      };
+      const command = {
+        payload: {
+          userId
+        }
+      };
+
+      expect(() => news.commands.unvoteNews(state, command)).toThrowError(
+        'User has not voted'
+      );
+    });
+
+    it('command "unvoteNews" should throw Error "Aggregate is not exist"', () => {
+      const userId = uuid.v4();
+
       const state = {};
+      const command = {
+        payload: {
+          userId
+        }
+      };
+
+      expect(() => news.commands.unvoteNews(state, command)).toThrowError(
+        'Aggregate is not exist'
+      );
+    });
+
+    it('command "unvoteNews" should throw Error "UserId is required"', () => {
+      const userId = undefined;
+
+      const state = {
+        createdAt: Date.now(),
+        createdBy: userId,
+        votedUsers: [userId]
+      };
+      const command = {
+        payload: {
+          userId
+        }
+      };
+
+      expect(() => news.commands.unvoteNews(state, command)).toThrowError(
+        'UserId is required'
+      );
+    });
+
+    it('command "deleteNews" should create an event to delete the news', () => {
+      const userId = uuid.v4();
+
+      const state = {
+        createdAt: Date.now(),
+        createdBy: userId
+      };
       const command = {};
 
       const event = news.commands.deleteNews(state, command);
 
       expect(event).toEqual(new Event(NEWS_DELETED));
+    });
+
+    it('command "deleteNews" should throw Error "Aggregate is not exist"', () => {
+      const state = {};
+      const command = {
+        payload: {}
+      };
+
+      expect(() => news.commands.deleteNews(state, command)).toThrowError(
+        'Aggregate is not exist'
+      );
+    });
+
+    it('eventHandler "NEWS_CREATED" should set createdAt, createdBy and votedUsers to state', () => {
+      const createdAt = Date.now();
+      const userId = uuid.v4();
+
+      const state = news.initialState;
+      const event = {
+        timestamp: createdAt,
+        payload: {
+          userId
+        }
+      };
+      const nextState = {
+        createdAt,
+        createdBy: userId,
+        votedUsers: []
+      };
+
+      expect(news.eventHandlers[NEWS_CREATED](state, event)).toEqual(nextState);
+    });
+
+    it('eventHandler "NEWS_UPVOTED" should add userId to state.votedUsers', () => {
+      const createdAt = Date.now();
+      const userId = uuid.v4();
+
+      const state = news.initialState.merge({
+        createdAt,
+        createdBy: userId,
+        votedUsers: []
+      });
+      const event = {
+        payload: {
+          userId
+        }
+      };
+      const nextState = {
+        createdAt,
+        createdBy: userId,
+        votedUsers: [userId]
+      };
+
+      expect(news.eventHandlers[NEWS_UPVOTED](state, event)).toEqual(nextState);
+    });
+
+    it('eventHandler "NEWS_UNVOTED" should remove userId from state.votedUsers', () => {
+      const createdAt = Date.now();
+      const userId = uuid.v4();
+
+      const state = news.initialState.merge({
+        createdAt,
+        createdBy: userId,
+        votedUsers: [userId]
+      });
+      const event = {
+        payload: {
+          userId
+        }
+      };
+      const nextState = {
+        createdAt,
+        createdBy: userId,
+        votedUsers: []
+      };
+
+      expect(news.eventHandlers[NEWS_UNVOTED](state, event)).toEqual(nextState);
     });
   });
 });
