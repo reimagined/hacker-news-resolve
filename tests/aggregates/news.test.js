@@ -1,4 +1,5 @@
 import uuid from 'uuid';
+
 import '../../common/aggregates';
 import news from '../../common/aggregates/news';
 import events from '../../common/events';
@@ -293,7 +294,7 @@ describe('aggregates', () => {
       const nextState = {
         createdAt,
         createdBy: userId,
-        voted: []
+        voted: [userId]
       };
 
       expect(news.eventHandlers[NEWS_CREATED](state, event)).toEqual(nextState);
