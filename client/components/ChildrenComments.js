@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Comment from './Comment';
 
 const ChildrenComments = ({ replies, level }, comments, users) => {

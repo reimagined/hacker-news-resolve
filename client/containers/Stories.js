@@ -13,7 +13,7 @@ import {
 import actions from '../actions/stories';
 import '../styles/stories.css';
 
-const Stories = props => {
+export const Stories = props => {
   let { page } = queryString.parse(props.location.search);
 
   let stories = Object.keys(props.stories).reverse();
@@ -70,7 +70,7 @@ const Stories = props => {
   );
 };
 
-const mapStateToProps = ({ stories, users, comments, user }) => {
+export const mapStateToProps = ({ stories, users, comments, user }) => {
   return {
     stories,
     users,
@@ -79,7 +79,7 @@ const mapStateToProps = ({ stories, users, comments, user }) => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
   return {
     onUpvote(id, userId) {
       return dispatch(

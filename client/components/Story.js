@@ -2,17 +2,15 @@ import React from 'react';
 import url from 'url';
 import { Link } from 'react-router-dom';
 import plur from 'plur';
+
 import '../styles/story.css';
 
 const isExternalLink = link => link[0] !== '/';
 
-function getHostname(link) {
-  return link.split('.')[0] === 'www'
-    ? link.substr(4)
-    : url.parse(link).hostname;
-}
+export const getHostname = link =>
+  link.split('.')[0] === 'www' ? link.substr(4) : url.parse(link).hostname;
 
-const Title = ({ title, link, onUpvote, voted, loggedIn }) => {
+export const Title = ({ title, link, onUpvote, voted, loggedIn }) => {
   const votearrowIsVisible = loggedIn && !voted;
 
   if (isExternalLink(link)) {
@@ -40,7 +38,7 @@ const Title = ({ title, link, onUpvote, voted, loggedIn }) => {
   );
 };
 
-const Score = ({ score }) => {
+export const Score = ({ score }) => {
   return (
     <span className="story__score">
       {score} {plur('point', score)}{' '}
@@ -48,7 +46,7 @@ const Score = ({ score }) => {
   );
 };
 
-const PostedBy = ({ user }) => {
+export const PostedBy = ({ user }) => {
   return (
     <span className="story__by">
       by <a href={`/user?id=${user.id}`}>{user.name}</a>{' '}
@@ -56,7 +54,7 @@ const PostedBy = ({ user }) => {
   );
 };
 
-const Comment = ({ storyId, commentCount }) => {
+export const Comment = ({ storyId, commentCount }) => {
   return (
     <span>
       <span>
@@ -71,7 +69,7 @@ const Comment = ({ storyId, commentCount }) => {
   );
 };
 
-const Meta = props => {
+export const Meta = props => {
   const {
     storyId,
     user,
