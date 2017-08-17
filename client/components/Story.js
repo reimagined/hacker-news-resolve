@@ -12,13 +12,14 @@ function getHostname(link) {
     : url.parse(link).hostname;
 }
 
-const Title = ({ title, link, onUpvote, voted }) => {
+const Title = ({ title, link, onUpvote, voted, loggedIn }) => {
+  const votearrowIsVisible = loggedIn && !voted;
+
   if (isExternalLink(link)) {
     return (
       <div className="story__title">
-        {!voted && // eslint-disable-next-line jsx-a11y/anchor-has-content
-          <a
-            href=""
+        {votearrowIsVisible && // eslint-disable-next-line jsx-a11y/anchor-has-content
+          <span
             onClick={onUpvote}
             className="story__votearrow"
             title="upvote"
@@ -30,13 +31,8 @@ const Title = ({ title, link, onUpvote, voted }) => {
   }
   return (
     <div className="story__title">
-      {!voted && // eslint-disable-next-line jsx-a11y/anchor-has-content
-        <a
-          href=""
-          onClick={onUpvote}
-          className="story__votearrow"
-          title="upvote"
-        />}
+      {votearrowIsVisible && // eslint-disable-next-line jsx-a11y/anchor-has-content
+        <span onClick={onUpvote} className="story__votearrow" title="upvote" />}
       <Link to={link}>
         {title}
       </Link>
@@ -76,7 +72,18 @@ const Comment = ({ storyId, commentCount }) => {
 };
 
 const Meta = props => {
-  const { storyId, user, date, score, commentCount, voted, onUnvote } = props;
+  const {
+    storyId,
+    user,
+    date,
+    score,
+    commentCount,
+    voted,
+    loggedIn,
+    onUnvote
+  } = props;
+  const unvoteIsVisible = voted && loggedIn;
+
   return (
     <div className="story__meta">
       {score ? <Score score={score} /> : ''}
@@ -85,12 +92,12 @@ const Meta = props => {
         {date.toLocaleString('en-US')}{' '}
       </span>
       {/* TODO: timeAgo */}
-      {voted &&
+      {unvoteIsVisible &&
         <span>
           |{' '}
-          <a href="" onClick={onUnvote}>
+          <span className="item__unvote" onClick={onUnvote}>
             unvote
-          </a>{' '}
+          </span>{' '}
         </span>}
       {commentCount !== undefined
         ? <Comment storyId={storyId} commentCount={commentCount} />
@@ -110,13 +117,20 @@ const Story = props => {
     commentCount,
     onUpvote,
     onUnvote,
-    voted
+    voted,
+    loggedIn
   } = props;
 
   return (
     <div className="story">
       <div className="story__content">
-        <Title voted={voted} onUpvote={onUpvote} title={title} link={link} />
+        <Title
+          loggedIn={loggedIn}
+          voted={voted}
+          onUpvote={onUpvote}
+          title={title}
+          link={link}
+        />
         <Meta
           voted={voted}
           storyId={id}
@@ -125,6 +139,7 @@ const Story = props => {
           score={score}
           commentCount={commentCount}
           onUnvote={onUnvote}
+          loggedIn={loggedIn}
         />
       </div>
     </div>

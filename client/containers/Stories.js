@@ -53,6 +53,7 @@ const Stories = props => {
                   voted={story.voted.includes(props.user.id)}
                   onUpvote={() => props.onUpvote(id, props.user.id)}
                   onUnvote={() => props.onUnvote(id, props.user.id)}
+                  loggedIn={!!props.user.id}
                 />
               </li>
             );

@@ -56,6 +56,7 @@
   padding-left: 2.5em;
 }
 .story__votearrow {
+  cursor: pointer;
   width:      10px;
   height:     10px;
   border:     0px;
@@ -63,4 +64,13 @@
   display: inline-block;
   background: url("/static/img/grayarrow.gif")
   no-repeat;
+}
+
+.item__unvote {
+  cursor: pointer;
+}
+
+.item__unvote:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
