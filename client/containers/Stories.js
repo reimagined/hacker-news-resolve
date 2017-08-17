@@ -5,7 +5,11 @@ import queryString from 'query-string';
 import Story from '../components/Story';
 import Paginator from '../components/Paginator';
 import getCommentsCount from '../helpers/getCommentsCount';
-import { getPageStories, hasNextStories } from '../helpers/getPageStories';
+import {
+  STORIES_ON_ONE_PAGE,
+  getPageStories,
+  hasNextStories
+} from '../helpers/getPageStories';
 import actions from '../actions/stories';
 import '../styles/stories.css';
 
@@ -23,11 +27,12 @@ const Stories = props => {
 
   const hasNext = hasNextStories(stories, page);
   stories = getPageStories(stories, page);
+  const firstStoryIndex = STORIES_ON_ONE_PAGE * (page ? page - 1 : 0);
 
   return (
     <div>
       <div className="stories">
-        <ol className="stories__list" start="1">
+        <ol className="stories__list" start={firstStoryIndex + 1}>
           {stories.map(id => {
             const story = props.stories[id];
             const type = story.type;
