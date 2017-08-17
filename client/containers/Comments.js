@@ -15,7 +15,7 @@ export const findRoot = (id, comments) => {
 
 export const Comments = props => {
   const { page } = queryString.parse(props.location.search);
-  let comments = Object.keys(props.comments);
+  let comments = Object.keys(props.comments).reverse();
 
   const hasNext = hasNextStories(comments, page);
 
