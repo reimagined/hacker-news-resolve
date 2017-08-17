@@ -14,7 +14,7 @@ const {
 } = events;
 
 describe('read-models', () => {
-  describe('comments', () => {
+  describe('stories', () => {
     it('eventHandler "STORY_CREATED" should create a story {type: "ask"}', () => {
       const state = stories.initialState;
       const event = {
