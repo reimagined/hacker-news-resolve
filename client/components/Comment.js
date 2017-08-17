@@ -9,18 +9,12 @@ export const getLevelClassName = level => {
   return `comment--level${level > 0 ? level : '0'}`;
 };
 
-export const ExpandButton = ({ expanded, onClick }) => {
-  return (
-    <span onClick={onClick} className="comment__collapse" tabindex="0">
-      [{expanded ? '-' : '+'}]
-    </span>
-  );
-};
-
 class Comment extends Component {
   state = {
     expanded: true
   };
+
+  expand = () => this.setState({ expanded: !this.state.expanded });
 
   render() {
     const {
@@ -41,11 +35,13 @@ class Comment extends Component {
         <div className={`comment ${getLevelClassName(level)}`}>
           <div className="comment__content">
             <div className="comment__meta">
-              <ExpandButton
-                onClick={() =>
-                  this.setState({ expanded: !this.state.expanded })}
-                expanded={this.state.expanded}
-              />
+              <span
+                onClick={this.expand}
+                className="comment__collapse"
+                tabIndex="0"
+              >
+                [{this.state.expanded ? '-' : '+'}]
+              </span>
               <span>
                 {' '}<Link className="comment__user" to={`/user/${user}`}>
                   {user}

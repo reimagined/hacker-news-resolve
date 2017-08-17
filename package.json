@@ -74,6 +74,7 @@
     "babel-eslint": "7.2.3",
     "coveralls": "^2.13.1",
     "css-loader": "^0.28.4",
+    "enzyme": "^2.9.1",
     "eslint": "3.19.0",
     "eslint-config-react-app": "^1.0.4",
     "eslint-plugin-flowtype": "2.33.0",
@@ -88,6 +89,7 @@
     "pre-commit": "^1.2.2",
     "prettier": "^1.5.3",
     "prettier-eslint-cli": "^4.1.1",
+    "react-test-renderer": "^15.6.1",
     "sinon": "^3.2.0",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9"
@@ -103,6 +105,13 @@
       "resolve.build.config.js",
       "resolve.client.config.js",
       "resolve.server.config.js"
+    ],
+    "moduleNameMapper": {
+      ".*\\.(css|less)$": "<rootDir>/tests/ignore-css.js"
+    },
+    "unmockedModulePathPatterns": [
+      "node_modules/react/",
+      "node_modules/enzyme/"
     ]
   }
 }
