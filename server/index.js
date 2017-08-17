@@ -5,9 +5,7 @@ import cookieParser from 'cookie-parser';
 import LocalStrategy from 'passport-local';
 import uuid from 'uuid';
 
-import queries from '../common/read-models';
-
-const authorizationSecret = 'auth-secret';
+export const authorizationSecret = 'auth-secret';
 
 export const extendExpress = express => {
   express.use(cookieParser());
@@ -112,7 +110,7 @@ export const authorizationMiddleware = (req, res, next) => {
   }
 };
 
-export const initialState = async (executeQuery, { cookies }) => {
+export const initialState = async (queries, executeQuery, { cookies }) => {
   let user;
   try {
     user = (await executeQuery('users'))[

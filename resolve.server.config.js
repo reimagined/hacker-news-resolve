@@ -23,7 +23,7 @@ export default {
     driver: storageDriver,
     params: { pathToFile: './storage.json' }
   },
-  initialState,
+  initialState: (...args) => initialState(queries, ...args),
   aggregates,
   events,
   queries,
