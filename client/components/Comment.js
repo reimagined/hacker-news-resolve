@@ -1,29 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
 import '../styles/comment.css';
 
-const getLevelClassName = level => {
+export const getLevelClassName = level => {
   // TODO: remove me!!!
   if (level > 15) return 'comment--level15';
   return `comment--level${level > 0 ? level : '0'}`;
 };
 
-const ExpandButton = ({ expanded, onClick }) => {
-  return (
-    <span onClick={onClick} className="comment__collapse" tabindex="0">
-      [{expanded ? '-' : '+'}]
-    </span>
-  );
-};
-
 class Comment extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    expanded: true
+  };
 
-    this.state = {
-      expanded: true
-    };
-  }
+  expand = () => this.setState({ expanded: !this.state.expanded });
+
   render() {
     const {
       id,
@@ -43,11 +35,13 @@ class Comment extends Component {
         <div className={`comment ${getLevelClassName(level)}`}>
           <div className="comment__content">
             <div className="comment__meta">
-              <ExpandButton
-                onClick={() =>
-                  this.setState({ expanded: !this.state.expanded })}
-                expanded={this.state.expanded}
-              />
+              <span
+                onClick={this.expand}
+                className="comment__collapse"
+                tabIndex="0"
+              >
+                [{this.state.expanded ? '-' : '+'}]
+              </span>
               <span>
                 {' '}<Link className="comment__user" to={`/user/${user}`}>
                   {user}

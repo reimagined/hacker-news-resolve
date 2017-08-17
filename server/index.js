@@ -5,9 +5,7 @@ import cookieParser from 'cookie-parser';
 import LocalStrategy from 'passport-local';
 import uuid from 'uuid';
 
-import queries from '../common/read-models';
-
-const authorizationSecret = 'auth-secret';
+export const authorizationSecret = 'auth-secret';
 
 export const extendExpress = express => {
   express.use(cookieParser());
@@ -37,8 +35,59 @@ export const extendExpress = express => {
 
   express.use('/api/commands/', authorizationMiddleware);
 
+  function authorize(req, res, user) {
+    try {
+      const authorizationToken = jwt.sign(user, authorizationSecret, {
+        noTimestamp: true
+      });
+
+      res.cookie('authorizationToken', authorizationToken, {
+        maxAge: 1000 * 60 * 60 * 24 * 365
+      });
+
+      res.redirect(req.query.redirect || '/');
+    } catch (error) {
+      res.redirect('/error/?text=Unauthorized');
+    }
+  }
+
   express.get(
-    '/auth',
+    '/signup',
+    passport.authenticate('local', {
+      failureRedirect: '/error/?text=Unauthorized'
+    }),
+    async (req, res) => {
+      const users = await req.resolve.executeQuery('users');
+
+      const user = {
+        ...req.user,
+        id: uuid.v4()
+      };
+
+      for (let id in users) {
+        if (users[id].name === req.user.name) {
+          res.redirect('/error/?text=User already exists');
+        }
+      }
+
+      try {
+        await req.resolve.executeCommand({
+          type: 'createUser',
+          aggregateId: user.id,
+          aggregateName: 'users',
+          payload: user
+        });
+
+        return authorize(req, res, user);
+      } catch (error) {
+        res.redirect(`/error/?text=${error.toString()}`);
+        return;
+      }
+    }
+  );
+
+  express.get(
+    '/login',
     passport.authenticate('local', {
       failureRedirect: '/error/?text=Unauthorized'
     }),
@@ -58,36 +107,10 @@ export const extendExpress = express => {
         }
       }
       if (!user) {
-        user = {
-          ...req.user,
-          id: uuid.v4()
-        };
-        try {
-          await req.resolve.executeCommand({
-            type: 'createUser',
-            aggregateId: user.id,
-            aggregateName: 'users',
-            payload: user
-          });
-        } catch (error) {
-          res.redirect(`/error/?text=${error.toString()}`);
-          return;
-        }
+        res.redirect('/error/?text=No such user');
+        return;
       }
-
-      try {
-        const authorizationToken = jwt.sign(user, authorizationSecret, {
-          noTimestamp: true
-        });
-
-        res.cookie('authorizationToken', authorizationToken, {
-          maxAge: 1000 * 60 * 60 * 24 * 365
-        });
-
-        res.redirect(req.query.redirect || '/');
-      } catch (error) {
-        res.redirect('/error/?text=Unauthorized');
-      }
+      return authorize(req, res, user);
     }
   );
 };
@@ -112,7 +135,7 @@ export const authorizationMiddleware = (req, res, next) => {
   }
 };
 
-export const initialState = async (executeQuery, { cookies }) => {
+export const initialState = async (queries, executeQuery, { cookies }) => {
   let user;
   try {
     user = (await executeQuery('users'))[

@@ -20,7 +20,7 @@ import * as userActions from '../actions/userActions';
 import '../styles/style.css';
 import '../styles/root.css';
 
-const RootComponent = ({ user, logout, match }) =>
+export const RootComponent = ({ user, logout, match }) =>
   <div className="app">
     <Helmet>
       <meta
@@ -95,11 +95,11 @@ const RootComponent = ({ user, logout, match }) =>
     </div>
   </div>;
 
-const mapStateToProps = ({ user }) => ({
+export const mapStateToProps = ({ user }) => ({
   user
 });
 
-const mapDispatchToProps = dispatch =>
+export const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       logout: userActions.logout

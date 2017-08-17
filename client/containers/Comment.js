@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
+
 import ChildrenComments from '../components/ChildrenComments';
 import Comment from '../components/Comment';
 
-const CommentContainer = ({ comments, users, location }) => {
+export const CommentContainer = ({ comments, users, location }) => {
   const { id } = queryString.parse(location.search);
   const comment = comments[id];
 
@@ -21,7 +22,7 @@ const CommentContainer = ({ comments, users, location }) => {
   );
 };
 
-const mapStateToProps = ({ users, comments }) => ({
+export const mapStateToProps = ({ users, comments }) => ({
   users,
   comments
 });

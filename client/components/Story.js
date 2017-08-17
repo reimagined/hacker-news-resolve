@@ -2,23 +2,22 @@ import React from 'react';
 import url from 'url';
 import { Link } from 'react-router-dom';
 import plur from 'plur';
+
 import '../styles/story.css';
 
 const isExternalLink = link => link[0] !== '/';
 
-function getHostname(link) {
-  return link.split('.')[0] === 'www'
-    ? link.substr(4)
-    : url.parse(link).hostname;
-}
+export const getHostname = link =>
+  link.split('.')[0] === 'www' ? link.substr(4) : url.parse(link).hostname;
 
-const Title = ({ title, link, onUpvote, voted }) => {
+export const Title = ({ title, link, onUpvote, voted, loggedIn }) => {
+  const votearrowIsVisible = loggedIn && !voted;
+
   if (isExternalLink(link)) {
     return (
       <div className="story__title">
-        {!voted && // eslint-disable-next-line jsx-a11y/anchor-has-content
-          <a
-            href=""
+        {votearrowIsVisible && // eslint-disable-next-line jsx-a11y/anchor-has-content
+          <span
             onClick={onUpvote}
             className="story__votearrow"
             title="upvote"
@@ -30,13 +29,8 @@ const Title = ({ title, link, onUpvote, voted }) => {
   }
   return (
     <div className="story__title">
-      {!voted && // eslint-disable-next-line jsx-a11y/anchor-has-content
-        <a
-          href=""
-          onClick={onUpvote}
-          className="story__votearrow"
-          title="upvote"
-        />}
+      {votearrowIsVisible && // eslint-disable-next-line jsx-a11y/anchor-has-content
+        <span onClick={onUpvote} className="story__votearrow" title="upvote" />}
       <Link to={link}>
         {title}
       </Link>
@@ -44,7 +38,7 @@ const Title = ({ title, link, onUpvote, voted }) => {
   );
 };
 
-const Score = ({ score }) => {
+export const Score = ({ score }) => {
   return (
     <span className="story__score">
       {score} {plur('point', score)}{' '}
@@ -52,7 +46,7 @@ const Score = ({ score }) => {
   );
 };
 
-const PostedBy = ({ user }) => {
+export const PostedBy = ({ user }) => {
   return (
     <span className="story__by">
       by <a href={`/user?id=${user.id}`}>{user.name}</a>{' '}
@@ -60,7 +54,7 @@ const PostedBy = ({ user }) => {
   );
 };
 
-const Comment = ({ storyId, commentCount }) => {
+export const Comment = ({ storyId, commentCount }) => {
   return (
     <span>
       <span>
@@ -75,8 +69,19 @@ const Comment = ({ storyId, commentCount }) => {
   );
 };
 
-const Meta = props => {
-  const { storyId, user, date, score, commentCount, voted, onUnvote } = props;
+export const Meta = props => {
+  const {
+    storyId,
+    user,
+    date,
+    score,
+    commentCount,
+    voted,
+    loggedIn,
+    onUnvote
+  } = props;
+  const unvoteIsVisible = voted && loggedIn;
+
   return (
     <div className="story__meta">
       {score ? <Score score={score} /> : ''}
@@ -85,12 +90,12 @@ const Meta = props => {
         {date.toLocaleString('en-US')}{' '}
       </span>
       {/* TODO: timeAgo */}
-      {voted &&
+      {unvoteIsVisible &&
         <span>
           |{' '}
-          <a href="" onClick={onUnvote}>
+          <span className="item__unvote" onClick={onUnvote}>
             unvote
-          </a>{' '}
+          </span>{' '}
         </span>}
       {commentCount !== undefined
         ? <Comment storyId={storyId} commentCount={commentCount} />
@@ -110,13 +115,20 @@ const Story = props => {
     commentCount,
     onUpvote,
     onUnvote,
-    voted
+    voted,
+    loggedIn
   } = props;
 
   return (
     <div className="story">
       <div className="story__content">
-        <Title voted={voted} onUpvote={onUpvote} title={title} link={link} />
+        <Title
+          loggedIn={loggedIn}
+          voted={voted}
+          onUpvote={onUpvote}
+          title={title}
+          link={link}
+        />
         <Meta
           voted={voted}
           storyId={id}
@@ -125,6 +137,7 @@ const Story = props => {
           score={score}
           commentCount={commentCount}
           onUnvote={onUnvote}
+          loggedIn={loggedIn}
         />
       </div>
     </div>

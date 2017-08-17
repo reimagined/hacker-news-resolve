@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 import queryString from 'query-string';
+
 import Story from '../components/Story';
 import actions from '../actions/comments';
 import Comment from '../components/Comment';
@@ -9,14 +10,10 @@ import ChildrenComments from '../components/ChildrenComments';
 import getCommentsCount from '../helpers/getCommentsCount';
 import '../styles/storyDetails.css';
 
-class StoryDetails extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      text: ''
-    };
-  }
+export class StoryDetails extends Component {
+  state = {
+    text: ''
+  };
 
   onAddComment(parentId, userId) {
     this.props.onAddComment({
@@ -86,7 +83,7 @@ class StoryDetails extends Component {
   }
 }
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     stories: state.stories,
     users: state.users,
@@ -95,7 +92,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
   return {
     onAddComment({ parentId, text, userId }) {
       return dispatch(

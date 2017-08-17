@@ -294,7 +294,7 @@ describe('aggregates', () => {
       const nextState = {
         createdAt,
         createdBy: userId,
-        voted: [userId]
+        voted: []
       };
 
       expect(stories.eventHandlers[STORY_CREATED](state, event)).toEqual(

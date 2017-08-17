@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
 import { connect } from 'react-redux';
+
 import actions from '../actions/stories';
 import '../styles/submit.css';
 
-class Submit extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      title: '',
-      url: '',
-      text: ''
-    };
-  }
+export class Submit extends Component {
+  state = {
+    title: '',
+    url: '',
+    text: ''
+  };
 
   handleChange(event, name) {
     this.setState({ [name]: event.target.value });
@@ -104,13 +101,13 @@ class Submit extends Component {
   }
 }
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     userId: state.user.id
   };
 };
 
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
   return {
     onAddStory({ userId, title, text, link }) {
       return dispatch(

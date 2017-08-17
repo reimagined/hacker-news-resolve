@@ -2,18 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 import queryString from 'query-string';
+
 import actions from '../actions/comments';
 import Comment from '../components/Comment';
 import '../styles/reply.css';
 
-class Reply extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      text: ''
-    };
-  }
+export class Reply extends Component {
+  state = {
+    text: ''
+  };
 
   onReply(parentId, userId) {
     this.props.onReply({

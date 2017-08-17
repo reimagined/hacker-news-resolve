@@ -5,11 +5,15 @@ import queryString from 'query-string';
 import Story from '../components/Story';
 import Paginator from '../components/Paginator';
 import getCommentsCount from '../helpers/getCommentsCount';
-import { getPageStories, hasNextStories } from '../helpers/getPageStories';
+import {
+  STORIES_ON_ONE_PAGE,
+  getPageStories,
+  hasNextStories
+} from '../helpers/getPageStories';
 import actions from '../actions/stories';
 import '../styles/stories.css';
 
-const Stories = props => {
+export const Stories = props => {
   let { page } = queryString.parse(props.location.search);
 
   let stories = Object.keys(props.stories).reverse();
@@ -23,11 +27,12 @@ const Stories = props => {
 
   const hasNext = hasNextStories(stories, page);
   stories = getPageStories(stories, page);
+  const firstStoryIndex = STORIES_ON_ONE_PAGE * (page ? page - 1 : 0);
 
   return (
     <div>
       <div className="stories">
-        <ol className="stories__list" start="1">
+        <ol className="stories__list" start={firstStoryIndex + 1}>
           {stories.map(id => {
             const story = props.stories[id];
             const type = story.type;
@@ -53,6 +58,7 @@ const Stories = props => {
                   voted={story.voted.includes(props.user.id)}
                   onUpvote={() => props.onUpvote(id, props.user.id)}
                   onUnvote={() => props.onUnvote(id, props.user.id)}
+                  loggedIn={!!props.user.id}
                 />
               </li>
             );
@@ -64,7 +70,7 @@ const Stories = props => {
   );
 };
 
-const mapStateToProps = ({ stories, users, comments, user }) => {
+export const mapStateToProps = ({ stories, users, comments, user }) => {
   return {
     stories,
     users,
@@ -73,7 +79,7 @@ const mapStateToProps = ({ stories, users, comments, user }) => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
   return {
     onUpvote(id, userId) {
       return dispatch(

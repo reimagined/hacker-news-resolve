@@ -21,7 +21,7 @@ export default {
       state.merge({
         createdAt: event.timestamp,
         createdBy: event.payload.userId,
-        voted: [event.payload.userId]
+        voted: []
       }),
 
     [STORY_UPVOTED]: (state, event) =>

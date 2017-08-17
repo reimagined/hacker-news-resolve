@@ -1,27 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
+
 import Comment from '../components/Comment';
 import { getPageStories, hasNextStories } from '../helpers/getPageStories';
 import Paginator from '../components/Paginator';
 
-const findRoot = (id, comments) => {
+export const findRoot = (id, comments) => {
   if (comments[id]) {
     return findRoot(comments[id].parentId, comments);
   }
   return id;
 };
 
-const Comments = props => {
-  let { page } = queryString.parse(props.location.search);
-  let comments = Object.keys(props.comments);
+export const Comments = props => {
+  const { page } = queryString.parse(props.location.search);
+  let comments = Object.keys(props.comments).reverse();
 
   const hasNext = hasNextStories(comments, page);
-  comments = getPageStories(comments, page);
 
   return (
     <div>
-      {comments.map(id => {
+      {getPageStories(comments, page).map(id => {
         const comment = props.comments[id];
         const parentId = comment.parentId;
         const rootId = findRoot(parentId, props.comments);
@@ -50,7 +50,7 @@ const Comments = props => {
   );
 };
 
-const mapStateToProps = ({ stories, users, comments, user }) => {
+export const mapStateToProps = ({ stories, users, comments, user }) => {
   return {
     stories,
     users,

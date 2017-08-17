@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
 
-const User = ({ id, name, createdAt, karma }) => {
+export const User = ({ id, name, createdAt, karma }) => {
   if (!id) {
     return (
       <div>
@@ -46,7 +46,7 @@ const User = ({ id, name, createdAt, karma }) => {
   );
 };
 
-const mapStateToProps = ({ user, users }, ownProps) => {
+export const mapStateToProps = ({ user, users }, ownProps) => {
   const { location } = ownProps;
 
   const { id } = queryString.parse(location.search);
