@@ -20,7 +20,7 @@ export default {
       throwIfAggregateAlreadyExists(state, command);
 
       if (!name) {
-        throw new Error('UserId is required');
+        throw new Error('Name is required');
       }
 
       if (!passwordHash) {

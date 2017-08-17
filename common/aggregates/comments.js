@@ -20,13 +20,14 @@ export default {
     [COMMENT_CREATED]: (state, event) =>
       state.merge({
         createdAt: event.timestamp,
-        createdBy: event.user.id
+        createdBy: event.payload.userId
       }),
+
     [COMMENT_REMOVED]: (state, event) => state.set('removedAt', event.timestamp)
   },
   commands: {
     createComment: (state: any, command: CommentCreated) => {
-      const { text, parentId } = command.payload;
+      const { text, parentId, userId } = command.payload;
 
       throwIfAggregateAlreadyExists(state, command);
 
@@ -38,11 +39,17 @@ export default {
         throw new Error('ParentId is required');
       }
 
+      if (!userId) {
+        throw new Error('UserId is required');
+      }
+
       return new Event(COMMENT_CREATED, {
         text,
-        parentId
+        parentId,
+        userId
       });
     },
+
     updateComment: (state: any, command: CommentUpdated) => {
       const { text } = command.payload;
 
@@ -57,6 +64,7 @@ export default {
         text
       });
     },
+
     removeComment: (state: any, command: CommentRemoved) => {
       throwIfAggregateIsNotExists(state, command);
       throwIfPermissionDenied(state, command);

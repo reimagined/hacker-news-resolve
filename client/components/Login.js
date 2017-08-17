@@ -1,7 +1,8 @@
 import React from 'react';
+import '../styles/login.css';
 
-const LoginComponent = () =>
-  <div>
+const Login = () =>
+  <div className="login">
     <h1>Login</h1>
     <form method="GET" action="/auth">
       <table>
@@ -25,4 +26,4 @@ const LoginComponent = () =>
     </form>
   </div>;
 
-export default LoginComponent;
+export default Login;

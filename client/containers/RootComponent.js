@@ -6,20 +6,22 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router';
 
-import AskComponent from '../components/AskComponent';
-import CommentsComponent from '../components/CommentsComponent';
-import FlowComponent from '../components/FlowComponent';
-import JobsComponent from '../components/JobsComponent';
-import NewestComponent from '../components/NewestComponent';
-import ShowComponent from '../components/ShowComponent';
-import SubmitComponent from '../components/SubmitComponent';
-import LoginComponent from '../components/LoginComponent';
+import Comments from './Comments';
+import Submit from './Submit';
+import Login from '../components/Login';
+import StoryDetails from './StoryDetails';
+import Error from '../components/Error';
+import Reply from './Reply';
+import Stories from './Stories';
+import Comment from './Comment';
+import User from './User';
 import * as userActions from '../actions/userActions';
 
 import '../styles/style.css';
+import '../styles/root.css';
 
-export const RootComponent = ({ user, logout, match }) =>
-  <div className="App">
+const RootComponent = ({ user, logout, match }) =>
+  <div className="app">
     <Helmet>
       <meta
         name="viewport"
@@ -32,12 +34,12 @@ export const RootComponent = ({ user, logout, match }) =>
       />
       <link rel="stylesheet" type="text/css" href="/static/bundle.css" />
     </Helmet>
-    <div className="App__wrap">
-      <div className="App__header">
-        <Link to="/" className="App__homelinkicon">
+    <div className="app__wrap">
+      <div className="app__header">
+        <Link to="/" className="app__homelinkicon">
           <img src="/static/img/logo.png" width="16" height="16" alt="" />
         </Link>{' '}
-        <Link to="/" className="App__homelink">
+        <Link to="/" className="app__homelink">
           Resolve HN
         </Link>{' '}
         <NavLink to="/newest" activeClassName="active">
@@ -56,10 +58,6 @@ export const RootComponent = ({ user, logout, match }) =>
           ask
         </NavLink>
         {' | '}
-        <NavLink to="/jobs" activeClassName="active">
-          jobs
-        </NavLink>
-        {' | '}
         <NavLink to="/submit" activeClassName="active">
           submit
         </NavLink>
@@ -73,19 +71,23 @@ export const RootComponent = ({ user, logout, match }) =>
               </NavLink>}
         </div>
       </div>
-      <div className="App__content">
+      <div className="app__content">
         <Switch>
-          <Route exact path="/newest" component={NewestComponent} />
-          <Route exact path="/comments" component={CommentsComponent} />
-          <Route exact path="/show" component={ShowComponent} />
-          <Route exact path="/ask" component={AskComponent} />
-          <Route exact path="/jobs" component={JobsComponent} />
-          <Route exact path="/submit" component={SubmitComponent} />
-          <Route exact path="/login" component={LoginComponent} />
-          <Route component={FlowComponent} />
+          <Route exact path="/newest" component={Stories} />
+          <Route exact path="/show" component={Stories} />
+          <Route exact path="/ask" component={Stories} />
+          <Route exact path="/comments" component={Comments} />
+          <Route exact path="/comment" component={Comment} />
+          <Route exact path="/submit" component={Submit} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/user" component={User} />
+          <Route exact path="/error" component={Error} />
+          <Route path="/storyDetails" component={StoryDetails} />
+          <Route path="/reply" component={Reply} />
+          <Route component={Stories} />
         </Switch>
       </div>
-      <div className="App__footer">
+      <div className="app__footer">
         <a href="https://github.com/reimagined/hacker-news-demo">
           reimagined/hacker-news-demo
         </a>
@@ -93,11 +95,11 @@ export const RootComponent = ({ user, logout, match }) =>
     </div>
   </div>;
 
-export const mapStateToProps = ({ user }) => ({
+const mapStateToProps = ({ user }) => ({
   user
 });
 
-export const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       logout: userActions.logout

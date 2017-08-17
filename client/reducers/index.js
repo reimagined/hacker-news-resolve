@@ -2,11 +2,11 @@ import { combineReducers } from 'redux';
 import user from './user';
 import users from './users';
 import comments from './comments';
-import news from './news';
+import stories from './stories';
 
 export default combineReducers({
   user,
   users,
   comments,
-  news
+  stories
 });

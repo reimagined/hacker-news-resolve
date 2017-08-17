@@ -2,6 +2,7 @@ import axios from 'axios';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { sendCommandMiddleware } from 'resolve-redux';
 import createSagaMiddleware from 'redux-saga';
+import Immutable from 'seamless-immutable';
 import reducer from '../reducers';
 import rootSaga from '../sagas';
 
@@ -28,7 +29,7 @@ export default initialState => {
 
   const enhancer = composeEnhancers(applyMiddleware(...middleware));
 
-  const store = createStore(reducer, initialState, enhancer);
+  const store = createStore(reducer, Immutable(initialState), enhancer);
 
   if (isClient) {
     sagaMiddleware.run(rootSaga);
