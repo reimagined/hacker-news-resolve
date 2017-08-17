@@ -11,7 +11,7 @@
     "prettier": "prettier-eslint --write \"**/*.js\"",
     "lint-staged": "lint-staged",
     "test": "jest",
-    "test:coverage": "jest --coverage",
+    "test:coverage": "jest --u --coverage",
     "test:watch": "jest --watchAll",
     "coveralls": "cat ./coverage/lcov.info | coveralls --verbose"
   },
