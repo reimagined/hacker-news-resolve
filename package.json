@@ -95,9 +95,6 @@
     "url-loader": "^0.5.9"
   },
   "jest": {
-    "collectCoverageFrom": [
-      "**/*.js"
-    ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/dist/",
