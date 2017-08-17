@@ -6,30 +6,30 @@ import Item from '../components/Item';
 import Paginator from '../components/Paginator';
 import getCommentsCount from '../helpers/getCommentsCount';
 import { getPageItems, hasNextItems } from '../helpers/getPageItems';
-import actions from '../actions/news';
-import '../styles/news.css';
+import actions from '../actions/stories';
+import '../styles/stories.css';
 
-const News = props => {
+const Stories = props => {
   let { page } = queryString.parse(props.location.search);
 
-  let news = Object.keys(props.news).reverse();
+  let stories = Object.keys(props.stories).reverse();
   if (props.location.pathname.includes('ask')) {
-    news = news.filter(id => props.news[id].type === 'ask');
+    stories = stories.filter(id => props.stories[id].type === 'ask');
   } else if (props.location.pathname.includes('show')) {
-    news = news.filter(id => props.news[id].type === 'show');
+    stories = stories.filter(id => props.stories[id].type === 'show');
   } else if (props.location.pathname === '/') {
-    // TODO sort flow news in some special order
+    // TODO sort flow stories in some special order
   }
 
-  const hasNext = hasNextItems(news, page);
-  news = getPageItems(news, page);
+  const hasNext = hasNextItems(stories, page);
+  stories = getPageItems(stories, page);
 
   return (
     <div>
-      <div className="news">
-        <ol className="news__list" start="1">
-          {news.map(id => {
-            const item = props.news[id];
+      <div className="stories">
+        <ol className="stories__list" start="1">
+          {stories.map(id => {
+            const item = props.stories[id];
             const type = item.type;
 
             const link = type === 'ask' ? `/story?id=${id}` : item.link;
@@ -37,7 +37,7 @@ const News = props => {
 
             const user = props.users[item.userId];
             return (
-              <li key={id} className="news__item">
+              <li key={id} className="stories__item">
                 <Item
                   id={id}
                   title={title}
@@ -60,9 +60,9 @@ const News = props => {
   );
 };
 
-const mapStateToProps = ({ news, users, comments, user }) => {
+const mapStateToProps = ({ stories, users, comments, user }) => {
   return {
-    news,
+    stories,
     users,
     user,
     comments
@@ -73,14 +73,14 @@ const mapDispatchToProps = dispatch => {
   return {
     onUpvote(id, userId) {
       return dispatch(
-        actions.upvoteNews(id, {
+        actions.upvoteStory(id, {
           userId
         })
       );
     },
     onUnvote(id, userId) {
       return dispatch(
-        actions.unvoteNews(id, {
+        actions.unvoteStory(id, {
           userId
         })
       );
@@ -88,4 +88,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(News);
+export default connect(mapStateToProps, mapDispatchToProps)(Stories);

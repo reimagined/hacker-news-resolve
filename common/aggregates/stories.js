@@ -1,39 +1,39 @@
 import Immutable from 'seamless-immutable';
 
 import type {
-  NewsCreated,
-  NewsUpvoted,
-  NewsUnvoted,
-  NewsDeleted
-} from '../events/news';
-import events from '../events/news';
+  StoryCreated,
+  StoryUpvoted,
+  StoryUnvoted,
+  StoryDeleted
+} from '../events/stories';
+import events from '../events/stories';
 import { Event } from '../helpers';
 import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists';
 import throwIfAggregateIsNotExists from './validators/throwIfAggregateIsNotExists';
 
-const { NEWS_CREATED, NEWS_UPVOTED, NEWS_UNVOTED, NEWS_DELETED } = events;
+const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, STORY_DELETED } = events;
 
 export default {
-  name: 'news',
+  name: 'stories',
   initialState: Immutable({}),
   eventHandlers: {
-    [NEWS_CREATED]: (state, event) =>
+    [STORY_CREATED]: (state, event) =>
       state.merge({
         createdAt: event.timestamp,
         createdBy: event.payload.userId,
         voted: [event.payload.userId]
       }),
 
-    [NEWS_UPVOTED]: (state, event) =>
+    [STORY_UPVOTED]: (state, event) =>
       state.update('voted', voted => voted.concat(event.payload.userId)),
 
-    [NEWS_UNVOTED]: (state, event) =>
+    [STORY_UNVOTED]: (state, event) =>
       state.update('voted', voted =>
         voted.filter(userId => userId !== event.payload.userId)
       )
   },
   commands: {
-    createNews: (state: any, command: NewsCreated) => {
+    createStory: (state: any, command: StoryCreated) => {
       const { title, link, userId, text } = command.payload;
 
       throwIfAggregateAlreadyExists(state, command);
@@ -46,7 +46,7 @@ export default {
         throw new Error('UserId is required');
       }
 
-      return new Event(NEWS_CREATED, {
+      return new Event(STORY_CREATED, {
         title,
         text,
         link,
@@ -54,7 +54,7 @@ export default {
       });
     },
 
-    upvoteNews: (state: any, command: NewsUpvoted) => {
+    upvoteStory: (state: any, command: StoryUpvoted) => {
       const { userId } = command.payload;
 
       throwIfAggregateIsNotExists(state, command);
@@ -67,12 +67,12 @@ export default {
         throw new Error('UserId is required');
       }
 
-      return new Event(NEWS_UPVOTED, {
+      return new Event(STORY_UPVOTED, {
         userId
       });
     },
 
-    unvoteNews: (state: any, command: NewsUnvoted) => {
+    unvoteStory: (state: any, command: StoryUnvoted) => {
       const { userId } = command.payload;
 
       throwIfAggregateIsNotExists(state, command);
@@ -85,15 +85,15 @@ export default {
         throw new Error('UserId is required');
       }
 
-      return new Event(NEWS_UNVOTED, {
+      return new Event(STORY_UNVOTED, {
         userId
       });
     },
 
-    deleteNews: (state: any, command: NewsDeleted) => {
+    deleteStory: (state: any, command: StoryDeleted) => {
       throwIfAggregateIsNotExists(state, command);
 
-      return new Event(NEWS_DELETED);
+      return new Event(STORY_DELETED);
     }
   }
 };

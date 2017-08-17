@@ -1,5 +1,5 @@
 import users from './users';
-import news from './news';
+import stories from './stories';
 import comments from './comments';
 
-export default [users, news, comments];
+export default [users, stories, comments];

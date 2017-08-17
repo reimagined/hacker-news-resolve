@@ -12,7 +12,7 @@ import Login from '../components/Login';
 import Story from './Story';
 import Error from '../components/Error';
 import Reply from './Reply';
-import News from './News';
+import Stories from './Stories';
 import Comment from './Comment';
 import User from './User';
 import * as userActions from '../actions/userActions';
@@ -73,9 +73,9 @@ const RootComponent = ({ user, logout, match }) =>
       </div>
       <div className="app__content">
         <Switch>
-          <Route exact path="/newest" component={News} />
-          <Route exact path="/show" component={News} />
-          <Route exact path="/ask" component={News} />
+          <Route exact path="/newest" component={Stories} />
+          <Route exact path="/show" component={Stories} />
+          <Route exact path="/ask" component={Stories} />
           <Route exact path="/comments" component={Comments} />
           <Route exact path="/comment" component={Comment} />
           <Route exact path="/submit" component={Submit} />
@@ -84,7 +84,7 @@ const RootComponent = ({ user, logout, match }) =>
           <Route exact path="/error" component={Error} />
           <Route path="/story" component={Story} />
           <Route path="/reply" component={Reply} />
-          <Route component={News} />
+          <Route component={Stories} />
         </Switch>
       </div>
       <div className="app__footer">

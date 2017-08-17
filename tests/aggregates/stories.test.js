@@ -1,15 +1,15 @@
 import uuid from 'uuid';
 
 import '../../common/aggregates';
-import news from '../../common/aggregates/news';
+import stories from '../../common/aggregates/stories';
 import events from '../../common/events';
 import { Event } from '../../common/helpers';
 
-const { NEWS_CREATED, NEWS_UPVOTED, NEWS_UNVOTED, NEWS_DELETED } = events;
+const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, STORY_DELETED } = events;
 
 describe('aggregates', () => {
-  describe('news', () => {
-    it('command "createNews" should create an event to create a news', () => {
+  describe('stories', () => {
+    it('command "createStory" should create an event to create a story', () => {
       const title = 'SomeTitle';
       const text = 'SomeText';
       const link = 'SomeLink';
@@ -25,10 +25,10 @@ describe('aggregates', () => {
         }
       };
 
-      const event = news.commands.createNews(state, command);
+      const event = stories.commands.createStory(state, command);
 
       expect(event).toEqual(
-        new Event(NEWS_CREATED, {
+        new Event(STORY_CREATED, {
           title,
           text,
           link,
@@ -37,7 +37,7 @@ describe('aggregates', () => {
       );
     });
 
-    it('command "createNews" should throw Error "Aggregate already exists"', () => {
+    it('command "createStory" should throw Error "Aggregate already exists"', () => {
       const title = 'SomeTitle';
       const text = 'SomeText';
       const link = 'SomeLink';
@@ -56,12 +56,12 @@ describe('aggregates', () => {
         }
       };
 
-      expect(() => news.commands.createNews(state, command)).toThrowError(
+      expect(() => stories.commands.createStory(state, command)).toThrowError(
         'Aggregate already exists'
       );
     });
 
-    it('command "createNews" should throw Error "Title is required"', () => {
+    it('command "createStory" should throw Error "Title is required"', () => {
       const title = undefined;
       const text = 'SomeText';
       const link = 'SomeLink';
@@ -77,12 +77,12 @@ describe('aggregates', () => {
         }
       };
 
-      expect(() => news.commands.createNews(state, command)).toThrowError(
+      expect(() => stories.commands.createStory(state, command)).toThrowError(
         'Title is required'
       );
     });
 
-    it('command "createNews" should throw Error "UserId is required"', () => {
+    it('command "createStory" should throw Error "UserId is required"', () => {
       const title = 'SomeTitle';
       const text = 'SomeText';
       const link = 'SomeLink';
@@ -98,12 +98,12 @@ describe('aggregates', () => {
         }
       };
 
-      expect(() => news.commands.createNews(state, command)).toThrowError(
+      expect(() => stories.commands.createStory(state, command)).toThrowError(
         'UserId is required'
       );
     });
 
-    it('command "upvoteNews" should create an event to upvote the news', () => {
+    it('command "upvoteStory" should create an event to upvote the story', () => {
       const userId = uuid.v4();
 
       const state = {
@@ -117,16 +117,16 @@ describe('aggregates', () => {
         }
       };
 
-      const event = news.commands.upvoteNews(state, command);
+      const event = stories.commands.upvoteStory(state, command);
 
       expect(event).toEqual(
-        new Event(NEWS_UPVOTED, {
+        new Event(STORY_UPVOTED, {
           userId
         })
       );
     });
 
-    it('command "upvoteNews" should throw Error "User already voted"', () => {
+    it('command "upvoteStory" should throw Error "User already voted"', () => {
       const userId = uuid.v4();
 
       const state = {
@@ -140,12 +140,12 @@ describe('aggregates', () => {
         }
       };
 
-      expect(() => news.commands.upvoteNews(state, command)).toThrowError(
+      expect(() => stories.commands.upvoteStory(state, command)).toThrowError(
         'User already voted'
       );
     });
 
-    it('command "upvoteNews" should throw Error "Aggregate is not exist"', () => {
+    it('command "upvoteStory" should throw Error "Aggregate is not exist"', () => {
       const userId = uuid.v4();
 
       const state = {};
@@ -155,12 +155,12 @@ describe('aggregates', () => {
         }
       };
 
-      expect(() => news.commands.upvoteNews(state, command)).toThrowError(
+      expect(() => stories.commands.upvoteStory(state, command)).toThrowError(
         'Aggregate is not exist'
       );
     });
 
-    it('command "upvoteNews" should throw Error "UserId is required"', () => {
+    it('command "upvoteStory" should throw Error "UserId is required"', () => {
       const userId = undefined;
 
       const state = {
@@ -174,12 +174,12 @@ describe('aggregates', () => {
         }
       };
 
-      expect(() => news.commands.upvoteNews(state, command)).toThrowError(
+      expect(() => stories.commands.upvoteStory(state, command)).toThrowError(
         'UserId is required'
       );
     });
 
-    it('command "unvoteNews" should create an event to unvote the news', () => {
+    it('command "unvoteStory" should create an event to unvote the story', () => {
       const userId = uuid.v4();
 
       const state = {
@@ -193,16 +193,16 @@ describe('aggregates', () => {
         }
       };
 
-      const event = news.commands.unvoteNews(state, command);
+      const event = stories.commands.unvoteStory(state, command);
 
       expect(event).toEqual(
-        new Event(NEWS_UNVOTED, {
+        new Event(STORY_UNVOTED, {
           userId
         })
       );
     });
 
-    it('command "unvoteNews" should throw Error "User has not voted"', () => {
+    it('command "unvoteStory" should throw Error "User has not voted"', () => {
       const userId = uuid.v4();
 
       const state = {
@@ -216,12 +216,12 @@ describe('aggregates', () => {
         }
       };
 
-      expect(() => news.commands.unvoteNews(state, command)).toThrowError(
+      expect(() => stories.commands.unvoteStory(state, command)).toThrowError(
         'User has not voted'
       );
     });
 
-    it('command "unvoteNews" should throw Error "Aggregate is not exist"', () => {
+    it('command "unvoteStory" should throw Error "Aggregate is not exist"', () => {
       const userId = uuid.v4();
 
       const state = {};
@@ -231,12 +231,12 @@ describe('aggregates', () => {
         }
       };
 
-      expect(() => news.commands.unvoteNews(state, command)).toThrowError(
+      expect(() => stories.commands.unvoteStory(state, command)).toThrowError(
         'Aggregate is not exist'
       );
     });
 
-    it('command "unvoteNews" should throw Error "UserId is required"', () => {
+    it('command "unvoteStory" should throw Error "UserId is required"', () => {
       const userId = undefined;
 
       const state = {
@@ -250,12 +250,12 @@ describe('aggregates', () => {
         }
       };
 
-      expect(() => news.commands.unvoteNews(state, command)).toThrowError(
+      expect(() => stories.commands.unvoteStory(state, command)).toThrowError(
         'UserId is required'
       );
     });
 
-    it('command "deleteNews" should create an event to delete the news', () => {
+    it('command "deleteStory" should create an event to delete the story', () => {
       const userId = uuid.v4();
 
       const state = {
@@ -264,27 +264,27 @@ describe('aggregates', () => {
       };
       const command = {};
 
-      const event = news.commands.deleteNews(state, command);
+      const event = stories.commands.deleteStory(state, command);
 
-      expect(event).toEqual(new Event(NEWS_DELETED));
+      expect(event).toEqual(new Event(STORY_DELETED));
     });
 
-    it('command "deleteNews" should throw Error "Aggregate is not exist"', () => {
+    it('command "deleteStory" should throw Error "Aggregate is not exist"', () => {
       const state = {};
       const command = {
         payload: {}
       };
 
-      expect(() => news.commands.deleteNews(state, command)).toThrowError(
+      expect(() => stories.commands.deleteStory(state, command)).toThrowError(
         'Aggregate is not exist'
       );
     });
 
-    it('eventHandler "NEWS_CREATED" should set createdAt, createdBy and voted to state', () => {
+    it('eventHandler "STORY_CREATED" should set createdAt, createdBy and voted to state', () => {
       const createdAt = Date.now();
       const userId = uuid.v4();
 
-      const state = news.initialState;
+      const state = stories.initialState;
       const event = {
         timestamp: createdAt,
         payload: {
@@ -297,14 +297,16 @@ describe('aggregates', () => {
         voted: [userId]
       };
 
-      expect(news.eventHandlers[NEWS_CREATED](state, event)).toEqual(nextState);
+      expect(stories.eventHandlers[STORY_CREATED](state, event)).toEqual(
+        nextState
+      );
     });
 
-    it('eventHandler "NEWS_UPVOTED" should add userId to state.voted', () => {
+    it('eventHandler "STORY_UPVOTED" should add userId to state.voted', () => {
       const createdAt = Date.now();
       const userId = uuid.v4();
 
-      const state = news.initialState.merge({
+      const state = stories.initialState.merge({
         createdAt,
         createdBy: userId,
         voted: []
@@ -320,14 +322,16 @@ describe('aggregates', () => {
         voted: [userId]
       };
 
-      expect(news.eventHandlers[NEWS_UPVOTED](state, event)).toEqual(nextState);
+      expect(stories.eventHandlers[STORY_UPVOTED](state, event)).toEqual(
+        nextState
+      );
     });
 
-    it('eventHandler "NEWS_UNVOTED" should remove userId from state.voted', () => {
+    it('eventHandler "STORY_UNVOTED" should remove userId from state.voted', () => {
       const createdAt = Date.now();
       const userId = uuid.v4();
 
-      const state = news.initialState.merge({
+      const state = stories.initialState.merge({
         createdAt,
         createdBy: userId,
         voted: [userId]
@@ -343,7 +347,9 @@ describe('aggregates', () => {
         voted: []
       };
 
-      expect(news.eventHandlers[NEWS_UNVOTED](state, event)).toEqual(nextState);
+      expect(stories.eventHandlers[STORY_UNVOTED](state, event)).toEqual(
+        nextState
+      );
     });
   });
 });

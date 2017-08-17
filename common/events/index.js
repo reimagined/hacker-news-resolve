@@ -1,9 +1,9 @@
 import comments from './comments';
-import news from './news';
+import stories from './stories';
 import users from './users';
 
 export default {
   ...comments,
-  ...news,
+  ...stories,
   ...users
 };

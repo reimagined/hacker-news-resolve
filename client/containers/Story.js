@@ -29,7 +29,7 @@ class Story extends Component {
 
   render() {
     const { id } = queryString.parse(this.props.location.search);
-    const story = this.props.news[id];
+    const story = this.props.stories[id];
     const userName = this.props.users[story.userId].name;
     const link = story.type === 'ask' ? `/story?id=${id}` : story.link;
 
@@ -88,7 +88,7 @@ class Story extends Component {
 
 const mapStateToProps = state => {
   return {
-    news: state.news,
+    stories: state.stories,
     users: state.users,
     comments: state.comments,
     user: state.user

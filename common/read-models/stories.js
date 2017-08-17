@@ -1,23 +1,28 @@
 import Immutable from 'seamless-immutable';
 
 import type {
-  NewsCreated,
-  NewsUpvoted,
-  NewsUnvoted,
-  NewsDeleted
-} from '../events/news';
+  StoryCreated,
+  StoryUpvoted,
+  StoryUnvoted,
+  StoryDeleted
+} from '../events/stories';
 import type { CommentCreated, CommentRemoved } from '../events/comments';
-import newsEvents from '../events/news';
+import storiesEvents from '../events/stories';
 import commentsEvents from '../events/comments';
 
-const { NEWS_CREATED, NEWS_UPVOTED, NEWS_UNVOTED, NEWS_DELETED } = newsEvents;
+const {
+  STORY_CREATED,
+  STORY_UPVOTED,
+  STORY_UNVOTED,
+  STORY_DELETED
+} = storiesEvents;
 const { COMMENT_CREATED, COMMENT_REMOVED } = commentsEvents;
 
 export default {
-  name: 'news',
+  name: 'stories',
   initialState: Immutable({}),
   eventHandlers: {
-    [NEWS_CREATED]: (state: any, event: NewsCreated) => {
+    [STORY_CREATED]: (state: any, event: StoriesCreated) => {
       const type = !event.payload.link
         ? 'ask'
         : /^(Show HN)/.test(event.payload.title) ? 'show' : 'story';
@@ -35,17 +40,17 @@ export default {
       });
     },
 
-    [NEWS_UPVOTED]: (state: any, event: NewsUpvoted) =>
+    [STORY_UPVOTED]: (state: any, event: StoryUpvoted) =>
       state.updateIn([event.aggregateId, 'voted'], voted =>
         voted.concat(event.payload.userId)
       ),
 
-    [NEWS_UNVOTED]: (state: any, event: NewsUnvoted) =>
+    [STORY_UNVOTED]: (state: any, event: StoryUnvoted) =>
       state.updateIn([event.aggregateId, 'voted'], voted =>
         voted.filter(id => id !== event.payload.userId)
       ),
 
-    [NEWS_DELETED]: (state: any, event: NewsDeleted) =>
+    [STORY_DELETED]: (state: any, event: StoryDeleted) =>
       state.without(event.aggregateId),
 
     [COMMENT_CREATED]: (state: any, event: CommentCreated) => {

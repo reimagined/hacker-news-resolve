@@ -1,13 +1,13 @@
 /* @flow */
 
 const events = {
-  NEWS_CREATED: 'NewsCreated',
-  NEWS_UPVOTED: 'NewsUpvoted',
-  NEWS_UNVOTED: 'NewsUnvoted',
-  NEWS_DELETED: 'NewsDeleted'
+  STORY_CREATED: 'StoryCreated',
+  STORY_UPVOTED: 'StoryUpvoted',
+  STORY_UNVOTED: 'StoryUnvoted',
+  STORY_DELETED: 'StoryDeleted'
 };
 
-export type NewsCreated = {
+export type StoryCreated = {
   aggregateId: string,
   timestamp: string,
   payload: {
@@ -18,7 +18,7 @@ export type NewsCreated = {
   }
 };
 
-export type NewsUpvoted = {
+export type StoryUpvoted = {
   aggregateId: string,
   timestamp: string,
   payload: {
@@ -26,7 +26,7 @@ export type NewsUpvoted = {
   }
 };
 
-export type NewsUnvoted = {
+export type StoryUnvoted = {
   aggregateId: string,
   timestamp: string,
   payload: {
@@ -34,7 +34,7 @@ export type NewsUnvoted = {
   }
 };
 
-export type NewsDeleted = {
+export type StoryDeleted = {
   aggregateId: string,
   timestamp: string,
   payload: {}

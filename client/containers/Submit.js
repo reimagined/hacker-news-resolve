@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
 import { connect } from 'react-redux';
-import actions from '../actions/news';
+import actions from '../actions/stories';
 import '../styles/submit.css';
 
 class Submit extends Component {
@@ -20,7 +20,7 @@ class Submit extends Component {
   }
 
   handleSubmit() {
-    this.props.onAddNews({
+    this.props.onAddStory({
       userId: this.props.userId,
       title: this.state.title,
       text: this.state.text,
@@ -112,9 +112,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddNews({ userId, title, text, link }) {
+    onAddStory({ userId, title, text, link }) {
       return dispatch(
-        actions.createNews(uuid.v4(), {
+        actions.createStory(uuid.v4(), {
           title,
           text,
           link,

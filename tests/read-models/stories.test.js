@@ -1,22 +1,22 @@
 import uuid from 'uuid';
 
 import '../../common/read-models';
-import news from '../../common/read-models/news';
+import stories from '../../common/read-models/stories';
 import events from '../../common/events';
 
 const {
-  NEWS_CREATED,
-  NEWS_UPVOTED,
-  NEWS_UNVOTED,
-  NEWS_DELETED,
+  STORY_CREATED,
+  STORY_UPVOTED,
+  STORY_UNVOTED,
+  STORY_DELETED,
   COMMENT_CREATED,
   COMMENT_REMOVED
 } = events;
 
 describe('read-models', () => {
   describe('comments', () => {
-    it('eventHandler "NEWS_CREATED" should create a news {type: "ask"}', () => {
-      const state = news.initialState;
+    it('eventHandler "STORY_CREATED" should create a story {type: "ask"}', () => {
+      const state = stories.initialState;
       const event = {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
@@ -42,11 +42,13 @@ describe('read-models', () => {
         }
       };
 
-      expect(news.eventHandlers[NEWS_CREATED](state, event)).toEqual(nextState);
+      expect(stories.eventHandlers[STORY_CREATED](state, event)).toEqual(
+        nextState
+      );
     });
 
-    it('eventHandler "NEWS_CREATED" should create a news {type: "story"}', () => {
-      const state = news.initialState;
+    it('eventHandler "STORY_CREATED" should create a story {type: "story"}', () => {
+      const state = stories.initialState;
       const event = {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
@@ -72,11 +74,13 @@ describe('read-models', () => {
         }
       };
 
-      expect(news.eventHandlers[NEWS_CREATED](state, event)).toEqual(nextState);
+      expect(stories.eventHandlers[STORY_CREATED](state, event)).toEqual(
+        nextState
+      );
     });
 
-    it('eventHandler "NEWS_CREATED" should create a news {type: "show"}', () => {
-      const state = news.initialState;
+    it('eventHandler "STORY_CREATED" should create a story {type: "show"}', () => {
+      const state = stories.initialState;
       const event = {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
@@ -102,13 +106,15 @@ describe('read-models', () => {
         }
       };
 
-      expect(news.eventHandlers[NEWS_CREATED](state, event)).toEqual(nextState);
+      expect(stories.eventHandlers[STORY_CREATED](state, event)).toEqual(
+        nextState
+      );
     });
 
-    it('eventHandler "NEWS_UPVOTED" should upvote the news', () => {
+    it('eventHandler "STORY_UPVOTED" should upvote the story', () => {
       const aggregateId = uuid.v4();
 
-      const state = news.initialState.merge({
+      const state = stories.initialState.merge({
         [aggregateId]: {
           voted: []
         }
@@ -127,14 +133,16 @@ describe('read-models', () => {
         }
       };
 
-      expect(news.eventHandlers[NEWS_UPVOTED](state, event)).toEqual(nextState);
+      expect(stories.eventHandlers[STORY_UPVOTED](state, event)).toEqual(
+        nextState
+      );
     });
 
-    it('eventHandler "NEWS_UNVOTED" should unvote the news', () => {
+    it('eventHandler "STORY_UNVOTED" should unvote the stories', () => {
       const aggregateId = uuid.v4();
       const userId = uuid.v4();
 
-      const state = news.initialState.merge({
+      const state = stories.initialState.merge({
         [aggregateId]: {
           voted: [userId]
         }
@@ -153,13 +161,15 @@ describe('read-models', () => {
         }
       };
 
-      expect(news.eventHandlers[NEWS_UNVOTED](state, event)).toEqual(nextState);
+      expect(stories.eventHandlers[STORY_UNVOTED](state, event)).toEqual(
+        nextState
+      );
     });
 
-    it('eventHandler "NEWS_DELETED" should delete the news', () => {
+    it('eventHandler "STORY_DELETED" should delete the story', () => {
       const aggregateId = uuid.v4();
 
-      const state = news.initialState.merge({
+      const state = stories.initialState.merge({
         [aggregateId]: {}
       });
       const event = {
@@ -168,13 +178,15 @@ describe('read-models', () => {
 
       const nextState = {};
 
-      expect(news.eventHandlers[NEWS_DELETED](state, event)).toEqual(nextState);
+      expect(stories.eventHandlers[STORY_DELETED](state, event)).toEqual(
+        nextState
+      );
     });
 
-    it('eventHandler "COMMENT_CREATED" should add comment.id to news.comments', () => {
+    it('eventHandler "COMMENT_CREATED" should add comment.id to story.comments', () => {
       const parentId = uuid.v4();
 
-      const state = news.initialState.merge({
+      const state = stories.initialState.merge({
         [parentId]: {
           comments: []
         }
@@ -192,7 +204,7 @@ describe('read-models', () => {
         }
       };
 
-      expect(news.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
+      expect(stories.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
         nextState
       );
     });
@@ -200,7 +212,7 @@ describe('read-models', () => {
     it('eventHandler "COMMENT_CREATED" should do nothing', () => {
       const parentId = uuid.v4();
 
-      const state = news.initialState;
+      const state = stories.initialState;
       const event = {
         aggregateId: uuid.v4(),
         payload: {
@@ -210,16 +222,16 @@ describe('read-models', () => {
 
       const nextState = {};
 
-      expect(news.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
+      expect(stories.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
         nextState
       );
     });
 
-    it('eventHandler "COMMENT_REMOVED" should add comment.id to news.comments', () => {
+    it('eventHandler "COMMENT_REMOVED" should add comment.id to story.comments', () => {
       const parentId = uuid.v4();
       const commentId = uuid.v4();
 
-      const state = news.initialState.merge({
+      const state = stories.initialState.merge({
         [parentId]: {
           comments: [commentId]
         }
@@ -237,7 +249,7 @@ describe('read-models', () => {
         }
       };
 
-      expect(news.eventHandlers[COMMENT_REMOVED](state, event)).toEqual(
+      expect(stories.eventHandlers[COMMENT_REMOVED](state, event)).toEqual(
         nextState
       );
     });
@@ -246,7 +258,7 @@ describe('read-models', () => {
       const parentId = uuid.v4();
       const commentId = uuid.v4();
 
-      const state = news.initialState;
+      const state = stories.initialState;
       const event = {
         aggregateId: commentId,
         payload: {
@@ -256,7 +268,7 @@ describe('read-models', () => {
 
       const nextState = {};
 
-      expect(news.eventHandlers[COMMENT_REMOVED](state, event)).toEqual(
+      expect(stories.eventHandlers[COMMENT_REMOVED](state, event)).toEqual(
         nextState
       );
     });

@@ -31,7 +31,7 @@ const Comments = props => {
             ? `/story?id=${parentId}`
             : `/comment?id=${parentId}`;
 
-        const root = props.news[rootId];
+        const root = props.stories[rootId];
 
         return (
           <Comment
@@ -50,9 +50,9 @@ const Comments = props => {
   );
 };
 
-const mapStateToProps = ({ news, users, comments, user }) => {
+const mapStateToProps = ({ stories, users, comments, user }) => {
   return {
-    news,
+    stories,
     users,
     comments
   };

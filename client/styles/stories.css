@@ -1,11 +1,11 @@
-.news__list {
+.stories__list {
     padding-left: 3em;
     padding-right: 1.25em;
     margin-top: 1em;
     margin-bottom: .5em;
   }
 
-  .news__item {
+  .stories__item {
     margin-bottom: 16px;
   }
 
