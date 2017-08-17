@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
 
-import Item from '../components/Item';
+import Story from '../components/Story';
 import Paginator from '../components/Paginator';
 import getCommentsCount from '../helpers/getCommentsCount';
-import { getPageItems, hasNextItems } from '../helpers/getPageItems';
+import { getPageStories, hasNextStories } from '../helpers/getPageStories';
 import actions from '../actions/stories';
 import '../styles/stories.css';
 
@@ -21,32 +21,36 @@ const Stories = props => {
     // TODO sort flow stories in some special order
   }
 
-  const hasNext = hasNextItems(stories, page);
-  stories = getPageItems(stories, page);
+  const hasNext = hasNextStories(stories, page);
+  stories = getPageStories(stories, page);
 
   return (
     <div>
       <div className="stories">
         <ol className="stories__list" start="1">
           {stories.map(id => {
-            const item = props.stories[id];
-            const type = item.type;
+            const story = props.stories[id];
+            const type = story.type;
 
-            const link = type === 'ask' ? `/storyDetails?id=${id}` : item.link;
-            const title = type === 'ask' ? `Ask HN: ${item.title}` : item.title;
+            const link = type === 'ask' ? `/storyDetails?id=${id}` : story.link;
+            const title =
+              type === 'ask' ? `Ask HN: ${story.title}` : story.title;
 
-            const user = props.users[item.userId];
+            const user = props.users[story.userId];
             return (
               <li key={id} className="stories__item">
-                <Item
+                <Story
                   id={id}
                   title={title}
                   link={link}
-                  date={new Date(item.createDate)}
-                  score={item.voted.length}
+                  date={new Date(story.createDate)}
+                  score={story.voted.length}
                   user={user}
-                  commentCount={getCommentsCount(props.comments, item.comments)}
-                  voted={item.voted.includes(props.user.id)}
+                  commentCount={getCommentsCount(
+                    props.comments,
+                    story.comments
+                  )}
+                  voted={story.voted.includes(props.user.id)}
                   onUpvote={() => props.onUpvote(id, props.user.id)}
                   onUnvote={() => props.onUnvote(id, props.user.id)}
                 />

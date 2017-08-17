@@ -2,7 +2,7 @@ import React from 'react';
 import url from 'url';
 import { Link } from 'react-router-dom';
 import plur from 'plur';
-import '../styles/item.css';
+import '../styles/story.css';
 
 const isExternalLink = link => link[0] !== '/';
 
@@ -15,26 +15,26 @@ function getHostname(link) {
 const Title = ({ title, link, onUpvote, voted }) => {
   if (isExternalLink(link)) {
     return (
-      <div className="item__title">
+      <div className="story__title">
         {!voted && // eslint-disable-next-line jsx-a11y/anchor-has-content
           <a
             href=""
             onClick={onUpvote}
-            className="item__votearrow"
+            className="story__votearrow"
             title="upvote"
           />}
         <a href={link}>{title}</a>{' '}
-        <span className="item__host">({getHostname(link)})</span>
+        <span className="story__host">({getHostname(link)})</span>
       </div>
     );
   }
   return (
-    <div className="item__title">
+    <div className="story__title">
       {!voted && // eslint-disable-next-line jsx-a11y/anchor-has-content
         <a
           href=""
           onClick={onUpvote}
-          className="item__votearrow"
+          className="story__votearrow"
           title="upvote"
         />}
       <Link to={link}>
@@ -46,7 +46,7 @@ const Title = ({ title, link, onUpvote, voted }) => {
 
 const Score = ({ score }) => {
   return (
-    <span className="item__score">
+    <span className="story__score">
       {score} {plur('point', score)}{' '}
     </span>
   );
@@ -54,7 +54,7 @@ const Score = ({ score }) => {
 
 const PostedBy = ({ user }) => {
   return (
-    <span className="item__by">
+    <span className="story__by">
       by <a href={`/user?id=${user.id}`}>{user.name}</a>{' '}
     </span>
   );
@@ -78,10 +78,10 @@ const Comment = ({ storyId, commentCount }) => {
 const Meta = props => {
   const { storyId, user, date, score, commentCount, voted, onUnvote } = props;
   return (
-    <div className="item__meta">
+    <div className="story__meta">
       {score ? <Score score={score} /> : ''}
       {user ? <PostedBy user={user} /> : ''}
-      <span className="item__time">
+      <span className="story__time">
         {date.toLocaleString('en-US')}{' '}
       </span>
       {/* TODO: timeAgo */}
@@ -99,7 +99,7 @@ const Meta = props => {
   );
 };
 
-const Item = props => {
+const Story = props => {
   const {
     id,
     title,
@@ -114,8 +114,8 @@ const Item = props => {
   } = props;
 
   return (
-    <div className="item">
-      <div className="item__content">
+    <div className="story">
+      <div className="story__content">
         <Title voted={voted} onUpvote={onUpvote} title={title} link={link} />
         <Meta
           voted={voted}
@@ -131,4 +131,4 @@ const Item = props => {
   );
 };
 
-export default Item;
+export default Story;

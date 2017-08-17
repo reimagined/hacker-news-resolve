@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
 import Comment from '../components/Comment';
-import { getPageItems, hasNextItems } from '../helpers/getPageItems';
+import { getPageStories, hasNextStories } from '../helpers/getPageStories';
 import Paginator from '../components/Paginator';
 
 const findRoot = (id, comments) => {
@@ -16,8 +16,8 @@ const Comments = props => {
   let { page } = queryString.parse(props.location.search);
   let comments = Object.keys(props.comments);
 
-  const hasNext = hasNextItems(comments, page);
-  comments = getPageItems(comments, page);
+  const hasNext = hasNextStories(comments, page);
+  comments = getPageStories(comments, page);
 
   return (
     <div>

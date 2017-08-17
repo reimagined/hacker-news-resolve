@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 import queryString from 'query-string';
-import Item from '../components/Item';
+import Story from '../components/Story';
 import actions from '../actions/comments';
 import Comment from '../components/Comment';
 import ChildrenComments from '../components/ChildrenComments';
@@ -35,7 +35,7 @@ class StoryDetails extends Component {
 
     return (
       <div className="storyDetails">
-        <Item
+        <Story
           id={id}
           title={story.title}
           link={link}

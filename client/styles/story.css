@@ -1,61 +1,61 @@
-.item__content,
-.item--loading {
+.story__content,
+.story--loading {
   padding: 1em 1.25em 0 1.25em;
   margin-bottom: 1em;
 }
-.item__title {
+.story__title {
   color: #666;
   font-size:14px;
 }
-.items__list {
+.stories__list {
   padding-left: 3em;
   padding-right: 1.25em;
   margin-top: 1em;
   margin-bottom: .5em;
 }
-.item__title a {
+.story__title a {
   text-decoration: none;
   color: #000;
 }
-.item__title a:hover {
+.story__title a:hover {
   text-decoration: underline;
 }
-.item__title a:visited {
+.story__title a:visited {
   color: #666;
 }
-.item__textarea {
+.story__textarea {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.item__meta {
+.story__meta {
   color: #666;
 }
-.item > .item__meta {
+.story > .story__meta {
   margin-bottom: 1em;
 }
-.item__meta a {
+.story__meta a {
   text-decoration: none;
   color: inherit;
 }
-.item__meta a:hover {
+.story__meta a:hover {
   text-decoration: underline;
 }
-.item__meta em {
+.story__meta em {
   font-style: normal;
   background-color: #ffffde;
   color: #000;
 }
-.item__by a {
+.story__by a {
   font-weight: bold;
 }
-.item__text {
+.story__text {
   margin-top: 1em;
 }
-.item__poll {
+.story__poll {
   margin-top: 1em;
   padding-left: 2.5em;
 }
-.item__votearrow {
+.story__votearrow {
   width:      10px;
   height:     10px;
   border:     0px;
