@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../styles/login.css';
 
-const Login = ({ title, action, buttonText }) =>
+const LoginForm = ({ title, action, buttonText }) =>
   <div className="login">
     <h1>
       {title}
@@ -29,4 +29,4 @@ const Login = ({ title, action, buttonText }) =>
     </form>
   </div>;
 
-export default Login;
+export default LoginForm;
