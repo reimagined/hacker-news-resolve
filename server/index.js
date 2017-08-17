@@ -4,9 +4,12 @@ import passport from 'passport';
 import cookieParser from 'cookie-parser';
 import LocalStrategy from 'passport-local';
 import uuid from 'uuid';
-import authorizationSecret from './authorizationSecret';
 
-export default express => {
+import queries from '../common/read-models';
+
+const authorizationSecret = 'auth-secret';
+
+export const extendExpress = express => {
   express.use(cookieParser());
   express.use(passport.initialize());
   passport.serializeUser((user, done) => done(null, user));
@@ -89,11 +92,11 @@ export default express => {
   );
 };
 
-export function accessDenied(req, res) {
+export const accessDenied = (req, res) => {
   res.status(401).send('401 Unauthorized');
-}
+};
 
-export function authorizationMiddleware(req, res, next) {
+export const authorizationMiddleware = (req, res, next) => {
   try {
     const user = jwt.verify(
       req.cookies.authorizationToken,
@@ -107,4 +110,30 @@ export function authorizationMiddleware(req, res, next) {
   } catch (error) {
     accessDenied(req, res);
   }
-}
+};
+
+export const initialState = async (executeQuery, { cookies }) => {
+  let user;
+  try {
+    user = (await executeQuery('users'))[
+      jwt.verify(cookies.authorizationToken, authorizationSecret).id
+    ];
+  } catch (error) {
+    user = {};
+  }
+
+  const resultOfQueries = await Promise.all(
+    queries.map(async ({ name }) => {
+      const state = await executeQuery(name);
+      return { state, name };
+    })
+  );
+
+  return resultOfQueries.reduce(
+    (result, { state, name }) => {
+      result[name] = state;
+      return result;
+    },
+    { user }
+  );
+};

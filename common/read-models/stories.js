@@ -22,7 +22,7 @@ export default {
   name: 'stories',
   initialState: Immutable({}),
   eventHandlers: {
-    [STORY_CREATED]: (state: any, event: StoriesCreated) => {
+    [STORY_CREATED]: (state: any, event: StoryCreated) => {
       const type = !event.payload.link
         ? 'ask'
         : /^(Show HN)/.test(event.payload.title) ? 'show' : 'story';
