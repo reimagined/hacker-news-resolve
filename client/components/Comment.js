@@ -66,7 +66,7 @@ class Comment extends Component {
               {root &&
                 <span>
                   {' '}| on:{' '}
-                  <Link to={`/story?id=${root.id}`}>{root.title}</Link>
+                  <Link to={`/storyDetails?id=${root.id}`}>{root.title}</Link>
                 </span>}
             </div>
             {this.state.expanded &&

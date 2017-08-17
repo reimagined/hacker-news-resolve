@@ -32,7 +32,7 @@ const Stories = props => {
             const item = props.stories[id];
             const type = item.type;
 
-            const link = type === 'ask' ? `/story?id=${id}` : item.link;
+            const link = type === 'ask' ? `/storyDetails?id=${id}` : item.link;
             const title = type === 'ask' ? `Ask HN: ${item.title}` : item.title;
 
             const user = props.users[item.userId];

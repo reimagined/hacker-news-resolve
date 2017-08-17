@@ -9,7 +9,7 @@ import { withRouter } from 'react-router';
 import Comments from './Comments';
 import Submit from './Submit';
 import Login from '../components/Login';
-import Story from './Story';
+import StoryDetails from './StoryDetails';
 import Error from '../components/Error';
 import Reply from './Reply';
 import Stories from './Stories';
@@ -82,7 +82,7 @@ const RootComponent = ({ user, logout, match }) =>
           <Route exact path="/login" component={Login} />
           <Route exact path="/user" component={User} />
           <Route exact path="/error" component={Error} />
-          <Route path="/story" component={Story} />
+          <Route path="/storyDetails" component={StoryDetails} />
           <Route path="/reply" component={Reply} />
           <Route component={Stories} />
         </Switch>

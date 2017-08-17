@@ -7,9 +7,9 @@ import actions from '../actions/comments';
 import Comment from '../components/Comment';
 import ChildrenComments from '../components/ChildrenComments';
 import getCommentsCount from '../helpers/getCommentsCount';
-import '../styles/story.css';
+import '../styles/storyDetails.css';
 
-class Story extends Component {
+class StoryDetails extends Component {
   constructor(props) {
     super(props);
 
@@ -31,10 +31,10 @@ class Story extends Component {
     const { id } = queryString.parse(this.props.location.search);
     const story = this.props.stories[id];
     const userName = this.props.users[story.userId].name;
-    const link = story.type === 'ask' ? `/story?id=${id}` : story.link;
+    const link = story.type === 'ask' ? `/storyDetails?id=${id}` : story.link;
 
     return (
-      <div className="story">
+      <div className="storyDetails">
         <Item
           id={id}
           title={story.title}
@@ -44,11 +44,11 @@ class Story extends Component {
           user={userName}
           commentCount={getCommentsCount(this.props.comments, story.comments)}
         />
-        <div className="story__content">
-          <div className="story__title">
+        <div className="storyDetails__content">
+          <div className="storyDetails__title">
             {story.text}
           </div>
-          <div className="story__textarea">
+          <div className="storyDetails__textarea">
             <textarea
               name="text"
               rows="6"
@@ -109,4 +109,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Story);
+export default connect(mapStateToProps, mapDispatchToProps)(StoryDetails);

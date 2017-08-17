@@ -65,7 +65,7 @@ const Comment = ({ storyId, commentCount }) => {
     <span>
       <span>
         |{' '}
-        <Link to={`/story?id=${storyId}`}>
+        <Link to={`/storyDetails?id=${storyId}`}>
           {commentCount > 0
             ? `${commentCount} ${plur('comment', commentCount)}`
             : 'discuss'}

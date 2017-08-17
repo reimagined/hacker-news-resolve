@@ -28,7 +28,7 @@ const Comments = props => {
 
         const parent =
           parentId === rootId
-            ? `/story?id=${parentId}`
+            ? `/storyDetails?id=${parentId}`
             : `/comment?id=${parentId}`;
 
         const root = props.stories[rootId];
