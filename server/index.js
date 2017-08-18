@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import LocalStrategy from 'passport-local';
 import uuid from 'uuid';
 
-export const authorizationSecret = 'auth-secret';
+import { authorizationSecret } from '../common/constants';
 
 export const extendExpress = express => {
   express.use(cookieParser());

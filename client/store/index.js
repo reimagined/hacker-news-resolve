@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { sendCommandMiddleware } from 'resolve-redux';
 import createSagaMiddleware from 'redux-saga';
@@ -21,7 +20,23 @@ export default initialState => {
   if (isClient) {
     middleware.push(
       sendCommandMiddleware({
-        sendCommand: command => axios.post('/api/commands', command)
+        sendCommand: async command => {
+          const response = await fetch('/api/commands', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin',
+            body: JSON.stringify(command)
+          });
+
+          if (response.ok) {
+            return response.blob();
+          }
+
+          const text = await response.text();
+
+          // eslint-disable-next-line no-console
+          return console.error('Error due command sent: ', text);
+        }
       }),
       sagaMiddleware
     );
