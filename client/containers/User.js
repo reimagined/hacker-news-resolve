@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
+import { Link } from 'react-router-dom';
 
 export const User = ({ id, name, createdAt, karma }) => {
   if (!id) {
@@ -42,6 +43,9 @@ export const User = ({ id, name, createdAt, karma }) => {
           </tr>
         </tbody>
       </table>
+      <div>
+        <Link to="/changepw">change password</Link>
+      </div>
     </div>
   );
 };
