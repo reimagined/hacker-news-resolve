@@ -63,9 +63,15 @@ export const RootComponent = ({ user, logout, match }) =>
         </NavLink>
         <div style={{ float: 'right' }}>
           {user && user.id
-            ? <NavLink to="/" activeClassName="active" onClick={logout}>
-                logout
-              </NavLink>
+            ? <div>
+                <NavLink to={`/user?id=${user.id}`} activeClassName="active">
+                  {user.name}
+                </NavLink>
+                {' | '}
+                <NavLink to="/" activeClassName="active" onClick={logout}>
+                  logout
+                </NavLink>
+              </div>
             : <NavLink to="/login" activeClassName="active">
                 login
               </NavLink>}
