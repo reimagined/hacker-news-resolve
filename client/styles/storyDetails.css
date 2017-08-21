@@ -2,11 +2,18 @@
   padding: 1em 1.25em 0 1.25em;
   margin-bottom: 1em;
 }
-.storyDetails__title {
+.storyDetails__text {
   color: #666;
   font-size:14px;
 }
 .storyDetails__textarea {
     margin-top: 10px;
     margin-bottom: 10px;
-  }
+}
+.storyDetails__text {
+  padding: 0 1.25em 0 1.25em;
+}
+.storyDetails .story__content {
+  padding: 1em 1.25em 0 1.25em;
+  margin-bottom: 1em;
+}

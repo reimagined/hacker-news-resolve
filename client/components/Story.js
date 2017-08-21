@@ -15,14 +15,19 @@ export const Title = ({ title, link, onUpvote, voted, loggedIn }) => {
 
   if (isExternalLink(link)) {
     return (
-      <div className="story__title">
-        {votearrowIsVisible && // eslint-disable-next-line jsx-a11y/anchor-has-content
+      <div>
+        {(votearrowIsVisible && // eslint-disable-next-line jsx-a11y/anchor-has-content
           <span
             onClick={onUpvote}
             className="story__votearrow"
             title="upvote"
-          />}
-        <a href={link}>{title}</a>{' '}
+          />) ||
+          <span className="story__votearrow--hidden" />}
+        <span className="story__title">
+          <a href={link}>
+            {title}
+          </a>
+        </span>{' '}
         <span className="story__host">({getHostname(link)})</span>
       </div>
     );

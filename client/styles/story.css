@@ -1,7 +1,5 @@
-.story__content,
-.story--loading {
-  padding: 1em 1.25em 0 1.25em;
-  margin-bottom: 1em;
+.story__content {
+  padding: 0 1.25em 0 0;
 }
 .story__title {
   color: #666;
@@ -23,15 +21,10 @@
 .story__title a:visited {
   color: #666;
 }
-.story__textarea {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
 .story__meta {
   color: #666;
-}
-.story > .story__meta {
-  margin-bottom: 1em;
+  font-size: 8pt;
+  padding-left: 1.25em;
 }
 .story__meta a {
   text-decoration: none;
@@ -48,28 +41,26 @@
 .story__by a {
   font-weight: bold;
 }
-.story__text {
-  margin-top: 1em;
-}
 .story__poll {
   margin-top: 1em;
   padding-left: 2.5em;
 }
-.story__votearrow {
+.story__votearrow, .story__votearrow--hidden {
   cursor: pointer;
   width:      10px;
   height:     10px;
   border:     0px;
   margin:     3px 2px 2px;
   display: inline-block;
-  background: url("/static/img/grayarrow.gif")
-  no-repeat;
+  background: url("/static/img/grayarrow.gif") no-repeat;  
 }
-
+.story__votearrow--hidden {
+  cursor: auto !important; 
+  background: none !important;
+}
 .item__unvote {
   cursor: pointer;
 }
-
 .item__unvote:hover {
   text-decoration: underline;
   cursor: pointer;

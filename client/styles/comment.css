@@ -32,7 +32,6 @@
 .comment__content, .comment--loading {
   padding-right: 1.25em;
   padding-top: .65em;
-  padding-bottom: .65em;
 }
 .comment--level0 .comment__content, .comment--level0.comment--loading { padding-left: 1.25em; }
 .comment--level1 .comment__content, .comment--level1.comment--loading { padding-left: 3.75em; }

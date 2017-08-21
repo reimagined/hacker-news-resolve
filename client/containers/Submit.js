@@ -36,7 +36,7 @@ export class Submit extends Component {
         <table border="0">
           <tbody>
             <tr>
-              <td>Title</td>
+              <td>title</td>
               <td>
                 <input
                   type="text"
@@ -46,7 +46,7 @@ export class Submit extends Component {
               </td>
             </tr>
             <tr>
-              <td>Url</td>
+              <td>url</td>
               <td>
                 <input
                   size="50"
@@ -63,7 +63,7 @@ export class Submit extends Component {
               </td>
             </tr>
             <tr>
-              <td>Text</td>
+              <td>text</td>
               <td>
                 <textarea
                   name="text"
@@ -81,7 +81,7 @@ export class Submit extends Component {
             <tr>
               <td />
               <td>
-                <button onClick={() => this.handleSubmit()}>Submit</button>
+                <button onClick={() => this.handleSubmit()}>submit</button>
               </td>
             </tr>
             <tr>
