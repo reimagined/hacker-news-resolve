@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 import queryString from 'query-string';
+import sanitizer from 'sanitizer';
 
 import Story from '../components/Story';
 import actions from '../actions/comments';
@@ -46,9 +47,10 @@ export class StoryDetails extends Component {
           onUnvote={() => this.props.onUnvote(id, this.props.user.id)}
           loggedIn={!!this.props.user.id}
         />
-        <div className="storyDetails__text">
-          {story.text}
-        </div>
+        <div
+          className="storyDetails__text"
+          dangerouslySetInnerHTML={{ __html: sanitizer.sanitize(story.text) }}
+        />
         <div className="storyDetails__content">
           <div className="storyDetails__textarea">
             <textarea

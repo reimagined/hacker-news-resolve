@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import sanitizer from 'sanitizer';
 
 import '../styles/comment.css';
 
@@ -65,9 +66,11 @@ class Comment extends Component {
             </div>
             {this.state.expanded &&
               <div className="comment__text">
-                <div>
-                  {content}
-                </div>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: sanitizer.sanitize(content)
+                  }}
+                />
                 <p>
                   {showReply && <Link to={`/reply?id=${id}`}>reply</Link>}
                 </p>
