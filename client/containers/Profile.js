@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
 import { Link } from 'react-router-dom';
+import '../styles/profile.css';
 
 export const User = ({ id, name, createdAt, karma }) => {
   if (!id) {
@@ -14,15 +15,9 @@ export const User = ({ id, name, createdAt, karma }) => {
   }
 
   return (
-    <div>
+    <div className="profile__content">
       <table>
         <tbody>
-          <tr>
-            <td>id:</td>
-            <td>
-              {id}
-            </td>
-          </tr>
           <tr>
             <td>name:</td>
             <td>
@@ -30,9 +25,9 @@ export const User = ({ id, name, createdAt, karma }) => {
             </td>
           </tr>
           <tr>
-            <td>createdAt:</td>
+            <td>created:</td>
             <td>
-              {createdAt}
+              {new Date(createdAt).toLocaleString('en-US')}
             </td>
           </tr>
           <tr>

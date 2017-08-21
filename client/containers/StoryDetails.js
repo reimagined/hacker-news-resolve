@@ -5,6 +5,7 @@ import queryString from 'query-string';
 
 import Story from '../components/Story';
 import actions from '../actions/comments';
+import storyActions from '../actions/stories';
 import Comment from '../components/Comment';
 import ChildrenComments from '../components/ChildrenComments';
 import getCommentsCount from '../helpers/getCommentsCount';
@@ -27,7 +28,7 @@ export class StoryDetails extends Component {
   render() {
     const { id } = queryString.parse(this.props.location.search);
     const story = this.props.stories[id];
-    const userName = this.props.users[story.userId].name;
+    const user = this.props.users[story.userId];
     const link = story.type === 'ask' ? `/storyDetails?id=${id}` : story.link;
 
     return (
@@ -36,15 +37,19 @@ export class StoryDetails extends Component {
           id={id}
           title={story.title}
           link={link}
-          date={new Date(story.createDate)}
           score={story.voted.length}
-          user={userName}
+          voted={story.voted.includes(this.props.user.id)}
+          user={user}
+          date={new Date(story.createDate)}
           commentCount={getCommentsCount(this.props.comments, story.comments)}
+          onUpvote={() => this.props.onUpvote(id, this.props.user.id)}
+          onUnvote={() => this.props.onUnvote(id, this.props.user.id)}
+          loggedIn={!!this.props.user.id}
         />
+        <div className="storyDetails__text">
+          {story.text}
+        </div>
         <div className="storyDetails__content">
-          <div className="storyDetails__title">
-            {story.text}
-          </div>
           <div className="storyDetails__textarea">
             <textarea
               name="text"
@@ -56,7 +61,7 @@ export class StoryDetails extends Component {
           </div>
           <div>
             <button onClick={() => this.onAddComment(id, this.props.user.id)}>
-              Add comment
+              add comment
             </button>
           </div>
         </div>
@@ -99,6 +104,20 @@ export const mapDispatchToProps = dispatch => {
         actions.createComment(uuid.v4(), {
           text,
           parentId,
+          userId
+        })
+      );
+    },
+    onUpvote(id, userId) {
+      return dispatch(
+        storyActions.upvoteStory(id, {
+          userId
+        })
+      );
+    },
+    onUnvote(id, userId) {
+      return dispatch(
+        storyActions.unvoteStory(id, {
           userId
         })
       );

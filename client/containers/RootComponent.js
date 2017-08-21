@@ -14,7 +14,7 @@ import Error from '../components/Error';
 import Reply from './Reply';
 import Stories from './Stories';
 import Comment from './Comment';
-import User from './User';
+import Profile from './Profile';
 import ChangePassword from './ChangePassword';
 import * as userActions from '../actions/userActions';
 
@@ -87,7 +87,7 @@ export const RootComponent = ({ user, logout, match }) =>
           <Route exact path="/comment" component={Comment} />
           <Route exact path="/submit" component={Submit} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/user" component={User} />
+          <Route exact path="/user" component={Profile} />
           <Route exact path="/changepw" component={ChangePassword} />
           <Route exact path="/error" component={Error} />
           <Route path="/storyDetails" component={StoryDetails} />
