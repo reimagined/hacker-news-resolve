@@ -10,35 +10,38 @@ const isExternalLink = link => link[0] !== '/';
 export const getHostname = link =>
   link.split('.')[0] === 'www' ? link.substr(4) : url.parse(link).hostname;
 
-export const Title = ({ title, link, onUpvote, voted, loggedIn }) => {
-  const votearrowIsVisible = loggedIn && !voted;
+const voteArrow = (visible, onUpvote) => {
+  return visible
+    ? <span onClick={onUpvote} className="story__votearrow" title="upvote" />
+    : <span className="story__votearrow--hidden" />;
+};
 
+const getTitle = ({ title, link }) => {
   if (isExternalLink(link)) {
     return (
-      <div>
-        {(votearrowIsVisible && // eslint-disable-next-line jsx-a11y/anchor-has-content
-          <span
-            onClick={onUpvote}
-            className="story__votearrow"
-            title="upvote"
-          />) ||
-          <span className="story__votearrow--hidden" />}
+      <span>
         <span className="story__title">
           <a href={link}>
             {title}
           </a>
         </span>{' '}
         <span className="story__host">({getHostname(link)})</span>
-      </div>
+      </span>
     );
   }
   return (
-    <div className="story__title">
-      {votearrowIsVisible && // eslint-disable-next-line jsx-a11y/anchor-has-content
-        <span onClick={onUpvote} className="story__votearrow" title="upvote" />}
+    <span className="story__title">
       <Link to={link}>
         {title}
       </Link>
+    </span>
+  );
+};
+export const Title = ({ title, link, onUpvote, voted, loggedIn }) => {
+  return (
+    <div>
+      {voteArrow(loggedIn && !voted, onUpvote)}
+      {getTitle({ title, link })}
     </div>
   );
 };

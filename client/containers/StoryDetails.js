@@ -47,10 +47,11 @@ export class StoryDetails extends Component {
           onUnvote={() => this.props.onUnvote(id, this.props.user.id)}
           loggedIn={!!this.props.user.id}
         />
-        <div
-          className="storyDetails__text"
-          dangerouslySetInnerHTML={{ __html: sanitizer.sanitize(story.text) }}
-        />
+        {story.text &&
+          <div
+            className="storyDetails__text"
+            dangerouslySetInnerHTML={{ __html: sanitizer.sanitize(story.text) }}
+          />}
         <div className="storyDetails__content">
           <div className="storyDetails__textarea">
             <textarea
