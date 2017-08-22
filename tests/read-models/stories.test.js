@@ -185,6 +185,7 @@ describe('read-models', () => {
 
     it('eventHandler "COMMENT_CREATED" should add comment.id to story.comments', () => {
       const parentId = uuid.v4();
+      const commentId = uuid.v4();
 
       const state = stories.initialState.merge({
         [parentId]: {
@@ -192,15 +193,16 @@ describe('read-models', () => {
         }
       });
       const event = {
-        aggregateId: uuid.v4(),
+        aggregateId: parentId,
         payload: {
-          parentId
+          parentId,
+          commentId
         }
       };
 
       const nextState = {
         [parentId]: {
-          comments: [event.aggregateId]
+          comments: [commentId]
         }
       };
 
@@ -237,9 +239,10 @@ describe('read-models', () => {
         }
       });
       const event = {
-        aggregateId: commentId,
+        aggregateId: parentId,
         payload: {
-          parentId
+          parentId,
+          commentId
         }
       };
 

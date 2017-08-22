@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import uuid from 'uuid';
 import queryString from 'query-string';
 
-import actions from '../actions/comments';
+import actions from '../actions/stories';
 import Comment from '../components/Comment';
 import '../styles/reply.css';
 
@@ -12,11 +12,12 @@ export class Reply extends Component {
     text: ''
   };
 
-  onReply(parentId, userId) {
+  onReply(parentId, userId, storyId) {
     this.props.onReply({
       text: this.state.text,
       parentId,
-      userId
+      userId,
+      storyId
     });
     // eslint-disable-next-line no-restricted-globals
     history.back();
@@ -46,7 +47,11 @@ export class Reply extends Component {
               onChange={e => this.setState({ text: e.target.value })}
             />
             <div>
-              <button onClick={() => this.onReply(id, user.id)}>Reply</button>
+              <button
+                onClick={() => this.onReply(id, user.id, comment.storyId)}
+              >
+                Reply
+              </button>
             </div>
           </div>
         </div>
@@ -57,12 +62,13 @@ export class Reply extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onReply({ parentId, text, userId }) {
+    onReply({ parentId, text, userId, storyId }) {
       return dispatch(
-        actions.createComment(uuid.v4(), {
+        actions.createComment(storyId, {
           text,
           parentId,
-          userId
+          userId,
+          commentId: uuid.v4()
         })
       );
     }

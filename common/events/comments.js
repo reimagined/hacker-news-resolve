@@ -12,7 +12,8 @@ export type CommentCreated = {
   payload: {
     userId: string,
     text: string,
-    parentId: string
+    parentId: string,
+    commentId: string
   }
 };
 
@@ -21,7 +22,8 @@ export type CommentUpdated = {
   timestamp: string,
   payload: {
     userId: string,
-    text: string
+    text: string,
+    commentId: string
   }
 };
 
@@ -29,7 +31,8 @@ export type CommentRemoved = {
   aggregateId: string,
   timestamp: string,
   payload: {
-    userId: string
+    userId: string,
+    commentId: string
   }
 };
 

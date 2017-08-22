@@ -5,7 +5,15 @@ import stories from '../../common/aggregates/stories';
 import events from '../../common/events';
 import { Event } from '../../common/helpers';
 
-const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, STORY_DELETED } = events;
+const {
+  STORY_CREATED,
+  STORY_UPVOTED,
+  STORY_UNVOTED,
+  STORY_DELETED,
+  COMMENT_CREATED,
+  COMMENT_UPDATED,
+  COMMENT_REMOVED
+} = events;
 
 describe('aggregates', () => {
   describe('stories', () => {
@@ -294,7 +302,8 @@ describe('aggregates', () => {
       const nextState = {
         createdAt,
         createdBy: userId,
-        voted: []
+        voted: [],
+        comments: {}
       };
 
       expect(stories.eventHandlers[STORY_CREATED](state, event)).toEqual(
@@ -348,6 +357,316 @@ describe('aggregates', () => {
       };
 
       expect(stories.eventHandlers[STORY_UNVOTED](state, event)).toEqual(
+        nextState
+      );
+    });
+  });
+
+  describe('comments', () => {
+    it('command "createComment" should create an event to create a comment', () => {
+      const text = 'SomeText';
+      const parentId = uuid.v4();
+      const userId = uuid.v4();
+
+      const state = {
+        createdAt: Date.now()
+      };
+
+      const command = {
+        payload: {
+          text,
+          parentId,
+          userId
+        }
+      };
+
+      const event = stories.commands.createComment(state, command);
+
+      expect(event).toEqual(
+        new Event(COMMENT_CREATED, {
+          text,
+          parentId,
+          userId
+        })
+      );
+    });
+
+    it('command "createComment" should throw Error "Aggregate is not exist"', () => {
+      const text = 'SomeText';
+      const userId = uuid.v4();
+
+      const state = {};
+      const command = {
+        payload: {
+          text,
+          userId
+        }
+      };
+
+      expect(() => stories.commands.updateComment(state, command)).toThrowError(
+        'Aggregate is not exist'
+      );
+    });
+
+    it('command "createComment" should throw Error "Text is required"', () => {
+      const text = undefined;
+      const parentId = uuid.v4();
+      const userId = uuid.v4();
+
+      const state = {
+        createdAt: Date.now()
+      };
+
+      const command = {
+        payload: {
+          text,
+          parentId,
+          userId
+        }
+      };
+
+      expect(() => stories.commands.createComment(state, command)).toThrowError(
+        'Text is required'
+      );
+    });
+
+    it('command "createComment" should throw Error "ParentId is required"', () => {
+      const text = 'SomeText';
+      const parentId = undefined;
+      const userId = uuid.v4();
+
+      const state = {
+        createdAt: Date.now()
+      };
+
+      const command = {
+        payload: {
+          text,
+          parentId,
+          userId
+        }
+      };
+
+      expect(() => stories.commands.createComment(state, command)).toThrowError(
+        'ParentId is required'
+      );
+    });
+
+    it('command "createComment" should throw Error "UserId is required"', () => {
+      const text = 'SomeText';
+      const parentId = uuid.v4();
+      const userId = undefined;
+
+      const state = {
+        createdAt: Date.now()
+      };
+
+      const command = {
+        payload: {
+          text,
+          parentId,
+          userId
+        }
+      };
+
+      expect(() => stories.commands.createComment(state, command)).toThrowError(
+        'UserId is required'
+      );
+    });
+
+    it('command "updateComment" should create an event to update the comment', () => {
+      const text = 'SomeText';
+      const userId = uuid.v4();
+
+      const state = {
+        createdAt: Date.now(),
+        createdBy: userId
+      };
+      const command = {
+        payload: {
+          text,
+          userId
+        }
+      };
+
+      const event = stories.commands.updateComment(state, command);
+
+      expect(event).toEqual(
+        new Event(COMMENT_UPDATED, {
+          text
+        })
+      );
+    });
+
+    it('command "updateComment" should throw Error "Aggregate is not exist"', () => {
+      const text = 'SomeText';
+      const userId = uuid.v4();
+
+      const state = {};
+      const command = {
+        payload: {
+          text,
+          userId
+        }
+      };
+
+      expect(() => stories.commands.updateComment(state, command)).toThrowError(
+        'Aggregate is not exist'
+      );
+    });
+
+    it('command "updateComment" should throw Error "Permission denied"', () => {
+      const text = 'SomeText';
+      const userId = uuid.v4();
+
+      const state = {
+        createdAt: Date.now(),
+        createdBy: uuid.v4()
+      };
+      const command = {
+        payload: {
+          text,
+          userId
+        }
+      };
+
+      expect(() => stories.commands.updateComment(state, command)).toThrowError(
+        'Permission denied'
+      );
+    });
+
+    it('command "updateComment" should throw Error "Text is required"', () => {
+      const text = undefined;
+      const userId = uuid.v4();
+
+      const state = {
+        createdAt: Date.now(),
+        createdBy: userId
+      };
+      const command = {
+        payload: {
+          text,
+          userId
+        }
+      };
+
+      expect(() => stories.commands.updateComment(state, command)).toThrowError(
+        'Text is required'
+      );
+    });
+
+    it('command "removeComment" should create an event to remove the comment', () => {
+      const userId = uuid.v4();
+      const commentId = uuid.v4();
+
+      const state = {
+        createdAt: Date.now(),
+        createdBy: userId
+      };
+
+      const command = {
+        payload: {
+          userId,
+          commentId
+        }
+      };
+
+      const event = stories.commands.removeComment(state, command);
+
+      expect(event).toEqual(new Event(COMMENT_REMOVED, { commentId }));
+    });
+
+    it('command "removeComment" should throw Error "Aggregate is not exist"', () => {
+      const userId = uuid.v4();
+
+      const state = {};
+      const command = {
+        payload: {
+          userId
+        }
+      };
+
+      expect(() => stories.commands.removeComment(state, command)).toThrowError(
+        'Aggregate is not exist'
+      );
+    });
+
+    it('command "removeComment" should throw Error "Permission denied"', () => {
+      const userId = uuid.v4();
+
+      const state = {
+        createdAt: Date.now(),
+        createdBy: uuid.v4()
+      };
+      const command = {
+        payload: {
+          userId
+        }
+      };
+
+      expect(() => stories.commands.removeComment(state, command)).toThrowError(
+        'Permission denied'
+      );
+    });
+
+    it('eventHandler "COMMENT_CREATED" should set new comment to state', () => {
+      const createdAt = Date.now();
+      const userId = uuid.v4();
+      const commentId = uuid.v4();
+
+      const state = stories.initialState;
+      const event = {
+        timestamp: createdAt,
+        payload: {
+          userId,
+          commentId
+        }
+      };
+      const nextState = {
+        comments: {
+          [commentId]: {
+            createdAt,
+            createdBy: userId
+          }
+        }
+      };
+
+      expect(stories.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
+        nextState
+      );
+    });
+
+    it('eventHandler "COMMENT_REMOVED" should set removedAt to state', () => {
+      const createdAt = Date.now();
+      const removedAt = Date.now() + 1;
+      const userId = uuid.v4();
+      const commentId = uuid.v4();
+
+      const state = stories.initialState.merge({
+        comments: {
+          [commentId]: {
+            createdAt,
+            createdBy: userId
+          }
+        }
+      });
+      const event = {
+        timestamp: removedAt,
+        payload: {
+          commentId
+        }
+      };
+      const nextState = {
+        comments: {
+          [commentId]: {
+            createdAt,
+            createdBy: userId,
+            removedAt
+          }
+        }
+      };
+
+      expect(stories.eventHandlers[COMMENT_REMOVED](state, event)).toEqual(
         nextState
       );
     });

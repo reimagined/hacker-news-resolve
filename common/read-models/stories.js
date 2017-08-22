@@ -54,26 +54,26 @@ export default {
       state.without(event.aggregateId),
 
     [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
-      const { parentId } = event.payload;
+      const { parentId, commentId } = event.payload;
 
       if (!state[parentId]) {
         return state;
       }
 
       return state.updateIn([parentId, 'comments'], comments =>
-        comments.concat(event.aggregateId)
+        comments.concat(commentId)
       );
     },
 
     [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
-      const { parentId } = event.payload;
+      const { parentId, commentId } = event.payload;
 
       if (!state[parentId]) {
         return state;
       }
 
       return state.updateIn([parentId, 'comments'], comments =>
-        comments.filter(id => id !== event.aggregateId)
+        comments.filter(id => id !== commentId)
       );
     }
   }

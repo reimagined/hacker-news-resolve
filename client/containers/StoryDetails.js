@@ -5,7 +5,7 @@ import queryString from 'query-string';
 import sanitizer from 'sanitizer';
 
 import Story from '../components/Story';
-import actions from '../actions/comments';
+import actions from '../actions/stories';
 import storyActions from '../actions/stories';
 import Comment from '../components/Comment';
 import ChildrenComments from '../components/ChildrenComments';
@@ -74,6 +74,7 @@ export class StoryDetails extends Component {
 
             return (
               <Comment
+                key={commentId}
                 replies={comment.replies}
                 id={comment.id}
                 content={comment.text}
@@ -104,10 +105,11 @@ export const mapDispatchToProps = dispatch => {
   return {
     onAddComment({ parentId, text, userId }) {
       return dispatch(
-        actions.createComment(uuid.v4(), {
+        actions.createComment(parentId, {
           text,
           parentId,
-          userId
+          userId,
+          commentId: uuid.v4()
         })
       );
     },
