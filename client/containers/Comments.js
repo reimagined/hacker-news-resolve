@@ -35,6 +35,7 @@ export const Comments = props => {
 
         return (
           <Comment
+            key={id}
             replies={comment.replies}
             id={comment.id}
             content={comment.text}
