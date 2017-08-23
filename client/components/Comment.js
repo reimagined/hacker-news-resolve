@@ -44,7 +44,10 @@ class Comment extends Component {
                 [{this.state.expanded ? '-' : '+'}]
               </span>
               <span>
-                {' '}<Link className="comment__user" to={`/user/${user}`}>
+                {' '}<Link
+                  className="comment__link comment__user"
+                  to={`/user/${user}`}
+                >
                   {user}
                 </Link>
               </span>
@@ -52,16 +55,27 @@ class Comment extends Component {
                 {' '}<time>{date.toLocaleString('en-US')}</time>
               </span>
               <span>
-                {' '}| <Link to={`/comment?id=${id}`}>link</Link>
+                {' '}|{' '}
+                <Link className="comment__link" to={`/comment?id=${id}`}>
+                  link
+                </Link>
               </span>
               {parent &&
                 <span>
-                  {' '}| <Link to={parent}>parent</Link>
+                  {' '}|{' '}
+                  <Link className="comment__link" to={parent}>
+                    parent
+                  </Link>
                 </span>}
               {root &&
                 <span>
                   {' '}| on:{' '}
-                  <Link to={`/storyDetails?id=${root.id}`}>{root.title}</Link>
+                  <Link
+                    className="comment__link"
+                    to={`/storyDetails?id=${root.id}`}
+                  >
+                    {root.title}
+                  </Link>
                 </span>}
             </div>
             {this.state.expanded &&
@@ -72,7 +86,10 @@ class Comment extends Component {
                   }}
                 />
                 <p>
-                  {showReply && <Link to={`/reply?id=${id}`}>reply</Link>}
+                  {showReply &&
+                    <Link className="comment__reply" to={`/reply?id=${id}`}>
+                      reply
+                    </Link>}
                 </p>
               </div>}
           </div>

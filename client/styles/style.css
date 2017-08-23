@@ -11,10 +11,4 @@ img {
 pre {
   white-space: pre-wrap;
 }
-span.control {
-  cursor: pointer;
-}
-span.control:hover {
-  text-decoration: underline;
-}
 

@@ -2,70 +2,53 @@
     margin-bottom: .75em;
 }
 
-.comment--new > .comment__content {
-  background-color: #ffffde;
-}
-/* Highlights a comment and its descendants on hover -- too distracting?
-.comment:hover > .comment__content {
-  background-color: #fff;
-}
-*/
 .comment__meta {
   color: #666;
-  margin-bottom: .5em
+  margin-bottom: .5em;
 }
-.comment__meta a {
+
+.comment__link {
   text-decoration: none;
   color: inherit;
 }
-.comment__meta a:hover {
+.comment__link:hover {
   text-decoration: underline;
 }
-.comment__meta em {
-  font-style: normal;
-  background-color: #ffffde;
-  color: #000;
-}
+
 .comment__user {
   font-weight: bold;
 }
-.comment__content, .comment--loading {
+.comment__content {
   padding-right: 1.25em;
   padding-top: .65em;
 }
-.comment--level0 .comment__content, .comment--level0.comment--loading { padding-left: 1.25em; }
-.comment--level1 .comment__content, .comment--level1.comment--loading { padding-left: 3.75em; }
-.comment--level2 .comment__content, .comment--level2.comment--loading { padding-left: 6.25em; }
-.comment--level3 .comment__content, .comment--level3.comment--loading { padding-left: 8.75em; }
-.comment--level4 .comment__content, .comment--level4.comment--loading { padding-left: 11.25em; }
-.comment--level5 .comment__content, .comment--level5.comment--loading { padding-left: 13.75em; }
-.comment--level6 .comment__content, .comment--level6.comment--loading { padding-left: 16.25em; }
-.comment--level7 .comment__content, .comment--level7.comment--loading { padding-left: 18.75em; }
-.comment--level8 .comment__content, .comment--level8.comment--loading { padding-left: 21.25em; }
-.comment--level9 .comment__content, .comment--level9.comment--loading { padding-left: 23.75em; }
-.comment--level10 .comment__content, .comment--level10.comment--loading { padding-left: 26.25em; }
-.comment--level11 .comment__content, .comment--level11.comment--loading { padding-left: 28.75em; }
-.comment--level12 .comment__content, .comment--level12.comment--loading { padding-left: 31.25em; }
-.comment--level13 .comment__content, .comment--level13.comment--loading { padding-left: 33.75em; }
-.comment--level14 .comment__content, .comment--level14.comment--loading { padding-left: 36.25em; }
-.comment--level15 .comment__content, .comment--level15.comment--loading { padding-left: 38.75em; }
+.comment--level0 .comment__content { padding-left: 1.25em; }
+.comment--level1 .comment__content { padding-left: 3.75em; }
+.comment--level2 .comment__content { padding-left: 6.25em; }
+.comment--level3 .comment__content { padding-left: 8.75em; }
+.comment--level4 .comment__content { padding-left: 11.25em; }
+.comment--level5 .comment__content { padding-left: 13.75em; }
+.comment--level6 .comment__content { padding-left: 16.25em; }
+.comment--level7 .comment__content { padding-left: 18.75em; }
+.comment--level8 .comment__content { padding-left: 21.25em; }
+.comment--level9 .comment__content { padding-left: 23.75em; }
+.comment--level10 .comment__content { padding-left: 26.25em; }
+.comment--level11 .comment__content { padding-left: 28.75em; }
+.comment--level12 .comment__content { padding-left: 31.25em; }
+.comment--level13 .comment__content { padding-left: 33.75em; }
+.comment--level14 .comment__content { padding-left: 36.25em; }
+.comment--level15 .comment__content { padding-left: 38.75em; }
 
 .comment__collapse {
   cursor: pointer;
 }
-.comment__text,
-.comment__text a {
+.comment__text {
   color: #000;
 }
-.comment__text a:visited {
-  color: #666;
+.comment__reply {
+  color: #000;
 }
 .comment__text p:last-child, .comment__text pre:last-child {
   margin-bottom: 0;
 }
-.comment--dead > .comment__content > .comment__text {
-  color: #ddd !important;
-}
-.comment--error .comment__meta {
-  color: #f33;
-}
+

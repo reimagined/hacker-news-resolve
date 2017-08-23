@@ -37,43 +37,80 @@ export const RootComponent = ({ user, logout, match }) =>
     </Helmet>
     <div className="app__wrap">
       <div className="app__header">
-        <Link to="/" className="app__homelinkicon">
+        <Link to="/" className="app__logo">
           <img src="/static/img/logo.png" width="16" height="16" alt="" />
         </Link>{' '}
-        <Link to="/" className="app__homelink">
+        <Link
+          className="app__link app__homelink"
+          to="/"
+          activeClassName="app__link--active"
+        >
           Resolve HN
         </Link>{' '}
-        <NavLink to="/newest" activeClassName="active">
+        <NavLink
+          className="app__link"
+          to="/newest"
+          activeClassName="app__link--active"
+        >
           new
         </NavLink>
         {' | '}
-        <NavLink to="/comments" activeClassName="active">
+        <NavLink
+          className="app__link"
+          to="/comments"
+          activeClassName="app__link--active"
+        >
           comments
         </NavLink>
         {' | '}
-        <NavLink to="/show" activeClassName="active">
+        <NavLink
+          className="app__link"
+          to="/show"
+          activeClassName="app__link--active"
+        >
           show
         </NavLink>
         {' | '}
-        <NavLink to="/ask" activeClassName="active">
+        <NavLink
+          className="app__link"
+          to="/ask"
+          activeClassName="app__link--active"
+        >
           ask
         </NavLink>
         {' | '}
-        <NavLink to="/submit" activeClassName="active">
+        <NavLink
+          className="app__link"
+          to="/submit"
+          activeClassName="app__link--active"
+        >
           submit
         </NavLink>
         <div style={{ float: 'right' }}>
           {user && user.id
             ? <div>
-                <NavLink to={`/user?id=${user.id}`} activeClassName="active">
+                <NavLink
+                  className="app__link"
+                  to={`/user?id=${user.id}`}
+                  activeClassName="app__link--active"
+                >
                   {user.name}
                 </NavLink>
                 {' | '}
-                <NavLink to="/" activeClassName="active" onClick={logout}>
+                <NavLink
+                  className="app__link"
+                  to="/"
+                  activeClassName="app__link--active"
+                  onClick={logout}
+                >
                   logout
                 </NavLink>
               </div>
-            : <NavLink to="/login" activeClassName="active">
+            : <NavLink
+                className="app__link"
+                to="/login"
+                activeClassName="app__link--active"
+              >
                 login
               </NavLink>}
         </div>
@@ -96,7 +133,10 @@ export const RootComponent = ({ user, logout, match }) =>
         </Switch>
       </div>
       <div className="app__footer">
-        <a href="https://github.com/reimagined/hacker-news-demo">
+        <a
+          className="app__footer-link"
+          href="https://github.com/reimagined/hacker-news-demo"
+        >
           reimagined/hacker-news-demo
         </a>
       </div>

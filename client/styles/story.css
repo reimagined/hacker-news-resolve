@@ -11,14 +11,15 @@
   margin-top: 1em;
   margin-bottom: .5em;
 }
-.story__title a {
+.story__title-link {
   text-decoration: none;
   color: #000;
 }
-.story__title a:hover {
+.story__title-link:hover {
   text-decoration: underline;
 }
-.story__title a:visited {
+
+.story__title-link:visited {
   color: #666;
 }
 .story__meta {
@@ -26,25 +27,18 @@
   font-size: 8pt;
   padding-left: 1.25em;
 }
-.story__meta a {
+.story__meta-link {
   text-decoration: none;
   color: inherit;
 }
-.story__meta a:hover {
+.story__meta-link:hover {
   text-decoration: underline;
 }
-.story__meta em {
-  font-style: normal;
-  background-color: #ffffde;
-  color: #000;
-}
-.story__by a {
+
+.story__by {
   font-weight: bold;
 }
-.story__poll {
-  margin-top: 1em;
-  padding-left: 2.5em;
-}
+
 .story__votearrow, .story__votearrow--hidden {
   cursor: pointer;
   width:      10px;
@@ -52,10 +46,11 @@
   border:     0px;
   margin:     3px 2px 2px;
   display: inline-block;
-  background: url("/static/img/grayarrow.gif") no-repeat;  
+  background: url("/static/img/grayarrow.gif") no-repeat;
 }
+
 .story__votearrow--hidden {
-  cursor: auto !important; 
+  cursor: auto !important;
   background: none !important;
 }
 .item__unvote {
