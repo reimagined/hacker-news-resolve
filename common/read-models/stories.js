@@ -23,18 +23,22 @@ export default {
   initialState: Immutable({}),
   eventHandlers: {
     [STORY_CREATED]: (state: any, event: StoryCreated) => {
-      const type = !event.payload.link
-        ? 'ask'
-        : /^(Show HN)/.test(event.payload.title) ? 'show' : 'story';
+      const {
+        aggregateId,
+        timestamp,
+        payload: { title, link, userId, text }
+      } = event;
 
-      return state.set(event.aggregateId, {
-        id: event.aggregateId,
+      const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story';
+
+      return state.set(aggregateId, {
+        id: aggregateId,
         type,
-        title: event.payload.title,
-        text: event.payload.text,
-        userId: event.payload.userId,
-        createDate: event.timestamp,
-        link: event.payload.link,
+        title,
+        text,
+        userId,
+        createDate: timestamp,
+        link,
         comments: [],
         commentsCount: 0,
         voted: []

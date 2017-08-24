@@ -10,19 +10,20 @@ export default {
   initialState: Immutable({}),
   eventHandlers: {
     [USER_CREATED]: (state: any, event: UserCreated) => {
-      return state.set(event.aggregateId, {
-        name: event.payload.name,
-        passwordHash: event.payload.passwordHash,
-        id: event.aggregateId,
-        createdAt: event.timestamp,
+      const { aggregateId, timestamp, payload: { name, passwordHash } } = event;
+
+      return state.set(aggregateId, {
+        name,
+        passwordHash,
+        id: aggregateId,
+        createdAt: timestamp,
         karma: 0
       });
     },
-    [PASSWORD_CHANGED]: (state: any, event: PasswordChanged) => {
-      return state.setIn(
+    [PASSWORD_CHANGED]: (state: any, event: PasswordChanged) =>
+      state.setIn(
         [event.aggregateId, 'passwordHash'],
         event.payload.newPassword
-      );
-    }
+      )
   }
 };
