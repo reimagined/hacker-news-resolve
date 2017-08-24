@@ -36,6 +36,7 @@ export default {
         createDate: event.timestamp,
         link: event.payload.link,
         comments: [],
+        commentsCount: 0,
         voted: []
       });
     },
@@ -55,12 +56,16 @@ export default {
 
     [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
       const { parentId, commentId } = event.payload;
+      const newState = state.updateIn(
+        [event.aggregateId, 'commentsCount'],
+        count => count + 1
+      );
 
-      if (!state[parentId]) {
-        return state;
+      if (!newState[parentId]) {
+        return newState;
       }
 
-      return state.updateIn([parentId, 'comments'], comments =>
+      return newState.updateIn([parentId, 'comments'], comments =>
         comments.concat(commentId)
       );
     },
@@ -68,11 +73,16 @@ export default {
     [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
       const { parentId, commentId } = event.payload;
 
-      if (!state[parentId]) {
-        return state;
+      const newState = state.updateIn(
+        [event.aggregateId, 'commentsCount'],
+        count => count - 1
+      );
+
+      if (!newState[parentId]) {
+        return newState;
       }
 
-      return state.updateIn([parentId, 'comments'], comments =>
+      return newState.updateIn([parentId, 'comments'], comments =>
         comments.filter(id => id !== commentId)
       );
     }
