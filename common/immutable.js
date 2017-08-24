@@ -79,6 +79,11 @@ function FakeImmutable(state) {
     });
   });
 
+  defineMethod(state, 'merge', function(data) {
+    Object.keys(data).forEach(key => this.set(key, data[key]));
+    return this;
+  });
+
   return state;
 }
 
