@@ -1,11 +1,20 @@
 import Immutable from 'seamless-immutable';
 
-class FakeImmutable {
-  constructor(data) {
-    Object.keys(data).forEach(key => this.set(key, data[key]));
+function defineMethod(object, methodName, method) {
+  Object.defineProperty(object, methodName, {
+    enumerable: false,
+    configurable: false,
+    writable: false,
+    value: method
+  });
+}
+
+function FakeImmutable(state) {
+  if (typeof state !== 'object') {
+    return state;
   }
 
-  get(keys) {
+  defineMethod(state, 'getIn', function(keys) {
     let currentRoot = this;
 
     for (let index in keys) {
@@ -19,14 +28,14 @@ class FakeImmutable {
     }
 
     return currentRoot;
-  }
+  });
 
-  set(key, value) {
+  defineMethod(state, 'set', function(key, value) {
     this[key] = value;
     return this;
-  }
+  });
 
-  setIn(keys, value) {
+  defineMethod(state, 'setIn', function(keys, value) {
     const lastIndex = keys.length - 1;
 
     keys.reduce((currentRoot, key, index) => {
@@ -40,19 +49,19 @@ class FakeImmutable {
     }, this);
 
     return this;
-  }
+  });
 
-  update(key, fn) {
-    const value = FakeImmutable(this.get([key]));
+  defineMethod(state, 'update', function(key, fn) {
+    const value = FakeImmutable(this.getIn([key]));
     return this.set(key, fn(value));
-  }
+  });
 
-  updateIn(keys, fn) {
-    const value = FakeImmutable(this.get(keys));
+  defineMethod(state, 'updateIn', function(keys, fn) {
+    const value = FakeImmutable(this.getIn(keys));
     return this.setIn(keys, fn(value));
-  }
+  });
 
-  without(key) {
+  defineMethod(state, 'without', function(key) {
     if (!Array.isArray(key)) {
       delete this[key];
       return this;
@@ -68,9 +77,9 @@ class FakeImmutable {
       }
       return value;
     });
-  }
+  });
+
+  return state;
 }
 
-export default (typeof window === 'undefined'
-  ? (...args) => new FakeImmutable(...args)
-  : Immutable);
+export default (typeof window === 'undefined' ? FakeImmutable : Immutable);
