@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import sanitizer from 'sanitizer';
+import TimeAgo from 'react-timeago';
 
 import '../styles/comment.css';
 
@@ -49,7 +50,7 @@ class Comment extends Component {
                 </Link>
               </span>
               <span>
-                {' '}<time>{date.toLocaleString('en-US')}</time>
+                {' '}<TimeAgo date={date} />
               </span>
               <span>
                 {' '}| <Link to={`/comment?id=${id}`}>link</Link>

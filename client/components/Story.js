@@ -2,6 +2,7 @@ import React from 'react';
 import url from 'url';
 import { Link } from 'react-router-dom';
 import plur from 'plur';
+import TimeAgo from 'react-timeago';
 
 import '../styles/story.css';
 
@@ -95,7 +96,7 @@ export const Meta = props => {
       {score ? <Score score={score} /> : ''}
       {user ? <PostedBy user={user} /> : ''}
       <span className="story__time">
-        {date.toLocaleString('en-US')}{' '}
+        <TimeAgo date={date} />{' '}
       </span>
       {/* TODO: timeAgo */}
       {unvoteIsVisible &&
