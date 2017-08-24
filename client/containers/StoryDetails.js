@@ -9,7 +9,6 @@ import actions from '../actions/stories';
 import storyActions from '../actions/stories';
 import Comment from '../components/Comment';
 import ChildrenComments from '../components/ChildrenComments';
-import getCommentsCount from '../helpers/getCommentsCount';
 import '../styles/storyDetails.css';
 
 export class StoryDetails extends Component {
@@ -42,7 +41,7 @@ export class StoryDetails extends Component {
           voted={story.voted.includes(this.props.user.id)}
           user={user}
           date={new Date(story.createDate)}
-          commentCount={getCommentsCount(this.props.comments, story.comments)}
+          commentCount={story.commentsCount}
           onUpvote={() => this.props.onUpvote(id, this.props.user.id)}
           onUnvote={() => this.props.onUnvote(id, this.props.user.id)}
           loggedIn={!!this.props.user.id}

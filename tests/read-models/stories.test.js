@@ -38,6 +38,7 @@ describe('read-models', () => {
           createDate: event.timestamp,
           link: event.payload.link,
           comments: [],
+          commentsCount: 0,
           voted: []
         }
       };
@@ -70,6 +71,7 @@ describe('read-models', () => {
           createDate: event.timestamp,
           link: event.payload.link,
           comments: [],
+          commentsCount: 0,
           voted: []
         }
       };
@@ -102,6 +104,7 @@ describe('read-models', () => {
           createDate: event.timestamp,
           link: event.payload.link,
           comments: [],
+          commentsCount: 0,
           voted: []
         }
       };
@@ -189,7 +192,8 @@ describe('read-models', () => {
 
       const state = stories.initialState.merge({
         [parentId]: {
-          comments: []
+          comments: [],
+          commentsCount: 0
         }
       });
       const event = {
@@ -202,7 +206,8 @@ describe('read-models', () => {
 
       const nextState = {
         [parentId]: {
-          comments: [commentId]
+          comments: [commentId],
+          commentsCount: 1
         }
       };
 
@@ -211,31 +216,43 @@ describe('read-models', () => {
       );
     });
 
-    it('eventHandler "COMMENT_CREATED" should do nothing', () => {
+    it('eventHandler "COMMENT_CREATED" should increment comments count', () => {
       const parentId = uuid.v4();
+      const aggregateId = uuid.v4();
 
-      const state = stories.initialState;
+      const state = stories.initialState.merge({
+        [aggregateId]: {
+          comments: [],
+          commentsCount: 0
+        }
+      });
       const event = {
-        aggregateId: uuid.v4(),
+        aggregateId,
         payload: {
           parentId
         }
       };
 
-      const nextState = {};
+      const nextState = {
+        [aggregateId]: {
+          comments: [],
+          commentsCount: 1
+        }
+      };
 
       expect(stories.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
         nextState
       );
     });
 
-    it('eventHandler "COMMENT_REMOVED" should add comment.id to story.comments', () => {
+    it('eventHandler "COMMENT_REMOVED" should remove comment.id from story.comments', () => {
       const parentId = uuid.v4();
       const commentId = uuid.v4();
 
       const state = stories.initialState.merge({
         [parentId]: {
-          comments: [commentId]
+          comments: [commentId],
+          commentsCount: 1
         }
       });
       const event = {
@@ -248,7 +265,8 @@ describe('read-models', () => {
 
       const nextState = {
         [parentId]: {
-          comments: []
+          comments: [],
+          commentsCount: 0
         }
       };
 
@@ -257,19 +275,29 @@ describe('read-models', () => {
       );
     });
 
-    it('eventHandler "COMMENT_REMOVED" should do nothing', () => {
+    it('eventHandler "COMMENT_REMOVED" should decrement comments count', () => {
       const parentId = uuid.v4();
-      const commentId = uuid.v4();
+      const aggregateId = uuid.v4();
 
-      const state = stories.initialState;
+      const state = stories.initialState.merge({
+        [aggregateId]: {
+          comments: [],
+          commentsCount: 1
+        }
+      });
       const event = {
-        aggregateId: commentId,
+        aggregateId,
         payload: {
           parentId
         }
       };
 
-      const nextState = {};
+      const nextState = {
+        [aggregateId]: {
+          comments: [],
+          commentsCount: 0
+        }
+      };
 
       expect(stories.eventHandlers[COMMENT_REMOVED](state, event)).toEqual(
         nextState

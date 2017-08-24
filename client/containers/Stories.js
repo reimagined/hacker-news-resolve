@@ -4,7 +4,7 @@ import queryString from 'query-string';
 
 import Story from '../components/Story';
 import Paginator from '../components/Paginator';
-import getCommentsCount from '../helpers/getCommentsCount';
+
 import {
   STORIES_ON_ONE_PAGE,
   getPageStories,
@@ -51,10 +51,7 @@ export const Stories = props => {
                   date={new Date(story.createDate)}
                   score={story.voted.length}
                   user={user}
-                  commentCount={getCommentsCount(
-                    props.comments,
-                    story.comments
-                  )}
+                  commentCount={story.commentsCount}
                   voted={story.voted.includes(props.user.id)}
                   onUpvote={() => props.onUpvote(id, props.user.id)}
                   onUnvote={() => props.onUnvote(id, props.user.id)}
