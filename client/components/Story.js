@@ -22,7 +22,7 @@ const getTitle = ({ title, link }) => {
     return (
       <span>
         <span className="story__title">
-          <a href={link}>
+          <a className="story__title-link" href={link}>
             {title}
           </a>
         </span>{' '}
@@ -32,7 +32,7 @@ const getTitle = ({ title, link }) => {
   }
   return (
     <span className="story__title">
-      <Link to={link}>
+      <Link className="story__title-link" to={link}>
         {title}
       </Link>
     </span>
@@ -57,8 +57,11 @@ export const Score = ({ score }) => {
 
 export const PostedBy = ({ user }) => {
   return (
-    <span className="story__by">
-      by <a href={`/user?id=${user.id}`}>{user.name}</a>{' '}
+    <span>
+      by{' '}
+      <a className="story__meta-link story__by" href={`/user?id=${user.id}`}>
+        {user.name}
+      </a>{' '}
     </span>
   );
 };
@@ -68,7 +71,7 @@ export const Comment = ({ storyId, commentCount }) => {
     <span>
       <span>
         |{' '}
-        <Link to={`/storyDetails?id=${storyId}`}>
+        <Link className="story__meta-link" to={`/storyDetails?id=${storyId}`}>
           {commentCount > 0
             ? `${commentCount} ${plur('comment', commentCount)}`
             : 'discuss'}

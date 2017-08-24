@@ -21,7 +21,7 @@ class Paginator extends React.PureComponent {
     return (
       <div className="paginator">
         <Link
-          className={prevDisabledClassName}
+          className={['paginator__link', prevDisabledClassName].join(' ')}
           to={`${pathname}?page=${Number(page) - 1}`}
           onClick={this.scrollUp}
         >
@@ -29,7 +29,7 @@ class Paginator extends React.PureComponent {
         </Link>
         {` | ${page} | `}
         <Link
-          className={nextDisabledClassName}
+          className={['paginator__link', nextDisabledClassName].join(' ')}
           to={`${pathname}?page=${Number(page) + 1}`}
           onClick={this.scrollUp}
         >
