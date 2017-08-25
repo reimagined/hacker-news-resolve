@@ -30,32 +30,29 @@ export default {
   name: 'stories',
   initialState: Immutable({}),
   eventHandlers: {
-    [STORY_CREATED]: (state, event) =>
+    [STORY_CREATED]: (state, { timestamp, payload: { userId } }) =>
       state.merge({
-        createdAt: event.timestamp,
-        createdBy: event.payload.userId,
+        createdAt: timestamp,
+        createdBy: userId,
         voted: [],
         comments: {}
       }),
 
-    [STORY_UPVOTED]: (state, event) =>
-      state.update('voted', voted => voted.concat(event.payload.userId)),
+    [STORY_UPVOTED]: (state, { payload: { userId } }) =>
+      state.update('voted', voted => voted.concat(userId)),
 
-    [STORY_UNVOTED]: (state, event) =>
+    [STORY_UNVOTED]: (state, { payload: { userId } }) =>
       state.update('voted', voted =>
-        voted.filter(userId => userId !== event.payload.userId)
+        voted.filter(curUserId => curUserId !== userId)
       ),
-    [COMMENT_CREATED]: (state, event) =>
-      state.setIn(['comments', event.payload.commentId], {
-        createdAt: event.timestamp,
-        createdBy: event.payload.userId
+    [COMMENT_CREATED]: (state, { timestamp, payload: { commentId, userId } }) =>
+      state.setIn(['comments', commentId], {
+        createdAt: timestamp,
+        createdBy: userId
       }),
 
-    [COMMENT_REMOVED]: (state, event) =>
-      state.setIn(
-        ['comments', event.payload.commentId, 'removedAt'],
-        event.timestamp
-      )
+    [COMMENT_REMOVED]: (state, { timestamp, payload: { commentId } }) =>
+      state.setIn(['comments', commentId, 'removedAt'], timestamp)
   },
   commands: {
     createStory: (state: any, command: StoryCreated) => {

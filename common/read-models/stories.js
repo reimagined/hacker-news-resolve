@@ -45,15 +45,21 @@ export default {
       });
     },
 
-    [STORY_UPVOTED]: (state: any, event: StoryUpvoted) =>
-      state.updateIn([event.aggregateId, 'voted'], voted =>
-        voted.concat(event.payload.userId)
-      ),
+    [STORY_UPVOTED]: (state: any, event: StoryUpvoted) => {
+      const { aggregateId, payload: { userId } } = event;
 
-    [STORY_UNVOTED]: (state: any, event: StoryUnvoted) =>
-      state.updateIn([event.aggregateId, 'voted'], voted =>
-        voted.filter(id => id !== event.payload.userId)
-      ),
+      return state.updateIn([aggregateId, 'voted'], voted =>
+        voted.concat(userId)
+      );
+    },
+
+    [STORY_UNVOTED]: (state: any, event: StoryUnvoted) => {
+      const { aggregateId, payload: { userId } } = event;
+
+      return state.updateIn([aggregateId, 'voted'], voted =>
+        voted.filter(id => id !== userId)
+      );
+    },
 
     [STORY_DELETED]: (state: any, event: StoryDeleted) =>
       state.without(event.aggregateId),

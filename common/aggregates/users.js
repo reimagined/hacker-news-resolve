@@ -13,13 +13,13 @@ export default {
   name: 'users',
   initialState: Immutable({}),
   eventHandlers: {
-    [USER_CREATED]: (state, event) =>
+    [USER_CREATED]: (state, { timestamp, payload: { passwordHash } }) =>
       state.merge({
-        createdAt: event.timestamp,
-        password: event.payload.passwordHash
+        createdAt: timestamp,
+        password: passwordHash
       }),
-    [PASSWORD_CHANGED]: (state, event) =>
-      state.set('password', event.payload.newPassword)
+    [PASSWORD_CHANGED]: (state, { payload: { newPassword } }) =>
+      state.set('password', newPassword)
   },
   commands: {
     createUser: (state: any, command: UserCreated) => {

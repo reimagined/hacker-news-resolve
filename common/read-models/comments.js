@@ -41,8 +41,10 @@ export default {
       });
     },
 
-    [COMMENT_UPDATED]: (state: any, event: CommentUpdated) =>
-      state.setIn([getId(event), 'text'], event.payload.text),
+    [COMMENT_UPDATED]: (state: any, event: CommentUpdated) => {
+      const { text } = event.payload;
+      return state.setIn([getId(event), 'text'], text);
+    },
 
     [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
       const id = getId(event);

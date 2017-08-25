@@ -20,10 +20,10 @@ export default {
         karma: 0
       });
     },
-    [PASSWORD_CHANGED]: (state: any, event: PasswordChanged) =>
-      state.setIn(
-        [event.aggregateId, 'passwordHash'],
-        event.payload.newPassword
-      )
+    [PASSWORD_CHANGED]: (state: any, event: PasswordChanged) => {
+      const { aggregateId, payload: { newPassword } } = event;
+
+      return state.setIn([aggregateId, 'passwordHash'], newPassword);
+    }
   }
 };
