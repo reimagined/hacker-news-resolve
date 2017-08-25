@@ -11,14 +11,18 @@ export const CommentContainer = ({ comments, users, location }) => {
 
   return (
     <Comment
-      replies={comment.replies}
       id={comment.id}
       content={comment.text}
       user={users[comment.createdBy].name}
       date={new Date(comment.createdAt)}
       showReply
-      getChilrenCallback={args => ChildrenComments(args, comments, users)}
-    />
+    >
+      <ChildrenComments
+        replies={comment.replies}
+        comments={comments}
+        users={users}
+      />
+    </Comment>
   );
 };
 

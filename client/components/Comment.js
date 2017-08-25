@@ -25,11 +25,10 @@ class Comment extends Component {
       content,
       user,
       date,
-      getChilrenCallback,
       showReply,
-      replies,
       parent,
-      root
+      root,
+      children
     } = this.props;
 
     return (
@@ -95,10 +94,7 @@ class Comment extends Component {
               </div>}
           </div>
         </div>
-        {getChilrenCallback
-          ? this.state.expanded &&
-            getChilrenCallback({ replies, level: level ? level + 1 : 1 })
-          : null}
+        {this.state.expanded && children}
       </div>
     );
   }
