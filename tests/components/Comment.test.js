@@ -11,9 +11,7 @@ it('Comment Level 0 renders correctly', () => {
       content="SomeContent"
       user="SomeUser"
       date={new Date(0)}
-      getChilrenCallback={() => null}
       showReply={true}
-      replies={[]}
       parent="news"
       root={{ id: 'SomeId', title: 'SomeTitle' }}
     />
@@ -30,9 +28,7 @@ it('Comment Level 1 renders correctly', () => {
       content="SomeContent"
       user="SomeUser"
       date={new Date(0)}
-      getChilrenCallback={() => null}
       showReply={true}
-      replies={[]}
       parent="news"
       root={{ id: 'SomeId', title: 'SomeTitle' }}
     />
@@ -49,9 +45,7 @@ it('Comment Level 20 renders correctly', () => {
       content="SomeContent"
       user="SomeUser"
       date={new Date(0)}
-      getChilrenCallback={() => null}
       showReply={true}
-      replies={[]}
       parent="news"
       root={{ id: 'SomeId', title: 'SomeTitle' }}
     />
@@ -68,9 +62,7 @@ it('Comment Level 20 renders correctly', () => {
       content="SomeContent"
       user="SomeUser"
       date={new Date(0)}
-      getChilrenCallback={() => null}
       showReply={true}
-      replies={[]}
       parent="news"
       root={{ id: 'SomeId', title: 'SomeTitle' }}
     />
@@ -87,9 +79,7 @@ it('Comment with state.expanded=false renders correctly', () => {
       content="SomeContent"
       user="SomeUser"
       date={new Date(0)}
-      getChilrenCallback={() => null}
       showReply={true}
-      replies={[]}
       parent="news"
       root={{ id: 'SomeId', title: 'SomeTitle' }}
     />
@@ -99,7 +89,7 @@ it('Comment with state.expanded=false renders correctly', () => {
   expect(markup).toMatchSnapshot();
 });
 
-it('Comment without getChilrenCallback renders correctly', () => {
+it('Comment without childrens renders correctly', () => {
   const markup = shallow(
     <Comment
       id="SomeId"
@@ -108,7 +98,6 @@ it('Comment without getChilrenCallback renders correctly', () => {
       user="SomeUser"
       date={new Date(0)}
       showReply={true}
-      replies={[]}
       parent="news"
       root={{ id: 'SomeId', title: 'SomeTitle' }}
     />

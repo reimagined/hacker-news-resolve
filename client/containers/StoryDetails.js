@@ -74,15 +74,18 @@ export class StoryDetails extends Component {
             return (
               <Comment
                 key={commentId}
-                replies={comment.replies}
                 id={comment.id}
                 content={comment.text}
                 user={this.props.users[comment.createdBy].name}
                 date={new Date(comment.createdAt)}
                 showReply
-                getChilrenCallback={args =>
-                  ChildrenComments(args, this.props.comments, this.props.users)}
-              />
+              >
+                <ChildrenComments
+                  replies={comment.replies}
+                  comments={this.props.comments}
+                  users={this.props.users}
+                />
+              </Comment>
             );
           })}
         </div>

@@ -2,26 +2,37 @@ import React from 'react';
 
 import Comment from './Comment';
 
-export const getChilrenCallback = (comments, users) => props =>
-  ChildrenComments(props, comments, users);
+const ChildrenComments = ({ replies, level, comments, users }) => {
+  if (!replies.length) {
+    return null;
+  }
 
-const ChildrenComments = ({ replies, level }, comments, users) => {
-  return replies.map(replyId => {
-    const { id, text, replies, createdAt, createdBy } = comments[replyId];
-    return (
-      <Comment
-        key={id}
-        replies={replies}
-        level={level}
-        id={id}
-        content={text}
-        user={users[createdBy].name}
-        date={new Date(createdAt)}
-        showReply
-        getChilrenCallback={getChilrenCallback(comments, users)}
-      />
-    );
-  });
+  const currentLevel = level ? level + 1 : 1;
+  return (
+    <div>
+      {replies.map(replyId => {
+        const { id, text, replies, createdAt, createdBy } = comments[replyId];
+        return (
+          <Comment
+            key={id}
+            level={currentLevel}
+            id={id}
+            content={text}
+            user={users[createdBy].name}
+            date={new Date(createdAt)}
+            showReply
+          >
+            <ChildrenComments
+              replies={replies}
+              level={currentLevel}
+              comments={comments}
+              users={users}
+            />
+          </Comment>
+        );
+      })}
+    </div>
+  );
 };
 
 export default ChildrenComments;
