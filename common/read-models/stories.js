@@ -23,33 +23,43 @@ export default {
   initialState: Immutable({}),
   eventHandlers: {
     [STORY_CREATED]: (state: any, event: StoryCreated) => {
-      const type = !event.payload.link
-        ? 'ask'
-        : /^(Show HN)/.test(event.payload.title) ? 'show' : 'story';
+      const {
+        aggregateId,
+        timestamp,
+        payload: { title, link, userId, text }
+      } = event;
 
-      return state.set(event.aggregateId, {
-        id: event.aggregateId,
+      const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story';
+
+      return state.set(aggregateId, {
+        id: aggregateId,
         type,
-        title: event.payload.title,
-        text: event.payload.text,
-        userId: event.payload.userId,
-        createDate: event.timestamp,
-        link: event.payload.link,
+        title,
+        text,
+        userId,
+        createDate: timestamp,
+        link,
         comments: [],
         commentsCount: 0,
         voted: []
       });
     },
 
-    [STORY_UPVOTED]: (state: any, event: StoryUpvoted) =>
-      state.updateIn([event.aggregateId, 'voted'], voted =>
-        voted.concat(event.payload.userId)
-      ),
+    [STORY_UPVOTED]: (state: any, event: StoryUpvoted) => {
+      const { aggregateId, payload: { userId } } = event;
 
-    [STORY_UNVOTED]: (state: any, event: StoryUnvoted) =>
-      state.updateIn([event.aggregateId, 'voted'], voted =>
-        voted.filter(id => id !== event.payload.userId)
-      ),
+      return state.updateIn([aggregateId, 'voted'], voted =>
+        voted.concat(userId)
+      );
+    },
+
+    [STORY_UNVOTED]: (state: any, event: StoryUnvoted) => {
+      const { aggregateId, payload: { userId } } = event;
+
+      return state.updateIn([aggregateId, 'voted'], voted =>
+        voted.filter(id => id !== userId)
+      );
+    },
 
     [STORY_DELETED]: (state: any, event: StoryDeleted) =>
       state.without(event.aggregateId),

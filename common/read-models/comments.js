@@ -16,28 +16,34 @@ export default {
   initialState: Immutable({}),
   eventHandlers: {
     [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
+      const {
+        aggregateId,
+        timestamp,
+        payload: { parentId, userId, text }
+      } = event;
       const id = getId(event);
+
       let nextState = state;
-      if (nextState[event.payload.parentId]) {
-        nextState = nextState.updateIn(
-          [event.payload.parentId, 'replies'],
-          replies => replies.concat(id)
+      if (nextState[parentId]) {
+        nextState = nextState.updateIn([parentId, 'replies'], replies =>
+          replies.concat(id)
         );
       }
 
       return nextState.set(id, {
-        text: event.payload.text,
+        text,
         id,
-        parentId: event.payload.parentId,
-        storyId: event.aggregateId,
-        createdAt: event.timestamp,
-        createdBy: event.payload.userId,
+        parentId: parentId,
+        storyId: aggregateId,
+        createdAt: timestamp,
+        createdBy: userId,
         replies: []
       });
     },
 
     [COMMENT_UPDATED]: (state: any, event: CommentUpdated) => {
-      return state.setIn([getId(event), 'text'], event.payload.text);
+      const { text } = event.payload;
+      return state.setIn([getId(event), 'text'], text);
     },
 
     [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
