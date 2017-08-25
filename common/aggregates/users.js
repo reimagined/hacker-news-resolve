@@ -1,6 +1,6 @@
-import Immutable from 'seamless-immutable';
 import crypto from 'crypto';
 
+import Immutable from '../immutable';
 import type { UserCreated, PasswordChanged } from '../events/users';
 import events from '../events/users';
 import { Event } from '../helpers';

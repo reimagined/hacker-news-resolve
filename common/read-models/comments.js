@@ -1,4 +1,4 @@
-import Immutable from 'seamless-immutable';
+import Immutable from '../immutable';
 
 import type {
   CommentCreated,
