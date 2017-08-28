@@ -27,7 +27,7 @@ export class StoryDetails extends Component {
 
   render() {
     const { id } = queryString.parse(this.props.location.search);
-    const story = this.props.stories[id];
+    const story = this.props.stories.find(story => story.id === id);
     const user = this.props.users[story.userId];
     const link = story.type === 'ask' ? `/storyDetails?id=${id}` : story.link;
 
