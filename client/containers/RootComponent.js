@@ -21,7 +21,7 @@ import * as userActions from '../actions/userActions';
 import '../styles/style.css';
 import '../styles/root.css';
 
-export const RootComponent = ({ user, logout, match }) =>
+export const RootComponent = ({ user, logout, match }) => (
   <div className="app">
     <Helmet>
       <meta
@@ -45,7 +45,7 @@ export const RootComponent = ({ user, logout, match }) =>
           to="/"
           activeClassName="app__link--active"
         >
-          Resolve HN
+          reSolve HN
         </Link>{' '}
         <NavLink
           className="app__link"
@@ -87,32 +87,34 @@ export const RootComponent = ({ user, logout, match }) =>
           submit
         </NavLink>
         <div style={{ float: 'right' }}>
-          {user && user.id
-            ? <div>
-                <NavLink
-                  className="app__link"
-                  to={`/user?id=${user.id}`}
-                  activeClassName="app__link--active"
-                >
-                  {user.name}
-                </NavLink>
-                {' | '}
-                <NavLink
-                  className="app__link"
-                  to="/"
-                  activeClassName="app__link--active"
-                  onClick={logout}
-                >
-                  logout
-                </NavLink>
-              </div>
-            : <NavLink
+          {user && user.id ? (
+            <div>
+              <NavLink
                 className="app__link"
-                to="/login"
+                to={`/user?id=${user.id}`}
                 activeClassName="app__link--active"
               >
-                login
-              </NavLink>}
+                {user.name}
+              </NavLink>
+              {' | '}
+              <NavLink
+                className="app__link"
+                to="/"
+                activeClassName="app__link--active"
+                onClick={logout}
+              >
+                logout
+              </NavLink>
+            </div>
+          ) : (
+            <NavLink
+              className="app__link"
+              to="/login"
+              activeClassName="app__link--active"
+            >
+              login
+            </NavLink>
+          )}
         </div>
       </div>
       <div className="app__content">
@@ -141,7 +143,8 @@ export const RootComponent = ({ user, logout, match }) =>
         </a>
       </div>
     </div>
-  </div>;
+  </div>
+);
 
 export const mapStateToProps = ({ user }) => ({
   user

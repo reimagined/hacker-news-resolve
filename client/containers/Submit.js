@@ -42,6 +42,7 @@ export class Submit extends Component {
                   type="text"
                   value={this.state.title}
                   onChange={e => this.handleChange(e, 'title')}
+                  size="50"
                 />
               </td>
             </tr>
@@ -49,10 +50,10 @@ export class Submit extends Component {
               <td>url</td>
               <td>
                 <input
-                  size="50"
                   type="text"
                   value={this.state.url}
                   onChange={e => this.handleChange(e, 'url')}
+                  size="50"
                 />
               </td>
             </tr>
