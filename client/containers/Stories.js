@@ -4,6 +4,7 @@ import queryString from 'query-string';
 
 import Story from '../components/Story';
 import Paginator from '../components/Paginator';
+import getById from '../helpers/getById';
 
 import {
   STORIES_ON_ONE_PAGE,
@@ -41,7 +42,8 @@ export const Stories = props => {
             const title =
               type === 'ask' ? `Ask HN: ${story.title}` : story.title;
 
-            const user = props.users[story.userId];
+            const user = getById(props.users, story.userId);
+
             return (
               <li key={story.id} className="stories__item">
                 <Story

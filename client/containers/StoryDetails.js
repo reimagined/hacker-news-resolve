@@ -9,6 +9,7 @@ import actions from '../actions/stories';
 import storyActions from '../actions/stories';
 import Comment from '../components/Comment';
 import ChildrenComments from '../components/ChildrenComments';
+import getById from '../helpers/getById';
 import '../styles/storyDetails.css';
 
 export class StoryDetails extends Component {
@@ -27,8 +28,8 @@ export class StoryDetails extends Component {
 
   render() {
     const { id } = queryString.parse(this.props.location.search);
-    const story = this.props.stories.find(story => story.id === id);
-    const user = this.props.users[story.userId];
+    const story = getById(this.props.stories, id);
+    const user = getById(this.props.users, story.userId);
     const link = story.type === 'ask' ? `/storyDetails?id=${id}` : story.link;
 
     return (
@@ -46,11 +47,12 @@ export class StoryDetails extends Component {
           onUnvote={() => this.props.onUnvote(id, this.props.user.id)}
           loggedIn={!!this.props.user.id}
         />
-        {story.text &&
+        {story.text && (
           <div
             className="storyDetails__text"
             dangerouslySetInnerHTML={{ __html: sanitizer.sanitize(story.text) }}
-          />}
+          />
+        )}
         <div className="storyDetails__content">
           <div className="storyDetails__textarea">
             <textarea
@@ -73,12 +75,14 @@ export class StoryDetails extends Component {
               ({ id }) => id === commentId
             );
 
+            const user = this.props.users.find(u => u.id === comment.createdBy);
+
             return (
               <Comment
                 key={commentId}
                 id={comment.id}
                 content={comment.text}
-                user={this.props.users[comment.createdBy].name}
+                user={user.name}
                 date={new Date(comment.createdAt)}
                 showReply
               >

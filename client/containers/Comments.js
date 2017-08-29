@@ -5,9 +5,10 @@ import queryString from 'query-string';
 import Comment from '../components/Comment';
 import { getPageStories, hasNextStories } from '../helpers/getPageStories';
 import Paginator from '../components/Paginator';
+import getById from '../helpers/getById';
 
 export const findRoot = (id, comments) => {
-  const comment = comments.find(c => c.id === id);
+  const comment = getById(comments, id);
 
   if (!comment) {
     return id;
@@ -33,7 +34,8 @@ export const Comments = props => {
             ? `/storyDetails?id=${parentId}`
             : `/comment?id=${parentId}`;
 
-        const root = props.stories[rootId];
+        const root = getById(props.stories, rootId);
+        const user = getById(props.users, comment.createdBy);
 
         return (
           <Comment
@@ -41,7 +43,7 @@ export const Comments = props => {
             replies={comment.replies}
             id={comment.id}
             content={comment.text}
-            user={props.users[comment.createdBy].name}
+            user={user.name}
             date={new Date(comment.createdAt)}
             parent={parent}
             root={root}
