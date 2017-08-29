@@ -31,21 +31,22 @@ export default {
 
       const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story';
 
-      return Immutable([
-        {
-          id: aggregateId,
-          type,
-          title,
-          text,
-          userId,
-          createDate: timestamp,
-          link,
-          comments: [],
-          commentsCount: 0,
-          voted: []
-        },
-        ...state
-      ]);
+      return Immutable(
+        [
+          {
+            id: aggregateId,
+            type,
+            title,
+            text,
+            userId,
+            createDate: timestamp,
+            link,
+            comments: [],
+            commentsCount: 0,
+            voted: []
+          }
+        ].concat(state)
+      );
     },
 
     [STORY_UPVOTED]: (state: any, event: StoryUpvoted) => {

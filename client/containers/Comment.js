@@ -7,7 +7,7 @@ import Comment from '../components/Comment';
 
 export const CommentContainer = ({ comments, users, location }) => {
   const { id } = queryString.parse(location.search);
-  const comment = comments[id];
+  const comment = comments.find(c => c.id === id);
 
   return (
     <Comment

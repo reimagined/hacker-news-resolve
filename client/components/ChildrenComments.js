@@ -11,7 +11,9 @@ const ChildrenComments = ({ replies, level, comments, users }) => {
   return (
     <div>
       {replies.map(replyId => {
-        const { id, text, replies, createdAt, createdBy } = comments[replyId];
+        const comment = comments.find(({ id }) => id === replyId);
+        const { id, text, replies, createdAt, createdBy } = comment;
+
         return (
           <Comment
             key={id}

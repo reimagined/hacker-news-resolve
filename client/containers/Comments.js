@@ -7,24 +7,26 @@ import { getPageStories, hasNextStories } from '../helpers/getPageStories';
 import Paginator from '../components/Paginator';
 
 export const findRoot = (id, comments) => {
-  if (comments[id]) {
-    return findRoot(comments[id].parentId, comments);
+  const comment = comments.find(c => c.id === id);
+
+  if (!comment) {
+    return id;
   }
-  return id;
+
+  return findRoot(comment.parentId, comments);
 };
 
 export const Comments = props => {
   const { page } = queryString.parse(props.location.search);
-  let comments = Object.keys(props.comments).reverse();
+  const { comments } = props;
 
   const hasNext = hasNextStories(comments, page);
 
   return (
     <div>
-      {getPageStories(comments, page).map(id => {
-        const comment = props.comments[id];
+      {getPageStories(comments, page).map(comment => {
         const parentId = comment.parentId;
-        const rootId = findRoot(parentId, props.comments);
+        const rootId = findRoot(parentId, comments);
 
         const parent =
           parentId === rootId
@@ -35,7 +37,7 @@ export const Comments = props => {
 
         return (
           <Comment
-            key={id}
+            key={comment.id}
             replies={comment.replies}
             id={comment.id}
             content={comment.text}

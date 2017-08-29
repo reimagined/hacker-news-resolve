@@ -26,7 +26,7 @@ export class Reply extends Component {
   render() {
     const { comments, users, user, location } = this.props;
     const { id } = queryString.parse(location.search);
-    const comment = comments[id];
+    const comment = comments.find(c => c.id === id);
 
     return (
       <div>

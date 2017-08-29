@@ -69,7 +69,9 @@ export class StoryDetails extends Component {
         </div>
         <div>
           {story.comments.map(commentId => {
-            const comment = this.props.comments[commentId];
+            const comment = this.props.comments.find(
+              ({ id }) => id === commentId
+            );
 
             return (
               <Comment
