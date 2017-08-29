@@ -7,12 +7,12 @@ const { USER_CREATED, PASSWORD_CHANGED } = events;
 
 export default {
   name: 'users',
-  initialState: Immutable({}),
+  initialState: Immutable([]),
   eventHandlers: {
     [USER_CREATED]: (state: any, event: UserCreated) => {
       const { aggregateId, timestamp, payload: { name, passwordHash } } = event;
 
-      return state.set(aggregateId, {
+      return state.concat({
         name,
         passwordHash,
         id: aggregateId,
@@ -22,8 +22,13 @@ export default {
     },
     [PASSWORD_CHANGED]: (state: any, event: PasswordChanged) => {
       const { aggregateId, payload: { newPassword } } = event;
+      const index = state.findIndex(({ id }) => id === aggregateId);
 
-      return state.setIn([aggregateId, 'passwordHash'], newPassword);
+      if (index < 0) {
+        return state;
+      }
+
+      return state.setIn([index, 'passwordHash'], newPassword);
     }
   }
 };

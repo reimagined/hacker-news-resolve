@@ -10,6 +10,7 @@ describe('read-models', () => {
   describe('users', () => {
     it('eventHandler "USER_CREATED" should create a comment', () => {
       const state = users.initialState;
+
       const event = {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
@@ -19,15 +20,15 @@ describe('read-models', () => {
         }
       };
 
-      const nextState = {
-        [event.aggregateId]: {
+      const nextState = [
+        {
           name: event.payload.name,
           passwordHash: event.payload.passwordHash,
           id: event.aggregateId,
           createdAt: event.timestamp,
           karma: 0
         }
-      };
+      ];
 
       expect(users.eventHandlers[USER_CREATED](state, event)).toEqual(
         nextState
