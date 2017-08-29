@@ -51,7 +51,7 @@ export const mapStateToProps = ({ user, users }, ownProps) => {
   const { id } = queryString.parse(location.search);
 
   if (id) {
-    return users[id];
+    return users.find(u => u.id === id);
   }
 
   return user;

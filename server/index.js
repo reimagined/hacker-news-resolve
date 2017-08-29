@@ -58,19 +58,19 @@ export const extendExpress = express => {
     }),
     async (req, res) => {
       const users = await req.resolve.executeQuery('users');
+      const existingUser = users.find(({ name }) => name === req.user.name);
 
-      const user = {
-        ...req.user,
-        id: uuid.v4()
-      };
-
-      for (let id in users) {
-        if (users[id].name === req.user.name) {
-          res.redirect('/error/?text=User already exists');
-        }
+      if (existingUser) {
+        res.redirect('/error/?text=User already exists');
+        return;
       }
 
       try {
+        const user = {
+          ...req.user,
+          id: uuid.v4()
+        };
+
         await req.resolve.executeCommand({
           type: 'createUser',
           aggregateId: user.id,
@@ -81,7 +81,6 @@ export const extendExpress = express => {
         return authorize(req, res, user);
       } catch (error) {
         res.redirect(`/error/?text=${error.toString()}`);
-        return;
       }
     }
   );
@@ -93,23 +92,18 @@ export const extendExpress = express => {
     }),
     async (req, res) => {
       const users = await req.resolve.executeQuery('users');
+      const user = users.find(({ name }) => name === req.user.name);
 
-      let user;
-      for (let id in users) {
-        if (users[id].name === req.user.name) {
-          if (users[id].passwordHash === req.user.passwordHash) {
-            user = users[id];
-          } else {
-            res.redirect('/error/?text=Incorrect Username or Password');
-            return;
-          }
-          break;
-        }
-      }
       if (!user) {
         res.redirect('/error/?text=No such user');
         return;
       }
+
+      if (user.passwordHash !== req.user.passwordHash) {
+        res.redirect('/error/?text=Incorrect Username or Password');
+        return;
+      }
+
       return authorize(req, res, user);
     }
   );
@@ -137,10 +131,11 @@ export const authorizationMiddleware = (req, res, next) => {
 
 export const initialState = async (queries, executeQuery, { cookies }) => {
   let user;
+
   try {
-    user = (await executeQuery('users'))[
-      jwt.verify(cookies.authorizationToken, authorizationSecret).id
-    ];
+    const users = await executeQuery('users');
+    const { id } = jwt.verify(cookies.authorizationToken, authorizationSecret);
+    user = users.find(u => u.id === id);
   } catch (error) {
     user = {};
   }

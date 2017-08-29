@@ -20,7 +20,7 @@ const { COMMENT_CREATED, COMMENT_REMOVED } = commentsEvents;
 
 export default {
   name: 'stories',
-  initialState: Immutable({}),
+  initialState: Immutable([]),
   eventHandlers: {
     [STORY_CREATED]: (state: any, event: StoryCreated) => {
       const {
@@ -31,68 +31,97 @@ export default {
 
       const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story';
 
-      return state.set(aggregateId, {
-        id: aggregateId,
-        type,
-        title,
-        text,
-        userId,
-        createDate: timestamp,
-        link,
-        comments: [],
-        commentsCount: 0,
-        voted: []
-      });
+      return Immutable(
+        [
+          {
+            id: aggregateId,
+            type,
+            title,
+            text,
+            userId,
+            createDate: timestamp,
+            link,
+            comments: [],
+            commentsCount: 0,
+            voted: []
+          }
+        ].concat(state)
+      );
     },
 
     [STORY_UPVOTED]: (state: any, event: StoryUpvoted) => {
       const { aggregateId, payload: { userId } } = event;
 
-      return state.updateIn([aggregateId, 'voted'], voted =>
-        voted.concat(userId)
-      );
+      const index = state.findIndex(({ id }) => id === aggregateId);
+
+      if (index < 0) {
+        return state;
+      }
+
+      return state.updateIn([index, 'voted'], voted => voted.concat(userId));
     },
 
     [STORY_UNVOTED]: (state: any, event: StoryUnvoted) => {
       const { aggregateId, payload: { userId } } = event;
 
-      return state.updateIn([aggregateId, 'voted'], voted =>
+      const index = state.findIndex(({ id }) => id === aggregateId);
+
+      if (index < 0) {
+        return state;
+      }
+
+      return state.updateIn([index, 'voted'], voted =>
         voted.filter(id => id !== userId)
       );
     },
 
     [STORY_DELETED]: (state: any, event: StoryDeleted) =>
-      state.without(event.aggregateId),
+      state.filter(({ id }) => id !== event.aggregateId),
 
     [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
       const { parentId, commentId } = event.payload;
-      const newState = state.updateIn(
-        [event.aggregateId, 'commentsCount'],
+      const storyIndex = state.findIndex(({ id }) => id === event.aggregateId);
+
+      if (storyIndex < 0) {
+        return state;
+      }
+
+      let newState = state.updateIn(
+        [storyIndex, 'commentsCount'],
         count => count + 1
       );
 
-      if (!newState[parentId]) {
+      const parentIndex = state.findIndex(({ id }) => id === parentId);
+
+      if (parentIndex < 0) {
         return newState;
       }
 
-      return newState.updateIn([parentId, 'comments'], comments =>
+      return newState.updateIn([parentIndex, 'comments'], comments =>
         comments.concat(commentId)
       );
     },
 
     [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
       const { parentId, commentId } = event.payload;
+      const storyIndex = state.findIndex(({ id }) => id === event.aggregateId);
 
-      const newState = state.updateIn(
-        [event.aggregateId, 'commentsCount'],
+      if (storyIndex < 0) {
+        return state;
+      }
+
+      let newState = state.updateIn(
+        [storyIndex, 'commentsCount'],
         count => count - 1
       );
 
-      if (!newState[parentId]) {
+      const parentIndex = state.findIndex(({ id }) => id === parentId);
+
+      if (parentIndex < 0) {
         return newState;
       }
 
-      return newState.updateIn([parentId, 'comments'], comments =>
+      return newState.updateIn([parentIndex, 'comments'], comments =>
         comments.filter(id => id !== commentId)
       );
     }

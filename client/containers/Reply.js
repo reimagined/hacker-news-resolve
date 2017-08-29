@@ -5,6 +5,7 @@ import queryString from 'query-string';
 
 import actions from '../actions/stories';
 import Comment from '../components/Comment';
+import getById from '../helpers/getById';
 import '../styles/reply.css';
 
 export class Reply extends Component {
@@ -26,7 +27,8 @@ export class Reply extends Component {
   render() {
     const { comments, users, user, location } = this.props;
     const { id } = queryString.parse(location.search);
-    const comment = comments[id];
+    const comment = comments.find(c => c.id === id);
+    const userName = getById(users, comment.createdBy).name;
 
     return (
       <div>
@@ -36,7 +38,7 @@ export class Reply extends Component {
               showReply={false}
               id={comment.id}
               content={comment.text}
-              user={users[comment.createdBy].name}
+              user={userName}
               date={new Date(comment.createdAt)}
             />
             <textarea

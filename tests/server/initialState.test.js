@@ -12,12 +12,11 @@ const user = {
 };
 
 const queries = [{ name: 'someReadModel' }, { name: 'users' }];
+
 const executeQuery = sinon.spy(async queryName => {
   switch (queryName) {
     case 'users':
-      return {
-        [user.id]: user
-      };
+      return [user];
     case 'someReadModel':
       return {
         test: 'test'
@@ -36,9 +35,7 @@ describe('server', () => {
     const state = await initialState(queries, executeQuery, { cookies });
 
     expect(state).toEqual({
-      users: {
-        [user.id]: user
-      },
+      users: [user],
       user,
       someReadModel: {
         test: 'test'
@@ -52,9 +49,7 @@ describe('server', () => {
     const state = await initialState(queries, executeQuery, { cookies });
 
     expect(state).toEqual({
-      users: {
-        [user.id]: user
-      },
+      users: [user],
       user: {},
       someReadModel: {
         test: 'test'

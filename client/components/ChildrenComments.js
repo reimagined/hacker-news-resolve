@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Comment from './Comment';
+import getById from '../helpers/getById';
 
 const ChildrenComments = ({ replies, level, comments, users }) => {
   if (!replies.length) {
@@ -11,14 +12,17 @@ const ChildrenComments = ({ replies, level, comments, users }) => {
   return (
     <div>
       {replies.map(replyId => {
-        const { id, text, replies, createdAt, createdBy } = comments[replyId];
+        const comment = comments.find(({ id }) => id === replyId);
+        const { id, text, replies, createdAt, createdBy } = comment;
+        const user = getById(users, createdBy);
+
         return (
           <Comment
             key={id}
             level={currentLevel}
             id={id}
             content={text}
-            user={users[createdBy].name}
+            user={user.name}
             date={new Date(createdAt)}
             showReply
           >
