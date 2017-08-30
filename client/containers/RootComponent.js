@@ -24,7 +24,7 @@ import '../styles/root.css';
 
 export class RootComponent extends React.Component {
   componentDidMount() {
-    this.props.history.listen(({ pathname, ...other }) => {
+    this.props.history.listen(({ pathname }) => {
       if (pathname === '/submit') {
         this.props.onSubmitViewShown();
       }
