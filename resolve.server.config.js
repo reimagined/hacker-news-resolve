@@ -4,19 +4,21 @@ import storageDriver from 'resolve-storage-file';
 import busDriver from 'resolve-bus-memory';
 
 import createStore from './client/store';
-import RootComponent from './client/containers/RootComponent';
+import RouteWithSubRoutes from './client/components/RouteWithSubRoutes';
 import aggregates from './common/aggregates';
 import queries from './common/read-models';
 import events from './common/events';
 import { extendExpress, initialState } from './server';
+import routes from './client/routes';
 
 export default {
   entries: {
     createStore,
-    rootComponent: (props, context) =>
+    rootComponent: (props, context) => (
       <StaticRouter location={props.url} context={{}}>
-        <RootComponent />
+        <RouteWithSubRoutes routes={routes} />
       </StaticRouter>
+    )
   },
   bus: { driver: busDriver },
   storage: {

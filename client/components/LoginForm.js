@@ -2,11 +2,9 @@ import React from 'react';
 
 import '../styles/login.css';
 
-const LoginForm = ({ title, action, buttonText }) =>
+const LoginForm = ({ title, action, buttonText }) => (
   <div className="login">
-    <h1>
-      {title}
-    </h1>
+    <h1>{title}</h1>
     <form method="GET" action={action}>
       <table>
         <tbody>
@@ -27,6 +25,7 @@ const LoginForm = ({ title, action, buttonText }) =>
       <br />
       <input type="submit" value={buttonText} />
     </form>
-  </div>;
+  </div>
+);
 
 export default LoginForm;

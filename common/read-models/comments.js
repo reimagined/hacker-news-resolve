@@ -25,7 +25,6 @@ export default {
       const id = getId(event);
       let nextState = state;
       const parentIndex = state.findIndex(({ id }) => id === parentId);
-      '';
 
       if (parentIndex >= 0) {
         nextState = nextState.updateIn([parentIndex, 'replies'], replies =>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import queryString from 'query-string';
 import { Link } from 'react-router-dom';
+
 import '../styles/profile.css';
 
 export const User = ({ id, name, createdAt, karma }) => {
@@ -20,21 +20,15 @@ export const User = ({ id, name, createdAt, karma }) => {
         <tbody>
           <tr>
             <td>name:</td>
-            <td>
-              {name}
-            </td>
+            <td>{name}</td>
           </tr>
           <tr>
             <td>created:</td>
-            <td>
-              {new Date(createdAt).toLocaleString('en-US')}
-            </td>
+            <td>{new Date(createdAt).toLocaleString('en-US')}</td>
           </tr>
           <tr>
             <td>karma:</td>
-            <td>
-              {karma}
-            </td>
+            <td>{karma}</td>
           </tr>
         </tbody>
       </table>
@@ -45,16 +39,9 @@ export const User = ({ id, name, createdAt, karma }) => {
   );
 };
 
-export const mapStateToProps = ({ user, users }, ownProps) => {
-  const { location } = ownProps;
-
-  const { id } = queryString.parse(location.search);
-
-  if (id) {
-    return users.find(u => u.id === id);
-  }
-
-  return user;
+export const mapStateToProps = ({ user, users }, { match }) => {
+  const { id } = match.params;
+  return id ? users.find(item => item.id === id) : user;
 };
 
 export default connect(mapStateToProps)(User);

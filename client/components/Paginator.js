@@ -10,7 +10,6 @@ class Paginator extends React.PureComponent {
 
   render() {
     const { page = 1, hasNext, location } = this.props;
-    const { pathname } = location;
 
     if (page === 1 && !hasNext) {
       return null;
@@ -22,7 +21,7 @@ class Paginator extends React.PureComponent {
       <div className="paginator">
         <Link
           className={['paginator__link', prevDisabledClassName].join(' ')}
-          to={`${pathname}?page=${Number(page) - 1}`}
+          to={`${location}/${Number(page) - 1}`}
           onClick={this.scrollUp}
         >
           <span className={prevDisabledClassName}>Prev</span>
@@ -30,7 +29,7 @@ class Paginator extends React.PureComponent {
         {` | ${page} | `}
         <Link
           className={['paginator__link', nextDisabledClassName].join(' ')}
-          to={`${pathname}?page=${Number(page) + 1}`}
+          to={`${location}/${Number(page) + 1}`}
           onClick={this.scrollUp}
         >
           <span className={nextDisabledClassName}>More</span>
