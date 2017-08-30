@@ -1,8 +1,8 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  extendWebpack: (clienConfig, serverConfig) => {
-    clienConfig.module.rules = clienConfig.module.rules.concat([
+  extendWebpack: (clientConfig, serverConfig) => {
+    clientConfig.module.rules = clientConfig.module.rules.concat([
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
@@ -16,7 +16,7 @@ module.exports = {
       }
     ]);
 
-    clienConfig.plugins.push(new ExtractTextPlugin('bundle.css'));
+    clientConfig.plugins.push(new ExtractTextPlugin('bundle.css'));
 
     serverConfig.module.rules = serverConfig.module.rules.concat([
       {

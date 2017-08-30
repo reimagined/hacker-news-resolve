@@ -10,13 +10,16 @@ import queries from './common/read-models';
 import events from './common/events';
 import { extendExpress, initialState } from './server';
 
+const eventTypes = Object.keys(events).map(key => events[key]);
+
 export default {
   entries: {
     createStore,
-    rootComponent: (props, context) =>
+    rootComponent: (props, context) => (
       <StaticRouter location={props.url} context={{}}>
         <RootComponent />
       </StaticRouter>
+    )
   },
   bus: { driver: busDriver },
   storage: {
@@ -25,7 +28,10 @@ export default {
   },
   initialState: (...args) => initialState(queries, ...args),
   aggregates,
-  events,
+  initialSubscribedEvents: {
+    types: eventTypes,
+    ids: []
+  },
   queries,
   extendExpress
 };

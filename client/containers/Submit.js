@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import actions from '../actions/stories';
 import '../styles/submit.css';
@@ -23,14 +24,15 @@ export class Submit extends Component {
       text: this.state.text,
       link: this.state.url
     });
-    this.setState({
-      title: '',
-      url: '',
-      text: ''
-    });
   }
 
   render() {
+    if (this.props.createdStoryId) {
+      return (
+        <Redirect push to={`/storyDetails?id=${this.props.createdStoryId}`} />
+      );
+    }
+
     return (
       <div className="submit">
         <table border="0">
@@ -42,6 +44,7 @@ export class Submit extends Component {
                   type="text"
                   value={this.state.title}
                   onChange={e => this.handleChange(e, 'title')}
+                  size="50"
                 />
               </td>
             </tr>
@@ -49,10 +52,10 @@ export class Submit extends Component {
               <td>url</td>
               <td>
                 <input
-                  size="50"
                   type="text"
                   value={this.state.url}
                   onChange={e => this.handleChange(e, 'url')}
+                  size="50"
                 />
               </td>
             </tr>
@@ -103,7 +106,8 @@ export class Submit extends Component {
 
 export const mapStateToProps = state => {
   return {
-    userId: state.user.id
+    userId: state.user.id,
+    createdStoryId: state.ui.createdStoryId
   };
 };
 

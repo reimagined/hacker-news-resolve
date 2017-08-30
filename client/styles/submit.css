@@ -1,6 +1,13 @@
 .submit {
-    padding-left: 3em;
-    padding-right: 1.25em;
-    margin-top: 1em;
-    margin-bottom: .5em;
-  }
+  padding-left: 3em;
+  padding-right: 1.25em;
+  margin-top: 1em;
+  margin-bottom: .5em;
+}
+
+.submit input,
+.submit textarea {
+  box-sizing: border-box;
+  font-size: 10pt;
+  font-family: monospace;
+}
