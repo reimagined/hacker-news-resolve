@@ -1,5 +1,8 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import { sendCommandMiddleware } from 'resolve-redux';
+import {
+  sendCommandMiddleware,
+  setSubscriptionMiddleware
+} from 'resolve-redux';
 import createSagaMiddleware from 'redux-saga';
 import Immutable from '../../common/immutable';
 import reducer from '../reducers';
@@ -37,6 +40,9 @@ export default initialState => {
           // eslint-disable-next-line no-console
           return console.error('Error due command sent: ', text);
         }
+      }),
+      setSubscriptionMiddleware({
+        rootDirPath: process.env.ROOT_DIR
       }),
       sagaMiddleware
     );

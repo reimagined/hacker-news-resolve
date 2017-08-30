@@ -5,6 +5,7 @@
 .storyDetails__text {
   color: #666;
   font-size:14px;
+  white-space: pre;
 }
 .storyDetails__textarea {
     margin-top: 10px;
