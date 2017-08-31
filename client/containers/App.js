@@ -34,7 +34,7 @@ export class App extends React.PureComponent {
           <link
             rel="shortcut icon"
             type="image/x-icon"
-            href="/static/img/reSolve-logo.png"
+            href="/static/img/reSolve-logo.svg"
           />
           <link rel="stylesheet" type="text/css" href="/static/bundle.css" />
         </Helmet>
@@ -42,7 +42,7 @@ export class App extends React.PureComponent {
           <div className="app__header">
             <Link to="/" className="app__logo">
               <img
-                src="/static/img/reSolve-logo.png"
+                src="/static/img/reSolve-logo.svg"
                 width="18"
                 height="18"
                 alt=""
