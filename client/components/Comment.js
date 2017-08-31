@@ -44,7 +44,8 @@ class Comment extends Component {
                 [{this.state.expanded ? '-' : '+'}]
               </span>
               <span>
-                {' '}<Link
+                {' '}
+                <Link
                   className="comment__link comment__user"
                   to={`/user/${user}`}
                 >
@@ -52,33 +53,39 @@ class Comment extends Component {
                 </Link>
               </span>
               <span>
-                {' '}<TimeAgo date={date} />
+                {' '}
+                <TimeAgo date={date} />
               </span>
               <span>
-                {' '}|{' '}
+                {' '}
+                |{' '}
                 <Link className="comment__link" to={`/comment?id=${id}`}>
                   link
                 </Link>
               </span>
-              {parent &&
+              {parent && (
                 <span>
-                  {' '}|{' '}
+                  {' '}
+                  |{' '}
                   <Link className="comment__link" to={parent}>
                     parent
                   </Link>
-                </span>}
-              {root &&
+                </span>
+              )}
+              {root && (
                 <span>
-                  {' '}| on:{' '}
+                  {' '}
+                  | on:{' '}
                   <Link
                     className="comment__link"
                     to={`/storyDetails?id=${root.id}`}
                   >
                     {root.title}
                   </Link>
-                </span>}
+                </span>
+              )}
             </div>
-            {this.state.expanded &&
+            {this.state.expanded && (
               <div className="comment__text">
                 <div
                   dangerouslySetInnerHTML={{
@@ -86,12 +93,14 @@ class Comment extends Component {
                   }}
                 />
                 <p>
-                  {showReply &&
+                  {showReply && (
                     <Link className="comment__reply" to={`/reply?id=${id}`}>
                       reply
-                    </Link>}
+                    </Link>
+                  )}
                 </p>
-              </div>}
+              </div>
+            )}
           </div>
         </div>
         {this.state.expanded && children}
