@@ -1,14 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import queryString from 'query-string';
 
 import Comment from '../components/Comment';
 import { getPageStories, hasNextStories } from '../helpers/getPageStories';
 import Paginator from '../components/Paginator';
-import getById from '../helpers/getById';
 
 export const findRoot = (id, comments) => {
-  const comment = getById(comments, id);
+  const comment = comments.find(comment => id === comment.id);
 
   if (!comment) {
     return id;
@@ -18,8 +16,8 @@ export const findRoot = (id, comments) => {
 };
 
 export const Comments = props => {
-  const { page } = queryString.parse(props.location.search);
-  const { comments } = props;
+  const { comments, match } = props;
+  const { page } = match.params;
 
   const hasNext = hasNextStories(comments, page);
 
@@ -31,11 +29,11 @@ export const Comments = props => {
 
         const parent =
           parentId === rootId
-            ? `/storyDetails?id=${parentId}`
-            : `/comment?id=${parentId}`;
+            ? `/storyDetails/${parentId}`
+            : `/comment/${parentId}`;
 
-        const root = getById(props.stories, rootId);
-        const user = getById(props.users, comment.createdBy);
+        const root = props.stories.find(({ id }) => id === rootId);
+        const user = props.users.find(({ id }) => id === comment.createdBy);
 
         return (
           <Comment
@@ -43,19 +41,19 @@ export const Comments = props => {
             replies={comment.replies}
             id={comment.id}
             content={comment.text}
-            user={user.name}
+            user={user}
             date={new Date(comment.createdAt)}
             parent={parent}
             root={root}
           />
         );
       })}
-      <Paginator page={page} hasNext={hasNext} location={props.location} />
+      <Paginator page={page} hasNext={hasNext} location="/comments" />
     </div>
   );
 };
 
-export const mapStateToProps = ({ stories, users, comments, user }) => {
+export const mapStateToProps = ({ stories, users, comments }) => {
   return {
     stories,
     users,

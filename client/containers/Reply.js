@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
-import queryString from 'query-string';
 
 import actions from '../actions/stories';
 import Comment from '../components/Comment';
-import getById from '../helpers/getById';
 import '../styles/reply.css';
 
 export class Reply extends Component {
@@ -25,10 +23,9 @@ export class Reply extends Component {
   }
 
   render() {
-    const { comments, users, user, location } = this.props;
-    const { id } = queryString.parse(location.search);
+    const { comments, users, user, id } = this.props;
     const comment = comments.find(c => c.id === id);
-    const userName = getById(users, comment.createdBy).name;
+    const userName = users.find(({ id }) => id === comment.createdBy).name;
 
     return (
       <div>
@@ -77,11 +74,12 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, { match }) => {
   return {
     comments: state.comments,
     users: state.users,
-    user: state.user
+    user: state.user,
+    id: match.params.id
   };
 };
 

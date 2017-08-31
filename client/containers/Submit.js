@@ -29,7 +29,7 @@ export class Submit extends Component {
   render() {
     if (this.props.createdStoryId) {
       return (
-        <Redirect push to={`/storyDetails?id=${this.props.createdStoryId}`} />
+        <Redirect push to={`/storyDetails/${this.props.createdStoryId}`} />
       );
     }
 

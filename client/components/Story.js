@@ -61,7 +61,7 @@ export const PostedBy = ({ user }) => {
   return (
     <span>
       by{' '}
-      <a className="story__meta-link story__by" href={`/user?id=${user.id}`}>
+      <a className="story__meta-link story__by" href={`/user/${user.id}`}>
         {user.name}
       </a>{' '}
     </span>
@@ -73,7 +73,7 @@ export const Comment = ({ storyId, commentCount }) => {
     <span>
       <span>
         |{' '}
-        <Link className="story__meta-link" to={`/storyDetails?id=${storyId}`}>
+        <Link className="story__meta-link" to={`/storyDetails/${storyId}`}>
           {commentCount > 0 ? (
             `${commentCount} ${plur('comment', commentCount)}`
           ) : (

@@ -1,14 +1,15 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-import RootComponent from './client/containers/RootComponent';
+import RouteWithSubRoutes from './client/components/RouteWithSubRoutes';
 import createStore from './client/store';
+import routes from './client/routes';
 
 export default {
   createStore,
   rootComponent: () => (
     <BrowserRouter>
-      <RootComponent />
+      <RouteWithSubRoutes routes={routes} />
     </BrowserRouter>
   )
 };

@@ -1,15 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import queryString from 'query-string';
 
 import ChildrenComments from '../components/ChildrenComments';
 import Comment from '../components/Comment';
-import getById from '../helpers/getById';
 
-export const CommentContainer = ({ comments, users, location }) => {
-  const { id } = queryString.parse(location.search);
+export const CommentContainer = ({ comments, users, match }) => {
+  const { id } = match.params;
   const comment = comments.find(c => c.id === id);
-  const user = getById(users, comment.createdBy);
+  const user = users.find(({ id }) => id === comment.createdBy);
 
   return (
     <Comment

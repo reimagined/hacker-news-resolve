@@ -47,9 +47,9 @@ class Comment extends Component {
                 {' '}
                 <Link
                   className="comment__link comment__user"
-                  to={`/user/${user}`}
+                  to={`/user/${user.id}`}
                 >
-                  {user}
+                  {user.name}
                 </Link>
               </span>
               <span>
@@ -59,7 +59,7 @@ class Comment extends Component {
               <span>
                 {' '}
                 |{' '}
-                <Link className="comment__link" to={`/comment?id=${id}`}>
+                <Link className="comment__link" to={`/comment/${id}`}>
                   link
                 </Link>
               </span>
@@ -78,7 +78,7 @@ class Comment extends Component {
                   | on:{' '}
                   <Link
                     className="comment__link"
-                    to={`/storyDetails?id=${root.id}`}
+                    to={`/storyDetails/${root.id}`}
                   >
                     {root.title}
                   </Link>
@@ -94,7 +94,7 @@ class Comment extends Component {
                 />
                 <p>
                   {showReply && (
-                    <Link className="comment__reply" to={`/reply?id=${id}`}>
+                    <Link className="comment__reply" to={`/reply/${id}`}>
                       reply
                     </Link>
                   )}
