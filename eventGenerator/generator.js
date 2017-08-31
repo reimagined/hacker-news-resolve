@@ -24,7 +24,7 @@ const storage = resolveStorage({
 const {
   USER_CREATED,
   STORY_CREATED,
-  // STORY_UPVOTED,
+  STORY_UPVOTED,
   COMMENT_CREATED
 } = eventTypes;
 
@@ -95,6 +95,15 @@ function commentsProc(ids, aggregateId, parentId) {
   );
 }
 
+const generatePointEvents = (aggregateId, pointCount) => {
+  const keys = Object.keys(users);
+  for (let i = 0; i < Math.min(keys.length, pointCount); i++) {
+    addEvent(STORY_UPVOTED, aggregateId, Date.now(), {
+      userId: users[keys[i]]
+    });
+  }
+};
+
 const generateStoryEvents = story => {
   return new Promise(resolve => {
     if (story && story.by) {
@@ -106,6 +115,7 @@ const generateStoryEvents = story => {
         userId,
         link: story.url
       });
+      if (story.score) generatePointEvents(aggregateId, story.score);
       return story.kids
         ? commentsProc(story.kids, aggregateId, aggregateId).then(() =>
             resolve(aggregateId)
