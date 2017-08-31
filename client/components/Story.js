@@ -12,9 +12,11 @@ export const getHostname = link =>
   link.split('.')[0] === 'www' ? link.substr(4) : url.parse(link).hostname;
 
 const voteArrow = (visible, onUpvote) => {
-  return visible
-    ? <span onClick={onUpvote} className="story__votearrow" title="upvote" />
-    : <span className="story__votearrow--hidden" />;
+  return visible ? (
+    <span onClick={onUpvote} className="story__votearrow" title="upvote" />
+  ) : (
+    <span className="story__votearrow--hidden" />
+  );
 };
 
 const getTitle = ({ title, link }) => {
@@ -72,9 +74,11 @@ export const Comment = ({ storyId, commentCount }) => {
       <span>
         |{' '}
         <Link className="story__meta-link" to={`/storyDetails?id=${storyId}`}>
-          {commentCount > 0
-            ? `${commentCount} ${plur('comment', commentCount)}`
-            : 'discuss'}
+          {commentCount > 0 ? (
+            `${commentCount} ${plur('comment', commentCount)}`
+          ) : (
+            'discuss'
+          )}
         </Link>{' '}
       </span>
     </span>
@@ -102,16 +106,19 @@ export const Meta = props => {
         <TimeAgo date={date} />{' '}
       </span>
       {/* TODO: timeAgo */}
-      {unvoteIsVisible &&
+      {unvoteIsVisible && (
         <span>
           |{' '}
           <span className="item__unvote" onClick={onUnvote}>
             unvote
           </span>{' '}
-        </span>}
-      {commentCount !== undefined
-        ? <Comment storyId={storyId} commentCount={commentCount} />
-        : ''}
+        </span>
+      )}
+      {commentCount !== undefined ? (
+        <Comment storyId={storyId} commentCount={commentCount} />
+      ) : (
+        ''
+      )}
     </div>
   );
 };

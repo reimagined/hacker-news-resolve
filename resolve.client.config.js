@@ -6,8 +6,9 @@ import createStore from './client/store';
 
 export default {
   createStore,
-  rootComponent: () =>
+  rootComponent: () => (
     <BrowserRouter>
       <RootComponent />
     </BrowserRouter>
+  )
 };

@@ -7,18 +7,14 @@
   font-size: 10pt;
   font-family: Verdana, Geneva, sans-serif;
 }
+
 .app__header {
-  color: #00d8ff;
-  background-color: #222;
+  color: #fff;
+  background-color: #3949ab;
   padding: 6px;
   line-height: 18px;
   vertical-align: middle;
   position: relative;
-}
-
-.app__logo {
-  border: 1px solid #00d8ff;
-  margin-right: .25em;
 }
 
 .app__link {
@@ -32,7 +28,7 @@
 
 .app__homelink {
   font-weight: bold;
-  color: #00d8ff !important;
+  color: #fff !important;
   margin-right: .75em;
 }
 
