@@ -20,21 +20,15 @@ export const User = ({ id, name, createdAt, karma }) => {
         <tbody>
           <tr>
             <td>name:</td>
-            <td>
-              {name}
-            </td>
+            <td>{name}</td>
           </tr>
           <tr>
             <td>created:</td>
-            <td>
-              {new Date(createdAt).toLocaleString('en-US')}
-            </td>
+            <td>{new Date(createdAt).toLocaleString('en-US')}</td>
           </tr>
           <tr>
             <td>karma:</td>
-            <td>
-              {karma}
-            </td>
+            <td>{karma}</td>
           </tr>
         </tbody>
       </table>
