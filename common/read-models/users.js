@@ -30,5 +30,23 @@ export default {
 
       return state.setIn([index, 'passwordHash'], newPassword);
     }
+  },
+  gqlSchema: `
+    type User {
+      id: ID!
+      name: String!
+      createdAt: String!
+      karma: Int!
+    }
+    type Query {
+      users: [User]
+      users(id: ID): [User]
+    }
+  `,
+  gqlResolvers: {
+    users: (root, args) =>
+      args.id
+        ? [root.find(({ id }) => id === args.id)].filter(user => user)
+        : root
   }
 };
