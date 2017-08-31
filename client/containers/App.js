@@ -21,7 +21,7 @@ export class App extends React.PureComponent {
   }
 
   render() {
-    const { children, user, logout, match } = this.props;
+    const { children, user, logout } = this.props;
 
     return (
       <div className="app">
@@ -99,7 +99,7 @@ export class App extends React.PureComponent {
                 <div>
                   <NavLink
                     className="app__link"
-                    to={`/user?id=${user.id}`}
+                    to={`/user/${user.id}`}
                     activeClassName="app__link--active"
                   >
                     {user.name}
@@ -125,9 +125,7 @@ export class App extends React.PureComponent {
               )}
             </div>
           </div>
-          <div className="app__content">
-            {children}
-          </div>
+          <div className="app__content">{children}</div>
           <div className="app__footer">
             <a
               className="app__footer-link"
