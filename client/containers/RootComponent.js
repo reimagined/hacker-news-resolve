@@ -37,6 +37,7 @@ export class RootComponent extends React.Component {
     return (
       <div className="app">
         <Helmet>
+          <title>reSolve Hacker News</title>
           <meta
             name="viewport"
             content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
@@ -44,14 +45,19 @@ export class RootComponent extends React.Component {
           <link
             rel="shortcut icon"
             type="image/x-icon"
-            href="/static/img/favicon.ico"
+            href="/static/img/reSolve-logo.png"
           />
           <link rel="stylesheet" type="text/css" href="/static/bundle.css" />
         </Helmet>
         <div className="app__wrap">
           <div className="app__header">
             <Link to="/" className="app__logo">
-              <img src="/static/img/logo.png" width="16" height="16" alt="" />
+              <img
+                src="/static/img/reSolve-logo.png"
+                width="18"
+                height="18"
+                alt=""
+              />
             </Link>{' '}
             <Link
               className="app__link app__homelink"
