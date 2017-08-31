@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
-import queryString from 'query-string';
 import sanitizer from 'sanitizer';
 
 import Story from '../components/Story';
@@ -9,7 +8,6 @@ import actions from '../actions/stories';
 import storyActions from '../actions/stories';
 import Comment from '../components/Comment';
 import ChildrenComments from '../components/ChildrenComments';
-import getById from '../helpers/getById';
 import '../styles/storyDetails.css';
 
 export class StoryDetails extends Component {
@@ -27,10 +25,10 @@ export class StoryDetails extends Component {
   }
 
   render() {
-    const { id } = queryString.parse(this.props.location.search);
-    const story = getById(this.props.stories, id);
-    const user = getById(this.props.users, story.userId);
-    const link = story.type === 'ask' ? `/storyDetails?id=${id}` : story.link;
+    const { id, stories, users } = this.props;
+    const story = stories.find(story => story.id === id);
+    const user = users.find(({ id }) => id === story.userId);
+    const link = story.type === 'ask' ? `/storyDetails/${id}` : story.link;
 
     return (
       <div className="storyDetails">
@@ -100,12 +98,13 @@ export class StoryDetails extends Component {
   }
 }
 
-export const mapStateToProps = state => {
+export const mapStateToProps = (state, { match }) => {
   return {
     stories: state.stories,
     users: state.users,
     comments: state.comments,
-    user: state.user
+    user: state.user,
+    id: match.params.id
   };
 };
 

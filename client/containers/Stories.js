@@ -1,10 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import queryString from 'query-string';
 
 import Story from '../components/Story';
 import Paginator from '../components/Paginator';
-import getById from '../helpers/getById';
 
 import {
   STORIES_ON_ONE_PAGE,
@@ -15,15 +13,10 @@ import actions from '../actions/stories';
 import '../styles/stories.css';
 
 export const Stories = props => {
-  let { page } = queryString.parse(props.location.search);
-  let { stories } = props;
+  let { stories, type, page } = props;
 
-  if (props.location.pathname.includes('ask')) {
-    stories = stories.filter(story => story.type === 'ask');
-  } else if (props.location.pathname.includes('show')) {
-    stories = stories.filter(story => story.type === 'show');
-  } else if (props.location.pathname === '/') {
-    // TODO sort flow stories in some special order
+  if (type) {
+    stories = stories.filter(story => story.type === type);
   }
 
   const hasNext = hasNextStories(stories, page);
@@ -38,11 +31,11 @@ export const Stories = props => {
             const { type } = story;
 
             const link =
-              type === 'ask' ? `/storyDetails?id=${story.id}` : story.link;
+              type === 'ask' ? `/storyDetails/${story.id}` : story.link;
             const title =
               type === 'ask' ? `Ask HN: ${story.title}` : story.title;
 
-            const user = getById(props.users, story.userId);
+            const user = props.users.find(({ id }) => id === story.userId);
 
             return (
               <li key={story.id} className="stories__item">
@@ -64,7 +57,11 @@ export const Stories = props => {
           })}
         </ol>
       </div>
-      <Paginator page={page} hasNext={hasNext} location={props.location} />
+      <Paginator
+        page={page}
+        hasNext={hasNext}
+        location={`/${type || 'newest'}`}
+      />
     </div>
   );
 };
