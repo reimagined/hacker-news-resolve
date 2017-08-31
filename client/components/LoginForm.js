@@ -4,7 +4,7 @@ import '../styles/login.css';
 
 const LoginForm = ({ title, action, buttonText }) => (
   <div className="login">
-    <h1>{title}</h1>
+    <h2>{title}</h2>
     <form method="GET" action={action}>
       <table>
         <tbody>

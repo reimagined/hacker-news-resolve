@@ -11,6 +11,8 @@ import events from './common/events';
 import { extendExpress, initialState } from './server';
 import routes from './client/routes';
 
+const eventTypes = Object.keys(events).map(key => events[key]);
+
 export default {
   entries: {
     createStore,
@@ -27,7 +29,10 @@ export default {
   },
   initialState: (...args) => initialState(queries, ...args),
   aggregates,
-  events,
+  initialSubscribedEvents: {
+    types: eventTypes,
+    ids: []
+  },
   queries,
   extendExpress
 };

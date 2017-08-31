@@ -1,4 +1,5 @@
 import Immutable from '../immutable';
+import { STORIES_ON_ONE_PAGE } from '../../client/helpers/getPageStories';
 
 import type {
   CommentCreated,
@@ -72,5 +73,30 @@ export default {
         .slice(0, commentIndex)
         .concat(nextState.slice(commentIndex + 1));
     }
+  },
+  gqlSchema: `
+    type Comment {
+      text: String!
+      id: ID!
+      parentId: ID!
+      createdAt: String!
+      createdBy: String!
+      replies: [String!]!
+    }
+    type Query {
+      comments: [Comment]
+      comments(page: Int, id: ID): [Comment]
+    }
+  `,
+  gqlResolvers: {
+    comments: (root, args) =>
+      args.id
+        ? [root.find(({ id }) => id === args.id)].filter(comment => comment)
+        : args.page
+          ? root.slice(
+              args.page * STORIES_ON_ONE_PAGE - STORIES_ON_ONE_PAGE,
+              args.page * STORIES_ON_ONE_PAGE + 1
+            )
+          : root
   }
 };
