@@ -8,6 +8,7 @@ import actions from '../actions/stories';
 import storyActions from '../actions/stories';
 import Comment from '../components/Comment';
 import ChildrenComments from '../components/ChildrenComments';
+import subscribe from '../decorators/subscribe';
 import '../styles/storyDetails.css';
 
 export class StoryDetails extends Component {
@@ -137,4 +138,15 @@ export const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(StoryDetails);
+export default subscribe(({ match }) => ({
+  graphQL: [
+    {
+      readModel: 'stories',
+      query:
+        'query ($id: ID!) { stories(id: $id) { id, type, title, text, userId, createDate, link, comments, commentsCount, voted } }',
+      variables: {
+        id: match.params.id
+      }
+    }
+  ]
+}))(connect(mapStateToProps, mapDispatchToProps)(StoryDetails));

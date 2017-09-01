@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import subscribe from '../decorators/subscribe';
 import '../styles/profile.css';
 
 export const User = ({ id, name, createdAt, karma }) => {
@@ -44,4 +45,15 @@ export const mapStateToProps = ({ user, users }, { match }) => {
   return id ? users.find(item => item.id === id) : user;
 };
 
-export default connect(mapStateToProps)(User);
+export default subscribe(({ match }) => ({
+  graphQL: [
+    {
+      readModel: 'users',
+      query:
+        'query ($id: ID!) { users(id: $id) { id, name, createdAt, karma } }',
+      variables: {
+        id: match.params.id
+      }
+    }
+  ]
+}))(connect(mapStateToProps)(User));
