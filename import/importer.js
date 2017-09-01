@@ -7,15 +7,11 @@ import createBus from 'resolve-bus-memory';
 import eventTypes from '../common/events/index';
 import HNServiceRest from './services/HNServiceRest';
 
-const MAX_STORY_COUNT = 50;
+const dbPath = './storage.json';
+const USER_CREATED_TIMESTAMP = 3600 * 24 * 1000;
 
-const events = [];
 const users = {};
 const storyIds = [];
-
-const dbPath = './storage.json';
-let canceled = false;
-const USER_CREATED_TIMESTAMP = 3600 * 24 * 1000;
 
 const storage = createStorage({ pathToFile: dbPath });
 const bus = createBus();
@@ -33,7 +29,7 @@ const {
 } = eventTypes;
 
 const addEvent = (type, aggregateId, timestamp, payload) =>
-  events.push({
+  eventStore.saveEvent({
     type,
     aggregateId,
     timestamp,
@@ -74,7 +70,7 @@ const generateCommentEvents = (comment, aggregateId, parentId) => {
 const commentProc = (comment, aggregateId, parentId) => {
   return new Promise(resolve => {
     const commentId = generateCommentEvents(comment, aggregateId, parentId);
-    return !canceled && comment.kids
+    return comment.kids
       ? commentsProc(comment.kids, aggregateId, commentId).then(() =>
           resolve(aggregateId)
         )
@@ -147,7 +143,7 @@ const storiesProc = (ids, tickCallback) => {
       (promise, story) =>
         promise.then(() => {
           tickCallback();
-          return !canceled && story && !story.deleted && story.by
+          return story && !story.deleted && story.by
             ? generateStoryEvents(story)
             : null;
         }),
@@ -160,41 +156,22 @@ const getStories = path =>
   HNServiceRest.storiesRef(path).then(res => res.json());
 
 export const start = (countCallback, tickCallback) => {
-  canceled = false;
+  if (fs.existsSync(dbPath)) {
+    fs.unlinkSync(dbPath);
+  }
   return Promise.all([
     getStories('topstories'),
     getStories('newstories'),
-    getStories('beststories'),
-    getStories('askstories'),
     getStories('showstories'),
-    getStories('jobstories')
+    getStories('askstories')
   ])
     .then(categories => {
       const stories = categories.reduce(
-        (stories, category) =>
-          stories.concat(
-            removeDuplicate(category).slice(
-              0,
-              Math.ceil(MAX_STORY_COUNT / categories.length)
-            )
-          ),
+        (stories, category) => stories.concat(removeDuplicate(category)),
         []
       );
-      countCallback(Math.min(stories.length, MAX_STORY_COUNT));
-      return storiesProc(stories.slice(0, MAX_STORY_COUNT), tickCallback);
-    })
-    .then(() => {
-      if (fs.existsSync(dbPath)) {
-        fs.unlinkSync(dbPath);
-      }
-      return events.reduce(
-        (promise, event) => promise.then(() => eventStore.saveEvent(event)),
-        Promise.resolve()
-      );
+      countCallback(stories.length);
+      return storiesProc(stories, tickCallback);
     })
     .catch(err => console.error(err));
-};
-
-export const stop = () => {
-  canceled = true;
 };
