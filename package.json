@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "description": "A React & Redux & Resolve implementation of Hacker News",
   "scripts": {
-    "build": "babel-node ./eventGenerator && resolve-scripts build",
+    "build": "resolve-scripts build",
     "start": "resolve-scripts start",
-    "dev": "babel-node ./eventGenerator && resolve-scripts dev",
+    "dev": "resolve-scripts dev",
+    "import": "babel-node ./import ",
     "lint": "eslint --ignore-path .gitignore .",
     "lint-fix": "eslint --ignore-path .gitignore --fix .",
     "prettier": "prettier-eslint --write \"**/*.js\"",

@@ -1,6 +1,6 @@
 import ProgressBar from 'progress';
 
-import { start, stop } from './generator';
+import { start, stop } from './importer';
 
 let bar;
 start(
