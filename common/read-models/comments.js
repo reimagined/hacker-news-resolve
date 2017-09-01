@@ -94,8 +94,8 @@ export default {
         ? [root.find(({ id }) => id === args.id)].filter(comment => comment)
         : args.page
           ? root.slice(
-              args.page * STORIES_ON_ONE_PAGE - STORIES_ON_ONE_PAGE,
-              args.page * STORIES_ON_ONE_PAGE + 1
+              +args.page * STORIES_ON_ONE_PAGE - STORIES_ON_ONE_PAGE,
+              +args.page * STORIES_ON_ONE_PAGE + 1
             )
           : root
   }

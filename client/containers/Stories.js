@@ -30,8 +30,7 @@ export const Stories = props => {
           {stories.map(story => {
             const { type } = story;
 
-            const link =
-              type === 'ask' ? `/storyDetails/${story.id}` : story.link;
+            const link = story.link || `/storyDetails/${story.id}`;
             const title =
               type === 'ask' ? `Ask HN: ${story.title}` : story.title;
 

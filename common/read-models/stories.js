@@ -142,7 +142,7 @@ export default {
     }
     type Query {
       stories: [Story]
-      stories(page: Int, id: ID): [Story]
+      stories(page: Int, id: ID, type: String): [Story]
     }
   `,
   gqlResolvers: {
@@ -151,8 +151,8 @@ export default {
         ? [root.find(({ id }) => id === args.id)].filter(story => story)
         : args.page
           ? root.slice(
-              args.page * STORIES_ON_ONE_PAGE - STORIES_ON_ONE_PAGE,
-              args.page * STORIES_ON_ONE_PAGE + 1
+              +args.page * STORIES_ON_ONE_PAGE - STORIES_ON_ONE_PAGE,
+              +args.page * STORIES_ON_ONE_PAGE + 1
             )
           : root
   }
