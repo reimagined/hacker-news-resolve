@@ -155,9 +155,6 @@ const getStories = path =>
   HNServiceRest.storiesRef(path).then(res => res.json());
 
 export const start = (countCallback, tickCallback) => {
-  if (fs.existsSync(dbPath)) {
-    fs.unlinkSync(dbPath);
-  }
   canceled = false;
   return Promise.all([
     getStories('topstories'),
@@ -181,12 +178,15 @@ export const start = (countCallback, tickCallback) => {
       countCallback(Math.min(stories.length, MAX_STORY_COUNT));
       return storiesProc(stories.slice(0, MAX_STORY_COUNT), tickCallback);
     })
-    .then(() =>
-      events.reduce(
+    .then(() => {
+      if (fs.existsSync(dbPath)) {
+        fs.unlinkSync(dbPath);
+      }
+      return events.reduce(
         (promise, event) => promise.then(() => storage.saveEvent(event)),
         Promise.resolve()
-      )
-    )
+      );
+    })
     .catch(err => console.error(err));
 };
 
