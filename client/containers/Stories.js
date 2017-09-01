@@ -6,7 +6,6 @@ import Paginator from '../components/Paginator';
 
 import {
   STORIES_ON_ONE_PAGE,
-  getPageStories,
   hasNextStories
 } from '../helpers/getPageStories';
 import actions from '../actions/stories';
@@ -15,19 +14,15 @@ import '../styles/stories.css';
 export const Stories = props => {
   let { stories, type, page } = props;
 
-  if (type) {
-    stories = stories.filter(story => story.type === type);
-  }
+  const hasNext = hasNextStories(stories);
 
-  const hasNext = hasNextStories(stories, page);
-  stories = getPageStories(stories, page);
   const firstStoryIndex = STORIES_ON_ONE_PAGE * (page ? page - 1 : 0);
 
   return (
     <div>
       <div className="stories">
         <ol className="stories__list" start={firstStoryIndex + 1}>
-          {stories.map(story => {
+          {stories.slice(0, STORIES_ON_ONE_PAGE).map(story => {
             const { type } = story;
 
             const link = story.link || `/storyDetails/${story.id}`;

@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Comment from '../components/Comment';
-import { getPageStories, hasNextStories } from '../helpers/getPageStories';
+import { STORIES_ON_ONE_PAGE, hasNextStories } from '../helpers/getPageStories';
 import Paginator from '../components/Paginator';
 import subscribe from '../decorators/subscribe';
+import comments from '../../common/read-models/comments';
 
 export const findRoot = (id, comments) => {
   const comment = comments.find(comment => id === comment.id);
@@ -20,11 +21,11 @@ export const Comments = props => {
   const { comments, match } = props;
   const { page } = match.params;
 
-  const hasNext = hasNextStories(comments, page);
+  const hasNext = hasNextStories(comments);
 
   return (
     <div>
-      {getPageStories(comments, page).map(comment => {
+      {comments.slice(0, STORIES_ON_ONE_PAGE).map(comment => {
         const parentId = comment.parentId;
         const rootId = findRoot(parentId, comments);
 
@@ -65,7 +66,7 @@ export const mapStateToProps = ({ stories, users, comments }) => {
 export default subscribe(({ match }) => ({
   graphQL: [
     {
-      readModel: 'comments',
+      readModel: comments,
       query:
         'query ($page: Int!) { comments(page: $page) { text, id, parentId, createdAt, createdBy, replies } }',
       variables: {

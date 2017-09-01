@@ -1,7 +1,7 @@
 export const STORIES_ON_ONE_PAGE = 30;
 
-export const hasNextStories = (stories, page = 1) => {
-  return Math.ceil(stories.length / STORIES_ON_ONE_PAGE) > page;
+export const hasNextStories = (stories) => {
+  return !!stories[STORIES_ON_ONE_PAGE];
 };
 
 export const getPageStories = (stories, page = 1) => {

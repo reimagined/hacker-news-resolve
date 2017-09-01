@@ -22,7 +22,7 @@ export default subscribe => Component => {
 
       graphQL.forEach(async ({ readModel, query, variables }) => {
         const response = await fetch(
-          `/api/queries/${readModel}?${queryParams({
+          `/api/queries/${readModel.name}?${queryParams({
             graphql: query,
             variables: JSON.stringify(variables)
           })}`,
@@ -34,12 +34,11 @@ export default subscribe => Component => {
         );
 
         if (response.ok) {
-          // TODO
-          //const data = await response.json();
+          const data = await response.json();
 
-          // this.context.store.dispatch(
-          //   actions.replaceState(readModel, data[readModel])
-          // );
+          this.context.store.dispatch(
+            actions.replaceState(readModel.name, data[readModel.name])
+          );
 
           return;
         }

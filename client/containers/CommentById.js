@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ChildrenComments from '../components/ChildrenComments';
 import Comment from '../components/Comment';
 import subscribe from '../decorators/subscribe';
+import comments from '../../common/read-models/comments';
 
 export const CommentContainer = ({ comments, users, match }) => {
   const { id } = match.params;
@@ -35,7 +36,7 @@ export const mapStateToProps = ({ users, comments }) => ({
 export default subscribe(({ match }) => ({
   graphQL: [
     {
-      readModel: 'comments',
+      readModel: comments,
       query:
         'query ($id: String!) { comments(id: $id) { text, id, parentId, createdAt, createdBy, replies } }',
       variables: {
