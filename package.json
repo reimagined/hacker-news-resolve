@@ -64,7 +64,6 @@
     "resolve-query": "0.0.21",
     "resolve-redux": "0.0.21",
     "resolve-scripts": "0.0.21",
-    "resolve-storage": "0.0.13",
     "resolve-storage-file": "0.0.21",
     "resolve-storage-memory": "0.0.21",
     "sanitizer": "^0.1.3",

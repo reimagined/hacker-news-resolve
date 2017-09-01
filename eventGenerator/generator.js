@@ -1,7 +1,8 @@
 import fs from 'fs';
 import uuid from 'uuid';
-import resolveStorage from 'resolve-storage';
-import storageDriver from 'resolve-storage-file';
+import createEventStore from 'resolve-es';
+import createStorage from 'resolve-storage-file';
+import createBus from 'resolve-bus-memory';
 
 import eventTypes from '../common/events/index';
 import HNServiceRest from './services/HNServiceRest';
@@ -16,8 +17,12 @@ const dbPath = './storage.json';
 let canceled = false;
 const USER_CREATED_TIMESTAMP = 3600 * 24 * 1000;
 
-const storage = resolveStorage({
-  driver: storageDriver({ pathToFile: dbPath })
+const storage = createStorage({ pathToFile: dbPath });
+const bus = createBus();
+
+const eventStore = createEventStore({
+  storage,
+  bus
 });
 
 const {
@@ -183,7 +188,7 @@ export const start = (countCallback, tickCallback) => {
         fs.unlinkSync(dbPath);
       }
       return events.reduce(
-        (promise, event) => promise.then(() => storage.saveEvent(event)),
+        (promise, event) => promise.then(() => eventStore.saveEvent(event)),
         Promise.resolve()
       );
     })
