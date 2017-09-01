@@ -8,14 +8,13 @@ import HNServiceRest from './services/HNServiceRest';
 
 const MAX_STORY_COUNT = 50;
 
-let events = [];
-let users = {};
-let storyIds = [];
+const events = [];
+const users = {};
+const storyIds = [];
 
 const dbPath = './storage.json';
 let canceled = false;
-
-const isCanceled = () => canceled;
+const USER_CREATED_TIMESTAMP = 3600 * 24 * 1000;
 
 const storage = resolveStorage({
   driver: storageDriver({ pathToFile: dbPath })
@@ -38,7 +37,7 @@ const addEvent = (type, aggregateId, timestamp, payload) =>
 
 const generateUserEvents = name => {
   const aggregateId = uuid.v4();
-  addEvent(USER_CREATED, aggregateId, new Date(3600 * 24 * 1000).getTime(), {
+  addEvent(USER_CREATED, aggregateId, USER_CREATED_TIMESTAMP, {
     name,
     passwordHash: 'TODO:'
   });
@@ -47,7 +46,9 @@ const generateUserEvents = name => {
 };
 
 const userProc = userName => {
-  if (users[userName]) return users[userName];
+  if (users[userName]) {
+    return users[userName];
+  }
   const aggregateId = generateUserEvents(userName);
   users[userName] = aggregateId;
   return aggregateId;
@@ -68,7 +69,7 @@ const generateCommentEvents = (comment, aggregateId, parentId) => {
 const commentProc = (comment, aggregateId, parentId) => {
   return new Promise(resolve => {
     const commentId = generateCommentEvents(comment, aggregateId, parentId);
-    return !isCanceled() && comment.kids
+    return !canceled && comment.kids
       ? commentsProc(comment.kids, aggregateId, commentId).then(() =>
           resolve(aggregateId)
         )
@@ -115,7 +116,9 @@ const generateStoryEvents = story => {
         userId,
         link: story.url
       });
-      if (story.score) generatePointEvents(aggregateId, story.score);
+      if (story.score) {
+        generatePointEvents(aggregateId, story.score);
+      }
       return story.kids
         ? commentsProc(story.kids, aggregateId, aggregateId).then(() =>
             resolve(aggregateId)
@@ -139,7 +142,7 @@ const storiesProc = (ids, tickCallback) => {
       (promise, story) =>
         promise.then(() => {
           tickCallback();
-          return !isCanceled() && story && !story.deleted && story.by
+          return !canceled && story && !story.deleted && story.by
             ? generateStoryEvents(story)
             : null;
         }),
@@ -152,7 +155,9 @@ const getStories = path =>
   HNServiceRest.storiesRef(path).then(res => res.json());
 
 export const start = (countCallback, tickCallback) => {
-  if (fs.existsSync(dbPath)) fs.unlinkSync(dbPath);
+  if (fs.existsSync(dbPath)) {
+    fs.unlinkSync(dbPath);
+  }
   canceled = false;
   return Promise.all([
     getStories('topstories'),
@@ -163,7 +168,7 @@ export const start = (countCallback, tickCallback) => {
     getStories('jobstories')
   ])
     .then(categories => {
-      let stories = categories.reduce(
+      const stories = categories.reduce(
         (stories, category) =>
           stories.concat(
             removeDuplicate(category).slice(
