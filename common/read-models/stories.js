@@ -1,15 +1,15 @@
 import Immutable from '../immutable';
-import { STORIES_ON_ONE_PAGE } from '../../client/helpers/getPageStories';
+import storiesEvents from '../events/stories';
+import commentsEvents from '../events/comments';
+import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants';
 
+import type { CommentCreated, CommentRemoved } from '../events/comments';
 import type {
   StoryCreated,
   StoryUpvoted,
   StoryUnvoted,
   StoryDeleted
 } from '../events/stories';
-import type { CommentCreated, CommentRemoved } from '../events/comments';
-import storiesEvents from '../events/stories';
-import commentsEvents from '../events/comments';
 
 const {
   STORY_CREATED,
@@ -153,8 +153,8 @@ export default {
           ? (args.type
               ? root.filter(({ type }) => type === args.type)
               : root).slice(
-              +args.page * STORIES_ON_ONE_PAGE - STORIES_ON_ONE_PAGE,
-              +args.page * STORIES_ON_ONE_PAGE + 1
+              +args.page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
+              +args.page * NUMBER_OF_ITEMS_PER_PAGE + 1
             )
           : root
   }

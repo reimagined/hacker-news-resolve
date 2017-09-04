@@ -1,5 +1,5 @@
 import Immutable from '../immutable';
-import { STORIES_ON_ONE_PAGE } from '../../client/helpers/getPageStories';
+import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants';
 
 import type {
   CommentCreated,
@@ -94,8 +94,8 @@ export default {
         ? [root.find(({ id }) => id === args.id)].filter(comment => comment)
         : args.page
           ? root.slice(
-              +args.page * STORIES_ON_ONE_PAGE - STORIES_ON_ONE_PAGE,
-              +args.page * STORIES_ON_ONE_PAGE + 1
+              +args.page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
+              +args.page * NUMBER_OF_ITEMS_PER_PAGE + 1
             )
           : root
   }

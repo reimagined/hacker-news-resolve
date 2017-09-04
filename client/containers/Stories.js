@@ -3,23 +3,22 @@ import { connect } from 'react-redux';
 
 import Story from '../components/Story';
 import Paginator from '../components/Paginator';
-
-import { STORIES_ON_ONE_PAGE, hasNextStories } from '../helpers/getPageStories';
+import { NUMBER_OF_ITEMS_PER_PAGE } from '../../common/constants';
 import actions from '../actions/stories';
 import '../styles/stories.css';
 
 export const Stories = props => {
   let { stories, type, page } = props;
 
-  const hasNext = hasNextStories(stories);
+  const hasNext = !!stories[NUMBER_OF_ITEMS_PER_PAGE];
 
-  const firstStoryIndex = STORIES_ON_ONE_PAGE * (page ? page - 1 : 0);
+  const firstStoryIndex = NUMBER_OF_ITEMS_PER_PAGE * (page ? page - 1 : 0);
 
   return (
     <div>
       <div className="stories">
         <ol className="stories__list" start={firstStoryIndex + 1}>
-          {stories.slice(0, STORIES_ON_ONE_PAGE).map(story => {
+          {stories.slice(0, NUMBER_OF_ITEMS_PER_PAGE).map(story => {
             const { type } = story;
 
             const link = story.link || `/storyDetails/${story.id}`;

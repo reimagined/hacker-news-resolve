@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Comment from '../components/Comment';
-import { STORIES_ON_ONE_PAGE, hasNextStories } from '../helpers/getPageStories';
+import { NUMBER_OF_ITEMS_PER_PAGE } from '../../common/constants';
 import Paginator from '../components/Paginator';
 import subscribe from '../decorators/subscribe';
 import comments from '../../common/read-models/comments';
@@ -21,11 +21,11 @@ export const Comments = props => {
   const { comments, match } = props;
   const { page } = match.params;
 
-  const hasNext = hasNextStories(comments);
+  const hasNext = !!comments[NUMBER_OF_ITEMS_PER_PAGE];
 
   return (
     <div>
-      {comments.slice(0, STORIES_ON_ONE_PAGE).map(comment => {
+      {comments.slice(0, NUMBER_OF_ITEMS_PER_PAGE).map(comment => {
         const parentId = comment.parentId;
         const rootId = findRoot(parentId, comments);
 
