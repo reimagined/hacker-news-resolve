@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { actions } from 'resolve-redux';
 import shallowEqual from 'react-pure-render/shallowEqual';
+import Immutable from 'seamless-immutable';
 
 function queryParams(params) {
   return Object.keys(params)
@@ -12,6 +13,8 @@ function queryParams(params) {
 export default subscribe => Component => {
   class ResolveWrapper extends React.PureComponent {
     async refresh({ match }) {
+      const store = this.context.store;
+
       const { graphQL, events } = subscribe({ match });
 
       if (events) {
@@ -22,7 +25,7 @@ export default subscribe => Component => {
 
       graphQL.forEach(async ({ readModel, query, variables }) => {
         const prevState = this.context.store.getState()[readModel.name];
-        this.context.store.dispatch(
+        store.dispatch(
           actions.replaceState(readModel.name, readModel.initialState)
         );
 
@@ -42,14 +45,15 @@ export default subscribe => Component => {
           if (response.ok) {
             const data = await response.json();
 
-            this.context.store.dispatch(
-              actions.replaceState(readModel.name, data[readModel.name])
+            store.dispatch(
+              actions.replaceState(
+                readModel.name,
+                Immutable(data[readModel.name])
+              )
             );
           }
         } catch (error) {
-          this.context.store.dispatch(
-            actions.replaceState(readModel.name, prevState)
-          );
+          store.dispatch(actions.replaceState(readModel.name, prevState));
 
           // eslint-disable-next-line no-console
           console.log(error);

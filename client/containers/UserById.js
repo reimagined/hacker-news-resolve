@@ -8,12 +8,7 @@ import '../styles/profile.css';
 
 export const UserById = ({ id, name, createdAt, karma }) => {
   if (!id) {
-    return (
-      <div>
-        <h1>Error</h1>
-        User not found
-      </div>
-    );
+    return null;
   }
 
   return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Story from '../components/Story';
 import Paginator from '../components/Paginator';
@@ -8,7 +9,7 @@ import actions from '../actions/stories';
 import '../styles/stories.css';
 
 export const Stories = props => {
-  let { stories, type, page } = props;
+  let { stories, type, page, upvoteStory, unvoteStory } = props;
 
   const hasNext = !!stories[NUMBER_OF_ITEMS_PER_PAGE];
 
@@ -38,8 +39,8 @@ export const Stories = props => {
                   user={user}
                   commentCount={story.commentsCount}
                   voted={story.voted.includes(props.user.id)}
-                  onUpvote={() => props.onUpvote(story.id, props.user.id)}
-                  onUnvote={() => props.onUnvote(story.id, props.user.id)}
+                  onUpvote={() => upvoteStory(story.id, props.user.id)}
+                  onUnvote={() => unvoteStory(story.id, props.user.id)}
                   loggedIn={!!props.user.id}
                 />
               </li>
@@ -65,23 +66,19 @@ export const mapStateToProps = ({ stories, users, comments, user }) => {
   };
 };
 
-export const mapDispatchToProps = dispatch => {
-  return {
-    onUpvote(id, userId) {
-      return dispatch(
+export const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      upvoteStory: (id, userId) =>
         actions.upvoteStory(id, {
           userId
-        })
-      );
-    },
-    onUnvote(id, userId) {
-      return dispatch(
+        }),
+      unvoteStory: (id, userId) =>
         actions.unvoteStory(id, {
           userId
         })
-      );
-    }
-  };
-};
+    },
+    dispatch
+  );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stories);

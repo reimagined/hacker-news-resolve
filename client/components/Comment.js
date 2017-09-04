@@ -1,17 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import sanitizer from 'sanitizer';
 import TimeAgo from 'react-timeago';
 
 import '../styles/comment.css';
 
-export const getLevelClassName = level => {
-  // TODO: remove me!!!
-  if (level > 15) return 'comment--level15';
-  return `comment--level${level > 0 ? level : '0'}`;
-};
-
-class Comment extends Component {
+class Comment extends React.PureComponent {
   state = {
     expanded: true
   };
@@ -27,13 +21,16 @@ class Comment extends Component {
       date,
       showReply,
       parent,
-      root,
       children
     } = this.props;
 
+    if (!user || !id) {
+      return null;
+    }
+
     return (
       <div>
-        <div className={`comment ${getLevelClassName(level)}`}>
+        <div className={`comment comment--level${Math.min(level, 15)}`}>
           <div className="comment__content">
             <div className="comment__meta">
               <span
@@ -72,20 +69,8 @@ class Comment extends Component {
                   </Link>
                 </span>
               )}
-              {root && (
-                <span>
-                  {' '}
-                  | on:{' '}
-                  <Link
-                    className="comment__link"
-                    to={`/storyDetails/${root.id}`}
-                  >
-                    {root.title}
-                  </Link>
-                </span>
-              )}
             </div>
-            {this.state.expanded && (
+            {this.state.expanded ? (
               <div className="comment__text">
                 <div
                   dangerouslySetInnerHTML={{
@@ -100,13 +85,17 @@ class Comment extends Component {
                   )}
                 </p>
               </div>
-            )}
+            ) : null}
           </div>
         </div>
-        {this.state.expanded && children}
+        {this.state.expanded ? children : null}
       </div>
     );
   }
+
+  static defaultProps = {
+    level: 0
+  };
 }
 
 export default Comment;

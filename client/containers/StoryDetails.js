@@ -1,30 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import uuid from 'uuid';
 import sanitizer from 'sanitizer';
 
 import Story from '../components/Story';
 import actions from '../actions/stories';
-import storyActions from '../actions/stories';
 import Comment from '../components/Comment';
 import ChildrenComments from '../components/ChildrenComments';
 import subscribe from '../decorators/subscribe';
 import stories from '../../common/read-models/stories';
 import '../styles/storyDetails.css';
 
-export class StoryDetails extends Component {
+export class StoryDetails extends React.PureComponent {
   state = {
     text: ''
   };
 
-  onAddComment(parentId, userId) {
-    this.props.onAddComment({
+  onAddComment = () => {
+    this.props.createComment({
       text: this.state.text,
-      parentId,
-      userId
+      parentId: this.props.id,
+      userId: this.props.user.id
     });
     this.setState({ text: '' });
-  }
+  };
+
+  onChangeText = event =>
+    this.setState({
+      text: event.target.value
+    });
+
+  onUpvote = () => this.props.upvoteStory(this.props.id, this.props.user.id);
+
+  onUnvote = () => this.props.unvoteStory(this.props.id, this.props.user.id);
 
   render() {
     const { id, stories, users } = this.props;
@@ -35,6 +44,11 @@ export class StoryDetails extends Component {
     }
 
     const user = users.find(({ id }) => id === story.userId);
+
+    if (!user) {
+      return null;
+    }
+
     const link = story.type === 'ask' ? `/storyDetails/${id}` : story.link;
 
     return (
@@ -48,8 +62,8 @@ export class StoryDetails extends Component {
           user={user}
           date={new Date(+story.createDate)}
           commentCount={story.commentsCount}
-          onUpvote={() => this.props.onUpvote(id, this.props.user.id)}
-          onUnvote={() => this.props.onUnvote(id, this.props.user.id)}
+          onUpvote={this.onUpvote}
+          onUnvote={this.onUnvote}
           loggedIn={!!this.props.user.id}
         />
         {story.text && (
@@ -65,13 +79,11 @@ export class StoryDetails extends Component {
               rows="6"
               cols="70"
               value={this.state.text}
-              onChange={e => this.setState({ text: e.target.value })}
+              onChange={this.onChangeText}
             />
           </div>
           <div>
-            <button onClick={() => this.onAddComment(id, this.props.user.id)}>
-              add comment
-            </button>
+            <button onClick={this.onAddComment}>add comment</button>
           </div>
         </div>
         <div>
@@ -80,7 +92,15 @@ export class StoryDetails extends Component {
               ({ id }) => id === commentId
             );
 
+            if (!comment) {
+              return null;
+            }
+
             const user = this.props.users.find(u => u.id === comment.createdBy);
+
+            if (!user) {
+              return null;
+            }
 
             return (
               <Comment
@@ -105,44 +125,38 @@ export class StoryDetails extends Component {
   }
 }
 
-export const mapStateToProps = (state, { match }) => {
-  return {
-    stories: state.stories,
-    users: state.users,
-    comments: state.comments,
-    user: state.user,
-    id: match.params.id
-  };
-};
+export const mapStateToProps = (
+  { stories, users, comments, user },
+  { match }
+) => ({
+  stories,
+  users,
+  comments,
+  user,
+  id: match.params.id
+});
 
-export const mapDispatchToProps = dispatch => {
-  return {
-    onAddComment({ parentId, text, userId }) {
-      return dispatch(
+export const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      createComment: ({ parentId, text, userId }) =>
         actions.createComment(parentId, {
           text,
           parentId,
           userId,
           commentId: uuid.v4()
-        })
-      );
-    },
-    onUpvote(id, userId) {
-      return dispatch(
-        storyActions.upvoteStory(id, {
+        }),
+      upvoteStory: (id, userId) =>
+        actions.upvoteStory(id, {
+          userId
+        }),
+      unvoteStory: (id, userId) =>
+        actions.unvoteStory(id, {
           userId
         })
-      );
     },
-    onUnvote(id, userId) {
-      return dispatch(
-        storyActions.unvoteStory(id, {
-          userId
-        })
-      );
-    }
-  };
-};
+    dispatch
+  );
 
 export default subscribe(({ match }) => ({
   graphQL: [

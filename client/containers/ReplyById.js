@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import uuid from 'uuid';
 
 import actions from '../actions/stories';
@@ -14,7 +15,7 @@ export class ReplyById extends Component {
   };
 
   onReply(parentId, userId, storyId) {
-    this.props.onReply({
+    this.props.createComment({
       text: this.state.text,
       parentId,
       userId,
@@ -27,6 +28,11 @@ export class ReplyById extends Component {
   render() {
     const { comments, users, user, id } = this.props;
     const comment = comments.find(c => c.id === id);
+
+    if (!comment) {
+      return null;
+    }
+
     const userName = users.find(({ id }) => id === comment.createdBy).name;
 
     return (
@@ -61,29 +67,26 @@ export class ReplyById extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onReply({ parentId, text, userId, storyId }) {
-      return dispatch(
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      createComment: ({ parentId, text, userId, storyId }) =>
         actions.createComment(storyId, {
           text,
           parentId,
           userId,
           commentId: uuid.v4()
         })
-      );
-    }
-  };
-};
+    },
+    dispatch
+  );
 
-const mapStateToProps = (state, { match }) => {
-  return {
-    comments: state.comments,
-    users: state.users,
-    user: state.user,
-    id: match.params.id
-  };
-};
+const mapStateToProps = ({ comments, users, user }, { match }) => ({
+  comments,
+  users,
+  user,
+  id: match.params.id
+});
 
 export default subscribe(({ match }) => ({
   graphQL: [

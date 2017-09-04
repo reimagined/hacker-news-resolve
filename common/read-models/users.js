@@ -34,9 +34,9 @@ export default {
   gqlSchema: `
     type User {
       id: ID!
-      name: String!
-      createdAt: String!
-      karma: Int!
+      name: String
+      createdAt: String
+      karma: Int
     }
     type Query {
       users: [User]

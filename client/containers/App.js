@@ -48,13 +48,13 @@ export class App extends React.PureComponent {
                 alt=""
               />
             </Link>{' '}
-            <Link
+            <NavLink
               className="app__link app__homelink"
               to="/"
               activeClassName="app__link--active"
             >
               reSolve HN
-            </Link>{' '}
+            </NavLink>{' '}
             <NavLink
               className="app__link"
               to="/newest"

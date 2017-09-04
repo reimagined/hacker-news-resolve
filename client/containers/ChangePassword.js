@@ -1,27 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import actions from '../actions/userActions';
 import '../styles/changePassword.css';
 
-class ChangePassword extends Component {
-  constructor(props) {
-    super(props);
+class ChangePassword extends React.PureComponent {
+  state = {
+    newPassword: '',
+    currentPassword: ''
+  };
 
-    this.state = {
-      newPassword: '',
-      currentPassword: ''
-    };
-  }
-
-  onPasswordChange() {
+  onPasswordChange = () => {
     this.props.changePassword(
       this.state.newPassword,
       this.state.currentPassword,
       this.props.user.id
     );
     this.setState({ newPassword: '', currentPassword: '' });
-  }
+  };
 
   render() {
     return (
@@ -56,7 +53,7 @@ class ChangePassword extends Component {
           </tbody>
         </table>
         <br />
-        <button onClick={() => this.onPasswordChange()}>change</button>
+        <button onClick={this.onPasswordChange}>change</button>
       </div>
     );
   }
@@ -64,9 +61,13 @@ class ChangePassword extends Component {
 
 const mapStateToProps = ({ user }) => ({ user });
 
-const mapDispatchToProps = dispatch => ({
-  changePassword: (newPassword, currentPassword, userId) =>
-    dispatch(actions.changePassword(userId, { newPassword, currentPassword }))
-});
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      changePassword: (newPassword, currentPassword, userId) =>
+        actions.changePassword(userId, { newPassword, currentPassword })
+    },
+    dispatch
+  );
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChangePassword);

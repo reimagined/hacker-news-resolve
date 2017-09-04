@@ -12,8 +12,18 @@ const ChildrenComments = ({ replies, level, comments, users }) => {
     <div>
       {replies.map(replyId => {
         const comment = comments.find(({ id }) => id === replyId);
+
+        if (!comment) {
+          return null;
+        }
+
         const { id, text, replies, createdAt, createdBy } = comment;
+
         const user = users.find(user => user.id === createdBy);
+
+        if (!user) {
+          return null;
+        }
 
         return (
           <Comment
@@ -22,7 +32,7 @@ const ChildrenComments = ({ replies, level, comments, users }) => {
             id={id}
             content={text}
             user={user.name}
-            date={new Date(createdAt)}
+            date={new Date(+createdAt)}
             showReply
           >
             <ChildrenComments

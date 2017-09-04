@@ -43,7 +43,7 @@ export default subscribe(({ match }) => ({
     {
       readModel: comments,
       query:
-        'query ($id: String!) { comments(id: $id) { text, id, parentId, createdAt, createdBy, replies } }',
+        'query ($id: String!) { comments(id: $id) { text, id, parentId, storyId, createdAt, createdBy, replies } }',
       variables: {
         id: match.params.id
       }

@@ -34,19 +34,20 @@ export const CommentsByPage = props => {
             ? `/storyDetails/${parentId}`
             : `/comment/${parentId}`;
 
-        const root = props.stories.find(({ id }) => id === rootId);
         const user = props.users.find(({ id }) => id === comment.createdBy);
+
+        if (!user) {
+          return null;
+        }
 
         return (
           <Comment
             key={comment.id}
-            replies={comment.replies}
             id={comment.id}
             content={comment.text}
             user={user}
             date={new Date(+comment.createdAt)}
             parent={parent}
-            root={root}
           />
         );
       })}
@@ -55,20 +56,18 @@ export const CommentsByPage = props => {
   );
 };
 
-export const mapStateToProps = ({ stories, users, comments }) => {
-  return {
-    stories,
-    users,
-    comments
-  };
-};
+export const mapStateToProps = ({ stories, users, comments }) => ({
+  stories,
+  users,
+  comments
+});
 
 export default subscribe(({ match }) => ({
   graphQL: [
     {
       readModel: comments,
       query:
-        'query ($page: Int!) { comments(page: $page) { text, id, parentId, createdAt, createdBy, replies } }',
+        'query ($page: Int!) { comments(page: $page) { text, id, parentId, storyId, createdAt, createdBy, replies } }',
       variables: {
         page: match.params.page || '1'
       }

@@ -10,7 +10,20 @@ import events from '../events/comments';
 
 const { COMMENT_CREATED, COMMENT_UPDATED, COMMENT_REMOVED } = events;
 
-const getId = event => event.payload.commentId;
+const getCommentsByStoryId = (comments, storyId) =>
+  comments.filter(comment => comment.storyId === storyId);
+
+const getCommentWithChildren = (comments, id) => {
+  const comment = comments.find(comment => comment.id === id);
+  const result = [];
+  if (comment) {
+    result.push(comment);
+    comment.replies.forEach(commentId =>
+      result.push(...getCommentWithChildren(comments, commentId))
+    );
+  }
+  return result;
+};
 
 export default {
   name: 'comments',
@@ -23,7 +36,7 @@ export default {
         payload: { parentId, userId, text }
       } = event;
 
-      const id = getId(event);
+      const id = event.payload.commentId;
       let nextState = state;
       const parentIndex = state.findIndex(({ id }) => id === parentId);
 
@@ -50,13 +63,13 @@ export default {
 
     [COMMENT_UPDATED]: (state: any, event: CommentUpdated) => {
       const { text } = event.payload;
-      const id = getId(event);
+      const id = event.payload.commentId;
       const index = state.findIndex(comment => comment.id === id);
       return state.setIn([index, 'text'], text);
     },
 
     [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
-      const id = getId(event);
+      const id = event.payload.commentId;
       const commentIndex = state.findIndex(comment => comment.id === id);
       const parentId = state[commentIndex].parentId;
       const parentIndex = state.findIndex(comment => comment.id === parentId);
@@ -79,24 +92,27 @@ export default {
       text: String!
       id: ID!
       parentId: ID!
+      storyId: ID!
       createdAt: String!
       createdBy: String!
       replies: [String!]!
     }
     type Query {
       comments: [Comment]
-      comments(page: Int, id: ID): [Comment]
+      comments(page: Int, id: ID, storyId: ID): [Comment]
     }
   `,
   gqlResolvers: {
-    comments: (root, args) =>
-      args.id
-        ? [root.find(({ id }) => id === args.id)].filter(comment => comment)
-        : args.page
-          ? root.slice(
-              +args.page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
-              +args.page * NUMBER_OF_ITEMS_PER_PAGE + 1
-            )
-          : root
+    comments: (root, { id, storyId, page }) =>
+      storyId
+        ? getCommentsByStoryId(root, id)
+        : id
+          ? getCommentWithChildren(root, id)
+          : page
+            ? root.slice(
+                +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
+                +page * NUMBER_OF_ITEMS_PER_PAGE + 1
+              )
+            : root
   }
 };
