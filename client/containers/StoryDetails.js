@@ -9,6 +9,7 @@ import storyActions from '../actions/stories';
 import Comment from '../components/Comment';
 import ChildrenComments from '../components/ChildrenComments';
 import subscribe from '../decorators/subscribe';
+import stories from '../../common/read-models/stories';
 import '../styles/storyDetails.css';
 
 export class StoryDetails extends Component {
@@ -28,6 +29,11 @@ export class StoryDetails extends Component {
   render() {
     const { id, stories, users } = this.props;
     const story = stories.find(story => story.id === id);
+
+    if (!story) {
+      return null;
+    }
+
     const user = users.find(({ id }) => id === story.userId);
     const link = story.type === 'ask' ? `/storyDetails/${id}` : story.link;
 
@@ -40,7 +46,7 @@ export class StoryDetails extends Component {
           score={story.voted.length}
           voted={story.voted.includes(this.props.user.id)}
           user={user}
-          date={new Date(story.createDate)}
+          date={new Date(+story.createDate)}
           commentCount={story.commentsCount}
           onUpvote={() => this.props.onUpvote(id, this.props.user.id)}
           onUnvote={() => this.props.onUnvote(id, this.props.user.id)}
@@ -82,7 +88,7 @@ export class StoryDetails extends Component {
                 id={comment.id}
                 content={comment.text}
                 user={user.name}
-                date={new Date(comment.createdAt)}
+                date={new Date(+comment.createdAt)}
                 showReply
               >
                 <ChildrenComments
@@ -141,7 +147,7 @@ export const mapDispatchToProps = dispatch => {
 export default subscribe(({ match }) => ({
   graphQL: [
     {
-      readModel: 'stories',
+      readModel: stories,
       query:
         'query ($id: ID!) { stories(id: $id) { id, type, title, text, userId, createDate, link, comments, commentsCount, voted } }',
       variables: {

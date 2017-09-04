@@ -4,6 +4,8 @@ import uuid from 'uuid';
 
 import actions from '../actions/stories';
 import Comment from '../components/Comment';
+import subscribe from '../decorators/subscribe';
+import comments from '../../common/read-models/comments';
 import '../styles/reply.css';
 
 export class Reply extends Component {
@@ -36,7 +38,7 @@ export class Reply extends Component {
               id={comment.id}
               content={comment.text}
               user={userName}
-              date={new Date(comment.createdAt)}
+              date={new Date(+comment.createdAt)}
             />
             <textarea
               name="text"
@@ -83,4 +85,15 @@ const mapStateToProps = (state, { match }) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Reply);
+export default subscribe(({ match }) => ({
+  graphQL: [
+    {
+      readModel: comments,
+      query:
+        'query ($id: String!) { comments(id: $id) { text, id, parentId, createdAt, createdBy, replies } }',
+      variables: {
+        id: match.params.id
+      }
+    }
+  ]
+}))(connect(mapStateToProps, mapDispatchToProps)(Reply));

@@ -4,10 +4,7 @@ import { connect } from 'react-redux';
 import Story from '../components/Story';
 import Paginator from '../components/Paginator';
 
-import {
-  STORIES_ON_ONE_PAGE,
-  hasNextStories
-} from '../helpers/getPageStories';
+import { STORIES_ON_ONE_PAGE, hasNextStories } from '../helpers/getPageStories';
 import actions from '../actions/stories';
 import '../styles/stories.css';
 
@@ -37,7 +34,7 @@ export const Stories = props => {
                   id={story.id}
                   title={title}
                   link={link}
-                  date={new Date(story.createDate)}
+                  date={new Date(+story.createDate)}
                   score={story.voted.length}
                   user={user}
                   commentCount={story.commentsCount}

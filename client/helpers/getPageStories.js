@@ -1,6 +1,6 @@
 export const STORIES_ON_ONE_PAGE = 30;
 
-export const hasNextStories = (stories) => {
+export const hasNextStories = stories => {
   return !!stories[STORIES_ON_ONE_PAGE];
 };
 

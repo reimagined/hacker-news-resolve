@@ -44,7 +44,7 @@ export const Comments = props => {
             id={comment.id}
             content={comment.text}
             user={user}
-            date={new Date(comment.createdAt)}
+            date={new Date(+comment.createdAt)}
             parent={parent}
             root={root}
           />

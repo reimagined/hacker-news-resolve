@@ -9,6 +9,11 @@ import comments from '../../common/read-models/comments';
 export const CommentContainer = ({ comments, users, match }) => {
   const { id } = match.params;
   const comment = comments.find(c => c.id === id);
+
+  if (!comment) {
+    return null;
+  }
+
   const user = users.find(({ id }) => id === comment.createdBy);
 
   return (
@@ -16,7 +21,7 @@ export const CommentContainer = ({ comments, users, match }) => {
       id={comment.id}
       content={comment.text}
       user={user.name}
-      date={new Date(comment.createdAt)}
+      date={new Date(+comment.createdAt)}
       showReply
     >
       <ChildrenComments

@@ -21,32 +21,39 @@ export default subscribe => Component => {
       }
 
       graphQL.forEach(async ({ readModel, query, variables }) => {
-        const response = await fetch(
-          `/api/queries/${readModel.name}?${queryParams({
-            graphql: query,
-            variables: JSON.stringify(variables)
-          })}`,
-          {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'same-origin'
-          }
+        const prevState = this.context.store.getState()[readModel.name];
+        this.context.store.dispatch(
+          actions.replaceState(readModel.name, readModel.initialState)
         );
 
-        if (response.ok) {
-          const data = await response.json();
-
-          this.context.store.dispatch(
-            actions.replaceState(readModel.name, data[readModel.name])
+        try {
+          const response = await fetch(
+            `/api/queries/${readModel.name}?${queryParams({
+              graphql: query,
+              variables: JSON.stringify(variables)
+            })}`,
+            {
+              method: 'GET',
+              headers: { 'Content-Type': 'application/json' },
+              credentials: 'same-origin'
+            }
           );
 
-          return;
+          if (response.ok) {
+            const data = await response.json();
+
+            this.context.store.dispatch(
+              actions.replaceState(readModel.name, data[readModel.name])
+            );
+          }
+        } catch (error) {
+          this.context.store.dispatch(
+            actions.replaceState(readModel.name, prevState)
+          );
+
+          // eslint-disable-next-line no-console
+          console.log(error);
         }
-
-        const text = await response.text();
-
-        // eslint-disable-next-line no-console
-        return console.error('Error GraphQL query: ', text);
       });
     }
 

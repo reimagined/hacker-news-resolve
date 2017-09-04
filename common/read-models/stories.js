@@ -150,7 +150,9 @@ export default {
       args.id
         ? [root.find(({ id }) => id === args.id)].filter(story => story)
         : args.page
-          ? root.slice(
+          ? (args.type
+              ? root.filter(({ type }) => type === args.type)
+              : root).slice(
               +args.page * STORIES_ON_ONE_PAGE - STORIES_ON_ONE_PAGE,
               +args.page * STORIES_ON_ONE_PAGE + 1
             )

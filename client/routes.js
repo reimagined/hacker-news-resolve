@@ -11,7 +11,7 @@ import UserById from './containers/UserById';
 import ChangePassword from './containers/ChangePassword';
 import Error from './components/Error';
 import StoryDetails from './containers/StoryDetails';
-import Reply from './containers/Reply';
+import ReplyById from './containers/ReplyById';
 
 const routes = [
   {
@@ -69,7 +69,7 @@ const routes = [
       },
       {
         path: '/reply/:id',
-        component: Reply
+        component: ReplyById
       }
     ]
   }
