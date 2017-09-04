@@ -6,7 +6,7 @@ import subscribe from '../decorators/subscribe';
 import users from '../../common/read-models/users';
 import '../styles/profile.css';
 
-export const User = ({ id, name, createdAt, karma }) => {
+export const UserById = ({ id, name, createdAt, karma }) => {
   if (!id) {
     return (
       <div>
@@ -57,4 +57,4 @@ export default subscribe(({ match }) => ({
       }
     }
   ]
-}))(connect(mapStateToProps)(User));
+}))(connect(mapStateToProps)(UserById));

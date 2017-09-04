@@ -6,7 +6,7 @@ import Comment from '../components/Comment';
 import subscribe from '../decorators/subscribe';
 import comments from '../../common/read-models/comments';
 
-export const CommentContainer = ({ comments, users, match }) => {
+export const CommentById = ({ comments, users, match }) => {
   const { id } = match.params;
   const comment = comments.find(c => c.id === id);
 
@@ -49,4 +49,4 @@ export default subscribe(({ match }) => ({
       }
     }
   ]
-}))(connect(mapStateToProps)(CommentContainer));
+}))(connect(mapStateToProps)(CommentById));

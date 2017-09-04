@@ -8,7 +8,7 @@ import subscribe from '../decorators/subscribe';
 import comments from '../../common/read-models/comments';
 import '../styles/reply.css';
 
-export class Reply extends Component {
+export class ReplyById extends Component {
   state = {
     text: ''
   };
@@ -96,4 +96,4 @@ export default subscribe(({ match }) => ({
       }
     }
   ]
-}))(connect(mapStateToProps, mapDispatchToProps)(Reply));
+}))(connect(mapStateToProps, mapDispatchToProps)(ReplyById));

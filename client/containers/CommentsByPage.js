@@ -17,7 +17,7 @@ export const findRoot = (id, comments) => {
   return findRoot(comment.parentId, comments);
 };
 
-export const Comments = props => {
+export const CommentsByPage = props => {
   const { comments, match } = props;
   const { page } = match.params;
 
@@ -74,4 +74,4 @@ export default subscribe(({ match }) => ({
       }
     }
   ]
-}))(connect(mapStateToProps)(Comments));
+}))(connect(mapStateToProps)(CommentsByPage));
