@@ -1,15 +1,15 @@
-import Immutable from "../immutable";
-import { STORIES_ON_ONE_PAGE } from "../../client/helpers/getPageStories";
+import Immutable from '../immutable';
+import { STORIES_ON_ONE_PAGE } from '../../client/helpers/getPageStories';
 
 import type {
   StoryCreated,
   StoryUpvoted,
   StoryUnvoted,
   StoryDeleted
-} from "../events/stories";
-import type { CommentCreated, CommentRemoved } from "../events/comments";
-import storiesEvents from "../events/stories";
-import commentsEvents from "../events/comments";
+} from '../events/stories';
+import type { CommentCreated, CommentRemoved } from '../events/comments';
+import storiesEvents from '../events/stories';
+import commentsEvents from '../events/comments';
 
 const {
   STORY_CREATED,
@@ -20,7 +20,7 @@ const {
 const { COMMENT_CREATED, COMMENT_REMOVED } = commentsEvents;
 
 export default {
-  name: "stories",
+  name: 'stories',
   initialState: Immutable([]),
   eventHandlers: {
     [STORY_CREATED]: (state: any, event: StoryCreated) => {
@@ -30,7 +30,7 @@ export default {
         payload: { title, link, userId, text }
       } = event;
 
-      const type = !link ? "ask" : /^(Show HN)/.test(title) ? "show" : "story";
+      const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story';
 
       return Immutable(
         [
@@ -59,7 +59,7 @@ export default {
         return state;
       }
 
-      return state.updateIn([index, "voted"], voted => voted.concat(userId));
+      return state.updateIn([index, 'voted'], voted => voted.concat(userId));
     },
 
     [STORY_UNVOTED]: (state: any, event: StoryUnvoted) => {
@@ -71,7 +71,7 @@ export default {
         return state;
       }
 
-      return state.updateIn([index, "voted"], voted =>
+      return state.updateIn([index, 'voted'], voted =>
         voted.filter(id => id !== userId)
       );
     },
@@ -88,7 +88,7 @@ export default {
       }
 
       let newState = state.updateIn(
-        [storyIndex, "commentsCount"],
+        [storyIndex, 'commentsCount'],
         count => count + 1
       );
 
@@ -98,7 +98,7 @@ export default {
         return newState;
       }
 
-      return newState.updateIn([parentIndex, "comments"], comments =>
+      return newState.updateIn([parentIndex, 'comments'], comments =>
         comments.concat(commentId)
       );
     },
@@ -112,7 +112,7 @@ export default {
       }
 
       let newState = state.updateIn(
-        [storyIndex, "commentsCount"],
+        [storyIndex, 'commentsCount'],
         count => count - 1
       );
 
@@ -122,7 +122,7 @@ export default {
         return newState;
       }
 
-      return newState.updateIn([parentIndex, "comments"], comments =>
+      return newState.updateIn([parentIndex, 'comments'], comments =>
         comments.filter(id => id !== commentId)
       );
     }

@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import uuid from "uuid";
-import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import React, { Component } from 'react';
+import uuid from 'uuid';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-import actions from "../actions/stories";
-import "../styles/submit.css";
+import actions from '../actions/stories';
+import '../styles/submit.css';
 
 export class Submit extends Component {
   state = {
-    title: "",
-    url: "",
-    text: ""
+    title: '',
+    url: '',
+    text: ''
   };
 
   handleChange(event, name) {
@@ -43,7 +43,7 @@ export class Submit extends Component {
                 <input
                   type="text"
                   value={this.state.title}
-                  onChange={e => this.handleChange(e, "title")}
+                  onChange={e => this.handleChange(e, 'title')}
                   size="50"
                 />
               </td>
@@ -54,7 +54,7 @@ export class Submit extends Component {
                 <input
                   type="text"
                   value={this.state.url}
-                  onChange={e => this.handleChange(e, "url")}
+                  onChange={e => this.handleChange(e, 'url')}
                   size="50"
                 />
               </td>
@@ -73,7 +73,7 @@ export class Submit extends Component {
                   rows="4"
                   cols="49"
                   value={this.state.text}
-                  onChange={e => this.handleChange(e, "text")}
+                  onChange={e => this.handleChange(e, 'text')}
                 />
               </td>
             </tr>

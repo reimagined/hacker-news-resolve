@@ -1,8 +1,8 @@
 /* @flow */
 
 const events = {
-  USER_CREATED: "UserCreated",
-  PASSWORD_CHANGED: "PasswordChanged"
+  USER_CREATED: 'UserCreated',
+  PASSWORD_CHANGED: 'PasswordChanged'
 };
 
 export type UserCreated = {

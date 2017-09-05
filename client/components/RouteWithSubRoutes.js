@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Redirect, Switch } from "react-router";
+import React from 'react';
+import { Route, Redirect, Switch } from 'react-router';
 
 const RouteWithSubRoutes = ({
   path,

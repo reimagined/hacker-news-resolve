@@ -1,4 +1,4 @@
-import Immutable from "seamless-immutable";
+import Immutable from 'seamless-immutable';
 
 function defineMethod(object, methodName, method) {
   Object.defineProperty(object, methodName, {
@@ -10,11 +10,11 @@ function defineMethod(object, methodName, method) {
 }
 
 function FakeImmutable(state) {
-  if (typeof state !== "object") {
+  if (typeof state !== 'object') {
     return state;
   }
 
-  defineMethod(state, "getIn", function(keys) {
+  defineMethod(state, 'getIn', function(keys) {
     let currentRoot = this;
 
     for (let index in keys) {
@@ -30,12 +30,12 @@ function FakeImmutable(state) {
     return currentRoot;
   });
 
-  defineMethod(state, "set", function(key, value) {
+  defineMethod(state, 'set', function(key, value) {
     this[key] = value;
     return this;
   });
 
-  defineMethod(state, "setIn", function(keys, value) {
+  defineMethod(state, 'setIn', function(keys, value) {
     const lastIndex = keys.length - 1;
 
     keys.reduce((currentRoot, key, index) => {
@@ -51,17 +51,17 @@ function FakeImmutable(state) {
     return this;
   });
 
-  defineMethod(state, "update", function(key, fn) {
+  defineMethod(state, 'update', function(key, fn) {
     const value = FakeImmutable(this.getIn([key]));
     return this.set(key, fn(value));
   });
 
-  defineMethod(state, "updateIn", function(keys, fn) {
+  defineMethod(state, 'updateIn', function(keys, fn) {
     const value = FakeImmutable(this.getIn(keys));
     return this.setIn(keys, fn(value));
   });
 
-  defineMethod(state, "without", function(key) {
+  defineMethod(state, 'without', function(key) {
     if (!Array.isArray(key)) {
       delete this[key];
       return this;
@@ -72,14 +72,14 @@ function FakeImmutable(state) {
     const keyToDelete = key[count - 1];
 
     return this.updateIn(keysToAccess, value => {
-      if (typeof value === "object") {
+      if (typeof value === 'object') {
         delete this[keyToDelete];
       }
       return value;
     });
   });
 
-  defineMethod(state, "merge", function(data) {
+  defineMethod(state, 'merge', function(data) {
     Object.keys(data).forEach(key => this.set(key, data[key]));
     return this;
   });
@@ -87,4 +87,4 @@ function FakeImmutable(state) {
   return state;
 }
 
-export default (typeof window === "undefined" ? FakeImmutable : Immutable);
+export default (typeof window === 'undefined' ? FakeImmutable : Immutable);

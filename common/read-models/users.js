@@ -1,12 +1,12 @@
-import Immutable from "../immutable";
+import Immutable from '../immutable';
 
-import type { UserCreated, PasswordChanged } from "../events/users";
-import events from "../events/users";
+import type { UserCreated, PasswordChanged } from '../events/users';
+import events from '../events/users';
 
 const { USER_CREATED, PASSWORD_CHANGED } = events;
 
 export default {
-  name: "users",
+  name: 'users',
   initialState: Immutable([]),
   eventHandlers: {
     [USER_CREATED]: (state: any, event: UserCreated) => {
@@ -28,7 +28,7 @@ export default {
         return state;
       }
 
-      return state.setIn([index, "passwordHash"], newPassword);
+      return state.setIn([index, 'passwordHash'], newPassword);
     }
   },
   gqlSchema: `

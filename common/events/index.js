@@ -1,6 +1,6 @@
-import comments from "./comments";
-import stories from "./stories";
-import users from "./users";
+import comments from './comments';
+import stories from './stories';
+import users from './users';
 
 export default {
   ...comments,

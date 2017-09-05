@@ -1,11 +1,11 @@
-import crypto from "crypto";
-import jwt from "jsonwebtoken";
-import passport from "passport";
-import cookieParser from "cookie-parser";
-import LocalStrategy from "passport-local";
-import uuid from "uuid";
+import crypto from 'crypto';
+import jwt from 'jsonwebtoken';
+import passport from 'passport';
+import cookieParser from 'cookie-parser';
+import LocalStrategy from 'passport-local';
+import uuid from 'uuid';
 
-import { authorizationSecret } from "../common/constants";
+import { authorizationSecret } from '../common/constants';
 
 export const extendExpress = express => {
   express.use(cookieParser());
@@ -15,16 +15,16 @@ export const extendExpress = express => {
   passport.use(
     new LocalStrategy(
       {
-        usernameField: "name",
-        passwordField: "password",
+        usernameField: 'name',
+        passwordField: 'password',
         passReqToCallback: true,
         session: false
       },
       function(req, name, password, done) {
         const passwordHash = crypto
-          .createHmac("sha256", authorizationSecret)
+          .createHmac('sha256', authorizationSecret)
           .update(password)
-          .digest("hex");
+          .digest('hex');
         return done(null, {
           name,
           passwordHash
@@ -33,7 +33,7 @@ export const extendExpress = express => {
     )
   );
 
-  express.use("/api/commands/", authorizationMiddleware);
+  express.use('/api/commands/', authorizationMiddleware);
 
   function authorize(req, res, user) {
     try {
@@ -41,27 +41,27 @@ export const extendExpress = express => {
         noTimestamp: true
       });
 
-      res.cookie("authorizationToken", authorizationToken, {
+      res.cookie('authorizationToken', authorizationToken, {
         maxAge: 1000 * 60 * 60 * 24 * 365
       });
 
-      res.redirect(req.query.redirect || "/");
+      res.redirect(req.query.redirect || '/');
     } catch (error) {
-      res.redirect("/error/?text=Unauthorized");
+      res.redirect('/error/?text=Unauthorized');
     }
   }
 
   express.get(
-    "/signup",
-    passport.authenticate("local", {
-      failureRedirect: "/error/?text=Unauthorized"
+    '/signup',
+    passport.authenticate('local', {
+      failureRedirect: '/error/?text=Unauthorized'
     }),
     async (req, res) => {
-      const users = await req.resolve.executeQuery("users");
+      const users = await req.resolve.executeQuery('users');
       const existingUser = users.find(({ name }) => name === req.user.name);
 
       if (existingUser) {
-        res.redirect("/error/?text=User already exists");
+        res.redirect('/error/?text=User already exists');
         return;
       }
 
@@ -72,9 +72,9 @@ export const extendExpress = express => {
         };
 
         await req.resolve.executeCommand({
-          type: "createUser",
+          type: 'createUser',
           aggregateId: user.id,
-          aggregateName: "users",
+          aggregateName: 'users',
           payload: user
         });
 
@@ -86,21 +86,21 @@ export const extendExpress = express => {
   );
 
   express.get(
-    "/login",
-    passport.authenticate("local", {
-      failureRedirect: "/error/?text=Unauthorized"
+    '/login',
+    passport.authenticate('local', {
+      failureRedirect: '/error/?text=Unauthorized'
     }),
     async (req, res) => {
-      const users = await req.resolve.executeQuery("users");
+      const users = await req.resolve.executeQuery('users');
       const user = users.find(({ name }) => name === req.user.name);
 
       if (!user) {
-        res.redirect("/error/?text=No such user");
+        res.redirect('/error/?text=No such user');
         return;
       }
 
       if (user.passwordHash !== req.user.passwordHash) {
-        res.redirect("/error/?text=Incorrect Username or Password");
+        res.redirect('/error/?text=Incorrect Username or Password');
         return;
       }
 
@@ -110,7 +110,7 @@ export const extendExpress = express => {
 };
 
 export const accessDenied = (req, res) => {
-  res.status(401).send("401 Unauthorized");
+  res.status(401).send('401 Unauthorized');
 };
 
 export const authorizationMiddleware = (req, res, next) => {
@@ -120,7 +120,7 @@ export const authorizationMiddleware = (req, res, next) => {
       authorizationSecret
     );
     if (!user) {
-      throw new Error("Unauthorized");
+      throw new Error('Unauthorized');
     }
     req.body.userId = user.id;
     next();
@@ -133,7 +133,7 @@ export const initialState = async (queries, executeQuery, { cookies }) => {
   let user;
 
   try {
-    const users = await executeQuery("users");
+    const users = await executeQuery('users');
     const { id } = jwt.verify(cookies.authorizationToken, authorizationSecret);
     user = users.find(u => u.id === id);
   } catch (error) {

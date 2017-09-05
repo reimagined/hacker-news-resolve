@@ -1,20 +1,20 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import { Helmet } from "react-helmet";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { withRouter } from "react-router";
+import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router';
 
-import * as userActions from "../actions/userActions";
-import * as uiActions from "../actions/ui";
+import * as userActions from '../actions/userActions';
+import * as uiActions from '../actions/ui';
 
-import "../styles/style.css";
-import "../styles/root.css";
+import '../styles/style.css';
+import '../styles/root.css';
 
 export class App extends React.PureComponent {
   componentDidMount() {
     this.props.history.listen(({ pathname }) => {
-      if (pathname === "/submit") {
+      if (pathname === '/submit') {
         this.props.onSubmitViewShown();
       }
     });
@@ -47,14 +47,14 @@ export class App extends React.PureComponent {
                 height="18"
                 alt=""
               />
-            </Link>{" "}
+            </Link>{' '}
             <Link
               className="app__link app__homelink"
               to="/"
               activeClassName="app__link--active"
             >
               reSolve HN
-            </Link>{" "}
+            </Link>{' '}
             <NavLink
               className="app__link"
               to="/newest"
@@ -62,7 +62,7 @@ export class App extends React.PureComponent {
             >
               new
             </NavLink>
-            {" | "}
+            {' | '}
             <NavLink
               className="app__link"
               to="/comments"
@@ -70,7 +70,7 @@ export class App extends React.PureComponent {
             >
               comments
             </NavLink>
-            {" | "}
+            {' | '}
             <NavLink
               className="app__link"
               to="/show"
@@ -78,7 +78,7 @@ export class App extends React.PureComponent {
             >
               show
             </NavLink>
-            {" | "}
+            {' | '}
             <NavLink
               className="app__link"
               to="/ask"
@@ -86,7 +86,7 @@ export class App extends React.PureComponent {
             >
               ask
             </NavLink>
-            {" | "}
+            {' | '}
             <NavLink
               className="app__link"
               to="/submit"
@@ -94,7 +94,7 @@ export class App extends React.PureComponent {
             >
               submit
             </NavLink>
-            <div style={{ float: "right" }}>
+            <div style={{ float: 'right' }}>
               {user && user.id ? (
                 <div>
                   <NavLink
@@ -104,7 +104,7 @@ export class App extends React.PureComponent {
                   >
                     {user.name}
                   </NavLink>
-                  {" | "}
+                  {' | '}
                   <NavLink
                     className="app__link"
                     to="/"

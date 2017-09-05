@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { actions } from "resolve-redux";
-import shallowEqual from "react-pure-render/shallowEqual";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { actions } from 'resolve-redux';
+import shallowEqual from 'react-pure-render/shallowEqual';
 
 function queryParams(params) {
   return Object.keys(params)
-    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(params[key]))
-    .join("&");
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]))
+    .join('&');
 }
 
 export default subscribe => Component => {
@@ -27,9 +27,9 @@ export default subscribe => Component => {
             variables: JSON.stringify(variables)
           })}`,
           {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-            credentials: "same-origin"
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin'
           }
         );
 
@@ -47,7 +47,7 @@ export default subscribe => Component => {
         const text = await response.text();
 
         // eslint-disable-next-line no-console
-        return console.error("Error GraphQL query: ", text);
+        return console.error('Error GraphQL query: ', text);
       });
     }
 

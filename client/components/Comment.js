@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import sanitizer from "sanitizer";
-import TimeAgo from "react-timeago";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import sanitizer from 'sanitizer';
+import TimeAgo from 'react-timeago';
 
-import "../styles/comment.css";
+import '../styles/comment.css';
 
 export const getLevelClassName = level => {
   // TODO: remove me!!!
-  if (level > 15) return "comment--level15";
-  return `comment--level${level > 0 ? level : "0"}`;
+  if (level > 15) return 'comment--level15';
+  return `comment--level${level > 0 ? level : '0'}`;
 };
 
 class Comment extends Component {
@@ -41,10 +41,10 @@ class Comment extends Component {
                 className="comment__collapse"
                 tabIndex="0"
               >
-                [{this.state.expanded ? "-" : "+"}]
+                [{this.state.expanded ? '-' : '+'}]
               </span>
               <span>
-                {" "}
+                {' '}
                 <Link
                   className="comment__link comment__user"
                   to={`/user/${user.id}`}
@@ -53,20 +53,20 @@ class Comment extends Component {
                 </Link>
               </span>
               <span>
-                {" "}
+                {' '}
                 <TimeAgo date={date} />
               </span>
               <span>
-                {" "}
-                |{" "}
+                {' '}
+                |{' '}
                 <Link className="comment__link" to={`/comment/${id}`}>
                   link
                 </Link>
               </span>
               {parent && (
                 <span>
-                  {" "}
-                  |{" "}
+                  {' '}
+                  |{' '}
                   <Link className="comment__link" to={parent}>
                     parent
                   </Link>
@@ -74,8 +74,8 @@ class Comment extends Component {
               )}
               {root && (
                 <span>
-                  {" "}
-                  | on:{" "}
+                  {' '}
+                  | on:{' '}
                   <Link
                     className="comment__link"
                     to={`/storyDetails/${root.id}`}

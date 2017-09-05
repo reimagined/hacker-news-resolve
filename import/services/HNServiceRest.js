@@ -1,5 +1,5 @@
 /* global fetch */
-require("isomorphic-fetch");
+require('isomorphic-fetch');
 /*
 A version of HNService which concumes the Firebase REST
 endpoint (https://www.firebase.com/docs/rest/api/). This
@@ -9,11 +9,11 @@ and cached when paired with Service Worker. This cannot be
 trivially done using just Web Sockets with the default
 Firebase API and provides a sufficient fallback that works.
  */
-const endPoint = "https://hacker-news.firebaseio.com/v0";
+const endPoint = 'https://hacker-news.firebaseio.com/v0';
 const options = {
-  method: "GET",
+  method: 'GET',
   headers: {
-    Accept: "application/json"
+    Accept: 'application/json'
   }
 };
 

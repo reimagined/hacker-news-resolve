@@ -1,16 +1,16 @@
-import crypto from "crypto";
+import crypto from 'crypto';
 
-import Immutable from "../immutable";
-import type { UserCreated, PasswordChanged } from "../events/users";
-import events from "../events/users";
-import { Event } from "../helpers";
-import throwIfAggregateAlreadyExists from "./validators/throwIfAggregateAlreadyExists";
-import { authorizationSecret } from "../constants";
+import Immutable from '../immutable';
+import type { UserCreated, PasswordChanged } from '../events/users';
+import events from '../events/users';
+import { Event } from '../helpers';
+import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists';
+import { authorizationSecret } from '../constants';
 
 const { USER_CREATED, PASSWORD_CHANGED } = events;
 
 export default {
-  name: "users",
+  name: 'users',
   initialState: Immutable({}),
   eventHandlers: {
     [USER_CREATED]: (state, { timestamp, payload: { passwordHash } }) =>
@@ -19,7 +19,7 @@ export default {
         password: passwordHash
       }),
     [PASSWORD_CHANGED]: (state, { payload: { newPassword } }) =>
-      state.set("password", newPassword)
+      state.set('password', newPassword)
   },
   commands: {
     createUser: (state: any, command: UserCreated) => {
@@ -28,11 +28,11 @@ export default {
       throwIfAggregateAlreadyExists(state, command);
 
       if (!name) {
-        throw new Error("Name is required");
+        throw new Error('Name is required');
       }
 
       if (!passwordHash) {
-        throw new Error("PasswordHash is required");
+        throw new Error('PasswordHash is required');
       }
 
       return new Event(USER_CREATED, {
@@ -43,27 +43,27 @@ export default {
     changePassword: (state: any, command: PasswordChanged) => {
       const { newPassword, currentPassword } = command.payload;
       const newPasswordHash = crypto
-        .createHmac("sha256", authorizationSecret)
+        .createHmac('sha256', authorizationSecret)
         .update(newPassword)
-        .digest("hex");
+        .digest('hex');
 
       const currentPasswordHash = crypto
-        .createHmac("sha256", authorizationSecret)
+        .createHmac('sha256', authorizationSecret)
         .update(currentPassword)
-        .digest("hex");
+        .digest('hex');
 
       if (state.password !== currentPasswordHash) {
-        throw new Error("Current password is incorrect");
+        throw new Error('Current password is incorrect');
       }
 
       if (newPassword === currentPassword) {
         throw new Error(
-          "New password should be different from current password"
+          'New password should be different from current password'
         );
       }
 
       if (!newPassword) {
-        throw new Error("New password is empty");
+        throw new Error('New password is empty');
       }
 
       return new Event(PASSWORD_CHANGED, {

@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import actions from "../actions/userActions";
-import "../styles/changePassword.css";
+import actions from '../actions/userActions';
+import '../styles/changePassword.css';
 
 class ChangePassword extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      newPassword: "",
-      currentPassword: ""
+      newPassword: '',
+      currentPassword: ''
     };
   }
 
@@ -20,7 +20,7 @@ class ChangePassword extends Component {
       this.state.currentPassword,
       this.props.user.id
     );
-    this.setState({ newPassword: "", currentPassword: "" });
+    this.setState({ newPassword: '', currentPassword: '' });
   }
 
   render() {

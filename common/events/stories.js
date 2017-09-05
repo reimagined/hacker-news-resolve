@@ -1,10 +1,10 @@
 /* @flow */
 
 const events = {
-  STORY_CREATED: "StoryCreated",
-  STORY_UPVOTED: "StoryUpvoted",
-  STORY_UNVOTED: "StoryUnvoted",
-  STORY_DELETED: "StoryDeleted"
+  STORY_CREATED: 'StoryCreated',
+  STORY_UPVOTED: 'StoryUpvoted',
+  STORY_UNVOTED: 'StoryUnvoted',
+  STORY_DELETED: 'StoryDeleted'
 };
 
 export type StoryCreated = {

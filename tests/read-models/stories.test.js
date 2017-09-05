@@ -1,8 +1,8 @@
-import uuid from "uuid";
+import uuid from 'uuid';
 
-import "../../common/read-models";
-import stories from "../../common/read-models/stories";
-import events from "../../common/events";
+import '../../common/read-models';
+import stories from '../../common/read-models/stories';
+import events from '../../common/events';
 
 const {
   STORY_CREATED,
@@ -13,16 +13,16 @@ const {
   COMMENT_REMOVED
 } = events;
 
-describe("read-models", () => {
-  describe("stories", () => {
+describe('read-models', () => {
+  describe('stories', () => {
     it('eventHandler "STORY_CREATED" should create a story {type: "ask"}', () => {
       const state = stories.initialState;
       const event = {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
         payload: {
-          title: "SomeTitle",
-          text: "SomeText",
+          title: 'SomeTitle',
+          text: 'SomeText',
           userId: uuid.v4(),
           link: undefined
         }
@@ -31,7 +31,7 @@ describe("read-models", () => {
       const nextState = [
         {
           id: event.aggregateId,
-          type: "ask",
+          type: 'ask',
           title: event.payload.title,
           text: event.payload.text,
           userId: event.payload.userId,
@@ -54,17 +54,17 @@ describe("read-models", () => {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
         payload: {
-          title: "SomeTitle",
-          text: "SomeText",
+          title: 'SomeTitle',
+          text: 'SomeText',
           userId: uuid.v4(),
-          link: "SomeLink"
+          link: 'SomeLink'
         }
       };
 
       const nextState = [
         {
           id: event.aggregateId,
-          type: "story",
+          type: 'story',
           title: event.payload.title,
           text: event.payload.text,
           userId: event.payload.userId,
@@ -87,17 +87,17 @@ describe("read-models", () => {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
         payload: {
-          title: "Show HN SomeTitle",
-          text: "SomeText",
+          title: 'Show HN SomeTitle',
+          text: 'SomeText',
           userId: uuid.v4(),
-          link: "SomeLink"
+          link: 'SomeLink'
         }
       };
 
       const nextState = [
         {
           id: event.aggregateId,
-          type: "show",
+          type: 'show',
           title: event.payload.title,
           text: event.payload.text,
           userId: event.payload.userId,

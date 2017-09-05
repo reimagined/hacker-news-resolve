@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import uuid from "uuid";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import uuid from 'uuid';
 
-import actions from "../actions/stories";
-import Comment from "../components/Comment";
-import "../styles/reply.css";
+import actions from '../actions/stories';
+import Comment from '../components/Comment';
+import '../styles/reply.css';
 
 export class Reply extends Component {
   state = {
-    text: ""
+    text: ''
   };
 
   onReply(parentId, userId, storyId) {

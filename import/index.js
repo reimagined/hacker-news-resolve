@@ -1,12 +1,12 @@
-import ProgressBar from "progress";
+import ProgressBar from 'progress';
 
-import { start } from "./importer";
+import { start } from './importer';
 
 let bar;
 start(
   total => {
     bar = new ProgressBar(
-      "Import stories from news.ycombinator.com [:bar] :current/:total",
+      'Import stories from news.ycombinator.com [:bar] :current/:total',
       { width: 20, total }
     );
   },
