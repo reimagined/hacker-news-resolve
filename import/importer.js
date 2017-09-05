@@ -69,9 +69,10 @@ const generateCommentEvents = (comment, aggregateId, parentId) => {
 
 const commentProc = async (comment, aggregateId, parentId) => {
   const commentId = generateCommentEvents(comment, aggregateId, parentId);
-  return comment.kids
-    ? await commentsProc(comment.kids, aggregateId, commentId)
-    : aggregateId;
+  if (comment.kids) {
+    await commentsProc(comment.kids, aggregateId, commentId);
+  }
+  return aggregateId;
 };
 
 const fetchItems = async ids => {
@@ -113,9 +114,10 @@ const generateStoryEvents = async story => {
     if (story.score) {
       generatePointEvents(aggregateId, story.score);
     }
-    return story.kids
-      ? await commentsProc(story.kids, aggregateId, aggregateId)
-      : aggregateId;
+    if (story.kids) {
+      await commentsProc(story.kids, aggregateId, aggregateId);
+    }
+    return aggregateId;
   }
 };
 
