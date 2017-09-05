@@ -39,7 +39,7 @@ export default {
       }),
 
     [STORY_UPVOTED]: (state, { payload: { userId } }) =>
-      state.update('voted', voted => voted.concat(userId)),
+      state.update("voted", voted => voted.concat(userId)),
 
     [STORY_UNVOTED]: (state, { payload: { userId } }) =>
       state.update("voted", voted =>
