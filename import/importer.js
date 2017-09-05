@@ -67,33 +67,27 @@ const generateCommentEvents = (comment, aggregateId, parentId) => {
   return commentId;
 };
 
-const commentProc = (comment, aggregateId, parentId) => {
-  return new Promise(resolve => {
-    const commentId = generateCommentEvents(comment, aggregateId, parentId);
-    return comment.kids
-      ? commentsProc(comment.kids, aggregateId, commentId).then(() =>
-          resolve(aggregateId)
-        )
-      : resolve(aggregateId);
-  });
+const commentProc = async (comment, aggregateId, parentId) => {
+  const commentId = generateCommentEvents(comment, aggregateId, parentId);
+  return comment.kids
+    ? await commentsProc(comment.kids, aggregateId, commentId)
+    : aggregateId;
 };
 
-const fetchItems = ids =>
-  new Promise(resolve =>
-    HNServiceRest.fetchItems(ids, result => resolve(result))
-  );
+const fetchItems = async ids => {
+  return HNServiceRest.fetchItems(ids);
+};
 
-function commentsProc(ids, aggregateId, parentId) {
-  return fetchItems(ids).then(comments =>
-    comments.reduce(
-      (promise, comment) =>
-        promise.then(
-          comment && comment.by
-            ? commentProc(comment, aggregateId, parentId)
-            : null
-        ),
-      Promise.resolve()
-    )
+async function commentsProc(ids, aggregateId, parentId) {
+  const comments = await fetchItems(ids);
+  return comments.reduce(
+    (promise, comment) =>
+      promise.then(
+        comment && comment.by
+          ? commentProc(comment, aggregateId, parentId)
+          : null
+      ),
+    Promise.resolve()
   );
 }
 
@@ -106,27 +100,23 @@ const generatePointEvents = (aggregateId, pointCount) => {
   }
 };
 
-const generateStoryEvents = story => {
-  return new Promise(resolve => {
-    if (story && story.by) {
-      const aggregateId = uuid.v4();
-      const userId = userProc(story.by);
-      addEvent(STORY_CREATED, aggregateId, story.time * 1000, {
-        title: story.title,
-        text: story.text,
-        userId,
-        link: story.url
-      });
-      if (story.score) {
-        generatePointEvents(aggregateId, story.score);
-      }
-      return story.kids
-        ? commentsProc(story.kids, aggregateId, aggregateId).then(() =>
-            resolve(aggregateId)
-          )
-        : resolve(aggregateId);
+const generateStoryEvents = async story => {
+  if (story && story.by) {
+    const aggregateId = uuid.v4();
+    const userId = userProc(story.by);
+    addEvent(STORY_CREATED, aggregateId, story.time * 1000, {
+      title: story.title,
+      text: story.text,
+      userId,
+      link: story.url
+    });
+    if (story.score) {
+      generatePointEvents(aggregateId, story.score);
     }
-  });
+    return story.kids
+      ? await commentsProc(story.kids, aggregateId, aggregateId)
+      : aggregateId;
+  }
 };
 
 const needUpload = id => storyIds.indexOf(id) === -1;
@@ -137,41 +127,44 @@ const removeDuplicate = ids => {
   return result;
 };
 
-const storiesProc = (ids, tickCallback) => {
-  return fetchItems(ids).then(stories =>
-    stories.reduce(
-      (promise, story) =>
-        promise.then(() => {
-          tickCallback();
-          return story && !story.deleted && story.by
-            ? generateStoryEvents(story)
-            : null;
-        }),
-      Promise.resolve()
-    )
+const storiesProc = async (ids, tickCallback) => {
+  const stories = await fetchItems(ids);
+  return stories.reduce(
+    (promise, story) =>
+      promise.then(() => {
+        tickCallback();
+        return story && !story.deleted && story.by
+          ? generateStoryEvents(story)
+          : null;
+      }),
+    Promise.resolve()
   );
 };
 
-const getStories = path =>
-  HNServiceRest.storiesRef(path).then(res => res.json());
+const getStories = async path => {
+  const response = await HNServiceRest.storiesRef(path);
+  return response.json();
+};
 
-export const start = (countCallback, tickCallback) => {
+export const start = async (countCallback, tickCallback) => {
   if (fs.existsSync(dbPath)) {
     fs.unlinkSync(dbPath);
   }
-  return Promise.all([
-    getStories('topstories'),
-    getStories('newstories'),
-    getStories('showstories'),
-    getStories('askstories')
-  ])
-    .then(categories => {
-      const stories = categories.reduce(
-        (stories, category) => stories.concat(removeDuplicate(category)),
-        []
-      );
-      countCallback(stories.length);
-      return storiesProc(stories, tickCallback);
-    })
-    .catch(err => console.error(err));
+  try {
+    const categories = await Promise.all([
+      getStories('topstories'),
+      getStories('newstories'),
+      getStories('showstories'),
+      getStories('askstories')
+    ]);
+    const stories = categories.reduce(
+      (stories, category) => stories.concat(removeDuplicate(category)),
+      []
+    );
+    countCallback(stories.length);
+    return storiesProc(stories, tickCallback);
+  } catch (e) {
+    console.error(e);
+  }
+  return null;
 };
