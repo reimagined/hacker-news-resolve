@@ -20,6 +20,7 @@ export default {
         karma: 0
       });
     },
+
     [PASSWORD_CHANGED]: (state: any, event: PasswordChanged) => {
       const { aggregateId, payload: { newPassword } } = event;
       const index = state.findIndex(({ id }) => id === aggregateId);
