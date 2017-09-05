@@ -1,9 +1,9 @@
-import uuid from 'uuid';
+import uuid from "uuid";
 
-import '../../common/aggregates';
-import stories from '../../common/aggregates/stories';
-import events from '../../common/events';
-import { Event } from '../../common/helpers';
+import "../../common/aggregates";
+import stories from "../../common/aggregates/stories";
+import events from "../../common/events";
+import { Event } from "../../common/helpers";
 
 const {
   STORY_CREATED,
@@ -15,12 +15,12 @@ const {
   COMMENT_REMOVED
 } = events;
 
-describe('aggregates', () => {
-  describe('stories', () => {
+describe("aggregates", () => {
+  describe("stories", () => {
     it('command "createStory" should create an event to create a story', () => {
-      const title = 'SomeTitle';
-      const text = 'SomeText';
-      const link = 'SomeLink';
+      const title = "SomeTitle";
+      const text = "SomeText";
+      const link = "SomeLink";
       const userId = uuid.v4();
 
       const state = {};
@@ -46,9 +46,9 @@ describe('aggregates', () => {
     });
 
     it('command "createStory" should throw Error "Aggregate already exists"', () => {
-      const title = 'SomeTitle';
-      const text = 'SomeText';
-      const link = 'SomeLink';
+      const title = "SomeTitle";
+      const text = "SomeText";
+      const link = "SomeLink";
       const userId = uuid.v4();
 
       const state = {
@@ -65,14 +65,14 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.createStory(state, command)).toThrowError(
-        'Aggregate already exists'
+        "Aggregate already exists"
       );
     });
 
     it('command "createStory" should throw Error "Title is required"', () => {
       const title = undefined;
-      const text = 'SomeText';
-      const link = 'SomeLink';
+      const text = "SomeText";
+      const link = "SomeLink";
       const userId = uuid.v4();
 
       const state = {};
@@ -86,14 +86,14 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.createStory(state, command)).toThrowError(
-        'Title is required'
+        "Title is required"
       );
     });
 
     it('command "createStory" should throw Error "UserId is required"', () => {
-      const title = 'SomeTitle';
-      const text = 'SomeText';
-      const link = 'SomeLink';
+      const title = "SomeTitle";
+      const text = "SomeText";
+      const link = "SomeLink";
       const userId = undefined;
 
       const state = {};
@@ -107,7 +107,7 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.createStory(state, command)).toThrowError(
-        'UserId is required'
+        "UserId is required"
       );
     });
 
@@ -149,7 +149,7 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.upvoteStory(state, command)).toThrowError(
-        'User already voted'
+        "User already voted"
       );
     });
 
@@ -164,7 +164,7 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.upvoteStory(state, command)).toThrowError(
-        'Aggregate is not exist'
+        "Aggregate is not exist"
       );
     });
 
@@ -183,7 +183,7 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.upvoteStory(state, command)).toThrowError(
-        'UserId is required'
+        "UserId is required"
       );
     });
 
@@ -225,7 +225,7 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.unvoteStory(state, command)).toThrowError(
-        'User has not voted'
+        "User has not voted"
       );
     });
 
@@ -240,7 +240,7 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.unvoteStory(state, command)).toThrowError(
-        'Aggregate is not exist'
+        "Aggregate is not exist"
       );
     });
 
@@ -259,7 +259,7 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.unvoteStory(state, command)).toThrowError(
-        'UserId is required'
+        "UserId is required"
       );
     });
 
@@ -284,7 +284,7 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.deleteStory(state, command)).toThrowError(
-        'Aggregate is not exist'
+        "Aggregate is not exist"
       );
     });
 
@@ -362,9 +362,9 @@ describe('aggregates', () => {
     });
   });
 
-  describe('comments', () => {
+  describe("comments", () => {
     it('command "createComment" should create an event to create a comment', () => {
-      const text = 'SomeText';
+      const text = "SomeText";
       const parentId = uuid.v4();
       const userId = uuid.v4();
 
@@ -392,7 +392,7 @@ describe('aggregates', () => {
     });
 
     it('command "createComment" should throw Error "Aggregate is not exist"', () => {
-      const text = 'SomeText';
+      const text = "SomeText";
       const userId = uuid.v4();
 
       const state = {};
@@ -404,7 +404,7 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.updateComment(state, command)).toThrowError(
-        'Aggregate is not exist'
+        "Aggregate is not exist"
       );
     });
 
@@ -426,12 +426,12 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.createComment(state, command)).toThrowError(
-        'Text is required'
+        "Text is required"
       );
     });
 
     it('command "createComment" should throw Error "ParentId is required"', () => {
-      const text = 'SomeText';
+      const text = "SomeText";
       const parentId = undefined;
       const userId = uuid.v4();
 
@@ -448,12 +448,12 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.createComment(state, command)).toThrowError(
-        'ParentId is required'
+        "ParentId is required"
       );
     });
 
     it('command "createComment" should throw Error "UserId is required"', () => {
-      const text = 'SomeText';
+      const text = "SomeText";
       const parentId = uuid.v4();
       const userId = undefined;
 
@@ -470,12 +470,12 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.createComment(state, command)).toThrowError(
-        'UserId is required'
+        "UserId is required"
       );
     });
 
     it('command "updateComment" should create an event to update the comment', () => {
-      const text = 'SomeText';
+      const text = "SomeText";
       const userId = uuid.v4();
 
       const state = {
@@ -499,7 +499,7 @@ describe('aggregates', () => {
     });
 
     it('command "updateComment" should throw Error "Aggregate is not exist"', () => {
-      const text = 'SomeText';
+      const text = "SomeText";
       const userId = uuid.v4();
 
       const state = {};
@@ -511,12 +511,12 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.updateComment(state, command)).toThrowError(
-        'Aggregate is not exist'
+        "Aggregate is not exist"
       );
     });
 
     it('command "updateComment" should throw Error "Permission denied"', () => {
-      const text = 'SomeText';
+      const text = "SomeText";
       const userId = uuid.v4();
 
       const state = {
@@ -531,7 +531,7 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.updateComment(state, command)).toThrowError(
-        'Permission denied'
+        "Permission denied"
       );
     });
 
@@ -551,7 +551,7 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.updateComment(state, command)).toThrowError(
-        'Text is required'
+        "Text is required"
       );
     });
 
@@ -587,7 +587,7 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.removeComment(state, command)).toThrowError(
-        'Aggregate is not exist'
+        "Aggregate is not exist"
       );
     });
 
@@ -605,7 +605,7 @@ describe('aggregates', () => {
       };
 
       expect(() => stories.commands.removeComment(state, command)).toThrowError(
-        'Permission denied'
+        "Permission denied"
       );
     });
 

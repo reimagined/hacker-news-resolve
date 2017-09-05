@@ -1,9 +1,9 @@
 /* @flow */
 
 const events = {
-  COMMENT_CREATED: 'CommentCreated',
-  COMMENT_UPDATED: 'CommentUpdated',
-  COMMENT_REMOVED: 'CommentRemoved'
+  COMMENT_CREATED: "CommentCreated",
+  COMMENT_UPDATED: "CommentUpdated",
+  COMMENT_REMOVED: "CommentRemoved"
 };
 
 export type CommentCreated = {

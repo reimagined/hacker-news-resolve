@@ -1,1 +1,1 @@
-export const authorizationSecret = 'auth-secret';
+export const authorizationSecret = "auth-secret";

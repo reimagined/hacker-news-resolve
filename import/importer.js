@@ -1,13 +1,13 @@
-import fs from 'fs';
-import uuid from 'uuid';
-import createEventStore from 'resolve-es';
-import createStorage from 'resolve-storage-file';
-import createBus from 'resolve-bus-memory';
+import fs from "fs";
+import uuid from "uuid";
+import createEventStore from "resolve-es";
+import createStorage from "resolve-storage-file";
+import createBus from "resolve-bus-memory";
 
-import eventTypes from '../common/events/index';
-import HNServiceRest from './services/HNServiceRest';
+import eventTypes from "../common/events/index";
+import HNServiceRest from "./services/HNServiceRest";
 
-const dbPath = './storage.json';
+const dbPath = "./storage.json";
 const USER_CREATED_TIMESTAMP = 3600 * 24 * 1000;
 
 const users = {};
@@ -40,7 +40,7 @@ const generateUserEvents = name => {
   const aggregateId = uuid.v4();
   addEvent(USER_CREATED, aggregateId, USER_CREATED_TIMESTAMP, {
     name,
-    passwordHash: 'TODO:'
+    passwordHash: "TODO:"
   });
   users[name] = aggregateId;
   return aggregateId;
@@ -160,10 +160,10 @@ export const start = (countCallback, tickCallback) => {
     fs.unlinkSync(dbPath);
   }
   return Promise.all([
-    getStories('topstories'),
-    getStories('newstories'),
-    getStories('showstories'),
-    getStories('askstories')
+    getStories("topstories"),
+    getStories("newstories"),
+    getStories("showstories"),
+    getStories("askstories")
   ])
     .then(categories => {
       const stories = categories.reduce(

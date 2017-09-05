@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import '../styles/paginator.css';
+import "../styles/paginator.css";
 
 class Paginator extends React.PureComponent {
   scrollUp = () => {
@@ -14,13 +14,13 @@ class Paginator extends React.PureComponent {
     if (page === 1 && !hasNext) {
       return null;
     }
-    const nextDisabledClassName = !hasNext && 'paginator__disabled';
-    const prevDisabledClassName = page <= 1 && 'paginator__disabled';
+    const nextDisabledClassName = !hasNext && "paginator__disabled";
+    const prevDisabledClassName = page <= 1 && "paginator__disabled";
 
     return (
       <div className="paginator">
         <Link
-          className={['paginator__link', prevDisabledClassName].join(' ')}
+          className={["paginator__link", prevDisabledClassName].join(" ")}
           to={`${location}/${Number(page) - 1}`}
           onClick={this.scrollUp}
         >
@@ -28,7 +28,7 @@ class Paginator extends React.PureComponent {
         </Link>
         {` | ${page} | `}
         <Link
-          className={['paginator__link', nextDisabledClassName].join(' ')}
+          className={["paginator__link", nextDisabledClassName].join(" ")}
           to={`${location}/${Number(page) + 1}`}
           onClick={this.scrollUp}
         >

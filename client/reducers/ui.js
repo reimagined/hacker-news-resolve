@@ -1,4 +1,4 @@
-import Immutable from 'seamless-immutable';
+import Immutable from "seamless-immutable";
 
 export default (
   state = Immutable({
@@ -8,7 +8,7 @@ export default (
   action
 ) => {
   switch (action.type) {
-    case '@@resolve/SEND_COMMAND': {
+    case "@@resolve/SEND_COMMAND": {
       if (!action.command) {
         return state.merge({
           storyCreation: false,
@@ -17,22 +17,22 @@ export default (
       }
 
       switch (action.command.type) {
-        case 'createStory': {
-          return state.set('storyCreation', true);
+        case "createStory": {
+          return state.set("storyCreation", true);
         }
         default: {
           return state;
         }
       }
     }
-    case 'StoryCreated': {
+    case "StoryCreated": {
       return state.merge({
         storyCreation: false,
         createdStoryId: action.aggregateId
       });
     }
-    case 'SUBMIT_VIEW_SHOWN': {
-      return state.set('createdStoryId', null);
+    case "SUBMIT_VIEW_SHOWN": {
+      return state.set("createdStoryId", null);
     }
     default: {
       return state;

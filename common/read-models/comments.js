@@ -1,19 +1,19 @@
-import Immutable from '../immutable';
-import { STORIES_ON_ONE_PAGE } from '../../client/helpers/getPageStories';
+import Immutable from "../immutable";
+import { STORIES_ON_ONE_PAGE } from "../../client/helpers/getPageStories";
 
 import type {
   CommentCreated,
   CommentUpdated,
   CommentRemoved
-} from '../events/comments';
-import events from '../events/comments';
+} from "../events/comments";
+import events from "../events/comments";
 
 const { COMMENT_CREATED, COMMENT_UPDATED, COMMENT_REMOVED } = events;
 
 const getId = event => event.payload.commentId;
 
 export default {
-  name: 'comments',
+  name: "comments",
   initialState: Immutable([]),
   eventHandlers: {
     [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
@@ -28,7 +28,7 @@ export default {
       const parentIndex = state.findIndex(({ id }) => id === parentId);
 
       if (parentIndex >= 0) {
-        nextState = nextState.updateIn([parentIndex, 'replies'], replies =>
+        nextState = nextState.updateIn([parentIndex, "replies"], replies =>
           replies.concat(id)
         );
       }
@@ -52,7 +52,7 @@ export default {
       const { text } = event.payload;
       const id = getId(event);
       const index = state.findIndex(comment => comment.id === id);
-      return state.setIn([index, 'text'], text);
+      return state.setIn([index, "text"], text);
     },
 
     [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
@@ -64,7 +64,7 @@ export default {
       let nextState = state;
 
       if (parentIndex >= 0) {
-        nextState = nextState.updateIn([parentIndex, 'replies'], replies =>
+        nextState = nextState.updateIn([parentIndex, "replies"], replies =>
           replies.filter(replyId => replyId !== id)
         );
       }

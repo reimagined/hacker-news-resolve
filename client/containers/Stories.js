@@ -1,16 +1,16 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-import Story from '../components/Story';
-import Paginator from '../components/Paginator';
+import Story from "../components/Story";
+import Paginator from "../components/Paginator";
 
 import {
   STORIES_ON_ONE_PAGE,
   getPageStories,
   hasNextStories
-} from '../helpers/getPageStories';
-import actions from '../actions/stories';
-import '../styles/stories.css';
+} from "../helpers/getPageStories";
+import actions from "../actions/stories";
+import "../styles/stories.css";
 
 export const Stories = props => {
   let { stories, type, page } = props;
@@ -32,7 +32,7 @@ export const Stories = props => {
 
             const link = story.link || `/storyDetails/${story.id}`;
             const title =
-              type === 'ask' ? `Ask HN: ${story.title}` : story.title;
+              type === "ask" ? `Ask HN: ${story.title}` : story.title;
 
             const user = props.users.find(({ id }) => id === story.userId);
 
@@ -59,7 +59,7 @@ export const Stories = props => {
       <Paginator
         page={page}
         hasNext={hasNext}
-        location={`/${type || 'newest'}`}
+        location={`/${type || "newest"}`}
       />
     </div>
   );

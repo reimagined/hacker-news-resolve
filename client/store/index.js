@@ -1,14 +1,14 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose } from "redux";
 import {
   sendCommandMiddleware,
   setSubscriptionMiddleware
-} from 'resolve-redux';
-import createSagaMiddleware from 'redux-saga';
-import Immutable from '../../common/immutable';
-import reducer from '../reducers';
-import rootSaga from '../sagas';
+} from "resolve-redux";
+import createSagaMiddleware from "redux-saga";
+import Immutable from "../../common/immutable";
+import reducer from "../reducers";
+import rootSaga from "../sagas";
 
-const isClient = typeof window === 'object';
+const isClient = typeof window === "object";
 
 const composeEnhancers =
   isClient && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -24,10 +24,10 @@ export default initialState => {
     middleware.push(
       sendCommandMiddleware({
         sendCommand: async command => {
-          const response = await fetch('/api/commands', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'same-origin',
+          const response = await fetch("/api/commands", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "same-origin",
             body: JSON.stringify(command)
           });
 
@@ -38,7 +38,7 @@ export default initialState => {
           const text = await response.text();
 
           // eslint-disable-next-line no-console
-          return console.error('Error due command sent: ', text);
+          return console.error("Error due command sent: ", text);
         }
       }),
       setSubscriptionMiddleware({

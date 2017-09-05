@@ -1,9 +1,9 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import React from "react";
+import { shallow } from "enzyme";
 
-import Comment from '../../client/components/Comment';
+import Comment from "../../client/components/Comment";
 
-it('Comment Level 0 renders correctly', () => {
+it("Comment Level 0 renders correctly", () => {
   const markup = shallow(
     <Comment
       id="SomeId"
@@ -13,14 +13,14 @@ it('Comment Level 0 renders correctly', () => {
       date={new Date(0)}
       showReply={true}
       parent="news"
-      root={{ id: 'SomeId', title: 'SomeTitle' }}
+      root={{ id: "SomeId", title: "SomeTitle" }}
     />
   );
 
   expect(markup).toMatchSnapshot();
 });
 
-it('Comment Level 1 renders correctly', () => {
+it("Comment Level 1 renders correctly", () => {
   const markup = shallow(
     <Comment
       id="SomeId"
@@ -30,14 +30,14 @@ it('Comment Level 1 renders correctly', () => {
       date={new Date(0)}
       showReply={true}
       parent="news"
-      root={{ id: 'SomeId', title: 'SomeTitle' }}
+      root={{ id: "SomeId", title: "SomeTitle" }}
     />
   );
 
   expect(markup).toMatchSnapshot();
 });
 
-it('Comment Level 20 renders correctly', () => {
+it("Comment Level 20 renders correctly", () => {
   const markup = shallow(
     <Comment
       id="SomeId"
@@ -47,14 +47,14 @@ it('Comment Level 20 renders correctly', () => {
       date={new Date(0)}
       showReply={true}
       parent="news"
-      root={{ id: 'SomeId', title: 'SomeTitle' }}
+      root={{ id: "SomeId", title: "SomeTitle" }}
     />
   );
 
   expect(markup).toMatchSnapshot();
 });
 
-it('Comment Level 20 renders correctly', () => {
+it("Comment Level 20 renders correctly", () => {
   const markup = shallow(
     <Comment
       id="SomeId"
@@ -64,14 +64,14 @@ it('Comment Level 20 renders correctly', () => {
       date={new Date(0)}
       showReply={true}
       parent="news"
-      root={{ id: 'SomeId', title: 'SomeTitle' }}
+      root={{ id: "SomeId", title: "SomeTitle" }}
     />
   );
 
   expect(markup).toMatchSnapshot();
 });
 
-it('Comment with state.expanded=false renders correctly', () => {
+it("Comment with state.expanded=false renders correctly", () => {
   const markup = shallow(
     <Comment
       id="SomeId"
@@ -81,7 +81,7 @@ it('Comment with state.expanded=false renders correctly', () => {
       date={new Date(0)}
       showReply={true}
       parent="news"
-      root={{ id: 'SomeId', title: 'SomeTitle' }}
+      root={{ id: "SomeId", title: "SomeTitle" }}
     />
   );
   markup.instance().expand();
@@ -89,7 +89,7 @@ it('Comment with state.expanded=false renders correctly', () => {
   expect(markup).toMatchSnapshot();
 });
 
-it('Comment without childrens renders correctly', () => {
+it("Comment without childrens renders correctly", () => {
   const markup = shallow(
     <Comment
       id="SomeId"
@@ -99,7 +99,7 @@ it('Comment without childrens renders correctly', () => {
       date={new Date(0)}
       showReply={true}
       parent="news"
-      root={{ id: 'SomeId', title: 'SomeTitle' }}
+      root={{ id: "SomeId", title: "SomeTitle" }}
     />
   );
 

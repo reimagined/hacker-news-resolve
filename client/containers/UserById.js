@@ -1,9 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-import subscribe from '../decorators/subscribe';
-import '../styles/profile.css';
+import subscribe from "../decorators/subscribe";
+import "../styles/profile.css";
 
 export const User = ({ id, name, createdAt, karma }) => {
   if (!id) {
@@ -25,7 +25,7 @@ export const User = ({ id, name, createdAt, karma }) => {
           </tr>
           <tr>
             <td>created:</td>
-            <td>{new Date(createdAt).toLocaleString('en-US')}</td>
+            <td>{new Date(createdAt).toLocaleString("en-US")}</td>
           </tr>
           <tr>
             <td>karma:</td>
@@ -48,9 +48,9 @@ export const mapStateToProps = ({ user, users }, { match }) => {
 export default subscribe(({ match }) => ({
   graphQL: [
     {
-      readModel: 'users',
+      readModel: "users",
       query:
-        'query ($id: ID!) { users(id: $id) { id, name, createdAt, karma } }',
+        "query ($id: ID!) { users(id: $id) { id, name, createdAt, karma } }",
       variables: {
         id: match.params.id
       }

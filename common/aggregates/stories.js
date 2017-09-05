@@ -1,22 +1,22 @@
-import Immutable from '../immutable';
+import Immutable from "../immutable";
 
 import type {
   StoryCreated,
   StoryUpvoted,
   StoryUnvoted,
   StoryDeleted
-} from '../events/stories';
+} from "../events/stories";
 import type {
   CommentCreated,
   CommentUpdated,
   CommentRemoved
-} from '../events/comments';
-import storiesEvents from '../events/stories';
-import commentsEvents from '../events/comments';
-import { Event } from '../helpers';
-import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists';
-import throwIfAggregateIsNotExists from './validators/throwIfAggregateIsNotExists';
-import throwIfPermissionDenied from './validators/throwIfPermissionDenied';
+} from "../events/comments";
+import storiesEvents from "../events/stories";
+import commentsEvents from "../events/comments";
+import { Event } from "../helpers";
+import throwIfAggregateAlreadyExists from "./validators/throwIfAggregateAlreadyExists";
+import throwIfAggregateIsNotExists from "./validators/throwIfAggregateIsNotExists";
+import throwIfPermissionDenied from "./validators/throwIfPermissionDenied";
 
 const {
   STORY_CREATED,
@@ -27,7 +27,7 @@ const {
 const { COMMENT_CREATED, COMMENT_UPDATED, COMMENT_REMOVED } = commentsEvents;
 
 export default {
-  name: 'stories',
+  name: "stories",
   initialState: Immutable({}),
   eventHandlers: {
     [STORY_CREATED]: (state, { timestamp, payload: { userId } }) =>
@@ -39,20 +39,20 @@ export default {
       }),
 
     [STORY_UPVOTED]: (state, { payload: { userId } }) =>
-      state.update('voted', voted => voted.concat(userId)),
+      state.update("voted", voted => voted.concat(userId)),
 
     [STORY_UNVOTED]: (state, { payload: { userId } }) =>
-      state.update('voted', voted =>
+      state.update("voted", voted =>
         voted.filter(curUserId => curUserId !== userId)
       ),
     [COMMENT_CREATED]: (state, { timestamp, payload: { commentId, userId } }) =>
-      state.setIn(['comments', commentId], {
+      state.setIn(["comments", commentId], {
         createdAt: timestamp,
         createdBy: userId
       }),
 
     [COMMENT_REMOVED]: (state, { timestamp, payload: { commentId } }) =>
-      state.setIn(['comments', commentId, 'removedAt'], timestamp)
+      state.setIn(["comments", commentId, "removedAt"], timestamp)
   },
   commands: {
     createStory: (state: any, command: StoryCreated) => {
@@ -61,11 +61,11 @@ export default {
       throwIfAggregateAlreadyExists(state, command);
 
       if (!title) {
-        throw new Error('Title is required');
+        throw new Error("Title is required");
       }
 
       if (!userId) {
-        throw new Error('UserId is required');
+        throw new Error("UserId is required");
       }
 
       return new Event(STORY_CREATED, {
@@ -82,11 +82,11 @@ export default {
       throwIfAggregateIsNotExists(state, command);
 
       if (state.voted.includes(userId)) {
-        throw new Error('User already voted');
+        throw new Error("User already voted");
       }
 
       if (!userId) {
-        throw new Error('UserId is required');
+        throw new Error("UserId is required");
       }
 
       return new Event(STORY_UPVOTED, {
@@ -100,11 +100,11 @@ export default {
       throwIfAggregateIsNotExists(state, command);
 
       if (!state.voted.includes(userId)) {
-        throw new Error('User has not voted');
+        throw new Error("User has not voted");
       }
 
       if (!userId) {
-        throw new Error('UserId is required');
+        throw new Error("UserId is required");
       }
 
       return new Event(STORY_UNVOTED, {
@@ -124,15 +124,15 @@ export default {
       const { text, parentId, userId, commentId } = command.payload;
 
       if (!text) {
-        throw new Error('Text is required');
+        throw new Error("Text is required");
       }
 
       if (!parentId) {
-        throw new Error('ParentId is required');
+        throw new Error("ParentId is required");
       }
 
       if (!userId) {
-        throw new Error('UserId is required');
+        throw new Error("UserId is required");
       }
 
       return new Event(COMMENT_CREATED, {
@@ -150,7 +150,7 @@ export default {
       throwIfPermissionDenied(state, command);
 
       if (!text) {
-        throw new Error('Text is required');
+        throw new Error("Text is required");
       }
 
       return new Event(COMMENT_UPDATED, {

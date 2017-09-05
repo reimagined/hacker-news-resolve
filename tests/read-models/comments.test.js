@@ -1,13 +1,13 @@
-import uuid from 'uuid';
+import uuid from "uuid";
 
-import '../../common/read-models';
-import comments from '../../common/read-models/comments';
-import events from '../../common/events';
+import "../../common/read-models";
+import comments from "../../common/read-models/comments";
+import events from "../../common/events";
 
 const { COMMENT_CREATED, COMMENT_UPDATED, COMMENT_REMOVED } = events;
 
-describe('read-models', () => {
-  describe('comments', () => {
+describe("read-models", () => {
+  describe("comments", () => {
     it('eventHandler "COMMENT_CREATED" should create a comment', () => {
       const state = comments.initialState;
       const commentId = uuid.v4();
@@ -16,7 +16,7 @@ describe('read-models', () => {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
         payload: {
-          text: 'SomeText',
+          text: "SomeText",
           parentId: uuid.v4(),
           userId: uuid.v4(),
           commentId
@@ -47,7 +47,7 @@ describe('read-models', () => {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
         payload: {
-          text: 'SomeText',
+          text: "SomeText",
           parentId: uuid.v4(),
           userId: uuid.v4(),
           commentId: parentId
@@ -70,7 +70,7 @@ describe('read-models', () => {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
         payload: {
-          text: 'SomeText',
+          text: "SomeText",
           parentId,
           userId: uuid.v4(),
           commentId
@@ -109,14 +109,14 @@ describe('read-models', () => {
       const state = comments.initialState.concat([
         {
           id: commentId,
-          text: 'SomeText'
+          text: "SomeText"
         }
       ]);
 
       const event = {
         aggregateId: uuid.v4(),
         payload: {
-          text: 'NewText',
+          text: "NewText",
           commentId
         }
       };
@@ -141,7 +141,7 @@ describe('read-models', () => {
         aggregateId,
         timestamp: Date.now(),
         payload: {
-          text: 'SomeText',
+          text: "SomeText",
           parentId: uuid.v4(),
           userId: uuid.v4(),
           commentId
@@ -183,7 +183,7 @@ describe('read-models', () => {
         aggregateId,
         timestamp: Date.now(),
         payload: {
-          text: 'SomeText',
+          text: "SomeText",
           parentId: uuid.v4(),
           userId: uuid.v4(),
           commentId: firstCommentId
@@ -194,7 +194,7 @@ describe('read-models', () => {
         aggregateId,
         timestamp: Date.now(),
         payload: {
-          text: 'SomeText',
+          text: "SomeText",
           parentId: uuid.v4(),
           userId: uuid.v4(),
           commentId: secondCommentId

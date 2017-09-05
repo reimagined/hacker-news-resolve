@@ -1,33 +1,33 @@
-import sinon from 'sinon';
-import uuid from 'uuid';
-import jwt from 'jsonwebtoken';
+import sinon from "sinon";
+import uuid from "uuid";
+import jwt from "jsonwebtoken";
 
-import { authorizationSecret } from '../../common/constants';
-import { initialState } from '../../server';
+import { authorizationSecret } from "../../common/constants";
+import { initialState } from "../../server";
 
 const user = {
-  name: 'SomeName',
-  passwordHash: 'SomePasswordHash',
+  name: "SomeName",
+  passwordHash: "SomePasswordHash",
   id: uuid.v4()
 };
 
-const queries = [{ name: 'someReadModel' }, { name: 'users' }];
+const queries = [{ name: "someReadModel" }, { name: "users" }];
 
 const executeQuery = sinon.spy(async queryName => {
   switch (queryName) {
-    case 'users':
+    case "users":
       return [user];
-    case 'someReadModel':
+    case "someReadModel":
       return {
-        test: 'test'
+        test: "test"
       };
     default:
       throw new Error();
   }
 });
 
-describe('server', () => {
-  it('initialState should return initialState for the authorized user', async () => {
+describe("server", () => {
+  it("initialState should return initialState for the authorized user", async () => {
     const cookies = {
       authorizationToken: jwt.sign(user, authorizationSecret)
     };
@@ -38,12 +38,12 @@ describe('server', () => {
       users: [user],
       user,
       someReadModel: {
-        test: 'test'
+        test: "test"
       }
     });
   });
 
-  it('initialState should return initialState for the unauthorized user', async () => {
+  it("initialState should return initialState for the unauthorized user", async () => {
     const cookies = {};
 
     const state = await initialState(queries, executeQuery, { cookies });
@@ -52,7 +52,7 @@ describe('server', () => {
       users: [user],
       user: {},
       someReadModel: {
-        test: 'test'
+        test: "test"
       }
     });
   });

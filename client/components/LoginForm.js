@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import '../styles/login.css';
+import "../styles/login.css";
 
 const LoginForm = ({ title, action, buttonText }) => (
   <div className="login">

@@ -1,13 +1,13 @@
-import uuid from 'uuid';
+import uuid from "uuid";
 
-import '../../common/read-models';
-import users from '../../common/read-models/users';
-import events from '../../common/events';
+import "../../common/read-models";
+import users from "../../common/read-models/users";
+import events from "../../common/events";
 
 const { USER_CREATED } = events;
 
-describe('read-models', () => {
-  describe('users', () => {
+describe("read-models", () => {
+  describe("users", () => {
     it('eventHandler "USER_CREATED" should create a comment', () => {
       const state = users.initialState;
 
@@ -15,8 +15,8 @@ describe('read-models', () => {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
         payload: {
-          name: 'SomeName',
-          passwordHash: 'SomePasswordHash'
+          name: "SomeName",
+          passwordHash: "SomePasswordHash"
         }
       };
 

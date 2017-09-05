@@ -1,15 +1,15 @@
-import React from 'react';
-import url from 'url';
-import { Link } from 'react-router-dom';
-import plur from 'plur';
-import TimeAgo from 'react-timeago';
+import React from "react";
+import url from "url";
+import { Link } from "react-router-dom";
+import plur from "plur";
+import TimeAgo from "react-timeago";
 
-import '../styles/story.css';
+import "../styles/story.css";
 
-const isExternalLink = link => link[0] !== '/';
+const isExternalLink = link => link[0] !== "/";
 
 export const getHostname = link =>
-  link.split('.')[0] === 'www' ? link.substr(4) : url.parse(link).hostname;
+  link.split(".")[0] === "www" ? link.substr(4) : url.parse(link).hostname;
 
 const voteArrow = (visible, onUpvote) => {
   return visible ? (
@@ -27,7 +27,7 @@ const getTitle = ({ title, link }) => {
           <a className="story__title-link" href={link}>
             {title}
           </a>
-        </span>{' '}
+        </span>{" "}
         <span className="story__host">({getHostname(link)})</span>
       </span>
     );
@@ -52,7 +52,7 @@ export const Title = ({ title, link, onUpvote, voted, loggedIn }) => {
 export const Score = ({ score }) => {
   return (
     <span className="story__score">
-      {score} {plur('point', score)}{' '}
+      {score} {plur("point", score)}{" "}
     </span>
   );
 };
@@ -60,10 +60,10 @@ export const Score = ({ score }) => {
 export const PostedBy = ({ user }) => {
   return (
     <span>
-      by{' '}
+      by{" "}
       <a className="story__meta-link story__by" href={`/user/${user.id}`}>
         {user.name}
-      </a>{' '}
+      </a>{" "}
     </span>
   );
 };
@@ -72,14 +72,14 @@ export const Comment = ({ storyId, commentCount }) => {
   return (
     <span>
       <span>
-        |{' '}
+        |{" "}
         <Link className="story__meta-link" to={`/storyDetails/${storyId}`}>
           {commentCount > 0 ? (
-            `${commentCount} ${plur('comment', commentCount)}`
+            `${commentCount} ${plur("comment", commentCount)}`
           ) : (
-            'discuss'
+            "discuss"
           )}
-        </Link>{' '}
+        </Link>{" "}
       </span>
     </span>
   );
@@ -100,24 +100,24 @@ export const Meta = props => {
 
   return (
     <div className="story__meta">
-      {score ? <Score score={score} /> : ''}
-      {user ? <PostedBy user={user} /> : ''}
+      {score ? <Score score={score} /> : ""}
+      {user ? <PostedBy user={user} /> : ""}
       <span className="story__time">
-        <TimeAgo date={date} />{' '}
+        <TimeAgo date={date} />{" "}
       </span>
       {/* TODO: timeAgo */}
       {unvoteIsVisible && (
         <span>
-          |{' '}
+          |{" "}
           <span className="item__unvote" onClick={onUnvote}>
             unvote
-          </span>{' '}
+          </span>{" "}
         </span>
       )}
       {commentCount !== undefined ? (
         <Comment storyId={storyId} commentCount={commentCount} />
       ) : (
-        ''
+        ""
       )}
     </div>
   );
