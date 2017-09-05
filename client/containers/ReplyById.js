@@ -22,7 +22,7 @@ export class ReplyById extends Component {
       storyId
     });
     // eslint-disable-next-line no-restricted-globals
-    history.back();
+    setTimeout(() => history.back(), 500);
   }
 
   render() {
@@ -93,7 +93,7 @@ export default subscribe(({ match }) => ({
     {
       readModel: comments,
       query:
-        'query ($id: String!) { comments(id: $id) { text, id, parentId, createdAt, createdBy, createdByName, replies } }',
+        'query ($id: String!) { comments(id: $id) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
       variables: {
         id: match.params.id
       }

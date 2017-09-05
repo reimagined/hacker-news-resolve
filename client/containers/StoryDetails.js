@@ -10,6 +10,7 @@ import Comment from '../components/Comment';
 import ChildrenComments from '../components/ChildrenComments';
 import subscribe from '../decorators/subscribe';
 import stories from '../../common/read-models/stories';
+import comments from '../../common/read-models/comments';
 import '../styles/storyDetails.css';
 
 export class StoryDetails extends React.PureComponent {
@@ -155,6 +156,14 @@ export default subscribe(({ match }) => ({
         'query ($id: ID!) { stories(id: $id) { id, type, title, text, userId, userName, createDate, link, comments, commentsCount, voted } }',
       variables: {
         id: match.params.id
+      }
+    },
+    {
+      readModel: comments,
+      query:
+        'query ($aggregateId: ID!) { comments(aggregateId: $aggregateId) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
+      variables: {
+        aggregateId: match.params.id
       }
     }
   ]

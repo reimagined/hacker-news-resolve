@@ -107,20 +107,20 @@ export default {
       id: ID!
       parentId: ID!
       storyId: ID!
-      createdByName: String!
+      createdByName: String
       createdAt: String!
       createdBy: String!
       replies: [String!]!
     }
     type Query {
       comments: [Comment]
-      comments(page: Int, id: ID, storyId: ID): [Comment]
+      comments(page: Int, id: ID, aggregateId: ID): [Comment]
     }
   `,
   gqlResolvers: {
-    comments: (root, { id, storyId, page }) =>
-      (storyId
-        ? getCommentsByStoryId(root, id)
+    comments: (root, { id, aggregateId, page }) =>
+      (aggregateId
+        ? root
         : id
           ? getCommentWithChildren(root, id)
           : page

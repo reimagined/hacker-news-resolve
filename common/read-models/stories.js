@@ -143,7 +143,7 @@ export default {
       title: String!
       text: String
       userId: String!
-      userName: String!
+      userName: String
       createDate: String!
       link: String
       comments: [String]
