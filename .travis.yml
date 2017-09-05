@@ -4,7 +4,7 @@ node_js:
 install:
   - npm install
 script:
-  - 'if [ "$(node_modules/.bin/prettier --single-quote "**/*.js" --list-different --ignore=./node_modules/** ./dist/**)" ]; then exit 1; fi'
+  - 'if [ "$(node_modules/.bin/prettier --no-semi --single-quote "**/*.js" --list-different --ignore=./node_modules/** ./dist/**)" ]; then exit 1; fi'
   - npm run test:coverage
 after_success:
   - npm run coveralls

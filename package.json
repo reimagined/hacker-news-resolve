@@ -7,7 +7,7 @@
     "start": "resolve-scripts start",
     "dev": "resolve-scripts dev",
     "import": "babel-node ./import ",
-    "prettier": "prettier --single-quote --write \"**/*.js\"",
+    "prettier": "prettier --single-quote --no-semi --write \"**/*.js\"",
     "lint-staged": "lint-staged",
     "test": "jest",
     "test:coverage": "jest --u --coverage",
@@ -20,7 +20,7 @@
   ],
   "lint-staged": {
     "*.{js,css}": [
-      "prettier --write",
+      "prettier --single-quote --no-semi --write",
       "git add"
     ]
   },
