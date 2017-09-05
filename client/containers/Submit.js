@@ -1,22 +1,22 @@
-import React from 'react';
-import uuid from 'uuid';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Redirect } from 'react-router-dom';
+import React from 'react'
+import uuid from 'uuid'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { Redirect } from 'react-router-dom'
 
-import actions from '../actions/stories';
-import '../styles/submit.css';
+import actions from '../actions/stories'
+import '../styles/submit.css'
 
 export class Submit extends React.PureComponent {
   state = {
     title: '',
     url: '',
     text: ''
-  };
+  }
 
   handleChange = (event, name) => {
-    this.setState({ [name]: event.target.value });
-  };
+    this.setState({ [name]: event.target.value })
+  }
 
   handleSubmit = () =>
     this.props.createStory({
@@ -24,13 +24,11 @@ export class Submit extends React.PureComponent {
       title: this.state.title,
       text: this.state.text,
       link: this.state.url
-    });
+    })
 
   render() {
     if (this.props.createdStoryId) {
-      return (
-        <Redirect push to={`/storyDetails/${this.props.createdStoryId}`} />
-      );
+      return <Redirect push to={`/storyDetails/${this.props.createdStoryId}`} />
     }
 
     return (
@@ -100,14 +98,14 @@ export class Submit extends React.PureComponent {
           </tbody>
         </table>
       </div>
-    );
+    )
   }
 }
 
 export const mapStateToProps = ({ user, ui }) => ({
   userId: user.id,
   createdStoryId: ui.createdStoryId
-});
+})
 
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(
@@ -121,6 +119,6 @@ export const mapDispatchToProps = dispatch =>
         })
     },
     dispatch
-  );
+  )
 
-export default connect(mapStateToProps, mapDispatchToProps)(Submit);
+export default connect(mapStateToProps, mapDispatchToProps)(Submit)

@@ -1,17 +1,17 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 
-import ChildrenComments from '../components/ChildrenComments';
-import Comment from '../components/Comment';
-import subscribe from '../decorators/subscribe';
-import comments from '../../common/read-models/comments';
+import ChildrenComments from '../components/ChildrenComments'
+import Comment from '../components/Comment'
+import subscribe from '../decorators/subscribe'
+import comments from '../../common/read-models/comments'
 
 export const CommentById = ({ comments, match }) => {
-  const { id } = match.params;
-  const comment = comments.find(c => c.id === id);
+  const { id } = match.params
+  const comment = comments.find(c => c.id === id)
 
   if (!comment) {
-    return null;
+    return null
   }
 
   return (
@@ -27,12 +27,12 @@ export const CommentById = ({ comments, match }) => {
     >
       <ChildrenComments replies={comment.replies} comments={comments} />
     </Comment>
-  );
-};
+  )
+}
 
 export const mapStateToProps = ({ comments }) => ({
   comments
-});
+})
 
 export default subscribe(({ match }) => ({
   graphQL: [
@@ -45,4 +45,4 @@ export default subscribe(({ match }) => ({
       }
     }
   ]
-}))(connect(mapStateToProps)(CommentById));
+}))(connect(mapStateToProps)(CommentById))

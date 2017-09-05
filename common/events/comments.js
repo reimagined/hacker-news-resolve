@@ -4,7 +4,7 @@ const events = {
   COMMENT_CREATED: 'CommentCreated',
   COMMENT_UPDATED: 'CommentUpdated',
   COMMENT_REMOVED: 'CommentRemoved'
-};
+}
 
 export type CommentCreated = {
   aggregateId: string,
@@ -15,7 +15,7 @@ export type CommentCreated = {
     parentId: string,
     commentId: string
   }
-};
+}
 
 export type CommentUpdated = {
   aggregateId: string,
@@ -25,7 +25,7 @@ export type CommentUpdated = {
     text: string,
     commentId: string
   }
-};
+}
 
 export type CommentRemoved = {
   aggregateId: string,
@@ -34,6 +34,6 @@ export type CommentRemoved = {
     userId: string,
     commentId: string
   }
-};
+}
 
-export default events;
+export default events

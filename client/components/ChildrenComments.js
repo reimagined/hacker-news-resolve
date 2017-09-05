@@ -1,20 +1,20 @@
-import React from 'react';
+import React from 'react'
 
-import Comment from './Comment';
+import Comment from './Comment'
 
 const ChildrenComments = ({ replies, level, comments }) => {
   if (!replies.length) {
-    return null;
+    return null
   }
 
-  const currentLevel = level ? level + 1 : 1;
+  const currentLevel = level ? level + 1 : 1
   return (
     <div>
       {replies.map(replyId => {
-        const comment = comments.find(({ id }) => id === replyId);
+        const comment = comments.find(({ id }) => id === replyId)
 
         if (!comment) {
-          return null;
+          return null
         }
 
         const {
@@ -24,7 +24,7 @@ const ChildrenComments = ({ replies, level, comments }) => {
           createdAt,
           createdBy,
           createdByName
-        } = comment;
+        } = comment
 
         return (
           <Comment
@@ -45,10 +45,10 @@ const ChildrenComments = ({ replies, level, comments }) => {
               comments={comments}
             />
           </Comment>
-        );
+        )
       })}
     </div>
-  );
-};
+  )
+}
 
-export default ChildrenComments;
+export default ChildrenComments

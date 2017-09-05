@@ -1,16 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import sanitizer from 'sanitizer';
-import TimeAgo from 'react-timeago';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import sanitizer from 'sanitizer'
+import TimeAgo from 'react-timeago'
 
-import '../styles/comment.css';
+import '../styles/comment.css'
 
 class Comment extends React.PureComponent {
   state = {
     expanded: true
-  };
+  }
 
-  expand = () => this.setState({ expanded: !this.state.expanded });
+  expand = () => this.setState({ expanded: !this.state.expanded })
 
   render() {
     const {
@@ -22,10 +22,10 @@ class Comment extends React.PureComponent {
       showReply,
       parent,
       children
-    } = this.props;
+    } = this.props
 
     if (!user || !id) {
-      return null;
+      return null
     }
 
     return (
@@ -90,12 +90,12 @@ class Comment extends React.PureComponent {
         </div>
         {this.state.expanded ? children : null}
       </div>
-    );
+    )
   }
 
   static defaultProps = {
     level: 0
-  };
+  }
 }
 
-export default Comment;
+export default Comment

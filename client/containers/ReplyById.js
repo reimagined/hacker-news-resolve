@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import uuid from 'uuid';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import uuid from 'uuid'
 
-import actions from '../actions/stories';
-import Comment from '../components/Comment';
-import subscribe from '../decorators/subscribe';
-import comments from '../../common/read-models/comments';
-import '../styles/reply.css';
+import actions from '../actions/stories'
+import Comment from '../components/Comment'
+import subscribe from '../decorators/subscribe'
+import comments from '../../common/read-models/comments'
+import '../styles/reply.css'
 
 export class ReplyById extends Component {
   state = {
     text: ''
-  };
+  }
 
   onReply(parentId, userId, storyId) {
     this.props.createComment({
@@ -20,17 +20,17 @@ export class ReplyById extends Component {
       parentId,
       userId,
       storyId
-    });
+    })
     // eslint-disable-next-line no-restricted-globals
-    setTimeout(() => history.back(), 500);
+    setTimeout(() => history.back(), 500)
   }
 
   render() {
-    const { comments, user, id } = this.props;
-    const comment = comments.find(c => c.id === id);
+    const { comments, user, id } = this.props
+    const comment = comments.find(c => c.id === id)
 
     if (!comment) {
-      return null;
+      return null
     }
 
     return (
@@ -64,7 +64,7 @@ export class ReplyById extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -80,13 +80,13 @@ const mapDispatchToProps = dispatch =>
         })
     },
     dispatch
-  );
+  )
 
 const mapStateToProps = ({ comments, user }, { match }) => ({
   comments,
   user,
   id: match.params.id
-});
+})
 
 export default subscribe(({ match }) => ({
   graphQL: [
@@ -99,4 +99,4 @@ export default subscribe(({ match }) => ({
       }
     }
   ]
-}))(connect(mapStateToProps, mapDispatchToProps)(ReplyById));
+}))(connect(mapStateToProps, mapDispatchToProps)(ReplyById))

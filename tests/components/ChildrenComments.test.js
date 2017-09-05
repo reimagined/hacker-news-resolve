@@ -1,7 +1,7 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import React from 'react'
+import { shallow } from 'enzyme'
 
-import ChildrenComments from '../../client/components/ChildrenComments';
+import ChildrenComments from '../../client/components/ChildrenComments'
 
 it('renders correctly', () => {
   const comments = {
@@ -12,12 +12,12 @@ it('renders correctly', () => {
       createdAt: new Date(0),
       createdBy: 'SomeUser'
     }
-  };
+  }
   const users = {
     SomeUser: {
       name: 'SomeUser'
     }
-  };
+  }
 
   const markup = shallow(
     <div>
@@ -28,6 +28,6 @@ it('renders correctly', () => {
         users={users}
       />
     </div>
-  );
-  expect(markup).toMatchSnapshot();
-});
+  )
+  expect(markup).toMatchSnapshot()
+})

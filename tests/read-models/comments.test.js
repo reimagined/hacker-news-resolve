@@ -1,16 +1,16 @@
-import uuid from 'uuid';
+import uuid from 'uuid'
 
-import '../../common/read-models';
-import comments from '../../common/read-models/comments';
-import events from '../../common/events';
+import '../../common/read-models'
+import comments from '../../common/read-models/comments'
+import events from '../../common/events'
 
-const { COMMENT_CREATED, COMMENT_UPDATED, COMMENT_REMOVED } = events;
+const { COMMENT_CREATED, COMMENT_UPDATED, COMMENT_REMOVED } = events
 
 describe('read-models', () => {
   describe('comments', () => {
     it('eventHandler "COMMENT_CREATED" should create a comment', () => {
-      const state = comments.initialState;
-      const commentId = uuid.v4();
+      const state = comments.initialState
+      const commentId = uuid.v4()
 
       const event = {
         aggregateId: uuid.v4(),
@@ -21,7 +21,7 @@ describe('read-models', () => {
           userId: uuid.v4(),
           commentId
         }
-      };
+      }
 
       const nextState = [
         {
@@ -33,15 +33,15 @@ describe('read-models', () => {
           createdBy: event.payload.userId,
           replies: []
         }
-      ];
+      ]
 
       expect(comments.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
         nextState
-      );
-    });
+      )
+    })
 
     it('eventHandler "COMMENT_CREATED" should create a comment and update parent comment', () => {
-      const parentId = uuid.v4();
+      const parentId = uuid.v4()
 
       const prevEvent = {
         aggregateId: uuid.v4(),
@@ -52,7 +52,7 @@ describe('read-models', () => {
           userId: uuid.v4(),
           commentId: parentId
         }
-      };
+      }
 
       const state = comments.initialState.concat({
         text: prevEvent.payload.text,
@@ -62,9 +62,9 @@ describe('read-models', () => {
         createdAt: prevEvent.timestamp,
         createdBy: prevEvent.payload.userId,
         replies: []
-      });
+      })
 
-      const commentId = uuid.v4();
+      const commentId = uuid.v4()
 
       const event = {
         aggregateId: uuid.v4(),
@@ -75,7 +75,7 @@ describe('read-models', () => {
           userId: uuid.v4(),
           commentId
         }
-      };
+      }
 
       const nextState = [
         {
@@ -96,22 +96,22 @@ describe('read-models', () => {
           createdBy: prevEvent.payload.userId,
           replies: [commentId]
         }
-      ];
+      ]
 
       expect(comments.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
         nextState
-      );
-    });
+      )
+    })
 
     it('eventHandler "COMMENT_UPDATED" should update the comment', () => {
-      const commentId = uuid.v4();
+      const commentId = uuid.v4()
 
       const state = comments.initialState.concat([
         {
           id: commentId,
           text: 'SomeText'
         }
-      ]);
+      ])
 
       const event = {
         aggregateId: uuid.v4(),
@@ -119,23 +119,23 @@ describe('read-models', () => {
           text: 'NewText',
           commentId
         }
-      };
+      }
 
       const nextState = [
         {
           id: commentId,
           text: event.payload.text
         }
-      ];
+      ]
 
       expect(comments.eventHandlers[COMMENT_UPDATED](state, event)).toEqual(
         nextState
-      );
-    });
+      )
+    })
 
     it('eventHandler "COMMENT_REMOVED" should remove the comment', () => {
-      const commentId = uuid.v4();
-      const aggregateId = uuid.v4();
+      const commentId = uuid.v4()
+      const aggregateId = uuid.v4()
 
       const prevEvent = {
         aggregateId,
@@ -146,7 +146,7 @@ describe('read-models', () => {
           userId: uuid.v4(),
           commentId
         }
-      };
+      }
 
       const state = comments.initialState.concat([
         {
@@ -158,26 +158,26 @@ describe('read-models', () => {
           createdBy: prevEvent.payload.userId,
           replies: []
         }
-      ]);
+      ])
 
       const event = {
         aggregateId,
         payload: {
           commentId
         }
-      };
+      }
 
-      const nextState = [];
+      const nextState = []
 
       expect(comments.eventHandlers[COMMENT_REMOVED](state, event)).toEqual(
         nextState
-      );
-    });
+      )
+    })
 
     it('eventHandler "COMMENT_REMOVED" should remove the comment and update parent comment', () => {
-      const aggregateId = uuid.v4();
-      const firstCommentId = uuid.v4();
-      const secondCommentId = uuid.v4();
+      const aggregateId = uuid.v4()
+      const firstCommentId = uuid.v4()
+      const secondCommentId = uuid.v4()
 
       const firstEvent = {
         aggregateId,
@@ -188,7 +188,7 @@ describe('read-models', () => {
           userId: uuid.v4(),
           commentId: firstCommentId
         }
-      };
+      }
 
       const secondEvent = {
         aggregateId,
@@ -199,7 +199,7 @@ describe('read-models', () => {
           userId: uuid.v4(),
           commentId: secondCommentId
         }
-      };
+      }
 
       const state = comments.initialState.concat([
         {
@@ -220,14 +220,14 @@ describe('read-models', () => {
           createdBy: secondEvent.payload.userId,
           replies: []
         }
-      ]);
+      ])
 
       const event = {
         aggregateId: aggregateId,
         payload: {
           commentId: secondCommentId
         }
-      };
+      }
 
       const nextState = [
         {
@@ -239,11 +239,11 @@ describe('read-models', () => {
           createdBy: firstEvent.payload.userId,
           replies: []
         }
-      ];
+      ]
 
       expect(comments.eventHandlers[COMMENT_REMOVED](state, event)).toEqual(
         nextState
-      );
-    });
-  });
-});
+      )
+    })
+  })
+})

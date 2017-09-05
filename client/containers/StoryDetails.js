@@ -1,50 +1,50 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import uuid from 'uuid';
-import sanitizer from 'sanitizer';
+import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import uuid from 'uuid'
+import sanitizer from 'sanitizer'
 
-import Story from '../components/Story';
-import actions from '../actions/stories';
-import Comment from '../components/Comment';
-import ChildrenComments from '../components/ChildrenComments';
-import subscribe from '../decorators/subscribe';
-import stories from '../../common/read-models/stories';
-import comments from '../../common/read-models/comments';
-import '../styles/storyDetails.css';
+import Story from '../components/Story'
+import actions from '../actions/stories'
+import Comment from '../components/Comment'
+import ChildrenComments from '../components/ChildrenComments'
+import subscribe from '../decorators/subscribe'
+import stories from '../../common/read-models/stories'
+import comments from '../../common/read-models/comments'
+import '../styles/storyDetails.css'
 
 export class StoryDetails extends React.PureComponent {
   state = {
     text: ''
-  };
+  }
 
   onAddComment = () => {
     this.props.createComment({
       text: this.state.text,
       parentId: this.props.id,
       userId: this.props.user.id
-    });
-    this.setState({ text: '' });
-  };
+    })
+    this.setState({ text: '' })
+  }
 
   onChangeText = event =>
     this.setState({
       text: event.target.value
-    });
+    })
 
-  onUpvote = () => this.props.upvoteStory(this.props.id, this.props.user.id);
+  onUpvote = () => this.props.upvoteStory(this.props.id, this.props.user.id)
 
-  onUnvote = () => this.props.unvoteStory(this.props.id, this.props.user.id);
+  onUnvote = () => this.props.unvoteStory(this.props.id, this.props.user.id)
 
   render() {
-    const { id, stories } = this.props;
-    const story = stories.find(story => story.id === id);
+    const { id, stories } = this.props
+    const story = stories.find(story => story.id === id)
 
     if (!story) {
-      return null;
+      return null
     }
 
-    const link = story.type === 'ask' ? `/storyDetails/${id}` : story.link;
+    const link = story.type === 'ask' ? `/storyDetails/${id}` : story.link
 
     return (
       <div className="storyDetails">
@@ -88,10 +88,10 @@ export class StoryDetails extends React.PureComponent {
           {story.comments.map(commentId => {
             const comment = this.props.comments.find(
               ({ id }) => id === commentId
-            );
+            )
 
             if (!comment) {
-              return null;
+              return null
             }
 
             return (
@@ -111,11 +111,11 @@ export class StoryDetails extends React.PureComponent {
                   comments={this.props.comments}
                 />
               </Comment>
-            );
+            )
           })}
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -124,7 +124,7 @@ export const mapStateToProps = ({ stories, comments, user }, { match }) => ({
   comments,
   user,
   id: match.params.id
-});
+})
 
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(
@@ -146,7 +146,7 @@ export const mapDispatchToProps = dispatch =>
         })
     },
     dispatch
-  );
+  )
 
 export default subscribe(({ match }) => ({
   graphQL: [
@@ -167,4 +167,4 @@ export default subscribe(({ match }) => ({
       }
     }
   ]
-}))(connect(mapStateToProps, mapDispatchToProps)(StoryDetails));
+}))(connect(mapStateToProps, mapDispatchToProps)(StoryDetails))

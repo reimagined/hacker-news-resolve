@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import '../styles/login.css';
+import '../styles/login.css'
 
 const LoginForm = ({ title, action, buttonText }) => (
   <div className="login">
@@ -26,6 +26,6 @@ const LoginForm = ({ title, action, buttonText }) => (
       <input type="submit" value={buttonText} />
     </form>
   </div>
-);
+)
 
-export default LoginForm;
+export default LoginForm

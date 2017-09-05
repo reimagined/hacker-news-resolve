@@ -1,24 +1,24 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import actions from '../actions/userActions';
-import '../styles/changePassword.css';
+import actions from '../actions/userActions'
+import '../styles/changePassword.css'
 
 class ChangePassword extends React.PureComponent {
   state = {
     newPassword: '',
     currentPassword: ''
-  };
+  }
 
   onPasswordChange = () => {
     this.props.changePassword(
       this.state.newPassword,
       this.state.currentPassword,
       this.props.user.id
-    );
-    this.setState({ newPassword: '', currentPassword: '' });
-  };
+    )
+    this.setState({ newPassword: '', currentPassword: '' })
+  }
 
   render() {
     return (
@@ -55,11 +55,11 @@ class ChangePassword extends React.PureComponent {
         <br />
         <button onClick={this.onPasswordChange}>change</button>
       </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = ({ user }) => ({ user });
+const mapStateToProps = ({ user }) => ({ user })
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
@@ -68,6 +68,6 @@ const mapDispatchToProps = dispatch =>
         actions.changePassword(userId, { newPassword, currentPassword })
     },
     dispatch
-  );
+  )
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChangePassword);
+export default connect(mapStateToProps, mapDispatchToProps)(ChangePassword)

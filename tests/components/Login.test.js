@@ -1,10 +1,10 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import React from 'react'
+import { shallow } from 'enzyme'
 
-import Login from '../../client/components/Login';
+import Login from '../../client/components/Login'
 
 it('renders correctly', () => {
-  const markup = shallow(<Login />);
+  const markup = shallow(<Login />)
 
-  expect(markup).toMatchSnapshot();
-});
+  expect(markup).toMatchSnapshot()
+})

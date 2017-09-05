@@ -1,14 +1,14 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import subscribe from '../decorators/subscribe';
-import users from '../../common/read-models/users';
-import '../styles/profile.css';
+import subscribe from '../decorators/subscribe'
+import users from '../../common/read-models/users'
+import '../styles/profile.css'
 
 export const UserById = ({ id, name, createdAt, karma }) => {
   if (!id) {
-    return null;
+    return null
   }
 
   return (
@@ -33,13 +33,13 @@ export const UserById = ({ id, name, createdAt, karma }) => {
         <Link to="/changepw">change password</Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export const mapStateToProps = ({ user, users }, { match }) => {
-  const { id } = match.params;
-  return id ? users.find(item => item.id === id) : user;
-};
+  const { id } = match.params
+  return id ? users.find(item => item.id === id) : user
+}
 
 export default subscribe(({ match }) => ({
   graphQL: [
@@ -52,4 +52,4 @@ export default subscribe(({ match }) => ({
       }
     }
   ]
-}))(connect(mapStateToProps)(UserById));
+}))(connect(mapStateToProps)(UserById))

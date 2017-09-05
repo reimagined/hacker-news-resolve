@@ -1,30 +1,30 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import Story from '../components/Story';
-import Paginator from '../components/Paginator';
-import { NUMBER_OF_ITEMS_PER_PAGE } from '../../common/constants';
-import actions from '../actions/stories';
-import '../styles/stories.css';
+import Story from '../components/Story'
+import Paginator from '../components/Paginator'
+import { NUMBER_OF_ITEMS_PER_PAGE } from '../../common/constants'
+import actions from '../actions/stories'
+import '../styles/stories.css'
 
 export const Stories = props => {
-  let { stories, type, page, upvoteStory, unvoteStory } = props;
+  let { stories, type, page, upvoteStory, unvoteStory } = props
 
-  const hasNext = !!stories[NUMBER_OF_ITEMS_PER_PAGE];
+  const hasNext = !!stories[NUMBER_OF_ITEMS_PER_PAGE]
 
-  const firstStoryIndex = NUMBER_OF_ITEMS_PER_PAGE * (page ? page - 1 : 0);
+  const firstStoryIndex = NUMBER_OF_ITEMS_PER_PAGE * (page ? page - 1 : 0)
 
   return (
     <div>
       <div className="stories">
         <ol className="stories__list" start={firstStoryIndex + 1}>
           {stories.slice(0, NUMBER_OF_ITEMS_PER_PAGE).map(story => {
-            const { type } = story;
+            const { type } = story
 
-            const link = story.link || `/storyDetails/${story.id}`;
+            const link = story.link || `/storyDetails/${story.id}`
             const title =
-              type === 'ask' ? `Ask HN: ${story.title}` : story.title;
+              type === 'ask' ? `Ask HN: ${story.title}` : story.title
 
             return (
               <li key={story.id} className="stories__item">
@@ -45,7 +45,7 @@ export const Stories = props => {
                   loggedIn={!!props.user.id}
                 />
               </li>
-            );
+            )
           })}
         </ol>
       </div>
@@ -55,16 +55,16 @@ export const Stories = props => {
         location={`/${type || 'newest'}`}
       />
     </div>
-  );
-};
+  )
+}
 
 export const mapStateToProps = ({ stories, comments, user }) => {
   return {
     stories,
     user,
     comments
-  };
-};
+  }
+}
 
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(
@@ -79,6 +79,6 @@ export const mapDispatchToProps = dispatch =>
         })
     },
     dispatch
-  );
+  )
 
-export default connect(mapStateToProps, mapDispatchToProps)(Stories);
+export default connect(mapStateToProps, mapDispatchToProps)(Stories)
