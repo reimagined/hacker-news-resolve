@@ -17,53 +17,26 @@ const options = {
   }
 };
 
-function storiesRef(path) {
-  return fetch(endPoint + "/" + path + ".json", options);
-}
+const userRef = async id => fetch(`${endPoint}/user/${id}.json`, options);
 
-function itemRef(id) {
-  return fetch(endPoint + "/item/" + id + ".json", options);
-}
+const storiesRef = async path => fetch(`${endPoint}/${path}.json`, options);
 
-function itemRefJSON(id) {
-  return itemRef(id).then(function(response) {
-    return response.json();
-  });
-}
+const fetchItem = async id => fetch(`${endPoint}/item/${id}.json`, options);
 
-function userRef(id) {
-  return fetch(endPoint + "/user/" + id + ".json", options);
-}
+const itemRefJSON = async id => {
+  const response = await fetchItem(id);
+  return response.json();
+};
 
-function updatesRef() {
-  return fetch(endPoint + "/updates/items/" + ".json", options);
-}
-
-function fetchItem(id, cb) {
-  itemRef(id).then(function(snapshot) {
-    cb(snapshot);
-  });
-}
-
-function fetchItems(ids, cb) {
-  var items = [];
-  var promises = [];
-  ids.forEach(function(id) {
-    promises.push(itemRefJSON(id));
-  });
-  Promise.all(promises).then(function(values) {
-    items = values;
-    if (items.length >= ids.length) {
-      cb(items);
-    }
-  });
-}
+const fetchItems = async ids => {
+  const promises = [];
+  ids.forEach(id => promises.push(itemRefJSON(id)));
+  return Promise.all(promises);
+};
 
 module.exports = {
-  fetchItem,
-  fetchItems,
-  storiesRef,
-  itemRef,
   userRef,
-  updatesRef
+  storiesRef,
+  fetchItem,
+  fetchItems
 };
