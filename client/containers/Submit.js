@@ -1,30 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 import uuid from 'uuid';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Redirect } from 'react-router-dom';
 
 import actions from '../actions/stories';
 import '../styles/submit.css';
 
-export class Submit extends Component {
+export class Submit extends React.PureComponent {
   state = {
     title: '',
     url: '',
     text: ''
   };
 
-  handleChange(event, name) {
+  handleChange = (event, name) => {
     this.setState({ [name]: event.target.value });
-  }
+  };
 
-  handleSubmit() {
-    this.props.onAddStory({
+  handleSubmit = () =>
+    this.props.createStory({
       userId: this.props.userId,
       title: this.state.title,
       text: this.state.text,
       link: this.state.url
     });
-  }
 
   render() {
     if (this.props.createdStoryId) {
@@ -84,7 +84,7 @@ export class Submit extends Component {
             <tr>
               <td />
               <td>
-                <button onClick={() => this.handleSubmit()}>submit</button>
+                <button onClick={this.handleSubmit}>submit</button>
               </td>
             </tr>
             <tr>
@@ -104,26 +104,23 @@ export class Submit extends Component {
   }
 }
 
-export const mapStateToProps = state => {
-  return {
-    userId: state.user.id,
-    createdStoryId: state.ui.createdStoryId
-  };
-};
+export const mapStateToProps = ({ user, ui }) => ({
+  userId: user.id,
+  createdStoryId: ui.createdStoryId
+});
 
-export const mapDispatchToProps = dispatch => {
-  return {
-    onAddStory({ userId, title, text, link }) {
-      return dispatch(
+export const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      createStory: ({ userId, title, text, link }) =>
         actions.createStory(uuid.v4(), {
           title,
           text,
           link,
           userId
         })
-      );
-    }
-  };
-};
+    },
+    dispatch
+  );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Submit);

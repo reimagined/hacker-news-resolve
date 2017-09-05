@@ -1,34 +1,49 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import uuid from 'uuid';
 import sanitizer from 'sanitizer';
 
 import Story from '../components/Story';
 import actions from '../actions/stories';
-import storyActions from '../actions/stories';
 import Comment from '../components/Comment';
 import ChildrenComments from '../components/ChildrenComments';
 import subscribe from '../decorators/subscribe';
+import stories from '../../common/read-models/stories';
+import comments from '../../common/read-models/comments';
 import '../styles/storyDetails.css';
 
-export class StoryDetails extends Component {
+export class StoryDetails extends React.PureComponent {
   state = {
     text: ''
   };
 
-  onAddComment(parentId, userId) {
-    this.props.onAddComment({
+  onAddComment = () => {
+    this.props.createComment({
       text: this.state.text,
-      parentId,
-      userId
+      parentId: this.props.id,
+      userId: this.props.user.id
     });
     this.setState({ text: '' });
-  }
+  };
+
+  onChangeText = event =>
+    this.setState({
+      text: event.target.value
+    });
+
+  onUpvote = () => this.props.upvoteStory(this.props.id, this.props.user.id);
+
+  onUnvote = () => this.props.unvoteStory(this.props.id, this.props.user.id);
 
   render() {
-    const { id, stories, users } = this.props;
+    const { id, stories } = this.props;
     const story = stories.find(story => story.id === id);
-    const user = users.find(({ id }) => id === story.userId);
+
+    if (!story) {
+      return null;
+    }
+
     const link = story.type === 'ask' ? `/storyDetails/${id}` : story.link;
 
     return (
@@ -39,11 +54,14 @@ export class StoryDetails extends Component {
           link={link}
           score={story.voted.length}
           voted={story.voted.includes(this.props.user.id)}
-          user={user}
-          date={new Date(story.createDate)}
+          user={{
+            id: story.userId,
+            name: story.userName
+          }}
+          date={new Date(+story.createDate)}
           commentCount={story.commentsCount}
-          onUpvote={() => this.props.onUpvote(id, this.props.user.id)}
-          onUnvote={() => this.props.onUnvote(id, this.props.user.id)}
+          onUpvote={this.onUpvote}
+          onUnvote={this.onUnvote}
           loggedIn={!!this.props.user.id}
         />
         {story.text && (
@@ -59,13 +77,11 @@ export class StoryDetails extends Component {
               rows="6"
               cols="70"
               value={this.state.text}
-              onChange={e => this.setState({ text: e.target.value })}
+              onChange={this.onChangeText}
             />
           </div>
           <div>
-            <button onClick={() => this.onAddComment(id, this.props.user.id)}>
-              add comment
-            </button>
+            <button onClick={this.onAddComment}>add comment</button>
           </div>
         </div>
         <div>
@@ -74,21 +90,25 @@ export class StoryDetails extends Component {
               ({ id }) => id === commentId
             );
 
-            const user = this.props.users.find(u => u.id === comment.createdBy);
+            if (!comment) {
+              return null;
+            }
 
             return (
               <Comment
                 key={commentId}
                 id={comment.id}
                 content={comment.text}
-                user={user.name}
-                date={new Date(comment.createdAt)}
+                user={{
+                  id: comment.createdBy,
+                  name: comment.createdByName
+                }}
+                date={new Date(+comment.createdAt)}
                 showReply
               >
                 <ChildrenComments
                   replies={comment.replies}
                   comments={this.props.comments}
-                  users={this.props.users}
                 />
               </Comment>
             );
@@ -99,53 +119,51 @@ export class StoryDetails extends Component {
   }
 }
 
-export const mapStateToProps = (state, { match }) => {
-  return {
-    stories: state.stories,
-    users: state.users,
-    comments: state.comments,
-    user: state.user,
-    id: match.params.id
-  };
-};
+export const mapStateToProps = ({ stories, comments, user }, { match }) => ({
+  stories,
+  comments,
+  user,
+  id: match.params.id
+});
 
-export const mapDispatchToProps = dispatch => {
-  return {
-    onAddComment({ parentId, text, userId }) {
-      return dispatch(
+export const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      createComment: ({ parentId, text, userId }) =>
         actions.createComment(parentId, {
           text,
           parentId,
           userId,
           commentId: uuid.v4()
-        })
-      );
-    },
-    onUpvote(id, userId) {
-      return dispatch(
-        storyActions.upvoteStory(id, {
+        }),
+      upvoteStory: (id, userId) =>
+        actions.upvoteStory(id, {
+          userId
+        }),
+      unvoteStory: (id, userId) =>
+        actions.unvoteStory(id, {
           userId
         })
-      );
     },
-    onUnvote(id, userId) {
-      return dispatch(
-        storyActions.unvoteStory(id, {
-          userId
-        })
-      );
-    }
-  };
-};
+    dispatch
+  );
 
 export default subscribe(({ match }) => ({
   graphQL: [
     {
-      readModel: 'stories',
+      readModel: stories,
       query:
-        'query ($id: ID!) { stories(id: $id) { id, type, title, text, userId, createDate, link, comments, commentsCount, voted } }',
+        'query ($id: ID!) { stories(id: $id) { id, type, title, text, userId, userName, createDate, link, comments, commentsCount, voted } }',
       variables: {
         id: match.params.id
+      }
+    },
+    {
+      readModel: comments,
+      query:
+        'query ($aggregateId: ID!) { comments(aggregateId: $aggregateId) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
+      variables: {
+        aggregateId: match.params.id
       }
     }
   ]

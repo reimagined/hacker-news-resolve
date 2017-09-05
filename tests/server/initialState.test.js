@@ -11,16 +11,12 @@ const user = {
   id: uuid.v4()
 };
 
-const queries = [{ name: 'someReadModel' }, { name: 'users' }];
+const queries = [];
 
 const executeQuery = sinon.spy(async queryName => {
   switch (queryName) {
     case 'users':
       return [user];
-    case 'someReadModel':
-      return {
-        test: 'test'
-      };
     default:
       throw new Error();
   }
@@ -35,11 +31,7 @@ describe('server', () => {
     const state = await initialState(queries, executeQuery, { cookies });
 
     expect(state).toEqual({
-      users: [user],
-      user,
-      someReadModel: {
-        test: 'test'
-      }
+      user
     });
   });
 
@@ -49,11 +41,7 @@ describe('server', () => {
     const state = await initialState(queries, executeQuery, { cookies });
 
     expect(state).toEqual({
-      users: [user],
-      user: {},
-      someReadModel: {
-        test: 'test'
-      }
+      user: {}
     });
   });
 });

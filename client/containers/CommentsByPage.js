@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Comment from '../components/Comment';
-import { getPageStories, hasNextStories } from '../helpers/getPageStories';
+import { NUMBER_OF_ITEMS_PER_PAGE } from '../../common/constants';
 import Paginator from '../components/Paginator';
 import subscribe from '../decorators/subscribe';
+import comments from '../../common/read-models/comments';
 
 export const findRoot = (id, comments) => {
   const comment = comments.find(comment => id === comment.id);
@@ -16,15 +17,15 @@ export const findRoot = (id, comments) => {
   return findRoot(comment.parentId, comments);
 };
 
-export const Comments = props => {
+export const CommentsByPage = props => {
   const { comments, match } = props;
   const { page } = match.params;
 
-  const hasNext = hasNextStories(comments, page);
+  const hasNext = !!comments[NUMBER_OF_ITEMS_PER_PAGE];
 
   return (
     <div>
-      {getPageStories(comments, page).map(comment => {
+      {comments.slice(0, NUMBER_OF_ITEMS_PER_PAGE).map(comment => {
         const parentId = comment.parentId;
         const rootId = findRoot(parentId, comments);
 
@@ -33,19 +34,17 @@ export const Comments = props => {
             ? `/storyDetails/${parentId}`
             : `/comment/${parentId}`;
 
-        const root = props.stories.find(({ id }) => id === rootId);
-        const user = props.users.find(({ id }) => id === comment.createdBy);
-
         return (
           <Comment
             key={comment.id}
-            replies={comment.replies}
             id={comment.id}
             content={comment.text}
-            user={user}
-            date={new Date(comment.createdAt)}
+            user={{
+              id: comment.createdBy,
+              name: comment.createdByName
+            }}
+            date={new Date(+comment.createdAt)}
             parent={parent}
-            root={root}
           />
         );
       })}
@@ -54,23 +53,21 @@ export const Comments = props => {
   );
 };
 
-export const mapStateToProps = ({ stories, users, comments }) => {
-  return {
-    stories,
-    users,
-    comments
-  };
-};
+export const mapStateToProps = ({ stories, users, comments }) => ({
+  stories,
+  users,
+  comments
+});
 
 export default subscribe(({ match }) => ({
   graphQL: [
     {
-      readModel: 'comments',
+      readModel: comments,
       query:
-        'query ($page: Int!) { comments(page: $page) { text, id, parentId, createdAt, createdBy, replies } }',
+        'query ($page: Int!) { comments(page: $page) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
       variables: {
         page: match.params.page || '1'
       }
     }
   ]
-}))(connect(mapStateToProps)(Comments));
+}))(connect(mapStateToProps)(CommentsByPage));

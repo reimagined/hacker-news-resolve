@@ -140,12 +140,10 @@ export const initialState = async (queries, executeQuery, { cookies }) => {
     user = {};
   }
 
-  const resultOfQueries = await Promise.all(
-    queries.map(async ({ name }) => {
-      const state = await executeQuery(name);
-      return { state, name };
-    })
-  );
+  const resultOfQueries = queries.map(({ name, initialState }) => {
+    const state = initialState;
+    return { state, name };
+  });
 
   return resultOfQueries.reduce(
     (result, { state, name }) => {

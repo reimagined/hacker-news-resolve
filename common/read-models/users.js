@@ -20,6 +20,7 @@ export default {
         karma: 0
       });
     },
+
     [PASSWORD_CHANGED]: (state: any, event: PasswordChanged) => {
       const { aggregateId, payload: { newPassword } } = event;
       const index = state.findIndex(({ id }) => id === aggregateId);
@@ -34,9 +35,9 @@ export default {
   gqlSchema: `
     type User {
       id: ID!
-      name: String!
-      createdAt: String!
-      karma: Int!
+      name: String
+      createdAt: String
+      karma: Int
     }
     type Query {
       users: [User]
