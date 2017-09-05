@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import sanitizer from 'sanitizer';
-import TimeAgo from 'react-timeago';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import sanitizer from 'sanitizer'
+import TimeAgo from 'react-timeago'
 
-import '../styles/comment.css';
+import '../styles/comment.css'
 
 export const getLevelClassName = level => {
   // TODO: remove me!!!
-  if (level > 15) return 'comment--level15';
-  return `comment--level${level > 0 ? level : '0'}`;
-};
+  if (level > 15) return 'comment--level15'
+  return `comment--level${level > 0 ? level : '0'}`
+}
 
 class Comment extends Component {
   state = {
     expanded: true
-  };
+  }
 
-  expand = () => this.setState({ expanded: !this.state.expanded });
+  expand = () => this.setState({ expanded: !this.state.expanded })
 
   render() {
     const {
@@ -29,7 +29,7 @@ class Comment extends Component {
       parent,
       root,
       children
-    } = this.props;
+    } = this.props
 
     return (
       <div>
@@ -105,8 +105,8 @@ class Comment extends Component {
         </div>
         {this.state.expanded && children}
       </div>
-    );
+    )
   }
 }
 
-export default Comment;
+export default Comment

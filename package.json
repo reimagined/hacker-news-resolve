@@ -7,9 +7,7 @@
     "start": "resolve-scripts start",
     "dev": "resolve-scripts dev",
     "import": "babel-node ./import ",
-    "lint": "eslint --ignore-path .gitignore .",
-    "lint-fix": "eslint --ignore-path .gitignore --fix .",
-    "prettier": "prettier-eslint --write \"**/*.js\"",
+    "prettier": "prettier --single-quote --no-semi --write \"**/*.js\"",
     "lint-staged": "lint-staged",
     "test": "jest",
     "test:coverage": "jest --u --coverage",
@@ -18,12 +16,11 @@
   },
   "pre-commit": [
     "lint-staged",
-    "lint",
     "test"
   ],
   "lint-staged": {
-    "*.js": [
-      "prettier-eslint --write",
+    "*.{js,css}": [
+      "prettier --single-quote --no-semi --write",
       "git add"
     ]
   },
@@ -70,24 +67,14 @@
     "uuid": "^3.1.0"
   },
   "devDependencies": {
-    "babel-eslint": "7.2.3",
     "coveralls": "^2.13.1",
     "css-loader": "^0.28.4",
     "enzyme": "^2.9.1",
-    "eslint": "3.19.0",
-    "eslint-config-react-app": "1.0.5",
-    "eslint-plugin-flowtype": "2.33.0",
-    "eslint-plugin-import": "2.2.0",
-    "eslint-plugin-jsx-a11y": "5.0.3",
-    "eslint-plugin-prettier": "2.2.0",
-    "eslint-plugin-react": "7.0.1",
-    "extract-text-webpack-plugin": "^3.0.0",
     "flow-bin": "^0.52.0",
     "jest": "^20.0.4",
     "lint-staged": "4.0.4",
     "pre-commit": "^1.2.2",
     "prettier": "1.6.0",
-    "prettier-eslint-cli": "4.2.1",
     "react-test-renderer": "^15.6.1",
     "sinon": "^3.2.1",
     "style-loader": "^0.18.2",

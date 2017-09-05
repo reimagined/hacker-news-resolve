@@ -1,40 +1,40 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 
-import Comment from '../components/Comment';
-import { getPageStories, hasNextStories } from '../helpers/getPageStories';
-import Paginator from '../components/Paginator';
-import subscribe from '../decorators/subscribe';
+import Comment from '../components/Comment'
+import { getPageStories, hasNextStories } from '../helpers/getPageStories'
+import Paginator from '../components/Paginator'
+import subscribe from '../decorators/subscribe'
 
 export const findRoot = (id, comments) => {
-  const comment = comments.find(comment => id === comment.id);
+  const comment = comments.find(comment => id === comment.id)
 
   if (!comment) {
-    return id;
+    return id
   }
 
-  return findRoot(comment.parentId, comments);
-};
+  return findRoot(comment.parentId, comments)
+}
 
 export const Comments = props => {
-  const { comments, match } = props;
-  const { page } = match.params;
+  const { comments, match } = props
+  const { page } = match.params
 
-  const hasNext = hasNextStories(comments, page);
+  const hasNext = hasNextStories(comments, page)
 
   return (
     <div>
       {getPageStories(comments, page).map(comment => {
-        const parentId = comment.parentId;
-        const rootId = findRoot(parentId, comments);
+        const parentId = comment.parentId
+        const rootId = findRoot(parentId, comments)
 
         const parent =
           parentId === rootId
             ? `/storyDetails/${parentId}`
-            : `/comment/${parentId}`;
+            : `/comment/${parentId}`
 
-        const root = props.stories.find(({ id }) => id === rootId);
-        const user = props.users.find(({ id }) => id === comment.createdBy);
+        const root = props.stories.find(({ id }) => id === rootId)
+        const user = props.users.find(({ id }) => id === comment.createdBy)
 
         return (
           <Comment
@@ -47,20 +47,20 @@ export const Comments = props => {
             parent={parent}
             root={root}
           />
-        );
+        )
       })}
       <Paginator page={page} hasNext={hasNext} location="/comments" />
     </div>
-  );
-};
+  )
+}
 
 export const mapStateToProps = ({ stories, users, comments }) => {
   return {
     stories,
     users,
     comments
-  };
-};
+  }
+}
 
 export default subscribe(({ match }) => ({
   graphQL: [
@@ -73,4 +73,4 @@ export default subscribe(({ match }) => ({
       }
     }
   ]
-}))(connect(mapStateToProps)(Comments));
+}))(connect(mapStateToProps)(Comments))

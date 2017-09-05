@@ -1,17 +1,17 @@
-import React from 'react';
-import { StaticRouter } from 'react-router';
-import storageDriver from 'resolve-storage-file';
-import busDriver from 'resolve-bus-memory';
+import React from 'react'
+import { StaticRouter } from 'react-router'
+import storageDriver from 'resolve-storage-file'
+import busDriver from 'resolve-bus-memory'
 
-import createStore from './client/store';
-import RouteWithSubRoutes from './client/components/RouteWithSubRoutes';
-import aggregates from './common/aggregates';
-import queries from './common/read-models';
-import events from './common/events';
-import { extendExpress, initialState } from './server';
-import routes from './client/routes';
+import createStore from './client/store'
+import RouteWithSubRoutes from './client/components/RouteWithSubRoutes'
+import aggregates from './common/aggregates'
+import queries from './common/read-models'
+import events from './common/events'
+import { extendExpress, initialState } from './server'
+import routes from './client/routes'
 
-const eventTypes = Object.keys(events).map(key => events[key]);
+const eventTypes = Object.keys(events).map(key => events[key])
 
 export default {
   entries: {
@@ -35,4 +35,4 @@ export default {
   },
   queries,
   extendExpress
-};
+}

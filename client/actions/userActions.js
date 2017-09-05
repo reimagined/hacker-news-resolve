@@ -1,8 +1,8 @@
-import { createActions } from 'resolve-redux';
-import aggregate from '../../common/aggregates/users';
+import { createActions } from 'resolve-redux'
+import aggregate from '../../common/aggregates/users'
 
 export const logout = () => ({
   type: 'USER_LOGOUT'
-});
+})
 
-export default createActions(aggregate);
+export default createActions(aggregate)

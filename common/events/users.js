@@ -3,7 +3,7 @@
 const events = {
   USER_CREATED: 'UserCreated',
   PASSWORD_CHANGED: 'PasswordChanged'
-};
+}
 
 export type UserCreated = {
   aggregateId: string,
@@ -12,7 +12,7 @@ export type UserCreated = {
     name: string,
     passwordHash: string
   }
-};
+}
 
 export type PasswordChanged = {
   aggregateId: string,
@@ -20,6 +20,6 @@ export type PasswordChanged = {
   payload: {
     newPassword: string
   }
-};
+}
 
-export default events;
+export default events

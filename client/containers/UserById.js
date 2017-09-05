@@ -1,9 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import subscribe from '../decorators/subscribe';
-import '../styles/profile.css';
+import subscribe from '../decorators/subscribe'
+import '../styles/profile.css'
 
 export const User = ({ id, name, createdAt, karma }) => {
   if (!id) {
@@ -12,7 +12,7 @@ export const User = ({ id, name, createdAt, karma }) => {
         <h1>Error</h1>
         User not found
       </div>
-    );
+    )
   }
 
   return (
@@ -37,13 +37,13 @@ export const User = ({ id, name, createdAt, karma }) => {
         <Link to="/changepw">change password</Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export const mapStateToProps = ({ user, users }, { match }) => {
-  const { id } = match.params;
-  return id ? users.find(item => item.id === id) : user;
-};
+  const { id } = match.params
+  return id ? users.find(item => item.id === id) : user
+}
 
 export default subscribe(({ match }) => ({
   graphQL: [
@@ -56,4 +56,4 @@ export default subscribe(({ match }) => ({
       }
     }
   ]
-}))(connect(mapStateToProps)(User));
+}))(connect(mapStateToProps)(User))

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import LoginForm from './LoginForm';
+import LoginForm from './LoginForm'
 
 const Login = () => {
   return (
@@ -12,7 +12,7 @@ const Login = () => {
         title="Create account"
       />
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

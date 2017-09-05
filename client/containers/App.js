@@ -1,27 +1,27 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { withRouter } from 'react-router';
+import React from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { withRouter } from 'react-router'
 
-import * as userActions from '../actions/userActions';
-import * as uiActions from '../actions/ui';
+import * as userActions from '../actions/userActions'
+import * as uiActions from '../actions/ui'
 
-import '../styles/style.css';
-import '../styles/root.css';
+import '../styles/style.css'
+import '../styles/root.css'
 
 export class App extends React.PureComponent {
   componentDidMount() {
     this.props.history.listen(({ pathname }) => {
       if (pathname === '/submit') {
-        this.props.onSubmitViewShown();
+        this.props.onSubmitViewShown()
       }
-    });
+    })
   }
 
   render() {
-    const { children, user, logout } = this.props;
+    const { children, user, logout } = this.props
 
     return (
       <div className="app">
@@ -136,13 +136,13 @@ export class App extends React.PureComponent {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
 export const mapStateToProps = ({ user }) => ({
   user
-});
+})
 
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(
@@ -151,6 +151,6 @@ export const mapDispatchToProps = dispatch =>
       onSubmitViewShown: uiActions.submitViewShown
     },
     dispatch
-  );
+  )
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

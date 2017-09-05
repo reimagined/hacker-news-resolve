@@ -1,17 +1,17 @@
-import App from './containers/App';
-import NewestByPage from './containers/NewestByPage';
-import ShowByPage from './containers/ShowByPage';
-import AskByPage from './containers/AskByPage';
-import CommentsByPage from './containers/CommentsByPage';
-import CommentById from './containers/CommentById';
-import Submit from './containers/Submit';
-import Login from './components/Login';
+import App from './containers/App'
+import NewestByPage from './containers/NewestByPage'
+import ShowByPage from './containers/ShowByPage'
+import AskByPage from './containers/AskByPage'
+import CommentsByPage from './containers/CommentsByPage'
+import CommentById from './containers/CommentById'
+import Submit from './containers/Submit'
+import Login from './components/Login'
 
-import UserById from './containers/UserById';
-import ChangePassword from './containers/ChangePassword';
-import Error from './components/Error';
-import StoryDetails from './containers/StoryDetails';
-import Reply from './containers/Reply';
+import UserById from './containers/UserById'
+import ChangePassword from './containers/ChangePassword'
+import Error from './components/Error'
+import StoryDetails from './containers/StoryDetails'
+import Reply from './containers/Reply'
 
 const routes = [
   {
@@ -73,6 +73,6 @@ const routes = [
       }
     ]
   }
-];
+]
 
-export default routes;
+export default routes

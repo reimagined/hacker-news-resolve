@@ -1,10 +1,10 @@
-import React from 'react';
-import Stories from './Stories';
-import subscribe from '../decorators/subscribe';
+import React from 'react'
+import Stories from './Stories'
+import subscribe from '../decorators/subscribe'
 
 const ShowByPage = ({ match }) => (
   <Stories page={match.params.page} type="show" />
-);
+)
 
 export default subscribe(({ match }) => ({
   graphQL: [
@@ -17,4 +17,4 @@ export default subscribe(({ match }) => ({
       }
     }
   ]
-}))(ShowByPage);
+}))(ShowByPage)

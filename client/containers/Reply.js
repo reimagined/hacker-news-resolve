@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import uuid from 'uuid';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import uuid from 'uuid'
 
-import actions from '../actions/stories';
-import Comment from '../components/Comment';
-import '../styles/reply.css';
+import actions from '../actions/stories'
+import Comment from '../components/Comment'
+import '../styles/reply.css'
 
 export class Reply extends Component {
   state = {
     text: ''
-  };
+  }
 
   onReply(parentId, userId, storyId) {
     this.props.onReply({
@@ -17,15 +17,15 @@ export class Reply extends Component {
       parentId,
       userId,
       storyId
-    });
+    })
     // eslint-disable-next-line no-restricted-globals
-    history.back();
+    history.back()
   }
 
   render() {
-    const { comments, users, user, id } = this.props;
-    const comment = comments.find(c => c.id === id);
-    const userName = users.find(({ id }) => id === comment.createdBy).name;
+    const { comments, users, user, id } = this.props
+    const comment = comments.find(c => c.id === id)
+    const userName = users.find(({ id }) => id === comment.createdBy).name
 
     return (
       <div>
@@ -55,7 +55,7 @@ export class Reply extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -69,10 +69,10 @@ const mapDispatchToProps = dispatch => {
           userId,
           commentId: uuid.v4()
         })
-      );
+      )
     }
-  };
-};
+  }
+}
 
 const mapStateToProps = (state, { match }) => {
   return {
@@ -80,7 +80,7 @@ const mapStateToProps = (state, { match }) => {
     users: state.users,
     user: state.user,
     id: match.params.id
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Reply);
+export default connect(mapStateToProps, mapDispatchToProps)(Reply)

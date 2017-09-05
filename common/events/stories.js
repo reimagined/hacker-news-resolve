@@ -5,7 +5,7 @@ const events = {
   STORY_UPVOTED: 'StoryUpvoted',
   STORY_UNVOTED: 'StoryUnvoted',
   STORY_DELETED: 'StoryDeleted'
-};
+}
 
 export type StoryCreated = {
   aggregateId: string,
@@ -16,7 +16,7 @@ export type StoryCreated = {
     userId: string,
     link: string
   }
-};
+}
 
 export type StoryUpvoted = {
   aggregateId: string,
@@ -24,7 +24,7 @@ export type StoryUpvoted = {
   payload: {
     userId: string
   }
-};
+}
 
 export type StoryUnvoted = {
   aggregateId: string,
@@ -32,12 +32,12 @@ export type StoryUnvoted = {
   payload: {
     userId: string
   }
-};
+}
 
 export type StoryDeleted = {
   aggregateId: string,
   timestamp: string,
   payload: {}
-};
+}
 
-export default events;
+export default events

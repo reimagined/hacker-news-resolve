@@ -1,23 +1,23 @@
-import React from 'react';
-import url from 'url';
-import { Link } from 'react-router-dom';
-import plur from 'plur';
-import TimeAgo from 'react-timeago';
+import React from 'react'
+import url from 'url'
+import { Link } from 'react-router-dom'
+import plur from 'plur'
+import TimeAgo from 'react-timeago'
 
-import '../styles/story.css';
+import '../styles/story.css'
 
-const isExternalLink = link => link[0] !== '/';
+const isExternalLink = link => link[0] !== '/'
 
 export const getHostname = link =>
-  link.split('.')[0] === 'www' ? link.substr(4) : url.parse(link).hostname;
+  link.split('.')[0] === 'www' ? link.substr(4) : url.parse(link).hostname
 
 const voteArrow = (visible, onUpvote) => {
   return visible ? (
     <span onClick={onUpvote} className="story__votearrow" title="upvote" />
   ) : (
     <span className="story__votearrow--hidden" />
-  );
-};
+  )
+}
 
 const getTitle = ({ title, link }) => {
   if (isExternalLink(link)) {
@@ -30,7 +30,7 @@ const getTitle = ({ title, link }) => {
         </span>{' '}
         <span className="story__host">({getHostname(link)})</span>
       </span>
-    );
+    )
   }
   return (
     <span className="story__title">
@@ -38,24 +38,24 @@ const getTitle = ({ title, link }) => {
         {title}
       </Link>
     </span>
-  );
-};
+  )
+}
 export const Title = ({ title, link, onUpvote, voted, loggedIn }) => {
   return (
     <div>
       {voteArrow(loggedIn && !voted, onUpvote)}
       {getTitle({ title, link })}
     </div>
-  );
-};
+  )
+}
 
 export const Score = ({ score }) => {
   return (
     <span className="story__score">
       {score} {plur('point', score)}{' '}
     </span>
-  );
-};
+  )
+}
 
 export const PostedBy = ({ user }) => {
   return (
@@ -65,8 +65,8 @@ export const PostedBy = ({ user }) => {
         {user.name}
       </a>{' '}
     </span>
-  );
-};
+  )
+}
 
 export const Comment = ({ storyId, commentCount }) => {
   return (
@@ -82,8 +82,8 @@ export const Comment = ({ storyId, commentCount }) => {
         </Link>{' '}
       </span>
     </span>
-  );
-};
+  )
+}
 
 export const Meta = props => {
   const {
@@ -95,8 +95,8 @@ export const Meta = props => {
     voted,
     loggedIn,
     onUnvote
-  } = props;
-  const unvoteIsVisible = voted && loggedIn;
+  } = props
+  const unvoteIsVisible = voted && loggedIn
 
   return (
     <div className="story__meta">
@@ -120,8 +120,8 @@ export const Meta = props => {
         ''
       )}
     </div>
-  );
-};
+  )
+}
 
 const Story = props => {
   const {
@@ -136,7 +136,7 @@ const Story = props => {
     onUnvote,
     voted,
     loggedIn
-  } = props;
+  } = props
 
   return (
     <div className="story">
@@ -160,7 +160,7 @@ const Story = props => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Story;
+export default Story
