@@ -1,4 +1,4 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   extendWebpack: (clientConfig, serverConfig) => {
@@ -14,9 +14,9 @@ module.exports = {
         test: /\.(png|jpg|woff|woff2|eot|ttf|svg)(\?.*$|$)/,
         loader: 'url-loader?limit=100000'
       }
-    ]);
+    ])
 
-    clientConfig.plugins.push(new ExtractTextPlugin('bundle.css'));
+    clientConfig.plugins.push(new ExtractTextPlugin('bundle.css'))
 
     serverConfig.module.rules = serverConfig.module.rules.concat([
       {
@@ -30,12 +30,12 @@ module.exports = {
         test: /\.(png|jpg|woff|woff2|eot|ttf|svg)(\?.*$|$)/,
         loader: 'url-loader?limit=100000'
       }
-    ]);
+    ])
 
     if (serverConfig.plugins) {
-      serverConfig.plugins.push(new ExtractTextPlugin('bundle.css'));
+      serverConfig.plugins.push(new ExtractTextPlugin('bundle.css'))
     } else {
-      serverConfig.plugins = [new ExtractTextPlugin('bundle.css')];
+      serverConfig.plugins = [new ExtractTextPlugin('bundle.css')]
     }
   }
-};
+}

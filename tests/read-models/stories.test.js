@@ -1,8 +1,8 @@
-import uuid from 'uuid';
+import uuid from 'uuid'
 
-import '../../common/read-models';
-import stories from '../../common/read-models/stories';
-import events from '../../common/events';
+import '../../common/read-models'
+import stories from '../../common/read-models/stories'
+import events from '../../common/events'
 
 const {
   STORY_CREATED,
@@ -11,12 +11,12 @@ const {
   STORY_DELETED,
   COMMENT_CREATED,
   COMMENT_REMOVED
-} = events;
+} = events
 
 describe('read-models', () => {
   describe('stories', () => {
     it('eventHandler "STORY_CREATED" should create a story {type: "ask"}', () => {
-      const state = stories.initialState;
+      const state = stories.initialState
       const event = {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
@@ -26,7 +26,7 @@ describe('read-models', () => {
           userId: uuid.v4(),
           link: undefined
         }
-      };
+      }
 
       const nextState = [
         {
@@ -41,15 +41,15 @@ describe('read-models', () => {
           commentsCount: 0,
           voted: []
         }
-      ];
+      ]
 
       expect(stories.eventHandlers[STORY_CREATED](state, event)).toEqual(
         nextState
-      );
-    });
+      )
+    })
 
     it('eventHandler "STORY_CREATED" should create a story {type: "story"}', () => {
-      const state = stories.initialState;
+      const state = stories.initialState
       const event = {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
@@ -59,7 +59,7 @@ describe('read-models', () => {
           userId: uuid.v4(),
           link: 'SomeLink'
         }
-      };
+      }
 
       const nextState = [
         {
@@ -74,15 +74,15 @@ describe('read-models', () => {
           commentsCount: 0,
           voted: []
         }
-      ];
+      ]
 
       expect(stories.eventHandlers[STORY_CREATED](state, event)).toEqual(
         nextState
-      );
-    });
+      )
+    })
 
     it('eventHandler "STORY_CREATED" should create a story {type: "show"}', () => {
-      const state = stories.initialState;
+      const state = stories.initialState
       const event = {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
@@ -92,7 +92,7 @@ describe('read-models', () => {
           userId: uuid.v4(),
           link: 'SomeLink'
         }
-      };
+      }
 
       const nextState = [
         {
@@ -107,20 +107,20 @@ describe('read-models', () => {
           commentsCount: 0,
           voted: []
         }
-      ];
+      ]
 
       expect(stories.eventHandlers[STORY_CREATED](state, event)).toEqual(
         nextState
-      );
-    });
+      )
+    })
 
     it('eventHandler "STORY_UPVOTED" should upvote the story', () => {
-      const aggregateId = uuid.v4();
+      const aggregateId = uuid.v4()
 
       const state = stories.initialState.concat({
         id: aggregateId,
         voted: []
-      });
+      })
 
       const event = {
         aggregateId,
@@ -128,28 +128,28 @@ describe('read-models', () => {
         payload: {
           userId: uuid.v4()
         }
-      };
+      }
 
       const nextState = [
         {
           id: aggregateId,
           voted: [event.payload.userId]
         }
-      ];
+      ]
 
       expect(stories.eventHandlers[STORY_UPVOTED](state, event)).toEqual(
         nextState
-      );
-    });
+      )
+    })
 
     it('eventHandler "STORY_UNVOTED" should unvote the stories', () => {
-      const aggregateId = uuid.v4();
-      const userId = uuid.v4();
+      const aggregateId = uuid.v4()
+      const userId = uuid.v4()
 
       const state = stories.initialState.concat({
         id: aggregateId,
         voted: [userId]
-      });
+      })
 
       const event = {
         aggregateId,
@@ -157,47 +157,47 @@ describe('read-models', () => {
         payload: {
           userId
         }
-      };
+      }
 
       const nextState = [
         {
           id: aggregateId,
           voted: []
         }
-      ];
+      ]
 
       expect(stories.eventHandlers[STORY_UNVOTED](state, event)).toEqual(
         nextState
-      );
-    });
+      )
+    })
 
     it('eventHandler "STORY_DELETED" should delete the story', () => {
-      const aggregateId = uuid.v4();
+      const aggregateId = uuid.v4()
 
       const state = stories.initialState.concat({
         id: aggregateId
-      });
+      })
 
       const event = {
         aggregateId
-      };
+      }
 
-      const nextState = [];
+      const nextState = []
 
       expect(stories.eventHandlers[STORY_DELETED](state, event)).toEqual(
         nextState
-      );
-    });
+      )
+    })
 
     it('eventHandler "COMMENT_CREATED" should add comment.id to story.comments', () => {
-      const parentId = uuid.v4();
-      const commentId = uuid.v4();
+      const parentId = uuid.v4()
+      const commentId = uuid.v4()
 
       const state = stories.initialState.concat({
         id: parentId,
         comments: [],
         commentsCount: 0
-      });
+      })
 
       const event = {
         aggregateId: parentId,
@@ -205,7 +205,7 @@ describe('read-models', () => {
           parentId,
           commentId
         }
-      };
+      }
 
       const nextState = [
         {
@@ -213,29 +213,29 @@ describe('read-models', () => {
           comments: [commentId],
           commentsCount: 1
         }
-      ];
+      ]
 
       expect(stories.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
         nextState
-      );
-    });
+      )
+    })
 
     it('eventHandler "COMMENT_CREATED" should increment comments count', () => {
-      const parentId = uuid.v4();
-      const aggregateId = uuid.v4();
+      const parentId = uuid.v4()
+      const aggregateId = uuid.v4()
 
       const state = stories.initialState.concat({
         id: aggregateId,
         comments: [],
         commentsCount: 0
-      });
+      })
 
       const event = {
         aggregateId,
         payload: {
           parentId
         }
-      };
+      }
 
       const nextState = [
         {
@@ -243,22 +243,22 @@ describe('read-models', () => {
           comments: [],
           commentsCount: 1
         }
-      ];
+      ]
 
       expect(stories.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
         nextState
-      );
-    });
+      )
+    })
 
     it('eventHandler "COMMENT_REMOVED" should remove comment.id from story.comments', () => {
-      const parentId = uuid.v4();
-      const commentId = uuid.v4();
+      const parentId = uuid.v4()
+      const commentId = uuid.v4()
 
       const state = stories.initialState.concat({
         id: parentId,
         comments: [commentId],
         commentsCount: 1
-      });
+      })
 
       const event = {
         aggregateId: parentId,
@@ -266,7 +266,7 @@ describe('read-models', () => {
           parentId,
           commentId
         }
-      };
+      }
 
       const nextState = [
         {
@@ -274,29 +274,29 @@ describe('read-models', () => {
           comments: [],
           commentsCount: 0
         }
-      ];
+      ]
 
       expect(stories.eventHandlers[COMMENT_REMOVED](state, event)).toEqual(
         nextState
-      );
-    });
+      )
+    })
 
     it('eventHandler "COMMENT_REMOVED" should decrement comments count', () => {
-      const parentId = uuid.v4();
-      const aggregateId = uuid.v4();
+      const parentId = uuid.v4()
+      const aggregateId = uuid.v4()
 
       const state = stories.initialState.concat({
         id: aggregateId,
         comments: [],
         commentsCount: 1
-      });
+      })
 
       const event = {
         aggregateId,
         payload: {
           parentId
         }
-      };
+      }
 
       const nextState = [
         {
@@ -304,11 +304,11 @@ describe('read-models', () => {
           comments: [],
           commentsCount: 0
         }
-      ];
+      ]
 
       expect(stories.eventHandlers[COMMENT_REMOVED](state, event)).toEqual(
         nextState
-      );
-    });
-  });
-});
+      )
+    })
+  })
+})

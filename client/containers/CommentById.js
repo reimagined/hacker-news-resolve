@@ -1,14 +1,14 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 
-import ChildrenComments from '../components/ChildrenComments';
-import Comment from '../components/Comment';
-import subscribe from '../decorators/subscribe';
+import ChildrenComments from '../components/ChildrenComments'
+import Comment from '../components/Comment'
+import subscribe from '../decorators/subscribe'
 
 export const CommentContainer = ({ comments, users, match }) => {
-  const { id } = match.params;
-  const comment = comments.find(c => c.id === id);
-  const user = users.find(({ id }) => id === comment.createdBy);
+  const { id } = match.params
+  const comment = comments.find(c => c.id === id)
+  const user = users.find(({ id }) => id === comment.createdBy)
 
   return (
     <Comment
@@ -24,13 +24,13 @@ export const CommentContainer = ({ comments, users, match }) => {
         users={users}
       />
     </Comment>
-  );
-};
+  )
+}
 
 export const mapStateToProps = ({ users, comments }) => ({
   users,
   comments
-});
+})
 
 export default subscribe(({ match }) => ({
   graphQL: [
@@ -43,4 +43,4 @@ export default subscribe(({ match }) => ({
       }
     }
   ]
-}))(connect(mapStateToProps)(CommentContainer));
+}))(connect(mapStateToProps)(CommentContainer))

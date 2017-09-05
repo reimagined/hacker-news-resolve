@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-import actions from '../actions/userActions';
-import '../styles/changePassword.css';
+import actions from '../actions/userActions'
+import '../styles/changePassword.css'
 
 class ChangePassword extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       newPassword: '',
       currentPassword: ''
-    };
+    }
   }
 
   onPasswordChange() {
@@ -19,8 +19,8 @@ class ChangePassword extends Component {
       this.state.newPassword,
       this.state.currentPassword,
       this.props.user.id
-    );
-    this.setState({ newPassword: '', currentPassword: '' });
+    )
+    this.setState({ newPassword: '', currentPassword: '' })
   }
 
   render() {
@@ -58,15 +58,15 @@ class ChangePassword extends Component {
         <br />
         <button onClick={() => this.onPasswordChange()}>change</button>
       </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = ({ user }) => ({ user });
+const mapStateToProps = ({ user }) => ({ user })
 
 const mapDispatchToProps = dispatch => ({
   changePassword: (newPassword, currentPassword, userId) =>
     dispatch(actions.changePassword(userId, { newPassword, currentPassword }))
-});
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChangePassword);
+export default connect(mapStateToProps, mapDispatchToProps)(ChangePassword)

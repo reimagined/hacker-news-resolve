@@ -1,35 +1,35 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import uuid from 'uuid';
-import sanitizer from 'sanitizer';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import uuid from 'uuid'
+import sanitizer from 'sanitizer'
 
-import Story from '../components/Story';
-import actions from '../actions/stories';
-import storyActions from '../actions/stories';
-import Comment from '../components/Comment';
-import ChildrenComments from '../components/ChildrenComments';
-import subscribe from '../decorators/subscribe';
-import '../styles/storyDetails.css';
+import Story from '../components/Story'
+import actions from '../actions/stories'
+import storyActions from '../actions/stories'
+import Comment from '../components/Comment'
+import ChildrenComments from '../components/ChildrenComments'
+import subscribe from '../decorators/subscribe'
+import '../styles/storyDetails.css'
 
 export class StoryDetails extends Component {
   state = {
     text: ''
-  };
+  }
 
   onAddComment(parentId, userId) {
     this.props.onAddComment({
       text: this.state.text,
       parentId,
       userId
-    });
-    this.setState({ text: '' });
+    })
+    this.setState({ text: '' })
   }
 
   render() {
-    const { id, stories, users } = this.props;
-    const story = stories.find(story => story.id === id);
-    const user = users.find(({ id }) => id === story.userId);
-    const link = story.type === 'ask' ? `/storyDetails/${id}` : story.link;
+    const { id, stories, users } = this.props
+    const story = stories.find(story => story.id === id)
+    const user = users.find(({ id }) => id === story.userId)
+    const link = story.type === 'ask' ? `/storyDetails/${id}` : story.link
 
     return (
       <div className="storyDetails">
@@ -72,9 +72,9 @@ export class StoryDetails extends Component {
           {story.comments.map(commentId => {
             const comment = this.props.comments.find(
               ({ id }) => id === commentId
-            );
+            )
 
-            const user = this.props.users.find(u => u.id === comment.createdBy);
+            const user = this.props.users.find(u => u.id === comment.createdBy)
 
             return (
               <Comment
@@ -91,11 +91,11 @@ export class StoryDetails extends Component {
                   users={this.props.users}
                 />
               </Comment>
-            );
+            )
           })}
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -106,8 +106,8 @@ export const mapStateToProps = (state, { match }) => {
     comments: state.comments,
     user: state.user,
     id: match.params.id
-  };
-};
+  }
+}
 
 export const mapDispatchToProps = dispatch => {
   return {
@@ -119,24 +119,24 @@ export const mapDispatchToProps = dispatch => {
           userId,
           commentId: uuid.v4()
         })
-      );
+      )
     },
     onUpvote(id, userId) {
       return dispatch(
         storyActions.upvoteStory(id, {
           userId
         })
-      );
+      )
     },
     onUnvote(id, userId) {
       return dispatch(
         storyActions.unvoteStory(id, {
           userId
         })
-      );
+      )
     }
-  };
-};
+  }
+}
 
 export default subscribe(({ match }) => ({
   graphQL: [
@@ -149,4 +149,4 @@ export default subscribe(({ match }) => ({
       }
     }
   ]
-}))(connect(mapStateToProps, mapDispatchToProps)(StoryDetails));
+}))(connect(mapStateToProps, mapDispatchToProps)(StoryDetails))

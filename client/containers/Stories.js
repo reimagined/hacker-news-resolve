@@ -1,40 +1,40 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 
-import Story from '../components/Story';
-import Paginator from '../components/Paginator';
+import Story from '../components/Story'
+import Paginator from '../components/Paginator'
 
 import {
   STORIES_ON_ONE_PAGE,
   getPageStories,
   hasNextStories
-} from '../helpers/getPageStories';
-import actions from '../actions/stories';
-import '../styles/stories.css';
+} from '../helpers/getPageStories'
+import actions from '../actions/stories'
+import '../styles/stories.css'
 
 export const Stories = props => {
-  let { stories, type, page } = props;
+  let { stories, type, page } = props
 
   if (type) {
-    stories = stories.filter(story => story.type === type);
+    stories = stories.filter(story => story.type === type)
   }
 
-  const hasNext = hasNextStories(stories, page);
-  stories = getPageStories(stories, page);
-  const firstStoryIndex = STORIES_ON_ONE_PAGE * (page ? page - 1 : 0);
+  const hasNext = hasNextStories(stories, page)
+  stories = getPageStories(stories, page)
+  const firstStoryIndex = STORIES_ON_ONE_PAGE * (page ? page - 1 : 0)
 
   return (
     <div>
       <div className="stories">
         <ol className="stories__list" start={firstStoryIndex + 1}>
           {stories.map(story => {
-            const { type } = story;
+            const { type } = story
 
-            const link = story.link || `/storyDetails/${story.id}`;
+            const link = story.link || `/storyDetails/${story.id}`
             const title =
-              type === 'ask' ? `Ask HN: ${story.title}` : story.title;
+              type === 'ask' ? `Ask HN: ${story.title}` : story.title
 
-            const user = props.users.find(({ id }) => id === story.userId);
+            const user = props.users.find(({ id }) => id === story.userId)
 
             return (
               <li key={story.id} className="stories__item">
@@ -52,7 +52,7 @@ export const Stories = props => {
                   loggedIn={!!props.user.id}
                 />
               </li>
-            );
+            )
           })}
         </ol>
       </div>
@@ -62,8 +62,8 @@ export const Stories = props => {
         location={`/${type || 'newest'}`}
       />
     </div>
-  );
-};
+  )
+}
 
 export const mapStateToProps = ({ stories, users, comments, user }) => {
   return {
@@ -71,8 +71,8 @@ export const mapStateToProps = ({ stories, users, comments, user }) => {
     users,
     user,
     comments
-  };
-};
+  }
+}
 
 export const mapDispatchToProps = dispatch => {
   return {
@@ -81,16 +81,16 @@ export const mapDispatchToProps = dispatch => {
         actions.upvoteStory(id, {
           userId
         })
-      );
+      )
     },
     onUnvote(id, userId) {
       return dispatch(
         actions.unvoteStory(id, {
           userId
         })
-      );
+      )
     }
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Stories);
+export default connect(mapStateToProps, mapDispatchToProps)(Stories)

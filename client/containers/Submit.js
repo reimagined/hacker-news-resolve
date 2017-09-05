@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import uuid from 'uuid';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from 'react'
+import uuid from 'uuid'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
-import actions from '../actions/stories';
-import '../styles/submit.css';
+import actions from '../actions/stories'
+import '../styles/submit.css'
 
 export class Submit extends Component {
   state = {
     title: '',
     url: '',
     text: ''
-  };
+  }
 
   handleChange(event, name) {
-    this.setState({ [name]: event.target.value });
+    this.setState({ [name]: event.target.value })
   }
 
   handleSubmit() {
@@ -23,14 +23,12 @@ export class Submit extends Component {
       title: this.state.title,
       text: this.state.text,
       link: this.state.url
-    });
+    })
   }
 
   render() {
     if (this.props.createdStoryId) {
-      return (
-        <Redirect push to={`/storyDetails/${this.props.createdStoryId}`} />
-      );
+      return <Redirect push to={`/storyDetails/${this.props.createdStoryId}`} />
     }
 
     return (
@@ -100,7 +98,7 @@ export class Submit extends Component {
           </tbody>
         </table>
       </div>
-    );
+    )
   }
 }
 
@@ -108,8 +106,8 @@ export const mapStateToProps = state => {
   return {
     userId: state.user.id,
     createdStoryId: state.ui.createdStoryId
-  };
-};
+  }
+}
 
 export const mapDispatchToProps = dispatch => {
   return {
@@ -121,9 +119,9 @@ export const mapDispatchToProps = dispatch => {
           link,
           userId
         })
-      );
+      )
     }
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Submit);
+export default connect(mapStateToProps, mapDispatchToProps)(Submit)

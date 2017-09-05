@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Redirect, Switch } from 'react-router';
+import React from 'react'
+import { Route, Redirect, Switch } from 'react-router'
 
 const RouteWithSubRoutes = ({
   path,
@@ -21,17 +21,13 @@ const RouteWithSubRoutes = ({
               <RouteWithSubRoutes key={index} {...route} />
             ))}
           </Switch>
-        );
+        )
 
-        return Component ? (
-          <Component {...props}>{content}</Component>
-        ) : (
-          content
-        );
+        return Component ? <Component {...props}>{content}</Component> : content
       }}
     />
   ) : (
     <Route path={path} exact={exact} component={Component} />
-  );
+  )
 
-export default RouteWithSubRoutes;
+export default RouteWithSubRoutes

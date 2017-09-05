@@ -1,24 +1,21 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import {
-  sendCommandMiddleware,
-  setSubscriptionMiddleware
-} from 'resolve-redux';
-import createSagaMiddleware from 'redux-saga';
-import Immutable from '../../common/immutable';
-import reducer from '../reducers';
-import rootSaga from '../sagas';
+import { createStore, applyMiddleware, compose } from 'redux'
+import { sendCommandMiddleware, setSubscriptionMiddleware } from 'resolve-redux'
+import createSagaMiddleware from 'redux-saga'
+import Immutable from '../../common/immutable'
+import reducer from '../reducers'
+import rootSaga from '../sagas'
 
-const isClient = typeof window === 'object';
+const isClient = typeof window === 'object'
 
 const composeEnhancers =
   isClient && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
-    : compose;
+    : compose
 
 export default initialState => {
-  const middleware = [];
+  const middleware = []
 
-  const sagaMiddleware = isClient && createSagaMiddleware();
+  const sagaMiddleware = isClient && createSagaMiddleware()
 
   if (isClient) {
     middleware.push(
@@ -29,32 +26,32 @@ export default initialState => {
             headers: { 'Content-Type': 'application/json' },
             credentials: 'same-origin',
             body: JSON.stringify(command)
-          });
+          })
 
           if (response.ok) {
-            return response.blob();
+            return response.blob()
           }
 
-          const text = await response.text();
+          const text = await response.text()
 
           // eslint-disable-next-line no-console
-          return console.error('Error due command sent: ', text);
+          return console.error('Error due command sent: ', text)
         }
       }),
       setSubscriptionMiddleware({
         rootDirPath: process.env.ROOT_DIR
       }),
       sagaMiddleware
-    );
+    )
   }
 
-  const enhancer = composeEnhancers(applyMiddleware(...middleware));
+  const enhancer = composeEnhancers(applyMiddleware(...middleware))
 
-  const store = createStore(reducer, Immutable(initialState), enhancer);
+  const store = createStore(reducer, Immutable(initialState), enhancer)
 
   if (isClient) {
-    sagaMiddleware.run(rootSaga);
+    sagaMiddleware.run(rootSaga)
   }
 
-  return store;
-};
+  return store
+}

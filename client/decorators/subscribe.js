@@ -1,23 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { actions } from 'resolve-redux';
-import shallowEqual from 'react-pure-render/shallowEqual';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { actions } from 'resolve-redux'
+import shallowEqual from 'react-pure-render/shallowEqual'
 
 function queryParams(params) {
   return Object.keys(params)
     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]))
-    .join('&');
+    .join('&')
 }
 
 export default subscribe => Component => {
   class ResolveWrapper extends React.PureComponent {
     async refresh({ match }) {
-      const { graphQL, events } = subscribe({ match });
+      const { graphQL, events } = subscribe({ match })
 
       if (events) {
         this.context.store.dispatch(
           actions.setSubscription(events.eventTypes, events.aggregateIds)
-        );
+        )
       }
 
       graphQL.forEach(async ({ readModel, query, variables }) => {
@@ -31,7 +31,7 @@ export default subscribe => Component => {
             headers: { 'Content-Type': 'application/json' },
             credentials: 'same-origin'
           }
-        );
+        )
 
         if (response.ok) {
           // TODO
@@ -41,33 +41,33 @@ export default subscribe => Component => {
           //   actions.replaceState(readModel, data[readModel])
           // );
 
-          return;
+          return
         }
 
-        const text = await response.text();
+        const text = await response.text()
 
         // eslint-disable-next-line no-console
-        return console.error('Error GraphQL query: ', text);
-      });
+        return console.error('Error GraphQL query: ', text)
+      })
     }
 
     componentWillReceiveProps(nextProps) {
       if (!shallowEqual(nextProps.match.params, this.props.match.params)) {
-        this.refresh(nextProps);
+        this.refresh(nextProps)
       }
     }
 
     componentDidMount() {
-      this.refresh(this.props);
+      this.refresh(this.props)
     }
 
     render() {
-      return <Component {...this.props} />;
+      return <Component {...this.props} />
     }
   }
-  ResolveWrapper.subscribe = subscribe;
+  ResolveWrapper.subscribe = subscribe
   ResolveWrapper.contextTypes = {
     store: PropTypes.object
-  };
-  return ResolveWrapper;
-};
+  }
+  return ResolveWrapper
+}
