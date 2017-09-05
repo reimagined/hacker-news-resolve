@@ -6,7 +6,7 @@ import Comment from '../components/Comment';
 import subscribe from '../decorators/subscribe';
 import comments from '../../common/read-models/comments';
 
-export const CommentById = ({ comments, users, match }) => {
+export const CommentById = ({ comments, match }) => {
   const { id } = match.params;
   const comment = comments.find(c => c.id === id);
 
@@ -14,27 +14,23 @@ export const CommentById = ({ comments, users, match }) => {
     return null;
   }
 
-  const user = users.find(({ id }) => id === comment.createdBy);
-
   return (
     <Comment
       id={comment.id}
       content={comment.text}
-      user={user.name}
+      user={{
+        id: comment.createdBy,
+        name: comment.createdByName
+      }}
       date={new Date(+comment.createdAt)}
       showReply
     >
-      <ChildrenComments
-        replies={comment.replies}
-        comments={comments}
-        users={users}
-      />
+      <ChildrenComments replies={comment.replies} comments={comments} />
     </Comment>
   );
 };
 
-export const mapStateToProps = ({ users, comments }) => ({
-  users,
+export const mapStateToProps = ({ comments }) => ({
   comments
 });
 
@@ -43,7 +39,7 @@ export default subscribe(({ match }) => ({
     {
       readModel: comments,
       query:
-        'query ($id: String!) { comments(id: $id) { text, id, parentId, storyId, createdAt, createdBy, replies } }',
+        'query ($id: String!) { comments(id: $id) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
       variables: {
         id: match.params.id
       }

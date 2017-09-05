@@ -1,6 +1,5 @@
 import Immutable from '../immutable';
-import storiesEvents from '../events/stories';
-import commentsEvents from '../events/comments';
+import events from '../events';
 import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants';
 
 import type { CommentCreated, CommentRemoved } from '../events/comments';
@@ -15,9 +14,13 @@ const {
   STORY_CREATED,
   STORY_UPVOTED,
   STORY_UNVOTED,
-  STORY_DELETED
-} = storiesEvents;
-const { COMMENT_CREATED, COMMENT_REMOVED } = commentsEvents;
+  STORY_DELETED,
+  COMMENT_CREATED,
+  COMMENT_REMOVED,
+  USER_CREATED
+} = events;
+
+const userNameById = {};
 
 export default {
   name: 'stories',
@@ -125,6 +128,12 @@ export default {
       return newState.updateIn([parentIndex, 'comments'], comments =>
         comments.filter(id => id !== commentId)
       );
+    },
+
+    [USER_CREATED]: (state: any, event: UserCreated) => {
+      const { aggregateId, payload: { name } } = event;
+      userNameById[aggregateId] = name;
+      return state;
     }
   },
   gqlSchema: `
@@ -134,6 +143,7 @@ export default {
       title: String!
       text: String
       userId: String!
+      userName: String!
       createDate: String!
       link: String
       comments: [String]
@@ -147,7 +157,7 @@ export default {
   `,
   gqlResolvers: {
     stories: (root, args) =>
-      args.id
+      (args.id
         ? [root.find(({ id }) => id === args.id)].filter(story => story)
         : args.page
           ? (args.type
@@ -156,6 +166,9 @@ export default {
               +args.page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
               +args.page * NUMBER_OF_ITEMS_PER_PAGE + 1
             )
-          : root
+          : root).map(story => ({
+        ...story,
+        userName: userNameById[story.userId]
+      }))
   }
 };

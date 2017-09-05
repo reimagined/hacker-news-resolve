@@ -2,7 +2,7 @@ import React from 'react';
 
 import Comment from './Comment';
 
-const ChildrenComments = ({ replies, level, comments, users }) => {
+const ChildrenComments = ({ replies, level, comments }) => {
   if (!replies.length) {
     return null;
   }
@@ -17,13 +17,14 @@ const ChildrenComments = ({ replies, level, comments, users }) => {
           return null;
         }
 
-        const { id, text, replies, createdAt, createdBy } = comment;
-
-        const user = users.find(user => user.id === createdBy);
-
-        if (!user) {
-          return null;
-        }
+        const {
+          id,
+          text,
+          replies,
+          createdAt,
+          createdBy,
+          createdByName
+        } = comment;
 
         return (
           <Comment
@@ -31,7 +32,10 @@ const ChildrenComments = ({ replies, level, comments, users }) => {
             level={currentLevel}
             id={id}
             content={text}
-            user={user.name}
+            user={{
+              id: createdBy,
+              name: createdByName
+            }}
             date={new Date(+createdAt)}
             showReply
           >
@@ -39,7 +43,6 @@ const ChildrenComments = ({ replies, level, comments, users }) => {
               replies={replies}
               level={currentLevel}
               comments={comments}
-              users={users}
             />
           </Comment>
         );

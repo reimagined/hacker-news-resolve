@@ -34,18 +34,15 @@ export const CommentsByPage = props => {
             ? `/storyDetails/${parentId}`
             : `/comment/${parentId}`;
 
-        const user = props.users.find(({ id }) => id === comment.createdBy);
-
-        if (!user) {
-          return null;
-        }
-
         return (
           <Comment
             key={comment.id}
             id={comment.id}
             content={comment.text}
-            user={user}
+            user={{
+              id: comment.createdBy,
+              name: comment.createdByName
+            }}
             date={new Date(+comment.createdAt)}
             parent={parent}
           />
@@ -67,7 +64,7 @@ export default subscribe(({ match }) => ({
     {
       readModel: comments,
       query:
-        'query ($page: Int!) { comments(page: $page) { text, id, parentId, storyId, createdAt, createdBy, replies } }',
+        'query ($page: Int!) { comments(page: $page) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
       variables: {
         page: match.params.page || '1'
       }

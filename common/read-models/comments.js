@@ -6,9 +6,15 @@ import type {
   CommentUpdated,
   CommentRemoved
 } from '../events/comments';
-import events from '../events/comments';
+import type { UserCreated } from '../events/users';
+import events from '../events';
 
-const { COMMENT_CREATED, COMMENT_UPDATED, COMMENT_REMOVED } = events;
+const {
+  COMMENT_CREATED,
+  COMMENT_UPDATED,
+  COMMENT_REMOVED,
+  USER_CREATED
+} = events;
 
 const getCommentsByStoryId = (comments, storyId) =>
   comments.filter(comment => comment.storyId === storyId);
@@ -24,6 +30,8 @@ const getCommentWithChildren = (comments, id) => {
   }
   return result;
 };
+
+const userNameById = {};
 
 export default {
   name: 'comments',
@@ -85,6 +93,12 @@ export default {
       return nextState
         .slice(0, commentIndex)
         .concat(nextState.slice(commentIndex + 1));
+    },
+
+    [USER_CREATED]: (state: any, event: UserCreated) => {
+      const { aggregateId, payload: { name } } = event;
+      userNameById[aggregateId] = name;
+      return state;
     }
   },
   gqlSchema: `
@@ -93,6 +107,7 @@ export default {
       id: ID!
       parentId: ID!
       storyId: ID!
+      createdByName: String!
       createdAt: String!
       createdBy: String!
       replies: [String!]!
@@ -104,7 +119,7 @@ export default {
   `,
   gqlResolvers: {
     comments: (root, { id, storyId, page }) =>
-      storyId
+      (storyId
         ? getCommentsByStoryId(root, id)
         : id
           ? getCommentWithChildren(root, id)
@@ -113,6 +128,9 @@ export default {
                 +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
                 +page * NUMBER_OF_ITEMS_PER_PAGE + 1
               )
-            : root
+            : root).map(comment => ({
+        ...comment,
+        createdByName: userNameById[comment.createdBy]
+      }))
   }
 };

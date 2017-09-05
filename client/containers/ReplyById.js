@@ -26,14 +26,12 @@ export class ReplyById extends Component {
   }
 
   render() {
-    const { comments, users, user, id } = this.props;
+    const { comments, user, id } = this.props;
     const comment = comments.find(c => c.id === id);
 
     if (!comment) {
       return null;
     }
-
-    const userName = users.find(({ id }) => id === comment.createdBy).name;
 
     return (
       <div>
@@ -43,7 +41,10 @@ export class ReplyById extends Component {
               showReply={false}
               id={comment.id}
               content={comment.text}
-              user={userName}
+              user={{
+                id: comment.createdBy,
+                name: comment.createdByName
+              }}
               date={new Date(+comment.createdAt)}
             />
             <textarea
@@ -81,9 +82,8 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-const mapStateToProps = ({ comments, users, user }, { match }) => ({
+const mapStateToProps = ({ comments, user }, { match }) => ({
   comments,
-  users,
   user,
   id: match.params.id
 });
@@ -93,7 +93,7 @@ export default subscribe(({ match }) => ({
     {
       readModel: comments,
       query:
-        'query ($id: String!) { comments(id: $id) { text, id, parentId, createdAt, createdBy, replies } }',
+        'query ($id: String!) { comments(id: $id) { text, id, parentId, createdAt, createdBy, createdByName, replies } }',
       variables: {
         id: match.params.id
       }

@@ -36,16 +36,10 @@ export class StoryDetails extends React.PureComponent {
   onUnvote = () => this.props.unvoteStory(this.props.id, this.props.user.id);
 
   render() {
-    const { id, stories, users } = this.props;
+    const { id, stories } = this.props;
     const story = stories.find(story => story.id === id);
 
     if (!story) {
-      return null;
-    }
-
-    const user = users.find(({ id }) => id === story.userId);
-
-    if (!user) {
       return null;
     }
 
@@ -59,7 +53,10 @@ export class StoryDetails extends React.PureComponent {
           link={link}
           score={story.voted.length}
           voted={story.voted.includes(this.props.user.id)}
-          user={user}
+          user={{
+            id: story.userId,
+            name: story.userName
+          }}
           date={new Date(+story.createDate)}
           commentCount={story.commentsCount}
           onUpvote={this.onUpvote}
@@ -96,25 +93,21 @@ export class StoryDetails extends React.PureComponent {
               return null;
             }
 
-            const user = this.props.users.find(u => u.id === comment.createdBy);
-
-            if (!user) {
-              return null;
-            }
-
             return (
               <Comment
                 key={commentId}
                 id={comment.id}
                 content={comment.text}
-                user={user.name}
+                user={{
+                  id: comment.createdBy,
+                  name: comment.createdByName
+                }}
                 date={new Date(+comment.createdAt)}
                 showReply
               >
                 <ChildrenComments
                   replies={comment.replies}
                   comments={this.props.comments}
-                  users={this.props.users}
                 />
               </Comment>
             );
@@ -125,12 +118,8 @@ export class StoryDetails extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = (
-  { stories, users, comments, user },
-  { match }
-) => ({
+export const mapStateToProps = ({ stories, comments, user }, { match }) => ({
   stories,
-  users,
   comments,
   user,
   id: match.params.id
@@ -163,7 +152,7 @@ export default subscribe(({ match }) => ({
     {
       readModel: stories,
       query:
-        'query ($id: ID!) { stories(id: $id) { id, type, title, text, userId, createDate, link, comments, commentsCount, voted } }',
+        'query ($id: ID!) { stories(id: $id) { id, type, title, text, userId, userName, createDate, link, comments, commentsCount, voted } }',
       variables: {
         id: match.params.id
       }

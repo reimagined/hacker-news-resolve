@@ -145,20 +145,11 @@ export const initialState = async (queries, executeQuery, { cookies }) => {
     return { state, name };
   });
 
-  const result = resultOfQueries.reduce(
+  return resultOfQueries.reduce(
     (result, { state, name }) => {
       result[name] = state;
       return result;
     },
     { user }
   );
-
-  return {
-    ...result,
-    //TODO
-    users: (await executeQuery(
-      'users',
-      'query { users { id, name, createdAt, karma } }'
-    )).users
-  };
 };

@@ -26,8 +26,6 @@ export const Stories = props => {
             const title =
               type === 'ask' ? `Ask HN: ${story.title}` : story.title;
 
-            const user = props.users.find(({ id }) => id === story.userId);
-
             return (
               <li key={story.id} className="stories__item">
                 <Story
@@ -36,7 +34,10 @@ export const Stories = props => {
                   link={link}
                   date={new Date(+story.createDate)}
                   score={story.voted.length}
-                  user={user}
+                  user={{
+                    id: story.userId,
+                    name: story.userName
+                  }}
                   commentCount={story.commentsCount}
                   voted={story.voted.includes(props.user.id)}
                   onUpvote={() => upvoteStory(story.id, props.user.id)}
@@ -57,10 +58,9 @@ export const Stories = props => {
   );
 };
 
-export const mapStateToProps = ({ stories, users, comments, user }) => {
+export const mapStateToProps = ({ stories, comments, user }) => {
   return {
     stories,
-    users,
     user,
     comments
   };
