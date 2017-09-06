@@ -21,7 +21,7 @@ export class StoryDetails extends React.PureComponent {
   onAddComment = () => {
     this.props.createComment({
       text: this.state.text,
-      parentId: this.props.id,
+      parentId: this.props.storyId,
       userId: this.props.user.id
     })
     this.setState({ text: '' })
@@ -32,28 +32,30 @@ export class StoryDetails extends React.PureComponent {
       text: event.target.value
     })
 
-  onUpvote = () => this.props.upvoteStory(this.props.id, this.props.user.id)
+  onUpvote = () =>
+    this.props.upvoteStory(this.props.storyId, this.props.user.id)
 
-  onUnvote = () => this.props.unvoteStory(this.props.id, this.props.user.id)
+  onUnvote = () =>
+    this.props.unvoteStory(this.props.storyId, this.props.user.id)
 
   render() {
-    const { id, stories } = this.props
-    const story = stories.find(story => story.id === id)
+    const { storyId, stories, comments, user } = this.props
+    const story = stories.find(({ id }) => id === storyId)
 
     if (!story) {
       return null
     }
 
-    const link = story.type === 'ask' ? `/storyDetails/${id}` : story.link
+    const link = story.type === 'ask' ? `/storyDetails/${storyId}` : story.link
 
     return (
       <div className="storyDetails">
         <Story
-          id={id}
+          id={story.id}
           title={story.title}
           link={link}
           score={story.voted.length}
-          voted={story.voted.includes(this.props.user.id)}
+          voted={story.voted.includes(user.id)}
           user={{
             id: story.userId,
             name: story.userName
@@ -62,7 +64,7 @@ export class StoryDetails extends React.PureComponent {
           commentCount={story.commentsCount}
           onUpvote={this.onUpvote}
           onUnvote={this.onUnvote}
-          loggedIn={!!this.props.user.id}
+          loggedIn={!!user.id}
         />
         {story.text && (
           <div
@@ -86,9 +88,7 @@ export class StoryDetails extends React.PureComponent {
         </div>
         <div>
           {story.comments.map(commentId => {
-            const comment = this.props.comments.find(
-              ({ id }) => id === commentId
-            )
+            const comment = comments.find(({ id }) => id === commentId)
 
             if (!comment) {
               return null
@@ -96,7 +96,7 @@ export class StoryDetails extends React.PureComponent {
 
             return (
               <Comment
-                key={commentId}
+                key={comment.id}
                 id={comment.id}
                 storyId={comment.storyId}
                 content={comment.text}
@@ -109,7 +109,7 @@ export class StoryDetails extends React.PureComponent {
               >
                 <ChildrenComments
                   replies={comment.replies}
-                  comments={this.props.comments}
+                  comments={comments}
                 />
               </Comment>
             )
@@ -124,7 +124,7 @@ export const mapStateToProps = ({ stories, comments, user }, { match }) => ({
   stories,
   comments,
   user,
-  id: match.params.id
+  storyId: match.params.storyId
 })
 
 export const mapDispatchToProps = dispatch =>
