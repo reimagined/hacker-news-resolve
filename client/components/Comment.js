@@ -15,6 +15,7 @@ class Comment extends React.PureComponent {
   render() {
     const {
       id,
+      storyId,
       level,
       content,
       user,
@@ -56,7 +57,10 @@ class Comment extends React.PureComponent {
               <span>
                 {' '}
                 |{' '}
-                <Link className="comment__link" to={`/comment/${id}`}>
+                <Link
+                  className="comment__link"
+                  to={`/storyDetails/${storyId}/comments/${id}`}
+                >
                   link
                 </Link>
               </span>
@@ -79,7 +83,10 @@ class Comment extends React.PureComponent {
                 />
                 <p>
                   {showReply && (
-                    <Link className="comment__reply" to={`/reply/${id}`}>
+                    <Link
+                      className="comment__reply"
+                      to={`/storyDetails/${storyId}/comments/${id}/reply`}
+                    >
                       reply
                     </Link>
                   )}

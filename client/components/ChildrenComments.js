@@ -23,6 +23,7 @@ const ChildrenComments = ({ replies, level, comments }) => {
           replies,
           createdAt,
           createdBy,
+          storyId,
           createdByName
         } = comment
 
@@ -31,6 +32,7 @@ const ChildrenComments = ({ replies, level, comments }) => {
             key={id}
             level={currentLevel}
             id={id}
+            storyId={storyId}
             content={text}
             user={{
               id: createdBy,

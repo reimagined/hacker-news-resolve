@@ -7,16 +7,6 @@ import Paginator from '../components/Paginator'
 import subscribe from '../decorators/subscribe'
 import comments from '../../common/read-models/comments'
 
-export const findRoot = (id, comments) => {
-  const comment = comments.find(comment => id === comment.id)
-
-  if (!comment) {
-    return id
-  }
-
-  return findRoot(comment.parentId, comments)
-}
-
 export const CommentsByPage = props => {
   const { comments, match } = props
   const { page } = match.params
@@ -26,18 +16,18 @@ export const CommentsByPage = props => {
   return (
     <div>
       {comments.slice(0, NUMBER_OF_ITEMS_PER_PAGE).map(comment => {
-        const parentId = comment.parentId
-        const rootId = findRoot(parentId, comments)
+        const { parentId, storyId } = comment
 
         const parent =
-          parentId === rootId
-            ? `/storyDetails/${parentId}`
-            : `/comment/${parentId}`
+          parentId === storyId
+            ? `/storyDetails/${storyId}`
+            : `/storyDetails/${storyId}/comments/${parentId}`
 
         return (
           <Comment
             key={comment.id}
             id={comment.id}
+            storyId={comment.storyId}
             content={comment.text}
             user={{
               id: comment.createdBy,

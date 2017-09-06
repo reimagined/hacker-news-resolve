@@ -151,20 +151,17 @@ export default {
       voted: [String]
     }
     type Query {
-      stories: [Story]
-      stories(page: Int, id: ID, type: String): [Story]
+      stories(page: Int, aggregateId: ID, type: String): [Story]
     }
   `,
   gqlResolvers: {
-    stories: (root, args) =>
-      (args.id
-        ? [root.find(({ id }) => id === args.id)].filter(story => story)
-        : args.page
-          ? (args.type
-              ? root.filter(({ type }) => type === args.type)
-              : root).slice(
-              +args.page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
-              +args.page * NUMBER_OF_ITEMS_PER_PAGE + 1
+    stories: (root, { page, aggregateId, type }) =>
+      (aggregateId
+        ? root
+        : page
+          ? (type ? root.filter(story => story.type === type) : root).slice(
+              +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
+              +page * NUMBER_OF_ITEMS_PER_PAGE + 1
             )
           : root).map(story => ({
         ...story,

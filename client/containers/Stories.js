@@ -58,13 +58,11 @@ export const Stories = props => {
   )
 }
 
-export const mapStateToProps = ({ stories, comments, user }) => {
-  return {
-    stories,
-    user,
-    comments
-  }
-}
+export const mapStateToProps = ({ stories, comments, user }) => ({
+  stories,
+  user,
+  comments
+})
 
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(

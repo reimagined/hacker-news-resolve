@@ -16,9 +16,6 @@ const {
   USER_CREATED
 } = events
 
-const getCommentsByStoryId = (comments, storyId) =>
-  comments.filter(comment => comment.storyId === storyId)
-
 const getCommentWithChildren = (comments, id) => {
   const comment = comments.find(comment => comment.id === id)
   const result = []
@@ -113,16 +110,15 @@ export default {
       replies: [String!]!
     }
     type Query {
-      comments: [Comment]
-      comments(page: Int, id: ID, aggregateId: ID): [Comment]
+      comments(page: Int, aggregateId: ID, commentId: ID): [Comment]
     }
   `,
   gqlResolvers: {
-    comments: (root, { id, aggregateId, page }) =>
-      (aggregateId
-        ? root
-        : id
-          ? getCommentWithChildren(root, id)
+    comments: (root, { page, commentId, aggregateId }) =>
+      (commentId
+        ? getCommentWithChildren(root, commentId)
+        : aggregateId
+          ? root
           : page
             ? root.slice(
                 +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,

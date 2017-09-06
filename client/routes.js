@@ -20,7 +20,7 @@ const routes = [
     routes: [
       {
         path: '/',
-        redirectTo: '/newest/1',
+        redirectTo: '/newest/',
         exact: true
       },
       {
@@ -40,7 +40,7 @@ const routes = [
         component: CommentsByPage
       },
       {
-        path: '/comment/:id',
+        path: '/storyDetails/:storyId/comments/:commentId',
         component: CommentById
       },
       {
@@ -52,7 +52,7 @@ const routes = [
         component: Login
       },
       {
-        path: '/user/:id',
+        path: '/user/:userId',
         component: UserById
       },
       {
@@ -64,11 +64,11 @@ const routes = [
         component: Error
       },
       {
-        path: '/storyDetails/:id',
+        path: '/storyDetails/:storyId',
         component: StoryDetails
       },
       {
-        path: '/reply/:id',
+        path: '/storyDetails/:storyId/comments/:commentId/reply',
         component: ReplyById
       }
     ]

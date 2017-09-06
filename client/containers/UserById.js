@@ -37,8 +37,8 @@ export const UserById = ({ id, name, createdAt, karma }) => {
 }
 
 export const mapStateToProps = ({ user, users }, { match }) => {
-  const { id } = match.params
-  return id ? users.find(item => item.id === id) : user
+  const { userId } = match.params
+  return userId ? users.find(({ id }) => id === userId) : user
 }
 
 export default subscribe(({ match }) => ({
@@ -46,9 +46,9 @@ export default subscribe(({ match }) => ({
     {
       readModel: users,
       query:
-        'query ($id: ID!) { users(id: $id) { id, name, createdAt, karma } }',
+        'query ($aggregateId: ID!) { users(aggregateId: $aggregateId) { id, name, createdAt, karma } }',
       variables: {
-        id: match.params.id
+        aggregateId: match.params.userId
       }
     }
   ]

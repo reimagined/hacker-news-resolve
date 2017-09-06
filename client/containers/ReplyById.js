@@ -26,8 +26,8 @@ export class ReplyById extends Component {
   }
 
   render() {
-    const { comments, user, id } = this.props
-    const comment = comments.find(c => c.id === id)
+    const { comments, user, commentId } = this.props
+    const comment = comments.find(({ id }) => id === commentId)
 
     if (!comment) {
       return null
@@ -40,6 +40,7 @@ export class ReplyById extends Component {
             <Comment
               showReply={false}
               id={comment.id}
+              storyId={comment.storyId}
               content={comment.text}
               user={{
                 id: comment.createdBy,
@@ -85,7 +86,7 @@ const mapDispatchToProps = dispatch =>
 const mapStateToProps = ({ comments, user }, { match }) => ({
   comments,
   user,
-  id: match.params.id
+  commentId: match.params.commentId
 })
 
 export default subscribe(({ match }) => ({
@@ -93,9 +94,10 @@ export default subscribe(({ match }) => ({
     {
       readModel: comments,
       query:
-        'query ($id: String!) { comments(id: $id) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
+        'query ($aggregateId: String, $commentId: String!) { comments(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
       variables: {
-        id: match.params.id
+        aggregateId: match.params.storyId,
+        commentId: match.params.commentId
       }
     }
   ]

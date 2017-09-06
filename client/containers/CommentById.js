@@ -7,8 +7,8 @@ import subscribe from '../decorators/subscribe'
 import comments from '../../common/read-models/comments'
 
 export const CommentById = ({ comments, match }) => {
-  const { id } = match.params
-  const comment = comments.find(c => c.id === id)
+  const { commentId } = match.params
+  const comment = comments.find(({ id }) => id === commentId)
 
   if (!comment) {
     return null
@@ -17,6 +17,7 @@ export const CommentById = ({ comments, match }) => {
   return (
     <Comment
       id={comment.id}
+      storyId={comment.storyId}
       content={comment.text}
       user={{
         id: comment.createdBy,
@@ -39,9 +40,10 @@ export default subscribe(({ match }) => ({
     {
       readModel: comments,
       query:
-        'query ($id: String!) { comments(id: $id) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
+        'query ($aggregateId: String!, $commentId: String!) { comments(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
       variables: {
-        id: match.params.id
+        aggregateId: match.params.storyId,
+        commentId: match.params.commentId
       }
     }
   ]

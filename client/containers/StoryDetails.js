@@ -98,6 +98,7 @@ export class StoryDetails extends React.PureComponent {
               <Comment
                 key={commentId}
                 id={comment.id}
+                storyId={comment.storyId}
                 content={comment.text}
                 user={{
                   id: comment.createdBy,
@@ -153,9 +154,9 @@ export default subscribe(({ match }) => ({
     {
       readModel: stories,
       query:
-        'query ($id: ID!) { stories(id: $id) { id, type, title, text, userId, userName, createDate, link, comments, commentsCount, voted } }',
+        'query ($aggregateId: ID!) { stories(aggregateId: $aggregateId) { id, type, title, text, userId, userName, createDate, link, comments, commentsCount, voted } }',
       variables: {
-        id: match.params.id
+        aggregateId: match.params.storyId
       }
     },
     {
@@ -163,7 +164,7 @@ export default subscribe(({ match }) => ({
       query:
         'query ($aggregateId: ID!) { comments(aggregateId: $aggregateId) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
       variables: {
-        aggregateId: match.params.id
+        aggregateId: match.params.storyId
       }
     }
   ]
