@@ -33,7 +33,7 @@ export class Submit extends React.PureComponent {
 
     return (
       <div className="submit">
-        <table border="0">
+        <table style={{ border: '0' }}>
           <tbody>
             <tr>
               <td>title</td>

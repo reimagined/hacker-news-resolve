@@ -40,6 +40,10 @@ const routes = [
         component: CommentsByPage
       },
       {
+        path: '/storyDetails/:storyId/comments/:commentId/reply',
+        component: ReplyById
+      },
+      {
         path: '/storyDetails/:storyId/comments/:commentId',
         component: CommentById
       },
@@ -66,10 +70,6 @@ const routes = [
       {
         path: '/storyDetails/:storyId',
         component: StoryDetails
-      },
-      {
-        path: '/storyDetails/:storyId/comments/:commentId/reply',
-        component: ReplyById
       }
     ]
   }

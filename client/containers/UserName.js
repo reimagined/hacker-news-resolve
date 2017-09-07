@@ -23,13 +23,15 @@ class UserName extends React.PureComponent {
     })
 
     const [user] = resultOfQuery.users
-    this.setState({ name: user ? user.name : null })
+    if (this.refs.name) {
+      this.setState({ name: user ? user.name : null })
+    }
   }
 
   render() {
     const { name } = this.state
 
-    return <span>{name}</span>
+    return <span ref="name">{name}</span>
   }
 }
 

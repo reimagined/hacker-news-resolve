@@ -171,13 +171,13 @@ class Story extends React.PureComponent {
             unvoteStory={this.unvoteStory}
             loggedIn={loggedIn}
           />
+          {showText && text ? (
+            <div
+              className="story__text"
+              dangerouslySetInnerHTML={{ __html: sanitizer.sanitize(text) }}
+            />
+          ) : null}
         </div>
-        {showText ? (
-          <div
-            className="story__text"
-            dangerouslySetInnerHTML={{ __html: sanitizer.sanitize(text) }}
-          />
-        ) : null}
       </div>
     )
   }

@@ -22,13 +22,18 @@ class Comment extends React.PureComponent {
       createdBy,
       createdAt,
       showReply,
-      parent,
+      parentId,
       children
     } = this.props
 
     if (!id) {
       return null
     }
+
+    const parent =
+      parentId === storyId
+        ? `/storyDetails/${storyId}`
+        : `/storyDetails/${storyId}/comments/${parentId}`
 
     return (
       <div>
@@ -65,15 +70,13 @@ class Comment extends React.PureComponent {
                   link
                 </Link>
               </span>
-              {parent && (
-                <span>
-                  {' '}
-                  |{' '}
-                  <Link className="comment__link" to={parent}>
-                    parent
-                  </Link>
-                </span>
-              )}
+              <span>
+                {' '}
+                |{' '}
+                <Link className="comment__link" to={parent}>
+                  parent
+                </Link>
+              </span>
             </div>
             {this.state.expanded ? (
               <div className="comment__text">

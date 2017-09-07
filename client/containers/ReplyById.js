@@ -28,10 +28,10 @@ export class ReplyById extends Component {
   onTextChange = event => this.setState({ text: event.target.value })
 
   render() {
-    const { comments, user, commentId } = this.props
+    const { comments, user, commentId, loggedIn } = this.props
     const comment = comments.find(({ id }) => id === commentId)
 
-    if (!comment || !user) {
+    if (!comment) {
       return null
     }
 
@@ -40,16 +40,20 @@ export class ReplyById extends Component {
         <div className="reply">
           <div className="reply__content">
             <Comment {...comment} />
-            <textarea
-              name="text"
-              rows="6"
-              cols="70"
-              value={this.state.text}
-              onChange={this.onTextChange}
-            />
-            <div>
-              <button onClick={this.onReply}>Reply</button>
-            </div>
+            {loggedIn ? (
+              <div>
+                <textarea
+                  name="text"
+                  rows="6"
+                  cols="70"
+                  value={this.state.text}
+                  onChange={this.onTextChange}
+                />
+                <div>
+                  <button onClick={this.onReply}>Reply</button>
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
@@ -74,6 +78,7 @@ const mapDispatchToProps = dispatch =>
 const mapStateToProps = ({ comments, user }, { match }) => ({
   comments,
   user,
+  loggedIn: !!user.id,
   commentId: match.params.commentId,
   storyId: match.params.storyId
 })

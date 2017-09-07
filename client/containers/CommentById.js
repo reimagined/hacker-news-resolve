@@ -6,30 +6,21 @@ import Comment from '../components/Comment'
 import subscribe from '../decorators/subscribe'
 import comments from '../../common/read-models/comments'
 
-export const CommentById = ({ comments, match }) => {
-  const { commentId } = match.params
-  const comment = comments.find(({ id }) => id === commentId)
-
+export const CommentById = ({ comments, comment }) => {
   if (!comment) {
     return null
   }
 
   return (
-    <Comment
-      id={comment.id}
-      storyId={comment.storyId}
-      text={comment.text}
-      createdBy={comment.createdBy}
-      createdAt={comment.createdAt}
-      showReply
-    >
+    <Comment {...comment} showReply>
       <ChildrenComments replies={comment.replies} comments={comments} />
     </Comment>
   )
 }
 
-export const mapStateToProps = ({ comments }) => ({
-  comments
+export const mapStateToProps = ({ comments }, { match }) => ({
+  comments,
+  comment: comments.find(({ id }) => id === match.params.commentId)
 })
 
 export default subscribe(({ match }) => ({

@@ -58,6 +58,7 @@
     "redux": "^3.7.2",
     "redux-saga": "^0.14.8",
     "regenerator-runtime": "^0.10.5",
+    "resolve-es": "0.0.24",
     "resolve-bus-memory": "0.0.24",
     "resolve-redux": "0.0.24",
     "resolve-scripts": "0.0.24",

@@ -8,7 +8,8 @@
 .story__text {
   color: #666;
   font-size:14px;
-  white-space: pre;
+  padding-left: 1.25em;
+  padding-top: 1.25em;
 }
 .stories__list {
   padding-left: 3em;

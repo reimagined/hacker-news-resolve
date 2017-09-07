@@ -5,7 +5,6 @@ import uuid from 'uuid'
 
 import Story from '../containers/Story'
 import actions from '../actions/stories'
-import Comment from '../components/Comment'
 import ChildrenComments from '../components/ChildrenComments'
 import subscribe from '../decorators/subscribe'
 import stories from '../../common/read-models/stories'
@@ -32,32 +31,34 @@ export class StoryDetails extends React.PureComponent {
     })
 
   render() {
-    const { storyId, comments } = this.props
+    const { storyId, comments, stories, loggedIn } = this.props
+
+    const story = stories.find(story => story.id === storyId)
 
     return (
       <div className="storyDetails">
         <Story id={storyId} showText />
-        <div className="storyDetails__content">
-          <div className="storyDetails__textarea">
-            <textarea
-              name="text"
-              rows="6"
-              cols="70"
-              value={this.state.text}
-              onChange={this.onChangeText}
-            />
+        {loggedIn ? (
+          <div className="storyDetails__content">
+            <div className="storyDetails__textarea">
+              <textarea
+                name="text"
+                rows="6"
+                cols="70"
+                value={this.state.text}
+                onChange={this.onChangeText}
+              />
+            </div>
+            <div>
+              <button onClick={this.onAddComment}>add comment</button>
+            </div>
           </div>
+        ) : null}
+        {story ? (
           <div>
-            <button onClick={this.onAddComment}>add comment</button>
+            <ChildrenComments replies={story.comments} comments={comments} />
           </div>
-        </div>
-        <div>
-          {comments.map(comment => (
-            <Comment key={comment.id} {...comment} showReply>
-              <ChildrenComments replies={comment.replies} comments={comments} />
-            </Comment>
-          ))}
-        </div>
+        ) : null}
       </div>
     )
   }
@@ -67,6 +68,7 @@ export const mapStateToProps = ({ stories, comments, user }, { match }) => ({
   stories,
   comments,
   user,
+  loggedIn: !!user.id,
   storyId: match.params.storyId
 })
 
@@ -89,7 +91,7 @@ export default subscribe(({ match }) => ({
     {
       readModel: stories,
       query:
-        'query ($aggregateId: ID!) { stories(aggregateId: $aggregateId) { id, type, title, text, userId, userName, createDate, link, comments, commentsCount, voted } }',
+        'query ($aggregateId: ID!) { stories(aggregateId: $aggregateId) { id, type, title, text, createdAt, createdBy, link, comments, commentsCount, votes } }',
       variables: {
         aggregateId: match.params.storyId
       }
@@ -97,7 +99,7 @@ export default subscribe(({ match }) => ({
     {
       readModel: comments,
       query:
-        'query ($aggregateId: ID!) { comments(aggregateId: $aggregateId) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
+        'query ($aggregateId: ID!) { comments(aggregateId: $aggregateId) {  text, id, parentId, storyId, createdAt, createdBy, replies } }',
       variables: {
         aggregateId: match.params.storyId
       }

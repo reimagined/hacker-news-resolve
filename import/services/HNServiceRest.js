@@ -1,5 +1,5 @@
 /* global fetch */
-require('isomorphic-fetch')
+import isomorphicFetch from 'isomorphic-fetch'
 /*
 A version of HNService which concumes the Firebase REST
 endpoint (https://www.firebase.com/docs/rest/api/). This
@@ -16,6 +16,14 @@ const options = {
     Accept: 'application/json'
   }
 }
+
+const fetch = (url, options, retry = 0) =>
+  isomorphicFetch(url, options).catch(e => {
+    if (retry <= 3) {
+      return fetch(url, options, retry + 1)
+    }
+    throw e
+  })
 
 const userRef = async id => fetch(`${endPoint}/user/${id}.json`, options)
 
