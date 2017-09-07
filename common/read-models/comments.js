@@ -28,8 +28,6 @@ const getCommentWithChildren = (comments, id) => {
   return result
 }
 
-const userNameById = {}
-
 export default {
   name: 'comments',
   initialState: Immutable([]),
@@ -90,12 +88,6 @@ export default {
       return nextState
         .slice(0, commentIndex)
         .concat(nextState.slice(commentIndex + 1))
-    },
-
-    [USER_CREATED]: (state: any, event: UserCreated) => {
-      const { aggregateId, payload: { name } } = event
-      userNameById[aggregateId] = name
-      return state
     }
   },
   gqlSchema: `
@@ -104,7 +96,6 @@ export default {
       id: ID!
       parentId: ID!
       storyId: ID!
-      createdByName: String
       createdAt: String!
       createdBy: String!
       replies: [String!]!
@@ -115,7 +106,7 @@ export default {
   `,
   gqlResolvers: {
     comments: (root, { page, commentId, aggregateId }) =>
-      (commentId
+      commentId
         ? getCommentWithChildren(root, commentId)
         : aggregateId
           ? root
@@ -124,9 +115,6 @@ export default {
                 +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
                 +page * NUMBER_OF_ITEMS_PER_PAGE + 1
               )
-            : root).map(comment => ({
-        ...comment,
-        createdByName: userNameById[comment.createdBy]
-      }))
+            : root
   }
 }

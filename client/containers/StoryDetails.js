@@ -2,9 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import uuid from 'uuid'
-import sanitizer from 'sanitizer'
 
-import Story from '../components/Story'
+import Story from '../containers/Story'
 import actions from '../actions/stories'
 import Comment from '../components/Comment'
 import ChildrenComments from '../components/ChildrenComments'
@@ -32,46 +31,12 @@ export class StoryDetails extends React.PureComponent {
       text: event.target.value
     })
 
-  onUpvote = () =>
-    this.props.upvoteStory(this.props.storyId, this.props.user.id)
-
-  onUnvote = () =>
-    this.props.unvoteStory(this.props.storyId, this.props.user.id)
-
   render() {
-    const { storyId, stories, comments, user } = this.props
-    const story = stories.find(({ id }) => id === storyId)
-
-    if (!story) {
-      return null
-    }
-
-    const link = story.type === 'ask' ? `/storyDetails/${storyId}` : story.link
+    const { storyId, comments } = this.props
 
     return (
       <div className="storyDetails">
-        <Story
-          id={story.id}
-          title={story.title}
-          link={link}
-          score={story.voted.length}
-          voted={story.voted.includes(user.id)}
-          user={{
-            id: story.userId,
-            name: story.userName
-          }}
-          date={new Date(+story.createDate)}
-          commentCount={story.commentsCount}
-          onUpvote={this.onUpvote}
-          onUnvote={this.onUnvote}
-          loggedIn={!!user.id}
-        />
-        {story.text && (
-          <div
-            className="storyDetails__text"
-            dangerouslySetInnerHTML={{ __html: sanitizer.sanitize(story.text) }}
-          />
-        )}
+        <Story id={storyId} showText />
         <div className="storyDetails__content">
           <div className="storyDetails__textarea">
             <textarea
@@ -87,33 +52,11 @@ export class StoryDetails extends React.PureComponent {
           </div>
         </div>
         <div>
-          {story.comments.map(commentId => {
-            const comment = comments.find(({ id }) => id === commentId)
-
-            if (!comment) {
-              return null
-            }
-
-            return (
-              <Comment
-                key={comment.id}
-                id={comment.id}
-                storyId={comment.storyId}
-                content={comment.text}
-                user={{
-                  id: comment.createdBy,
-                  name: comment.createdByName
-                }}
-                date={new Date(+comment.createdAt)}
-                showReply
-              >
-                <ChildrenComments
-                  replies={comment.replies}
-                  comments={comments}
-                />
-              </Comment>
-            )
-          })}
+          {comments.map(comment => (
+            <Comment key={comment.id} {...comment} showReply>
+              <ChildrenComments replies={comment.replies} comments={comments} />
+            </Comment>
+          ))}
         </div>
       </div>
     )
@@ -136,14 +79,6 @@ export const mapDispatchToProps = dispatch =>
           parentId,
           userId,
           commentId: uuid.v4()
-        }),
-      upvoteStory: (id, userId) =>
-        actions.upvoteStory(id, {
-          userId
-        }),
-      unvoteStory: (id, userId) =>
-        actions.unvoteStory(id, {
-          userId
         })
     },
     dispatch

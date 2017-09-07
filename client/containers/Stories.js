@@ -1,16 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
-import Story from '../components/Story'
+import Story from '../containers/Story'
 import Paginator from '../components/Paginator'
 import { NUMBER_OF_ITEMS_PER_PAGE } from '../../common/constants'
-import actions from '../actions/stories'
 import '../styles/stories.css'
 
-export const Stories = props => {
-  let { stories, type, page, upvoteStory, unvoteStory } = props
-
+export const Stories = ({ stories, page, type }) => {
   const hasNext = !!stories[NUMBER_OF_ITEMS_PER_PAGE]
 
   const firstStoryIndex = NUMBER_OF_ITEMS_PER_PAGE * (page ? page - 1 : 0)
@@ -19,34 +15,11 @@ export const Stories = props => {
     <div>
       <div className="stories">
         <ol className="stories__list" start={firstStoryIndex + 1}>
-          {stories.slice(0, NUMBER_OF_ITEMS_PER_PAGE).map(story => {
-            const { type } = story
-
-            const link = story.link || `/storyDetails/${story.id}`
-            const title =
-              type === 'ask' ? `Ask HN: ${story.title}` : story.title
-
-            return (
-              <li key={story.id} className="stories__item">
-                <Story
-                  id={story.id}
-                  title={title}
-                  link={link}
-                  date={new Date(+story.createDate)}
-                  score={story.voted.length}
-                  user={{
-                    id: story.userId,
-                    name: story.userName
-                  }}
-                  commentCount={story.commentsCount}
-                  voted={story.voted.includes(props.user.id)}
-                  onUpvote={() => upvoteStory(story.id, props.user.id)}
-                  onUnvote={() => unvoteStory(story.id, props.user.id)}
-                  loggedIn={!!props.user.id}
-                />
-              </li>
-            )
-          })}
+          {stories.slice(0, NUMBER_OF_ITEMS_PER_PAGE).map(story => (
+            <li key={story.id} className="stories__item">
+              <Story id={story.id} />
+            </li>
+          ))}
         </ol>
       </div>
       <Paginator
@@ -58,25 +31,8 @@ export const Stories = props => {
   )
 }
 
-export const mapStateToProps = ({ stories, comments, user }) => ({
-  stories,
-  user,
-  comments
+export const mapStateToProps = ({ stories }) => ({
+  stories
 })
 
-export const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      upvoteStory: (id, userId) =>
-        actions.upvoteStory(id, {
-          userId
-        }),
-      unvoteStory: (id, userId) =>
-        actions.unvoteStory(id, {
-          userId
-        })
-    },
-    dispatch
-  )
-
-export default connect(mapStateToProps, mapDispatchToProps)(Stories)
+export default connect(mapStateToProps)(Stories)

@@ -18,12 +18,9 @@ export const CommentById = ({ comments, match }) => {
     <Comment
       id={comment.id}
       storyId={comment.storyId}
-      content={comment.text}
-      user={{
-        id: comment.createdBy,
-        name: comment.createdByName
-      }}
-      date={new Date(+comment.createdAt)}
+      text={comment.text}
+      createdBy={comment.createdBy}
+      createdAt={comment.createdAt}
       showReply
     >
       <ChildrenComments replies={comment.replies} comments={comments} />
@@ -40,7 +37,7 @@ export default subscribe(({ match }) => ({
     {
       readModel: comments,
       query:
-        'query ($aggregateId: String!, $commentId: String!) { comments(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
+        'query ($aggregateId: String!, $commentId: String!) { comments(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, storyId, createdAt, createdBy, replies } }',
       variables: {
         aggregateId: match.params.storyId,
         commentId: match.params.commentId

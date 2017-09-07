@@ -14,22 +14,24 @@ export class ReplyById extends Component {
     text: ''
   }
 
-  onReply(parentId, userId, storyId) {
+  onReply = () => {
     this.props.createComment({
       text: this.state.text,
-      parentId,
-      userId,
-      storyId
+      parentId: this.props.commentId,
+      userId: this.props.user.id,
+      storyId: this.props.storyId
     })
     // eslint-disable-next-line no-restricted-globals
     setTimeout(() => history.back(), 500)
   }
 
+  onTextChange = event => this.setState({ text: event.target.value })
+
   render() {
     const { comments, user, commentId } = this.props
     const comment = comments.find(({ id }) => id === commentId)
 
-    if (!comment) {
+    if (!comment || !user) {
       return null
     }
 
@@ -37,30 +39,16 @@ export class ReplyById extends Component {
       <div>
         <div className="reply">
           <div className="reply__content">
-            <Comment
-              showReply={false}
-              id={comment.id}
-              storyId={comment.storyId}
-              content={comment.text}
-              user={{
-                id: comment.createdBy,
-                name: comment.createdByName
-              }}
-              date={new Date(+comment.createdAt)}
-            />
+            <Comment {...comment} />
             <textarea
               name="text"
               rows="6"
               cols="70"
               value={this.state.text}
-              onChange={e => this.setState({ text: e.target.value })}
+              onChange={this.onTextChange}
             />
             <div>
-              <button
-                onClick={() => this.onReply(id, user.id, comment.storyId)}
-              >
-                Reply
-              </button>
+              <button onClick={this.onReply}>Reply</button>
             </div>
           </div>
         </div>
@@ -86,7 +74,8 @@ const mapDispatchToProps = dispatch =>
 const mapStateToProps = ({ comments, user }, { match }) => ({
   comments,
   user,
-  commentId: match.params.commentId
+  commentId: match.params.commentId,
+  storyId: match.params.storyId
 })
 
 export default subscribe(({ match }) => ({

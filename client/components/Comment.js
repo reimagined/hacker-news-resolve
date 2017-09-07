@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import sanitizer from 'sanitizer'
 import TimeAgo from 'react-timeago'
 
+import UserName from '../containers/UserName'
 import '../styles/comment.css'
 
 class Comment extends React.PureComponent {
@@ -17,15 +18,15 @@ class Comment extends React.PureComponent {
       id,
       storyId,
       level,
-      content,
-      user,
-      date,
+      text,
+      createdBy,
+      createdAt,
       showReply,
       parent,
       children
     } = this.props
 
-    if (!user || !id) {
+    if (!id) {
       return null
     }
 
@@ -45,14 +46,14 @@ class Comment extends React.PureComponent {
                 {' '}
                 <Link
                   className="comment__link comment__user"
-                  to={`/user/${user.id}`}
+                  to={`/user/${createdBy}`}
                 >
-                  {user.name}
+                  <UserName userId={createdBy} />
                 </Link>
               </span>
               <span>
                 {' '}
-                <TimeAgo date={date} />
+                <TimeAgo date={new Date(+createdAt)} />
               </span>
               <span>
                 {' '}
@@ -78,7 +79,7 @@ class Comment extends React.PureComponent {
               <div className="comment__text">
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: sanitizer.sanitize(content)
+                    __html: sanitizer.sanitize(text)
                   }}
                 />
                 <p>

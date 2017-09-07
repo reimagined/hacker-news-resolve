@@ -16,11 +16,8 @@ const {
   STORY_UNVOTED,
   STORY_DELETED,
   COMMENT_CREATED,
-  COMMENT_REMOVED,
-  USER_CREATED
+  COMMENT_REMOVED
 } = events
-
-const userNameById = {}
 
 export default {
   name: 'stories',
@@ -42,12 +39,12 @@ export default {
             type,
             title,
             text,
-            userId,
-            createDate: timestamp,
+            createdBy: userId,
+            createdAt: timestamp,
             link,
             comments: [],
             commentsCount: 0,
-            voted: []
+            votes: []
           }
         ].concat(state)
       )
@@ -62,7 +59,7 @@ export default {
         return state
       }
 
-      return state.updateIn([index, 'voted'], voted => voted.concat(userId))
+      return state.updateIn([index, 'votes'], votes => votes.concat(userId))
     },
 
     [STORY_UNVOTED]: (state: any, event: StoryUnvoted) => {
@@ -74,8 +71,8 @@ export default {
         return state
       }
 
-      return state.updateIn([index, 'voted'], voted =>
-        voted.filter(id => id !== userId)
+      return state.updateIn([index, 'votes'], votes =>
+        votes.filter(id => id !== userId)
       )
     },
 
@@ -128,12 +125,6 @@ export default {
       return newState.updateIn([parentIndex, 'comments'], comments =>
         comments.filter(id => id !== commentId)
       )
-    },
-
-    [USER_CREATED]: (state: any, event: UserCreated) => {
-      const { aggregateId, payload: { name } } = event
-      userNameById[aggregateId] = name
-      return state
     }
   },
   gqlSchema: `
@@ -142,13 +133,12 @@ export default {
       type: String!
       title: String!
       text: String
-      userId: String!
-      userName: String
-      createDate: String!
+      createdBy: String!
+      createdAt: String!
       link: String
       comments: [String]
       commentsCount: Int!
-      voted: [String]
+      votes: [String]
     }
     type Query {
       stories(page: Int, aggregateId: ID, type: String): [Story]
@@ -156,16 +146,13 @@ export default {
   `,
   gqlResolvers: {
     stories: (root, { page, aggregateId, type }) =>
-      (aggregateId
+      aggregateId
         ? root
         : page
           ? (type ? root.filter(story => story.type === type) : root).slice(
               +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
               +page * NUMBER_OF_ITEMS_PER_PAGE + 1
             )
-          : root).map(story => ({
-        ...story,
-        userName: userNameById[story.userId]
-      }))
+          : root
   }
 }

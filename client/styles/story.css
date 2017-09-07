@@ -5,6 +5,11 @@
   color: #666;
   font-size:14px;
 }
+.story__text {
+  color: #666;
+  font-size:14px;
+  white-space: pre;
+}
 .stories__list {
   padding-left: 3em;
   padding-right: 1.25em;

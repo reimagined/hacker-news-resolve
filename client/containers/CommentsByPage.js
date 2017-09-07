@@ -28,12 +28,9 @@ export const CommentsByPage = props => {
             key={comment.id}
             id={comment.id}
             storyId={comment.storyId}
-            content={comment.text}
-            user={{
-              id: comment.createdBy,
-              name: comment.createdByName
-            }}
-            date={new Date(+comment.createdAt)}
+            text={comment.text}
+            createdBy={comment.createdBy}
+            createdAt={comment.createdAt}
             parent={parent}
           />
         )
@@ -54,7 +51,7 @@ export default subscribe(({ match }) => ({
     {
       readModel: comments,
       query:
-        'query ($page: Int!) { comments(page: $page) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
+        'query ($page: Int!) { comments(page: $page) { text, id, parentId, storyId, createdAt, createdBy, replies } }',
       variables: {
         page: match.params.page || '1'
       }
