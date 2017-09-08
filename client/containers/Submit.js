@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Redirect } from 'react-router-dom'
 
-import actions from '../actions/stories'
+import actions from '../actions/storiesActions'
 import '../styles/submit.css'
 
 export class Submit extends React.PureComponent {

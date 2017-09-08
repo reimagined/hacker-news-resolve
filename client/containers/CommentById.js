@@ -18,20 +18,23 @@ export const CommentById = ({ comments, comment }) => {
   )
 }
 
-export const mapStateToProps = ({ comments }, { match }) => ({
+export const mapStateToProps = (
+  { comments },
+  { match: { params: { commentId } } }
+) => ({
   comments,
-  comment: comments.find(({ id }) => id === match.params.commentId)
+  comment: comments.find(({ id }) => id === commentId)
 })
 
-export default subscribe(({ match }) => ({
+export default subscribe(({ match: { params: { storyId, commentId } } }) => ({
   graphQL: [
     {
       readModel: comments,
       query:
         'query ($aggregateId: String!, $commentId: String!) { comments(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, storyId, createdAt, createdBy, replies } }',
       variables: {
-        aggregateId: match.params.storyId,
-        commentId: match.params.commentId
+        aggregateId: storyId,
+        commentId: commentId
       }
     }
   ]

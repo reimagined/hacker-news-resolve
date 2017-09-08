@@ -5,13 +5,13 @@ import { bindActionCreators } from 'redux'
 import actions from '../actions/userActions'
 import '../styles/changePassword.css'
 
-class ChangePassword extends React.PureComponent {
+export class ChangePassword extends React.PureComponent {
   state = {
     newPassword: '',
     currentPassword: ''
   }
 
-  onPasswordChange = () => {
+  savePassword = () => {
     this.props.changePassword(
       this.state.newPassword,
       this.state.currentPassword,
@@ -19,6 +19,12 @@ class ChangePassword extends React.PureComponent {
     )
     this.setState({ newPassword: '', currentPassword: '' })
   }
+
+  onChangeCurrentPassword = event =>
+    this.setState({ currentPassword: event.target.value })
+
+  onChangeNewPassword = event =>
+    this.setState({ newPassword: event.target.value })
 
   render() {
     return (
@@ -33,8 +39,7 @@ class ChangePassword extends React.PureComponent {
               <td>Current Password:</td>
               <td>
                 <input
-                  onChange={e =>
-                    this.setState({ currentPassword: e.target.value })}
+                  onChange={this.onChangeCurrentPassword}
                   value={this.state.currentPassword}
                   type="password"
                 />
@@ -44,7 +49,7 @@ class ChangePassword extends React.PureComponent {
               <td>New Password:</td>
               <td>
                 <input
-                  onChange={e => this.setState({ newPassword: e.target.value })}
+                  onChange={this.onChangeNewPassword}
                   value={this.state.newPassword}
                   type="password"
                 />
@@ -53,15 +58,15 @@ class ChangePassword extends React.PureComponent {
           </tbody>
         </table>
         <br />
-        <button onClick={this.onPasswordChange}>change</button>
+        <button onClick={this.savePassword}>change</button>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ user }) => ({ user })
+export const mapStateToProps = ({ user }) => ({ user })
 
-const mapDispatchToProps = dispatch =>
+export const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       changePassword: (newPassword, currentPassword, userId) =>

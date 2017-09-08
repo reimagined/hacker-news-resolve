@@ -9,7 +9,7 @@ import { bindActionCreators } from 'redux'
 import sanitizer from 'sanitizer'
 
 import UserName from './UserName'
-import actions from '../actions/stories'
+import actions from '../actions/storiesActions'
 import '../styles/story.css'
 
 const isExternalLink = link => link[0] !== '/'
@@ -17,7 +17,7 @@ const isExternalLink = link => link[0] !== '/'
 export const getHostname = link =>
   link.split('.')[0] === 'www' ? link.substr(4) : url.parse(link).hostname
 
-const voteArrow = (visible, upvoteStory) => {
+export const voteArrow = (visible, upvoteStory) => {
   return visible ? (
     <span onClick={upvoteStory} className="story__votearrow" title="upvote" />
   ) : (
@@ -25,7 +25,7 @@ const voteArrow = (visible, upvoteStory) => {
   )
 }
 
-const getTitle = ({ title, link }) => {
+export const getTitle = ({ title, link }) => {
   if (isExternalLink(link)) {
     return (
       <span>
@@ -46,6 +46,7 @@ const getTitle = ({ title, link }) => {
     </span>
   )
 }
+
 export const Title = ({ title, link, upvoteStory, voted, loggedIn }) => {
   return (
     <div>
@@ -126,28 +127,17 @@ export const Meta = props => {
   )
 }
 
-class Story extends React.PureComponent {
-  upvoteStory = () => this.props.upvoteStory(this.props.id, this.props.user.id)
+export class Story extends React.PureComponent {
+  upvoteStory = () =>
+    this.props.upvoteStory(this.props.story.id, this.props.userId)
 
-  unvoteStory = () => this.props.unvoteStory(this.props.id, this.props.user.id)
+  unvoteStory = () =>
+    this.props.unvoteStory(this.props.story.id, this.props.userId)
 
   render() {
-    const {
-      id,
-      type,
-      title,
-      link,
-      text,
-      createdBy,
-      createdAt,
-      votes,
-      commentCount,
-      voted,
-      loggedIn,
-      showText
-    } = this.props
+    const { story, loggedIn, showText, voted } = this.props
 
-    if (!title) {
+    if (!story) {
       return null
     }
 
@@ -158,23 +148,27 @@ class Story extends React.PureComponent {
             loggedIn={loggedIn}
             voted={voted}
             upvoteStory={this.upvoteStory}
-            title={type === 'ask' ? `Ask HN: ${title}` : title}
-            link={link}
+            title={
+              story.type === 'ask' ? `Ask HN: ${story.title}` : story.title
+            }
+            link={story.link || `/storyDetails/${story.id}`}
           />
           <Meta
             voted={voted}
-            id={id}
-            createdBy={createdBy}
-            createdAt={createdAt}
-            votes={votes}
-            commentCount={commentCount}
+            id={story.id}
+            createdBy={story.createdBy}
+            createdAt={story.createdAt}
+            votes={story.votes}
+            commentCount={story.commentCount}
             unvoteStory={this.unvoteStory}
             loggedIn={loggedIn}
           />
-          {showText && text ? (
+          {showText && story.text ? (
             <div
               className="story__text"
-              dangerouslySetInnerHTML={{ __html: sanitizer.sanitize(text) }}
+              dangerouslySetInnerHTML={{
+                __html: sanitizer.sanitize(story.text)
+              }}
             />
           ) : null}
         </div>
@@ -186,22 +180,11 @@ class Story extends React.PureComponent {
 export const mapStateToProps = ({ user, stories }, { id }) => {
   const story = stories.find(story => story.id === id)
 
-  if (!story) {
-    return {}
-  }
-
   return {
-    id: story.id,
-    title: story.title,
-    text: story.text,
-    link: story.link || `/storyDetails/${story.id}`,
-    votes: story.votes,
-    createdBy: story.createdBy,
-    createdAt: story.createdAt,
-    commentCount: story.commentsCount,
-    voted: story.votes.includes(user.id),
+    story,
+    voted: story && story.votes.includes(user.id),
     loggedIn: !!user.id,
-    user
+    userId: user.id
   }
 }
 

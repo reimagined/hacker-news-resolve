@@ -3,14 +3,24 @@ import users from '../../common/read-models/users'
 
 import { executeQuery } from '../decorators/subscribe'
 
-class UserName extends React.PureComponent {
+const cache = {}
+
+export class UserName extends React.PureComponent {
   state = {
     name: null
   }
 
   async componentDidMount() {
-    if (!this.props.userId) {
+    const { userId } = this.props
+
+    if (!userId) {
       return
+    }
+
+    if (cache[userId]) {
+      return this.setState({
+        name: cache[userId]
+      })
     }
 
     const resultOfQuery = await executeQuery({
@@ -18,7 +28,7 @@ class UserName extends React.PureComponent {
       query:
         'query ($aggregateId: ID!) { users(aggregateId: $aggregateId) { name } }',
       variables: {
-        aggregateId: this.props.userId
+        aggregateId: userId
       }
     })
 

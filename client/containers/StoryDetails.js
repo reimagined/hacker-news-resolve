@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import uuid from 'uuid'
 
 import Story from '../containers/Story'
-import actions from '../actions/stories'
+import actions from '../actions/storiesActions'
 import ChildrenComments from '../components/ChildrenComments'
 import subscribe from '../decorators/subscribe'
 import stories from '../../common/read-models/stories'
@@ -16,11 +16,11 @@ export class StoryDetails extends React.PureComponent {
     text: ''
   }
 
-  onAddComment = () => {
+  saveReply = () => {
     this.props.createComment({
       text: this.state.text,
-      parentId: this.props.storyId,
-      userId: this.props.user.id
+      parentId: this.props.story.id,
+      userId: this.props.userId
     })
     this.setState({ text: '' })
   }
@@ -31,13 +31,15 @@ export class StoryDetails extends React.PureComponent {
     })
 
   render() {
-    const { storyId, comments, stories, loggedIn } = this.props
+    const { story, comments, loggedIn } = this.props
 
-    const story = stories.find(story => story.id === storyId)
+    if (!story) {
+      return null
+    }
 
     return (
       <div className="storyDetails">
-        <Story id={storyId} showText />
+        <Story id={story.id} showText />
         {loggedIn ? (
           <div className="storyDetails__content">
             <div className="storyDetails__textarea">
@@ -50,26 +52,26 @@ export class StoryDetails extends React.PureComponent {
               />
             </div>
             <div>
-              <button onClick={this.onAddComment}>add comment</button>
+              <button onClick={this.saveReply}>add comment</button>
             </div>
           </div>
         ) : null}
-        {story ? (
-          <div>
-            <ChildrenComments replies={story.comments} comments={comments} />
-          </div>
-        ) : null}
+        <div>
+          <ChildrenComments replies={story.comments} comments={comments} />
+        </div>
       </div>
     )
   }
 }
 
-export const mapStateToProps = ({ stories, comments, user }, { match }) => ({
-  stories,
+export const mapStateToProps = (
+  { stories, comments, user },
+  { match: { params: { storyId } } }
+) => ({
+  story: stories.find(story => story.id === storyId),
   comments,
-  user,
-  loggedIn: !!user.id,
-  storyId: match.params.storyId
+  userId: user.id,
+  loggedIn: !!user.id
 })
 
 export const mapDispatchToProps = dispatch =>
@@ -86,14 +88,14 @@ export const mapDispatchToProps = dispatch =>
     dispatch
   )
 
-export default subscribe(({ match }) => ({
+export default subscribe(({ match: { params: { storyId } } }) => ({
   graphQL: [
     {
       readModel: stories,
       query:
         'query ($aggregateId: ID!) { stories(aggregateId: $aggregateId) { id, type, title, text, createdAt, createdBy, link, comments, commentsCount, votes } }',
       variables: {
-        aggregateId: match.params.storyId
+        aggregateId: storyId
       }
     },
     {
@@ -101,7 +103,7 @@ export default subscribe(({ match }) => ({
       query:
         'query ($aggregateId: ID!) { comments(aggregateId: $aggregateId) {  text, id, parentId, storyId, createdAt, createdBy, replies } }',
       variables: {
-        aggregateId: match.params.storyId
+        aggregateId: storyId
       }
     }
   ]

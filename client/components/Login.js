@@ -1,12 +1,12 @@
 import React from 'react'
 
-import LoginForm from './LoginForm'
+import AuthForm from './AuthForm'
 
 const Login = () => {
   return (
     <div>
-      <LoginForm buttonText="login" action="/login" title="Login" />
-      <LoginForm
+      <AuthForm buttonText="login" action="/login" title="Login" />
+      <AuthForm
         buttonText="create account"
         action="/signup"
         title="Create account"
