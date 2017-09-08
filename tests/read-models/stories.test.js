@@ -34,12 +34,12 @@ describe('read-models', () => {
           type: 'ask',
           title: event.payload.title,
           text: event.payload.text,
-          userId: event.payload.userId,
-          createDate: event.timestamp,
+          createdBy: event.payload.userId,
+          createdAt: event.timestamp,
           link: event.payload.link,
           comments: [],
           commentsCount: 0,
-          voted: []
+          votes: []
         }
       ]
 
@@ -67,12 +67,12 @@ describe('read-models', () => {
           type: 'story',
           title: event.payload.title,
           text: event.payload.text,
-          userId: event.payload.userId,
-          createDate: event.timestamp,
+          createdBy: event.payload.userId,
+          createdAt: event.timestamp,
           link: event.payload.link,
           comments: [],
           commentsCount: 0,
-          voted: []
+          votes: []
         }
       ]
 
@@ -100,12 +100,12 @@ describe('read-models', () => {
           type: 'show',
           title: event.payload.title,
           text: event.payload.text,
-          userId: event.payload.userId,
-          createDate: event.timestamp,
+          createdBy: event.payload.userId,
+          createdAt: event.timestamp,
           link: event.payload.link,
           comments: [],
           commentsCount: 0,
-          voted: []
+          votes: []
         }
       ]
 
@@ -119,7 +119,7 @@ describe('read-models', () => {
 
       const state = stories.initialState.concat({
         id: aggregateId,
-        voted: []
+        votes: []
       })
 
       const event = {
@@ -133,7 +133,7 @@ describe('read-models', () => {
       const nextState = [
         {
           id: aggregateId,
-          voted: [event.payload.userId]
+          votes: [event.payload.userId]
         }
       ]
 
@@ -148,7 +148,7 @@ describe('read-models', () => {
 
       const state = stories.initialState.concat({
         id: aggregateId,
-        voted: [userId]
+        votes: [userId]
       })
 
       const event = {
@@ -162,7 +162,7 @@ describe('read-models', () => {
       const nextState = [
         {
           id: aggregateId,
-          voted: []
+          votes: []
         }
       ]
 

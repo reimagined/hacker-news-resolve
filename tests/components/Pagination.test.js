@@ -3,12 +3,6 @@ import { shallow } from 'enzyme'
 
 import Pagination from '../../client/components/Pagination'
 
-it('Page 0 renders correctly', () => {
-  const markup = shallow(<Pagination page={0} hasNext={true} location="news" />)
-
-  expect(markup).toMatchSnapshot()
-})
-
 it('Page 1 renders correctly', () => {
   const markup = shallow(
     <Pagination page={1} hasNext={false} location="news" />
@@ -33,8 +27,6 @@ it('Page 3 renders correctly', () => {
 
 it('Page Default renders correctly', () => {
   const markup = shallow(<Pagination hasNext={false} location="news" />)
-
-  markup.instance().scrollUp()
 
   expect(markup).toMatchSnapshot()
 })
