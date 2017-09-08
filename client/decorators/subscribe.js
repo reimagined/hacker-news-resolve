@@ -10,6 +10,25 @@ function queryParams(params) {
     .join('&')
 }
 
+export const executeQuery = async ({ readModel, query, variables }) => {
+  const response = await fetch(
+    `/api/queries/${readModel.name}?${queryParams({
+      graphql: query,
+      variables: JSON.stringify(variables)
+    })}`,
+    {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'same-origin'
+    }
+  )
+
+  if (response.status === 200) {
+    return await response.json()
+  }
+  throw response
+}
+
 export default subscribe => Component => {
   class ResolveWrapper extends React.PureComponent {
     async refresh({ match }) {
@@ -30,28 +49,14 @@ export default subscribe => Component => {
         )
 
         try {
-          const response = await fetch(
-            `/api/queries/${readModel.name}?${queryParams({
-              graphql: query,
-              variables: JSON.stringify(variables)
-            })}`,
-            {
-              method: 'GET',
-              headers: { 'Content-Type': 'application/json' },
-              credentials: 'same-origin'
-            }
-          )
+          const data = await executeQuery({ readModel, query, variables })
 
-          if (response.ok) {
-            const data = await response.json()
-
-            store.dispatch(
-              actions.replaceState(
-                readModel.name,
-                Immutable(data[readModel.name])
-              )
+          return store.dispatch(
+            actions.replaceState(
+              readModel.name,
+              Immutable(data[readModel.name])
             )
-          }
+          )
         } catch (error) {
           store.dispatch(actions.replaceState(readModel.name, prevState))
 

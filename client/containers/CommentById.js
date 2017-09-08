@@ -6,42 +6,35 @@ import Comment from '../components/Comment'
 import subscribe from '../decorators/subscribe'
 import comments from '../../common/read-models/comments'
 
-export const CommentById = ({ comments, match }) => {
-  const { id } = match.params
-  const comment = comments.find(c => c.id === id)
-
+export const CommentById = ({ comments, comment }) => {
   if (!comment) {
     return null
   }
 
   return (
-    <Comment
-      id={comment.id}
-      content={comment.text}
-      user={{
-        id: comment.createdBy,
-        name: comment.createdByName
-      }}
-      date={new Date(+comment.createdAt)}
-      showReply
-    >
+    <Comment {...comment} showReply>
       <ChildrenComments replies={comment.replies} comments={comments} />
     </Comment>
   )
 }
 
-export const mapStateToProps = ({ comments }) => ({
-  comments
+export const mapStateToProps = (
+  { comments },
+  { match: { params: { commentId } } }
+) => ({
+  comments,
+  comment: comments.find(({ id }) => id === commentId)
 })
 
-export default subscribe(({ match }) => ({
+export default subscribe(({ match: { params: { storyId, commentId } } }) => ({
   graphQL: [
     {
       readModel: comments,
       query:
-        'query ($id: String!) { comments(id: $id) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
+        'query ($aggregateId: String!, $commentId: String!) { comments(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, storyId, createdAt, createdBy, replies } }',
       variables: {
-        id: match.params.id
+        aggregateId: storyId,
+        commentId: commentId
       }
     }
   ]

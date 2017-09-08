@@ -2,11 +2,6 @@
   padding: 1em 1.25em 0 1.75em;
   margin-bottom: 1em;
 }
-.storyDetails__text {
-  color: #666;
-  font-size:14px;
-  white-space: pre;
-}
 .storyDetails__textarea {
     margin-top: 10px;
     margin-bottom: 10px;

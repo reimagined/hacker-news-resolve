@@ -164,7 +164,7 @@ export const start = async (countCallback, tickCallback) => {
       []
     )
     countCallback(stories.length)
-    return storiesProc(stories, tickCallback)
+    return await storiesProc(stories, tickCallback)
   } catch (e) {
     console.error(e)
   }

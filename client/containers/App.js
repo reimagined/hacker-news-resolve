@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router'
 
 import * as userActions from '../actions/userActions'
-import * as uiActions from '../actions/ui'
+import * as uiActions from '../actions/uiActions'
 
 import '../styles/style.css'
 import '../styles/root.css'

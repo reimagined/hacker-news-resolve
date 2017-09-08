@@ -1,33 +1,34 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import uuid from 'uuid'
 
-import actions from '../actions/stories'
+import actions from '../actions/storiesActions'
 import Comment from '../components/Comment'
 import subscribe from '../decorators/subscribe'
 import comments from '../../common/read-models/comments'
 import '../styles/reply.css'
 
-export class ReplyById extends Component {
+export class ReplyById extends React.PureComponent {
   state = {
     text: ''
   }
 
-  onReply(parentId, userId, storyId) {
+  saveReply = () => {
     this.props.createComment({
       text: this.state.text,
-      parentId,
-      userId,
-      storyId
+      parentId: this.props.comment.id,
+      userId: this.props.userId,
+      storyId: this.props.storyId
     })
     // eslint-disable-next-line no-restricted-globals
     setTimeout(() => history.back(), 500)
   }
 
+  onTextChange = event => this.setState({ text: event.target.value })
+
   render() {
-    const { comments, user, id } = this.props
-    const comment = comments.find(c => c.id === id)
+    const { comment, loggedIn } = this.props
 
     if (!comment) {
       return null
@@ -37,30 +38,21 @@ export class ReplyById extends Component {
       <div>
         <div className="reply">
           <div className="reply__content">
-            <Comment
-              showReply={false}
-              id={comment.id}
-              content={comment.text}
-              user={{
-                id: comment.createdBy,
-                name: comment.createdByName
-              }}
-              date={new Date(+comment.createdAt)}
-            />
-            <textarea
-              name="text"
-              rows="6"
-              cols="70"
-              value={this.state.text}
-              onChange={e => this.setState({ text: e.target.value })}
-            />
-            <div>
-              <button
-                onClick={() => this.onReply(id, user.id, comment.storyId)}
-              >
-                Reply
-              </button>
-            </div>
+            <Comment {...comment} />
+            {loggedIn ? (
+              <div>
+                <textarea
+                  name="text"
+                  rows="6"
+                  cols="70"
+                  value={this.state.text}
+                  onChange={this.onTextChange}
+                />
+                <div>
+                  <button onClick={this.saveReply}>Reply</button>
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
@@ -82,20 +74,25 @@ const mapDispatchToProps = dispatch =>
     dispatch
   )
 
-const mapStateToProps = ({ comments, user }, { match }) => ({
-  comments,
-  user,
-  id: match.params.id
+const mapStateToProps = (
+  { comments, user },
+  { match: { params: { commentId, storyId } } }
+) => ({
+  comment: comments.find(({ id }) => id === commentId),
+  userId: user.id,
+  loggedIn: !!user.id,
+  storyId
 })
 
-export default subscribe(({ match }) => ({
+export default subscribe(({ match: { params: { storyId, commentId } } }) => ({
   graphQL: [
     {
       readModel: comments,
       query:
-        'query ($id: String!) { comments(id: $id) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
+        'query ($aggregateId: String, $commentId: String!) { comments(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
       variables: {
-        id: match.params.id
+        aggregateId: storyId,
+        commentId
       }
     }
   ]

@@ -22,7 +22,6 @@ const RouteWithSubRoutes = ({
             ))}
           </Switch>
         )
-
         return Component ? <Component {...props}>{content}</Component> : content
       }}
     />

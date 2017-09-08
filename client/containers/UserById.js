@@ -6,8 +6,8 @@ import subscribe from '../decorators/subscribe'
 import users from '../../common/read-models/users'
 import '../styles/profile.css'
 
-export const UserById = ({ id, name, createdAt, karma }) => {
-  if (!id) {
+export const UserById = ({ user, user: { name, createdAt, karma } }) => {
+  if (!user) {
     return null
   }
 
@@ -36,19 +36,21 @@ export const UserById = ({ id, name, createdAt, karma }) => {
   )
 }
 
-export const mapStateToProps = ({ user, users }, { match }) => {
-  const { id } = match.params
-  return id ? users.find(item => item.id === id) : user
-}
+export const mapStateToProps = (
+  { user, users },
+  { match: { params: { userId } } }
+) => ({
+  user: userId ? users.find(({ id }) => id === userId) : user
+})
 
-export default subscribe(({ match }) => ({
+export default subscribe(({ match: { params: { userId } } }) => ({
   graphQL: [
     {
       readModel: users,
       query:
-        'query ($id: ID!) { users(id: $id) { id, name, createdAt, karma } }',
+        'query ($aggregateId: ID!) { users(aggregateId: $aggregateId) { id, name, createdAt, karma } }',
       variables: {
-        id: match.params.id
+        aggregateId: userId
       }
     }
   ]

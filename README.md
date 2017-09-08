@@ -1,4 +1,4 @@
-# hacker-news-demo &middot; [![Build Status](https://api.travis-ci.org/reimagined/hacker-news-demo.svg)](https://travis-ci.org/reimagined/hacker-news-demo) [![Coverage Status](https://coveralls.io/repos/github/reimagined/hacker-news-demo/badge.svg)](https://coveralls.io/github/reimagined/hacker-news-demo)
+# hacker-news-demo &middot; [![Build Status](https://travis-ci.org/reimagined/hacker-news-demo.svg?branch=master)](https://travis-ci.org/reimagined/hacker-news-demo) [![Coverage Status](https://coveralls.io/repos/github/reimagined/hacker-news-demo/badge.svg)](https://coveralls.io/github/reimagined/hacker-news-demo)
 
 A React & Redux & Resolve implementation of Hacker News 
 

@@ -1,17 +1,17 @@
-.paginator {
+.pagination {
   margin-left: 3em;
   padding: .5em 0;
 }
-.paginator__link {
+.pagination__link {
   font-weight: bold;
   color: #000;
   text-decoration: none;
 }
-.paginator__link:hover {
+.pagination__link:hover {
   text-decoration: underline;
 }
 
-.paginator__disabled {
+.pagination__disabled {
   pointer-events: none;
   cursor: default;
   color: gray;
