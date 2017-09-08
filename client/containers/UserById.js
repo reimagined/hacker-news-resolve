@@ -6,7 +6,7 @@ import subscribe from '../decorators/subscribe'
 import users from '../../common/read-models/users'
 import '../styles/profile.css'
 
-export const UserById = ({ user, user: { name, createdAt, karma } }) => {
+export const UserById = ({ user }) => {
   if (!user) {
     return null
   }
@@ -17,15 +17,15 @@ export const UserById = ({ user, user: { name, createdAt, karma } }) => {
         <tbody>
           <tr>
             <td>name:</td>
-            <td>{name}</td>
+            <td>{user.name}</td>
           </tr>
           <tr>
             <td>created:</td>
-            <td>{new Date(+createdAt).toLocaleString('en-US')}</td>
+            <td>{new Date(+user.createdAt).toLocaleString('en-US')}</td>
           </tr>
           <tr>
             <td>karma:</td>
-            <td>{karma}</td>
+            <td>{user.karma}</td>
           </tr>
         </tbody>
       </table>

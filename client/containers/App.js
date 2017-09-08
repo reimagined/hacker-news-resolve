@@ -21,7 +21,7 @@ export class App extends React.PureComponent {
   }
 
   render() {
-    const { children, user, logout } = this.props
+    const { children, user, loggedIn, logout } = this.props
 
     return (
       <div className="app">
@@ -86,16 +86,20 @@ export class App extends React.PureComponent {
             >
               ask
             </NavLink>
-            {' | '}
-            <NavLink
-              className="app__link"
-              to="/submit"
-              activeClassName="app__link--active"
-            >
-              submit
-            </NavLink>
+            {loggedIn ? (
+              <span>
+                {' | '}
+                <NavLink
+                  className="app__link"
+                  to="/submit"
+                  activeClassName="app__link--active"
+                >
+                  submit
+                </NavLink>
+              </span>
+            ) : null}
             <div style={{ float: 'right' }}>
-              {user && user.id ? (
+              {loggedIn ? (
                 <div>
                   <NavLink
                     className="app__link"
@@ -141,7 +145,8 @@ export class App extends React.PureComponent {
 }
 
 export const mapStateToProps = ({ user }) => ({
-  user
+  user,
+  loggedIn: !!user.id
 })
 
 export const mapDispatchToProps = dispatch =>
