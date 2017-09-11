@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import sanitizer from 'sanitizer'
 import TimeAgo from 'react-timeago'
 
-import UserName from '../containers/UserName'
 import '../styles/comment.css'
 
 class Comment extends React.PureComponent {
@@ -20,6 +19,7 @@ class Comment extends React.PureComponent {
       level,
       text,
       createdBy,
+      createdByName,
       createdAt,
       showReply,
       parentId,
@@ -53,7 +53,7 @@ class Comment extends React.PureComponent {
                   className="comment__link comment__user"
                   to={`/user/${createdBy}`}
                 >
-                  <UserName userId={createdBy} />
+                  {createdByName}
                 </Link>
               </span>
               <span>

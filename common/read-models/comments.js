@@ -98,6 +98,7 @@ export default {
       storyId: ID!
       createdAt: String!
       createdBy: String!
+      createdByName: String!
       replies: [String!]!
     }
     type Query {
@@ -105,8 +106,12 @@ export default {
     }
   `,
   gqlResolvers: {
-    comments: (root, { page, commentId, aggregateId }) =>
-      commentId
+    comments: async (
+      root,
+      { page, commentId, aggregateId },
+      { getReadModel }
+    ) => {
+      const result = commentId
         ? getCommentWithChildren(root, commentId)
         : aggregateId
           ? root
@@ -116,5 +121,16 @@ export default {
                 +page * NUMBER_OF_ITEMS_PER_PAGE + 1
               )
             : root
+
+      const userIds = result.map(({ createdBy }) => createdBy)
+      const userNames = (await Promise.all(
+        userIds.map(userId => getReadModel('users', [userId]))
+      )).map(([{ name }]) => name)
+
+      return result.map((comment, index) => ({
+        ...comment,
+        createdByName: userNames[index]
+      }))
+    }
   }
 }

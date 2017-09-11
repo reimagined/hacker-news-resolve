@@ -134,6 +134,7 @@ export default {
       title: String!
       text: String
       createdBy: String!
+      createdByName: String!
       createdAt: String!
       link: String
       comments: [String]
@@ -145,8 +146,12 @@ export default {
     }
   `,
   gqlResolvers: {
-    storyDetails: (root, { page, aggregateId, type }) =>
-      aggregateId
+    storyDetails: async (
+      root,
+      { page, aggregateId, type },
+      { getReadModel }
+    ) => {
+      const result = aggregateId
         ? root
         : page
           ? (type ? root.filter(story => story.type === type) : root).slice(
@@ -154,5 +159,16 @@ export default {
               +page * NUMBER_OF_ITEMS_PER_PAGE + 1
             )
           : root
+
+      const userIds = result.map(({ createdBy }) => createdBy)
+      const userNames = (await Promise.all(
+        userIds.map(userId => getReadModel('users', [userId]))
+      )).map(([{ name }]) => name)
+
+      return result.map((story, index) => ({
+        ...story,
+        createdByName: userNames[index]
+      }))
+    }
   }
 }

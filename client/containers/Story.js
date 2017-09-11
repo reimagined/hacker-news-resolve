@@ -8,7 +8,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import sanitizer from 'sanitizer'
 
-import UserName from './UserName'
 import actions from '../actions/storiesActions'
 import '../styles/story.css'
 
@@ -64,12 +63,12 @@ export const Score = ({ score }) => {
   )
 }
 
-export const PostedBy = ({ createdBy }) => {
+export const PostedBy = ({ id, name }) => {
   return (
     <span>
       by{' '}
-      <a className="story__meta-link story__by" href={`/user/${createdBy}`}>
-        <UserName userId={createdBy} />
+      <a className="story__meta-link story__by" href={`/user/${id}`}>
+        {name}
       </a>{' '}
     </span>
   )
@@ -96,6 +95,7 @@ export const Meta = props => {
   const {
     id,
     createdBy,
+    createdByName,
     createdAt,
     votes,
     commentCount,
@@ -108,7 +108,7 @@ export const Meta = props => {
   return (
     <div className="story__meta">
       {votes ? <Score score={votes.length} /> : null}
-      {createdBy ? <PostedBy createdBy={createdBy} /> : null}
+      {createdBy ? <PostedBy id={createdBy} name={createdByName} /> : null}
       <span className="story__time">
         <TimeAgo date={new Date(+createdAt)} />{' '}
       </span>
@@ -157,6 +157,7 @@ export class Story extends React.PureComponent {
             voted={voted}
             id={story.id}
             createdBy={story.createdBy}
+            createdByName={story.createdByName}
             createdAt={story.createdAt}
             votes={story.votes}
             commentCount={story.commentCount}

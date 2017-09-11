@@ -93,7 +93,7 @@ export default subscribe(({ match: { params: { storyId } } }) => ({
     {
       readModel: storyDetails,
       query:
-        'query ($aggregateId: ID!) { storyDetails(aggregateId: $aggregateId) { id, type, title, text, createdAt, createdBy, link, comments, commentsCount, votes } }',
+        'query ($aggregateId: ID!) { storyDetails(aggregateId: $aggregateId) { id, type, title, text, createdAt, createdBy, createdByName, link, comments, commentsCount, votes } }',
       variables: {
         aggregateId: storyId
       }
@@ -101,7 +101,7 @@ export default subscribe(({ match: { params: { storyId } } }) => ({
     {
       readModel: comments,
       query:
-        'query ($aggregateId: ID!) { comments(aggregateId: $aggregateId) {  text, id, parentId, storyId, createdAt, createdBy, replies } }',
+        'query ($aggregateId: ID!) { comments(aggregateId: $aggregateId) {  text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
       variables: {
         aggregateId: storyId
       }

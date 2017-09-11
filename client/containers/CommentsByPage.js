@@ -29,7 +29,7 @@ export default subscribe(({ match: { params: { page } } }) => ({
     {
       readModel: comments,
       query:
-        'query ($page: Int!) { comments(page: $page) { text, id, parentId, storyId, createdAt, createdBy, replies } }',
+        'query ($page: Int!) { comments(page: $page) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
       variables: {
         page: page || '1'
       }
