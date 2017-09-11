@@ -20,7 +20,7 @@ const {
 } = events
 
 export default {
-  name: 'stories',
+  name: 'storyDetails',
   initialState: Immutable([]),
   eventHandlers: {
     [STORY_CREATED]: (state: any, event: StoryCreated) => {
@@ -141,11 +141,11 @@ export default {
       votes: [String]
     }
     type Query {
-      stories(page: Int, aggregateId: ID, type: String): [Story]
+      storyDetails(page: Int, aggregateId: ID, type: String): [Story]
     }
   `,
   gqlResolvers: {
-    stories: (root, { page, aggregateId, type }) =>
+    storyDetails: (root, { page, aggregateId, type }) =>
       aggregateId
         ? root
         : page

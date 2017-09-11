@@ -20,9 +20,7 @@ export const CommentsByPage = ({ comments, match: { params: { page } } }) => (
   </div>
 )
 
-export const mapStateToProps = ({ stories, users, comments }) => ({
-  stories,
-  users,
+export const mapStateToProps = ({ comments }) => ({
   comments
 })
 

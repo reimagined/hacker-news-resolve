@@ -7,7 +7,7 @@ import Story from '../containers/Story'
 import actions from '../actions/storiesActions'
 import ChildrenComments from '../components/ChildrenComments'
 import subscribe from '../decorators/subscribe'
-import stories from '../../common/read-models/stories'
+import storyDetails from '../../common/read-models/storyDetails'
 import comments from '../../common/read-models/comments'
 import '../styles/storyDetails.css'
 
@@ -65,10 +65,10 @@ export class StoryDetails extends React.PureComponent {
 }
 
 export const mapStateToProps = (
-  { stories, comments, user },
+  { storyDetails, comments, user },
   { match: { params: { storyId } } }
 ) => ({
-  story: stories.find(story => story.id === storyId),
+  story: storyDetails.find(story => story.id === storyId),
   comments,
   userId: user.id,
   loggedIn: !!user.id
@@ -91,9 +91,9 @@ export const mapDispatchToProps = dispatch =>
 export default subscribe(({ match: { params: { storyId } } }) => ({
   graphQL: [
     {
-      readModel: stories,
+      readModel: storyDetails,
       query:
-        'query ($aggregateId: ID!) { stories(aggregateId: $aggregateId) { id, type, title, text, createdAt, createdBy, link, comments, commentsCount, votes } }',
+        'query ($aggregateId: ID!) { storyDetails(aggregateId: $aggregateId) { id, type, title, text, createdAt, createdBy, link, comments, commentsCount, votes } }',
       variables: {
         aggregateId: storyId
       }

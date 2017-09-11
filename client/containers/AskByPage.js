@@ -3,22 +3,22 @@ import { connect } from 'react-redux'
 
 import Stories from '../components/Stories'
 import subscribe from '../decorators/subscribe'
-import stories from '../../common/read-models/stories'
+import storyDetails from '../../common/read-models/storyDetails'
 
-const AskByPage = ({ match: { params: { page } }, stories }) => (
-  <Stories items={stories} page={page} type="ask" />
+const AskByPage = ({ match: { params: { page } }, storyDetails }) => (
+  <Stories items={storyDetails} page={page} type="ask" />
 )
 
-export const mapStateToProps = ({ stories }) => ({
-  stories
+export const mapStateToProps = ({ storyDetails }) => ({
+  storyDetails
 })
 
 export default subscribe(({ match: { params: { page } } }) => ({
   graphQL: [
     {
-      readModel: stories,
+      readModel: storyDetails,
       query:
-        'query ($page: Int!) { stories(page: $page, type: "ask") { id, type, title, text, createdAt, createdBy, link, comments, commentsCount, votes } }',
+        'query ($page: Int!) { storyDetails(page: $page, type: "ask") { id, type, title, text, createdAt, createdBy, link, comments, commentsCount, votes } }',
       variables: {
         page: page || '1'
       }
