@@ -12,6 +12,7 @@ A React & Redux & Resolve implementation of Hacker News
 git clone https://github.com/reimagined/hacker-news-demo.git
 cd hacker-news-demo
 npm install
+npm run import
 npm run dev
 ``` 
 or
@@ -28,5 +29,4 @@ Access localhost:3000 then you can see the front page of Hacker News.
 |`start`             | Serves your app at `localhost:3000` in production mode |
 |`test`              | Runs unit tests with Jest |
 |`test:watch`        | Runs `test` in watch mode to re-run tests when changed |
-|`lint`              | Lints the project for potential errors |
 |`prettier`          | Lints the project and fixes all correctable errors |
