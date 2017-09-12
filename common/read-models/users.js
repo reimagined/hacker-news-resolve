@@ -16,8 +16,7 @@ export default {
         name,
         passwordHash,
         id: aggregateId,
-        createdAt: timestamp,
-        karma: 0
+        createdAt: timestamp
       })
     },
 
@@ -37,13 +36,12 @@ export default {
       id: ID!
       name: String
       createdAt: String
-      karma: Int
     }
     type Query {
       users(aggregateId: ID!): [User]
     }
   `,
   gqlResolvers: {
-    users: (root, args) => root
+    users: root => root
   }
 }
