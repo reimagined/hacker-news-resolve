@@ -12,15 +12,6 @@ const { USER_CREATED, PASSWORD_CHANGED } = events
 export default {
   name: 'users',
   initialState: Immutable({}),
-  eventHandlers: {
-    [USER_CREATED]: (state, { timestamp, payload: { passwordHash } }) =>
-      state.merge({
-        createdAt: timestamp,
-        password: passwordHash
-      }),
-    [PASSWORD_CHANGED]: (state, { payload: { newPassword } }) =>
-      state.set('password', newPassword)
-  },
   commands: {
     createUser: (state: any, command: UserCreated) => {
       const { name, passwordHash } = command.payload
@@ -70,5 +61,14 @@ export default {
         newPassword: newPasswordHash
       })
     }
+  },
+  eventHandlers: {
+    [USER_CREATED]: (state, { timestamp, payload: { passwordHash } }) =>
+      state.merge({
+        createdAt: timestamp,
+        password: passwordHash
+      }),
+    [PASSWORD_CHANGED]: (state, { payload: { newPassword } }) =>
+      state.set('password', newPassword)
   }
 }

@@ -5,11 +5,13 @@ import type {
   StoryUpvoted,
   StoryUnvoted
 } from '../events/stories'
+
 import type {
   CommentCreated,
   CommentUpdated,
   CommentRemoved
 } from '../events/comments'
+
 import storiesEvents from '../events/stories'
 import commentsEvents from '../events/comments'
 import { Event } from '../helpers'
@@ -17,42 +19,13 @@ import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyE
 import throwIfAggregateIsNotExists from './validators/throwIfAggregateIsNotExists'
 import throwIfPermissionDenied from './validators/throwIfPermissionDenied'
 
-const {
-  STORY_CREATED,
-  STORY_UPVOTED,
-  STORY_UNVOTED,
-  STORY_DELETED
-} = storiesEvents
+const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED } = storiesEvents
+
 const { COMMENT_CREATED, COMMENT_UPDATED, COMMENT_REMOVED } = commentsEvents
 
 export default {
   name: 'stories',
   initialState: Immutable({}),
-  eventHandlers: {
-    [STORY_CREATED]: (state, { timestamp, payload: { userId } }) =>
-      state.merge({
-        createdAt: timestamp,
-        createdBy: userId,
-        voted: [],
-        comments: {}
-      }),
-
-    [STORY_UPVOTED]: (state, { payload: { userId } }) =>
-      state.update('voted', voted => voted.concat(userId)),
-
-    [STORY_UNVOTED]: (state, { payload: { userId } }) =>
-      state.update('voted', voted =>
-        voted.filter(curUserId => curUserId !== userId)
-      ),
-    [COMMENT_CREATED]: (state, { timestamp, payload: { commentId, userId } }) =>
-      state.setIn(['comments', commentId], {
-        createdAt: timestamp,
-        createdBy: userId
-      }),
-
-    [COMMENT_REMOVED]: (state, { timestamp, payload: { commentId } }) =>
-      state.setIn(['comments', commentId, 'removedAt'], timestamp)
-  },
   commands: {
     createStory: (state: any, command: StoryCreated) => {
       const { title, link, userId, text } = command.payload
@@ -160,5 +133,30 @@ export default {
 
       return new Event(COMMENT_REMOVED, { commentId })
     }
+  },
+  eventHandlers: {
+    [STORY_CREATED]: (state, { timestamp, payload: { userId } }) =>
+      state.merge({
+        createdAt: timestamp,
+        createdBy: userId,
+        voted: [],
+        comments: {}
+      }),
+
+    [STORY_UPVOTED]: (state, { payload: { userId } }) =>
+      state.update('voted', voted => voted.concat(userId)),
+
+    [STORY_UNVOTED]: (state, { payload: { userId } }) =>
+      state.update('voted', voted =>
+        voted.filter(curUserId => curUserId !== userId)
+      ),
+    [COMMENT_CREATED]: (state, { timestamp, payload: { commentId, userId } }) =>
+      state.setIn(['comments', commentId], {
+        createdAt: timestamp,
+        createdBy: userId
+      }),
+
+    [COMMENT_REMOVED]: (state, { timestamp, payload: { commentId } }) =>
+      state.setIn(['comments', commentId, 'removedAt'], timestamp)
   }
 }
