@@ -40,14 +40,10 @@ export default {
       karma: Int
     }
     type Query {
-      users: [User]
-      users(id: ID): [User]
+      users(aggregateId: ID!): [User]
     }
   `,
   gqlResolvers: {
-    users: (root, args) =>
-      args.id
-        ? [root.find(({ id }) => id === args.id)].filter(user => user)
-        : root
+    users: (root, args) => root
   }
 }

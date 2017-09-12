@@ -1,6 +1,6 @@
-.login {
-    padding-left: 3em;
-    padding-right: 1.25em;
-    margin-top: 1em;
-    margin-bottom: .5em;
-  }
+.auth-form {
+  padding-left: 3em;
+  padding-right: 1.25em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}

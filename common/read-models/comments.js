@@ -16,9 +16,6 @@ const {
   USER_CREATED
 } = events
 
-const getCommentsByStoryId = (comments, storyId) =>
-  comments.filter(comment => comment.storyId === storyId)
-
 const getCommentWithChildren = (comments, id) => {
   const comment = comments.find(comment => comment.id === id)
   const result = []
@@ -30,8 +27,6 @@ const getCommentWithChildren = (comments, id) => {
   }
   return result
 }
-
-const userNameById = {}
 
 export default {
   name: 'comments',
@@ -93,12 +88,6 @@ export default {
       return nextState
         .slice(0, commentIndex)
         .concat(nextState.slice(commentIndex + 1))
-    },
-
-    [USER_CREATED]: (state: any, event: UserCreated) => {
-      const { aggregateId, payload: { name } } = event
-      userNameById[aggregateId] = name
-      return state
     }
   },
   gqlSchema: `
@@ -107,30 +96,41 @@ export default {
       id: ID!
       parentId: ID!
       storyId: ID!
-      createdByName: String
       createdAt: String!
       createdBy: String!
+      createdByName: String!
       replies: [String!]!
     }
     type Query {
-      comments: [Comment]
-      comments(page: Int, id: ID, aggregateId: ID): [Comment]
+      comments(page: Int, aggregateId: ID, commentId: ID): [Comment]
     }
   `,
   gqlResolvers: {
-    comments: (root, { id, aggregateId, page }) =>
-      (aggregateId
-        ? root
-        : id
-          ? getCommentWithChildren(root, id)
+    comments: async (
+      root,
+      { page, commentId, aggregateId },
+      { getReadModel }
+    ) => {
+      const result = commentId
+        ? getCommentWithChildren(root, commentId)
+        : aggregateId
+          ? root
           : page
             ? root.slice(
                 +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
                 +page * NUMBER_OF_ITEMS_PER_PAGE + 1
               )
-            : root).map(comment => ({
+            : root
+
+      const userIds = result.map(({ createdBy }) => createdBy)
+      const userNames = (await Promise.all(
+        userIds.map(userId => getReadModel('users', [userId]))
+      )).map(([{ name }]) => name)
+
+      return result.map((comment, index) => ({
         ...comment,
-        createdByName: userNameById[comment.createdBy]
+        createdByName: userNames[index]
       }))
+    }
   }
 }

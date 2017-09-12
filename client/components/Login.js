@@ -1,16 +1,16 @@
 import React from 'react'
 
-import LoginForm from './LoginForm'
+import AuthForm from './AuthForm'
 
 const Login = props => {
   return (
     <div>
-      <LoginForm
+      <AuthForm
         buttonText="login"
         action={`/login${props.location.search}`}
         title="Login"
       />
-      <LoginForm
+      <AuthForm
         buttonText="create account"
         action="/signup"
         title="Create account"

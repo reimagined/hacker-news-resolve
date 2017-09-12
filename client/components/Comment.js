@@ -15,18 +15,25 @@ class Comment extends React.PureComponent {
   render() {
     const {
       id,
+      storyId,
       level,
-      content,
-      user,
-      date,
+      text,
+      createdBy,
+      createdByName,
+      createdAt,
       showReply,
-      parent,
+      parentId,
       children
     } = this.props
 
-    if (!user || !id) {
+    if (!id) {
       return null
     }
+
+    const parent =
+      parentId === storyId
+        ? `/storyDetails/${storyId}`
+        : `/storyDetails/${storyId}/comments/${parentId}`
 
     return (
       <div>
@@ -44,42 +51,46 @@ class Comment extends React.PureComponent {
                 {' '}
                 <Link
                   className="comment__link comment__user"
-                  to={`/user/${user.id}`}
+                  to={`/user/${createdBy}`}
                 >
-                  {user.name}
+                  {createdByName}
                 </Link>
               </span>
               <span>
                 {' '}
-                <TimeAgo date={date} />
+                <TimeAgo date={new Date(+createdAt)} />
               </span>
               <span>
                 {' '}
                 |{' '}
-                <Link className="comment__link" to={`/comment/${id}`}>
+                <Link
+                  className="comment__link"
+                  to={`/storyDetails/${storyId}/comments/${id}`}
+                >
                   link
                 </Link>
               </span>
-              {parent && (
-                <span>
-                  {' '}
-                  |{' '}
-                  <Link className="comment__link" to={parent}>
-                    parent
-                  </Link>
-                </span>
-              )}
+              <span>
+                {' '}
+                |{' '}
+                <Link className="comment__link" to={parent}>
+                  parent
+                </Link>
+              </span>
             </div>
             {this.state.expanded ? (
               <div className="comment__text">
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: sanitizer.sanitize(content)
+                    __html: sanitizer.sanitize(text)
                   }}
                 />
                 <p>
                   {showReply && (
-                    <Link className="comment__reply" to={`/reply/${id}`}>
+                    <Link
+                      className="comment__reply"
+                      to={`/storyDetails/${storyId}/comments/${id}/reply`}
+                    >
                       reply
                     </Link>
                   )}

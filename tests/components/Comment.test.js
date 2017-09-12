@@ -8,11 +8,12 @@ it('Comment Level 0 renders correctly', () => {
     <Comment
       id="SomeId"
       level={0}
-      content="SomeContent"
-      user="SomeUser"
-      date={new Date(0)}
+      text="SomeContent"
+      createdBy="SomeUser"
+      createdAt={0}
       showReply={true}
-      parent="news"
+      storyId="story-id"
+      parentId="parent-id"
       root={{ id: 'SomeId', title: 'SomeTitle' }}
     />
   )
@@ -25,11 +26,12 @@ it('Comment Level 1 renders correctly', () => {
     <Comment
       id="SomeId"
       level={1}
-      content="SomeContent"
-      user="SomeUser"
-      date={new Date(0)}
+      text="SomeContent"
+      createdBy="SomeUser"
+      createdAt={0}
       showReply={true}
-      parent="news"
+      storyId="story-id"
+      parentId="parent-id"
       root={{ id: 'SomeId', title: 'SomeTitle' }}
     />
   )
@@ -42,12 +44,12 @@ it('Comment Level 20 renders correctly', () => {
     <Comment
       id="SomeId"
       level={20}
-      content="SomeContent"
-      user="SomeUser"
-      date={new Date(0)}
+      text="SomeContent"
+      createdBy="SomeUser"
+      createdAt={0}
       showReply={true}
-      parent="news"
-      root={{ id: 'SomeId', title: 'SomeTitle' }}
+      storyId="story-id"
+      parentId="parent-id"
     />
   )
 
@@ -59,12 +61,12 @@ it('Comment Level 20 renders correctly', () => {
     <Comment
       id="SomeId"
       level={20}
-      content="SomeContent"
-      user="SomeUser"
-      date={new Date(0)}
+      text="SomeContent"
+      createdBy="SomeUser"
+      createdAt={0}
       showReply={true}
-      parent="news"
-      root={{ id: 'SomeId', title: 'SomeTitle' }}
+      storyId="story-id"
+      parentId="parent-id"
     />
   )
 
@@ -76,12 +78,12 @@ it('Comment with state.expanded=false renders correctly', () => {
     <Comment
       id="SomeId"
       level={1}
-      content="SomeContent"
-      user="SomeUser"
-      date={new Date(0)}
+      text="SomeContent"
+      createdBy="SomeUser"
+      createdAt={0}
       showReply={true}
-      parent="news"
-      root={{ id: 'SomeId', title: 'SomeTitle' }}
+      storyId="story-id"
+      parentId="parent-id"
     />
   )
   markup.instance().expand()
@@ -94,12 +96,12 @@ it('Comment without childrens renders correctly', () => {
     <Comment
       id="SomeId"
       level={1}
-      content="SomeContent"
-      user="SomeUser"
-      date={new Date(0)}
+      text="SomeContent"
+      createdBy="SomeUser"
+      createdAt={0}
       showReply={true}
-      parent="news"
-      root={{ id: 'SomeId', title: 'SomeTitle' }}
+      storyId="story-id"
+      parentId="parent-id"
     />
   )
 

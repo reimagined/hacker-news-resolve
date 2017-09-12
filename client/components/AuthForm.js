@@ -2,8 +2,8 @@ import React from 'react'
 
 import '../styles/login.css'
 
-const LoginForm = ({ title, action, buttonText }) => (
-  <div className="login">
+const AuthForm = ({ title, action, buttonText }) => (
+  <div className="auth-form">
     <h2>{title}</h2>
     <form method="POST" action={action}>
       <table>
@@ -28,4 +28,4 @@ const LoginForm = ({ title, action, buttonText }) => (
   </div>
 )
 
-export default LoginForm
+export default AuthForm

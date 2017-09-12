@@ -17,28 +17,10 @@ const ChildrenComments = ({ replies, level, comments }) => {
           return null
         }
 
-        const {
-          id,
-          text,
-          replies,
-          createdAt,
-          createdBy,
-          createdByName
-        } = comment
+        const { id, replies } = comment
 
         return (
-          <Comment
-            key={id}
-            level={currentLevel}
-            id={id}
-            content={text}
-            user={{
-              id: createdBy,
-              name: createdByName
-            }}
-            date={new Date(+createdAt)}
-            showReply
-          >
+          <Comment key={id} level={currentLevel} {...comment} showReply>
             <ChildrenComments
               replies={replies}
               level={currentLevel}

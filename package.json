@@ -8,11 +8,10 @@
     "dev": "resolve-scripts dev",
     "import": "babel-node ./import ",
     "prettier": "prettier --single-quote --no-semi --write \"**/*.js\"",
-    "lint-staged": "lint-staged",
     "test": "jest",
     "test:coverage": "jest --u --coverage",
     "test:watch": "jest --watchAll",
-    "coveralls": "cat ./coverage/lcov.info | coveralls --verbose"
+    "lint-staged": "lint-staged"
   },
   "pre-commit": [
     "lint-staged",
@@ -56,7 +55,7 @@
     "react-timeago": "^3.4.3",
     "redux": "^3.7.2",
     "redux-saga": "^0.14.8",
-    "regenerator-runtime": "^0.10.5",
+    "resolve-es": "0.0.26",
     "resolve-bus-memory": "0.0.26",
     "resolve-redux": "0.0.26",
     "resolve-scripts": "0.0.26",
@@ -66,7 +65,6 @@
     "uuid": "^3.1.0"
   },
   "devDependencies": {
-    "coveralls": "^2.13.1",
     "css-loader": "^0.28.7",
     "enzyme": "^2.9.1",
     "extract-text-webpack-plugin": "^3.0.0",
