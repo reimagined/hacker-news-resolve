@@ -40,10 +40,16 @@ export default {
       karma: Int
     }
     type Query {
-      users(aggregateId: ID!): [User]
+      users(aggregateId: ID!, name: String): [User]
     }
   `,
   gqlResolvers: {
-    users: root => root
+    users: (root, { name }) => {
+      if(name) {
+        const userByName = root.find(user => user.name === name)
+        return userByName ? [ userByName ] : []
+      }
+      return root
+    }
   }
 }
