@@ -1,6 +1,6 @@
 import React from 'react'
 import { StaticRouter } from 'react-router'
-import storageDriver from 'resolve-storage-file'
+import storageDriver from './common/storage-driver'
 import busDriver from 'resolve-bus-memory'
 
 import createStore from './client/store'

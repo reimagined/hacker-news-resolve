@@ -44,6 +44,6 @@ export default {
     }
   `,
   gqlResolvers: {
-    users: (root, args) => root
+    users: root => root
   }
 }

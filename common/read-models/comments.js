@@ -6,15 +6,10 @@ import type {
   CommentUpdated,
   CommentRemoved
 } from '../events/comments'
-import type { UserCreated } from '../events/users'
 import events from '../events'
+import withUserNames from '../helpers/withUserNames'
 
-const {
-  COMMENT_CREATED,
-  COMMENT_UPDATED,
-  COMMENT_REMOVED,
-  USER_CREATED
-} = events
+const { COMMENT_CREATED, COMMENT_UPDATED, COMMENT_REMOVED } = events
 
 const getCommentWithChildren = (comments, id) => {
   const comment = comments.find(comment => comment.id === id)
@@ -111,7 +106,7 @@ export default {
       { page, commentId, aggregateId },
       { getReadModel }
     ) => {
-      const result = commentId
+      const comments = commentId
         ? getCommentWithChildren(root, commentId)
         : aggregateId
           ? root
@@ -122,15 +117,7 @@ export default {
               )
             : root
 
-      const userIds = result.map(({ createdBy }) => createdBy)
-      const userNames = (await Promise.all(
-        userIds.map(userId => getReadModel('users', [userId]))
-      )).map(([{ name }]) => name)
-
-      return result.map((comment, index) => ({
-        ...comment,
-        createdByName: userNames[index]
-      }))
+      return withUserNames(comments, getReadModel)
     }
   }
 }

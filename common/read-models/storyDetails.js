@@ -1,6 +1,7 @@
 import Immutable from '../immutable'
 import events from '../events'
 import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants'
+import withUserNames from '../helpers/withUserNames'
 
 import type { CommentCreated, CommentRemoved } from '../events/comments'
 import type {
@@ -151,7 +152,7 @@ export default {
       { page, aggregateId, type },
       { getReadModel }
     ) => {
-      const result = aggregateId
+      const storyDetails = aggregateId
         ? root
         : page
           ? (type ? root.filter(story => story.type === type) : root).slice(
@@ -160,15 +161,7 @@ export default {
             )
           : root
 
-      const userIds = result.map(({ createdBy }) => createdBy)
-      const userNames = (await Promise.all(
-        userIds.map(userId => getReadModel('users', [userId]))
-      )).map(([{ name }]) => name)
-
-      return result.map((story, index) => ({
-        ...story,
-        createdByName: userNames[index]
-      }))
+      return withUserNames(storyDetails, getReadModel)
     }
   }
 }
