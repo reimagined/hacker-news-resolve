@@ -3,8 +3,7 @@ import Immutable from 'seamless-immutable'
 import type {
   StoryCreated,
   StoryUpvoted,
-  StoryUnvoted,
-  StoryDeleted
+  StoryUnvoted
 } from '../events/stories'
 import type {
   CommentCreated,
@@ -110,12 +109,6 @@ export default {
       return new Event(STORY_UNVOTED, {
         userId
       })
-    },
-
-    deleteStory: (state: any, command: StoryDeleted) => {
-      throwIfAggregateIsNotExists(state, command)
-
-      return new Event(STORY_DELETED)
     },
 
     createComment: (state: any, command: CommentCreated) => {

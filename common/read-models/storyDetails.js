@@ -6,8 +6,7 @@ import type { CommentCreated, CommentRemoved } from '../events/comments'
 import type {
   StoryCreated,
   StoryUpvoted,
-  StoryUnvoted,
-  StoryDeleted
+  StoryUnvoted
 } from '../events/stories'
 
 const {
@@ -75,9 +74,6 @@ export default {
         votes.filter(id => id !== userId)
       )
     },
-
-    [STORY_DELETED]: (state: any, event: StoryDeleted) =>
-      state.filter(({ id }) => id !== event.aggregateId),
 
     [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
       const { parentId, commentId } = event.payload
