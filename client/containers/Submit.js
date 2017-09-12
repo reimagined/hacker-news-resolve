@@ -31,6 +31,10 @@ export class Submit extends React.PureComponent {
       return <Redirect push to={`/storyDetails/${this.props.createdStoryId}`} />
     }
 
+    if (!this.props.userId) {
+      return <Redirect push to="/login?redirect=/submit" />
+    }
+
     return (
       <div className="submit">
         <table border="0">

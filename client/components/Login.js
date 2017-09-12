@@ -2,10 +2,14 @@ import React from 'react'
 
 import LoginForm from './LoginForm'
 
-const Login = () => {
+const Login = props => {
   return (
     <div>
-      <LoginForm buttonText="login" action="/login" title="Login" />
+      <LoginForm
+        buttonText="login"
+        action={`/login${props.location.search}`}
+        title="Login"
+      />
       <LoginForm
         buttonText="create account"
         action="/signup"
