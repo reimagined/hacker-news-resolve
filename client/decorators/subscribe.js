@@ -59,8 +59,6 @@ export default subscribe => Component => {
           )
         } catch (error) {
           store.dispatch(actions.replaceState(readModel.name, prevState))
-
-          // eslint-disable-next-line no-console
           console.log(error)
         }
       })

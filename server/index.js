@@ -49,7 +49,7 @@ export const extendExpress = express => {
     }
   }
 
-  express.get(
+  express.post(
     '/signup',
     passport.authenticate('local', {
       failureRedirect: '/error/?text=Unauthorized'
@@ -83,7 +83,7 @@ export const extendExpress = express => {
     }
   )
 
-  express.get(
+  express.post(
     '/login',
     passport.authenticate('local', {
       failureRedirect: '/error/?text=Unauthorized'

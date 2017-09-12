@@ -86,18 +86,16 @@ export class App extends React.PureComponent {
             >
               ask
             </NavLink>
-            {loggedIn ? (
-              <span>
-                {' | '}
-                <NavLink
-                  className="app__link"
-                  to="/submit"
-                  activeClassName="app__link--active"
-                >
-                  submit
-                </NavLink>
-              </span>
-            ) : null}
+            <span>
+              {' | '}
+              <NavLink
+                className="app__link"
+                to="/submit"
+                activeClassName="app__link--active"
+              >
+                submit
+              </NavLink>
+            </span>
             <div style={{ float: 'right' }}>
               {loggedIn ? (
                 <div>

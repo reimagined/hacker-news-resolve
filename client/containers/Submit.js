@@ -31,6 +31,10 @@ export class Submit extends React.PureComponent {
       return <Redirect push to={`/storyDetails/${this.props.createdStoryId}`} />
     }
 
+    if (!this.props.userId) {
+      return <Redirect to="/login?redirect=/submit" />
+    }
+
     return (
       <div className="submit">
         <table style={{ border: '0' }}>
@@ -75,14 +79,25 @@ export class Submit extends React.PureComponent {
                 />
               </td>
             </tr>
-            <tr>
+            <tr className="error-message">
               <td />
-              <td />
+              <td>
+                {this.props.storyCreationError ? (
+                  this.props.storyCreationError
+                ) : (
+                  ''
+                )}
+              </td>
             </tr>
             <tr>
               <td />
               <td>
-                <button onClick={this.handleSubmit}>submit</button>
+                <button
+                  onClick={this.handleSubmit}
+                  disabled={this.props.storyCreation}
+                >
+                  submit
+                </button>
               </td>
             </tr>
             <tr>
@@ -104,6 +119,8 @@ export class Submit extends React.PureComponent {
 
 export const mapStateToProps = ({ user, ui }) => ({
   userId: user.id,
+  storyCreation: ui.storyCreation,
+  storyCreationError: ui.storyCreationError,
   createdStoryId: ui.createdStoryId
 })
 

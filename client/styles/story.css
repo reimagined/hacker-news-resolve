@@ -3,11 +3,11 @@
 }
 .story__title {
   color: #666;
-  font-size:14px;
+  font-size: 14px;
 }
 .story__text {
   color: #666;
-  font-size:14px;
+  font-size: 14px;
   padding-left: 1.25em;
   padding-top: 1.25em;
 }
@@ -15,7 +15,7 @@
   padding-left: 3em;
   padding-right: 1.25em;
   margin-top: 1em;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 .story__title-link {
   text-decoration: none;
@@ -45,14 +45,15 @@
   font-weight: bold;
 }
 
-.story__votearrow, .story__votearrow--hidden {
+.story__votearrow,
+.story__votearrow--hidden {
   cursor: pointer;
-  width:      10px;
-  height:     10px;
-  border:     0px;
-  margin:     3px 2px 2px;
+  width: 10px;
+  height: 10px;
+  border: 0px;
+  margin: 3px 2px 2px;
   display: inline-block;
-  background: url("/static/img/grayarrow.gif") no-repeat;
+  background: url('/static/img/grayarrow.gif') no-repeat;
 }
 
 .story__votearrow--hidden {

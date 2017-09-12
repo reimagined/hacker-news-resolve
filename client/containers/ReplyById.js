@@ -21,7 +21,7 @@ export class ReplyById extends React.PureComponent {
       userId: this.props.userId,
       storyId: this.props.storyId
     })
-    // eslint-disable-next-line no-restricted-globals
+
     setTimeout(() => history.back(), 500)
   }
 
