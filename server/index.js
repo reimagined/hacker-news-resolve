@@ -1,14 +1,12 @@
 import crypto from 'crypto'
 import jwt from 'jsonwebtoken'
 import passport from 'passport'
-import cookieParser from 'cookie-parser'
 import LocalStrategy from 'passport-local'
 import uuid from 'uuid'
 
 import { authorizationSecret } from '../common/constants'
 
 export const extendExpress = express => {
-  express.use(cookieParser())
   express.use(passport.initialize())
   passport.serializeUser((user, done) => done(null, user))
   passport.deserializeUser((user, done) => done(null, user))
