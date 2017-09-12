@@ -25,8 +25,7 @@ describe('read-models', () => {
           name: event.payload.name,
           passwordHash: event.payload.passwordHash,
           id: event.aggregateId,
-          createdAt: event.timestamp,
-          karma: 0
+          createdAt: event.timestamp
         }
       ]
 
