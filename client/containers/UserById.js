@@ -29,9 +29,6 @@ export const UserById = ({ user }) => {
           </tr>
         </tbody>
       </table>
-      <div>
-        <Link to="/changepw">change password</Link>
-      </div>
     </div>
   )
 }
