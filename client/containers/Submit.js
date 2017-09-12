@@ -32,7 +32,7 @@ export class Submit extends React.PureComponent {
     }
 
     if (!this.props.userId) {
-      return <Redirect push to="/login?redirect=/submit" />
+      return <Redirect to="/login?redirect=/submit" />
     }
 
     return (
