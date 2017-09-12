@@ -9,9 +9,6 @@ const { USER_CREATED } = events
 export default {
   name: 'users',
   initialState: Immutable({}),
-  eventHandlers: {
-    [USER_CREATED]: (state, { timestamp }) => state.set('createdAt', timestamp)
-  },
   commands: {
     createUser: (state: any, command: UserCreated) => {
       const { name } = command.payload
@@ -24,5 +21,8 @@ export default {
 
       return new Event(USER_CREATED, { name })
     }
+  },
+  eventHandlers: {
+    [USER_CREATED]: (state, { timestamp }) => state.set('createdAt', timestamp)
   }
 }

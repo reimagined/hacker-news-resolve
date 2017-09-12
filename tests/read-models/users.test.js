@@ -23,8 +23,7 @@ describe('read-models', () => {
         {
           name: event.payload.name,
           id: event.aggregateId,
-          createdAt: event.timestamp,
-          karma: 0
+          createdAt: event.timestamp
         }
       ]
 

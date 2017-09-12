@@ -171,24 +171,6 @@ describe('read-models', () => {
       )
     })
 
-    it('eventHandler "STORY_DELETED" should delete the story', () => {
-      const aggregateId = uuid.v4()
-
-      const state = storyDetails.initialState.concat({
-        id: aggregateId
-      })
-
-      const event = {
-        aggregateId
-      }
-
-      const nextState = []
-
-      expect(storyDetails.eventHandlers[STORY_DELETED](state, event)).toEqual(
-        nextState
-      )
-    })
-
     it('eventHandler "COMMENT_CREATED" should add comment.id to story.comments', () => {
       const parentId = uuid.v4()
       const commentId = uuid.v4()
