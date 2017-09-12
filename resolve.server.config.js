@@ -1,26 +1,19 @@
-import React from 'react'
-import { StaticRouter } from 'react-router'
 import storageDriver from 'resolve-storage-file'
 import busDriver from 'resolve-bus-memory'
 
+import { serverRootComponent } from './client/components/App'
 import createStore from './client/store'
-import RouteWithSubRoutes from './client/components/RouteWithSubRoutes'
 import aggregates from './common/aggregates'
 import queries from './common/read-models'
 import events from './common/events'
 import { extendExpress, initialState } from './server'
-import routes from './client/routes'
 
 const eventTypes = Object.keys(events).map(key => events[key])
 
 export default {
   entries: {
     createStore,
-    rootComponent: (props, context) => (
-      <StaticRouter location={props.url} context={{}}>
-        <RouteWithSubRoutes routes={routes} />
-      </StaticRouter>
-    )
+    rootComponent: serverRootComponent
   },
   bus: { driver: busDriver },
   storage: {
