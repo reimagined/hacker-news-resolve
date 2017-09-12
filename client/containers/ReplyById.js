@@ -21,7 +21,7 @@ export class ReplyById extends Component {
       userId,
       storyId
     })
-    // eslint-disable-next-line no-restricted-globals
+
     setTimeout(() => history.back(), 500)
   }
 

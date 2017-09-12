@@ -33,8 +33,6 @@ export default initialState => {
           }
 
           const text = await response.text()
-
-          // eslint-disable-next-line no-console
           console.error('Error due command sent: ', text)
           return Promise.reject(text)
         }
