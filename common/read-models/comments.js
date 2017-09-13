@@ -47,9 +47,7 @@ export default {
     [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
       const { payload: { commentId } } = event
 
-      return state.filter(
-        ({ id }) => id !== commentId
-      )
+      return state.filter(({ id }) => id !== commentId)
     }
   },
   gqlSchema: `
@@ -67,11 +65,7 @@ export default {
     }
   `,
   gqlResolvers: {
-    comments: async (
-      root,
-      { page },
-      { getReadModel }
-    ) => {
+    comments: async (root, { page }, { getReadModel }) => {
       const comments = root.slice(
         +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
         +page * NUMBER_OF_ITEMS_PER_PAGE + 1

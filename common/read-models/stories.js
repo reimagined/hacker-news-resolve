@@ -33,23 +33,20 @@ export default {
 
       const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
 
-      return Immutable(
-        [
-          {
-            id: aggregateId,
-            type,
-            title,
-            text,
-            createdBy: userId,
-            createdAt: timestamp,
-            link,
-            comments: [],
-            commentsCount: 0,
-            votes: []
-          },
-          ...state
-        ]
-      )
+      return Immutable([
+        {
+          id: aggregateId,
+          type,
+          title,
+          text,
+          createdBy: userId,
+          createdAt: timestamp,
+          link,
+          repliesCount: 0,
+          votes: []
+        },
+        ...state
+      ])
     },
 
     [STORY_UPVOTED]: (state: any, event: StoryUpvoted) => {
@@ -88,10 +85,7 @@ export default {
         return state
       }
 
-      return state.updateIn(
-        [storyIndex, 'repliesCount'],
-        count => count + 1
-      )
+      return state.updateIn([storyIndex, 'repliesCount'], count => count + 1)
     },
 
     [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
@@ -101,10 +95,7 @@ export default {
         return state
       }
 
-      return state.updateIn(
-        [storyIndex, 'repliesCount'],
-        count => count - 1
-      )
+      return state.updateIn([storyIndex, 'repliesCount'], count => count - 1)
     }
   },
   gqlSchema: `
@@ -124,15 +115,13 @@ export default {
     }
   `,
   gqlResolvers: {
-    stories: async (
-      root,
-      { page, type },
-      { getReadModel }
-    ) => {
-      const stories = (type ? root.filter(story => story.type === type) : root).slice(
+    stories: async (root, { page, type }, { getReadModel }) => {
+      const stories = (type
+        ? root.filter(story => story.type === type)
+        : root).slice(
         +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
         +page * NUMBER_OF_ITEMS_PER_PAGE + 1
-      );
+      )
 
       return withUserNames(stories, getReadModel)
     }

@@ -8,7 +8,6 @@ import actions from '../actions/storiesActions'
 import ChildrenComments from '../components/ChildrenComments'
 import subscribe from '../decorators/subscribe'
 import storyDetails from '../../common/read-models/storyDetails'
-import comments from '../../common/read-models/comments'
 import '../styles/storyDetails.css'
 
 export class StoryDetails extends React.PureComponent {
@@ -31,7 +30,7 @@ export class StoryDetails extends React.PureComponent {
     })
 
   render() {
-    const { story, comments, loggedIn } = this.props
+    const { story, replies, loggedIn } = this.props
 
     if (!story) {
       return null
@@ -57,19 +56,19 @@ export class StoryDetails extends React.PureComponent {
           </div>
         ) : null}
         <div>
-          <ChildrenComments replies={story.comments} comments={comments} />
-        </div>*
+          <ChildrenComments replies={story.replies} comments={replies} />
+        </div>
       </div>
     )
   }
 }
 
 export const mapStateToProps = (
-  { storyDetails, comments, user },
+  { storyDetails, replies, user },
   { match: { params: { storyId } } }
 ) => ({
   story: storyDetails[0],
-  comments: storyDetails.slice(1),
+  replies: storyDetails.slice(1),
   userId: user.id,
   loggedIn: !!user.id
 })

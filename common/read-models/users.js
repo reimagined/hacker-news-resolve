@@ -45,9 +45,9 @@ export default {
   `,
   gqlResolvers: {
     users: (root, { name }) => {
-      if(name) {
+      if (name) {
         const userByName = root.find(user => user.name === name)
-        return userByName ? [ userByName ] : []
+        return userByName ? [userByName] : []
       }
       return root
     }

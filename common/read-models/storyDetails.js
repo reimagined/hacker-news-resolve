@@ -94,8 +94,7 @@ export default {
       )
     },
 
-    [STORY_DELETED]: (state: any, event: StoryDeleted) =>
-      Immutable([]),
+    [STORY_DELETED]: (state: any, event: StoryDeleted) => Immutable([]),
 
     [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
       const {
@@ -116,23 +115,19 @@ export default {
         count => count + 1
       )
 
-      newState = newState.set(
-        newState.length,
-        {
-          text,
-          id: commentId,
-          parentId,
-          storyId: aggregateId,
-          createdAt: timestamp,
-          createdBy: userId,
-          replies: []
-        }
-      )
+      newState = newState.set(newState.length, {
+        text,
+        id: commentId,
+        parentId,
+        storyId: aggregateId,
+        createdAt: timestamp,
+        createdBy: userId,
+        replies: []
+      })
 
-      return newState.updateIn([
-        parentIndex,
-        'replies'
-      ], replies => replies.concat(commentId))
+      return newState.updateIn([parentIndex, 'replies'], replies =>
+        replies.concat(commentId)
+      )
     },
 
     [COMMENT_UPDATED]: (state: any, event: CommentUpdated) => {
@@ -159,14 +154,11 @@ export default {
         count => count - 1
       )
 
-      newState = newState.filter(
-        (_, index) => index !== commentIndex
-      )
+      newState = newState.filter((_, index) => index !== commentIndex)
 
-      newState.updateIn([
-        parentIndex,
-        'replies'
-      ], replies => replies.filter(id => id !== commentId))
+      newState.updateIn([parentIndex, 'replies'], replies =>
+        replies.filter(id => id !== commentId)
+      )
     }
   },
   gqlSchema: ` 
@@ -190,12 +182,10 @@ export default {
     }
   `,
   gqlResolvers: {
-    storyDetails: async (
-      root,
-      { aggregateId, commentId },
-      { getReadModel }
-    ) => withUserNames(commentId
-      ? getCommentWithChildren(root, commentId)
-      : root, getReadModel)
+    storyDetails: async (root, { aggregateId, commentId }, { getReadModel }) =>
+      withUserNames(
+        commentId ? getCommentWithChildren(root, commentId) : root,
+        getReadModel
+      )
   }
 }
