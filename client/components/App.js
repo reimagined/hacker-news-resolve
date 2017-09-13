@@ -11,7 +11,7 @@ export const clientRootComponent = () => (
   </BrowserRouter>
 )
 
-export const serverRootComponent = (props, context) => (
+export const serverRootComponent = props => (
   <StaticRouter location={props.url} context={{}}>
     <RouteWithSubRoutes routes={routes} />
   </StaticRouter>
