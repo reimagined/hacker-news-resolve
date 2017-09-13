@@ -38,10 +38,7 @@ const addEvent = (type, aggregateId, timestamp, payload) =>
 
 const generateUserEvents = name => {
   const aggregateId = uuid.v4()
-  addEvent(USER_CREATED, aggregateId, USER_CREATED_TIMESTAMP, {
-    name,
-    passwordHash: 'TODO:'
-  })
+  addEvent(USER_CREATED, aggregateId, USER_CREATED_TIMESTAMP, { name })
   users[name] = aggregateId
   return aggregateId
 }
