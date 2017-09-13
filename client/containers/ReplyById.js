@@ -6,7 +6,7 @@ import uuid from 'uuid'
 import actions from '../actions/storiesActions'
 import Comment from '../components/Comment'
 import subscribe from '../decorators/subscribe'
-import comments from '../../common/read-models/comments'
+import storyDetails from '../../common/read-models/storyDetails'
 import '../styles/reply.css'
 
 export class ReplyById extends React.PureComponent {
@@ -75,10 +75,10 @@ const mapDispatchToProps = dispatch =>
   )
 
 const mapStateToProps = (
-  { comments, user },
+  { storyDetails, user },
   { match: { params: { commentId, storyId } } }
 ) => ({
-  comment: comments.find(({ id }) => id === commentId),
+  comment: storyDetails.find(({ id }) => id === commentId),
   userId: user.id,
   loggedIn: !!user.id,
   storyId
@@ -87,9 +87,9 @@ const mapStateToProps = (
 export default subscribe(({ match: { params: { storyId, commentId } } }) => ({
   graphQL: [
     {
-      readModel: comments,
+      readModel: storyDetails,
       query:
-        'query ($aggregateId: String, $commentId: String!) { comments(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
+        'query ($aggregateId: String, $commentId: String!) { storyDetails(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
       variables: {
         aggregateId: storyId,
         commentId
