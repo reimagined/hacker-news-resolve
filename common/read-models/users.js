@@ -26,7 +26,7 @@ export default {
       createdAt: String
     }
     type Query {
-      users(aggregateId: ID!): [User]
+      users(aggregateId: ID!, name: String): [User]
     }
   `,
   gqlResolvers: {

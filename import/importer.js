@@ -1,7 +1,7 @@
 import fs from 'fs'
 import uuid from 'uuid'
 import createEventStore from 'resolve-es'
-import createStorage from 'resolve-storage-file'
+import createStorage from '../common/storage-driver'
 import createBus from 'resolve-bus-memory'
 
 import eventTypes from '../common/events/index'

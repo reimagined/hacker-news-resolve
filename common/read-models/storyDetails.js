@@ -1,13 +1,18 @@
 import Immutable from '../immutable'
 import events from '../events'
-import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants'
+import withUserNames from '../helpers/withUserNames'
 
-import type { CommentCreated, CommentRemoved } from '../events/comments'
 import type {
   StoryCreated,
   StoryUpvoted,
   StoryUnvoted
 } from '../events/stories'
+
+import type {
+  CommentCreated,
+  CommentUpdated,
+  CommentRemoved
+} from '../events/comments'
 
 const {
   STORY_CREATED,
@@ -15,8 +20,23 @@ const {
   STORY_UNVOTED,
   STORY_DELETED,
   COMMENT_CREATED,
+  COMMENT_UPDATED,
   COMMENT_REMOVED
 } = events
+
+const getCommentWithChildren = (comments, id) => {
+  const parent = comments.find(comment => comment.id === id)
+  const result = []
+  if (parent) {
+    result.push(parent)
+    comments.forEach(comment => {
+      if (comment.parentId === parent.id) {
+        result.push(...getCommentWithChildren(comments, comment.id))
+      }
+    })
+  }
+  return result
+}
 
 export default {
   name: 'storyDetails',
@@ -41,8 +61,7 @@ export default {
             createdBy: userId,
             createdAt: timestamp,
             link,
-            comments: [],
-            commentsCount: 0,
+            repliesCount: 0,
             votes: []
           }
         ].concat(state)
@@ -76,95 +95,94 @@ export default {
     },
 
     [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
-      const { parentId, commentId } = event.payload
-      const storyIndex = state.findIndex(({ id }) => id === event.aggregateId)
+      const {
+        aggregateId,
+        timestamp,
+        payload: { parentId, commentId, userId, text }
+      } = event
 
+      const storyIndex = state.findIndex(({ id }) => id === aggregateId)
       if (storyIndex < 0) {
         return state
       }
+      if (parentId !== aggregateId) {
+        const parentReplyIndex = state.findIndex(({ id }) => id === parentId)
+        if (parentReplyIndex < 0) {
+          return state
+        }
+      }
 
       let newState = state.updateIn(
-        [storyIndex, 'commentsCount'],
+        [storyIndex, 'repliesCount'],
         count => count + 1
       )
 
-      const parentIndex = state.findIndex(({ id }) => id === parentId)
+      return newState.set(newState.length, {
+        id: commentId,
+        parentId,
+        text,
+        createdAt: timestamp,
+        createdBy: userId
+      })
+    },
 
-      if (parentIndex < 0) {
-        return newState
+    [COMMENT_UPDATED]: (state: any, event: CommentUpdated) => {
+      const { aggregateId, payload: { commentId, text } } = event
+
+      const storyIndex = state.findIndex(({ id }) => id === aggregateId)
+      if (storyIndex < 0) {
+        return state
       }
-
-      return newState.updateIn([parentIndex, 'comments'], comments =>
-        comments.concat(commentId)
-      )
+      const commentIndex = state.findIndex(({ id }) => id === commentId)
+      if (commentIndex < 0) {
+        return state
+      }
+      return state.setIn([commentIndex, 'text'], text)
     },
 
     [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
-      const { parentId, commentId } = event.payload
-      const storyIndex = state.findIndex(({ id }) => id === event.aggregateId)
+      const { aggregateId, payload: { commentId } } = event
 
+      const storyIndex = state.findIndex(({ id }) => id === aggregateId)
       if (storyIndex < 0) {
+        return state
+      }
+      const replyIndex = state.findIndex(({ id }) => id === commentId)
+      if (replyIndex < 0) {
         return state
       }
 
       let newState = state.updateIn(
-        [storyIndex, 'commentsCount'],
+        [storyIndex, 'repliesCount'],
         count => count - 1
       )
-
-      const parentIndex = state.findIndex(({ id }) => id === parentId)
-
-      if (parentIndex < 0) {
-        return newState
-      }
-
-      return newState.updateIn([parentIndex, 'comments'], comments =>
-        comments.filter(id => id !== commentId)
-      )
+      return newState.filter((_, index) => index !== replyIndex) //TODO: remove kids
     }
   },
-  gqlSchema: `
-    type Story {
+  gqlSchema: ` 
+    type StoryDetails {
       id: ID!
-      type: String!
-      title: String!
+      type: String
+      title: String
       text: String
       createdBy: String!
       createdByName: String!
       createdAt: String!
       link: String
-      comments: [String]
-      commentsCount: Int!
+      repliesCount: Int
       votes: [String]
+      parentId: ID
+      storyId: ID
     }
     type Query {
-      storyDetails(page: Int, aggregateId: ID, type: String): [Story]
+      storyDetails(aggregateId: ID!, commentId: ID): [StoryDetails]
     }
   `,
   gqlResolvers: {
-    storyDetails: async (
-      root,
-      { page, aggregateId, type },
-      { getReadModel }
-    ) => {
-      const result = aggregateId
-        ? root
-        : page
-          ? (type ? root.filter(story => story.type === type) : root).slice(
-              +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
-              +page * NUMBER_OF_ITEMS_PER_PAGE + 1
-            )
-          : root
-
-      const userIds = result.map(({ createdBy }) => createdBy)
-      const userNames = (await Promise.all(
-        userIds.map(userId => getReadModel('users', [userId]))
-      )).map(([{ name }]) => name)
-
-      return result.map((story, index) => ({
-        ...story,
-        createdByName: userNames[index]
-      }))
-    }
+    storyDetails: async (root, { aggregateId, commentId }, { getReadModel }) =>
+      withUserNames(
+        commentId ? getCommentWithChildren(root, commentId) : root,
+        getReadModel
+      )
   }
 }

@@ -3,6 +3,7 @@ import user from './user'
 import users from './users'
 import comments from './comments'
 import storyDetails from './storyDetails'
+import stories from './stories'
 import ui from './ui'
 
 export default combineReducers({
@@ -10,5 +11,6 @@ export default combineReducers({
   users,
   comments,
   storyDetails,
+  stories,
   ui
 })

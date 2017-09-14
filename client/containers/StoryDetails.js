@@ -8,7 +8,6 @@ import actions from '../actions/storiesActions'
 import ChildrenComments from '../components/ChildrenComments'
 import subscribe from '../decorators/subscribe'
 import storyDetails from '../../common/read-models/storyDetails'
-import comments from '../../common/read-models/comments'
 import '../styles/storyDetails.css'
 
 export class StoryDetails extends React.PureComponent {
@@ -31,7 +30,7 @@ export class StoryDetails extends React.PureComponent {
     })
 
   render() {
-    const { story, comments, loggedIn } = this.props
+    const { story, replies, loggedIn } = this.props
 
     if (!story) {
       return null
@@ -57,7 +56,11 @@ export class StoryDetails extends React.PureComponent {
           </div>
         ) : null}
         <div>
-          <ChildrenComments replies={story.comments} comments={comments} />
+          <ChildrenComments
+            storyId={story.id}
+            comments={replies}
+            parentId={story.id}
+          />
         </div>
       </div>
     )
@@ -65,11 +68,11 @@ export class StoryDetails extends React.PureComponent {
 }
 
 export const mapStateToProps = (
-  { storyDetails, comments, user },
+  { storyDetails, replies, user },
   { match: { params: { storyId } } }
 ) => ({
-  story: storyDetails.find(story => story.id === storyId),
-  comments,
+  story: storyDetails[0],
+  replies: storyDetails.slice(1),
   userId: user.id,
   loggedIn: !!user.id
 })
@@ -93,15 +96,7 @@ export default subscribe(({ match: { params: { storyId } } }) => ({
     {
       readModel: storyDetails,
       query:
-        'query ($aggregateId: ID!) { storyDetails(aggregateId: $aggregateId) { id, type, title, text, createdAt, createdBy, createdByName, link, comments, commentsCount, votes } }',
-      variables: {
-        aggregateId: storyId
-      }
-    },
-    {
-      readModel: comments,
-      query:
-        'query ($aggregateId: ID!) { comments(aggregateId: $aggregateId) {  text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
+        'query ($aggregateId: ID!) { storyDetails(aggregateId: $aggregateId) { id, type, title, text, createdAt, createdBy, createdByName, link, repliesCount, votes, parentId } }',
       variables: {
         aggregateId: storyId
       }

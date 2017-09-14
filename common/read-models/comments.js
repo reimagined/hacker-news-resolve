@@ -6,27 +6,10 @@ import type {
   CommentUpdated,
   CommentRemoved
 } from '../events/comments'
-import type { UserCreated } from '../events/users'
 import events from '../events'
+import withUserNames from '../helpers/withUserNames'
 
-const {
-  COMMENT_CREATED,
-  COMMENT_UPDATED,
-  COMMENT_REMOVED,
-  USER_CREATED
-} = events
-
-const getCommentWithChildren = (comments, id) => {
-  const comment = comments.find(comment => comment.id === id)
-  const result = []
-  if (comment) {
-    result.push(comment)
-    comment.replies.forEach(commentId =>
-      result.push(...getCommentWithChildren(comments, commentId))
-    )
-  }
-  return result
-}
+const { COMMENT_CREATED, COMMENT_UPDATED, COMMENT_REMOVED } = events
 
 export default {
   name: 'comments',
@@ -36,58 +19,35 @@ export default {
       const {
         aggregateId,
         timestamp,
-        payload: { parentId, userId, text }
+        payload: { parentId, userId, commentId, text }
       } = event
-
-      const id = event.payload.commentId
-      let nextState = state
-      const parentIndex = state.findIndex(({ id }) => id === parentId)
-
-      if (parentIndex >= 0) {
-        nextState = nextState.updateIn([parentIndex, 'replies'], replies =>
-          replies.concat(id)
-        )
-      }
 
       return Immutable(
         [
           {
+            id: commentId,
             text,
-            id,
             parentId: parentId,
             storyId: aggregateId,
             createdAt: timestamp,
-            createdBy: userId,
-            replies: []
+            createdBy: userId
           }
-        ].concat(nextState)
+        ].concat(state)
       )
     },
 
     [COMMENT_UPDATED]: (state: any, event: CommentUpdated) => {
-      const { text } = event.payload
-      const id = event.payload.commentId
-      const index = state.findIndex(comment => comment.id === id)
-      return state.setIn([index, 'text'], text)
+      const { payload: { commentId, text } } = event
+
+      const commentIndex = state.findIndex(comment => comment.id === commentId)
+
+      return state.setIn([commentIndex, 'text'], text)
     },
 
     [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
-      const id = event.payload.commentId
-      const commentIndex = state.findIndex(comment => comment.id === id)
-      const parentId = state[commentIndex].parentId
-      const parentIndex = state.findIndex(comment => comment.id === parentId)
+      const { payload: { commentId } } = event
 
-      let nextState = state
-
-      if (parentIndex >= 0) {
-        nextState = nextState.updateIn([parentIndex, 'replies'], replies =>
-          replies.filter(replyId => replyId !== id)
-        )
-      }
-
-      return nextState
-        .slice(0, commentIndex)
-        .concat(nextState.slice(commentIndex + 1))
+      return state.filter(({ id }) => id !== commentId)
     }
   },
   gqlSchema: `
@@ -99,38 +59,19 @@ export default {
       createdAt: String!
       createdBy: String!
       createdByName: String!
-      replies: [String!]!
     }
     type Query {
-      comments(page: Int, aggregateId: ID, commentId: ID): [Comment]
+      comments(page: Int!): [Comment]
     }
   `,
   gqlResolvers: {
-    comments: async (
-      root,
-      { page, commentId, aggregateId },
-      { getReadModel }
-    ) => {
-      const result = commentId
-        ? getCommentWithChildren(root, commentId)
-        : aggregateId
-          ? root
-          : page
-            ? root.slice(
-                +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
-                +page * NUMBER_OF_ITEMS_PER_PAGE + 1
-              )
-            : root
+    comments: async (root, { page }, { getReadModel }) => {
+      const comments = root.slice(
+        +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
+        +page * NUMBER_OF_ITEMS_PER_PAGE + 1
+      )
 
-      const userIds = result.map(({ createdBy }) => createdBy)
-      const userNames = (await Promise.all(
-        userIds.map(userId => getReadModel('users', [userId]))
-      )).map(([{ name }]) => name)
-
-      return result.map((comment, index) => ({
-        ...comment,
-        createdByName: userNames[index]
-      }))
+      return withUserNames(comments, getReadModel)
     }
   }
 }

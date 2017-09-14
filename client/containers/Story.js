@@ -74,14 +74,14 @@ export const PostedBy = ({ id, name }) => {
   )
 }
 
-export const Comment = ({ id, commentCount }) => {
+export const Comment = ({ id, repliesCount }) => {
   return (
     <span>
       <span>
         |{' '}
         <Link className="story__meta-link" to={`/storyDetails/${id}`}>
-          {commentCount > 0 ? (
-            `${commentCount} ${plur('comment', commentCount)}`
+          {repliesCount > 0 ? (
+            `${repliesCount} ${plur('comment', repliesCount)}`
           ) : (
             'discuss'
           )}
@@ -98,7 +98,7 @@ export const Meta = props => {
     createdByName,
     createdAt,
     votes,
-    commentCount,
+    repliesCount,
     voted,
     loggedIn,
     unvoteStory
@@ -120,9 +120,7 @@ export const Meta = props => {
           </span>{' '}
         </span>
       )}
-      {commentCount !== undefined ? (
-        <Comment id={id} commentCount={commentCount} />
-      ) : null}
+      <Comment id={id} repliesCount={repliesCount} />
     </div>
   )
 }
@@ -160,7 +158,7 @@ export class Story extends React.PureComponent {
             createdByName={story.createdByName}
             createdAt={story.createdAt}
             votes={story.votes}
-            commentCount={story.commentCount}
+            repliesCount={story.repliesCount}
             unvoteStory={this.unvoteStory}
             loggedIn={loggedIn}
           />
@@ -178,12 +176,13 @@ export class Story extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = ({ user, storyDetails }, { id }) => {
-  const story = storyDetails.find(story => story.id === id)
+export const mapStateToProps = ({ user, storyDetails, stories }, { id }) => {
+  const search = story => story.id === id
+  const story = storyDetails.find(search) || stories.find(search)
 
   return {
     story,
-    voted: story && story.votes.includes(user.id),
+    voted: story && story.votes && story.votes.includes(user.id),
     loggedIn: !!user.id,
     userId: user.id
   }

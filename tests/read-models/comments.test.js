@@ -25,13 +25,12 @@ describe('read-models', () => {
 
       const nextState = [
         {
-          text: event.payload.text,
           id: commentId,
+          text: event.payload.text,
           parentId: event.payload.parentId,
           storyId: event.aggregateId,
           createdAt: event.timestamp,
-          createdBy: event.payload.userId,
-          replies: []
+          createdBy: event.payload.userId
         }
       ]
 
@@ -60,8 +59,7 @@ describe('read-models', () => {
         parentId: prevEvent.payload.parentId,
         storyId: prevEvent.aggregateId,
         createdAt: prevEvent.timestamp,
-        createdBy: prevEvent.payload.userId,
-        replies: []
+        createdBy: prevEvent.payload.userId
       })
 
       const commentId = uuid.v4()
@@ -84,8 +82,7 @@ describe('read-models', () => {
           parentId: event.payload.parentId,
           storyId: event.aggregateId,
           createdAt: event.timestamp,
-          createdBy: event.payload.userId,
-          replies: []
+          createdBy: event.payload.userId
         },
         {
           text: prevEvent.payload.text,
@@ -93,8 +90,7 @@ describe('read-models', () => {
           parentId: prevEvent.payload.parentId,
           storyId: prevEvent.aggregateId,
           createdAt: prevEvent.timestamp,
-          createdBy: prevEvent.payload.userId,
-          replies: [commentId]
+          createdBy: prevEvent.payload.userId
         }
       ]
 
@@ -155,8 +151,7 @@ describe('read-models', () => {
           storyId: prevEvent.aggregateId,
           parentId: prevEvent.payload.parentId,
           createdAt: prevEvent.timestamp,
-          createdBy: prevEvent.payload.userId,
-          replies: []
+          createdBy: prevEvent.payload.userId
         }
       ])
 
@@ -208,8 +203,7 @@ describe('read-models', () => {
           parentId: firstEvent.payload.parentId,
           createdAt: firstEvent.timestamp,
           storyId: aggregateId,
-          createdBy: firstEvent.payload.userId,
-          replies: [secondCommentId]
+          createdBy: firstEvent.payload.userId
         },
         {
           text: secondEvent.payload.text,
@@ -217,8 +211,7 @@ describe('read-models', () => {
           parentId: firstCommentId,
           storyId: aggregateId,
           createdAt: secondEvent.timestamp,
-          createdBy: secondEvent.payload.userId,
-          replies: []
+          createdBy: secondEvent.payload.userId
         }
       ])
 
@@ -236,8 +229,7 @@ describe('read-models', () => {
           parentId: firstEvent.payload.parentId,
           storyId: aggregateId,
           createdAt: firstEvent.timestamp,
-          createdBy: firstEvent.payload.userId,
-          replies: []
+          createdBy: firstEvent.payload.userId
         }
       ]
 
