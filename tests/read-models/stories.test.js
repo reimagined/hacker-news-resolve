@@ -4,14 +4,7 @@ import '../../common/read-models'
 import storyDetails from '../../common/read-models/storyDetails'
 import events from '../../common/events'
 
-const {
-  STORY_CREATED,
-  STORY_UPVOTED,
-  STORY_UNVOTED,
-  STORY_DELETED,
-  COMMENT_CREATED,
-  COMMENT_REMOVED
-} = events
+const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
 
 describe('read-models', () => {
   describe('storyDetails', () => {
@@ -247,40 +240,6 @@ describe('read-models', () => {
       ]
 
       expect(storyDetails.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
-        nextState
-      )
-    })
-
-    it('eventHandler "COMMENT_REMOVED" should remove comment.id from story.comments', () => {
-      const parentId = uuid.v4()
-      const commentId = uuid.v4()
-
-      const state = storyDetails.initialState
-        .concat({
-          id: parentId,
-          repliesCount: 1
-        })
-        .concat({
-          id: commentId,
-          parentId
-        })
-
-      const event = {
-        aggregateId: parentId,
-        payload: {
-          parentId,
-          commentId
-        }
-      }
-
-      const nextState = [
-        {
-          id: parentId,
-          repliesCount: 0
-        }
-      ]
-
-      expect(storyDetails.eventHandlers[COMMENT_REMOVED](state, event)).toEqual(
         nextState
       )
     })

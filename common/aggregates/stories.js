@@ -6,11 +6,7 @@ import type {
   StoryUnvoted
 } from '../events/stories'
 
-import type {
-  CommentCreated,
-  CommentUpdated,
-  CommentRemoved
-} from '../events/comments'
+import type { CommentCreated } from '../events/comments'
 
 import storiesEvents from '../events/stories'
 import commentsEvents from '../events/comments'
@@ -21,7 +17,7 @@ import throwIfPermissionDenied from './validators/throwIfPermissionDenied'
 
 const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED } = storiesEvents
 
-const { COMMENT_CREATED, COMMENT_UPDATED, COMMENT_REMOVED } = commentsEvents
+const { COMMENT_CREATED } = commentsEvents
 
 export default {
   name: 'stories',
@@ -107,31 +103,6 @@ export default {
         userId,
         text
       })
-    },
-
-    updateComment: (state: any, command: CommentUpdated) => {
-      const { text, commentId } = command.payload
-
-      throwIfAggregateIsNotExists(state, command)
-      throwIfPermissionDenied(state, command)
-
-      if (!text) {
-        throw new Error('Text is required')
-      }
-
-      return new Event(COMMENT_UPDATED, {
-        commentId,
-        text
-      })
-    },
-
-    removeComment: (state: any, command: CommentRemoved) => {
-      const { commentId } = command.payload
-
-      throwIfAggregateIsNotExists(state, command)
-      throwIfPermissionDenied(state, command)
-
-      return new Event(COMMENT_REMOVED, { commentId })
     }
   },
   eventHandlers: {
@@ -154,9 +125,6 @@ export default {
       state.setIn(['comments', commentId], {
         createdAt: timestamp,
         createdBy: userId
-      }),
-
-    [COMMENT_REMOVED]: (state, { timestamp, payload: { commentId } }) =>
-      state.setIn(['comments', commentId, 'removedAt'], timestamp)
+      })
   }
 }

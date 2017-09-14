@@ -3,22 +3,14 @@ import events from '../events'
 import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants'
 import withUserNames from '../helpers/withUserNames'
 
-import type { CommentCreated, CommentRemoved } from '../events/comments'
+import type { CommentCreated } from '../events/comments'
 import type {
   StoryCreated,
   StoryUpvoted,
-  StoryUnvoted,
-  StoryDeleted
+  StoryUnvoted
 } from '../events/stories'
 
-const {
-  STORY_CREATED,
-  STORY_UPVOTED,
-  STORY_UNVOTED,
-  STORY_DELETED,
-  COMMENT_CREATED,
-  COMMENT_REMOVED
-} = events
+const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
 
 export default {
   name: 'stories',
@@ -75,9 +67,6 @@ export default {
       )
     },
 
-    [STORY_DELETED]: (state: any, event: StoryDeleted) =>
-      state.filter(({ id }) => id !== event.aggregateId),
-
     [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
       const storyIndex = state.findIndex(({ id }) => id === event.aggregateId)
 
@@ -86,16 +75,6 @@ export default {
       }
 
       return state.updateIn([storyIndex, 'repliesCount'], count => count + 1)
-    },
-
-    [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
-      const storyIndex = state.findIndex(({ id }) => id === event.aggregateId)
-
-      if (storyIndex < 0) {
-        return state
-      }
-
-      return state.updateIn([storyIndex, 'repliesCount'], count => count - 1)
     }
   },
   gqlSchema: `

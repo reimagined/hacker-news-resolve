@@ -8,21 +8,9 @@ import type {
   StoryUnvoted
 } from '../events/stories'
 
-import type {
-  CommentCreated,
-  CommentUpdated,
-  CommentRemoved
-} from '../events/comments'
+import type { CommentCreated } from '../events/comments'
 
-const {
-  STORY_CREATED,
-  STORY_UPVOTED,
-  STORY_UNVOTED,
-  STORY_DELETED,
-  COMMENT_CREATED,
-  COMMENT_UPDATED,
-  COMMENT_REMOVED
-} = events
+const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
 
 const getCommentWithChildren = (comments, id) => {
   const parent = comments.find(comment => comment.id === id)
@@ -124,42 +112,9 @@ export default {
         createdAt: timestamp,
         createdBy: userId
       })
-    },
-
-    [COMMENT_UPDATED]: (state: any, event: CommentUpdated) => {
-      const { aggregateId, payload: { commentId, text } } = event
-
-      const storyIndex = state.findIndex(({ id }) => id === aggregateId)
-      if (storyIndex < 0) {
-        return state
-      }
-      const commentIndex = state.findIndex(({ id }) => id === commentId)
-      if (commentIndex < 0) {
-        return state
-      }
-      return state.setIn([commentIndex, 'text'], text)
-    },
-
-    [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
-      const { aggregateId, payload: { commentId } } = event
-
-      const storyIndex = state.findIndex(({ id }) => id === aggregateId)
-      if (storyIndex < 0) {
-        return state
-      }
-      const replyIndex = state.findIndex(({ id }) => id === commentId)
-      if (replyIndex < 0) {
-        return state
-      }
-
-      let newState = state.updateIn(
-        [storyIndex, 'repliesCount'],
-        count => count - 1
-      )
-      return newState.filter((_, index) => index !== replyIndex) //TODO: remove kids
     }
   },
-  gqlSchema: ` 
+  gqlSchema: `
     type StoryDetails {
       id: ID!
       type: String

@@ -1,15 +1,11 @@
 import Immutable from '../immutable'
 import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants'
 
-import type {
-  CommentCreated,
-  CommentUpdated,
-  CommentRemoved
-} from '../events/comments'
+import type { CommentCreated } from '../events/comments'
 import events from '../events'
 import withUserNames from '../helpers/withUserNames'
 
-const { COMMENT_CREATED, COMMENT_UPDATED, COMMENT_REMOVED } = events
+const { COMMENT_CREATED } = events
 
 export default {
   name: 'comments',
@@ -34,20 +30,6 @@ export default {
           }
         ].concat(state)
       )
-    },
-
-    [COMMENT_UPDATED]: (state: any, event: CommentUpdated) => {
-      const { payload: { commentId, text } } = event
-
-      const commentIndex = state.findIndex(comment => comment.id === commentId)
-
-      return state.setIn([commentIndex, 'text'], text)
-    },
-
-    [COMMENT_REMOVED]: (state: any, event: CommentRemoved) => {
-      const { payload: { commentId } } = event
-
-      return state.filter(({ id }) => id !== commentId)
     }
   },
   gqlSchema: `
