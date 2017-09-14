@@ -11,7 +11,6 @@ it('Comment Level 0 renders correctly', () => {
       text="SomeContent"
       createdBy="SomeUser"
       createdAt={0}
-      showReply={true}
       storyId="story-id"
       parentId="parent-id"
       root={{ id: 'SomeId', title: 'SomeTitle' }}
@@ -29,7 +28,6 @@ it('Comment Level 1 renders correctly', () => {
       text="SomeContent"
       createdBy="SomeUser"
       createdAt={0}
-      showReply={true}
       storyId="story-id"
       parentId="parent-id"
       root={{ id: 'SomeId', title: 'SomeTitle' }}
@@ -47,7 +45,6 @@ it('Comment Level 20 renders correctly', () => {
       text="SomeContent"
       createdBy="SomeUser"
       createdAt={0}
-      showReply={true}
       storyId="story-id"
       parentId="parent-id"
     />
@@ -64,7 +61,6 @@ it('Comment Level 20 renders correctly', () => {
       text="SomeContent"
       createdBy="SomeUser"
       createdAt={0}
-      showReply={true}
       storyId="story-id"
       parentId="parent-id"
     />
@@ -81,7 +77,6 @@ it('Comment with state.expanded=false renders correctly', () => {
       text="SomeContent"
       createdBy="SomeUser"
       createdAt={0}
-      showReply={true}
       storyId="story-id"
       parentId="parent-id"
     />
@@ -99,7 +94,6 @@ it('Comment without childrens renders correctly', () => {
       text="SomeContent"
       createdBy="SomeUser"
       createdAt={0}
-      showReply={true}
       storyId="story-id"
       parentId="parent-id"
     />

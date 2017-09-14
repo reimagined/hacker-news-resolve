@@ -21,7 +21,6 @@ class Comment extends React.PureComponent {
       createdBy,
       createdByName,
       createdAt,
-      showReply,
       parentId,
       children
     } = this.props
@@ -85,16 +84,6 @@ class Comment extends React.PureComponent {
                     __html: sanitizer.sanitize(text)
                   }}
                 />
-                <p>
-                  {showReply && (
-                    <Link
-                      className="comment__reply"
-                      to={`/storyDetails/${storyId}/comments/${id}/reply`}
-                    >
-                      reply
-                    </Link>
-                  )}
-                </p>
               </div>
             ) : null}
           </div>

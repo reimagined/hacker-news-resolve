@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import ChildrenComments from '../components/ChildrenComments'
 import Comment from '../components/Comment'
+import ReplyLink from '../components/ReplyLink'
 import subscribe from '../decorators/subscribe'
 import storyDetails from '../../common/read-models/storyDetails'
 
@@ -12,7 +13,8 @@ export const CommentById = ({ storyId, comments, comment }) => {
   }
 
   return (
-    <Comment storyId={storyId} {...comment} showReply>
+    <Comment storyId={storyId} level={0} {...comment}>
+      <ReplyLink storyId={storyId} commentId={comment.id} level={0} />
       <ChildrenComments
         storyId={storyId}
         comments={comments}
@@ -36,7 +38,7 @@ export default subscribe(({ match: { params: { storyId, commentId } } }) => ({
     {
       readModel: storyDetails,
       query:
-        'query ($aggregateId: String!, $commentId: String!) { storyDetails(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, createdAt, createdBy, createdByName, replies } }',
+        'query ($aggregateId: String!, $commentId: String!) { storyDetails(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, createdAt, createdBy, createdByName } }',
       variables: {
         aggregateId: storyId,
         commentId: commentId

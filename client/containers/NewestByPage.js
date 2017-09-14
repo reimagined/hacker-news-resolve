@@ -18,7 +18,7 @@ export default subscribe(({ match: { params: { page } } }) => ({
     {
       readModel: stories,
       query:
-        'query ($page: Int!) { stories(page: $page) { id, type, title, text, createdAt, createdBy, createdByName, link, replies, repliesCount, votes } }',
+        'query ($page: Int!) { stories(page: $page) { id, type, title, text, createdAt, createdBy, createdByName, link, commentCount, votes } }',
       variables: {
         page: page || '1'
       }

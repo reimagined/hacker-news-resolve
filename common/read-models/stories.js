@@ -34,7 +34,7 @@ export default {
           createdBy: userId,
           createdAt: timestamp,
           link,
-          repliesCount: 0,
+          commentCount: 0,
           votes: []
         },
         ...state
@@ -74,7 +74,7 @@ export default {
         return state
       }
 
-      return state.updateIn([storyIndex, 'repliesCount'], count => count + 1)
+      return state.updateIn([storyIndex, 'commentCount'], count => count + 1)
     }
   },
   gqlSchema: `
@@ -86,7 +86,7 @@ export default {
       createdByName: String!
       createdAt: String!
       link: String
-      repliesCount: Int!
+      commentCount: Int!
       votes: [String]
     }
     type Query {

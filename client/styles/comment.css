@@ -1,10 +1,10 @@
 .comment {
-    margin-bottom: .75em;
+  margin-bottom: 0.75em;
 }
 
 .comment__meta {
   color: #666;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 .comment__link {
@@ -20,24 +20,72 @@
 }
 .comment__content {
   padding-right: 1.25em;
-  padding-top: .65em;
+  padding-top: 0.65em;
 }
-.comment--level0 .comment__content { padding-left: 1.25em; }
-.comment--level1 .comment__content { padding-left: 3.75em; }
-.comment--level2 .comment__content { padding-left: 6.25em; }
-.comment--level3 .comment__content { padding-left: 8.75em; }
-.comment--level4 .comment__content { padding-left: 11.25em; }
-.comment--level5 .comment__content { padding-left: 13.75em; }
-.comment--level6 .comment__content { padding-left: 16.25em; }
-.comment--level7 .comment__content { padding-left: 18.75em; }
-.comment--level8 .comment__content { padding-left: 21.25em; }
-.comment--level9 .comment__content { padding-left: 23.75em; }
-.comment--level10 .comment__content { padding-left: 26.25em; }
-.comment--level11 .comment__content { padding-left: 28.75em; }
-.comment--level12 .comment__content { padding-left: 31.25em; }
-.comment--level13 .comment__content { padding-left: 33.75em; }
-.comment--level14 .comment__content { padding-left: 36.25em; }
-.comment--level15 .comment__content { padding-left: 38.75em; }
+.comment--level0 .comment__content,
+.comment--level0 .comment__reply {
+  padding-left: 1.25em;
+}
+.comment--level1 .comment__content,
+.comment--level1 .comment__reply {
+  padding-left: 3.75em;
+}
+.comment--level2 .comment__content,
+.comment--level2 .comment__reply {
+  padding-left: 6.25em;
+}
+.comment--level3 .comment__content,
+.comment--level3 .comment__reply {
+  padding-left: 8.75em;
+}
+.comment--level4 .comment__content,
+.comment--level4 .comment__reply {
+  padding-left: 11.25em;
+}
+.comment--level5 .comment__content,
+.comment--level5 .comment__reply {
+  padding-left: 13.75em;
+}
+.comment--level6 .comment__content,
+.comment--level6 .comment__reply {
+  padding-left: 16.25em;
+}
+.comment--level7 .comment__content,
+.comment--level7 .comment__reply {
+  padding-left: 18.75em;
+}
+.comment--level8 .comment__content,
+.comment--level8 .comment__reply {
+  padding-left: 21.25em;
+}
+.comment--level9 .comment__content,
+.comment--level9 .comment__reply {
+  padding-left: 23.75em;
+}
+.comment--level10 .comment__content,
+.comment--level10 .comment__reply {
+  padding-left: 26.25em;
+}
+.comment--level11 .comment__content,
+.comment--level11 .comment__reply {
+  padding-left: 28.75em;
+}
+.comment--level12 .comment__content,
+.comment--level12 .comment__reply {
+  padding-left: 31.25em;
+}
+.comment--level13 .comment__content,
+.comment--level13 .comment__reply {
+  padding-left: 33.75em;
+}
+.comment--level14 .comment__content,
+.comment--level14 .comment__reply {
+  padding-left: 36.25em;
+}
+.comment--level15 .comment__content,
+.comment--level15 .comment__reply {
+  padding-left: 38.75em;
+}
 
 .comment__collapse {
   cursor: pointer;
@@ -48,7 +96,7 @@
 .comment__reply {
   color: #000;
 }
-.comment__text p:last-child, .comment__text pre:last-child {
+.comment__text p:last-child,
+.comment__text pre:last-child {
   margin-bottom: 0;
 }
-
