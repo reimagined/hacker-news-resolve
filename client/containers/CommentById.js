@@ -6,14 +6,18 @@ import Comment from '../components/Comment'
 import subscribe from '../decorators/subscribe'
 import storyDetails from '../../common/read-models/storyDetails'
 
-export const CommentById = ({ comments, comment }) => {
+export const CommentById = ({ aggregateId, comments, comment }) => {
   if (!comment) {
     return null
   }
 
   return (
     <Comment {...comment} showReply>
-      <ChildrenComments replies={comment.replies} comments={comments} />
+      <ChildrenComments
+        storyId={aggregateId}
+        comments={comments}
+        parentId={comment.id}
+      />
     </Comment>
   )
 }

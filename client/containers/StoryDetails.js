@@ -56,7 +56,11 @@ export class StoryDetails extends React.PureComponent {
           </div>
         ) : null}
         <div>
-          <ChildrenComments replies={story.replies} comments={replies} />
+          <ChildrenComments
+            storyId={story.id}
+            comments={replies}
+            parentId={story.id}
+          />
         </div>
       </div>
     )
@@ -92,7 +96,7 @@ export default subscribe(({ match: { params: { storyId } } }) => ({
     {
       readModel: storyDetails,
       query:
-        'query ($aggregateId: ID!) { storyDetails(aggregateId: $aggregateId) { id, type, title, text, createdAt, createdBy, createdByName, link, replies, repliesCount, votes, parentId, storyId } }',
+        'query ($aggregateId: ID!) { storyDetails(aggregateId: $aggregateId) { id, type, title, text, createdAt, createdBy, createdByName, link, repliesCount, votes, parentId } }',
       variables: {
         aggregateId: storyId
       }

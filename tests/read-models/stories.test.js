@@ -37,8 +37,7 @@ describe('read-models', () => {
           createdBy: event.payload.userId,
           createdAt: event.timestamp,
           link: event.payload.link,
-          comments: [],
-          commentsCount: 0,
+          repliesCount: 0,
           votes: []
         }
       ]
@@ -70,8 +69,7 @@ describe('read-models', () => {
           createdBy: event.payload.userId,
           createdAt: event.timestamp,
           link: event.payload.link,
-          comments: [],
-          commentsCount: 0,
+          repliesCount: 0,
           votes: []
         }
       ]
@@ -103,8 +101,7 @@ describe('read-models', () => {
           createdBy: event.payload.userId,
           createdAt: event.timestamp,
           link: event.payload.link,
-          comments: [],
-          commentsCount: 0,
+          repliesCount: 0,
           votes: []
         }
       ]
@@ -189,29 +186,39 @@ describe('read-models', () => {
       )
     })
 
-    it('eventHandler "COMMENT_CREATED" should add comment.id to story.comments', () => {
-      const parentId = uuid.v4()
+    it('eventHandler "COMMENT_CREATED" should add comment.id to story.comments and increment comments count', () => {
+      const aggregateId = uuid.v4()
       const commentId = uuid.v4()
+      const userId = uuid.v4()
+      const text = 'text'
 
       const state = storyDetails.initialState.concat({
-        id: parentId,
-        comments: [],
-        commentsCount: 0
+        id: aggregateId,
+        repliesCount: 0
       })
 
       const event = {
-        aggregateId: parentId,
+        aggregateId,
+        timestamp: Date.now(),
         payload: {
-          parentId,
-          commentId
+          commentId,
+          parentId: aggregateId,
+          userId,
+          text
         }
       }
 
       const nextState = [
         {
-          id: parentId,
-          comments: [commentId],
-          commentsCount: 1
+          id: aggregateId,
+          repliesCount: 1
+        },
+        {
+          id: commentId,
+          createdAt: Date.now(),
+          createdBy: userId,
+          parentId: aggregateId,
+          text
         }
       ]
 
@@ -221,27 +228,39 @@ describe('read-models', () => {
     })
 
     it('eventHandler "COMMENT_CREATED" should increment comments count', () => {
+      const userId = uuid.v4()
       const parentId = uuid.v4()
+      const commentId = uuid.v4()
       const aggregateId = uuid.v4()
+      const text = 'text'
 
       const state = storyDetails.initialState.concat({
         id: aggregateId,
-        comments: [],
-        commentsCount: 0
+        repliesCount: 0
       })
 
       const event = {
         aggregateId,
+        timestamp: Date.now(),
         payload: {
-          parentId
+          commentId,
+          parentId: aggregateId,
+          userId,
+          text
         }
       }
 
       const nextState = [
         {
           id: aggregateId,
-          comments: [],
-          commentsCount: 1
+          repliesCount: 1
+        },
+        {
+          id: commentId,
+          parentId: aggregateId,
+          createdBy: userId,
+          createdAt: event.timestamp,
+          text
         }
       ]
 
@@ -254,11 +273,15 @@ describe('read-models', () => {
       const parentId = uuid.v4()
       const commentId = uuid.v4()
 
-      const state = storyDetails.initialState.concat({
-        id: parentId,
-        comments: [commentId],
-        commentsCount: 1
-      })
+      const state = storyDetails.initialState
+        .concat({
+          id: parentId,
+          repliesCount: 1
+        })
+        .concat({
+          id: commentId,
+          parentId
+        })
 
       const event = {
         aggregateId: parentId,
@@ -271,38 +294,7 @@ describe('read-models', () => {
       const nextState = [
         {
           id: parentId,
-          comments: [],
-          commentsCount: 0
-        }
-      ]
-
-      expect(storyDetails.eventHandlers[COMMENT_REMOVED](state, event)).toEqual(
-        nextState
-      )
-    })
-
-    it('eventHandler "COMMENT_REMOVED" should decrement comments count', () => {
-      const parentId = uuid.v4()
-      const aggregateId = uuid.v4()
-
-      const state = storyDetails.initialState.concat({
-        id: aggregateId,
-        comments: [],
-        commentsCount: 1
-      })
-
-      const event = {
-        aggregateId,
-        payload: {
-          parentId
-        }
-      }
-
-      const nextState = [
-        {
-          id: aggregateId,
-          comments: [],
-          commentsCount: 0
+          repliesCount: 0
         }
       ]
 

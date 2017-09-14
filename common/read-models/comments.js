@@ -25,8 +25,8 @@ export default {
       return Immutable(
         [
           {
-            text,
             id: commentId,
+            text,
             parentId: parentId,
             storyId: aggregateId,
             createdAt: timestamp,
@@ -37,7 +37,7 @@ export default {
     },
 
     [COMMENT_UPDATED]: (state: any, event: CommentUpdated) => {
-      const { payload: { text, commentId } } = event.payload
+      const { payload: { commentId, text } } = event
 
       const commentIndex = state.findIndex(comment => comment.id === commentId)
 
