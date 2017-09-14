@@ -8,7 +8,6 @@ import Submit from './containers/Submit'
 import Login from './components/Login'
 
 import UserById from './containers/UserById'
-import ChangePassword from './containers/ChangePassword'
 import Error from './components/Error'
 import StoryDetails from './containers/StoryDetails'
 import ReplyById from './containers/ReplyById'
@@ -58,10 +57,6 @@ const routes = [
       {
         path: '/user/:userId',
         component: UserById
-      },
-      {
-        path: '/changepw',
-        component: ChangePassword
       },
       {
         path: '/error',

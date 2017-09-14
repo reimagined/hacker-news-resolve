@@ -263,31 +263,6 @@ describe('aggregates', () => {
       )
     })
 
-    it('command "deleteStory" should create an event to delete the story', () => {
-      const userId = uuid.v4()
-
-      const state = {
-        createdAt: Date.now(),
-        createdBy: userId
-      }
-      const command = {}
-
-      const event = stories.commands.deleteStory(state, command)
-
-      expect(event).toEqual(new Event(STORY_DELETED))
-    })
-
-    it('command "deleteStory" should throw Error "Aggregate is not exist"', () => {
-      const state = {}
-      const command = {
-        payload: {}
-      }
-
-      expect(() => stories.commands.deleteStory(state, command)).toThrowError(
-        'Aggregate is not exist'
-      )
-    })
-
     it('eventHandler "STORY_CREATED" should set createdAt, createdBy and voted to state', () => {
       const createdAt = Date.now()
       const userId = uuid.v4()

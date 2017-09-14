@@ -1,36 +1,10 @@
-import crypto from 'crypto'
+import bodyParser from 'body-parser'
 import jwt from 'jsonwebtoken'
-import passport from 'passport'
-import LocalStrategy from 'passport-local'
 import uuid from 'uuid'
 
 import { authorizationSecret } from '../common/constants'
 
 export const extendExpress = express => {
-  express.use(passport.initialize())
-  passport.serializeUser((user, done) => done(null, user))
-  passport.deserializeUser((user, done) => done(null, user))
-  passport.use(
-    new LocalStrategy(
-      {
-        usernameField: 'name',
-        passwordField: 'password',
-        passReqToCallback: true,
-        session: false
-      },
-      function(req, name, password, done) {
-        const passwordHash = crypto
-          .createHmac('sha256', authorizationSecret)
-          .update(password)
-          .digest('hex')
-        return done(null, {
-          name,
-          passwordHash
-        })
-      }
-    )
-  )
-
   express.use('/api/commands/', authorizationMiddleware)
 
   function authorize(req, res, user) {
@@ -51,12 +25,10 @@ export const extendExpress = express => {
 
   express.post(
     '/signup',
-    passport.authenticate('local', {
-      failureRedirect: '/error/?text=Unauthorized'
-    }),
+    bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
       const users = await req.resolve.executeQuery('users')
-      const existingUser = users.find(({ name }) => name === req.user.name)
+      const existingUser = users.find(({ name }) => name === req.body.name)
 
       if (existingUser) {
         res.redirect('/error/?text=User already exists')
@@ -65,7 +37,7 @@ export const extendExpress = express => {
 
       try {
         const user = {
-          ...req.user,
+          name: req.body.name,
           id: uuid.v4()
         }
 
@@ -85,20 +57,13 @@ export const extendExpress = express => {
 
   express.post(
     '/login',
-    passport.authenticate('local', {
-      failureRedirect: '/error/?text=Unauthorized'
-    }),
+    bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
       const users = await req.resolve.executeQuery('users')
-      const user = users.find(({ name }) => name === req.user.name)
+      const user = users.find(({ name }) => name === req.body.name)
 
       if (!user) {
         res.redirect('/error/?text=No such user')
-        return
-      }
-
-      if (user.passwordHash !== req.user.passwordHash) {
-        res.redirect('/error/?text=Incorrect Username or Password')
         return
       }
 

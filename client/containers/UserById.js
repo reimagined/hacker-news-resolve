@@ -23,15 +23,8 @@ export const UserById = ({ user }) => {
             <td>created:</td>
             <td>{new Date(+user.createdAt).toLocaleString('en-US')}</td>
           </tr>
-          <tr>
-            <td>karma:</td>
-            <td>{user.karma}</td>
-          </tr>
         </tbody>
       </table>
-      <div>
-        <Link to="/changepw">change password</Link>
-      </div>
     </div>
   )
 }
@@ -48,7 +41,7 @@ export default subscribe(({ match: { params: { userId } } }) => ({
     {
       readModel: users,
       query:
-        'query ($aggregateId: ID!) { users(aggregateId: $aggregateId) { id, name, createdAt, karma } }',
+        'query ($aggregateId: ID!) { users(aggregateId: $aggregateId) { id, name, createdAt } }',
       variables: {
         aggregateId: userId
       }

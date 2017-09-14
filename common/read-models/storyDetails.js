@@ -5,8 +5,7 @@ import withUserNames from '../helpers/withUserNames'
 import type {
   StoryCreated,
   StoryUpvoted,
-  StoryUnvoted,
-  StoryDeleted
+  StoryUnvoted
 } from '../events/stories'
 
 import type {
@@ -94,8 +93,6 @@ export default {
         votes.filter(id => id !== userId)
       )
     },
-
-    [STORY_DELETED]: (state: any, event: StoryDeleted) => Immutable([]),
 
     [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
       const {

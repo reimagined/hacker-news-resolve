@@ -14,12 +14,6 @@ const AuthForm = ({ title, action, buttonText }) => (
               <input type="text" name="name" />
             </td>
           </tr>
-          <tr>
-            <td>password:</td>
-            <td>
-              <input type="password" name="password" />
-            </td>
-          </tr>
         </tbody>
       </table>
       <br />

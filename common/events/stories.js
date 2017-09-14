@@ -3,8 +3,7 @@
 const events = {
   STORY_CREATED: 'StoryCreated',
   STORY_UPVOTED: 'StoryUpvoted',
-  STORY_UNVOTED: 'StoryUnvoted',
-  STORY_DELETED: 'StoryDeleted'
+  STORY_UNVOTED: 'StoryUnvoted'
 }
 
 export type StoryCreated = {
@@ -32,12 +31,6 @@ export type StoryUnvoted = {
   payload: {
     userId: string
   }
-}
-
-export type StoryDeleted = {
-  aggregateId: string,
-  timestamp: string,
-  payload: {}
 }
 
 export default events

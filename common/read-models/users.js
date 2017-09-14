@@ -1,35 +1,22 @@
 import Immutable from '../immutable'
 
-import type { UserCreated, PasswordChanged } from '../events/users'
+import type { UserCreated } from '../events/users'
 import events from '../events/users'
 
-const { USER_CREATED, PASSWORD_CHANGED } = events
+const { USER_CREATED } = events
 
 export default {
   name: 'users',
   initialState: Immutable([]),
   eventHandlers: {
     [USER_CREATED]: (state: any, event: UserCreated) => {
-      const { aggregateId, timestamp, payload: { name, passwordHash } } = event
+      const { aggregateId, timestamp, payload: { name } } = event
 
       return state.concat({
         name,
-        passwordHash,
         id: aggregateId,
-        createdAt: timestamp,
-        karma: 0
+        createdAt: timestamp
       })
-    },
-
-    [PASSWORD_CHANGED]: (state: any, event: PasswordChanged) => {
-      const { aggregateId, payload: { newPassword } } = event
-      const index = state.findIndex(({ id }) => id === aggregateId)
-
-      if (index < 0) {
-        return state
-      }
-
-      return state.setIn([index, 'passwordHash'], newPassword)
     }
   },
   gqlSchema: `
@@ -37,19 +24,12 @@ export default {
       id: ID!
       name: String
       createdAt: String
-      karma: Int
     }
     type Query {
       users(aggregateId: ID!, name: String): [User]
     }
   `,
   gqlResolvers: {
-    users: (root, { name }) => {
-      if (name) {
-        const userByName = root.find(user => user.name === name)
-        return userByName ? [userByName] : []
-      }
-      return root
-    }
+    users: root => root
   }
 }

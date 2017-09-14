@@ -15,18 +15,15 @@ describe('read-models', () => {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
         payload: {
-          name: 'SomeName',
-          passwordHash: 'SomePasswordHash'
+          name: 'SomeName'
         }
       }
 
       const nextState = [
         {
           name: event.payload.name,
-          passwordHash: event.payload.passwordHash,
           id: event.aggregateId,
-          createdAt: event.timestamp,
-          karma: 0
+          createdAt: event.timestamp
         }
       ]
 
