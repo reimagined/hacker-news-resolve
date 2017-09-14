@@ -89,7 +89,7 @@ export default subscribe(({ match: { params: { storyId, commentId } } }) => ({
     {
       readModel: storyDetails,
       query:
-        'query ($aggregateId: String, $commentId: String!) { storyDetails(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, createdAt, createdBy, createdByName, replies } }',
+        'query ($aggregateId: String, $commentId: String!) { storyDetails(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, createdAt, createdBy, createdByName } }',
       variables: {
         aggregateId: storyId,
         commentId

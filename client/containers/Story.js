@@ -74,14 +74,14 @@ export const PostedBy = ({ id, name }) => {
   )
 }
 
-export const Comment = ({ id, repliesCount }) => {
+export const Discuss = ({ id, commentCount }) => {
   return (
     <span>
       <span>
         |{' '}
         <Link className="story__meta-link" to={`/storyDetails/${id}`}>
-          {repliesCount > 0 ? (
-            `${repliesCount} ${plur('comment', repliesCount)}`
+          {commentCount > 0 ? (
+            `${commentCount} ${plur('comment', commentCount)}`
           ) : (
             'discuss'
           )}
@@ -98,7 +98,7 @@ export const Meta = props => {
     createdByName,
     createdAt,
     votes,
-    repliesCount,
+    commentCount,
     voted,
     loggedIn,
     unvoteStory
@@ -120,7 +120,7 @@ export const Meta = props => {
           </span>{' '}
         </span>
       )}
-      <Comment id={id} repliesCount={repliesCount} />
+      <Discuss id={id} commentCount={commentCount} />
     </div>
   )
 }
@@ -158,7 +158,7 @@ export class Story extends React.PureComponent {
             createdByName={story.createdByName}
             createdAt={story.createdAt}
             votes={story.votes}
-            repliesCount={story.repliesCount}
+            commentCount={story.commentCount}
             unvoteStory={this.unvoteStory}
             loggedIn={loggedIn}
           />

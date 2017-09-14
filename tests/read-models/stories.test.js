@@ -30,7 +30,7 @@ describe('read-models', () => {
           createdBy: event.payload.userId,
           createdAt: event.timestamp,
           link: event.payload.link,
-          repliesCount: 0,
+          commentCount: 0,
           votes: []
         }
       ]
@@ -62,7 +62,7 @@ describe('read-models', () => {
           createdBy: event.payload.userId,
           createdAt: event.timestamp,
           link: event.payload.link,
-          repliesCount: 0,
+          commentCount: 0,
           votes: []
         }
       ]
@@ -94,7 +94,7 @@ describe('read-models', () => {
           createdBy: event.payload.userId,
           createdAt: event.timestamp,
           link: event.payload.link,
-          repliesCount: 0,
+          commentCount: 0,
           votes: []
         }
       ]
@@ -169,7 +169,7 @@ describe('read-models', () => {
 
       const state = storyDetails.initialState.concat({
         id: aggregateId,
-        repliesCount: 0
+        commentCount: 0
       })
 
       const event = {
@@ -186,7 +186,7 @@ describe('read-models', () => {
       const nextState = [
         {
           id: aggregateId,
-          repliesCount: 1
+          commentCount: 1
         },
         {
           id: commentId,
@@ -211,7 +211,7 @@ describe('read-models', () => {
 
       const state = storyDetails.initialState.concat({
         id: aggregateId,
-        repliesCount: 0
+        commentCount: 0
       })
 
       const event = {
@@ -228,7 +228,7 @@ describe('read-models', () => {
       const nextState = [
         {
           id: aggregateId,
-          repliesCount: 1
+          commentCount: 1
         },
         {
           id: commentId,

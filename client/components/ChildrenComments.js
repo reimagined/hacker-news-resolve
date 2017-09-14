@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Comment from './Comment'
+import ReplyLink from './ReplyLink'
 
 const ChildrenComments = ({ storyId, comments, parentId, level }) => {
   if (!comments.length) {
@@ -17,11 +18,15 @@ const ChildrenComments = ({ storyId, comments, parentId, level }) => {
         return (
           <Comment
             key={comment.id}
-            level={currentLevel}
             storyId={storyId}
+            level={currentLevel}
             {...comment}
-            showReply
           >
+            <ReplyLink
+              storyId={storyId}
+              commentId={comment.id}
+              level={currentLevel}
+            />
             <ChildrenComments
               storyId={storyId}
               comments={comments}

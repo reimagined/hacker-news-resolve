@@ -49,7 +49,7 @@ export default {
             createdBy: userId,
             createdAt: timestamp,
             link,
-            repliesCount: 0,
+            commentCount: 0,
             votes: []
           }
         ].concat(state)
@@ -94,14 +94,14 @@ export default {
         return state
       }
       if (parentId !== aggregateId) {
-        const parentReplyIndex = state.findIndex(({ id }) => id === parentId)
-        if (parentReplyIndex < 0) {
+        const parentCommentIndex = state.findIndex(({ id }) => id === parentId)
+        if (parentCommentIndex < 0) {
           return state
         }
       }
 
       let newState = state.updateIn(
-        [storyIndex, 'repliesCount'],
+        [storyIndex, 'commentCount'],
         count => count + 1
       )
 
@@ -124,7 +124,7 @@ export default {
       createdByName: String!
       createdAt: String!
       link: String
-      repliesCount: Int
+      commentCount: Int
       votes: [String]
       parentId: ID
       storyId: ID
