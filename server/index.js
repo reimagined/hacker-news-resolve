@@ -89,27 +89,23 @@ export const authorizationMiddleware = (req, res, next) => {
   }
 }
 
-export const initialState = async (queries, executeQuery, { cookies }) => {
-  let user
-
+export const getCurrentUser = async (executeQuery, cookies) => {
   try {
     const users = await executeQuery('users')
     const { id } = jwt.verify(cookies.authorizationToken, authorizationSecret)
-    user = users.find(u => u.id === id)
+    return users.find(user => user.id === id) || {}
   } catch (error) {
-    user = {}
+    return {}
   }
+}
 
-  const resultOfQueries = queries.map(({ name, initialState }) => {
-    const state = initialState
-    return { state, name }
-  })
-
-  return resultOfQueries.reduce(
-    (result, { state, name }) => {
-      result[name] = state
-      return result
-    },
-    { user }
-  )
+export const initialState = async (executeQuery, { cookies }) => {
+  const user = await getCurrentUser(executeQuery, cookies);
+  return {
+    user,
+    stories: [],
+    comments: [],
+    storyDetails: [],
+    users: [ user ]
+  }
 }

@@ -1,4 +1,4 @@
-import storageDriver from 'resolve-storage-file'
+import storageDriver from './common/storage-driver'
 import busDriver from 'resolve-bus-memory'
 
 import { serverRootComponent } from './client/components/App'
@@ -20,7 +20,7 @@ export default {
     driver: storageDriver,
     params: { pathToFile: './storage.json' }
   },
-  initialState: (...args) => initialState(queries, ...args),
+  initialState,
   aggregates,
   initialSubscribedEvents: {
     types: eventTypes,
