@@ -87,11 +87,7 @@ export default {
     createComment: (state: any, command: CommentCreated) => {
       throwIfAggregateIsNotExists(state, command)
 
-      const { text, parentId, userId, commentId } = command.payload
-
-      if (!text) {
-        throw new Error('Text is required')
-      }
+      const { commentId, parentId, userId, text } = command.payload
 
       if (!parentId) {
         throw new Error('ParentId is required')
@@ -101,11 +97,15 @@ export default {
         throw new Error('UserId is required')
       }
 
+      if (!text) {
+        throw new Error('Text is required')
+      }
+
       return new Event(COMMENT_CREATED, {
-        text,
+        commentId,
         parentId,
         userId,
-        commentId
+        text
       })
     },
 
@@ -120,8 +120,8 @@ export default {
       }
 
       return new Event(COMMENT_UPDATED, {
-        text,
-        commentId
+        commentId,
+        text
       })
     },
 

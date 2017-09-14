@@ -6,15 +6,15 @@ import Comment from '../components/Comment'
 import subscribe from '../decorators/subscribe'
 import storyDetails from '../../common/read-models/storyDetails'
 
-export const CommentById = ({ aggregateId, comments, comment }) => {
+export const CommentById = ({ storyId, comments, comment }) => {
   if (!comment) {
     return null
   }
 
   return (
-    <Comment {...comment} showReply>
+    <Comment storyId={storyId} {...comment} showReply>
       <ChildrenComments
-        storyId={aggregateId}
+        storyId={storyId}
         comments={comments}
         parentId={comment.id}
       />
@@ -24,8 +24,9 @@ export const CommentById = ({ aggregateId, comments, comment }) => {
 
 export const mapStateToProps = (
   { storyDetails },
-  { match: { params: { commentId } } }
+  { match: { params: { storyId, commentId } } }
 ) => ({
+  storyId: storyId,
   comments: storyDetails,
   comment: storyDetails.find(({ id }) => id === commentId)
 })
@@ -35,7 +36,7 @@ export default subscribe(({ match: { params: { storyId, commentId } } }) => ({
     {
       readModel: storyDetails,
       query:
-        'query ($aggregateId: String!, $commentId: String!) { storyDetails(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
+        'query ($aggregateId: String!, $commentId: String!) { storyDetails(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, createdAt, createdBy, createdByName, replies } }',
       variables: {
         aggregateId: storyId,
         commentId: commentId

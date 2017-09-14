@@ -28,7 +28,7 @@ export class ReplyById extends React.PureComponent {
   onTextChange = event => this.setState({ text: event.target.value })
 
   render() {
-    const { comment, loggedIn } = this.props
+    const { storyId, comment, loggedIn } = this.props
 
     if (!comment) {
       return null
@@ -38,7 +38,7 @@ export class ReplyById extends React.PureComponent {
       <div>
         <div className="reply">
           <div className="reply__content">
-            <Comment {...comment} />
+            <Comment storyId={storyId} {...comment} />
             {loggedIn ? (
               <div>
                 <textarea
@@ -63,12 +63,12 @@ export class ReplyById extends React.PureComponent {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      createComment: ({ parentId, text, userId, storyId }) =>
+      createComment: ({ storyId, parentId, userId, text }) =>
         actions.createComment(storyId, {
-          text,
+          commentId: uuid.v4(),
           parentId,
           userId,
-          commentId: uuid.v4()
+          text
         })
     },
     dispatch
@@ -78,10 +78,10 @@ const mapStateToProps = (
   { storyDetails, user },
   { match: { params: { commentId, storyId } } }
 ) => ({
+  storyId,
   comment: storyDetails.find(({ id }) => id === commentId),
   userId: user.id,
-  loggedIn: !!user.id,
-  storyId
+  loggedIn: !!user.id
 })
 
 export default subscribe(({ match: { params: { storyId, commentId } } }) => ({
@@ -89,7 +89,7 @@ export default subscribe(({ match: { params: { storyId, commentId } } }) => ({
     {
       readModel: storyDetails,
       query:
-        'query ($aggregateId: String, $commentId: String!) { storyDetails(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, storyId, createdAt, createdBy, createdByName, replies } }',
+        'query ($aggregateId: String, $commentId: String!) { storyDetails(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, createdAt, createdBy, createdByName, replies } }',
       variables: {
         aggregateId: storyId,
         commentId

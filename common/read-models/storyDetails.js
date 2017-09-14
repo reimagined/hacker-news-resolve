@@ -25,12 +25,12 @@ const {
 } = events
 
 const getCommentWithChildren = (comments, id) => {
-  const comment = comments.find(comment => comment.id === id)
+  const parent = comments.find(comment => comment.id === id)
   const result = []
-  if (comment) {
-    result.push(comment)
-    comments.forEach(commentId => {
-      if (comment.parentId === comment.id) {
+  if (parent) {
+    result.push(parent)
+    comments.forEach(comment => {
+      if (comment.parentId === parent.id) {
         result.push(...getCommentWithChildren(comments, comment.id))
       }
     })
