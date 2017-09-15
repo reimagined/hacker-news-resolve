@@ -5,8 +5,6 @@ const events = {
 }
 
 export type UserCreated = {
-  aggregateId: string,
-  timestamp: string,
   payload: {
     name: string
   }

@@ -5,8 +5,6 @@ const events = {
 }
 
 export type CommentCreated = {
-  aggregateId: string,
-  timestamp: string,
   payload: {
     userId: string,
     text: string,
