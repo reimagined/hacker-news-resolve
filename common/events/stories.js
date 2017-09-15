@@ -7,8 +7,6 @@ const events = {
 }
 
 export type StoryCreated = {
-  aggregateId: string,
-  timestamp: string,
   payload: {
     title: string,
     text: string,
@@ -18,16 +16,12 @@ export type StoryCreated = {
 }
 
 export type StoryUpvoted = {
-  aggregateId: string,
-  timestamp: string,
   payload: {
     userId: string
   }
 }
 
 export type StoryUnvoted = {
-  aggregateId: string,
-  timestamp: string,
   payload: {
     userId: string
   }
