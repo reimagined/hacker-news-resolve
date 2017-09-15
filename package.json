@@ -1,6 +1,6 @@
 {
-  "name": "hacker-news-demo",
-  "version": "0.0.1",
+  "name": "hacker-news-resolve",
+  "version": "1.0.0",
   "description": "A React & Redux & Resolve implementation of Hacker News",
   "scripts": {
     "build": "resolve-scripts build",
