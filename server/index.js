@@ -2,20 +2,16 @@ import bodyParser from 'body-parser'
 import jwt from 'jsonwebtoken'
 import uuid from 'uuid'
 
-import { authorizationSecret } from '../common/constants'
+import { authorizationSecret, cookieName } from '../common/constants'
 
 export const extendExpress = express => {
-  express.use('/api/commands/', authorizationMiddleware)
+  express.use('/', authorizationMiddleware)
+  express.use('/api/commands/', commandAuthorizationMiddleware)
 
   function authorize(req, res, user) {
     try {
-      const authorizationToken = jwt.sign(user, authorizationSecret, {
-        noTimestamp: true
-      })
-
-      res.cookie('authorizationToken', authorizationToken, {
-        maxAge: 1000 * 60 * 60 * 24 * 365
-      })
+      const authorizationToken = jwt.sign(user, authorizationSecret)
+      res.cookie(cookieName, authorizationToken)
 
       res.redirect(req.query.redirect || '/')
     } catch (error) {
@@ -76,9 +72,18 @@ export const accessDenied = (req, res) => {
   res.status(401).send('401 Unauthorized')
 }
 
-export const authorizationMiddleware = (req, res, next) => {
+const authorizationMiddleware = (req, res, next) => {
+  req.getJwt((_, user) => {
+    if (user) {
+      req.body.userId = user.id
+    }
+    next()
+  })
+}
+
+export const commandAuthorizationMiddleware = (req, res, next) => {
   try {
-    const user = jwt.verify(req.cookies.authorizationToken, authorizationSecret)
+    const user = req.getJwt()
     if (!user) {
       throw new Error('Unauthorized')
     }
@@ -89,23 +94,23 @@ export const authorizationMiddleware = (req, res, next) => {
   }
 }
 
-export const getCurrentUser = async (executeQuery, cookies) => {
+export const getCurrentUser = async (executeQuery, { body }) => {
   try {
     const users = await executeQuery('users')
-    const { id } = jwt.verify(cookies.authorizationToken, authorizationSecret)
+    const id = body.userId
     return users.find(user => user.id === id) || {}
   } catch (error) {
     return {}
   }
 }
 
-export const initialState = async (executeQuery, { cookies }) => {
-  const user = await getCurrentUser(executeQuery, cookies);
+export const initialState = async (executeQuery, params) => {
+  const user = await getCurrentUser(executeQuery, params)
   return {
     user,
     stories: [],
     comments: [],
     storyDetails: [],
-    users: [ user ]
+    users: [user]
   }
 }
