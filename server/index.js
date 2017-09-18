@@ -28,8 +28,6 @@ export const getUserByName = async (executeQuery, name) => {
     { name: name.trim() }
   )).users
 
-  console.log(user)
-
   return user
 }
 
