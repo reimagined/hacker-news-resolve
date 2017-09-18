@@ -13,7 +13,6 @@ import commentsEvents from '../events/comments'
 import { Event } from '../helpers'
 import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists'
 import throwIfAggregateIsNotExists from './validators/throwIfAggregateIsNotExists'
-import throwIfPermissionDenied from './validators/throwIfPermissionDenied'
 
 const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED } = storiesEvents
 
