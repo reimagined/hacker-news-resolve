@@ -59,8 +59,7 @@ export const extendExpress = express => {
     '/login',
     bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
-      const users = await req.resolve.executeQuery('users')
-      const user = users.find(({ name }) => name === req.body.name)
+      const [ user ] = (await req.resolve.executeQuery('users', 'query ($name: String!) { users(name: $name) { id, name, createdAt } }', { name: req.body.name })).users
 
       if (!user) {
         res.redirect('/error/?text=No such user')
@@ -91,9 +90,9 @@ export const authorizationMiddleware = (req, res, next) => {
 
 export const getCurrentUser = async (executeQuery, cookies) => {
   try {
-    const users = await executeQuery('users')
     const { id } = jwt.verify(cookies.authorizationToken, authorizationSecret)
-    return users.find(user => user.id === id) || {}
+    const [ user ] = (await executeQuery('users', 'query ($id: ID!) { users(id: $id) { id, name, createdAt } }', { id })).users
+    return user || {}
   } catch (error) {
     return {}
   }
