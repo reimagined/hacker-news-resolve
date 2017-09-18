@@ -39,8 +39,7 @@ export default subscribe(({ match: { params: { userId } } }) => ({
   graphQL: [
     {
       readModel: users,
-      query:
-        'query ($id: ID!) { users(id: $id) { id, name, createdAt } }',
+      query: 'query ($id: ID!) { users(id: $id) { id, name, createdAt } }',
       variables: {
         id: userId
       }

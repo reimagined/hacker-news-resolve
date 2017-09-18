@@ -14,7 +14,7 @@ const currentUser = {
 const executeQuery = sinon.spy(async queryName => {
   switch (queryName) {
     case 'users':
-      return [ currentUser ]
+      return { users: [currentUser] }
     default:
       throw new Error()
   }
@@ -33,7 +33,7 @@ describe('server', () => {
       stories: [],
       comments: [],
       storyDetails: [],
-      users: [ currentUser ]
+      users: [currentUser]
     })
   })
 

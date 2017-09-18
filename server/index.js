@@ -27,17 +27,22 @@ export const extendExpress = express => {
     '/signup',
     bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
-      const users = await req.resolve.executeQuery('users')
-      const existingUser = users.find(({ name }) => name === req.body.name)
+      const [
+        user
+      ] = (await req.resolve.executeQuery(
+        'users',
+        'query ($name: String!) { users(name: $name) { id, name, createdAt } }',
+        { name: req.body.name.trim() }
+      )).users
 
-      if (existingUser) {
+      if (user) {
         res.redirect('/error/?text=User already exists')
         return
       }
 
       try {
         const user = {
-          name: req.body.name,
+          name: req.body.name.trim(),
           id: uuid.v4()
         }
 
@@ -59,7 +64,13 @@ export const extendExpress = express => {
     '/login',
     bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
-      const [ user ] = (await req.resolve.executeQuery('users', 'query ($name: String!) { users(name: $name) { id, name, createdAt } }', { name: req.body.name })).users
+      const [
+        user
+      ] = (await req.resolve.executeQuery(
+        'users',
+        'query ($name: String!) { users(name: $name) { id, name, createdAt } }',
+        { name: req.body.name.trim() }
+      )).users
 
       if (!user) {
         res.redirect('/error/?text=No such user')
@@ -91,7 +102,13 @@ export const authorizationMiddleware = (req, res, next) => {
 export const getCurrentUser = async (executeQuery, cookies) => {
   try {
     const { id } = jwt.verify(cookies.authorizationToken, authorizationSecret)
-    const [ user ] = (await executeQuery('users', 'query ($id: ID!) { users(id: $id) { id, name, createdAt } }', { id })).users
+    const [
+      user
+    ] = (await executeQuery(
+      'users',
+      'query ($id: ID!) { users(id: $id) { id, name, createdAt } }',
+      { id }
+    )).users
     return user || {}
   } catch (error) {
     return {}
@@ -99,12 +116,12 @@ export const getCurrentUser = async (executeQuery, cookies) => {
 }
 
 export const initialState = async (executeQuery, { cookies }) => {
-  const user = await getCurrentUser(executeQuery, cookies);
+  const user = await getCurrentUser(executeQuery, cookies)
   return {
     user,
     stories: [],
     comments: [],
     storyDetails: [],
-    users: [ user ]
+    users: [user]
   }
 }

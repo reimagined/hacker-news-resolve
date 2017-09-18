@@ -190,7 +190,7 @@ describe('read-models', () => {
         },
         {
           id: commentId,
-          createdAt: Date.now(),
+          createdAt: event.timestamp,
           createdBy: userId,
           parentId: aggregateId,
           text
