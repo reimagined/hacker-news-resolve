@@ -47,11 +47,11 @@ describe('server', () => {
     expect(user).toEqual(currentUser)
   })
 
-  it('getCurrentUser should return empty object', async () => {
+  it('getCurrentUser should return undefined', async () => {
     const cookies = {}
 
     const user = await getCurrentUser(executeQuery, cookies)
 
-    expect(user).toEqual({})
+    expect(user).toEqual(undefined)
   })
 })

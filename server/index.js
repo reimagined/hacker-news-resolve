@@ -4,6 +4,35 @@ import uuid from 'uuid'
 
 import { authorizationSecret } from '../common/constants'
 
+export const getCurrentUser = async (executeQuery, cookies) => {
+  try {
+    const { id } = jwt.verify(cookies.authorizationToken, authorizationSecret)
+    const [
+      user
+    ] = (await executeQuery(
+      'users',
+      'query ($id: ID!) { users(id: $id) { id, name, createdAt } }',
+      { id }
+    )).users
+
+    return user
+  } catch (error) {}
+}
+
+export const getUserByName = async (executeQuery, name) => {
+  const [
+    user
+  ] = (await executeQuery(
+    'users',
+    'query ($name: String!) { users(name: $name) { id, name, createdAt } }',
+    { name: name.trim() }
+  )).users
+
+  console.log(user)
+
+  return user
+}
+
 export const extendExpress = express => {
   express.use('/api/commands/', authorizationMiddleware)
 
@@ -27,13 +56,7 @@ export const extendExpress = express => {
     '/signup',
     bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
-      const [
-        user
-      ] = (await req.resolve.executeQuery(
-        'users',
-        'query ($name: String!) { users(name: $name) { id, name, createdAt } }',
-        { name: req.body.name.trim() }
-      )).users
+      const user = await getUserByName(req.resolve.executeQuery, req.body.name)
 
       if (user) {
         res.redirect('/error/?text=User already exists')
@@ -64,13 +87,7 @@ export const extendExpress = express => {
     '/login',
     bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
-      const [
-        user
-      ] = (await req.resolve.executeQuery(
-        'users',
-        'query ($name: String!) { users(name: $name) { id, name, createdAt } }',
-        { name: req.body.name.trim() }
-      )).users
+      const user = await getUserByName(req.resolve.executeQuery, req.body.name)
 
       if (!user) {
         res.redirect('/error/?text=No such user')
@@ -99,29 +116,13 @@ export const authorizationMiddleware = (req, res, next) => {
   }
 }
 
-export const getCurrentUser = async (executeQuery, cookies) => {
-  try {
-    const { id } = jwt.verify(cookies.authorizationToken, authorizationSecret)
-    const [
-      user
-    ] = (await executeQuery(
-      'users',
-      'query ($id: ID!) { users(id: $id) { id, name, createdAt } }',
-      { id }
-    )).users
-    return user || {}
-  } catch (error) {
-    return {}
-  }
-}
-
 export const initialState = async (executeQuery, { cookies }) => {
   const user = await getCurrentUser(executeQuery, cookies)
   return {
-    user,
+    user: user || {},
     stories: [],
     comments: [],
     storyDetails: [],
-    users: [user]
+    users: user ? [user] : []
   }
 }
