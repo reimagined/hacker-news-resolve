@@ -30,7 +30,7 @@ export class StoryDetails extends React.PureComponent {
     })
 
   render() {
-    const { story, comments, loggedIn } = this.props
+    const { story, loggedIn } = this.props
 
     if (!story) {
       return null
@@ -58,7 +58,7 @@ export class StoryDetails extends React.PureComponent {
         <div>
           <ChildrenComments
             storyId={story.id}
-            comments={comments}
+            comments={story.comments}
             parentId={story.id}
           />
         </div>
@@ -67,12 +67,8 @@ export class StoryDetails extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = (
-  { storyDetails, comments, user },
-  { match: { params: { storyId } } }
-) => ({
+export const mapStateToProps = ({ storyDetails, user }) => ({
   story: storyDetails[0],
-  comments: storyDetails.slice(1),
   userId: user.id,
   loggedIn: !!user.id
 })
@@ -95,8 +91,28 @@ export default subscribe(({ match: { params: { storyId } } }) => ({
   graphQL: [
     {
       readModel: storyDetails,
-      query:
-        'query ($aggregateId: ID!) { storyDetails(aggregateId: $aggregateId) { id, type, title, text, createdAt, createdBy, createdByName, link, commentCount, votes, parentId } }',
+      query: `query ($aggregateId: ID!) { 
+          storyDetails(aggregateId: $aggregateId) { 
+            id, 
+            type, 
+            title, 
+            text,
+            link,
+            comments {
+              id,
+              parentId,
+              text,
+              createdAt,
+              createdBy,
+              createdByName
+            },
+            commentCount,
+            votes,
+            createdAt,
+            createdBy,
+            createdByName
+          }
+        }`,
       variables: {
         aggregateId: storyId
       }

@@ -82,12 +82,12 @@ export default {
       id: ID!
       type: String!
       title: String!
-      createdBy: String!
-      createdByName: String!
-      createdAt: String!
       link: String
       commentCount: Int!
       votes: [String]
+      createdAt: String!
+      createdBy: String!
+      createdByName: String!
     }
     type Query {
       stories(page: Int!, type: String): [Story]
