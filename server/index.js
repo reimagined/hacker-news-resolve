@@ -2,11 +2,15 @@ import bodyParser from 'body-parser'
 import jwt from 'jsonwebtoken'
 import uuid from 'uuid'
 
-import { authorizationSecret } from '../common/constants'
+import {
+  authorizationSecret,
+  cookieName,
+  cookieMaxAge
+} from '../common/constants'
 
 export const getCurrentUser = async (executeQuery, cookies) => {
   try {
-    const { id } = jwt.verify(cookies.authorizationToken, authorizationSecret)
+    const { id } = jwt.verify(cookies[cookieName], authorizationSecret)
     const {
       users
     } = await executeQuery(
@@ -33,32 +37,33 @@ export const getUserByName = async (executeQuery, name) => {
   return user
 }
 
-export const extendExpress = express => {
-  express.use('/api/commands/', authorizationMiddleware)
+export const authorize = (req, res, user) => {
+  try {
+    const authorizationToken = jwt.sign(user, authorizationSecret)
+    res.cookie(cookieName, authorizationToken, {
+      maxAge: cookieMaxAge
+    })
 
-  function authorize(req, res, user) {
-    try {
-      const authorizationToken = jwt.sign(user, authorizationSecret, {
-        noTimestamp: true
-      })
-
-      res.cookie('authorizationToken', authorizationToken, {
-        maxAge: 1000 * 60 * 60 * 24 * 365
-      })
-
-      res.redirect(req.query.redirect || '/')
-    } catch (error) {
-      res.redirect('/error/?text=Unauthorized')
-    }
+    res.redirect(req.query.redirect || '/')
+  } catch (error) {
+    res.redirect('/error/?text=Unauthorized')
   }
+}
+
+export const extendExpress = express => {
+  express.use('/', authorizationMiddleware)
+  express.use('/api/commands/', commandAuthorizationMiddleware)
 
   express.post(
     '/signup',
     bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
-      const user = await getUserByName(req.resolve.executeQuery, req.body.name)
+      const existingUser = await getUserByName(
+        req.resolve.executeQuery,
+        req.body.name
+      )
 
-      if (user) {
+      if (existingUser) {
         res.redirect('/error/?text=User already exists')
         return
       }
@@ -103,9 +108,18 @@ export const accessDenied = (req, res) => {
   res.status(401).send('401 Unauthorized')
 }
 
-export const authorizationMiddleware = (req, res, next) => {
+const authorizationMiddleware = (req, res, next) => {
+  req.getJwt((_, user) => {
+    if (user) {
+      req.body.userId = user.id
+    }
+    next()
+  })
+}
+
+export const commandAuthorizationMiddleware = (req, res, next) => {
   try {
-    const user = jwt.verify(req.cookies.authorizationToken, authorizationSecret)
+    const user = req.getJwt()
     if (!user) {
       throw new Error('Unauthorized')
     }
