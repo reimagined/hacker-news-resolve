@@ -30,10 +30,11 @@ export class ReplyById extends React.PureComponent {
   render() {
     const { commentId, stories, loggedIn } = this.props
 
-    if (
-      !stories.length // todo: fix me!!!
-    )
+    if (!stories.length) {
+      // todo: fix me!!!
       return null
+    }
+
     const story = stories[0]
     const comment = story.comments.find(({ id }) => id === commentId)
     if (!comment) {

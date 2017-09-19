@@ -8,10 +8,10 @@ import subscribe from '../decorators/subscribe'
 import storyDetails from '../../common/read-models/storyDetails'
 
 export const CommentById = ({ storyId, commentId, stories }) => {
-  if (
-    !stories.length // todo: fix me!!!
-  )
+  if (!stories.length) {
+    // todo: fix me!!!
     return null
+  }
   const comments = stories[0].comments
   const comment = comments.find(({ id }) => id === commentId)
   if (!comment) {

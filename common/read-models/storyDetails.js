@@ -70,10 +70,10 @@ export default {
 
       const index = state.findIndex(({ id }) => id === aggregateId)
 
-      if (
-        index < 0 // todo: fix me!
-      )
+      if (index < 0) {
+        // todo: fix me!
         return state
+      }
 
       return state.updateIn([index, 'votes'], votes => votes.concat(userId))
     },
@@ -83,10 +83,10 @@ export default {
 
       const index = state.findIndex(({ id }) => id === aggregateId)
 
-      if (
-        index < 0 // todo: fix me!
-      )
+      if (index < 0) {
+        // todo: fix me!
         return state
+      }
 
       return state.updateIn([index, 'votes'], votes =>
         votes.filter(id => id !== userId)
@@ -102,10 +102,10 @@ export default {
 
       const index = state.findIndex(({ id }) => id === aggregateId)
 
-      if (
-        index < 0 // todo: fix me!
-      )
+      if (index < 0) {
+        // todo: fix me!
         return state
+      }
 
       if (!commentId) {
         return state
