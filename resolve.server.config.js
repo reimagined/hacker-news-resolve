@@ -7,6 +7,11 @@ import aggregates from './common/aggregates'
 import queries from './common/read-models'
 import events from './common/events'
 import { extendExpress, initialState } from './server'
+import {
+  authorizationSecret,
+  cookieName,
+  cookieMaxAge
+} from './common/constants'
 
 const eventTypes = Object.keys(events).map(key => events[key])
 
@@ -27,5 +32,12 @@ export default {
     ids: []
   },
   queries,
-  extendExpress
+  extendExpress,
+  jwt: {
+    secret: authorizationSecret,
+    cookieName,
+    options: {
+      maxAge: cookieMaxAge
+    }
+  }
 }
