@@ -14,7 +14,7 @@ export class ReplyById extends React.PureComponent {
     text: ''
   }
 
-  saveReply = () => {
+  saveComment = () => {
     this.props.createComment({
       storyId: this.props.stories[0].id,
       parentId: this.props.commentId,
@@ -55,7 +55,7 @@ export class ReplyById extends React.PureComponent {
                   onChange={this.onTextChange}
                 />
                 <div>
-                  <button onClick={this.saveReply}>Reply</button>
+                  <button onClick={this.saveComment}>Reply</button>
                 </div>
               </div>
             ) : null}
