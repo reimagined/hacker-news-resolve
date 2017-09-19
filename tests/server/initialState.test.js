@@ -5,17 +5,16 @@ import jwt from 'jsonwebtoken'
 import { authorizationSecret } from '../../common/constants'
 import { initialState, getCurrentUser } from '../../server'
 
-const userId = uuid.v4()
 const currentUser = {
   name: 'SomeName',
   passwordHash: 'SomePasswordHash',
-  id: userId
+  id: uuid.v4()
 }
 
 const executeQuery = sinon.spy(async queryName => {
   switch (queryName) {
     case 'users':
-      return [currentUser]
+      return { users: [currentUser] }
     default:
       throw new Error()
   }
@@ -23,11 +22,11 @@ const executeQuery = sinon.spy(async queryName => {
 
 describe('server', () => {
   it('initialState should return initial state', async () => {
-    const body = {
-      userId
+    const cookies = {
+      authorizationToken: jwt.sign(currentUser, authorizationSecret)
     }
 
-    const state = await initialState(executeQuery, { body })
+    const state = await initialState(executeQuery, { cookies })
 
     expect(state).toEqual({
       user: currentUser,
@@ -39,20 +38,20 @@ describe('server', () => {
   })
 
   it('getCurrentUser should return current user', async () => {
-    const body = {
-      userId
+    const cookies = {
+      authorizationToken: jwt.sign(currentUser, authorizationSecret)
     }
 
-    const user = await getCurrentUser(executeQuery, { body })
+    const user = await getCurrentUser(executeQuery, cookies)
 
     expect(user).toEqual(currentUser)
   })
 
-  it('getCurrentUser should return empty object', async () => {
-    const body = {}
+  it('getCurrentUser should return undefined', async () => {
+    const cookies = {}
 
-    const user = await getCurrentUser(executeQuery, { body })
+    const user = await getCurrentUser(executeQuery, cookies)
 
-    expect(user).toEqual({})
+    expect(user).toEqual(undefined)
   })
 })

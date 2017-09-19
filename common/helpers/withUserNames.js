@@ -1,12 +1,9 @@
 async function withUserNames(items, getReadModel) {
-  const users = await Promise.all(
-    items.map(({ createdBy }) => getReadModel('users', [createdBy]))
-  )
+  const users = await getReadModel('users')
 
-  const userNames = users.map(([{ name }]) => name)
-
-  items.forEach((item, index) => {
-    item.createdByName = userNames[index]
+  items.forEach(item => {
+    const user = users.find(user => user.id === item.createdBy)
+    item.createdByName = user ? user.name : 'unknown'
   })
 
   return items

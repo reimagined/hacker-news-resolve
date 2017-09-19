@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 import subscribe from '../decorators/subscribe'
 import users from '../../common/read-models/users'
@@ -40,10 +39,9 @@ export default subscribe(({ match: { params: { userId } } }) => ({
   graphQL: [
     {
       readModel: users,
-      query:
-        'query ($aggregateId: ID!) { users(aggregateId: $aggregateId) { id, name, createdAt } }',
+      query: 'query ($id: ID!) { users(id: $id) { id, name, createdAt } }',
       variables: {
-        aggregateId: userId
+        id: userId
       }
     }
   ]

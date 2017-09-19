@@ -2,29 +2,66 @@ import bodyParser from 'body-parser'
 import jwt from 'jsonwebtoken'
 import uuid from 'uuid'
 
-import { authorizationSecret, cookieName } from '../common/constants'
+import {
+  authorizationSecret,
+  cookieName,
+  cookieMaxAge
+} from '../common/constants'
+
+export const getCurrentUser = async (executeQuery, cookies) => {
+  try {
+    const { id } = jwt.verify(cookies[cookieName], authorizationSecret)
+    const {
+      users
+    } = await executeQuery(
+      'users',
+      'query ($id: ID!) { users(id: $id) { id, name, createdAt } }',
+      { id }
+    )
+    const [user] = users
+
+    return user
+  } catch (error) {}
+}
+
+export const getUserByName = async (executeQuery, name) => {
+  const {
+    users
+  } = await executeQuery(
+    'users',
+    'query ($name: String!) { users(name: $name) { id, name, createdAt } }',
+    { name: name.trim() }
+  )
+  const [user] = users
+
+  return user
+}
+
+export const authorize = (req, res, user) => {
+  try {
+    const authorizationToken = jwt.sign(user, authorizationSecret)
+    res.cookie(cookieName, authorizationToken, {
+      maxAge: cookieMaxAge
+    })
+
+    res.redirect(req.query.redirect || '/')
+  } catch (error) {
+    res.redirect('/error/?text=Unauthorized')
+  }
+}
 
 export const extendExpress = express => {
   express.use('/', authorizationMiddleware)
   express.use('/api/commands/', commandAuthorizationMiddleware)
 
-  function authorize(req, res, user) {
-    try {
-      const authorizationToken = jwt.sign(user, authorizationSecret)
-      res.cookie(cookieName, authorizationToken)
-
-      res.redirect(req.query.redirect || '/')
-    } catch (error) {
-      res.redirect('/error/?text=Unauthorized')
-    }
-  }
-
   express.post(
     '/signup',
     bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
-      const users = await req.resolve.executeQuery('users')
-      const existingUser = users.find(({ name }) => name === req.body.name)
+      const existingUser = await getUserByName(
+        req.resolve.executeQuery,
+        req.body.name
+      )
 
       if (existingUser) {
         res.redirect('/error/?text=User already exists')
@@ -33,7 +70,7 @@ export const extendExpress = express => {
 
       try {
         const user = {
-          name: req.body.name,
+          name: req.body.name.trim(),
           id: uuid.v4()
         }
 
@@ -55,8 +92,7 @@ export const extendExpress = express => {
     '/login',
     bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
-      const users = await req.resolve.executeQuery('users')
-      const user = users.find(({ name }) => name === req.body.name)
+      const user = await getUserByName(req.resolve.executeQuery, req.body.name)
 
       if (!user) {
         res.redirect('/error/?text=No such user')
@@ -94,23 +130,13 @@ export const commandAuthorizationMiddleware = (req, res, next) => {
   }
 }
 
-export const getCurrentUser = async (executeQuery, { body }) => {
-  try {
-    const users = await executeQuery('users')
-    const id = body.userId
-    return users.find(user => user.id === id) || {}
-  } catch (error) {
-    return {}
-  }
-}
-
-export const initialState = async (executeQuery, params) => {
-  const user = await getCurrentUser(executeQuery, params)
+export const initialState = async (executeQuery, { cookies }) => {
+  const user = await getCurrentUser(executeQuery, cookies)
   return {
-    user,
+    user: user || {},
     stories: [],
     comments: [],
     storyDetails: [],
-    users: [user]
+    users: user ? [user] : []
   }
 }
