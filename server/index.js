@@ -7,26 +7,28 @@ import { authorizationSecret } from '../common/constants'
 export const getCurrentUser = async (executeQuery, cookies) => {
   try {
     const { id } = jwt.verify(cookies.authorizationToken, authorizationSecret)
-    const [
-      user
-    ] = (await executeQuery(
+    const {
+      users
+    } = await executeQuery(
       'users',
       'query ($id: ID!) { users(id: $id) { id, name, createdAt } }',
       { id }
-    )).users
+    )
+    const [user] = users
 
     return user
   } catch (error) {}
 }
 
 export const getUserByName = async (executeQuery, name) => {
-  const [
-    user
-  ] = (await executeQuery(
+  const {
+    users
+  } = await executeQuery(
     'users',
     'query ($name: String!) { users(name: $name) { id, name, createdAt } }',
     { name: name.trim() }
-  )).users
+  )
+  const [user] = users
 
   return user
 }
