@@ -189,10 +189,10 @@ describe('read-models', () => {
           comments: [
             {
               id: commentId,
-              createdAt: event.timestamp,
-              createdBy: userId,
               parentId: aggregateId,
-              text
+              text,
+              createdAt: event.timestamp,
+              createdBy: userId
             }
           ]
         }
@@ -203,46 +203,69 @@ describe('read-models', () => {
       )
     })
 
-    it('eventHandler "COMMENT_CREATED" should increment comments count', () => {
-      const userId = uuid.v4()
-      const commentId = uuid.v4()
+    it('eventHandler "COMMENT_CREATED" comment reply', () => {
       const aggregateId = uuid.v4()
-      const text = 'text'
+      const commentId = uuid.v4()
+      const replyId = uuid.v4()
+      const userId = uuid.v4()
+      const commentText = 'comment'
+      const replyText = 'reply'
 
       const state = storyDetails.initialState.concat({
         id: aggregateId,
         comments: []
       })
 
-      const event = {
+      const commentEvent = {
         aggregateId,
         timestamp: Date.now(),
         payload: {
           commentId,
           parentId: aggregateId,
-          userId,
-          text
+          text: commentText,
+          userId
+        }
+      }
+      const replyEvent = {
+        aggregateId,
+        timestamp: Date.now(),
+        payload: {
+          commentId: replyId,
+          parentId: commentId,
+          text: replyText,
+          userId
         }
       }
 
-      const nextState = [
+      const finalState = [
         {
           id: aggregateId,
           comments: [
             {
               id: commentId,
               parentId: aggregateId,
-              createdBy: userId,
-              createdAt: event.timestamp,
-              text
+              text: commentText,
+              createdAt: commentEvent.timestamp,
+              createdBy: userId
+            },
+            {
+              id: replyId,
+              parentId: commentId,
+              text: replyText,
+              createdAt: replyEvent.timestamp,
+              createdBy: userId
             }
           ]
         }
       ]
 
-      expect(storyDetails.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
-        nextState
+      const nextState = storyDetails.eventHandlers[COMMENT_CREATED](
+        state,
+        commentEvent
       )
+      expect(
+        storyDetails.eventHandlers[COMMENT_CREATED](nextState, replyEvent)
+      ).toEqual(finalState)
     })
   })
 })
