@@ -1,4 +1,4 @@
-# hacker-news-resolve &middot; [![Build Status](https://travis-ci.org/reimagined/hacker-news-demo.svg?branch=master)](https://travis-ci.org/reimagined/hacker-news-demo) [![Coverage Status](https://coveralls.io/repos/github/reimagined/hacker-news-demo/badge.svg)](https://coveralls.io/github/reimagined/hacker-news-demo)
+# hacker-news-resolve &middot; [![Build Status](https://travis-ci.org/reimagined/hacker-news-resolve.svg?branch=master)](https://travis-ci.org/reimagined/hacker-news-resolve) [![Coverage Status](https://coveralls.io/repos/github/reimagined/hacker-news-resolve/badge.svg)](https://coveralls.io/github/reimagined/hacker-news-resolve)
 
 A React & Redux & Resolve implementation of Hacker News 
 
@@ -9,8 +9,8 @@ A React & Redux & Resolve implementation of Hacker News
 # Get Started
 
 ``` bash
-git clone https://github.com/reimagined/hacker-news-demo.git
-cd hacker-news-demo
+git clone https://github.com/reimagined/hacker-news-resolve.git
+cd hacker-news-resolve
 npm install
 npm run import
 npm run dev
