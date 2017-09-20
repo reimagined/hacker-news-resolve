@@ -60,7 +60,6 @@ export default {
           createdAt: timestamp,
           link,
           comments: [],
-          commentCount: 0,
           votes: []
         }
       ])
@@ -113,29 +112,23 @@ export default {
       }
 
       if (parentId !== aggregateId) {
-        let parentCommentIndex
-        state.getIn([index, 'comments'], comments => {
-          parentCommentIndex = comments.findIndex(({ id }) => id === parentId)
-        })
+        let parentCommentIndex = state
+          .getIn([index, 'comments'])
+          .findIndex(({ id }) => id === parentId)
         if (parentCommentIndex < 0) {
           return state
         }
       }
 
-      let commentCount = 0
-      const newState = state
-        .updateIn([index, 'commentCount'], count => {
-          commentCount = count + 1
-          return commentCount
-        })
-        .setIn([index, 'comments', commentCount - 1], {
+      return state.updateIn([index, 'comments'], comments =>
+        comments.concat({
           id: commentId,
           parentId,
           text,
           createdAt: timestamp,
           createdBy: userId
         })
-      return newState
+      )
     }
   },
   gqlSchema: `
@@ -152,8 +145,7 @@ export default {
       title: String
       text: String
       link: String
-      comments: [Comment],
-      commentCount: Int
+      comments: [Comment]
       votes: [String]
       createdAt: String
       createdBy: String

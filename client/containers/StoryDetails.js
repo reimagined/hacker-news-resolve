@@ -106,7 +106,6 @@ export default subscribe(({ match: { params: { storyId } } }) => ({
               createdBy,
               createdByName
             },
-            commentCount,
             votes,
             createdAt,
             createdBy,

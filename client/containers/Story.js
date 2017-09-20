@@ -139,6 +139,9 @@ export class Story extends React.PureComponent {
       return null
     }
 
+    let commentCount = story.comments
+      ? story.comments.length
+      : story.commentCount
     return (
       <div className="story">
         <div className="story__content">
@@ -158,7 +161,7 @@ export class Story extends React.PureComponent {
             createdByName={story.createdByName}
             createdAt={story.createdAt}
             votes={story.votes}
-            commentCount={story.commentCount}
+            commentCount={commentCount}
             unvoteStory={this.unvoteStory}
             loggedIn={loggedIn}
           />
