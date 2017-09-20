@@ -9,7 +9,7 @@ import storyDetails from '../../common/read-models/storyDetails'
 
 export const CommentById = ({ storyId, commentId, stories }) => {
   if (!stories.length) {
-    // todo: fix me!!!
+    // TODO: fix me!!!
     return null
   }
   const comments = stories[0].comments
@@ -36,7 +36,8 @@ export const mapStateToProps = (
 ) => ({
   storyId: storyId,
   commentId,
-  stories: storyDetails // todo: rename!
+  // TODO: rename!
+  stories: storyDetails
 })
 
 export default subscribe(({ match: { params: { storyId, commentId } } }) => ({

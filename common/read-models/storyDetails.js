@@ -38,7 +38,8 @@ const getCommentWithChildren = (state, commentId) => {
 
 export default {
   name: 'storyDetails',
-  initialState: Immutable([]), // todo: remove me!!!
+  // TODO: remove me!!!
+  initialState: Immutable([]),
   eventHandlers: {
     [STORY_CREATED]: (state: any, event: StoryCreated) => {
       const {
@@ -71,7 +72,7 @@ export default {
       const index = state.findIndex(({ id }) => id === aggregateId)
 
       if (index < 0) {
-        // todo: fix me!
+        // TODO: fix me!
         return state
       }
 
@@ -84,7 +85,7 @@ export default {
       const index = state.findIndex(({ id }) => id === aggregateId)
 
       if (index < 0) {
-        // todo: fix me!
+        // TODO: fix me!
         return state
       }
 
@@ -103,7 +104,7 @@ export default {
       const index = state.findIndex(({ id }) => id === aggregateId)
 
       if (index < 0) {
-        // todo: fix me!
+        // TODO: fix me!
         return state
       }
 
