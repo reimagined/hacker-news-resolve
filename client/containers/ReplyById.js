@@ -16,10 +16,10 @@ export class ReplyById extends React.PureComponent {
 
   saveComment = () => {
     this.props.createComment({
+      storyId: this.props.stories[0].id,
+      parentId: this.props.commentId,
       text: this.state.text,
-      parentId: this.props.comment.id,
-      userId: this.props.userId,
-      storyId: this.props.storyId
+      userId: this.props.userId
     })
 
     setTimeout(() => history.back(), 500)
@@ -28,8 +28,15 @@ export class ReplyById extends React.PureComponent {
   onTextChange = event => this.setState({ text: event.target.value })
 
   render() {
-    const { storyId, comment, loggedIn } = this.props
+    const { commentId, stories, loggedIn } = this.props
 
+    if (!stories.length) {
+      // TODO: fix me!!!
+      return null
+    }
+
+    const story = stories[0]
+    const comment = story.comments.find(({ id }) => id === commentId)
     if (!comment) {
       return null
     }
@@ -38,7 +45,7 @@ export class ReplyById extends React.PureComponent {
       <div>
         <div className="reply">
           <div className="reply__content">
-            <Comment storyId={storyId} {...comment} />
+            <Comment storyId={story.id} {...comment} />
             {loggedIn ? (
               <div>
                 <textarea
@@ -76,10 +83,10 @@ const mapDispatchToProps = dispatch =>
 
 const mapStateToProps = (
   { storyDetails, user },
-  { match: { params: { commentId, storyId } } }
+  { match: { params: { commentId } } }
 ) => ({
-  storyId,
-  comment: storyDetails.find(({ id }) => id === commentId),
+  stories: storyDetails,
+  commentId,
   userId: user.id,
   loggedIn: !!user.id
 })
@@ -88,8 +95,24 @@ export default subscribe(({ match: { params: { storyId, commentId } } }) => ({
   graphQL: [
     {
       readModel: storyDetails,
-      query:
-        'query ($aggregateId: String, $commentId: String!) { storyDetails(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, createdAt, createdBy, createdByName } }',
+      query: `query ($aggregateId: String, $commentId: String!) {
+          storyDetails(aggregateId: $aggregateId, commentId: $commentId) {
+            id,
+            parentId,
+            text,
+            comments {
+              id,
+              parentId,
+              text,
+              createdAt,
+              createdBy,
+              createdByName
+            },
+            createdAt,
+            createdBy,
+            createdByName
+          }
+        }`,
       variables: {
         aggregateId: storyId,
         commentId

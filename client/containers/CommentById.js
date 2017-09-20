@@ -7,7 +7,13 @@ import ReplyLink from '../components/ReplyLink'
 import subscribe from '../decorators/subscribe'
 import storyDetails from '../../common/read-models/storyDetails'
 
-export const CommentById = ({ storyId, comments, comment }) => {
+export const CommentById = ({ storyId, commentId, stories }) => {
+  if (!stories.length) {
+    // TODO: fix me!!!
+    return null
+  }
+  const comments = stories[0].comments
+  const comment = comments.find(({ id }) => id === commentId)
   if (!comment) {
     return null
   }
@@ -29,16 +35,28 @@ export const mapStateToProps = (
   { match: { params: { storyId, commentId } } }
 ) => ({
   storyId: storyId,
-  comments: storyDetails,
-  comment: storyDetails.find(({ id }) => id === commentId)
+  commentId,
+  // TODO: rename!
+  stories: storyDetails
 })
 
 export default subscribe(({ match: { params: { storyId, commentId } } }) => ({
   graphQL: [
     {
       readModel: storyDetails,
-      query:
-        'query ($aggregateId: String!, $commentId: String!) { storyDetails(aggregateId: $aggregateId, commentId: $commentId) { text, id, parentId, createdAt, createdBy, createdByName } }',
+      query: `query ($aggregateId: ID!, $commentId: ID!) { 
+          storyDetails(aggregateId: $aggregateId, commentId: $commentId) {
+            id,
+            comments {
+              id,
+              parentId,
+              text,
+              createdAt,
+              createdBy,
+              createdByName
+            }
+          } 
+        }`,
       variables: {
         aggregateId: storyId,
         commentId: commentId

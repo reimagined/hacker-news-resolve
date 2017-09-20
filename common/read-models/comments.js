@@ -34,10 +34,10 @@ export default {
   },
   gqlSchema: `
     type Comment {
-      text: String!
       id: ID!
       parentId: ID!
       storyId: ID!
+      text: String!
       createdAt: String!
       createdBy: String!
       createdByName: String!

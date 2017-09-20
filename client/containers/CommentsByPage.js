@@ -28,8 +28,17 @@ export default subscribe(({ match: { params: { page } } }) => ({
   graphQL: [
     {
       readModel: comments,
-      query:
-        'query ($page: Int!) { comments(page: $page) { id, parentId, storyId, createdAt, createdBy, createdByName, text } }',
+      query: `query ($page: Int!) {
+          comments(page: $page) {
+            id,
+            parentId,
+            storyId,
+            text,
+            createdAt,
+            createdBy,
+            createdByName
+          }
+        }`,
       variables: {
         page: page || '1'
       }

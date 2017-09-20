@@ -30,6 +30,7 @@ describe('read-models', () => {
           createdBy: event.payload.userId,
           createdAt: event.timestamp,
           link: event.payload.link,
+          comments: [],
           commentCount: 0,
           votes: []
         }
@@ -62,6 +63,7 @@ describe('read-models', () => {
           createdBy: event.payload.userId,
           createdAt: event.timestamp,
           link: event.payload.link,
+          comments: [],
           commentCount: 0,
           votes: []
         }
@@ -94,6 +96,7 @@ describe('read-models', () => {
           createdBy: event.payload.userId,
           createdAt: event.timestamp,
           link: event.payload.link,
+          comments: [],
           commentCount: 0,
           votes: []
         }
@@ -186,14 +189,16 @@ describe('read-models', () => {
       const nextState = [
         {
           id: aggregateId,
+          comments: {
+            0: {
+              id: commentId,
+              createdAt: event.timestamp,
+              createdBy: userId,
+              parentId: aggregateId,
+              text
+            }
+          },
           commentCount: 1
-        },
-        {
-          id: commentId,
-          createdAt: event.timestamp,
-          createdBy: userId,
-          parentId: aggregateId,
-          text
         }
       ]
 
@@ -204,7 +209,6 @@ describe('read-models', () => {
 
     it('eventHandler "COMMENT_CREATED" should increment comments count', () => {
       const userId = uuid.v4()
-      const parentId = uuid.v4()
       const commentId = uuid.v4()
       const aggregateId = uuid.v4()
       const text = 'text'
@@ -228,14 +232,16 @@ describe('read-models', () => {
       const nextState = [
         {
           id: aggregateId,
+          comments: {
+            0: {
+              id: commentId,
+              parentId: aggregateId,
+              createdBy: userId,
+              createdAt: event.timestamp,
+              text
+            }
+          },
           commentCount: 1
-        },
-        {
-          id: commentId,
-          parentId: aggregateId,
-          createdBy: userId,
-          createdAt: event.timestamp,
-          text
         }
       ]
 
