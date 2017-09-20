@@ -85,7 +85,9 @@
       "/coverage/",
       "resolve.build.config.js",
       "resolve.client.config.js",
-      "resolve.server.config.js"
+      "resolve.server.config.js",
+      "common/immutable.js",
+      "server/"
     ],
     "moduleNameMapper": {
       ".*\\.(css|less)$": "<rootDir>/tests/ignore-css.js"
