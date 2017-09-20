@@ -12,14 +12,14 @@ import type { CommentCreated } from '../events/comments'
 
 const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
 
-const _getCommentWithChildren = (comments, id) => {
+const findCommentsById = (comments, id) => {
   const parent = comments.find(comment => comment.id === id)
   const result = []
   if (parent) {
     result.push(parent)
     comments.forEach(comment => {
       if (comment.parentId === parent.id) {
-        result.push(..._getCommentWithChildren(comments, comment.id))
+        result.push(...findCommentsById(comments, comment.id))
       }
     })
   }
@@ -31,14 +31,15 @@ const getCommentWithChildren = (state, commentId) => {
   return [
     {
       id: story.id,
-      comments: _getCommentWithChildren(story.comments, commentId)
+      comments: findCommentsById(story.comments, commentId)
     }
   ]
 }
 
 export default {
   name: 'storyDetails',
-  initialState: Immutable([]), // todo: remove me!!!
+  // TODO: remove me!!!
+  initialState: Immutable([]),
   eventHandlers: {
     [STORY_CREATED]: (state: any, event: StoryCreated) => {
       const {
@@ -70,7 +71,7 @@ export default {
       const index = state.findIndex(({ id }) => id === aggregateId)
 
       if (index < 0) {
-        // todo: fix me!
+        // TODO: fix me!
         return state
       }
 
@@ -83,7 +84,7 @@ export default {
       const index = state.findIndex(({ id }) => id === aggregateId)
 
       if (index < 0) {
-        // todo: fix me!
+        // TODO: fix me!
         return state
       }
 
@@ -102,7 +103,7 @@ export default {
       const index = state.findIndex(({ id }) => id === aggregateId)
 
       if (index < 0) {
-        // todo: fix me!
+        // TODO: fix me!
         return state
       }
 

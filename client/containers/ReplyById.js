@@ -31,7 +31,7 @@ export class ReplyById extends React.PureComponent {
     const { commentId, stories, loggedIn } = this.props
 
     if (!stories.length) {
-      // todo: fix me!!!
+      // TODO: fix me!!!
       return null
     }
 

@@ -131,9 +131,9 @@ export class App extends React.PureComponent {
           <div className="app__footer">
             <a
               className="app__footer-link"
-              href="https://github.com/reimagined/hacker-news-demo"
+              href="https://github.com/reimagined/hacker-news-resolve"
             >
-              reimagined/hacker-news-demo
+              reimagined/hacker-news-resolve
             </a>
           </div>
         </div>
