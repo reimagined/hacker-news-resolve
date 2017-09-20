@@ -19,27 +19,8 @@ export default initialState => {
 
   if (isClient) {
     middleware.push(
-      sendCommandMiddleware({
-        sendCommand: async command => {
-          const response = await fetch('/api/commands', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'same-origin',
-            body: JSON.stringify(command)
-          })
-
-          if (response.ok) {
-            return response.blob()
-          }
-
-          const text = await response.text()
-          console.error('Error due command sent: ', text)
-          return Promise.reject(text)
-        }
-      }),
-      setSubscriptionMiddleware({
-        rootDirPath: process.env.ROOT_DIR
-      }),
+      sendCommandMiddleware(),
+      setSubscriptionMiddleware(),
       sagaMiddleware
     )
   }
