@@ -15,7 +15,7 @@ describe('read-models', () => {
         timestamp: Date.now(),
         payload: {
           title: 'Google',
-          link: 'http://google.com',
+          link: 'https://google.com',
           userId: uuid.v4()
         }
       }
@@ -78,7 +78,7 @@ describe('read-models', () => {
         timestamp: Date.now(),
         payload: {
           title: 'Show HN: Google',
-          link: 'http://google.com',
+          link: 'https://google.com',
           userId: uuid.v4()
         }
       }
@@ -110,7 +110,7 @@ describe('read-models', () => {
         id: aggregateId,
         type: 'story',
         title: 'Show HN: Google',
-        link: 'http://google.com',
+        link: 'https://google.com',
         commentCount: 0,
         votes: [],
         createdAt: timestamp,
@@ -129,7 +129,7 @@ describe('read-models', () => {
           id: aggregateId,
           type: 'story',
           title: 'Show HN: Google',
-          link: 'http://google.com',
+          link: 'https://google.com',
           commentCount: 0,
           votes: [userId],
           createdAt: timestamp,
@@ -150,7 +150,7 @@ describe('read-models', () => {
         id: aggregateId,
         type: 'story',
         title: 'Show HN: Google',
-        link: 'http://google.com',
+        link: 'https://google.com',
         commentCount: 0,
         votes: [userId],
         createdAt: timestamp,
@@ -169,7 +169,7 @@ describe('read-models', () => {
           id: aggregateId,
           type: 'story',
           title: 'Show HN: Google',
-          link: 'http://google.com',
+          link: 'https://google.com',
           commentCount: 0,
           votes: [],
           createdAt: timestamp,
@@ -191,7 +191,7 @@ describe('read-models', () => {
         id: aggregateId,
         type: 'story',
         title: 'Show HN: Google',
-        link: 'http://google.com',
+        link: 'https://google.com',
         commentCount: 0,
         votes: [],
         createdAt: timestamp,
@@ -214,7 +214,7 @@ describe('read-models', () => {
           id: aggregateId,
           type: 'story',
           title: 'Show HN: Google',
-          link: 'http://google.com',
+          link: 'https://google.com',
           commentCount: 1,
           votes: [],
           createdAt: timestamp,
@@ -225,6 +225,68 @@ describe('read-models', () => {
       expect(stories.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
         nextState
       )
+    })
+
+    it('gqlResolver', async () => {
+      const date = Date.now()
+      const state = stories.initialState.concat({
+        id: 'story-id',
+        type: 'ask',
+        title: 'Google',
+        text: 'text',
+        commentCount: 0,
+        votes: [],
+        createdAt: date,
+        createdBy: 'user-id'
+      })
+      const getReadModel = async () => {
+        return [
+          {
+            id: 'user-id',
+            name: 'user'
+          }
+        ]
+      }
+
+      //all stories
+      let result = await stories.gqlResolvers.stories(
+        state,
+        { page: 1 },
+        { getReadModel }
+      )
+      expect(result).toEqual([
+        {
+          id: 'story-id',
+          type: 'ask',
+          title: 'Google',
+          text: 'text',
+          commentCount: 0,
+          votes: [],
+          createdAt: date,
+          createdBy: 'user-id',
+          createdByName: 'user'
+        }
+      ])
+
+      //ask stories
+      result = await stories.gqlResolvers.stories(
+        state,
+        { page: 1, type: 'ask' },
+        { getReadModel }
+      )
+      expect(result).toEqual([
+        {
+          id: 'story-id',
+          type: 'ask',
+          title: 'Google',
+          text: 'text',
+          commentCount: 0,
+          votes: [],
+          createdAt: date,
+          createdBy: 'user-id',
+          createdByName: 'user'
+        }
+      ])
     })
   })
 })

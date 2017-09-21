@@ -44,5 +44,11 @@ describe('read-models', () => {
 
       expect(users.gqlResolvers.users(root, { id: 'id-1' })).toEqual(result)
     })
+    it('gqlResolver unknown user', () => {
+      const root = [{ name: 'user-1' }]
+      const result = []
+
+      expect(users.gqlResolvers.users(root, { name: 'user-2' })).toEqual(result)
+    })
   })
 })
