@@ -98,21 +98,22 @@ describe('read-models', () => {
         nextState
       )
     })
-    it('gqlResolver', done => {
-      const users = [{ id: 'user-id', name: 'username' }]
+    it('gqlResolver', async () => {
       const root = [{ id: 'comment-id', createdBy: 'user-id' }]
-      const getReadModel = () => Promise.resolve(users)
+      const getReadModel = async () => [{ id: 'user-id', name: 'username' }]
 
-      const result = [
-        { id: 'comment-id', createdBy: 'user-id', createdByName: 'username' }
-      ]
-
-      comments.gqlResolvers
-        .comments(root, { page: 1 }, { getReadModel })
-        .then(res => {
-          expect(res).toEqual(result)
-          done()
-        })
+      const result = await comments.gqlResolvers.comments(
+        root,
+        { page: 1 },
+        { getReadModel }
+      )
+      expect(result).toEqual([
+        {
+          id: 'comment-id',
+          createdBy: 'user-id',
+          createdByName: 'username'
+        }
+      ])
     })
   })
 })

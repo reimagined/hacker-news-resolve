@@ -300,12 +300,13 @@ describe('read-models', () => {
         ]
       }
 
-      const replyResult = await storyDetails.gqlResolvers.storyDetails(
+      //reply
+      let result = await storyDetails.gqlResolvers.storyDetails(
         state,
         { commentId: 'reply-id' },
         { getReadModel }
       )
-      expect(replyResult).toEqual([
+      expect(result).toEqual([
         {
           id: 'story-id',
           comments: [
@@ -321,7 +322,8 @@ describe('read-models', () => {
         }
       ])
 
-      const result = await storyDetails.gqlResolvers.storyDetails(
+      //comment
+      result = await storyDetails.gqlResolvers.storyDetails(
         state,
         { commentId: 'comment-id' },
         { getReadModel }
