@@ -13,8 +13,10 @@ import '../styles/story.css'
 
 const isExternalLink = link => link[0] !== '/'
 
-export const getHostname = link =>
-  link.split('.')[0] === 'www' ? link.substr(4) : url.parse(link).hostname
+export const getHostname = link => {
+  const hostname = url.parse(link).hostname
+  return hostname.split('.')[0] === 'www' ? hostname.substr(4) : hostname
+}
 
 export const voteArrow = (visible, upvoteStory) => {
   return visible ? (
@@ -133,7 +135,7 @@ export class Story extends React.PureComponent {
     this.props.unvoteStory(this.props.story.id, this.props.userId)
 
   render() {
-    const { story, loggedIn, showText, voted } = this.props
+    const { story, loggedIn, voted } = this.props
 
     if (!story) {
       return null
@@ -157,15 +159,15 @@ export class Story extends React.PureComponent {
           <Meta
             voted={voted}
             id={story.id}
-            createdBy={story.createdBy}
-            createdByName={story.createdByName}
-            createdAt={story.createdAt}
             votes={story.votes}
             commentCount={commentCount}
             unvoteStory={this.unvoteStory}
             loggedIn={loggedIn}
+            createdAt={story.createdAt}
+            createdBy={story.createdBy}
+            createdByName={story.createdByName}
           />
-          {showText && story.text ? (
+          {story.text ? (
             <div
               className="story__text"
               dangerouslySetInnerHTML={{

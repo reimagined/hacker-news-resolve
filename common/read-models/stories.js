@@ -32,11 +32,11 @@ export default {
           type,
           title,
           text,
-          createdBy: userId,
-          createdAt: timestamp,
           link,
           commentCount: 0,
-          votes: []
+          votes: [],
+          createdAt: timestamp,
+          createdBy: userId
         },
         ...state
       ])

@@ -38,7 +38,7 @@ export class StoryDetails extends React.PureComponent {
 
     return (
       <div className="storyDetails">
-        <Story id={story.id} showText />
+        <Story id={story.id} />
         {loggedIn ? (
           <div className="storyDetails__content">
             <div className="storyDetails__textarea">

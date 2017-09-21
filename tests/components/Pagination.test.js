@@ -30,3 +30,9 @@ it('Page Default renders correctly', () => {
 
   expect(markup).toMatchSnapshot()
 })
+
+it('Page 1 renders correctly', () => {
+  const markup = shallow(<Pagination hasNext={true} location="news" />)
+
+  expect(markup).toMatchSnapshot()
+})
