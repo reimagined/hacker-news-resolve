@@ -34,7 +34,10 @@ it('ChildrenComments renders correctly', () => {
       level={0}
     />
   )
+
   expect(markup).toMatchSnapshot()
+
+  expect(markup.find(ChildrenComments).shallow()).toMatchSnapshot()
 })
 
 it('Empty renders correctly', () => {
