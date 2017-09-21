@@ -1,12 +1,14 @@
 async function withUserNames(items, getReadModel) {
   const users = await getReadModel('users')
 
-  items.forEach(item => {
+  return items.map(item => {
     const user = users.find(user => user.id === item.createdBy)
-    item.createdByName = user ? user.name : 'unknown'
-  })
 
-  return items
+    return {
+      ...item,
+      createdByName: user ? user.name : 'unknown'
+    }
+  })
 }
 
 export default withUserNames

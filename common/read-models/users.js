@@ -1,4 +1,4 @@
-import Immutable from '../immutable'
+import Immutable from 'seamless-immutable'
 
 import type { UserCreated } from '../events/users'
 import events from '../events/users'

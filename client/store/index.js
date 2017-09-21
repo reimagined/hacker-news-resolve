@@ -1,7 +1,8 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { sendCommandMiddleware, setSubscriptionMiddleware } from 'resolve-redux'
 import createSagaMiddleware from 'redux-saga'
-import Immutable from '../../common/immutable'
+import Immutable from 'seamless-immutable'
+
 import reducer from '../reducers'
 import rootSaga from '../sagas'
 

@@ -1,4 +1,5 @@
-import Immutable from '../immutable'
+import Immutable from 'seamless-immutable'
+
 import events from '../events'
 import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants'
 import withUserNames from '../helpers/withUserNames'
