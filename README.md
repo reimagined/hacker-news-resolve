@@ -26,6 +26,7 @@ Access localhost:3000 then you can see the front page of Hacker News.
 |`build`             | Builds the application to ./dist |
 |`dev`               | Serves your app at `localhost:3000` in development mode|
 |`start`             | Serves your app at `localhost:3000` in production mode |
+|`import`            | Imports data from [Original Hacker News](https://news.ycombinator.com/) |
 |`test`              | Runs unit tests with Jest |
 |`test:watch`        | Runs `test` in watch mode to re-run tests when changed |
 |`prettier`          | Lints the project and fixes all correctable errors |
