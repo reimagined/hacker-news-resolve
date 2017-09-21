@@ -1,4 +1,5 @@
-import Immutable from '../immutable'
+import Immutable from 'seamless-immutable'
+
 import events from '../events'
 import withUserNames from '../helpers/withUserNames'
 
@@ -159,13 +160,14 @@ export default {
     storyDetails: async (state, { commentId }, { getReadModel }) => {
       let newState
       if (commentId) {
-        newState = getCommentWithChildren(state, commentId)
+        newState = Immutable(getCommentWithChildren(state, commentId))
       } else {
-        newState = await withUserNames(state, getReadModel)
+        newState = Immutable(await withUserNames(state, getReadModel))
       }
-      const comments = await withUserNames(newState[0].comments, getReadModel)
-      newState[0].comments = comments
-      return newState
+      const comments = Immutable(
+        await withUserNames(newState[0].comments, getReadModel)
+      )
+      return newState.setIn([0, 'comments'], comments)
     }
   }
 }

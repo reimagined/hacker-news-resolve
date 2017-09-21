@@ -1,6 +1,6 @@
-import Immutable from '../immutable'
-import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants'
+import Immutable from 'seamless-immutable'
 
+import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants'
 import type { CommentCreated } from '../events/comments'
 import events from '../events'
 import withUserNames from '../helpers/withUserNames'
