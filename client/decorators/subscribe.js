@@ -12,7 +12,7 @@ function queryParams(params) {
 
 export const executeQuery = async ({ readModel, query, variables }) => {
   const response = await fetch(
-    `/api/queries/${readModel.name}?${queryParams({
+    `/api/query/?${queryParams({
       graphql: query,
       variables: JSON.stringify(variables)
     })}`,

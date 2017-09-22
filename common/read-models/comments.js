@@ -1,9 +1,7 @@
 import Immutable from 'seamless-immutable'
 
-import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants'
 import type { CommentCreated } from '../events/comments'
 import events from '../events'
-import withUserNames from '../helpers/withUserNames'
 
 const { COMMENT_CREATED } = events
 
@@ -30,30 +28,6 @@ export default {
           }
         ].concat(state)
       )
-    }
-  },
-  gqlSchema: `
-    type Comment {
-      id: ID!
-      parentId: ID!
-      storyId: ID!
-      text: String!
-      createdAt: String!
-      createdBy: String!
-      createdByName: String!
-    }
-    type Query {
-      comments(page: Int!): [Comment]
-    }
-  `,
-  gqlResolvers: {
-    comments: async (root, { page }, { getReadModel }) => {
-      const comments = root.slice(
-        +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
-        +page * NUMBER_OF_ITEMS_PER_PAGE + 1
-      )
-
-      return withUserNames(comments, getReadModel)
     }
   }
 }

@@ -1,7 +1,6 @@
 import Immutable from 'seamless-immutable'
 
 import events from '../events'
-import withUserNames from '../helpers/withUserNames'
 
 import type {
   StoryCreated,
@@ -12,30 +11,6 @@ import type {
 import type { CommentCreated } from '../events/comments'
 
 const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
-
-const findCommentsById = (comments, id) => {
-  const parent = comments.find(comment => comment.id === id)
-  const result = []
-  if (parent) {
-    result.push(parent)
-    comments.forEach(comment => {
-      if (comment.parentId === parent.id) {
-        result.push(...findCommentsById(comments, comment.id))
-      }
-    })
-  }
-  return result
-}
-
-const getCommentWithChildren = (state, commentId) => {
-  const story = state[0]
-  return [
-    {
-      id: story.id,
-      comments: findCommentsById(story.comments, commentId)
-    }
-  ]
-}
 
 export default {
   name: 'storyDetails',
@@ -130,44 +105,6 @@ export default {
           createdBy: userId
         })
       )
-    }
-  },
-  gqlSchema: `
-    type Comment {
-      id: ID
-      parentId: ID
-      text: String
-      createdAt: String
-      createdBy: String
-    }
-    type StoryDetails {
-      id: ID!
-      type: String
-      title: String
-      text: String
-      link: String
-      comments: [Comment]
-      votes: [String]
-      createdAt: String
-      createdBy: String
-      createdByName: String
-    }
-    type Query {
-      storyDetails(aggregateId: ID!, commentId: ID): [StoryDetails]
-    }
-  `,
-  gqlResolvers: {
-    storyDetails: async (state, { commentId }, { getReadModel }) => {
-      let newState
-      if (commentId) {
-        newState = Immutable(getCommentWithChildren(state, commentId))
-      } else {
-        newState = Immutable(await withUserNames(state, getReadModel))
-      }
-      const comments = Immutable(
-        await withUserNames(newState[0].comments, getReadModel)
-      )
-      return newState.setIn([0, 'comments'], comments)
     }
   }
 }

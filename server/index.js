@@ -14,7 +14,6 @@ export const getCurrentUser = async (executeQuery, cookies) => {
     const {
       users
     } = await executeQuery(
-      'users',
       'query ($id: ID!) { users(id: $id) { id, name, createdAt } }',
       { id }
     )
@@ -28,7 +27,6 @@ export const getUserByName = async (executeQuery, name) => {
   const {
     users
   } = await executeQuery(
-    'users',
     'query ($name: String!) { users(name: $name) { id, name, createdAt } }',
     { name: name.trim() }
   )
