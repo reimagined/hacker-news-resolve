@@ -14,8 +14,7 @@ import '../styles/story.css'
 const isExternalLink = link => link[0] !== '/'
 
 export const getHostname = link => {
-  const hostname = url.parse(link).hostname
-  return hostname.split('.')[0] === 'www' ? hostname.substr(4) : hostname
+  return url.parse(link).hostname
 }
 
 export const voteArrow = (visible, upvoteStory) => {
