@@ -27,12 +27,12 @@ export default {
 
       throwIfAggregateAlreadyExists(state, command)
 
-      if (!title) {
-        throw new Error('Title is required')
-      }
-
       if (!userId) {
         throw new Error('UserId is required')
+      }
+
+      if (!title) {
+        throw new Error('Title is required')
       }
 
       return new Event(STORY_CREATED, {
@@ -48,12 +48,12 @@ export default {
 
       throwIfAggregateIsNotExists(state, command)
 
-      if (state.voted.includes(userId)) {
-        throw new Error('User already voted')
-      }
-
       if (!userId) {
         throw new Error('UserId is required')
+      }
+
+      if (state.voted.includes(userId)) {
+        throw new Error('User already voted')
       }
 
       return new Event(STORY_UPVOTED, {
@@ -66,12 +66,12 @@ export default {
 
       throwIfAggregateIsNotExists(state, command)
 
-      if (!state.voted.includes(userId)) {
-        throw new Error('User has not voted')
-      }
-
       if (!userId) {
         throw new Error('UserId is required')
+      }
+
+      if (!state.voted.includes(userId)) {
+        throw new Error('User has not voted')
       }
 
       return new Event(STORY_UNVOTED, {
@@ -84,12 +84,12 @@ export default {
 
       const { commentId, parentId, userId, text } = command.payload
 
-      if (!parentId) {
-        throw new Error('ParentId is required')
-      }
-
       if (!userId) {
         throw new Error('UserId is required')
+      }
+
+      if (!parentId) {
+        throw new Error('ParentId is required')
       }
 
       if (!text) {
