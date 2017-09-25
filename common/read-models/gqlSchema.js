@@ -4,6 +4,7 @@ export default `
     type: String!
     title: String!
     link: String
+    text: String
     commentCount: Int!
     votes: [String]
     createdAt: String!

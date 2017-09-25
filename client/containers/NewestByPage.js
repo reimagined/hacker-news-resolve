@@ -20,6 +20,7 @@ export default graphql(
         type
         title
         link
+        text
         commentCount
         votes
         createdAt
@@ -30,6 +31,8 @@ export default graphql(
   `,
   {
     options: ({ match: { params: { page } } }) => ({
+      // TODO: remove it after real reactivity will be implemented
+      pollInterval: 5000,
       variables: {
         page: page || '1'
       }
