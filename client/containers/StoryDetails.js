@@ -100,10 +100,12 @@ export default graphql(
           text
           createdAt
           createdBy
+          createdByName
         }
         votes
         createdAt
         createdBy
+        createdByName
       }
     }
   `,

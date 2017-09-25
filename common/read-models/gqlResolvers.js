@@ -56,14 +56,19 @@ export default {
 
     if (hasQueryField(query, 'comments')) {
       const comments = (await read()).get('comments')
+      const storyComments = comments.filter(
+        ({ storyId }) => storyId === story.id
+      )
 
-      return {
+      const storyWithComments = {
         ...story,
-        comments: comments.filter(({ storyId }) => storyId === story.id)
+        comments: await withUserNames(storyComments, read)
       }
+
+      return (await withUserNames([storyWithComments], read))[0]
     }
 
-    return story
+    return withUserNames([story], read)[0]
   },
   comments: async (read, { page }) => {
     const root = (await read()).get('comments')
