@@ -98,21 +98,5 @@ describe('read-models', () => {
         nextState
       )
     })
-    it('gqlResolver', done => {
-      const users = [{ id: 'user-id', name: 'username' }]
-      const root = [{ id: 'comment-id', createdBy: 'user-id' }]
-      const getReadModel = () => Promise.resolve(users)
-
-      const result = [
-        { id: 'comment-id', createdBy: 'user-id', createdByName: 'username' }
-      ]
-
-      comments.gqlResolvers
-        .comments(root, { page: 1 }, { getReadModel })
-        .then(res => {
-          expect(res).toEqual(result)
-          done()
-        })
-    })
   })
 })
