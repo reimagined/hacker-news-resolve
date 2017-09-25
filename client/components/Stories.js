@@ -14,7 +14,7 @@ const Stories = ({ items, page, type }) => (
       >
         {items.slice(0, NUMBER_OF_ITEMS_PER_PAGE).map(story => (
           <li key={story.id} className="stories__item">
-            <Story id={story.id} />
+            <Story story={story} />
           </li>
         ))}
       </ol>

@@ -1,39 +1,38 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { gql, graphql } from 'react-apollo'
 
 import Stories from '../components/Stories'
-import subscribe from '../decorators/subscribe'
-import stories from '../../common/read-models/stories'
 
-const NewestByPage = ({ match: { params: { page } }, stories }) => (
-  <Stories items={stories} page={page || '1'} type="newest" />
-)
+const NewestByPage = ({
+  match: { params: { page } },
+  data: { stories = [] }
+}) => <Stories items={stories} page={page || '1'} type="newest" />
 
 export const mapStateToProps = ({ stories }) => ({
   stories
 })
 
-export default subscribe(({ match: { params: { page } } }) => ({
-  graphQL: [
-    {
-      readModel: stories,
-      query: `query ($page: Int!) {
-          stories(page: $page) {
-            id,
-            type,
-            title,
-            text,
-            link,
-            commentCount,
-            votes,
-            createdAt,
-            createdBy,
-            createdByName
-          }
-        }`,
+export default graphql(
+  gql`
+    query($page: Int!) {
+      stories(page: $page) {
+        id
+        type
+        title
+        link
+        commentCount
+        votes
+        createdAt
+        createdBy
+        createdByName
+      }
+    }
+  `,
+  {
+    options: ({ match: { params: { page } } }) => ({
       variables: {
         page: page || '1'
       }
-    }
-  ]
-}))(connect(mapStateToProps)(NewestByPage))
+    })
+  }
+)(NewestByPage)

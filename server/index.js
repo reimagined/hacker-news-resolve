@@ -100,6 +100,19 @@ export const extendExpress = express => {
       return authorize(req, res, user)
     }
   )
+
+  express.post(
+    '/graphql',
+    bodyParser.urlencoded({ extended: false }),
+    async (req, res) => {
+      const query = encodeURIComponent(req.body.query)
+      const variables = encodeURIComponent(JSON.stringify(req.body.variables))
+      const url = `http://localhost:3000/api/query?graphql=${query}&variables=${variables}`
+      const result = await fetch(url)
+      const data = await result.json()
+      res.send({ data })
+    }
+  )
 }
 
 export const accessDenied = (req, res) => {
