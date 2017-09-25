@@ -6,6 +6,7 @@ import CommentsByPage from './containers/CommentsByPage'
 import CommentById from './containers/CommentById'
 import Submit from './containers/Submit'
 import Login from './components/Login'
+import PageNotFound from './components/PageNotFound'
 
 import UserById from './containers/UserById'
 import Error from './components/Error'
@@ -65,6 +66,10 @@ const routes = [
       {
         path: '/error',
         component: Error
+      },
+      {
+        path: '**',
+        component: PageNotFound
       }
     ]
   }
