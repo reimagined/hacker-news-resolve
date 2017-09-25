@@ -19,7 +19,7 @@ const routes = [
     routes: [
       {
         path: '/',
-        redirectTo: '/newest/',
+        redirectTo: '/newest',
         exact: true
       },
       {
