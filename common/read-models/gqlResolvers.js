@@ -27,6 +27,14 @@ const getCommentWithChildren = (state, commentId) => {
   ]
 }
 
+function hasQueryField(query, field) {
+  return (
+    query.fieldNodes[0].selectionSet.selections.findIndex(
+      selection => selection.name.value === field
+    ) >= 0
+  )
+}
+
 export default {
   stories: async (read, { page, type }) => {
     const root = (await read()).get('stories')
@@ -37,6 +45,25 @@ export default {
       +page * NUMBER_OF_ITEMS_PER_PAGE + 1
     )
     return withUserNames(stories, read)
+  },
+  story: async (read, { aggregateId }, _, query) => {
+    const stories = (await read()).get('stories')
+    const story = stories.find(({ id }) => id === aggregateId)
+
+    if (!story) {
+      return null
+    }
+
+    if (hasQueryField(query, 'comments')) {
+      const comments = (await read()).get('comments')
+
+      return {
+        ...story,
+        comments: comments.filter(({ storyId }) => storyId === story.id)
+      }
+    }
+
+    return story
   },
   comments: async (read, { page }) => {
     const root = (await read()).get('comments')

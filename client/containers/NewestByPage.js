@@ -8,10 +8,6 @@ const NewestByPage = ({
   data: { stories = [] }
 }) => <Stories items={stories} page={page || '1'} type="newest" />
 
-export const mapStateToProps = ({ stories }) => ({
-  stories
-})
-
 export default graphql(
   gql`
     query($page: Int!) {
@@ -32,7 +28,7 @@ export default graphql(
   {
     options: ({ match: { params: { page } } }) => ({
       // TODO: remove it after real reactivity will be implemented
-      pollInterval: 5000,
+      pollInterval: 1000,
       variables: {
         page: page || '1'
       }

@@ -6,6 +6,7 @@ export default `
     link: String
     text: String
     commentCount: Int!
+    comments: [Comment]
     votes: [String]
     createdAt: String!
     createdBy: String!
@@ -40,6 +41,7 @@ export default `
   type Query {
     comments(page: Int!): [Comment]
     stories(page: Int!, type: String): [Story]
+    story(aggregateId: ID!): Story
     storyDetails(aggregateId: ID!, commentId: ID): [StoryDetails]
     users(id: ID, name: String): [User]
   }
