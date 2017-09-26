@@ -68,7 +68,6 @@ const routes = [
         component: Error
       },
       {
-        path: '**',
         component: PageNotFound
       }
     ]

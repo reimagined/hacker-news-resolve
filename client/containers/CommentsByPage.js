@@ -10,7 +10,7 @@ import comments from '../../common/read-models/comments'
 
 export const CommentsByPage = ({ comments, match: { params: { page } } }) =>
   page && !Number.isInteger(Number(page)) ? (
-    <Redirect push to={`/error/?text=No such page`} />
+    <Redirect push to={`/error?text=No such page`} />
   ) : (
     <div>
       {comments
