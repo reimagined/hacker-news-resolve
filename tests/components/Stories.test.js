@@ -41,3 +41,13 @@ it('Stories second page renders correctly', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
+
+it('Stories page renders with error', () => {
+  const stories = []
+
+  const wrapper = shallow(
+    <Stories items={stories} page="text" type={'story'} />
+  )
+
+  expect(wrapper).toMatchSnapshot()
+})

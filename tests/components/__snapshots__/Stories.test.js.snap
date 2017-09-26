@@ -201,6 +201,94 @@ ShallowWrapper {
 }
 `;
 
+exports[`Stories page renders with error 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <Redirect
+    push={true}
+    to="/error?text=No such page"
+/>,
+  "nodes": Array [
+    <Redirect
+      push={true}
+      to="/error?text=No such page"
+/>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Stories
+        items={Array []}
+        page="text"
+        type="story"
+/>,
+      "_debugID": 5,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "items": Array [],
+          "page": "text",
+          "type": "story",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 3,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <Redirect
+          push={true}
+          to="/error?text=No such page"
+/>,
+        "_debugID": 6,
+        "_renderedOutput": <Redirect
+          push={true}
+          to="/error?text=No such page"
+/>,
+      },
+      "_renderedNodeType": 1,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Stories
+    items={Array []}
+    page="text"
+    type="story"
+/>,
+}
+`;
+
 exports[`Stories second page renders correctly 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
