@@ -57,4 +57,3 @@ typings/
 dist
 .idea
 storage.json
-**/__snapshots__

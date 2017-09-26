@@ -1,0 +1,2471 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Discuss { 'commentCount': 0 } renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <span>
+    <span>
+        |
+         
+        <Link
+            className="story__meta-link"
+            replace={false}
+            to="/storyDetails/story-id"
+        >
+            discuss
+        </Link>
+         
+    </span>
+</span>,
+  "nodes": Array [
+    <span>
+      <span>
+            |
+             
+            <Link
+                  className="story__meta-link"
+                  replace={false}
+                  to="/storyDetails/story-id"
+            >
+                  discuss
+            </Link>
+             
+      </span>
+</span>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Discuss
+        commentCount={0}
+        id="story-id"
+/>,
+      "_debugID": 15,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "commentCount": 0,
+          "id": "story-id",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 8,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <span>
+          <span>
+                    |
+                     
+                    <Link
+                              className="story__meta-link"
+                              replace={false}
+                              to="/storyDetails/story-id"
+                    >
+                              discuss
+                    </Link>
+                     
+          </span>
+</span>,
+        "_debugID": 16,
+        "_renderedOutput": <span>
+          <span>
+                    |
+                     
+                    <Link
+                              className="story__meta-link"
+                              replace={false}
+                              to="/storyDetails/story-id"
+                    >
+                              discuss
+                    </Link>
+                     
+          </span>
+</span>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Discuss
+    commentCount={0}
+    id="story-id"
+/>,
+}
+`;
+
+exports[`Discuss { 'commentCount': 1 } renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <span>
+    <span>
+        |
+         
+        <Link
+            className="story__meta-link"
+            replace={false}
+            to="/storyDetails/story-id"
+        >
+            1 comment
+        </Link>
+         
+    </span>
+</span>,
+  "nodes": Array [
+    <span>
+      <span>
+            |
+             
+            <Link
+                  className="story__meta-link"
+                  replace={false}
+                  to="/storyDetails/story-id"
+            >
+                  1 comment
+            </Link>
+             
+      </span>
+</span>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Discuss
+        commentCount={1}
+        id="story-id"
+/>,
+      "_debugID": 17,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "commentCount": 1,
+          "id": "story-id",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 9,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <span>
+          <span>
+                    |
+                     
+                    <Link
+                              className="story__meta-link"
+                              replace={false}
+                              to="/storyDetails/story-id"
+                    >
+                              1 comment
+                    </Link>
+                     
+          </span>
+</span>,
+        "_debugID": 18,
+        "_renderedOutput": <span>
+          <span>
+                    |
+                     
+                    <Link
+                              className="story__meta-link"
+                              replace={false}
+                              to="/storyDetails/story-id"
+                    >
+                              1 comment
+                    </Link>
+                     
+          </span>
+</span>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Discuss
+    commentCount={1}
+    id="story-id"
+/>,
+}
+`;
+
+exports[`Meta renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="story__meta"
+>
+    <Score
+        score={1}
+    />
+    <PostedBy
+        id="user-id"
+        name="user"
+    />
+    <span
+        className="story__time"
+    >
+        <TimeAgo
+            component="time"
+            date={1970-01-01T00:00:00.000Z}
+            formatter={[Function]}
+            live={true}
+            maxPeriod={Infinity}
+            minPeriod={0}
+            now={[Function]}
+        />
+         
+    </span>
+    <span>
+        |
+         
+        <span
+            className="item__unvote"
+            onClick={undefined}
+        >
+            unvote
+        </span>
+         
+    </span>
+    <Discuss
+        commentCount={0}
+        id="story-id"
+    />
+</div>,
+  "nodes": Array [
+    <div
+      className="story__meta"
+>
+      <Score
+            score={1}
+      />
+      <PostedBy
+            id="user-id"
+            name="user"
+      />
+      <span
+            className="story__time"
+      >
+            <TimeAgo
+                  component="time"
+                  date={1970-01-01T00:00:00.000Z}
+                  formatter={[Function]}
+                  live={true}
+                  maxPeriod={Infinity}
+                  minPeriod={0}
+                  now={[Function]}
+            />
+             
+      </span>
+      <span>
+            |
+             
+            <span
+                  className="item__unvote"
+                  onClick={undefined}
+            >
+                  unvote
+            </span>
+             
+      </span>
+      <Discuss
+            commentCount={0}
+            id="story-id"
+      />
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Meta
+        commentCount={0}
+        createdAt={1970-01-01T00:00:00.000Z}
+        createdBy="user-id"
+        createdByName="user"
+        id="story-id"
+        loggedIn={true}
+        voted={true}
+        votes={
+                Array [
+                        "user-id",
+                      ]
+        }
+/>,
+      "_debugID": 11,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "commentCount": 0,
+          "createdAt": 1970-01-01T00:00:00.000Z,
+          "createdBy": "user-id",
+          "createdByName": "user",
+          "id": "story-id",
+          "loggedIn": true,
+          "voted": true,
+          "votes": Array [
+            "user-id",
+          ],
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 6,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="story__meta"
+>
+          <Score
+                    score={1}
+          />
+          <PostedBy
+                    id="user-id"
+                    name="user"
+          />
+          <span
+                    className="story__time"
+          >
+                    <TimeAgo
+                              component="time"
+                              date={1970-01-01T00:00:00.000Z}
+                              formatter={[Function]}
+                              live={true}
+                              maxPeriod={Infinity}
+                              minPeriod={0}
+                              now={[Function]}
+                    />
+                     
+          </span>
+          <span>
+                    |
+                     
+                    <span
+                              className="item__unvote"
+                              onClick={undefined}
+                    >
+                              unvote
+                    </span>
+                     
+          </span>
+          <Discuss
+                    commentCount={0}
+                    id="story-id"
+          />
+</div>,
+        "_debugID": 12,
+        "_renderedOutput": <div
+          className="story__meta"
+>
+          <Score
+                    score={1}
+          />
+          <PostedBy
+                    id="user-id"
+                    name="user"
+          />
+          <span
+                    className="story__time"
+          >
+                    <TimeAgo
+                              component="time"
+                              date={1970-01-01T00:00:00.000Z}
+                              formatter={[Function]}
+                              live={true}
+                              maxPeriod={Infinity}
+                              minPeriod={0}
+                              now={[Function]}
+                    />
+                     
+          </span>
+          <span>
+                    |
+                     
+                    <span
+                              className="item__unvote"
+                              onClick={undefined}
+                    >
+                              unvote
+                    </span>
+                     
+          </span>
+          <Discuss
+                    commentCount={0}
+                    id="story-id"
+          />
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Meta
+    commentCount={0}
+    createdAt={1970-01-01T00:00:00.000Z}
+    createdBy="user-id"
+    createdByName="user"
+    id="story-id"
+    loggedIn={true}
+    voted={true}
+    votes={
+        Array [
+            "user-id",
+          ]
+    }
+/>,
+}
+`;
+
+exports[`Meta renders correctly 2`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="story__meta"
+>
+    <span
+        className="story__time"
+    >
+        <TimeAgo
+            component="time"
+            date={1970-01-01T00:00:00.000Z}
+            formatter={[Function]}
+            live={true}
+            maxPeriod={Infinity}
+            minPeriod={0}
+            now={[Function]}
+        />
+         
+    </span>
+    <span>
+        |
+         
+        <span
+            className="item__unvote"
+            onClick={undefined}
+        >
+            unvote
+        </span>
+         
+    </span>
+    <Discuss
+        commentCount={0}
+        id="story-id"
+    />
+</div>,
+  "nodes": Array [
+    <div
+      className="story__meta"
+>
+      <span
+            className="story__time"
+      >
+            <TimeAgo
+                  component="time"
+                  date={1970-01-01T00:00:00.000Z}
+                  formatter={[Function]}
+                  live={true}
+                  maxPeriod={Infinity}
+                  minPeriod={0}
+                  now={[Function]}
+            />
+             
+      </span>
+      <span>
+            |
+             
+            <span
+                  className="item__unvote"
+                  onClick={undefined}
+            >
+                  unvote
+            </span>
+             
+      </span>
+      <Discuss
+            commentCount={0}
+            id="story-id"
+      />
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Meta
+        commentCount={0}
+        createdAt={1970-01-01T00:00:00.000Z}
+        id="story-id"
+        loggedIn={true}
+        voted={true}
+/>,
+      "_debugID": 13,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "commentCount": 0,
+          "createdAt": 1970-01-01T00:00:00.000Z,
+          "id": "story-id",
+          "loggedIn": true,
+          "voted": true,
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 7,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="story__meta"
+>
+          <span
+                    className="story__time"
+          >
+                    <TimeAgo
+                              component="time"
+                              date={1970-01-01T00:00:00.000Z}
+                              formatter={[Function]}
+                              live={true}
+                              maxPeriod={Infinity}
+                              minPeriod={0}
+                              now={[Function]}
+                    />
+                     
+          </span>
+          <span>
+                    |
+                     
+                    <span
+                              className="item__unvote"
+                              onClick={undefined}
+                    >
+                              unvote
+                    </span>
+                     
+          </span>
+          <Discuss
+                    commentCount={0}
+                    id="story-id"
+          />
+</div>,
+        "_debugID": 14,
+        "_renderedOutput": <div
+          className="story__meta"
+>
+          <span
+                    className="story__time"
+          >
+                    <TimeAgo
+                              component="time"
+                              date={1970-01-01T00:00:00.000Z}
+                              formatter={[Function]}
+                              live={true}
+                              maxPeriod={Infinity}
+                              minPeriod={0}
+                              now={[Function]}
+                    />
+                     
+          </span>
+          <span>
+                    |
+                     
+                    <span
+                              className="item__unvote"
+                              onClick={undefined}
+                    >
+                              unvote
+                    </span>
+                     
+          </span>
+          <Discuss
+                    commentCount={0}
+                    id="story-id"
+          />
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Meta
+    commentCount={0}
+    createdAt={1970-01-01T00:00:00.000Z}
+    id="story-id"
+    loggedIn={true}
+    voted={true}
+/>,
+}
+`;
+
+exports[`PostedBy renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <span>
+    by
+     
+    <a
+        className="story__meta-link story__by"
+        href="/user/user-id"
+    >
+        user
+    </a>
+     
+</span>,
+  "nodes": Array [
+    <span>
+      by
+       
+      <a
+            className="story__meta-link story__by"
+            href="/user/user-id"
+      >
+            user
+      </a>
+       
+</span>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <PostedBy
+        id="user-id"
+        name="user"
+/>,
+      "_debugID": 19,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "id": "user-id",
+          "name": "user",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 10,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <span>
+          by
+           
+          <a
+                    className="story__meta-link story__by"
+                    href="/user/user-id"
+          >
+                    user
+          </a>
+           
+</span>,
+        "_debugID": 20,
+        "_renderedOutput": <span>
+          by
+           
+          <a
+                    className="story__meta-link story__by"
+                    href="/user/user-id"
+          >
+                    user
+          </a>
+           
+</span>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <PostedBy
+    id="user-id"
+    name="user"
+/>,
+}
+`;
+
+exports[`Score { 'score': 0 } renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <span
+    className="story__score"
+>
+    0
+     
+    points
+     
+</span>,
+  "nodes": Array [
+    <span
+      className="story__score"
+>
+      0
+       
+      points
+       
+</span>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Score
+        score={0}
+/>,
+      "_debugID": 21,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "score": 0,
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 11,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <span
+          className="story__score"
+>
+          0
+           
+          points
+           
+</span>,
+        "_debugID": 22,
+        "_renderedOutput": <span
+          className="story__score"
+>
+          0
+           
+          points
+           
+</span>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Score
+    score={0}
+/>,
+}
+`;
+
+exports[`Score { 'score': 1 } renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <span
+    className="story__score"
+>
+    1
+     
+    point
+     
+</span>,
+  "nodes": Array [
+    <span
+      className="story__score"
+>
+      1
+       
+      point
+       
+</span>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Score
+        score={1}
+/>,
+      "_debugID": 23,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "score": 1,
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 12,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <span
+          className="story__score"
+>
+          1
+           
+          point
+           
+</span>,
+        "_debugID": 24,
+        "_renderedOutput": <span
+          className="story__score"
+>
+          1
+           
+          point
+           
+</span>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Score
+    score={1}
+/>,
+}
+`;
+
+exports[`Story { commentCount: 1 } renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="story"
+>
+    <div
+        className="story__content"
+    >
+        <Title
+            link="https://www.google.com"
+            loggedIn={true}
+            title="Ask HN: Ask HN: Google"
+            upvoteStory={[Function]}
+            voted={0}
+        />
+        <Meta
+            commentCount={1}
+            createdAt={1970-01-01T00:00:00.000Z}
+            createdBy="user-id"
+            createdByName="user"
+            id="story-id"
+            loggedIn={true}
+            unvoteStory={[Function]}
+            voted={0}
+            votes={Array []}
+        />
+    </div>
+</div>,
+  "nodes": Array [
+    <div
+      className="story"
+>
+      <div
+            className="story__content"
+      >
+            <Title
+                  link="https://www.google.com"
+                  loggedIn={true}
+                  title="Ask HN: Ask HN: Google"
+                  upvoteStory={[Function]}
+                  voted={0}
+            />
+            <Meta
+                  commentCount={1}
+                  createdAt={1970-01-01T00:00:00.000Z}
+                  createdBy="user-id"
+                  createdByName="user"
+                  id="story-id"
+                  loggedIn={true}
+                  unvoteStory={[Function]}
+                  voted={0}
+                  votes={Array []}
+            />
+      </div>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 1,
+      "_context": Object {},
+      "_currentElement": <Story
+        loggedIn={true}
+        story={
+                Object {
+                        "commentCount": 1,
+                        "createdAt": 1970-01-01T00:00:00.000Z,
+                        "createdBy": "user-id",
+                        "createdByName": "user",
+                        "id": "story-id",
+                        "link": "https://www.google.com",
+                        "title": "Ask HN: Google",
+                        "type": "ask",
+                        "votes": Array [],
+                      }
+        }
+        userId="user-id"
+        voted={0}
+/>,
+      "_debugID": 9,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Story {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "loggedIn": true,
+          "story": Object {
+            "commentCount": 1,
+            "createdAt": 1970-01-01T00:00:00.000Z,
+            "createdBy": "user-id",
+            "createdByName": "user",
+            "id": "story-id",
+            "link": "https://www.google.com",
+            "title": "Ask HN: Google",
+            "type": "ask",
+            "votes": Array [],
+          },
+          "userId": "user-id",
+          "voted": 0,
+        },
+        "refs": Object {},
+        "state": null,
+        "unvoteStory": [Function],
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+        "upvoteStory": [Function],
+      },
+      "_mountOrder": 5,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="story"
+>
+          <div
+                    className="story__content"
+          >
+                    <Title
+                              link="https://www.google.com"
+                              loggedIn={true}
+                              title="Ask HN: Ask HN: Google"
+                              upvoteStory={[Function]}
+                              voted={0}
+                    />
+                    <Meta
+                              commentCount={1}
+                              createdAt={1970-01-01T00:00:00.000Z}
+                              createdBy="user-id"
+                              createdByName="user"
+                              id="story-id"
+                              loggedIn={true}
+                              unvoteStory={[Function]}
+                              voted={0}
+                              votes={Array []}
+                    />
+          </div>
+</div>,
+        "_debugID": 10,
+        "_renderedOutput": <div
+          className="story"
+>
+          <div
+                    className="story__content"
+          >
+                    <Title
+                              link="https://www.google.com"
+                              loggedIn={true}
+                              title="Ask HN: Ask HN: Google"
+                              upvoteStory={[Function]}
+                              voted={0}
+                    />
+                    <Meta
+                              commentCount={1}
+                              createdAt={1970-01-01T00:00:00.000Z}
+                              createdBy="user-id"
+                              createdByName="user"
+                              id="story-id"
+                              loggedIn={true}
+                              unvoteStory={[Function]}
+                              voted={0}
+                              votes={Array []}
+                    />
+          </div>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Story
+    loggedIn={true}
+    story={
+        Object {
+            "commentCount": 1,
+            "createdAt": 1970-01-01T00:00:00.000Z,
+            "createdBy": "user-id",
+            "createdByName": "user",
+            "id": "story-id",
+            "link": "https://www.google.com",
+            "title": "Ask HN: Google",
+            "type": "ask",
+            "votes": Array [],
+          }
+    }
+    userId="user-id"
+    voted={0}
+/>,
+}
+`;
+
+exports[`Story { type: 'ask' } renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="story"
+>
+    <div
+        className="story__content"
+    >
+        <Title
+            link="/storyDetails/story-id"
+            loggedIn={true}
+            title="Ask HN: Ask HN: Google"
+            upvoteStory={[Function]}
+            voted={0}
+        />
+        <Meta
+            commentCount={0}
+            createdAt={1970-01-01T00:00:00.000Z}
+            createdBy="user-id"
+            createdByName="user"
+            id="story-id"
+            loggedIn={true}
+            unvoteStory={[Function]}
+            voted={0}
+            votes={Array []}
+        />
+        <div
+            className="story__text"
+            dangerouslySetInnerHTML={
+                Object {
+                    "__html": "Google",
+                  }
+            }
+        />
+    </div>
+</div>,
+  "nodes": Array [
+    <div
+      className="story"
+>
+      <div
+            className="story__content"
+      >
+            <Title
+                  link="/storyDetails/story-id"
+                  loggedIn={true}
+                  title="Ask HN: Ask HN: Google"
+                  upvoteStory={[Function]}
+                  voted={0}
+            />
+            <Meta
+                  commentCount={0}
+                  createdAt={1970-01-01T00:00:00.000Z}
+                  createdBy="user-id"
+                  createdByName="user"
+                  id="story-id"
+                  loggedIn={true}
+                  unvoteStory={[Function]}
+                  voted={0}
+                  votes={Array []}
+            />
+            <div
+                  className="story__text"
+                  dangerouslySetInnerHTML={
+                        Object {
+                              "__html": "Google",
+                            }
+                  }
+            />
+      </div>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 1,
+      "_context": Object {},
+      "_currentElement": <Story
+        loggedIn={true}
+        story={
+                Object {
+                        "comments": Array [],
+                        "createdAt": 1970-01-01T00:00:00.000Z,
+                        "createdBy": "user-id",
+                        "createdByName": "user",
+                        "id": "story-id",
+                        "text": "Google",
+                        "title": "Ask HN: Google",
+                        "type": "ask",
+                        "votes": Array [],
+                      }
+        }
+        userId="user-id"
+        voted={0}
+/>,
+      "_debugID": 3,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Story {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "loggedIn": true,
+          "story": Object {
+            "comments": Array [],
+            "createdAt": 1970-01-01T00:00:00.000Z,
+            "createdBy": "user-id",
+            "createdByName": "user",
+            "id": "story-id",
+            "text": "Google",
+            "title": "Ask HN: Google",
+            "type": "ask",
+            "votes": Array [],
+          },
+          "userId": "user-id",
+          "voted": 0,
+        },
+        "refs": Object {},
+        "state": null,
+        "unvoteStory": [Function],
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+        "upvoteStory": [Function],
+      },
+      "_mountOrder": 2,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="story"
+>
+          <div
+                    className="story__content"
+          >
+                    <Title
+                              link="/storyDetails/story-id"
+                              loggedIn={true}
+                              title="Ask HN: Ask HN: Google"
+                              upvoteStory={[Function]}
+                              voted={0}
+                    />
+                    <Meta
+                              commentCount={0}
+                              createdAt={1970-01-01T00:00:00.000Z}
+                              createdBy="user-id"
+                              createdByName="user"
+                              id="story-id"
+                              loggedIn={true}
+                              unvoteStory={[Function]}
+                              voted={0}
+                              votes={Array []}
+                    />
+                    <div
+                              className="story__text"
+                              dangerouslySetInnerHTML={
+                                        Object {
+                                                  "__html": "Google",
+                                                }
+                              }
+                    />
+          </div>
+</div>,
+        "_debugID": 4,
+        "_renderedOutput": <div
+          className="story"
+>
+          <div
+                    className="story__content"
+          >
+                    <Title
+                              link="/storyDetails/story-id"
+                              loggedIn={true}
+                              title="Ask HN: Ask HN: Google"
+                              upvoteStory={[Function]}
+                              voted={0}
+                    />
+                    <Meta
+                              commentCount={0}
+                              createdAt={1970-01-01T00:00:00.000Z}
+                              createdBy="user-id"
+                              createdByName="user"
+                              id="story-id"
+                              loggedIn={true}
+                              unvoteStory={[Function]}
+                              voted={0}
+                              votes={Array []}
+                    />
+                    <div
+                              className="story__text"
+                              dangerouslySetInnerHTML={
+                                        Object {
+                                                  "__html": "Google",
+                                                }
+                              }
+                    />
+          </div>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Story
+    loggedIn={true}
+    story={
+        Object {
+            "comments": Array [],
+            "createdAt": 1970-01-01T00:00:00.000Z,
+            "createdBy": "user-id",
+            "createdByName": "user",
+            "id": "story-id",
+            "text": "Google",
+            "title": "Ask HN: Google",
+            "type": "ask",
+            "votes": Array [],
+          }
+    }
+    userId="user-id"
+    voted={0}
+/>,
+}
+`;
+
+exports[`Story { type: 'ask' } renders correctly 2`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="story"
+>
+    <div
+        className="story__content"
+    >
+        <Title
+            link="https://www.google.com"
+            loggedIn={true}
+            title="Ask HN: Ask HN: Google"
+            upvoteStory={[Function]}
+            voted={0}
+        />
+        <Meta
+            commentCount={1}
+            createdAt={1970-01-01T00:00:00.000Z}
+            createdBy="user-id"
+            createdByName="user"
+            id="story-id"
+            loggedIn={true}
+            unvoteStory={[Function]}
+            voted={0}
+            votes={Array []}
+        />
+    </div>
+</div>,
+  "nodes": Array [
+    <div
+      className="story"
+>
+      <div
+            className="story__content"
+      >
+            <Title
+                  link="https://www.google.com"
+                  loggedIn={true}
+                  title="Ask HN: Ask HN: Google"
+                  upvoteStory={[Function]}
+                  voted={0}
+            />
+            <Meta
+                  commentCount={1}
+                  createdAt={1970-01-01T00:00:00.000Z}
+                  createdBy="user-id"
+                  createdByName="user"
+                  id="story-id"
+                  loggedIn={true}
+                  unvoteStory={[Function]}
+                  voted={0}
+                  votes={Array []}
+            />
+      </div>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 1,
+      "_context": Object {},
+      "_currentElement": <Story
+        loggedIn={true}
+        story={
+                Object {
+                        "comments": Array [
+                          Object {
+                            "createdAt": 1970-01-01T00:00:00.000Z,
+                            "createdBy": "user-id",
+                            "createdByNane": "user",
+                            "id": "comment-id",
+                            "parentId": "story-id",
+                            "text": "comment",
+                          },
+                        ],
+                        "createdAt": 1970-01-01T00:00:00.000Z,
+                        "createdBy": "user-id",
+                        "createdByName": "user",
+                        "id": "story-id",
+                        "link": "https://www.google.com",
+                        "title": "Ask HN: Google",
+                        "type": "ask",
+                        "votes": Array [],
+                      }
+        }
+        userId="user-id"
+        voted={0}
+/>,
+      "_debugID": 5,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Story {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "loggedIn": true,
+          "story": Object {
+            "comments": Array [
+              Object {
+                "createdAt": 1970-01-01T00:00:00.000Z,
+                "createdBy": "user-id",
+                "createdByNane": "user",
+                "id": "comment-id",
+                "parentId": "story-id",
+                "text": "comment",
+              },
+            ],
+            "createdAt": 1970-01-01T00:00:00.000Z,
+            "createdBy": "user-id",
+            "createdByName": "user",
+            "id": "story-id",
+            "link": "https://www.google.com",
+            "title": "Ask HN: Google",
+            "type": "ask",
+            "votes": Array [],
+          },
+          "userId": "user-id",
+          "voted": 0,
+        },
+        "refs": Object {},
+        "state": null,
+        "unvoteStory": [Function],
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+        "upvoteStory": [Function],
+      },
+      "_mountOrder": 3,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="story"
+>
+          <div
+                    className="story__content"
+          >
+                    <Title
+                              link="https://www.google.com"
+                              loggedIn={true}
+                              title="Ask HN: Ask HN: Google"
+                              upvoteStory={[Function]}
+                              voted={0}
+                    />
+                    <Meta
+                              commentCount={1}
+                              createdAt={1970-01-01T00:00:00.000Z}
+                              createdBy="user-id"
+                              createdByName="user"
+                              id="story-id"
+                              loggedIn={true}
+                              unvoteStory={[Function]}
+                              voted={0}
+                              votes={Array []}
+                    />
+          </div>
+</div>,
+        "_debugID": 6,
+        "_renderedOutput": <div
+          className="story"
+>
+          <div
+                    className="story__content"
+          >
+                    <Title
+                              link="https://www.google.com"
+                              loggedIn={true}
+                              title="Ask HN: Ask HN: Google"
+                              upvoteStory={[Function]}
+                              voted={0}
+                    />
+                    <Meta
+                              commentCount={1}
+                              createdAt={1970-01-01T00:00:00.000Z}
+                              createdBy="user-id"
+                              createdByName="user"
+                              id="story-id"
+                              loggedIn={true}
+                              unvoteStory={[Function]}
+                              voted={0}
+                              votes={Array []}
+                    />
+          </div>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Story
+    loggedIn={true}
+    story={
+        Object {
+            "comments": Array [
+              Object {
+                "createdAt": 1970-01-01T00:00:00.000Z,
+                "createdBy": "user-id",
+                "createdByNane": "user",
+                "id": "comment-id",
+                "parentId": "story-id",
+                "text": "comment",
+              },
+            ],
+            "createdAt": 1970-01-01T00:00:00.000Z,
+            "createdBy": "user-id",
+            "createdByName": "user",
+            "id": "story-id",
+            "link": "https://www.google.com",
+            "title": "Ask HN: Google",
+            "type": "ask",
+            "votes": Array [],
+          }
+    }
+    userId="user-id"
+    voted={0}
+/>,
+}
+`;
+
+exports[`Story { type: 'story' } renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="story"
+>
+    <div
+        className="story__content"
+    >
+        <Title
+            link="https://google.com"
+            loggedIn={true}
+            title="Google"
+            upvoteStory={[Function]}
+            voted={0}
+        />
+        <Meta
+            commentCount={0}
+            createdAt={1970-01-01T00:00:00.000Z}
+            createdBy="user-id"
+            createdByName="user"
+            id="story-id"
+            loggedIn={true}
+            unvoteStory={[Function]}
+            voted={0}
+            votes={Array []}
+        />
+    </div>
+</div>,
+  "nodes": Array [
+    <div
+      className="story"
+>
+      <div
+            className="story__content"
+      >
+            <Title
+                  link="https://google.com"
+                  loggedIn={true}
+                  title="Google"
+                  upvoteStory={[Function]}
+                  voted={0}
+            />
+            <Meta
+                  commentCount={0}
+                  createdAt={1970-01-01T00:00:00.000Z}
+                  createdBy="user-id"
+                  createdByName="user"
+                  id="story-id"
+                  loggedIn={true}
+                  unvoteStory={[Function]}
+                  voted={0}
+                  votes={Array []}
+            />
+      </div>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 1,
+      "_context": Object {},
+      "_currentElement": <Story
+        loggedIn={true}
+        story={
+                Object {
+                        "comments": Array [],
+                        "createdAt": 1970-01-01T00:00:00.000Z,
+                        "createdBy": "user-id",
+                        "createdByName": "user",
+                        "id": "story-id",
+                        "link": "https://google.com",
+                        "title": "Google",
+                        "type": "story",
+                        "votes": Array [],
+                      }
+        }
+        voted={0}
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Story {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "loggedIn": true,
+          "story": Object {
+            "comments": Array [],
+            "createdAt": 1970-01-01T00:00:00.000Z,
+            "createdBy": "user-id",
+            "createdByName": "user",
+            "id": "story-id",
+            "link": "https://google.com",
+            "title": "Google",
+            "type": "story",
+            "votes": Array [],
+          },
+          "voted": 0,
+        },
+        "refs": Object {},
+        "state": null,
+        "unvoteStory": [Function],
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+        "upvoteStory": [Function],
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="story"
+>
+          <div
+                    className="story__content"
+          >
+                    <Title
+                              link="https://google.com"
+                              loggedIn={true}
+                              title="Google"
+                              upvoteStory={[Function]}
+                              voted={0}
+                    />
+                    <Meta
+                              commentCount={0}
+                              createdAt={1970-01-01T00:00:00.000Z}
+                              createdBy="user-id"
+                              createdByName="user"
+                              id="story-id"
+                              loggedIn={true}
+                              unvoteStory={[Function]}
+                              voted={0}
+                              votes={Array []}
+                    />
+          </div>
+</div>,
+        "_debugID": 2,
+        "_renderedOutput": <div
+          className="story"
+>
+          <div
+                    className="story__content"
+          >
+                    <Title
+                              link="https://google.com"
+                              loggedIn={true}
+                              title="Google"
+                              upvoteStory={[Function]}
+                              voted={0}
+                    />
+                    <Meta
+                              commentCount={0}
+                              createdAt={1970-01-01T00:00:00.000Z}
+                              createdBy="user-id"
+                              createdByName="user"
+                              id="story-id"
+                              loggedIn={true}
+                              unvoteStory={[Function]}
+                              voted={0}
+                              votes={Array []}
+                    />
+          </div>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Story
+    loggedIn={true}
+    story={
+        Object {
+            "comments": Array [],
+            "createdAt": 1970-01-01T00:00:00.000Z,
+            "createdBy": "user-id",
+            "createdByName": "user",
+            "id": "story-id",
+            "link": "https://google.com",
+            "title": "Google",
+            "type": "story",
+            "votes": Array [],
+          }
+    }
+    voted={0}
+/>,
+}
+`;
+
+exports[`Title { external link } renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <span
+        className="story__votearrow"
+        onClick={undefined}
+        title="upvote"
+    />
+    <span>
+        <span
+            className="story__title"
+        >
+            <a
+                className="story__title-link"
+                href="https://google.com"
+            >
+                Title
+            </a>
+        </span>
+         
+        <span
+            className="story__host"
+        >
+            (
+            google.com
+            )
+        </span>
+    </span>
+</div>,
+  "nodes": Array [
+    <div>
+      <span
+            className="story__votearrow"
+            onClick={undefined}
+            title="upvote"
+      />
+      <span>
+            <span
+                  className="story__title"
+            >
+                  <a
+                        className="story__title-link"
+                        href="https://google.com"
+                  >
+                        Title
+                  </a>
+            </span>
+             
+            <span
+                  className="story__host"
+            >
+                  (
+                  google.com
+                  )
+            </span>
+      </span>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Title
+        link="https://google.com"
+        loggedIn={true}
+        title="Title"
+/>,
+      "_debugID": 27,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "link": "https://google.com",
+          "loggedIn": true,
+          "title": "Title",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 14,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <span
+                    className="story__votearrow"
+                    onClick={undefined}
+                    title="upvote"
+          />
+          <span>
+                    <span
+                              className="story__title"
+                    >
+                              <a
+                                        className="story__title-link"
+                                        href="https://google.com"
+                              >
+                                        Title
+                              </a>
+                    </span>
+                     
+                    <span
+                              className="story__host"
+                    >
+                              (
+                              google.com
+                              )
+                    </span>
+          </span>
+</div>,
+        "_debugID": 28,
+        "_renderedOutput": <div>
+          <span
+                    className="story__votearrow"
+                    onClick={undefined}
+                    title="upvote"
+          />
+          <span>
+                    <span
+                              className="story__title"
+                    >
+                              <a
+                                        className="story__title-link"
+                                        href="https://google.com"
+                              >
+                                        Title
+                              </a>
+                    </span>
+                     
+                    <span
+                              className="story__host"
+                    >
+                              (
+                              google.com
+                              )
+                    </span>
+          </span>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Title
+    link="https://google.com"
+    loggedIn={true}
+    title="Title"
+/>,
+}
+`;
+
+exports[`Title { external link with www } renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <span
+        className="story__votearrow"
+        onClick={undefined}
+        title="upvote"
+    />
+    <span>
+        <span
+            className="story__title"
+        >
+            <a
+                className="story__title-link"
+                href="https://www.google.com"
+            >
+                Title
+            </a>
+        </span>
+         
+        <span
+            className="story__host"
+        >
+            (
+            www.google.com
+            )
+        </span>
+    </span>
+</div>,
+  "nodes": Array [
+    <div>
+      <span
+            className="story__votearrow"
+            onClick={undefined}
+            title="upvote"
+      />
+      <span>
+            <span
+                  className="story__title"
+            >
+                  <a
+                        className="story__title-link"
+                        href="https://www.google.com"
+                  >
+                        Title
+                  </a>
+            </span>
+             
+            <span
+                  className="story__host"
+            >
+                  (
+                  www.google.com
+                  )
+            </span>
+      </span>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Title
+        link="https://www.google.com"
+        loggedIn={true}
+        title="Title"
+/>,
+      "_debugID": 29,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "link": "https://www.google.com",
+          "loggedIn": true,
+          "title": "Title",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 15,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <span
+                    className="story__votearrow"
+                    onClick={undefined}
+                    title="upvote"
+          />
+          <span>
+                    <span
+                              className="story__title"
+                    >
+                              <a
+                                        className="story__title-link"
+                                        href="https://www.google.com"
+                              >
+                                        Title
+                              </a>
+                    </span>
+                     
+                    <span
+                              className="story__host"
+                    >
+                              (
+                              www.google.com
+                              )
+                    </span>
+          </span>
+</div>,
+        "_debugID": 30,
+        "_renderedOutput": <div>
+          <span
+                    className="story__votearrow"
+                    onClick={undefined}
+                    title="upvote"
+          />
+          <span>
+                    <span
+                              className="story__title"
+                    >
+                              <a
+                                        className="story__title-link"
+                                        href="https://www.google.com"
+                              >
+                                        Title
+                              </a>
+                    </span>
+                     
+                    <span
+                              className="story__host"
+                    >
+                              (
+                              www.google.com
+                              )
+                    </span>
+          </span>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Title
+    link="https://www.google.com"
+    loggedIn={true}
+    title="Title"
+/>,
+}
+`;
+
+exports[`Title renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <span
+        className="story__votearrow--hidden"
+    />
+    <span
+        className="story__title"
+    >
+        <Link
+            className="story__title-link"
+            replace={false}
+            to="/story/story-id"
+        >
+            Title
+        </Link>
+    </span>
+</div>,
+  "nodes": Array [
+    <div>
+      <span
+            className="story__votearrow--hidden"
+      />
+      <span
+            className="story__title"
+      >
+            <Link
+                  className="story__title-link"
+                  replace={false}
+                  to="/story/story-id"
+            >
+                  Title
+            </Link>
+      </span>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Title
+        link="/story/story-id"
+        loggedIn={true}
+        title="Title"
+        voted={true}
+/>,
+      "_debugID": 25,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "link": "/story/story-id",
+          "loggedIn": true,
+          "title": "Title",
+          "voted": true,
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 13,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <span
+                    className="story__votearrow--hidden"
+          />
+          <span
+                    className="story__title"
+          >
+                    <Link
+                              className="story__title-link"
+                              replace={false}
+                              to="/story/story-id"
+                    >
+                              Title
+                    </Link>
+          </span>
+</div>,
+        "_debugID": 26,
+        "_renderedOutput": <div>
+          <span
+                    className="story__votearrow--hidden"
+          />
+          <span
+                    className="story__title"
+          >
+                    <Link
+                              className="story__title-link"
+                              replace={false}
+                              to="/story/story-id"
+                    >
+                              Title
+                    </Link>
+          </span>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Title
+    link="/story/story-id"
+    loggedIn={true}
+    title="Title"
+    voted={true}
+/>,
+}
+`;
+
+exports[`getHostname renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <getHostname
+    link="http://www.google.com"
+/>,
+  "nodes": Array [
+    <getHostname
+      link="http://www.google.com"
+/>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": null,
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <getHostname
+    link="http://www.google.com"
+/>,
+}
+`;
