@@ -11,13 +11,11 @@ const currentUser = {
   id: uuid.v4()
 }
 
-const executeQuery = sinon.spy(async queryName => {
-  switch (queryName) {
-    case 'users':
-      return { users: [currentUser] }
-    default:
-      throw new Error()
+const executeQuery = sinon.spy(async query => {
+  if (query.indexOf('users') !== -1) {
+    return { users: [currentUser] }
   }
+  throw new Error()
 })
 
 describe('server', () => {
