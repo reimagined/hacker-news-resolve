@@ -109,8 +109,14 @@ export const extendExpress = express => {
       const variables = encodeURIComponent(JSON.stringify(req.body.variables))
       const url = `http://localhost:3000/api/query?graphql=${query}&variables=${variables}`
       const result = await fetch(url)
-      const data = await result.json()
-      res.send({ data })
+
+      if (result.ok) {
+        const data = await result.json()
+        res.send({ data })
+      } else {
+        const text = await result.text()
+        res.send(text)
+      }
     }
   )
 }

@@ -35,6 +35,19 @@ function hasQueryField(query, field) {
   )
 }
 
+async function getCommentsTree(read, { parentId }) {
+  const root = (await read()).get('comments')
+
+  return Promise.all(
+    root
+      .filter(comment => comment.parentId === parentId)
+      .map(async comment => ({
+        ...comment,
+        replies: await getCommentsTree(read, { parentId: comment.id })
+      }))
+  )
+}
+
 export default {
   stories: async (read, { page, type }) => {
     const root = (await read()).get('stories')
@@ -69,6 +82,25 @@ export default {
     }
 
     return withUserNames([story], read)[0]
+  },
+  comment: async (read, { id }) => {
+    const root = (await read()).get('comments')
+    const comment = root.find(c => c.id === id)
+
+    if (!comment) {
+      return null
+    }
+
+    const [replies = [], stories = []] = await Promise.all([
+      getCommentsTree(read, { parentId: comment.id }),
+      read().then(result => result.get('stories'))
+    ])
+
+    return {
+      ...comment,
+      replies,
+      story: stories.find(({ id }) => id === comment.parentId)
+    }
   },
   comments: async (read, { page }) => {
     const root = (await read()).get('comments')

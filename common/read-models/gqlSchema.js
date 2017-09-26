@@ -19,7 +19,9 @@ export default `
     text: String!
     createdAt: String!
     createdBy: String!
-    createdByName: String!
+    createdByName: String
+    replies: [Comment]
+    story: Story
   }
   type StoryDetails {
     id: ID!
@@ -40,6 +42,7 @@ export default `
   }
   type Query {
     comments(page: Int!): [Comment]
+    comment(id: ID!): Comment
     stories(page: Int!, type: String): [Story]
     story(aggregateId: ID!): Story
     storyDetails(aggregateId: ID!, commentId: ID): [StoryDetails]
