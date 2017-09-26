@@ -1,0 +1,684 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChildrenComments renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <Comment
+        createdAt={1970-01-01T00:00:00.000Z}
+        createdBy="user-id"
+        createdByName="SomeUser"
+        id="comment-id"
+        level={1}
+        parentId="story-id"
+        storyId="story-id"
+        text="comment"
+    >
+        <ReplyLink
+            commentId="comment-id"
+            level={1}
+            storyId="story-id"
+        />
+        <ChildrenComments
+            comments={
+                Array [
+                    Object {
+                      "createdAt": 1970-01-01T00:00:00.000Z,
+                      "createdBy": "user-id",
+                      "createdByName": "SomeUser",
+                      "id": "comment-id",
+                      "parentId": "story-id",
+                      "text": "comment",
+                    },
+                    Object {
+                      "createdAt": 1970-01-01T00:00:00.000Z,
+                      "createdBy": "user-id",
+                      "createdByName": "SomeUser",
+                      "id": "reply-id",
+                      "parentId": "comment-id",
+                      "text": "reply",
+                    },
+                  ]
+            }
+            level={1}
+            parentId="comment-id"
+            storyId="story-id"
+        />
+    </Comment>
+</div>,
+  "nodes": Array [
+    <div>
+      <Comment
+            createdAt={1970-01-01T00:00:00.000Z}
+            createdBy="user-id"
+            createdByName="SomeUser"
+            id="comment-id"
+            level={1}
+            parentId="story-id"
+            storyId="story-id"
+            text="comment"
+      >
+            <ReplyLink
+                  commentId="comment-id"
+                  level={1}
+                  storyId="story-id"
+            />
+            <ChildrenComments
+                  comments={
+                        Array [
+                              Object {
+                                "createdAt": 1970-01-01T00:00:00.000Z,
+                                "createdBy": "user-id",
+                                "createdByName": "SomeUser",
+                                "id": "comment-id",
+                                "parentId": "story-id",
+                                "text": "comment",
+                              },
+                              Object {
+                                "createdAt": 1970-01-01T00:00:00.000Z,
+                                "createdBy": "user-id",
+                                "createdByName": "SomeUser",
+                                "id": "reply-id",
+                                "parentId": "comment-id",
+                                "text": "reply",
+                              },
+                            ]
+                  }
+                  level={1}
+                  parentId="comment-id"
+                  storyId="story-id"
+            />
+      </Comment>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <ChildrenComments
+        comments={
+                Array [
+                        Object {
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "SomeUser",
+                          "id": "comment-id",
+                          "parentId": "story-id",
+                          "text": "comment",
+                        },
+                        Object {
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "SomeUser",
+                          "id": "reply-id",
+                          "parentId": "comment-id",
+                          "text": "reply",
+                        },
+                      ]
+        }
+        level={0}
+        parentId="story-id"
+        storyId="story-id"
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "comments": Array [
+            Object {
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "SomeUser",
+              "id": "comment-id",
+              "parentId": "story-id",
+              "text": "comment",
+            },
+            Object {
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "SomeUser",
+              "id": "reply-id",
+              "parentId": "comment-id",
+              "text": "reply",
+            },
+          ],
+          "level": 0,
+          "parentId": "story-id",
+          "storyId": "story-id",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <Comment
+                    createdAt={1970-01-01T00:00:00.000Z}
+                    createdBy="user-id"
+                    createdByName="SomeUser"
+                    id="comment-id"
+                    level={1}
+                    parentId="story-id"
+                    storyId="story-id"
+                    text="comment"
+          >
+                    <ReplyLink
+                              commentId="comment-id"
+                              level={1}
+                              storyId="story-id"
+                    />
+                    <ChildrenComments
+                              comments={
+                                        Array [
+                                                  Object {
+                                                    "createdAt": 1970-01-01T00:00:00.000Z,
+                                                    "createdBy": "user-id",
+                                                    "createdByName": "SomeUser",
+                                                    "id": "comment-id",
+                                                    "parentId": "story-id",
+                                                    "text": "comment",
+                                                  },
+                                                  Object {
+                                                    "createdAt": 1970-01-01T00:00:00.000Z,
+                                                    "createdBy": "user-id",
+                                                    "createdByName": "SomeUser",
+                                                    "id": "reply-id",
+                                                    "parentId": "comment-id",
+                                                    "text": "reply",
+                                                  },
+                                                ]
+                              }
+                              level={1}
+                              parentId="comment-id"
+                              storyId="story-id"
+                    />
+          </Comment>
+</div>,
+        "_debugID": 2,
+        "_renderedOutput": <div>
+          <Comment
+                    createdAt={1970-01-01T00:00:00.000Z}
+                    createdBy="user-id"
+                    createdByName="SomeUser"
+                    id="comment-id"
+                    level={1}
+                    parentId="story-id"
+                    storyId="story-id"
+                    text="comment"
+          >
+                    <ReplyLink
+                              commentId="comment-id"
+                              level={1}
+                              storyId="story-id"
+                    />
+                    <ChildrenComments
+                              comments={
+                                        Array [
+                                                  Object {
+                                                    "createdAt": 1970-01-01T00:00:00.000Z,
+                                                    "createdBy": "user-id",
+                                                    "createdByName": "SomeUser",
+                                                    "id": "comment-id",
+                                                    "parentId": "story-id",
+                                                    "text": "comment",
+                                                  },
+                                                  Object {
+                                                    "createdAt": 1970-01-01T00:00:00.000Z,
+                                                    "createdBy": "user-id",
+                                                    "createdByName": "SomeUser",
+                                                    "id": "reply-id",
+                                                    "parentId": "comment-id",
+                                                    "text": "reply",
+                                                  },
+                                                ]
+                              }
+                              level={1}
+                              parentId="comment-id"
+                              storyId="story-id"
+                    />
+          </Comment>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <ChildrenComments
+    comments={
+        Array [
+            Object {
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "SomeUser",
+              "id": "comment-id",
+              "parentId": "story-id",
+              "text": "comment",
+            },
+            Object {
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "SomeUser",
+              "id": "reply-id",
+              "parentId": "comment-id",
+              "text": "reply",
+            },
+          ]
+    }
+    level={0}
+    parentId="story-id"
+    storyId="story-id"
+/>,
+}
+`;
+
+exports[`ChildrenComments renders correctly 2`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <Comment
+        createdAt={1970-01-01T00:00:00.000Z}
+        createdBy="user-id"
+        createdByName="SomeUser"
+        id="reply-id"
+        level={2}
+        parentId="comment-id"
+        storyId="story-id"
+        text="reply"
+    >
+        <ReplyLink
+            commentId="reply-id"
+            level={2}
+            storyId="story-id"
+        />
+        <ChildrenComments
+            comments={
+                Array [
+                    Object {
+                      "createdAt": 1970-01-01T00:00:00.000Z,
+                      "createdBy": "user-id",
+                      "createdByName": "SomeUser",
+                      "id": "comment-id",
+                      "parentId": "story-id",
+                      "text": "comment",
+                    },
+                    Object {
+                      "createdAt": 1970-01-01T00:00:00.000Z,
+                      "createdBy": "user-id",
+                      "createdByName": "SomeUser",
+                      "id": "reply-id",
+                      "parentId": "comment-id",
+                      "text": "reply",
+                    },
+                  ]
+            }
+            level={2}
+            parentId="reply-id"
+            storyId="story-id"
+        />
+    </Comment>
+</div>,
+  "nodes": Array [
+    <div>
+      <Comment
+            createdAt={1970-01-01T00:00:00.000Z}
+            createdBy="user-id"
+            createdByName="SomeUser"
+            id="reply-id"
+            level={2}
+            parentId="comment-id"
+            storyId="story-id"
+            text="reply"
+      >
+            <ReplyLink
+                  commentId="reply-id"
+                  level={2}
+                  storyId="story-id"
+            />
+            <ChildrenComments
+                  comments={
+                        Array [
+                              Object {
+                                "createdAt": 1970-01-01T00:00:00.000Z,
+                                "createdBy": "user-id",
+                                "createdByName": "SomeUser",
+                                "id": "comment-id",
+                                "parentId": "story-id",
+                                "text": "comment",
+                              },
+                              Object {
+                                "createdAt": 1970-01-01T00:00:00.000Z,
+                                "createdBy": "user-id",
+                                "createdByName": "SomeUser",
+                                "id": "reply-id",
+                                "parentId": "comment-id",
+                                "text": "reply",
+                              },
+                            ]
+                  }
+                  level={2}
+                  parentId="reply-id"
+                  storyId="story-id"
+            />
+      </Comment>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <ChildrenComments
+        comments={
+                Array [
+                        Object {
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "SomeUser",
+                          "id": "comment-id",
+                          "parentId": "story-id",
+                          "text": "comment",
+                        },
+                        Object {
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "SomeUser",
+                          "id": "reply-id",
+                          "parentId": "comment-id",
+                          "text": "reply",
+                        },
+                      ]
+        }
+        level={1}
+        parentId="comment-id"
+        storyId="story-id"
+/>,
+      "_debugID": 3,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "comments": Array [
+            Object {
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "SomeUser",
+              "id": "comment-id",
+              "parentId": "story-id",
+              "text": "comment",
+            },
+            Object {
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "SomeUser",
+              "id": "reply-id",
+              "parentId": "comment-id",
+              "text": "reply",
+            },
+          ],
+          "level": 1,
+          "parentId": "comment-id",
+          "storyId": "story-id",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 2,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <Comment
+                    createdAt={1970-01-01T00:00:00.000Z}
+                    createdBy="user-id"
+                    createdByName="SomeUser"
+                    id="reply-id"
+                    level={2}
+                    parentId="comment-id"
+                    storyId="story-id"
+                    text="reply"
+          >
+                    <ReplyLink
+                              commentId="reply-id"
+                              level={2}
+                              storyId="story-id"
+                    />
+                    <ChildrenComments
+                              comments={
+                                        Array [
+                                                  Object {
+                                                    "createdAt": 1970-01-01T00:00:00.000Z,
+                                                    "createdBy": "user-id",
+                                                    "createdByName": "SomeUser",
+                                                    "id": "comment-id",
+                                                    "parentId": "story-id",
+                                                    "text": "comment",
+                                                  },
+                                                  Object {
+                                                    "createdAt": 1970-01-01T00:00:00.000Z,
+                                                    "createdBy": "user-id",
+                                                    "createdByName": "SomeUser",
+                                                    "id": "reply-id",
+                                                    "parentId": "comment-id",
+                                                    "text": "reply",
+                                                  },
+                                                ]
+                              }
+                              level={2}
+                              parentId="reply-id"
+                              storyId="story-id"
+                    />
+          </Comment>
+</div>,
+        "_debugID": 4,
+        "_renderedOutput": <div>
+          <Comment
+                    createdAt={1970-01-01T00:00:00.000Z}
+                    createdBy="user-id"
+                    createdByName="SomeUser"
+                    id="reply-id"
+                    level={2}
+                    parentId="comment-id"
+                    storyId="story-id"
+                    text="reply"
+          >
+                    <ReplyLink
+                              commentId="reply-id"
+                              level={2}
+                              storyId="story-id"
+                    />
+                    <ChildrenComments
+                              comments={
+                                        Array [
+                                                  Object {
+                                                    "createdAt": 1970-01-01T00:00:00.000Z,
+                                                    "createdBy": "user-id",
+                                                    "createdByName": "SomeUser",
+                                                    "id": "comment-id",
+                                                    "parentId": "story-id",
+                                                    "text": "comment",
+                                                  },
+                                                  Object {
+                                                    "createdAt": 1970-01-01T00:00:00.000Z,
+                                                    "createdBy": "user-id",
+                                                    "createdByName": "SomeUser",
+                                                    "id": "reply-id",
+                                                    "parentId": "comment-id",
+                                                    "text": "reply",
+                                                  },
+                                                ]
+                              }
+                              level={2}
+                              parentId="reply-id"
+                              storyId="story-id"
+                    />
+          </Comment>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <ChildrenComments
+    comments={
+        Array [
+            Object {
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "SomeUser",
+              "id": "comment-id",
+              "parentId": "story-id",
+              "text": "comment",
+            },
+            Object {
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "SomeUser",
+              "id": "reply-id",
+              "parentId": "comment-id",
+              "text": "reply",
+            },
+          ]
+    }
+    level={1}
+    parentId="comment-id"
+    storyId="story-id"
+/>,
+}
+`;
+
+exports[`Empty renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": null,
+  "nodes": Array [
+    null,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <ChildrenComments
+        comments={Array []}
+        level={0}
+        parentId="story-id"
+        storyId="story-id"
+/>,
+      "_debugID": 5,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "comments": Array [],
+          "level": 0,
+          "parentId": "story-id",
+          "storyId": "story-id",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 3,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": null,
+        "_debugID": 6,
+        "_renderedOutput": null,
+      },
+      "_renderedNodeType": 2,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <ChildrenComments
+    comments={Array []}
+    level={0}
+    parentId="story-id"
+    storyId="story-id"
+/>,
+}
+`;
