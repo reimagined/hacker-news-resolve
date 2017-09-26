@@ -9,7 +9,7 @@
     "import": "babel-node ./import ",
     "prettier": "prettier --single-quote --no-semi --write \"**/*.js\"",
     "test": "jest",
-    "test:coverage": "jest --u --coverage",
+    "test:coverage": "jest --coverage",
     "test:watch": "jest --watchAll",
     "lint-staged": "lint-staged"
   },

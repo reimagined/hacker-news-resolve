@@ -1,0 +1,597 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page 1 renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": null,
+  "nodes": Array [
+    null,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Pagination
+        hasNext={false}
+        location="news"
+        page={1}
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "hasNext": false,
+          "location": "news",
+          "page": 1,
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": null,
+        "_debugID": 2,
+        "_renderedOutput": null,
+      },
+      "_renderedNodeType": 2,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Pagination
+    hasNext={false}
+    location="news"
+    page={1}
+/>,
+}
+`;
+
+exports[`Page 1 renders correctly 2`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="pagination"
+>
+    <Link
+        className="pagination__link pagination__disabled"
+        replace={false}
+        to="news/0"
+    >
+        Prev
+    </Link>
+     | 1 | 
+    <Link
+        className="pagination__link "
+        replace={false}
+        to="news/2"
+    >
+        More
+    </Link>
+</div>,
+  "nodes": Array [
+    <div
+      className="pagination"
+>
+      <Link
+            className="pagination__link pagination__disabled"
+            replace={false}
+            to="news/0"
+      >
+            Prev
+      </Link>
+       | 1 | 
+      <Link
+            className="pagination__link "
+            replace={false}
+            to="news/2"
+      >
+            More
+      </Link>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Pagination
+        hasNext={true}
+        location="news"
+        page={1}
+/>,
+      "_debugID": 9,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "hasNext": true,
+          "location": "news",
+          "page": 1,
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 5,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="pagination"
+>
+          <Link
+                    className="pagination__link pagination__disabled"
+                    replace={false}
+                    to="news/0"
+          >
+                    Prev
+          </Link>
+           | 1 | 
+          <Link
+                    className="pagination__link "
+                    replace={false}
+                    to="news/2"
+          >
+                    More
+          </Link>
+</div>,
+        "_debugID": 10,
+        "_renderedOutput": <div
+          className="pagination"
+>
+          <Link
+                    className="pagination__link pagination__disabled"
+                    replace={false}
+                    to="news/0"
+          >
+                    Prev
+          </Link>
+           | 1 | 
+          <Link
+                    className="pagination__link "
+                    replace={false}
+                    to="news/2"
+          >
+                    More
+          </Link>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Pagination
+    hasNext={true}
+    location="news"
+    page={1}
+/>,
+}
+`;
+
+exports[`Page 2 renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="pagination"
+>
+    <Link
+        className="pagination__link "
+        replace={false}
+        to="news/1"
+    >
+        Prev
+    </Link>
+     | 2 | 
+    <Link
+        className="pagination__link "
+        replace={false}
+        to="news/3"
+    >
+        More
+    </Link>
+</div>,
+  "nodes": Array [
+    <div
+      className="pagination"
+>
+      <Link
+            className="pagination__link "
+            replace={false}
+            to="news/1"
+      >
+            Prev
+      </Link>
+       | 2 | 
+      <Link
+            className="pagination__link "
+            replace={false}
+            to="news/3"
+      >
+            More
+      </Link>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Pagination
+        hasNext={true}
+        location="news"
+        page={2}
+/>,
+      "_debugID": 3,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "hasNext": true,
+          "location": "news",
+          "page": 2,
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 2,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="pagination"
+>
+          <Link
+                    className="pagination__link "
+                    replace={false}
+                    to="news/1"
+          >
+                    Prev
+          </Link>
+           | 2 | 
+          <Link
+                    className="pagination__link "
+                    replace={false}
+                    to="news/3"
+          >
+                    More
+          </Link>
+</div>,
+        "_debugID": 4,
+        "_renderedOutput": <div
+          className="pagination"
+>
+          <Link
+                    className="pagination__link "
+                    replace={false}
+                    to="news/1"
+          >
+                    Prev
+          </Link>
+           | 2 | 
+          <Link
+                    className="pagination__link "
+                    replace={false}
+                    to="news/3"
+          >
+                    More
+          </Link>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Pagination
+    hasNext={true}
+    location="news"
+    page={2}
+/>,
+}
+`;
+
+exports[`Page 3 renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="pagination"
+>
+    <Link
+        className="pagination__link "
+        replace={false}
+        to="news/2"
+    >
+        Prev
+    </Link>
+     | 3 | 
+    <Link
+        className="pagination__link pagination__disabled"
+        replace={false}
+        to="news/4"
+    >
+        More
+    </Link>
+</div>,
+  "nodes": Array [
+    <div
+      className="pagination"
+>
+      <Link
+            className="pagination__link "
+            replace={false}
+            to="news/2"
+      >
+            Prev
+      </Link>
+       | 3 | 
+      <Link
+            className="pagination__link pagination__disabled"
+            replace={false}
+            to="news/4"
+      >
+            More
+      </Link>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Pagination
+        hasNext={false}
+        location="news"
+        page={3}
+/>,
+      "_debugID": 5,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "hasNext": false,
+          "location": "news",
+          "page": 3,
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 3,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="pagination"
+>
+          <Link
+                    className="pagination__link "
+                    replace={false}
+                    to="news/2"
+          >
+                    Prev
+          </Link>
+           | 3 | 
+          <Link
+                    className="pagination__link pagination__disabled"
+                    replace={false}
+                    to="news/4"
+          >
+                    More
+          </Link>
+</div>,
+        "_debugID": 6,
+        "_renderedOutput": <div
+          className="pagination"
+>
+          <Link
+                    className="pagination__link "
+                    replace={false}
+                    to="news/2"
+          >
+                    Prev
+          </Link>
+           | 3 | 
+          <Link
+                    className="pagination__link pagination__disabled"
+                    replace={false}
+                    to="news/4"
+          >
+                    More
+          </Link>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Pagination
+    hasNext={false}
+    location="news"
+    page={3}
+/>,
+}
+`;
+
+exports[`Page Default renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": null,
+  "nodes": Array [
+    null,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Pagination
+        hasNext={false}
+        location="news"
+        page={1}
+/>,
+      "_debugID": 7,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "hasNext": false,
+          "location": "news",
+          "page": 1,
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 4,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": null,
+        "_debugID": 8,
+        "_renderedOutput": null,
+      },
+      "_renderedNodeType": 2,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Pagination
+    hasNext={false}
+    location="news"
+    page={1}
+/>,
+}
+`;
