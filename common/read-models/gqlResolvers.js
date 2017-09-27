@@ -91,15 +91,9 @@ export default {
       return null
     }
 
-    const [replies = [], stories = []] = await Promise.all([
-      getCommentsTree(read, { parentId: comment.id }),
-      read().then(result => result.get('stories'))
-    ])
-
     return {
       ...comment,
-      replies,
-      story: stories.find(({ id }) => id === comment.parentId)
+      replies: await getCommentsTree(read, { parentId: comment.id })
     }
   },
   comments: async (read, { page }) => {

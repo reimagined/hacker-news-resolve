@@ -5,12 +5,13 @@ import ChildrenComments from '../components/ChildrenComments'
 import Comment from '../components/Comment'
 import ReplyLink from '../components/ReplyLink'
 
-export const CommentById = ({ data: { comment } }) => {
+export const CommentById = ({
+  match: { params: { storyId } },
+  data: { comment }
+}) => {
   if (!comment) {
     return null
   }
-
-  const storyId = comment.story ? comment.story.id : null
 
   return (
     <Comment storyId={storyId} level={0} {...comment}>
@@ -41,9 +42,6 @@ export default graphql(
     query($id: ID!) {
       comment(id: $id) {
         ...CommentWithReplies
-        story {
-          id
-        }
       }
     }
   `,

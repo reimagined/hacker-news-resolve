@@ -17,11 +17,10 @@ export default `
     parentId: ID!
     storyId: ID!
     text: String!
+    replies: [Comment]
     createdAt: String!
     createdBy: String!
     createdByName: String
-    replies: [Comment]
-    story: Story
   }
   type StoryDetails {
     id: ID!
