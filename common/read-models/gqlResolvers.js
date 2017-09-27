@@ -1,5 +1,3 @@
-import Immutable from 'seamless-immutable'
-
 import withUserNames from '../helpers/withUserNames'
 import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants'
 
@@ -15,16 +13,6 @@ const findCommentsById = (comments, id) => {
     })
   }
   return result
-}
-
-const getCommentWithChildren = (state, commentId) => {
-  const story = state[0]
-  return [
-    {
-      id: story.id,
-      comments: findCommentsById(story.comments, commentId)
-    }
-  ]
 }
 
 function hasQueryField(query, field) {
@@ -59,9 +47,9 @@ export default {
     )
     return withUserNames(stories, read)
   },
-  story: async (read, { aggregateId }, _, query) => {
+  story: async (read, { id }, _, query) => {
     const stories = (await read()).get('stories')
-    const story = stories.find(({ id }) => id === aggregateId)
+    const story = stories.find(s => s.id === id)
 
     if (!story) {
       return null
@@ -69,6 +57,7 @@ export default {
 
     if (hasQueryField(query, 'comments')) {
       const comments = (await read()).get('comments')
+
       const storyComments = comments.filter(
         ({ storyId }) => storyId === story.id
       )
@@ -81,7 +70,7 @@ export default {
       return (await withUserNames([storyWithComments], read))[0]
     }
 
-    return withUserNames([story], read)[0]
+    return (await withUserNames([story], read))[0]
   },
   comment: async (read, { id }) => {
     const root = (await read()).get('comments')
@@ -91,8 +80,10 @@ export default {
       return null
     }
 
+    const [resultComment] = await withUserNames([comment], read)
+
     return {
-      ...comment,
+      ...resultComment,
       replies: await getCommentsTree(read, { parentId: comment.id })
     }
   },
@@ -103,24 +94,6 @@ export default {
       +page * NUMBER_OF_ITEMS_PER_PAGE + 1
     )
     return withUserNames(comments, read)
-  },
-  storyDetails: async (read, { commentId }) => {
-    const state = (await read()).get('storyDetails')
-    let newState
-    if (commentId) {
-      newState = Immutable(getCommentWithChildren(state, commentId))
-    } else {
-      newState = Immutable(await withUserNames(state, read))
-    }
-    const comments = Immutable(await withUserNames(newState[0].comments, read))
-    return newState.setIn([0, 'comments'], comments)
-  },
-  users: async (read, { id, name }) => {
-    const root = (await read()).get('users')
-    const user = name
-      ? root.find(user => name === user.name)
-      : root.find(user => id === user.id)
-    return user ? [user] : []
   },
   user: async (read, { id }) => {
     const root = (await read()).get('users')

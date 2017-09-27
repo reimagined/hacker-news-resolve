@@ -5,6 +5,7 @@ describe('gql-resolvers', () => {
   it('comments', async () => {
     const users = [{ id: 'user-id', name: 'username' }]
     const comments = [{ id: 'comment-id', createdBy: 'user-id' }]
+
     const read = async () => ({
       get: collectionName => {
         switch (collectionName) {
@@ -25,27 +26,61 @@ describe('gql-resolvers', () => {
     ])
   })
 
-  it('gqlResolver with name', async () => {
-    const users = [{ name: 'user-1' }, { name: 'user-2' }]
+  it('comment by id', async () => {
+    const users = [{ id: 'user-id', name: 'username' }]
+    const comments = [{ id: 'comment-id', createdBy: 'user-id' }]
+
     const read = async () => ({
       get: collectionName => {
         switch (collectionName) {
           case 'users':
             return users
+          case 'comments':
+            return comments
+          default:
+            throw Error()
         }
       }
     })
 
-    const result = await gqlResolvers.users(read, { name: 'user-1' })
+    const result = await gqlResolvers.comment(read, { id: 'comment-id' })
 
-    expect(result).toEqual([{ name: 'user-1' }])
+    expect(result).toEqual({
+      id: 'comment-id',
+      createdBy: 'user-id',
+      createdByName: 'username',
+      replies: []
+    })
   })
 
-  it('gqlResolver with id', async () => {
+  it('nonexistent comment', async () => {
+    const users = [{ id: 'user-id', name: 'username' }]
+    const comments = [{ id: 'comment-id', createdBy: 'user-id' }]
+
+    const read = async () => ({
+      get: collectionName => {
+        switch (collectionName) {
+          case 'users':
+            return users
+          case 'comments':
+            return comments
+          default:
+            throw Error()
+        }
+      }
+    })
+
+    const result = await gqlResolvers.comment(read, { id: 'comment-id-2' })
+
+    expect(result).toEqual(null)
+  })
+
+  it('user by id', async () => {
     const users = [
       { name: 'user-1', id: 'id-1' },
-      { name: 'user-2', id: 'id-1' }
+      { name: 'user-2', id: 'id-2' }
     ]
+
     const read = async () => ({
       get: collectionName => {
         switch (collectionName) {
@@ -55,8 +90,128 @@ describe('gql-resolvers', () => {
       }
     })
 
-    const result = await gqlResolvers.users(read, { id: 'id-1' })
+    const result = await gqlResolvers.user(read, { id: 'id-2' })
+    expect(result).toEqual({ name: 'user-2', id: 'id-2' })
+  })
 
-    expect(result).toEqual([{ name: 'user-1', id: 'id-1' }])
+  it('story by id', async () => {
+    const stories = [
+      { name: 'story-1', id: 'id-1' },
+      { name: 'story-2', id: 'id-2', createdBy: 'user-id' }
+    ]
+
+    const users = [{ name: 'user', id: 'user-id' }]
+
+    const read = async () => ({
+      get: collectionName => {
+        switch (collectionName) {
+          case 'stories':
+            return stories
+          case 'users':
+            return users
+        }
+      }
+    })
+
+    const query = {
+      fieldNodes: [
+        {
+          selectionSet: {
+            selections: []
+          }
+        }
+      ]
+    }
+
+    const result = await gqlResolvers.story(read, { id: 'id-2' }, {}, query)
+
+    expect(result).toEqual({
+      name: 'story-2',
+      id: 'id-2',
+      createdBy: 'user-id',
+      createdByName: 'user'
+    })
+  })
+
+  it('nonexistent story', async () => {
+    const stories = [{ name: 'story-1', id: 'id-1' }]
+
+    const read = async () => ({
+      get: collectionName => {
+        switch (collectionName) {
+          case 'stories':
+            return stories
+        }
+      }
+    })
+
+    const result = await gqlResolvers.story(read, { id: 'id-2' })
+    expect(result).toEqual(null)
+  })
+
+  it('story with comments', async () => {
+    const stories = [
+      { name: 'story-1', id: 'id-1' },
+      { name: 'story-2', id: 'id-2', createdBy: 'user-id' }
+    ]
+
+    const users = [{ name: 'user', id: 'user-id' }]
+
+    const comments = [
+      { name: 'story-1', id: 'comment-id-1', storyId: 'id-1' },
+      {
+        name: 'story-2',
+        id: 'comment-id-2',
+        storyId: 'id-2',
+        createdBy: 'user-id'
+      }
+    ]
+
+    const read = async () => ({
+      get: collectionName => {
+        switch (collectionName) {
+          case 'stories':
+            return stories
+          case 'users':
+            return users
+          case 'comments':
+            return comments
+        }
+      }
+    })
+
+    const query = {
+      fieldNodes: [
+        {
+          selectionSet: {
+            selections: [
+              {
+                name: {
+                  value: 'comments'
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+
+    const result = await gqlResolvers.story(read, { id: 'id-2' }, {}, query)
+
+    expect(result).toEqual({
+      name: 'story-2',
+      id: 'id-2',
+      createdBy: 'user-id',
+      createdByName: 'user',
+      comments: [
+        {
+          id: 'comment-id-2',
+          name: 'story-2',
+          storyId: 'id-2',
+          createdBy: 'user-id',
+          createdByName: 'user'
+        }
+      ]
+    })
   })
 })

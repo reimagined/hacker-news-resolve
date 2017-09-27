@@ -88,7 +88,7 @@ export const mapDispatchToProps = dispatch =>
 export default graphql(
   gql`
     query($aggregateId: ID!) {
-      story(aggregateId: $aggregateId) {
+      story(id: $id) {
         id
         type
         title
@@ -114,7 +114,7 @@ export default graphql(
       // TODO: remove it after real reactivity will be implemented
       pollInterval: 1000,
       variables: {
-        aggregateId: storyId
+        id: storyId
       }
     })
   }
