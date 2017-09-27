@@ -3,8 +3,6 @@ import { shallow } from 'enzyme'
 
 import {
   getHostname,
-  voteArrow,
-  getTitle,
   Title,
   Score,
   PostedBy,
@@ -106,7 +104,6 @@ it('Meta renders correctly', () => {
     <Meta
       id={'story-id'}
       votes={['user-id']}
-      commentCount={1}
       voted={true}
       loggedIn={true}
       createdAt={new Date(0)}
@@ -123,7 +120,6 @@ it('Meta renders correctly', () => {
   const markup = shallow(
     <Meta
       id={'story-id'}
-      commentCount={1}
       voted={true}
       loggedIn={true}
       createdAt={new Date(0)}

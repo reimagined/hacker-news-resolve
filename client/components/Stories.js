@@ -8,7 +8,7 @@ import '../styles/stories.css'
 
 const Stories = ({ items, page, type }) =>
   page && !Number.isInteger(Number(page)) ? (
-    <Redirect push to={`/error?text=No such page`} />
+    <Redirect push to="/error?text=No such page" />
   ) : (
     <div>
       <div className="stories">
