@@ -87,7 +87,7 @@ export const mapDispatchToProps = dispatch =>
 
 export default graphql(
   gql`
-    query($aggregateId: ID!) {
+    query($id: ID!) {
       story(id: $id) {
         id
         type
