@@ -5,11 +5,12 @@ import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants'
 import withUserNames from '../helpers/withUserNames'
 
 import type {
+  Event,
   StoryCreated,
   StoryUpvoted,
   StoryUnvoted,
   CommentCreated
-} from '../events/story'
+} from '../events'
 
 const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
 
@@ -17,7 +18,7 @@ export default {
   name: 'stories',
   initialState: Immutable([]),
   eventHandlers: {
-    [STORY_CREATED]: (state: any, event: StoryCreated) => {
+    [STORY_CREATED]: (state: any, event: Event<StoryCreated>) => {
       const {
         aggregateId,
         timestamp,
@@ -42,7 +43,7 @@ export default {
       ])
     },
 
-    [STORY_UPVOTED]: (state: any, event: StoryUpvoted) => {
+    [STORY_UPVOTED]: (state: any, event: Event<StoryUpvoted>) => {
       const { aggregateId, payload: { userId } } = event
 
       const index = state.findIndex(({ id }) => id === aggregateId)
@@ -54,7 +55,7 @@ export default {
       return state.updateIn([index, 'votes'], votes => votes.concat(userId))
     },
 
-    [STORY_UNVOTED]: (state: any, event: StoryUnvoted) => {
+    [STORY_UNVOTED]: (state: any, event: Event<StoryUnvoted>) => {
       const { aggregateId, payload: { userId } } = event
 
       const index = state.findIndex(({ id }) => id === aggregateId)
@@ -68,7 +69,7 @@ export default {
       )
     },
 
-    [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
+    [COMMENT_CREATED]: (state: any, event: Event<CommentCreated>) => {
       const storyIndex = state.findIndex(({ id }) => id === event.aggregateId)
 
       if (storyIndex < 0) {
