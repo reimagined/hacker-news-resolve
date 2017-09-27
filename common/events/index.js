@@ -1,7 +1,7 @@
-import stories from './stories'
-import users from './users'
+import story from './story'
+import user from './user'
 
 export default {
-  ...stories,
-  ...users
+  ...story,
+  ...user
 }

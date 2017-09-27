@@ -1,7 +1,7 @@
 import Immutable from 'seamless-immutable'
 
-import type { UserCreated } from '../events/users'
-import events from '../events/users'
+import type { UserCreated } from '../events/user'
+import events from '../events/user'
 
 const { USER_CREATED } = events
 

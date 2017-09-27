@@ -9,7 +9,7 @@ import type {
   StoryUpvoted,
   StoryUnvoted,
   CommentCreated
-} from '../events/stories'
+} from '../events/story'
 
 const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
 

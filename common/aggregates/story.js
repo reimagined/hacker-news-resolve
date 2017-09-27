@@ -5,7 +5,7 @@ import type {
   StoryUpvoted,
   StoryUnvoted,
   CommentCreated
-} from '../events/stories'
+} from '../events/story'
 
 import events from '../events'
 import { Event } from '../helpers'
