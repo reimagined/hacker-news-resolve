@@ -1,29 +1,89 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { graphql, gql } from 'react-apollo'
+import uuid from 'uuid'
 
+import actions from '../actions/storiesActions'
 import ChildrenComments from '../components/ChildrenComments'
 import Comment from '../components/Comment'
-import ReplyLink from '../components/ReplyLink'
 
-export const CommentById = ({
-  match: { params: { storyId } },
-  data: { comment }
-}) => {
-  if (!comment) {
-    return null
+export class CommentById extends React.PureComponent {
+  saveComment = () => {
+    const {
+      match: { params: { storyId } },
+      data: { comment },
+      userId
+    } = this.props
+
+    this.props.createComment({
+      storyId,
+      parentId: comment.id,
+      text: this.textarea.value,
+      userId
+    })
+
+    this.textarea.value = ''
   }
 
-  return (
-    <Comment storyId={storyId} level={0} {...comment}>
-      <ReplyLink commentId={comment.id} level={0} />
-      <ChildrenComments
-        storyId={storyId}
-        comments={comment.replies}
-        parentId={comment.id}
-      />
-    </Comment>
-  )
+  render() {
+    const {
+      match: { params: { storyId } },
+      data: { comment },
+      loggedIn
+    } = this.props
+
+    if (!comment) {
+      return null
+    }
+
+    return (
+      <Comment storyId={storyId} level={0} {...comment}>
+        {loggedIn ? (
+          <div className="reply__content">
+            <textarea
+              ref={element => {
+                if (element) {
+                  this.textarea = element
+                }
+              }}
+              name="text"
+              rows="6"
+              cols="70"
+            />
+            <div>
+              <button onClick={this.saveComment}>Reply</button>
+            </div>
+          </div>
+        ) : null}
+        <ChildrenComments
+          storyId={storyId}
+          comments={comment.replies}
+          parentId={comment.id}
+        />
+      </Comment>
+    )
+  }
 }
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      createComment: ({ storyId, parentId, userId, text }) =>
+        actions.createComment(storyId, {
+          commentId: uuid.v4(),
+          parentId,
+          userId,
+          text
+        })
+    },
+    dispatch
+  )
+
+const mapStateToProps = ({ user }) => ({
+  userId: user.id,
+  loggedIn: !!user.id
+})
 
 export default graphql(
   gql`
@@ -52,4 +112,4 @@ export default graphql(
       }
     })
   }
-)(CommentById)
+)(connect(mapStateToProps, mapDispatchToProps)(CommentById))

@@ -8,7 +8,7 @@ const ReplyLink = ({ storyId, commentId, level }) => (
     <div className="comment__reply-link">
       <Link
         className="comment__reply"
-        to={`/storyDetails/${storyId}/comments/${commentId}/reply`}
+        to={`/storyDetails/${storyId}/comments/${commentId}`}
       >
         reply
       </Link>

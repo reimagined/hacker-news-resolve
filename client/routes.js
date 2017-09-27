@@ -11,7 +11,6 @@ import PageNotFound from './components/PageNotFound'
 import UserById from './containers/UserById'
 import Error from './components/Error'
 import StoryDetails from './containers/StoryDetails'
-import ReplyById from './containers/ReplyById'
 
 const routes = [
   {
@@ -34,10 +33,6 @@ const routes = [
       {
         path: '/ask/:page?',
         component: AskByPage
-      },
-      {
-        path: '/storyDetails/:storyId/comments/:commentId/reply',
-        component: ReplyById
       },
       {
         path: '/storyDetails/:storyId/comments/:commentId',
