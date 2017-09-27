@@ -40,6 +40,7 @@ describe('gql-resolvers', () => {
 
     expect(result).toEqual([{ name: 'user-1' }])
   })
+
   it('gqlResolver with id', async () => {
     const users = [
       { name: 'user-1', id: 'id-1' },
