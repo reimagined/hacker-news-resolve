@@ -121,5 +121,9 @@ export default {
       ? root.find(user => name === user.name)
       : root.find(user => id === user.id)
     return user ? [user] : []
+  },
+  user: async (read, { id }) => {
+    const root = (await read()).get('users')
+    return root.find(user => user.id === id)
   }
 }

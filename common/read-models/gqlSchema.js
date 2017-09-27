@@ -46,5 +46,6 @@ export default `
     story(aggregateId: ID!): Story
     storyDetails(aggregateId: ID!, commentId: ID): [StoryDetails]
     users(id: ID, name: String): [User]
+    user(id: ID!): User
   }
 `
