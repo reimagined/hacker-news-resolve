@@ -4,11 +4,11 @@ import events from '../events'
 import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants'
 import withUserNames from '../helpers/withUserNames'
 
-import type { CommentCreated } from '../events/comments'
 import type {
   StoryCreated,
   StoryUpvoted,
-  StoryUnvoted
+  StoryUnvoted,
+  CommentCreated
 } from '../events/stories'
 
 const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events

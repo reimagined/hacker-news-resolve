@@ -6,10 +6,9 @@ import withUserNames from '../helpers/withUserNames'
 import type {
   StoryCreated,
   StoryUpvoted,
-  StoryUnvoted
+  StoryUnvoted,
+  CommentCreated
 } from '../events/stories'
-
-import type { CommentCreated } from '../events/comments'
 
 const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
 
