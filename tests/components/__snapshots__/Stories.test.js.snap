@@ -1,0 +1,2923 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stories first page renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <div
+        className="stories"
+    >
+        <ol
+            className="stories__list"
+            start={1}
+        >
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id"
+                />
+            </li>
+        </ol>
+    </div>
+    <Pagination
+        hasNext={false}
+        location="/story"
+        page={1}
+    />
+</div>,
+  "nodes": Array [
+    <div>
+      <div
+            className="stories"
+      >
+            <ol
+                  className="stories__list"
+                  start={1}
+            >
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id"
+                        />
+                  </li>
+            </ol>
+      </div>
+      <Pagination
+            hasNext={false}
+            location="/story"
+            page={1}
+      />
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Stories
+        items={
+                Array [
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id",
+                          "link": "https://google.com",
+                          "title": "title",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                      ]
+        }
+        type="story"
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "items": Array [
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id",
+              "link": "https://google.com",
+              "title": "title",
+              "type": "story",
+              "votes": Array [],
+            },
+          ],
+          "type": "story",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <div
+                    className="stories"
+          >
+                    <ol
+                              className="stories__list"
+                              start={1}
+                    >
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id"
+                                        />
+                              </li>
+                    </ol>
+          </div>
+          <Pagination
+                    hasNext={false}
+                    location="/story"
+                    page={1}
+          />
+</div>,
+        "_debugID": 2,
+        "_renderedOutput": <div>
+          <div
+                    className="stories"
+          >
+                    <ol
+                              className="stories__list"
+                              start={1}
+                    >
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id"
+                                        />
+                              </li>
+                    </ol>
+          </div>
+          <Pagination
+                    hasNext={false}
+                    location="/story"
+                    page={1}
+          />
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Stories
+    items={
+        Array [
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id",
+              "link": "https://google.com",
+              "title": "title",
+              "type": "story",
+              "votes": Array [],
+            },
+          ]
+    }
+    type="story"
+/>,
+}
+`;
+
+exports[`Stories page renders with error 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <Redirect
+    push={true}
+    to="/error?text=No such page"
+/>,
+  "nodes": Array [
+    <Redirect
+      push={true}
+      to="/error?text=No such page"
+/>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Stories
+        items={Array []}
+        page="text"
+        type="story"
+/>,
+      "_debugID": 5,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "items": Array [],
+          "page": "text",
+          "type": "story",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 3,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <Redirect
+          push={true}
+          to="/error?text=No such page"
+/>,
+        "_debugID": 6,
+        "_renderedOutput": <Redirect
+          push={true}
+          to="/error?text=No such page"
+/>,
+      },
+      "_renderedNodeType": 1,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Stories
+    items={Array []}
+    page="text"
+    type="story"
+/>,
+}
+`;
+
+exports[`Stories second page renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <div
+        className="stories"
+    >
+        <ol
+            className="stories__list"
+            start={31}
+        >
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id0"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id1"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id2"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id3"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id4"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id5"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id6"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id7"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id8"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id9"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id10"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id11"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id12"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id13"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id14"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id15"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id16"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id17"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id18"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id19"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id20"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id21"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id22"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id23"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id24"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id25"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id26"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id27"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id28"
+                />
+            </li>
+            <li
+                className="stories__item"
+            >
+                <Connect(Story)
+                    id="story-id29"
+                />
+            </li>
+        </ol>
+    </div>
+    <Pagination
+        hasNext={true}
+        location="/story"
+        page={2}
+    />
+</div>,
+  "nodes": Array [
+    <div>
+      <div
+            className="stories"
+      >
+            <ol
+                  className="stories__list"
+                  start={31}
+            >
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id0"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id1"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id2"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id3"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id4"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id5"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id6"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id7"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id8"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id9"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id10"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id11"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id12"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id13"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id14"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id15"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id16"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id17"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id18"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id19"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id20"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id21"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id22"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id23"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id24"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id25"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id26"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id27"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id28"
+                        />
+                  </li>
+                  <li
+                        className="stories__item"
+                  >
+                        <Connect(Story)
+                              id="story-id29"
+                        />
+                  </li>
+            </ol>
+      </div>
+      <Pagination
+            hasNext={true}
+            location="/story"
+            page={2}
+      />
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Stories
+        items={
+                Array [
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id0",
+                          "link": "https://google.com",
+                          "title": "title0",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id1",
+                          "link": "https://google.com",
+                          "title": "title1",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id2",
+                          "link": "https://google.com",
+                          "title": "title2",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id3",
+                          "link": "https://google.com",
+                          "title": "title3",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id4",
+                          "link": "https://google.com",
+                          "title": "title4",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id5",
+                          "link": "https://google.com",
+                          "title": "title5",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id6",
+                          "link": "https://google.com",
+                          "title": "title6",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id7",
+                          "link": "https://google.com",
+                          "title": "title7",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id8",
+                          "link": "https://google.com",
+                          "title": "title8",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id9",
+                          "link": "https://google.com",
+                          "title": "title9",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id10",
+                          "link": "https://google.com",
+                          "title": "title10",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id11",
+                          "link": "https://google.com",
+                          "title": "title11",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id12",
+                          "link": "https://google.com",
+                          "title": "title12",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id13",
+                          "link": "https://google.com",
+                          "title": "title13",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id14",
+                          "link": "https://google.com",
+                          "title": "title14",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id15",
+                          "link": "https://google.com",
+                          "title": "title15",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id16",
+                          "link": "https://google.com",
+                          "title": "title16",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id17",
+                          "link": "https://google.com",
+                          "title": "title17",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id18",
+                          "link": "https://google.com",
+                          "title": "title18",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id19",
+                          "link": "https://google.com",
+                          "title": "title19",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id20",
+                          "link": "https://google.com",
+                          "title": "title20",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id21",
+                          "link": "https://google.com",
+                          "title": "title21",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id22",
+                          "link": "https://google.com",
+                          "title": "title22",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id23",
+                          "link": "https://google.com",
+                          "title": "title23",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id24",
+                          "link": "https://google.com",
+                          "title": "title24",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id25",
+                          "link": "https://google.com",
+                          "title": "title25",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id26",
+                          "link": "https://google.com",
+                          "title": "title26",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id27",
+                          "link": "https://google.com",
+                          "title": "title27",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id28",
+                          "link": "https://google.com",
+                          "title": "title28",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id29",
+                          "link": "https://google.com",
+                          "title": "title29",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id30",
+                          "link": "https://google.com",
+                          "title": "title30",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id31",
+                          "link": "https://google.com",
+                          "title": "title31",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id32",
+                          "link": "https://google.com",
+                          "title": "title32",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id33",
+                          "link": "https://google.com",
+                          "title": "title33",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id34",
+                          "link": "https://google.com",
+                          "title": "title34",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id35",
+                          "link": "https://google.com",
+                          "title": "title35",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id36",
+                          "link": "https://google.com",
+                          "title": "title36",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id37",
+                          "link": "https://google.com",
+                          "title": "title37",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id38",
+                          "link": "https://google.com",
+                          "title": "title38",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id39",
+                          "link": "https://google.com",
+                          "title": "title39",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id40",
+                          "link": "https://google.com",
+                          "title": "title40",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id41",
+                          "link": "https://google.com",
+                          "title": "title41",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id42",
+                          "link": "https://google.com",
+                          "title": "title42",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id43",
+                          "link": "https://google.com",
+                          "title": "title43",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id44",
+                          "link": "https://google.com",
+                          "title": "title44",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id45",
+                          "link": "https://google.com",
+                          "title": "title45",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id46",
+                          "link": "https://google.com",
+                          "title": "title46",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id47",
+                          "link": "https://google.com",
+                          "title": "title47",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id48",
+                          "link": "https://google.com",
+                          "title": "title48",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                        Object {
+                          "commentCount": 0,
+                          "createdAt": 1970-01-01T00:00:00.000Z,
+                          "createdBy": "user-id",
+                          "createdByName": "user",
+                          "id": "story-id49",
+                          "link": "https://google.com",
+                          "title": "title49",
+                          "type": "story",
+                          "votes": Array [],
+                        },
+                      ]
+        }
+        page={2}
+        type="story"
+/>,
+      "_debugID": 3,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "items": Array [
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id0",
+              "link": "https://google.com",
+              "title": "title0",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id1",
+              "link": "https://google.com",
+              "title": "title1",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id2",
+              "link": "https://google.com",
+              "title": "title2",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id3",
+              "link": "https://google.com",
+              "title": "title3",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id4",
+              "link": "https://google.com",
+              "title": "title4",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id5",
+              "link": "https://google.com",
+              "title": "title5",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id6",
+              "link": "https://google.com",
+              "title": "title6",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id7",
+              "link": "https://google.com",
+              "title": "title7",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id8",
+              "link": "https://google.com",
+              "title": "title8",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id9",
+              "link": "https://google.com",
+              "title": "title9",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id10",
+              "link": "https://google.com",
+              "title": "title10",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id11",
+              "link": "https://google.com",
+              "title": "title11",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id12",
+              "link": "https://google.com",
+              "title": "title12",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id13",
+              "link": "https://google.com",
+              "title": "title13",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id14",
+              "link": "https://google.com",
+              "title": "title14",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id15",
+              "link": "https://google.com",
+              "title": "title15",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id16",
+              "link": "https://google.com",
+              "title": "title16",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id17",
+              "link": "https://google.com",
+              "title": "title17",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id18",
+              "link": "https://google.com",
+              "title": "title18",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id19",
+              "link": "https://google.com",
+              "title": "title19",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id20",
+              "link": "https://google.com",
+              "title": "title20",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id21",
+              "link": "https://google.com",
+              "title": "title21",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id22",
+              "link": "https://google.com",
+              "title": "title22",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id23",
+              "link": "https://google.com",
+              "title": "title23",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id24",
+              "link": "https://google.com",
+              "title": "title24",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id25",
+              "link": "https://google.com",
+              "title": "title25",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id26",
+              "link": "https://google.com",
+              "title": "title26",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id27",
+              "link": "https://google.com",
+              "title": "title27",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id28",
+              "link": "https://google.com",
+              "title": "title28",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id29",
+              "link": "https://google.com",
+              "title": "title29",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id30",
+              "link": "https://google.com",
+              "title": "title30",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id31",
+              "link": "https://google.com",
+              "title": "title31",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id32",
+              "link": "https://google.com",
+              "title": "title32",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id33",
+              "link": "https://google.com",
+              "title": "title33",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id34",
+              "link": "https://google.com",
+              "title": "title34",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id35",
+              "link": "https://google.com",
+              "title": "title35",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id36",
+              "link": "https://google.com",
+              "title": "title36",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id37",
+              "link": "https://google.com",
+              "title": "title37",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id38",
+              "link": "https://google.com",
+              "title": "title38",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id39",
+              "link": "https://google.com",
+              "title": "title39",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id40",
+              "link": "https://google.com",
+              "title": "title40",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id41",
+              "link": "https://google.com",
+              "title": "title41",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id42",
+              "link": "https://google.com",
+              "title": "title42",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id43",
+              "link": "https://google.com",
+              "title": "title43",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id44",
+              "link": "https://google.com",
+              "title": "title44",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id45",
+              "link": "https://google.com",
+              "title": "title45",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id46",
+              "link": "https://google.com",
+              "title": "title46",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id47",
+              "link": "https://google.com",
+              "title": "title47",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id48",
+              "link": "https://google.com",
+              "title": "title48",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id49",
+              "link": "https://google.com",
+              "title": "title49",
+              "type": "story",
+              "votes": Array [],
+            },
+          ],
+          "page": 2,
+          "type": "story",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 2,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <div
+                    className="stories"
+          >
+                    <ol
+                              className="stories__list"
+                              start={31}
+                    >
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id0"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id1"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id2"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id3"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id4"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id5"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id6"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id7"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id8"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id9"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id10"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id11"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id12"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id13"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id14"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id15"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id16"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id17"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id18"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id19"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id20"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id21"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id22"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id23"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id24"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id25"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id26"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id27"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id28"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id29"
+                                        />
+                              </li>
+                    </ol>
+          </div>
+          <Pagination
+                    hasNext={true}
+                    location="/story"
+                    page={2}
+          />
+</div>,
+        "_debugID": 4,
+        "_renderedOutput": <div>
+          <div
+                    className="stories"
+          >
+                    <ol
+                              className="stories__list"
+                              start={31}
+                    >
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id0"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id1"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id2"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id3"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id4"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id5"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id6"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id7"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id8"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id9"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id10"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id11"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id12"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id13"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id14"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id15"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id16"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id17"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id18"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id19"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id20"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id21"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id22"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id23"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id24"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id25"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id26"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id27"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id28"
+                                        />
+                              </li>
+                              <li
+                                        className="stories__item"
+                              >
+                                        <Connect(Story)
+                                                  id="story-id29"
+                                        />
+                              </li>
+                    </ol>
+          </div>
+          <Pagination
+                    hasNext={true}
+                    location="/story"
+                    page={2}
+          />
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Stories
+    items={
+        Array [
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id0",
+              "link": "https://google.com",
+              "title": "title0",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id1",
+              "link": "https://google.com",
+              "title": "title1",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id2",
+              "link": "https://google.com",
+              "title": "title2",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id3",
+              "link": "https://google.com",
+              "title": "title3",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id4",
+              "link": "https://google.com",
+              "title": "title4",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id5",
+              "link": "https://google.com",
+              "title": "title5",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id6",
+              "link": "https://google.com",
+              "title": "title6",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id7",
+              "link": "https://google.com",
+              "title": "title7",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id8",
+              "link": "https://google.com",
+              "title": "title8",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id9",
+              "link": "https://google.com",
+              "title": "title9",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id10",
+              "link": "https://google.com",
+              "title": "title10",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id11",
+              "link": "https://google.com",
+              "title": "title11",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id12",
+              "link": "https://google.com",
+              "title": "title12",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id13",
+              "link": "https://google.com",
+              "title": "title13",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id14",
+              "link": "https://google.com",
+              "title": "title14",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id15",
+              "link": "https://google.com",
+              "title": "title15",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id16",
+              "link": "https://google.com",
+              "title": "title16",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id17",
+              "link": "https://google.com",
+              "title": "title17",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id18",
+              "link": "https://google.com",
+              "title": "title18",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id19",
+              "link": "https://google.com",
+              "title": "title19",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id20",
+              "link": "https://google.com",
+              "title": "title20",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id21",
+              "link": "https://google.com",
+              "title": "title21",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id22",
+              "link": "https://google.com",
+              "title": "title22",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id23",
+              "link": "https://google.com",
+              "title": "title23",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id24",
+              "link": "https://google.com",
+              "title": "title24",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id25",
+              "link": "https://google.com",
+              "title": "title25",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id26",
+              "link": "https://google.com",
+              "title": "title26",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id27",
+              "link": "https://google.com",
+              "title": "title27",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id28",
+              "link": "https://google.com",
+              "title": "title28",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id29",
+              "link": "https://google.com",
+              "title": "title29",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id30",
+              "link": "https://google.com",
+              "title": "title30",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id31",
+              "link": "https://google.com",
+              "title": "title31",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id32",
+              "link": "https://google.com",
+              "title": "title32",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id33",
+              "link": "https://google.com",
+              "title": "title33",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id34",
+              "link": "https://google.com",
+              "title": "title34",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id35",
+              "link": "https://google.com",
+              "title": "title35",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id36",
+              "link": "https://google.com",
+              "title": "title36",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id37",
+              "link": "https://google.com",
+              "title": "title37",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id38",
+              "link": "https://google.com",
+              "title": "title38",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id39",
+              "link": "https://google.com",
+              "title": "title39",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id40",
+              "link": "https://google.com",
+              "title": "title40",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id41",
+              "link": "https://google.com",
+              "title": "title41",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id42",
+              "link": "https://google.com",
+              "title": "title42",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id43",
+              "link": "https://google.com",
+              "title": "title43",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id44",
+              "link": "https://google.com",
+              "title": "title44",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id45",
+              "link": "https://google.com",
+              "title": "title45",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id46",
+              "link": "https://google.com",
+              "title": "title46",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id47",
+              "link": "https://google.com",
+              "title": "title47",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id48",
+              "link": "https://google.com",
+              "title": "title48",
+              "type": "story",
+              "votes": Array [],
+            },
+            Object {
+              "commentCount": 0,
+              "createdAt": 1970-01-01T00:00:00.000Z,
+              "createdBy": "user-id",
+              "createdByName": "user",
+              "id": "story-id49",
+              "link": "https://google.com",
+              "title": "title49",
+              "type": "story",
+              "votes": Array [],
+            },
+          ]
+    }
+    page={2}
+    type="story"
+/>,
+}
+`;

@@ -3,6 +3,7 @@ import uuid from 'uuid'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Redirect } from 'react-router-dom'
+import urlLib from 'url'
 
 import actions from '../actions/storiesActions'
 import '../styles/submit.css'
@@ -18,13 +19,24 @@ export class Submit extends React.PureComponent {
     this.setState({ [name]: event.target.value })
   }
 
-  handleSubmit = () =>
-    this.props.createStory({
-      userId: this.props.userId,
-      title: this.state.title,
-      text: this.state.text,
-      link: this.state.url
-    })
+  handleSubmit = () => {
+    const { title, url, text } = this.state
+
+    if ((title && text) || (title && url)) {
+      if (url && !urlLib.parse(url).hostname) {
+        return this.props.history.push('/error/?text=Enter valid url')
+      }
+
+      return this.props.createStory({
+        userId: this.props.userId,
+        title,
+        text,
+        link: url
+      })
+    }
+
+    return this.props.history.push('/error/?text=Enter submit data')
+  }
 
   render() {
     if (this.props.createdStoryId) {

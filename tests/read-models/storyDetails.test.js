@@ -267,5 +267,149 @@ describe('read-models', () => {
         storyDetails.eventHandlers[COMMENT_CREATED](nextState, replyEvent)
       ).toEqual(finalState)
     })
+
+    it('gqlResolver comment and reply', async () => {
+      const date = Date.now()
+      const state = [
+        {
+          id: 'story-id',
+          comments: [
+            {
+              id: 'comment-id',
+              parentId: 'story-id',
+              text: 'commentText',
+              createdAt: date,
+              createdBy: 'unknown-user-id'
+            },
+            {
+              id: 'reply-id',
+              parentId: 'comment-id',
+              text: 'replyText',
+              createdAt: date,
+              createdBy: 'user-id'
+            }
+          ]
+        }
+      ]
+      const getReadModel = async () => {
+        return [
+          {
+            id: 'user-id',
+            name: 'user'
+          }
+        ]
+      }
+
+      //reply
+      let result = await storyDetails.gqlResolvers.storyDetails(
+        state,
+        { commentId: 'reply-id' },
+        { getReadModel }
+      )
+      expect(result).toEqual([
+        {
+          id: 'story-id',
+          comments: [
+            {
+              id: 'reply-id',
+              parentId: 'comment-id',
+              text: 'replyText',
+              createdAt: date,
+              createdBy: 'user-id',
+              createdByName: 'user'
+            }
+          ]
+        }
+      ])
+
+      //comment
+      result = await storyDetails.gqlResolvers.storyDetails(
+        state,
+        { commentId: 'comment-id' },
+        { getReadModel }
+      )
+      expect(result).toEqual([
+        {
+          id: 'story-id',
+          comments: [
+            {
+              id: 'comment-id',
+              parentId: 'story-id',
+              text: 'commentText',
+              createdAt: date,
+              createdBy: 'unknown-user-id',
+              createdByName: 'unknown'
+            },
+            {
+              id: 'reply-id',
+              parentId: 'comment-id',
+              text: 'replyText',
+              createdAt: date,
+              createdBy: 'user-id',
+              createdByName: 'user'
+            }
+          ]
+        }
+      ])
+    })
+
+    it('gqlResolver story', async () => {
+      const date = Date.now()
+      const state = [
+        {
+          id: 'story-id',
+          comments: [],
+          createdAt: date,
+          createdBy: 'user-id'
+        }
+      ]
+      const getReadModel = async () => {
+        return [
+          {
+            id: 'user-id',
+            name: 'user'
+          }
+        ]
+      }
+
+      const result = await storyDetails.gqlResolvers.storyDetails(
+        state,
+        {},
+        { getReadModel }
+      )
+      expect(result).toEqual([
+        {
+          id: 'story-id',
+          comments: [],
+          createdAt: date,
+          createdBy: 'user-id',
+          createdByName: 'user'
+        }
+      ])
+    })
+
+    it('gqlResolver invalid comment', async () => {
+      const date = Date.now()
+      const state = [
+        {
+          id: 'story-id',
+          comments: [],
+          createdBy: 'user-id'
+        }
+      ]
+
+      const getReadModel = async () => []
+      const result = await storyDetails.gqlResolvers.storyDetails(
+        state,
+        { commentId: 'comment-id' },
+        { getReadModel }
+      )
+      expect(result).toEqual([
+        {
+          id: 'story-id',
+          comments: []
+        }
+      ])
+    })
   })
 })

@@ -98,5 +98,23 @@ describe('read-models', () => {
         nextState
       )
     })
+
+    it('gqlResolver', async () => {
+      const root = [{ id: 'comment-id', createdBy: 'user-id' }]
+      const getReadModel = async () => [{ id: 'user-id', name: 'username' }]
+
+      const result = await comments.gqlResolvers.comments(
+        root,
+        { page: 1 },
+        { getReadModel }
+      )
+      expect(result).toEqual([
+        {
+          id: 'comment-id',
+          createdBy: 'user-id',
+          createdByName: 'username'
+        }
+      ])
+    })
   })
 })
