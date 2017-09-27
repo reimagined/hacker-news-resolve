@@ -16,7 +16,6 @@ export default graphql(
         type
         title
         link
-        text
         commentCount
         votes
         createdAt

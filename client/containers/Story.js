@@ -134,7 +134,7 @@ export class Story extends React.PureComponent {
     this.props.unvoteStory(this.props.story.id, this.props.userId)
 
   render() {
-    const { story, loggedIn, voted, showText } = this.props
+    const { story, loggedIn, voted } = this.props
 
     if (!story) {
       return null
@@ -166,7 +166,7 @@ export class Story extends React.PureComponent {
             createdBy={story.createdBy}
             createdByName={story.createdByName}
           />
-          {showText && story.text ? (
+          {story.text ? (
             <div
               className="story__text"
               dangerouslySetInnerHTML={{
