@@ -1,5 +1,5 @@
-import storageDriver from './common/storage-driver'
 import busDriver from 'resolve-bus-memory'
+import storageDriver from 'resolve-storage-lite'
 
 import { serverRootComponent } from './client/components/App'
 import createStore from './client/store'

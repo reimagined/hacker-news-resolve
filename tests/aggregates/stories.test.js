@@ -273,9 +273,7 @@ describe('aggregates', () => {
         comments: {}
       }
 
-      expect(stories.eventHandlers[STORY_CREATED](state, event)).toEqual(
-        nextState
-      )
+      expect(stories.projection[STORY_CREATED](state, event)).toEqual(nextState)
     })
 
     it('eventHandler "STORY_UPVOTED" should add userId to state.voted', () => {
@@ -298,9 +296,7 @@ describe('aggregates', () => {
         voted: [userId]
       }
 
-      expect(stories.eventHandlers[STORY_UPVOTED](state, event)).toEqual(
-        nextState
-      )
+      expect(stories.projection[STORY_UPVOTED](state, event)).toEqual(nextState)
     })
 
     it('eventHandler "STORY_UNVOTED" should remove userId from state.voted', () => {
@@ -323,9 +319,7 @@ describe('aggregates', () => {
         voted: []
       }
 
-      expect(stories.eventHandlers[STORY_UNVOTED](state, event)).toEqual(
-        nextState
-      )
+      expect(stories.projection[STORY_UNVOTED](state, event)).toEqual(nextState)
     })
   })
 
@@ -446,7 +440,7 @@ describe('aggregates', () => {
         }
       }
 
-      expect(stories.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
+      expect(stories.projection[COMMENT_CREATED](state, event)).toEqual(
         nextState
       )
     })

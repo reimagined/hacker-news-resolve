@@ -1,17 +1,9 @@
-import crypto from 'crypto'
-import { authorizationSecret } from '../../common/constants'
 import '../../common/aggregates'
 import users from '../../common/aggregates/users'
 import events from '../../common/events'
 import { Event } from '../../common/helpers'
 
-const { USER_CREATED, PASSWORD_CHANGED } = events
-
-const getHash = password =>
-  crypto
-    .createHmac('sha256', authorizationSecret)
-    .update(password)
-    .digest('hex')
+const { USER_CREATED } = events
 
 describe('aggregates', () => {
   describe('users', () => {
@@ -77,7 +69,7 @@ describe('aggregates', () => {
         createdAt
       }
 
-      expect(users.eventHandlers[USER_CREATED](state, event)).toEqual(nextState)
+      expect(users.projection[USER_CREATED](state, event)).toEqual(nextState)
     })
   })
 })

@@ -41,6 +41,8 @@ export default graphql(
   `,
   {
     options: ({ match: { params: { page } } }) => ({
+      // TODO: remove it after real reactivity will be implemented
+      pollInterval: 1000,
       variables: {
         page: page || '1'
       }

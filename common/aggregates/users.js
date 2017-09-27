@@ -22,7 +22,7 @@ export default {
       return new Event(USER_CREATED, { name })
     }
   },
-  eventHandlers: {
+  projection: {
     [USER_CREATED]: (state, { timestamp }) => state.set('createdAt', timestamp)
   }
 }
