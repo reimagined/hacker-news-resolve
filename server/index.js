@@ -16,7 +16,7 @@ export const getCurrentUser = async (executeQuery, cookies) => {
       return null
     }
 
-    return executeQuery(
+    const { user } = await executeQuery(
       `query ($id: ID!) {
         user(id: $id) {
           id,
@@ -26,13 +26,15 @@ export const getCurrentUser = async (executeQuery, cookies) => {
       }`,
       { id }
     )
+
+    return user
   } catch (error) {
     return null
   }
 }
 
-export const getUserByName = (executeQuery, name) =>
-  executeQuery(
+export const getUserByName = async (executeQuery, name) => {
+  const { user } = await executeQuery(
     `query ($name: String!) {
       user(name: $name) {
         id,
@@ -42,6 +44,9 @@ export const getUserByName = (executeQuery, name) =>
     }`,
     { name: name.trim() }
   )
+
+  return user
+}
 
 export const authorize = (req, res, user) => {
   try {

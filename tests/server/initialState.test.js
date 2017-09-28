@@ -10,7 +10,9 @@ const currentUser = {
   id: uuid.v4()
 }
 
-const executeQuery = (_, { id }) => (id === currentUser.id ? currentUser : null)
+const executeQuery = (_, { id }) => ({
+  user: id === currentUser.id ? currentUser : null
+})
 
 describe('server', () => {
   it('initialState should return initial state', async () => {
