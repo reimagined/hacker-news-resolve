@@ -180,10 +180,7 @@ export class Story extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = ({ user, storyDetails, stories }, { id }) => {
-  const search = story => story.id === id
-  const story = stories.find(search) || storyDetails.find(search)
-
+export const mapStateToProps = ({ user }, { story }) => {
   return {
     story,
     voted: story && story.votes && story.votes.includes(user.id),

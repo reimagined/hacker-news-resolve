@@ -1,14 +1,15 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { graphql, gql } from 'react-apollo'
 import { Redirect } from 'react-router-dom'
 
 import Comment from '../components/Comment'
 import { NUMBER_OF_ITEMS_PER_PAGE } from '../../common/constants'
 import Pagination from '../components/Pagination'
-import subscribe from '../decorators/subscribe'
-import comments from '../../common/read-models/comments'
 
-export const CommentsByPage = ({ comments, match: { params: { page } } }) =>
+export const CommentsByPage = ({
+  data: { comments = [] },
+  match: { params: { page } }
+}) =>
   page && !Number.isInteger(Number(page)) ? (
     <Redirect push to={`/error?text=No such page`} />
   ) : (
@@ -24,28 +25,27 @@ export const CommentsByPage = ({ comments, match: { params: { page } } }) =>
     </div>
   )
 
-export const mapStateToProps = ({ comments }) => ({
-  comments
-})
-
-export default subscribe(({ match: { params: { page } } }) => ({
-  graphQL: [
-    {
-      readModel: comments,
-      query: `query ($page: Int!) {
-          comments(page: $page) {
-            id,
-            parentId,
-            storyId,
-            text,
-            createdAt,
-            createdBy,
-            createdByName
-          }
-        }`,
+export default graphql(
+  gql`
+    query($page: Int!) {
+      comments(page: $page) {
+        id
+        parentId
+        storyId
+        text
+        createdAt
+        createdBy
+        createdByName
+      }
+    }
+  `,
+  {
+    options: ({ match: { params: { page } } }) => ({
+      // TODO: remove it after real reactivity will be implemented
+      pollInterval: 1000,
       variables: {
         page: page || '1'
       }
-    }
-  ]
-}))(connect(mapStateToProps)(CommentsByPage))
+    })
+  }
+)(CommentsByPage)

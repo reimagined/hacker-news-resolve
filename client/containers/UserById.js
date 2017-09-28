@@ -1,11 +1,9 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { graphql, gql } from 'react-apollo'
 
-import subscribe from '../decorators/subscribe'
-import users from '../../common/read-models/users'
 import '../styles/profile.css'
 
-export const UserById = ({ user }) => {
+export const UserById = ({ data: { user } }) => {
   if (!user) {
     return null
   }
@@ -28,21 +26,21 @@ export const UserById = ({ user }) => {
   )
 }
 
-export const mapStateToProps = (
-  { user, users },
-  { match: { params: { userId } } }
-) => ({
-  user: userId ? users.find(({ id }) => id === userId) : user
-})
-
-export default subscribe(({ match: { params: { userId } } }) => ({
-  graphQL: [
-    {
-      readModel: users,
-      query: 'query ($id: ID!) { users(id: $id) { id, name, createdAt } }',
+export default graphql(
+  gql`
+    query($id: ID!) {
+      user(id: $id) {
+        id
+        name
+        createdAt
+      }
+    }
+  `,
+  {
+    options: ({ match: { params: { userId } } }) => ({
       variables: {
         id: userId
       }
-    }
-  ]
-}))(connect(mapStateToProps)(UserById))
+    })
+  }
+)(UserById)

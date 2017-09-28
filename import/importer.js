@@ -1,10 +1,10 @@
 import fs from 'fs'
 import uuid from 'uuid'
 import createEventStore from 'resolve-es'
-import createStorage from '../common/storage-driver'
+import createStorage from 'resolve-storage-lite'
 import createBus from 'resolve-bus-memory'
 
-import eventTypes from '../common/events/index'
+import eventTypes from '../common/events'
 import HNServiceRest from './services/HNServiceRest'
 
 const dbPath = './storage.json'

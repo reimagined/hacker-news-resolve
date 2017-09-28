@@ -1,17 +1,30 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import uuid from 'uuid'
 
 import {
   getHostname,
-  voteArrow,
-  getTitle,
   Title,
   Score,
   PostedBy,
   Discuss,
   Meta,
+  mapStateToProps,
+  mapDispatchToProps,
   Story
 } from '../../client/containers/Story'
+
+import actions from '../../client/actions/storiesActions'
+
+let originalUuidV4 = uuid.v4
+
+beforeAll(() => {
+  uuid.v4 = () => 'uuid-v4'
+})
+
+afterAll(() => {
+  uuid.v4 = originalUuidV4
+})
 
 it("Story { type: 'story' } renders correctly", () => {
   const story = {
@@ -106,7 +119,6 @@ it('Meta renders correctly', () => {
     <Meta
       id={'story-id'}
       votes={['user-id']}
-      commentCount={1}
       voted={true}
       loggedIn={true}
       createdAt={new Date(0)}
@@ -123,7 +135,6 @@ it('Meta renders correctly', () => {
   const markup = shallow(
     <Meta
       id={'story-id'}
-      commentCount={1}
       voted={true}
       loggedIn={true}
       createdAt={new Date(0)}
@@ -256,4 +267,59 @@ it('unvoteStory', () => {
 it('Invalid story', () => {
   const wrapper = shallow(<Story loggedIn={true} voted={1} />)
   expect(wrapper.find('.story')).toHaveLength(0)
+})
+
+it('mapStateToProps', () => {
+  const user = { id: 'user-id' }
+  const story = { id: 'story-id', votes: [] }
+  const props = mapStateToProps({ user }, { story })
+
+  expect(props).toEqual({
+    story: {
+      id: 'story-id',
+      votes: []
+    },
+    userId: 'user-id',
+    loggedIn: true,
+    voted: false
+  })
+})
+
+it('mapDispatchToProps createComment', () => {
+  const props = mapDispatchToProps(value => value)
+
+  expect(
+    props.createComment({
+      parentId: 'parentId',
+      text: 'text',
+      userId: 'userId'
+    })
+  ).toEqual(
+    actions.createComment('parentId', {
+      parentId: 'parentId',
+      text: 'text',
+      userId: 'userId',
+      commentId: 'uuid-v4'
+    })
+  )
+})
+
+it('mapDispatchToProps upvoteStory', () => {
+  const props = mapDispatchToProps(value => value)
+
+  expect(props.upvoteStory('id', 'userId')).toEqual(
+    actions.upvoteStory('id', {
+      userId: 'userId'
+    })
+  )
+})
+
+it('mapDispatchToProps unvoteStory', () => {
+  const props = mapDispatchToProps(value => value)
+
+  expect(props.unvoteStory('id', 'userId')).toEqual(
+    actions.unvoteStory('id', {
+      userId: 'userId'
+    })
+  )
 })

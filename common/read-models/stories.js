@@ -1,8 +1,6 @@
 import Immutable from 'seamless-immutable'
 
 import events from '../events'
-import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants'
-import withUserNames from '../helpers/withUserNames'
 
 import type {
   Event,
@@ -77,34 +75,6 @@ export default {
       }
 
       return state.updateIn([storyIndex, 'commentCount'], count => count + 1)
-    }
-  },
-  gqlSchema: `
-    type Story {
-      id: ID!
-      type: String!
-      title: String!
-      link: String
-      commentCount: Int!
-      votes: [String]
-      createdAt: String!
-      createdBy: String!
-      createdByName: String!
-    }
-    type Query {
-      stories(page: Int!, type: String): [Story]
-    }
-  `,
-  gqlResolvers: {
-    stories: async (root, { page, type }, { getReadModel }) => {
-      const stories = (type
-        ? root.filter(story => story.type === type)
-        : root).slice(
-        +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
-        +page * NUMBER_OF_ITEMS_PER_PAGE + 1
-      )
-
-      return withUserNames(stories, getReadModel)
     }
   }
 }

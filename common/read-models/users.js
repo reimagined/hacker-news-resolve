@@ -18,23 +18,5 @@ export default {
         createdAt: timestamp
       })
     }
-  },
-  gqlSchema: `
-    type User {
-      id: ID!
-      name: String
-      createdAt: String
-    }
-    type Query {
-      users(id: ID, name: String): [User]
-    }
-  `,
-  gqlResolvers: {
-    users: (root, { id, name }) => {
-      const user = name
-        ? root.find(user => name === user.name)
-        : root.find(user => id === user.id)
-      return user ? [user] : []
-    }
   }
 }

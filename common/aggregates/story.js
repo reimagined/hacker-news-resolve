@@ -93,7 +93,7 @@ export default {
       })
     }
   },
-  eventHandlers: {
+  projection: {
     [STORY_CREATED]: (state, { timestamp, payload: { userId } }) =>
       state.merge({
         createdAt: timestamp,

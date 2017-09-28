@@ -1,11 +1,14 @@
-import storageDriver from './common/storage-driver'
 import busDriver from 'resolve-bus-memory'
+import storageDriver from 'resolve-storage-lite'
 
 import { serverRootComponent } from './client/components/App'
 import createStore from './client/store'
 import aggregates from './common/aggregates'
 import queries from './common/read-models'
 import events from './common/events'
+import createMemoryAdapter from './common/read-models/createMemoryAdapter'
+import gqlSchema from './common/read-models/gqlSchema'
+import gqlResolvers from './common/read-models/gqlResolvers'
 import { extendExpress, initialState } from './server'
 import {
   authorizationSecret,
@@ -31,7 +34,12 @@ export default {
     types: eventTypes,
     ids: []
   },
-  queries,
+  readModel: {
+    projection: queries,
+    adapter: createMemoryAdapter(),
+    gqlSchema,
+    gqlResolvers
+  },
   extendExpress,
   jwt: {
     secret: authorizationSecret,

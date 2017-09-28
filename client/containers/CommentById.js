@@ -1,66 +1,117 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { graphql, gql } from 'react-apollo'
+import uuid from 'uuid'
 
+import actions from '../actions/storiesActions'
 import ChildrenComments from '../components/ChildrenComments'
 import Comment from '../components/Comment'
-import ReplyLink from '../components/ReplyLink'
-import subscribe from '../decorators/subscribe'
-import storyDetails from '../../common/read-models/storyDetails'
 
-export const CommentById = ({ storyId, commentId, stories }) => {
-  if (!stories.length) {
-    // TODO: fix me!!!
-    return null
-  }
-  const comments = stories[0].comments
-  const comment = comments.find(({ id }) => id === commentId)
-  if (!comment) {
-    return null
+export class CommentById extends React.PureComponent {
+  saveComment = () => {
+    const {
+      match: { params: { storyId } },
+      data: { comment },
+      userId
+    } = this.props
+
+    this.props.createComment({
+      storyId,
+      parentId: comment.id,
+      text: this.textarea.value,
+      userId
+    })
+
+    this.textarea.value = ''
   }
 
-  return (
-    <Comment storyId={storyId} level={0} {...comment}>
-      <ReplyLink storyId={storyId} commentId={comment.id} level={0} />
-      <ChildrenComments
-        storyId={storyId}
-        comments={comments}
-        parentId={comment.id}
-      />
-    </Comment>
-  )
+  render() {
+    const {
+      match: { params: { storyId } },
+      data: { comment },
+      loggedIn
+    } = this.props
+
+    if (!comment) {
+      return null
+    }
+
+    return (
+      <Comment storyId={storyId} level={0} {...comment}>
+        {loggedIn ? (
+          <div className="reply__content">
+            <textarea
+              ref={element => {
+                if (element) {
+                  this.textarea = element
+                }
+              }}
+              name="text"
+              rows="6"
+              cols="70"
+            />
+            <div>
+              <button onClick={this.saveComment}>Reply</button>
+            </div>
+          </div>
+        ) : null}
+        <ChildrenComments
+          storyId={storyId}
+          comments={comment.replies}
+          parentId={comment.id}
+        />
+      </Comment>
+    )
+  }
 }
 
-export const mapStateToProps = (
-  { storyDetails },
-  { match: { params: { storyId, commentId } } }
-) => ({
-  storyId: storyId,
-  commentId,
-  // TODO: rename!
-  stories: storyDetails
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      createComment: ({ storyId, parentId, userId, text }) =>
+        actions.createComment(storyId, {
+          commentId: uuid.v4(),
+          parentId,
+          userId,
+          text
+        })
+    },
+    dispatch
+  )
+
+const mapStateToProps = ({ user }) => ({
+  userId: user.id,
+  loggedIn: !!user.id
 })
 
-export default subscribe(({ match: { params: { storyId, commentId } } }) => ({
-  graphQL: [
-    {
-      readModel: storyDetails,
-      query: `query ($aggregateId: ID!, $commentId: ID!) { 
-          storyDetails(aggregateId: $aggregateId, commentId: $commentId) {
-            id,
-            comments {
-              id,
-              parentId,
-              text,
-              createdAt,
-              createdBy,
-              createdByName
-            }
-          } 
-        }`,
-      variables: {
-        aggregateId: storyId,
-        commentId: commentId
+export default graphql(
+  gql`
+    fragment CommentWithReplies on Comment {
+      id
+      parentId
+      text
+      createdAt
+      createdBy
+      createdByName
+      replies {
+        ...CommentWithReplies
       }
     }
-  ]
-}))(connect(mapStateToProps)(CommentById))
+
+    query($id: ID!) {
+      comment(id: $id) {
+        ...CommentWithReplies
+      }
+    }
+  `,
+  {
+    options: ({ match: { params: { commentId } } }) => ({
+      // TODO: remove it after real reactivity will be implemented
+      pollInterval: 1000,
+      variables: {
+        id: commentId
+      }
+    })
+  }
+)(connect(mapStateToProps, mapDispatchToProps)(CommentById))

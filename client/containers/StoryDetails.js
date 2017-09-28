@@ -2,12 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import uuid from 'uuid'
+import { graphql, gql } from 'react-apollo'
 
 import Story from '../containers/Story'
 import actions from '../actions/storiesActions'
 import ChildrenComments from '../components/ChildrenComments'
-import subscribe from '../decorators/subscribe'
-import storyDetails from '../../common/read-models/storyDetails'
 import '../styles/storyDetails.css'
 
 export class StoryDetails extends React.PureComponent {
@@ -18,7 +17,7 @@ export class StoryDetails extends React.PureComponent {
   saveComment = () => {
     this.props.createComment({
       text: this.state.text,
-      parentId: this.props.story.id,
+      parentId: this.props.data.story.id,
       userId: this.props.userId
     })
     this.setState({ text: '' })
@@ -30,7 +29,7 @@ export class StoryDetails extends React.PureComponent {
     })
 
   render() {
-    const { story, loggedIn } = this.props
+    const { data: { story }, loggedIn } = this.props
 
     if (!story) {
       return null
@@ -38,7 +37,7 @@ export class StoryDetails extends React.PureComponent {
 
     return (
       <div className="storyDetails">
-        <Story id={story.id} />
+        <Story story={story} />
         {loggedIn ? (
           <div className="storyDetails__content">
             <div className="storyDetails__textarea">
@@ -68,7 +67,6 @@ export class StoryDetails extends React.PureComponent {
 }
 
 export const mapStateToProps = ({ storyDetails, user }) => ({
-  story: storyDetails[0],
   userId: user.id,
   loggedIn: !!user.id
 })
@@ -87,34 +85,37 @@ export const mapDispatchToProps = dispatch =>
     dispatch
   )
 
-export default subscribe(({ match: { params: { storyId } } }) => ({
-  graphQL: [
-    {
-      readModel: storyDetails,
-      query: `query ($aggregateId: ID!) { 
-          storyDetails(aggregateId: $aggregateId) { 
-            id, 
-            type, 
-            title, 
-            text,
-            link,
-            comments {
-              id,
-              parentId,
-              text,
-              createdAt,
-              createdBy,
-              createdByName
-            },
-            votes,
-            createdAt,
-            createdBy,
-            createdByName
-          }
-        }`,
-      variables: {
-        aggregateId: storyId
+export default graphql(
+  gql`
+    query($id: ID!) {
+      story(id: $id) {
+        id
+        type
+        title
+        text
+        link
+        comments {
+          id
+          parentId
+          text
+          createdAt
+          createdBy
+          createdByName
+        }
+        votes
+        createdAt
+        createdBy
+        createdByName
       }
     }
-  ]
-}))(connect(mapStateToProps, mapDispatchToProps)(StoryDetails))
+  `,
+  {
+    options: ({ match: { params: { storyId } } }) => ({
+      // TODO: remove it after real reactivity will be implemented
+      pollInterval: 1000,
+      variables: {
+        id: storyId
+      }
+    })
+  }
+)(connect(mapStateToProps, mapDispatchToProps)(StoryDetails))
