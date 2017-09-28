@@ -1,7 +1,7 @@
 import uuid from 'uuid'
 
 import '../../common/aggregates'
-import stories from '../../common/aggregates/stories'
+import stories from '../../common/aggregates/story'
 import events from '../../common/events'
 import { Event } from '../../common/helpers'
 

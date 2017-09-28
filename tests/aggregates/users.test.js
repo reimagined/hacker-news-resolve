@@ -1,5 +1,5 @@
 import '../../common/aggregates'
-import users from '../../common/aggregates/users'
+import users from '../../common/aggregates/user'
 import events from '../../common/events'
 import { Event } from '../../common/helpers'
 

@@ -1,28 +1,17 @@
 import Immutable from 'seamless-immutable'
 
-import type {
-  StoryCreated,
-  StoryUpvoted,
-  StoryUnvoted
-} from '../events/stories'
-
-import type { CommentCreated } from '../events/comments'
-
-import storiesEvents from '../events/stories'
-import commentsEvents from '../events/comments'
+import events from '../events'
 import { Event } from '../helpers'
 import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists'
 import throwIfAggregateIsNotExists from './validators/throwIfAggregateIsNotExists'
 
-const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED } = storiesEvents
-
-const { COMMENT_CREATED } = commentsEvents
+const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
 
 export default {
   name: 'stories',
   initialState: Immutable({}),
   commands: {
-    createStory: (state: any, command: StoryCreated) => {
+    createStory: (state: any, command) => {
       const { title, link, userId, text } = command.payload
 
       throwIfAggregateAlreadyExists(state, command)
@@ -43,7 +32,7 @@ export default {
       })
     },
 
-    upvoteStory: (state: any, command: StoryUpvoted) => {
+    upvoteStory: (state: any, command) => {
       const { userId } = command.payload
 
       throwIfAggregateIsNotExists(state, command)
@@ -61,7 +50,7 @@ export default {
       })
     },
 
-    unvoteStory: (state: any, command: StoryUnvoted) => {
+    unvoteStory: (state: any, command) => {
       const { userId } = command.payload
 
       throwIfAggregateIsNotExists(state, command)
@@ -79,7 +68,7 @@ export default {
       })
     },
 
-    createComment: (state: any, command: CommentCreated) => {
+    createComment: (state: any, command) => {
       throwIfAggregateIsNotExists(state, command)
 
       const { commentId, parentId, userId, text } = command.payload
