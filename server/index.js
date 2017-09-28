@@ -11,29 +11,37 @@ import {
 export const getCurrentUser = async (executeQuery, cookies) => {
   try {
     const { id } = jwt.verify(cookies[cookieName], authorizationSecret)
-    const {
-      users
-    } = await executeQuery(
-      'query ($id: ID!) { users(id: $id) { id, name, createdAt } }',
+
+    if (!id) {
+      return null
+    }
+
+    return executeQuery(
+      `query ($id: ID!) {
+        user(id: $id) {
+          id,
+          name,
+          createdAt
+        }
+      }`,
       { id }
     )
-    const [user] = users
-
-    return user
-  } catch (error) {}
+  } catch (error) {
+    return null
+  }
 }
 
-export const getUserByName = async (executeQuery, name) => {
-  const {
-    users
-  } = await executeQuery(
-    'query ($name: String!) { users(name: $name) { id, name, createdAt } }',
+export const getUserByName = (executeQuery, name) =>
+  executeQuery(
+    `query ($name: String!) {
+      user(name: $name) {
+        id,
+        name,
+        createdAt
+      }
+    }`,
     { name: name.trim() }
   )
-  const [user] = users
-
-  return user
-}
 
 export const authorize = (req, res, user) => {
   try {
@@ -44,7 +52,7 @@ export const authorize = (req, res, user) => {
 
     res.redirect(req.query.redirect || '/')
   } catch (error) {
-    res.redirect('/error/?text=Unauthorized')
+    res.redirect('/error?text=Unauthorized')
   }
 }
 
@@ -62,7 +70,7 @@ export const extendExpress = express => {
       )
 
       if (existingUser) {
-        res.redirect('/error/?text=User already exists')
+        res.redirect('/error?text=User already exists')
         return
       }
 
@@ -81,7 +89,7 @@ export const extendExpress = express => {
 
         return authorize(req, res, user)
       } catch (error) {
-        res.redirect(`/error/?text=${error.toString()}`)
+        res.redirect(`/error?text=${error.toString()}`)
       }
     }
   )
@@ -93,7 +101,7 @@ export const extendExpress = express => {
       const user = await getUserByName(req.resolve.executeQuery, req.body.name)
 
       if (!user) {
-        res.redirect('/error/?text=No such user')
+        res.redirect('/error?text=No such user')
         return
       }
 
@@ -149,6 +157,7 @@ export const commandAuthorizationMiddleware = (req, res, next) => {
 
 export const initialState = async (executeQuery, { cookies }) => {
   const user = await getCurrentUser(executeQuery, cookies)
+
   return {
     user: user || {},
     stories: [],

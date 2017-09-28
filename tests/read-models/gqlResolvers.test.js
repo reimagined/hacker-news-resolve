@@ -28,7 +28,11 @@ describe('gql-resolvers', () => {
 
   it('comment by id', async () => {
     const users = [{ id: 'user-id', name: 'username' }]
-    const comments = [{ id: 'comment-id', createdBy: 'user-id' }]
+
+    const comments = [
+      { id: 'comment-id', createdBy: 'user-id' },
+      { id: 'comment-id-2', parentId: 'comment-id', createdBy: 'user-id' }
+    ]
 
     const read = async () => ({
       get: collectionName => {
@@ -49,7 +53,14 @@ describe('gql-resolvers', () => {
       id: 'comment-id',
       createdBy: 'user-id',
       createdByName: 'username',
-      replies: []
+      replies: [
+        {
+          id: 'comment-id-2',
+          parentId: 'comment-id',
+          createdBy: 'user-id',
+          replies: []
+        }
+      ]
     })
   })
 
@@ -91,6 +102,25 @@ describe('gql-resolvers', () => {
     })
 
     const result = await gqlResolvers.user(read, { id: 'id-2' })
+    expect(result).toEqual({ name: 'user-2', id: 'id-2' })
+  })
+
+  it('user by name', async () => {
+    const users = [
+      { name: 'user-1', id: 'id-1' },
+      { name: 'user-2', id: 'id-2' }
+    ]
+
+    const read = async () => ({
+      get: collectionName => {
+        switch (collectionName) {
+          case 'users':
+            return users
+        }
+      }
+    })
+
+    const result = await gqlResolvers.user(read, { name: 'user-2' })
     expect(result).toEqual({ name: 'user-2', id: 'id-2' })
   })
 
@@ -213,5 +243,37 @@ describe('gql-resolvers', () => {
         }
       ]
     })
+  })
+
+  it('stories', async () => {
+    const stories = [
+      { name: 'story-1', id: 'id-1', type: 'ask' },
+      { name: 'story-2', id: 'id-2', createdBy: 'user-id', type: 'show' }
+    ]
+
+    const users = [{ name: 'user', id: 'user-id' }]
+
+    const read = async () => ({
+      get: collectionName => {
+        switch (collectionName) {
+          case 'stories':
+            return stories
+          case 'users':
+            return users
+        }
+      }
+    })
+
+    const result = await gqlResolvers.stories(read, { page: 1, type: 'show' })
+
+    expect(result).toEqual([
+      {
+        name: 'story-2',
+        id: 'id-2',
+        type: 'show',
+        createdBy: 'user-id',
+        createdByName: 'user'
+      }
+    ])
   })
 })

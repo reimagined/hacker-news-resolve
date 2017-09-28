@@ -44,6 +44,6 @@ export default `
     comment(id: ID!): Comment
     stories(page: Int!, type: String): [Story]
     story(id: ID!): Story
-    user(id: ID!): User
+    user(id: ID, name: String): User
   }
 `
