@@ -23,11 +23,7 @@ describe('server', () => {
     const state = await initialState(executeQuery, { cookies })
 
     expect(state).toEqual({
-      user: currentUser,
-      stories: [],
-      comments: [],
-      storyDetails: [],
-      users: [currentUser]
+      user: currentUser
     })
   })
 

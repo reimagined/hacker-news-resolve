@@ -164,10 +164,6 @@ export const initialState = async (executeQuery, { cookies }) => {
   const user = await getCurrentUser(executeQuery, cookies)
 
   return {
-    user: user || {},
-    stories: [],
-    comments: [],
-    storyDetails: [],
-    users: user ? [user] : []
+    user: user || {}
   }
 }

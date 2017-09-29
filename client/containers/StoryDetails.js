@@ -66,7 +66,7 @@ export class StoryDetails extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = ({ storyDetails, user }) => ({
+export const mapStateToProps = ({ user }) => ({
   userId: user.id,
   loggedIn: !!user.id
 })
