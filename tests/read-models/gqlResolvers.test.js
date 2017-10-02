@@ -276,4 +276,42 @@ describe('gql-resolvers', () => {
       }
     ])
   })
+
+  it('stories with no type argument', async () => {
+    const stories = [
+      { name: 'story-1', id: 'id-1', type: 'ask' },
+      { name: 'story-2', id: 'id-2', createdBy: 'user-id', type: 'show' }
+    ]
+
+    const users = [{ name: 'user', id: 'user-id' }]
+
+    const read = async () => ({
+      get: collectionName => {
+        switch (collectionName) {
+          case 'stories':
+            return stories
+          case 'users':
+            return users
+        }
+      }
+    })
+
+    const result = await gqlResolvers.stories(read, { page: 1 })
+
+    expect(result).toEqual([
+      {
+        id: 'id-1',
+        name: 'story-1',
+        type: 'ask',
+        createdByName: 'unknown'
+      },
+      {
+        name: 'story-2',
+        id: 'id-2',
+        type: 'show',
+        createdBy: 'user-id',
+        createdByName: 'user'
+      }
+    ])
+  })
 })
