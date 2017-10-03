@@ -111,8 +111,6 @@ export default graphql(
   `,
   {
     options: ({ match: { params: { storyId } } }) => ({
-      // TODO: remove it after real reactivity will be implemented
-      pollInterval: 1000,
       variables: {
         id: storyId
       }

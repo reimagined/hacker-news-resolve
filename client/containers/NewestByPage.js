@@ -1,14 +1,24 @@
 import React from 'react'
 import { gql, graphql } from 'react-apollo'
+import { connect } from 'react-redux'
 
 import Stories from '../components/Stories'
 
 const NewestByPage = ({
+  refetchStories,
   match: { params: { page } },
-  data: { stories = [] }
-}) => <Stories items={stories} page={page || '1'} type="newest" />
+  data: { stories = [], refetch },
+  onRefetched
+}) => {
+  if (refetchStories) {
+    onRefetched()
+    refetch()
+  }
 
-export default graphql(
+  return <Stories items={stories} page={page || '1'} type="newest" />
+}
+
+const withGraphql = graphql(
   gql`
     query($page: Int!) {
       stories(page: $page) {
@@ -26,11 +36,24 @@ export default graphql(
   `,
   {
     options: ({ match: { params: { page } } }) => ({
-      // TODO: remove it after real reactivity will be implemented
-      pollInterval: 1000,
       variables: {
         page: page || '1'
       }
     })
   }
-)(NewestByPage)
+)
+
+const mapStateToProps = ({ ui: { refetchStories } }) => ({
+  refetchStories
+})
+
+const mapDispatchToProps = dispatch => ({
+  onRefetched: () =>
+    dispatch({
+      type: 'STORIES_REFETCHED'
+    })
+})
+
+export default withGraphql(
+  connect(mapStateToProps, mapDispatchToProps)(NewestByPage)
+)
