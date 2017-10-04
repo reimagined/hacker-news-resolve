@@ -28,6 +28,15 @@ export class StoryDetails extends React.PureComponent {
       text: event.target.value
     })
 
+  componentDidUpdate = prevProps => {
+    const { refetchStory, onRefetched, data: { refetch } } = this.props
+
+    if (refetchStory && !prevProps.refetchStory) {
+      refetch()
+      onRefetched()
+    }
+  }
+
   render() {
     const { data: { story }, loggedIn } = this.props
 
@@ -66,9 +75,14 @@ export class StoryDetails extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = ({ storyDetails, user }) => ({
+export const mapStateToProps = ({
+  storyDetails,
+  user,
+  ui: { refetchStory }
+}) => ({
   userId: user.id,
-  loggedIn: !!user.id
+  loggedIn: !!user.id,
+  refetchStory
 })
 
 export const mapDispatchToProps = dispatch =>
@@ -80,7 +94,10 @@ export const mapDispatchToProps = dispatch =>
           parentId,
           userId,
           commentId: uuid.v4()
-        })
+        }),
+      onRefetched: () => ({
+        type: 'STORY_REFETCHED'
+      })
     },
     dispatch
   )

@@ -3,6 +3,7 @@ import Immutable from 'seamless-immutable'
 export default (
   state = Immutable({
     refetchStories: false,
+    refetchStory: false,
     storyCreation: false,
     createdStoryId: null,
     storyCreationError: null
@@ -35,6 +36,9 @@ export default (
         storyCreationError: null
       })
     }
+    case 'CommentCreated': {
+      return state.set('refetchStory', true)
+    }
     case 'SUBMIT_VIEW_SHOWN': {
       return state.merge({
         storyCreation: false,
@@ -44,6 +48,9 @@ export default (
     }
     case 'STORIES_REFETCHED': {
       return state.set('refetchStories', false)
+    }
+    case 'STORY_REFETCHED': {
+      return state.set('refetchStory', false)
     }
     default: {
       return state
