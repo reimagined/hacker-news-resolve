@@ -4,18 +4,21 @@ import { connect } from 'react-redux'
 
 import Stories from '../components/Stories'
 
-const NewestByPage = ({
-  refetchStories,
-  match: { params: { page } },
-  data: { stories = [], refetch },
-  onRefetched
-}) => {
-  if (refetchStories) {
-    onRefetched()
-    refetch()
+class NewestByPage extends React.PureComponent {
+  componentDidUpdate = () => {
+    const { refetchStories, onRefetched, data: { refetch } } = this.props
+
+    if (refetchStories) {
+      refetch()
+      onRefetched()
+    }
   }
 
-  return <Stories items={stories} page={page || '1'} type="newest" />
+  render() {
+    const { match: { params: { page } }, data: { stories = [] } } = this.props
+
+    return <Stories items={stories} page={page || '1'} type="newest" />
+  }
 }
 
 const withGraphql = graphql(

@@ -28,10 +28,10 @@ export class StoryDetails extends React.PureComponent {
       text: event.target.value
     })
 
-  componentDidUpdate = prevProps => {
+  componentDidUpdate = () => {
     const { refetchStory, onRefetched, data: { refetch } } = this.props
 
-    if (refetchStory && !prevProps.refetchStory) {
+    if (refetchStory) {
       refetch()
       onRefetched()
     }
