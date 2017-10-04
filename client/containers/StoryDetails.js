@@ -75,11 +75,7 @@ export class StoryDetails extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = ({
-  storyDetails,
-  user,
-  ui: { refetchStory }
-}) => ({
+export const mapStateToProps = ({ user, ui: { refetchStory } }) => ({
   userId: user.id,
   loggedIn: !!user.id,
   refetchStory

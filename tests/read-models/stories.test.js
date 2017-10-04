@@ -142,6 +142,31 @@ describe('read-models', () => {
       )
     })
 
+    it('eventHandler "STORY_UPVOTED" with incorrect aggregateId', () => {
+      const aggregateId = uuid.v4()
+      const userId = uuid.v4()
+      const timestamp = Date.now()
+      const state = stories.initialState.concat({
+        id: aggregateId,
+        type: 'story',
+        title: 'Show HN: Google',
+        link: 'https://google.com',
+        commentCount: 0,
+        votes: [],
+        createdAt: timestamp,
+        createdBy: userId
+      })
+
+      const event = {
+        aggregateId: 'incorrectId',
+        payload: {
+          userId
+        }
+      }
+
+      expect(stories.eventHandlers[STORY_UPVOTED](state, event)).toEqual(state)
+    })
+
     it('eventHandler "STORY_UNVOTED"', () => {
       const aggregateId = uuid.v4()
       const userId = uuid.v4()
@@ -180,6 +205,32 @@ describe('read-models', () => {
       expect(stories.eventHandlers[STORY_UNVOTED](state, event)).toEqual(
         nextState
       )
+    })
+
+    it('eventHandler "STORY_UNVOTED" with incorrect aggregateId', () => {
+      const aggregateId = uuid.v4()
+      const userId = uuid.v4()
+      const timestamp = Date.now()
+
+      const state = stories.initialState.concat({
+        id: aggregateId,
+        type: 'story',
+        title: 'Show HN: Google',
+        link: 'https://google.com',
+        commentCount: 0,
+        votes: [userId],
+        createdAt: timestamp,
+        createdBy: userId
+      })
+
+      const event = {
+        aggregateId: 'incorrectId',
+        payload: {
+          userId
+        }
+      }
+
+      expect(stories.eventHandlers[STORY_UNVOTED](state, event)).toEqual(state)
     })
 
     it('eventHandler "COMMENT_CREATED"', () => {
@@ -224,6 +275,39 @@ describe('read-models', () => {
 
       expect(stories.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
         nextState
+      )
+    })
+
+    it('eventHandler "COMMENT_CREATED" with incorrect aggregateId', () => {
+      const aggregateId = uuid.v4()
+      const commentId = uuid.v4()
+      const userId = uuid.v4()
+      const timestamp = Date.now()
+
+      const state = stories.initialState.concat({
+        id: aggregateId,
+        type: 'story',
+        title: 'Show HN: Google',
+        link: 'https://google.com',
+        commentCount: 0,
+        votes: [],
+        createdAt: timestamp,
+        createdBy: userId
+      })
+
+      const event = {
+        aggregateId: 'incorrectId',
+        timestamp: Date.now(),
+        payload: {
+          commentId,
+          parentId: aggregateId,
+          userId,
+          text: 'comment'
+        }
+      }
+
+      expect(stories.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
+        state
       )
     })
   })
