@@ -107,8 +107,6 @@ export default graphql(
   `,
   {
     options: ({ match: { params: { commentId } } }) => ({
-      // TODO: remove it after real reactivity will be implemented
-      pollInterval: 1000,
       variables: {
         id: commentId
       }
