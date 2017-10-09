@@ -14,9 +14,15 @@
     "test:watch": "jest --watchAll",
     "lint-staged": "lint-staged"
   },
-  "pre-commit": ["lint-staged", "test"],
+  "pre-commit": [
+    "lint-staged",
+    "test"
+  ],
   "lint-staged": {
-    "*.{js,css}": ["prettier --single-quote --no-semi --write", "git add"]
+    "*.{js,css}": [
+      "prettier --single-quote --no-semi --write",
+      "git add"
+    ]
   },
   "keywords": [
     "react",
