@@ -42,6 +42,7 @@
     "js-cookie": "^2.1.4",
     "jsonwebtoken": "^7.4.3",
     "nedb": "^1.8.0",
+    "object-hash": "^1.1.8",
     "plur": "^2.1.2",
     "progress": "^2.0.0",
     "prop-types": "^15.5.10",
