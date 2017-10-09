@@ -14,9 +14,15 @@
     "test:watch": "jest --watchAll",
     "lint-staged": "lint-staged"
   },
-  "pre-commit": ["lint-staged", "test"],
+  "pre-commit": [
+    "lint-staged",
+    "test"
+  ],
   "lint-staged": {
-    "*.{js,css}": ["prettier --single-quote --no-semi --write", "git add"]
+    "*.{js,css}": [
+      "prettier --single-quote --no-semi --write",
+      "git add"
+    ]
   },
   "keywords": [
     "react",
@@ -55,7 +61,7 @@
     "resolve-es": "0.1.0-alpha.093e7539",
     "resolve-redux": "0.1.0-alpha.093e7539",
     "resolve-scripts": "0.1.0-alpha.093e7539",
-    "resolve-storage-file": "0.1.0-alpha.093e7539",
+    "resolve-storage-lite": "0.1.0-alpha.093e7539",
     "sanitizer": "^0.1.3",
     "seamless-immutable": "^7.1.2",
     "uuid": "^3.1.0"
