@@ -6,11 +6,11 @@ import CommentsByPage from './containers/CommentsByPage'
 import CommentById from './containers/CommentById'
 import Submit from './containers/Submit'
 import Login from './components/Login'
+import PageNotFound from './components/PageNotFound'
 
 import UserById from './containers/UserById'
 import Error from './components/Error'
 import StoryDetails from './containers/StoryDetails'
-import ReplyById from './containers/ReplyById'
 
 const routes = [
   {
@@ -19,7 +19,7 @@ const routes = [
     routes: [
       {
         path: '/',
-        redirectTo: '/newest/',
+        redirectTo: '/newest',
         exact: true
       },
       {
@@ -35,16 +35,20 @@ const routes = [
         component: AskByPage
       },
       {
+        path: '/storyDetails/:storyId/comments/:commentId',
+        component: CommentById
+      },
+      {
+        path: '/storyDetails/:storyId',
+        component: StoryDetails
+      },
+      {
         path: '/comments/:page?',
         component: CommentsByPage
       },
       {
-        path: '/storyDetails/:storyId/comments/:commentId/reply',
-        component: ReplyById
-      },
-      {
-        path: '/storyDetails/:storyId/comments/:commentId',
-        component: CommentById
+        path: '/user/:userId',
+        component: UserById
       },
       {
         path: '/submit',
@@ -55,16 +59,11 @@ const routes = [
         component: Login
       },
       {
-        path: '/user/:userId',
-        component: UserById
-      },
-      {
         path: '/error',
         component: Error
       },
       {
-        path: '/storyDetails/:storyId',
-        component: StoryDetails
+        component: PageNotFound
       }
     ]
   }

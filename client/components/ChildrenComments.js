@@ -3,7 +3,7 @@ import React from 'react'
 import Comment from './Comment'
 import ReplyLink from './ReplyLink'
 
-const ChildrenComments = ({ storyId, comments, parentId, level }) => {
+const ChildrenComments = ({ storyId, parentId, comments, level }) => {
   if (!comments.length) {
     return null
   }

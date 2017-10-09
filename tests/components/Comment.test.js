@@ -12,7 +12,7 @@ it('Comment Level 0 renders correctly', () => {
       createdBy="SomeUser"
       createdAt={0}
       storyId="story-id"
-      parentId="parent-id"
+      parentId="story-id"
       root={{ id: 'SomeId', title: 'SomeTitle' }}
     />
   )
@@ -98,6 +98,12 @@ it('Comment without childrens renders correctly', () => {
       parentId="parent-id"
     />
   )
+
+  expect(markup).toMatchSnapshot()
+})
+
+it('Invalid comment renders correctly', () => {
+  const markup = shallow(<Comment />)
 
   expect(markup).toMatchSnapshot()
 })

@@ -1,4 +1,3 @@
-import sinon from 'sinon'
 import uuid from 'uuid'
 import jwt from 'jsonwebtoken'
 
@@ -11,13 +10,8 @@ const currentUser = {
   id: uuid.v4()
 }
 
-const executeQuery = sinon.spy(async queryName => {
-  switch (queryName) {
-    case 'users':
-      return { users: [currentUser] }
-    default:
-      throw new Error()
-  }
+const executeQuery = (_, { id }) => ({
+  user: id === currentUser.id ? currentUser : null
 })
 
 describe('server', () => {
@@ -29,11 +23,7 @@ describe('server', () => {
     const state = await initialState(executeQuery, { cookies })
 
     expect(state).toEqual({
-      user: currentUser,
-      stories: [],
-      comments: [],
-      storyDetails: [],
-      users: [currentUser]
+      user: currentUser
     })
   })
 
@@ -43,15 +33,12 @@ describe('server', () => {
     }
 
     const user = await getCurrentUser(executeQuery, cookies)
-
     expect(user).toEqual(currentUser)
   })
 
-  it('getCurrentUser should return undefined', async () => {
+  it('getCurrentUser should return null', async () => {
     const cookies = {}
-
     const user = await getCurrentUser(executeQuery, cookies)
-
-    expect(user).toEqual(undefined)
+    expect(user).toEqual(null)
   })
 })

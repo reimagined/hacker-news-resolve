@@ -1,27 +1,62 @@
 import React from 'react'
+import { gql, graphql } from 'react-apollo'
 import { connect } from 'react-redux'
 
 import Stories from '../components/Stories'
-import subscribe from '../decorators/subscribe'
-import stories from '../../common/read-models/stories'
 
-const NewestByPage = ({ match: { params: { page } }, stories }) => (
-  <Stories items={stories} page={page || '1'} type="newest" />
-)
+class NewestByPage extends React.PureComponent {
+  componentDidUpdate = () => {
+    const { refetchStories, onRefetched, data: { refetch } } = this.props
 
-export const mapStateToProps = ({ stories }) => ({
-  stories
-})
+    if (refetchStories) {
+      refetch()
+      onRefetched()
+    }
+  }
 
-export default subscribe(({ match: { params: { page } } }) => ({
-  graphQL: [
-    {
-      readModel: stories,
-      query:
-        'query ($page: Int!) { stories(page: $page) { id, type, title, text, createdAt, createdBy, createdByName, link, commentCount, votes } }',
+  render() {
+    const { match: { params: { page } }, data: { stories = [] } } = this.props
+
+    return <Stories items={stories} page={page || '1'} type="newest" />
+  }
+}
+
+const withGraphql = graphql(
+  gql`
+    query($page: Int!) {
+      stories(page: $page) {
+        id
+        type
+        title
+        link
+        commentCount
+        votes
+        createdAt
+        createdBy
+        createdByName
+      }
+    }
+  `,
+  {
+    options: ({ match: { params: { page } } }) => ({
       variables: {
         page: page || '1'
       }
-    }
-  ]
-}))(connect(mapStateToProps)(NewestByPage))
+    })
+  }
+)
+
+const mapStateToProps = ({ ui: { refetchStories } }) => ({
+  refetchStories
+})
+
+const mapDispatchToProps = dispatch => ({
+  onRefetched: () =>
+    dispatch({
+      type: 'STORIES_REFETCHED'
+    })
+})
+
+export default withGraphql(
+  connect(mapStateToProps, mapDispatchToProps)(NewestByPage)
+)

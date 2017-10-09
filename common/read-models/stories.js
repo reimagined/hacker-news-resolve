@@ -1,14 +1,14 @@
-import Immutable from '../immutable'
-import events from '../events'
-import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants'
-import withUserNames from '../helpers/withUserNames'
+import Immutable from 'seamless-immutable'
 
-import type { CommentCreated } from '../events/comments'
+import events from '../events'
+
 import type {
+  Event,
   StoryCreated,
   StoryUpvoted,
-  StoryUnvoted
-} from '../events/stories'
+  StoryUnvoted,
+  CommentCreated
+} from '../events'
 
 const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
 
@@ -16,7 +16,7 @@ export default {
   name: 'stories',
   initialState: Immutable([]),
   eventHandlers: {
-    [STORY_CREATED]: (state: any, event: StoryCreated) => {
+    [STORY_CREATED]: (state: any, event: Event<StoryCreated>) => {
       const {
         aggregateId,
         timestamp,
@@ -31,17 +31,17 @@ export default {
           type,
           title,
           text,
-          createdBy: userId,
-          createdAt: timestamp,
           link,
           commentCount: 0,
-          votes: []
+          votes: [],
+          createdAt: timestamp,
+          createdBy: userId
         },
         ...state
       ])
     },
 
-    [STORY_UPVOTED]: (state: any, event: StoryUpvoted) => {
+    [STORY_UPVOTED]: (state: any, event: Event<StoryUpvoted>) => {
       const { aggregateId, payload: { userId } } = event
 
       const index = state.findIndex(({ id }) => id === aggregateId)
@@ -53,7 +53,7 @@ export default {
       return state.updateIn([index, 'votes'], votes => votes.concat(userId))
     },
 
-    [STORY_UNVOTED]: (state: any, event: StoryUnvoted) => {
+    [STORY_UNVOTED]: (state: any, event: Event<StoryUnvoted>) => {
       const { aggregateId, payload: { userId } } = event
 
       const index = state.findIndex(({ id }) => id === aggregateId)
@@ -67,7 +67,7 @@ export default {
       )
     },
 
-    [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
+    [COMMENT_CREATED]: (state: any, event: Event<CommentCreated>) => {
       const storyIndex = state.findIndex(({ id }) => id === event.aggregateId)
 
       if (storyIndex < 0) {
@@ -75,34 +75,6 @@ export default {
       }
 
       return state.updateIn([storyIndex, 'commentCount'], count => count + 1)
-    }
-  },
-  gqlSchema: `
-    type Story {
-      id: ID!
-      type: String!
-      title: String!
-      createdBy: String!
-      createdByName: String!
-      createdAt: String!
-      link: String
-      commentCount: Int!
-      votes: [String]
-    }
-    type Query {
-      stories(page: Int!, type: String): [Story]
-    }
-  `,
-  gqlResolvers: {
-    stories: async (root, { page, type }, { getReadModel }) => {
-      const stories = (type
-        ? root.filter(story => story.type === type)
-        : root).slice(
-        +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
-        +page * NUMBER_OF_ITEMS_PER_PAGE + 1
-      )
-
-      return withUserNames(stories, getReadModel)
     }
   }
 }

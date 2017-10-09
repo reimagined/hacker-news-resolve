@@ -1,6 +1,5 @@
 import Immutable from 'seamless-immutable'
-import type { UserCreated } from '../events/users'
-import events from '../events/users'
+import events from '../events'
 import { Event } from '../helpers'
 import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists'
 
@@ -10,7 +9,7 @@ export default {
   name: 'users',
   initialState: Immutable({}),
   commands: {
-    createUser: (state: any, command: UserCreated) => {
+    createUser: (state: any, command) => {
       const { name } = command.payload
 
       throwIfAggregateAlreadyExists(state, command)
@@ -22,7 +21,7 @@ export default {
       return new Event(USER_CREATED, { name })
     }
   },
-  eventHandlers: {
+  projection: {
     [USER_CREATED]: (state, { timestamp }) => state.set('createdAt', timestamp)
   }
 }

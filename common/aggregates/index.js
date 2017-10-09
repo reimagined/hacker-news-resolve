@@ -1,4 +1,4 @@
-import users from './users'
-import stories from './stories'
+import user from './user'
+import story from './story'
 
-export default [users, stories]
+export default [user, story]

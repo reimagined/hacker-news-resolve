@@ -13,8 +13,9 @@ import '../styles/story.css'
 
 const isExternalLink = link => link[0] !== '/'
 
-export const getHostname = link =>
-  link.split('.')[0] === 'www' ? link.substr(4) : url.parse(link).hostname
+export const getHostname = link => {
+  return url.parse(link).hostname
+}
 
 export const voteArrow = (visible, upvoteStory) => {
   return visible ? (
@@ -133,12 +134,15 @@ export class Story extends React.PureComponent {
     this.props.unvoteStory(this.props.story.id, this.props.userId)
 
   render() {
-    const { story, loggedIn, showText, voted } = this.props
+    const { story, loggedIn, voted } = this.props
 
     if (!story) {
       return null
     }
 
+    let commentCount = story.comments
+      ? story.comments.length
+      : story.commentCount
     return (
       <div className="story">
         <div className="story__content">
@@ -154,15 +158,15 @@ export class Story extends React.PureComponent {
           <Meta
             voted={voted}
             id={story.id}
-            createdBy={story.createdBy}
-            createdByName={story.createdByName}
-            createdAt={story.createdAt}
             votes={story.votes}
-            commentCount={story.commentCount}
+            commentCount={commentCount}
             unvoteStory={this.unvoteStory}
             loggedIn={loggedIn}
+            createdAt={story.createdAt}
+            createdBy={story.createdBy}
+            createdByName={story.createdByName}
           />
-          {showText && story.text ? (
+          {story.text ? (
             <div
               className="story__text"
               dangerouslySetInnerHTML={{
@@ -176,10 +180,7 @@ export class Story extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = ({ user, storyDetails, stories }, { id }) => {
-  const search = story => story.id === id
-  const story = storyDetails.find(search) || stories.find(search)
-
+export const mapStateToProps = ({ user }, { story }) => {
   return {
     story,
     voted: story && story.votes && story.votes.includes(user.id),

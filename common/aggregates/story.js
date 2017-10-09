@@ -1,38 +1,27 @@
 import Immutable from 'seamless-immutable'
 
-import type {
-  StoryCreated,
-  StoryUpvoted,
-  StoryUnvoted
-} from '../events/stories'
-
-import type { CommentCreated } from '../events/comments'
-
-import storiesEvents from '../events/stories'
-import commentsEvents from '../events/comments'
+import events from '../events'
 import { Event } from '../helpers'
 import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists'
 import throwIfAggregateIsNotExists from './validators/throwIfAggregateIsNotExists'
 
-const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED } = storiesEvents
-
-const { COMMENT_CREATED } = commentsEvents
+const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
 
 export default {
   name: 'stories',
   initialState: Immutable({}),
   commands: {
-    createStory: (state: any, command: StoryCreated) => {
+    createStory: (state: any, command) => {
       const { title, link, userId, text } = command.payload
 
       throwIfAggregateAlreadyExists(state, command)
 
-      if (!title) {
-        throw new Error('Title is required')
-      }
-
       if (!userId) {
         throw new Error('UserId is required')
+      }
+
+      if (!title) {
+        throw new Error('Title is required')
       }
 
       return new Event(STORY_CREATED, {
@@ -43,17 +32,17 @@ export default {
       })
     },
 
-    upvoteStory: (state: any, command: StoryUpvoted) => {
+    upvoteStory: (state: any, command) => {
       const { userId } = command.payload
 
       throwIfAggregateIsNotExists(state, command)
 
-      if (state.voted.includes(userId)) {
-        throw new Error('User already voted')
-      }
-
       if (!userId) {
         throw new Error('UserId is required')
+      }
+
+      if (state.voted.includes(userId)) {
+        throw new Error('User already voted')
       }
 
       return new Event(STORY_UPVOTED, {
@@ -61,17 +50,17 @@ export default {
       })
     },
 
-    unvoteStory: (state: any, command: StoryUnvoted) => {
+    unvoteStory: (state: any, command) => {
       const { userId } = command.payload
 
       throwIfAggregateIsNotExists(state, command)
 
-      if (!state.voted.includes(userId)) {
-        throw new Error('User has not voted')
-      }
-
       if (!userId) {
         throw new Error('UserId is required')
+      }
+
+      if (!state.voted.includes(userId)) {
+        throw new Error('User has not voted')
       }
 
       return new Event(STORY_UNVOTED, {
@@ -79,17 +68,17 @@ export default {
       })
     },
 
-    createComment: (state: any, command: CommentCreated) => {
+    createComment: (state: any, command) => {
       throwIfAggregateIsNotExists(state, command)
 
       const { commentId, parentId, userId, text } = command.payload
 
-      if (!parentId) {
-        throw new Error('ParentId is required')
-      }
-
       if (!userId) {
         throw new Error('UserId is required')
+      }
+
+      if (!parentId) {
+        throw new Error('ParentId is required')
       }
 
       if (!text) {
@@ -104,7 +93,7 @@ export default {
       })
     }
   },
-  eventHandlers: {
+  projection: {
     [STORY_CREATED]: (state, { timestamp, payload: { userId } }) =>
       state.merge({
         createdAt: timestamp,

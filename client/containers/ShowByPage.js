@@ -1,27 +1,35 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { graphql, gql } from 'react-apollo'
 
 import Stories from '../components/Stories'
-import subscribe from '../decorators/subscribe'
-import stories from '../../common/read-models/stories'
 
-export const ShowByPage = ({ match: { params: { page } }, stories }) => (
-  <Stories items={stories} page={page} type="show" />
-)
+export const ShowByPage = ({
+  match: { params: { page } },
+  data: { stories = [] }
+}) => <Stories items={stories} page={page} type="show" />
 
-export const mapStateToProps = ({ stories }) => ({
-  stories
-})
-
-export default subscribe(({ match: { params: { page } } }) => ({
-  graphQL: [
-    {
-      readModel: stories,
-      query:
-        'query ($page: Int!) { stories(page: $page, type: "show") { id, type, title, text, createdAt, createdBy, createdByName, link, commentCount, votes } }',
+export default graphql(
+  gql`
+    query($page: Int!) {
+      stories(page: $page, type: "show") {
+        id
+        type
+        title
+        text
+        link
+        commentCount
+        votes
+        createdAt
+        createdBy
+        createdByName
+      }
+    }
+  `,
+  {
+    options: ({ match: { params: { page } } }) => ({
       variables: {
         page: page || '1'
       }
-    }
-  ]
-}))(connect(mapStateToProps)(ShowByPage))
+    })
+  }
+)(ShowByPage)

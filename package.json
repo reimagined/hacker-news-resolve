@@ -9,7 +9,8 @@
     "import": "babel-node ./import ",
     "prettier": "prettier --single-quote --no-semi --write \"**/*.js\"",
     "test": "jest",
-    "test:coverage": "jest --u --coverage",
+    "test:update": "jest -u",
+    "test:coverage": "jest --coverage",
     "test:watch": "jest --watchAll",
     "lint-staged": "lint-staged"
   },
@@ -40,6 +41,7 @@
     "prop-types": "^15.5.10",
     "query-string": "^5.0.0",
     "react": "^15.6.1",
+    "react-apollo": "^1.4.15",
     "react-dom": "^15.6.1",
     "react-helmet": "^5.1.3",
     "react-pure-render": "^1.0.2",
@@ -79,7 +81,9 @@
       "/coverage/",
       "resolve.build.config.js",
       "resolve.client.config.js",
-      "resolve.server.config.js"
+      "resolve.server.config.js",
+      "common/immutable.js",
+      "server/"
     ],
     "moduleNameMapper": {
       ".*\\.(css|less)$": "<rootDir>/tests/ignore-css.js"

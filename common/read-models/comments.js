@@ -1,9 +1,7 @@
-import Immutable from '../immutable'
-import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants'
+import Immutable from 'seamless-immutable'
 
-import type { CommentCreated } from '../events/comments'
+import type { Event, CommentCreated } from '../events'
 import events from '../events'
-import withUserNames from '../helpers/withUserNames'
 
 const { COMMENT_CREATED } = events
 
@@ -11,7 +9,7 @@ export default {
   name: 'comments',
   initialState: Immutable([]),
   eventHandlers: {
-    [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
+    [COMMENT_CREATED]: (state: any, event: Event<CommentCreated>) => {
       const {
         aggregateId,
         timestamp,
@@ -30,30 +28,6 @@ export default {
           }
         ].concat(state)
       )
-    }
-  },
-  gqlSchema: `
-    type Comment {
-      text: String!
-      id: ID!
-      parentId: ID!
-      storyId: ID!
-      createdAt: String!
-      createdBy: String!
-      createdByName: String!
-    }
-    type Query {
-      comments(page: Int!): [Comment]
-    }
-  `,
-  gqlResolvers: {
-    comments: async (root, { page }, { getReadModel }) => {
-      const comments = root.slice(
-        +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
-        +page * NUMBER_OF_ITEMS_PER_PAGE + 1
-      )
-
-      return withUserNames(comments, getReadModel)
     }
   }
 }

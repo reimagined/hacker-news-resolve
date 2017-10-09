@@ -1,7 +1,8 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { sendCommandMiddleware, setSubscriptionMiddleware } from 'resolve-redux'
 import createSagaMiddleware from 'redux-saga'
-import Immutable from '../../common/immutable'
+import Immutable from 'seamless-immutable'
+
 import reducer from '../reducers'
 import rootSaga from '../sagas'
 
@@ -19,27 +20,8 @@ export default initialState => {
 
   if (isClient) {
     middleware.push(
-      sendCommandMiddleware({
-        sendCommand: async command => {
-          const response = await fetch('/api/commands', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'same-origin',
-            body: JSON.stringify(command)
-          })
-
-          if (response.ok) {
-            return response.blob()
-          }
-
-          const text = await response.text()
-          console.error('Error due command sent: ', text)
-          return Promise.reject(text)
-        }
-      }),
-      setSubscriptionMiddleware({
-        rootDirPath: process.env.ROOT_DIR
-      }),
+      sendCommandMiddleware(),
+      setSubscriptionMiddleware(),
       sagaMiddleware
     )
   }

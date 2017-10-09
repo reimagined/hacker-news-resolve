@@ -1,5 +1,4 @@
-# hacker-news-resolve &middot; [![Build Status](https://travis-ci.org/reimagined/hacker-news-resolve.svg?branch=master)](https://travis-ci.org/reimagined/hacker-news-resolve) [![Coverage Status](https://coveralls.io/repos/github/reimagined/hacker-news-resolve/badge.svg)](https://coveralls.io/github/reimagined/hacker-news-resolve)
-
+# hacker-news-resolve &middot; [![Build Status](https://travis-ci.org/reimagined/hacker-news-resolve.svg?branch=master)](https://travis-ci.org/reimagined/hacker-news-resolve) [![Coverage Status](https://coveralls.io/repos/github/reimagined/hacker-news-resolve/badge.svg?branch=master)](https://coveralls.io/github/reimagined/hacker-news-resolve?branch=master)
 A React & Redux & Resolve implementation of Hacker News 
 
 [<img src="https://facebook.github.io/react/img/logo.svg" height="100">](https://github.com/facebook/react)
@@ -27,6 +26,7 @@ Access localhost:3000 then you can see the front page of Hacker News.
 |`build`             | Builds the application to ./dist |
 |`dev`               | Serves your app at `localhost:3000` in development mode|
 |`start`             | Serves your app at `localhost:3000` in production mode |
+|`import`            | Imports data from [Original Hacker News](https://news.ycombinator.com/) |
 |`test`              | Runs unit tests with Jest |
 |`test:watch`        | Runs `test` in watch mode to re-run tests when changed |
 |`prettier`          | Lints the project and fixes all correctable errors |

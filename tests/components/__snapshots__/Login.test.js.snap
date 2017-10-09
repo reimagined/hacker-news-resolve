@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <AuthForm
+        action="/login"
+        buttonText="login"
+        title="Login"
+    />
+    <AuthForm
+        action="/signup"
+        buttonText="create account"
+        title="Create account"
+    />
+</div>,
+  "nodes": Array [
+    <div>
+      <AuthForm
+            action="/login"
+            buttonText="login"
+            title="Login"
+      />
+      <AuthForm
+            action="/signup"
+            buttonText="create account"
+            title="Create account"
+      />
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Login
+        location={
+                Object {
+                        "search": "",
+                      }
+        }
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "location": Object {
+            "search": "",
+          },
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <AuthForm
+                    action="/login"
+                    buttonText="login"
+                    title="Login"
+          />
+          <AuthForm
+                    action="/signup"
+                    buttonText="create account"
+                    title="Create account"
+          />
+</div>,
+        "_debugID": 2,
+        "_renderedOutput": <div>
+          <AuthForm
+                    action="/login"
+                    buttonText="login"
+                    title="Login"
+          />
+          <AuthForm
+                    action="/signup"
+                    buttonText="create account"
+                    title="Create account"
+          />
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Login
+    location={
+        Object {
+            "search": "",
+          }
+    }
+/>,
+}
+`;
