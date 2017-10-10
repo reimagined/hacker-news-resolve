@@ -1,9 +1,7 @@
 import '../../common/aggregates'
 import users from '../../common/aggregates/user'
-import events from '../../common/events'
 import { Event } from '../../common/helpers'
-
-const { USER_CREATED } = events
+import { USER_CREATED } from '../../common/events'
 
 describe('aggregates', () => {
   describe('users', () => {

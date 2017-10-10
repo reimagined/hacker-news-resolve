@@ -1,15 +1,14 @@
+// @flow
 import Immutable from 'seamless-immutable'
-import events from '../events'
+import { USER_CREATED } from '../events'
 import { Event } from '../helpers'
 import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists'
-
-const { USER_CREATED } = events
 
 export default {
   name: 'users',
   initialState: Immutable({}),
   commands: {
-    createUser: (state: any, command) => {
+    createUser: (state: any, command: any) => {
       const { name } = command.payload
 
       throwIfAggregateAlreadyExists(state, command)

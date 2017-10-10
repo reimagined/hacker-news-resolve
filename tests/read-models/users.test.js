@@ -2,9 +2,7 @@ import uuid from 'uuid'
 
 import '../../common/read-models'
 import users from '../../common/read-models/users'
-import events from '../../common/events'
-
-const { USER_CREATED } = events
+import { USER_CREATED } from '../../common/events'
 
 describe('read-models', () => {
   describe('users', () => {

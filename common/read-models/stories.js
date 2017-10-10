@@ -1,22 +1,21 @@
+// @flow
 import Immutable from 'seamless-immutable'
 
-import events from '../events'
-
-import type {
-  Event,
-  StoryCreated,
-  StoryUpvoted,
-  StoryUnvoted,
-  CommentCreated
+import {
+  STORY_CREATED,
+  STORY_UPVOTED,
+  STORY_UNVOTED,
+  COMMENT_CREATED
 } from '../events'
-
-const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
 
 export default {
   name: 'stories',
   initialState: Immutable([]),
   eventHandlers: {
-    [STORY_CREATED]: (state: any, event: Event<StoryCreated>) => {
+    [STORY_CREATED]: (
+      state: StoresReadModel,
+      event: StoryCreated
+    ): StoresReadModel => {
       const {
         aggregateId,
         timestamp,
@@ -41,7 +40,10 @@ export default {
       ])
     },
 
-    [STORY_UPVOTED]: (state: any, event: Event<StoryUpvoted>) => {
+    [STORY_UPVOTED]: (
+      state: StoresReadModel,
+      event: StoryUpvoted
+    ): StoresReadModel => {
       const { aggregateId, payload: { userId } } = event
 
       const index = state.findIndex(({ id }) => id === aggregateId)
@@ -53,7 +55,10 @@ export default {
       return state.updateIn([index, 'votes'], votes => votes.concat(userId))
     },
 
-    [STORY_UNVOTED]: (state: any, event: Event<StoryUnvoted>) => {
+    [STORY_UNVOTED]: (
+      state: StoresReadModel,
+      event: StoryUnvoted
+    ): StoresReadModel => {
       const { aggregateId, payload: { userId } } = event
 
       const index = state.findIndex(({ id }) => id === aggregateId)
@@ -67,7 +72,10 @@ export default {
       )
     },
 
-    [COMMENT_CREATED]: (state: any, event: Event<CommentCreated>) => {
+    [COMMENT_CREATED]: (
+      state: StoresReadModel,
+      event: CommentCreated
+    ): StoresReadModel => {
       const storyIndex = state.findIndex(({ id }) => id === event.aggregateId)
 
       if (storyIndex < 0) {

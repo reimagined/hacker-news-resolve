@@ -2,10 +2,13 @@ import uuid from 'uuid'
 
 import '../../common/aggregates'
 import stories from '../../common/aggregates/story'
-import events from '../../common/events'
 import { Event } from '../../common/helpers'
-
-const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
+import {
+  STORY_CREATED,
+  STORY_UPVOTED,
+  STORY_UNVOTED,
+  COMMENT_CREATED
+} from '../../common/events'
 
 describe('aggregates', () => {
   describe('stories', () => {

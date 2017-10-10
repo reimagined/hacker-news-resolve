@@ -1,9 +1,7 @@
 import Immutable from 'seamless-immutable'
 
 import type { Event, CommentCreated } from '../events'
-import events from '../events'
-
-const { COMMENT_CREATED } = events
+import { COMMENT_CREATED } from '../events'
 
 export default {
   name: 'comments',
