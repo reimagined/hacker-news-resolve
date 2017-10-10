@@ -30,10 +30,12 @@ export default {
       ? root.filter(story => story.type === type)
       : root
 
-    const stories = filteredStories.slice(
-      +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
-      +page * NUMBER_OF_ITEMS_PER_PAGE + 1
-    )
+    const stories = filteredStories
+      .slice(
+        filteredStories.length - (+page * NUMBER_OF_ITEMS_PER_PAGE + 1),
+        filteredStories.length - (+page - 1) * NUMBER_OF_ITEMS_PER_PAGE
+      )
+      .reverse()
 
     return withUserNames(stories, read)
   },
@@ -48,9 +50,9 @@ export default {
     if (hasQueryField(query, 'comments')) {
       const comments = (await read()).get('comments')
 
-      const storyComments = comments.filter(
-        ({ storyId }) => storyId === story.id
-      )
+      const storyComments = comments
+        .filter(({ storyId }) => storyId === story.id)
+        .reverse()
 
       const storyWithComments = {
         ...story,
@@ -79,10 +81,13 @@ export default {
   },
   comments: async (read, { page }) => {
     const root = (await read()).get('comments')
-    const comments = root.slice(
-      +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
-      +page * NUMBER_OF_ITEMS_PER_PAGE + 1
-    )
+    const comments = root
+      .slice(
+        root.length - (+page * NUMBER_OF_ITEMS_PER_PAGE + 1),
+        root.length - (+page - 1) * NUMBER_OF_ITEMS_PER_PAGE
+      )
+      .reverse()
+
     return withUserNames(comments, read)
   },
   user: async (read, { id, name }) => {

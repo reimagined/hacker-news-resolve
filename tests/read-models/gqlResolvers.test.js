@@ -289,7 +289,7 @@ describe('gql-resolvers', () => {
       get: collectionName => {
         switch (collectionName) {
           case 'stories':
-            return stories
+            return stories.reverse()
           case 'users':
             return users
         }
