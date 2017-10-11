@@ -1,18 +1,17 @@
-import Immutable from 'seamless-immutable'
 import events from '../events'
 import { Event } from '../helpers'
-import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists'
+import validate from '../validate'
 
 const { USER_CREATED } = events
 
 export default {
   name: 'users',
-  initialState: Immutable({}),
+  initialState: {},
   commands: {
     createUser: (state: any, command) => {
       const { name } = command.payload
 
-      throwIfAggregateAlreadyExists(state, command)
+      validate.checkAggregateIsNotExists(state, command)
 
       if (!name) {
         throw new Error('Name is required')
@@ -22,6 +21,9 @@ export default {
     }
   },
   projection: {
-    [USER_CREATED]: (state, { timestamp }) => state.set('createdAt', timestamp)
+    [USER_CREATED]: (state, { timestamp }) => ({
+      ...state,
+      createdAt: timestamp
+    })
   }
 }

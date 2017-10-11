@@ -1,20 +1,17 @@
-import Immutable from 'seamless-immutable'
-
 import events from '../events'
 import { Event } from '../helpers'
-import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists'
-import throwIfAggregateIsNotExists from './validators/throwIfAggregateIsNotExists'
+import validate from '../validate'
 
 const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
 
 export default {
   name: 'stories',
-  initialState: Immutable({}),
+  initialState: {},
   commands: {
     createStory: (state: any, command) => {
-      const { title, link, userId, text } = command.payload
+      validate.checkAggregateIsNotExists(state, command)
 
-      throwIfAggregateAlreadyExists(state, command)
+      const { title, link, userId, text } = command.payload
 
       if (!userId) {
         throw new Error('UserId is required')
@@ -33,9 +30,9 @@ export default {
     },
 
     upvoteStory: (state: any, command) => {
-      const { userId } = command.payload
+      validate.checkAggregateIsExists(state, command)
 
-      throwIfAggregateIsNotExists(state, command)
+      const { userId } = command.payload
 
       if (!userId) {
         throw new Error('UserId is required')
@@ -51,9 +48,9 @@ export default {
     },
 
     unvoteStory: (state: any, command) => {
-      const { userId } = command.payload
+      validate.checkAggregateIsExists(state, command)
 
-      throwIfAggregateIsNotExists(state, command)
+      const { userId } = command.payload
 
       if (!userId) {
         throw new Error('UserId is required')
@@ -69,7 +66,7 @@ export default {
     },
 
     createComment: (state: any, command) => {
-      throwIfAggregateIsNotExists(state, command)
+      validate.checkAggregateIsExists(state, command)
 
       const { commentId, parentId, userId, text } = command.payload
 
@@ -94,25 +91,35 @@ export default {
     }
   },
   projection: {
-    [STORY_CREATED]: (state, { timestamp, payload: { userId } }) =>
-      state.merge({
-        createdAt: timestamp,
-        createdBy: userId,
-        voted: [],
-        comments: {}
-      }),
+    [STORY_CREATED]: (state, { timestamp, payload: { userId } }) => ({
+      ...state,
+      createdAt: timestamp,
+      createdBy: userId,
+      voted: [],
+      comments: {}
+    }),
 
-    [STORY_UPVOTED]: (state, { payload: { userId } }) =>
-      state.update('voted', voted => voted.concat(userId)),
+    [STORY_UPVOTED]: (state, { payload: { userId } }) => ({
+      ...state,
+      voted: state.voted.concat(userId)
+    }),
 
-    [STORY_UNVOTED]: (state, { payload: { userId } }) =>
-      state.update('voted', voted =>
-        voted.filter(curUserId => curUserId !== userId)
-      ),
-    [COMMENT_CREATED]: (state, { timestamp, payload: { commentId, userId } }) =>
-      state.setIn(['comments', commentId], {
-        createdAt: timestamp,
-        createdBy: userId
-      })
+    [STORY_UNVOTED]: (state, { payload: { userId } }) => ({
+      ...state,
+      voted: state.voted.filter(curUserId => curUserId !== userId)
+    }),
+    [COMMENT_CREATED]: (
+      state,
+      { timestamp, payload: { commentId, userId } }
+    ) => ({
+      ...state,
+      comments: {
+        ...state.comments,
+        [commentId]: {
+          createdAt: timestamp,
+          createdBy: userId
+        }
+      }
+    })
   }
 }

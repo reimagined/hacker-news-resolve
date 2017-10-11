@@ -259,7 +259,7 @@ describe('aggregates', () => {
       const createdAt = Date.now()
       const userId = uuid.v4()
 
-      const state = stories.initialState
+      const state = {}
       const event = {
         timestamp: createdAt,
         payload: {
@@ -280,11 +280,11 @@ describe('aggregates', () => {
       const createdAt = Date.now()
       const userId = uuid.v4()
 
-      const state = stories.initialState.merge({
+      const state = {
         createdAt,
         createdBy: userId,
         voted: []
-      })
+      }
       const event = {
         payload: {
           userId
@@ -303,11 +303,11 @@ describe('aggregates', () => {
       const createdAt = Date.now()
       const userId = uuid.v4()
 
-      const state = stories.initialState.merge({
+      const state = {
         createdAt,
         createdBy: userId,
         voted: [userId]
-      })
+      }
       const event = {
         payload: {
           userId
