@@ -10,7 +10,7 @@ function hasQueryField(query, field) {
 }
 
 async function getCommentsTree(read, { parentId }) {
-  const root = (await read()).get('comments')
+  const root = await read('comments')
 
   return Promise.all(
     root
@@ -24,7 +24,7 @@ async function getCommentsTree(read, { parentId }) {
 
 export default {
   stories: async (read, { page, type }) => {
-    const root = (await read()).get('stories')
+    const root = await read('stories')
 
     const filteredStories = type
       ? root.filter(story => story.type === type)
@@ -40,7 +40,7 @@ export default {
     return withUserNames(stories, read)
   },
   story: async (read, { id }, _, query) => {
-    const stories = (await read()).get('stories')
+    const stories = await read('stories')
     const story = stories.find(s => s.id === id)
 
     if (!story) {
@@ -48,7 +48,7 @@ export default {
     }
 
     if (hasQueryField(query, 'comments')) {
-      const comments = (await read()).get('comments')
+      const comments = await read('comments')
 
       const storyComments = comments
         .filter(({ storyId }) => storyId === story.id)
@@ -65,7 +65,7 @@ export default {
     return (await withUserNames([story], read))[0]
   },
   comment: async (read, { id }) => {
-    const root = (await read()).get('comments')
+    const root = await read('comments')
     const comment = root.find(c => c.id === id)
 
     if (!comment) {
@@ -80,7 +80,7 @@ export default {
     }
   },
   comments: async (read, { page }) => {
-    const root = (await read()).get('comments')
+    const root = await read('comments')
     const comments = root
       .slice(
         root.length - (+page * NUMBER_OF_ITEMS_PER_PAGE + 1),
@@ -91,7 +91,7 @@ export default {
     return withUserNames(comments, read)
   },
   user: async (read, { id, name }) => {
-    const root = (await read()).get('users')
+    const root = await read('users')
 
     return id
       ? root.find(user => user.id === id)

@@ -6,18 +6,16 @@ describe('gql-resolvers', () => {
     const users = [{ id: 'user-id', name: 'username' }]
     const comments = [{ id: 'comment-id', createdBy: 'user-id' }]
 
-    const read = async () => ({
-      get: collectionName => {
-        switch (collectionName) {
-          case 'users':
-            return users
-          case 'comments':
-            return comments
-          default:
-            throw Error()
-        }
+    const read = async collectionName => {
+      switch (collectionName) {
+        case 'users':
+          return users
+        case 'comments':
+          return comments
+        default:
+          throw Error()
       }
-    })
+    }
 
     const result = await gqlResolvers.comments(read, { page: 1 })
 
@@ -34,18 +32,16 @@ describe('gql-resolvers', () => {
       { id: 'comment-id-2', parentId: 'comment-id', createdBy: 'user-id' }
     ]
 
-    const read = async () => ({
-      get: collectionName => {
-        switch (collectionName) {
-          case 'users':
-            return users
-          case 'comments':
-            return comments
-          default:
-            throw Error()
-        }
+    const read = async collectionName => {
+      switch (collectionName) {
+        case 'users':
+          return users
+        case 'comments':
+          return comments
+        default:
+          throw Error()
       }
-    })
+    }
 
     const result = await gqlResolvers.comment(read, { id: 'comment-id' })
 
@@ -68,18 +64,16 @@ describe('gql-resolvers', () => {
     const users = [{ id: 'user-id', name: 'username' }]
     const comments = [{ id: 'comment-id', createdBy: 'user-id' }]
 
-    const read = async () => ({
-      get: collectionName => {
-        switch (collectionName) {
-          case 'users':
-            return users
-          case 'comments':
-            return comments
-          default:
-            throw Error()
-        }
+    const read = async collectionName => {
+      switch (collectionName) {
+        case 'users':
+          return users
+        case 'comments':
+          return comments
+        default:
+          throw Error()
       }
-    })
+    }
 
     const result = await gqlResolvers.comment(read, { id: 'comment-id-2' })
 
@@ -92,14 +86,12 @@ describe('gql-resolvers', () => {
       { name: 'user-2', id: 'id-2' }
     ]
 
-    const read = async () => ({
-      get: collectionName => {
-        switch (collectionName) {
-          case 'users':
-            return users
-        }
+    const read = async collectionName => {
+      switch (collectionName) {
+        case 'users':
+          return users
       }
-    })
+    }
 
     const result = await gqlResolvers.user(read, { id: 'id-2' })
     expect(result).toEqual({ name: 'user-2', id: 'id-2' })
@@ -111,14 +103,12 @@ describe('gql-resolvers', () => {
       { name: 'user-2', id: 'id-2' }
     ]
 
-    const read = async () => ({
-      get: collectionName => {
-        switch (collectionName) {
-          case 'users':
-            return users
-        }
+    const read = async collectionName => {
+      switch (collectionName) {
+        case 'users':
+          return users
       }
-    })
+    }
 
     const result = await gqlResolvers.user(read, { name: 'user-2' })
     expect(result).toEqual({ name: 'user-2', id: 'id-2' })
@@ -132,16 +122,14 @@ describe('gql-resolvers', () => {
 
     const users = [{ name: 'user', id: 'user-id' }]
 
-    const read = async () => ({
-      get: collectionName => {
-        switch (collectionName) {
-          case 'stories':
-            return stories
-          case 'users':
-            return users
-        }
+    const read = async collectionName => {
+      switch (collectionName) {
+        case 'stories':
+          return stories
+        case 'users':
+          return users
       }
-    })
+    }
 
     const query = {
       fieldNodes: [
@@ -166,14 +154,12 @@ describe('gql-resolvers', () => {
   it('nonexistent story', async () => {
     const stories = [{ name: 'story-1', id: 'id-1' }]
 
-    const read = async () => ({
-      get: collectionName => {
-        switch (collectionName) {
-          case 'stories':
-            return stories
-        }
+    const read = async collectionName => {
+      switch (collectionName) {
+        case 'stories':
+          return stories
       }
-    })
+    }
 
     const result = await gqlResolvers.story(read, { id: 'id-2' })
     expect(result).toEqual(null)
@@ -197,18 +183,16 @@ describe('gql-resolvers', () => {
       }
     ]
 
-    const read = async () => ({
-      get: collectionName => {
-        switch (collectionName) {
-          case 'stories':
-            return stories
-          case 'users':
-            return users
-          case 'comments':
-            return comments
-        }
+    const read = async collectionName => {
+      switch (collectionName) {
+        case 'stories':
+          return stories
+        case 'users':
+          return users
+        case 'comments':
+          return comments
       }
-    })
+    }
 
     const query = {
       fieldNodes: [
@@ -253,16 +237,14 @@ describe('gql-resolvers', () => {
 
     const users = [{ name: 'user', id: 'user-id' }]
 
-    const read = async () => ({
-      get: collectionName => {
-        switch (collectionName) {
-          case 'stories':
-            return stories
-          case 'users':
-            return users
-        }
+    const read = async collectionName => {
+      switch (collectionName) {
+        case 'stories':
+          return stories
+        case 'users':
+          return users
       }
-    })
+    }
 
     const result = await gqlResolvers.stories(read, { page: 1, type: 'show' })
 
@@ -285,16 +267,14 @@ describe('gql-resolvers', () => {
 
     const users = [{ name: 'user', id: 'user-id' }]
 
-    const read = async () => ({
-      get: collectionName => {
-        switch (collectionName) {
-          case 'stories':
-            return stories.reverse()
-          case 'users':
-            return users
-        }
+    const read = async collectionName => {
+      switch (collectionName) {
+        case 'stories':
+          return stories.reverse()
+        case 'users':
+          return users
       }
-    })
+    }
 
     const result = await gqlResolvers.stories(read, { page: 1 })
 

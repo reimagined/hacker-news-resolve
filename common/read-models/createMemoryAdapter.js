@@ -1,25 +1,31 @@
+import hash from 'object-hash'
+import clone from 'clone'
+
 export default function createMemoryAdapter() {
   const repository = new Map()
 
-  const init = (key, onPersistDone = () => {}, onDestroy = () => {}) => {
+  const getKey = onDemandOptions =>
+    typeof onDemandOptions !== 'undefined'
+      ? hash(onDemandOptions, { unorderedArrays: true, unorderedSets: true })
+      : hash(null, { unorderedArrays: true, unorderedSets: true })
+
+  const init = (onDemandOptions, persistDonePromise, onDestroy) => {
+    const key = getKey(onDemandOptions)
     if (repository.get(key))
-      throw new Error(`State for '${key}' alreary initialized`)
-    const persistPromise = new Promise(resolve => onPersistDone(resolve))
+      throw new Error(`State for '${key}' already initialized`)
 
     repository.set(key, {
       internalState: new Map(),
       internalError: null,
       api: {
         getReadable: async () => {
-          await persistPromise
+          await persistDonePromise
           return repository.get(key).internalState
         },
         getError: async () => repository.get(key).internalError
       },
       onDestroy
     })
-
-    return repository.get(key).api
   }
 
   const buildProjection = collections => {
@@ -37,7 +43,8 @@ export default function createMemoryAdapter() {
     )
 
     return Object.keys(callbacks).reduce((projection, eventType) => {
-      projection[eventType] = (key, event) => {
+      projection[eventType] = (event, onDemandOptions) => {
+        const key = getKey(onDemandOptions)
         callbacks[eventType].forEach(({ name, handler, initialState }) => {
           const state = repository.get(key).internalState
 
@@ -56,15 +63,25 @@ export default function createMemoryAdapter() {
     }, {})
   }
 
-  const get = key => (repository.has(key) ? repository.get(key).api : null)
+  const get = onDemandOptions => {
+    const key = getKey(onDemandOptions)
+    return repository.has(key) ? repository.get(key).api : null
+  }
 
-  const reset = key => {
+  const reset = onDemandOptions => {
+    const key = getKey(onDemandOptions)
     if (!repository.has(key)) return
     repository.get(key).onDestroy()
     repository.delete(key)
   }
 
+  const buildRead = read => async (collectionName, aggregateIds) => {
+    const result = await read({ aggregateIds })
+    return clone(result.get(collectionName))
+  }
+
   return {
+    buildRead,
     buildProjection,
     init,
     get,
