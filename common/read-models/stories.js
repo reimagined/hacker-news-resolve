@@ -1,6 +1,4 @@
 // @flow
-import Immutable from 'seamless-immutable'
-
 import {
   STORY_CREATED,
   STORY_UPVOTED,
@@ -10,7 +8,7 @@ import {
 
 export default {
   name: 'stories',
-  initialState: Immutable([]),
+  initialState: [],
   eventHandlers: {
     [STORY_CREATED]: (
       state: StoresReadModel,
@@ -24,20 +22,18 @@ export default {
 
       const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
 
-      return Immutable([
-        {
-          id: aggregateId,
-          type,
-          title,
-          text,
-          link,
-          commentCount: 0,
-          votes: [],
-          createdAt: timestamp,
-          createdBy: userId
-        },
-        ...state
-      ])
+      state.push({
+        id: aggregateId,
+        type,
+        title,
+        text,
+        link,
+        commentCount: 0,
+        votes: [],
+        createdAt: timestamp,
+        createdBy: userId
+      })
+      return state
     },
 
     [STORY_UPVOTED]: (
@@ -52,7 +48,8 @@ export default {
         return state
       }
 
-      return state.updateIn([index, 'votes'], votes => votes.concat(userId))
+      state[index].votes.push(userId)
+      return state
     },
 
     [STORY_UNVOTED]: (
@@ -67,9 +64,8 @@ export default {
         return state
       }
 
-      return state.updateIn([index, 'votes'], votes =>
-        votes.filter(id => id !== userId)
-      )
+      state[index].votes = state[index].votes.filter(id => id !== userId)
+      return state
     },
 
     [COMMENT_CREATED]: (
@@ -82,7 +78,8 @@ export default {
         return state
       }
 
-      return state.updateIn([storyIndex, 'commentCount'], count => count + 1)
+      state[storyIndex].commentCount++
+      return state
     }
   }
 }

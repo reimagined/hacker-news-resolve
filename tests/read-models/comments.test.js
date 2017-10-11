@@ -7,7 +7,7 @@ import { COMMENT_CREATED } from '../../common/events'
 describe('read-models', () => {
   describe('comments', () => {
     it('eventHandler "COMMENT_CREATED" should create a comment', () => {
-      const state = comments.initialState
+      const state = []
       const commentId = uuid.v4()
 
       const event = {
@@ -51,14 +51,16 @@ describe('read-models', () => {
         }
       }
 
-      const state = comments.initialState.concat({
-        text: prevEvent.payload.text,
-        id: parentId,
-        parentId: prevEvent.payload.parentId,
-        storyId: prevEvent.aggregateId,
-        createdAt: prevEvent.timestamp,
-        createdBy: prevEvent.payload.userId
-      })
+      const state = [
+        {
+          text: prevEvent.payload.text,
+          id: parentId,
+          parentId: prevEvent.payload.parentId,
+          storyId: prevEvent.aggregateId,
+          createdAt: prevEvent.timestamp,
+          createdBy: prevEvent.payload.userId
+        }
+      ]
 
       const commentId = uuid.v4()
 
@@ -75,20 +77,20 @@ describe('read-models', () => {
 
       const nextState = [
         {
-          text: event.payload.text,
-          id: commentId,
-          parentId: event.payload.parentId,
-          storyId: event.aggregateId,
-          createdAt: event.timestamp,
-          createdBy: event.payload.userId
-        },
-        {
           text: prevEvent.payload.text,
           id: parentId,
           parentId: prevEvent.payload.parentId,
           storyId: prevEvent.aggregateId,
           createdAt: prevEvent.timestamp,
           createdBy: prevEvent.payload.userId
+        },
+        {
+          text: event.payload.text,
+          id: commentId,
+          parentId: event.payload.parentId,
+          storyId: event.aggregateId,
+          createdAt: event.timestamp,
+          createdBy: event.payload.userId
         }
       ]
 

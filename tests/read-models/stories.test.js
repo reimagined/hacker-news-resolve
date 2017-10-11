@@ -12,7 +12,7 @@ import {
 describe('read-models', () => {
   describe('stories', () => {
     it('eventHandler "STORY_CREATED" should create a story {type: "story"}', () => {
-      const state = stories.initialState
+      const state = []
       const event = {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
@@ -43,7 +43,7 @@ describe('read-models', () => {
     })
 
     it('eventHandler "STORY_CREATED" should create a story {type: "ask"}', () => {
-      const state = stories.initialState
+      const state = []
       const event = {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
@@ -75,7 +75,7 @@ describe('read-models', () => {
     })
 
     it('eventHandler "STORY_CREATED" should create a story {type: "show"}', () => {
-      const state = stories.initialState
+      const state = []
       const event = {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
