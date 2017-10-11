@@ -1,5 +1,5 @@
 async function withUserNames(items, getReadModel) {
-  const users = (await getReadModel()).get('users')
+  const users = await getReadModel('users')
 
   return items.map(item => {
     const user = users.find(user => user.id === item.createdBy)

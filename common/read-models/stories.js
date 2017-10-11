@@ -1,5 +1,3 @@
-import Immutable from 'seamless-immutable'
-
 import events from '../events'
 
 import type {
@@ -14,7 +12,7 @@ const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
 
 export default {
   name: 'stories',
-  initialState: Immutable([]),
+  initialState: [],
   eventHandlers: {
     [STORY_CREATED]: (state: any, event: Event<StoryCreated>) => {
       const {
@@ -25,20 +23,18 @@ export default {
 
       const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
 
-      return Immutable([
-        {
-          id: aggregateId,
-          type,
-          title,
-          text,
-          link,
-          commentCount: 0,
-          votes: [],
-          createdAt: timestamp,
-          createdBy: userId
-        },
-        ...state
-      ])
+      state.push({
+        id: aggregateId,
+        type,
+        title,
+        text,
+        link,
+        commentCount: 0,
+        votes: [],
+        createdAt: timestamp,
+        createdBy: userId
+      })
+      return state
     },
 
     [STORY_UPVOTED]: (state: any, event: Event<StoryUpvoted>) => {
@@ -50,7 +46,8 @@ export default {
         return state
       }
 
-      return state.updateIn([index, 'votes'], votes => votes.concat(userId))
+      state[index].votes.push(userId)
+      return state
     },
 
     [STORY_UNVOTED]: (state: any, event: Event<StoryUnvoted>) => {
@@ -62,9 +59,8 @@ export default {
         return state
       }
 
-      return state.updateIn([index, 'votes'], votes =>
-        votes.filter(id => id !== userId)
-      )
+      state[index].votes = state[index].votes.filter(id => id !== userId)
+      return state
     },
 
     [COMMENT_CREATED]: (state: any, event: Event<CommentCreated>) => {
@@ -74,7 +70,8 @@ export default {
         return state
       }
 
-      return state.updateIn([storyIndex, 'commentCount'], count => count + 1)
+      state[storyIndex].commentCount++
+      return state
     }
   }
 }

@@ -1,12 +1,14 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { StaticRouter } from 'react-router'
-import { ApolloClient, ApolloProvider } from 'react-apollo'
+import { ApolloProvider } from 'react-apollo'
+import ApolloClient, { createNetworkInterface } from 'apollo-client'
 
 import RouteWithSubRoutes from './RouteWithSubRoutes'
 import routes from '../routes'
 
-const client = new ApolloClient()
+const networkInterface = createNetworkInterface({ uri: '/api/graphql' })
+const client = new ApolloClient({ networkInterface })
 
 export const clientRootComponent = () => (
   <ApolloProvider client={client}>

@@ -1,5 +1,3 @@
-import Immutable from 'seamless-immutable'
-
 import type { Event, CommentCreated } from '../events'
 import events from '../events'
 
@@ -7,7 +5,7 @@ const { COMMENT_CREATED } = events
 
 export default {
   name: 'comments',
-  initialState: Immutable([]),
+  initialState: [],
   eventHandlers: {
     [COMMENT_CREATED]: (state: any, event: Event<CommentCreated>) => {
       const {
@@ -16,18 +14,15 @@ export default {
         payload: { parentId, userId, commentId, text }
       } = event
 
-      return Immutable(
-        [
-          {
-            id: commentId,
-            text,
-            parentId: parentId,
-            storyId: aggregateId,
-            createdAt: timestamp,
-            createdBy: userId
-          }
-        ].concat(state)
-      )
+      state.push({
+        id: commentId,
+        text,
+        parentId: parentId,
+        storyId: aggregateId,
+        createdAt: timestamp,
+        createdBy: userId
+      })
+      return state
     }
   }
 }
