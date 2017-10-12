@@ -30,6 +30,7 @@ export default {
         text,
         link,
         commentCount: 0,
+        comments: [],
         votes: [],
         createdAt: timestamp,
         createdBy: userId
@@ -64,13 +65,45 @@ export default {
     },
 
     [COMMENT_CREATED]: (state: any, event: Event<CommentCreated>) => {
-      const storyIndex = state.findIndex(({ id }) => id === event.aggregateId)
+      const {
+        aggregateId,
+        timestamp,
+        payload: { parentId, userId, commentId, text }
+      } = event
 
-      if (storyIndex < 0) {
+      const story = state.find(({ id }) => id === aggregateId)
+
+      if (!story) {
         return state
       }
 
-      state[storyIndex].commentCount++
+      story.commentCount++
+
+      const parentIndex =
+        parentId === aggregateId
+          ? -1
+          : story.comments.findIndex(({ id }) => id === parentId)
+
+      const level =
+        parentIndex === -1 ? 0 : story.comments[parentIndex].level + 1
+
+      const comment = {
+        id: commentId,
+        text,
+        parentId: parentId,
+        createdAt: timestamp,
+        createdBy: userId,
+        level
+      }
+
+      if (parentIndex === -1) {
+        story.comments.push(comment)
+      } else {
+        story.comments = story.comments
+          .slice(0, parentIndex + 1)
+          .concat(comment, story.comments.slice(parentIndex + 1))
+      }
+
       return state
     }
   }
