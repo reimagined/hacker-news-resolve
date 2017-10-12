@@ -13,10 +13,7 @@ export default {
   name: 'users',
   initialState: [],
   eventHandlers: {
-    [USER_CREATED]: (
-      state: UsersState,
-      event: ResolveEvent<UserCreated>
-    ): UsersState => {
+    [USER_CREATED]: (state: UsersState, event: UserCreated): UsersState => {
       const { aggregateId, timestamp, payload: { name } } = event
 
       state.push({

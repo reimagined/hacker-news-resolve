@@ -1,36 +1,49 @@
 // @flow
-import events from '../common/events'
-
-export type ResolveEvent<Payload> = {
-  aggregateId: string,
-  timestamp: number,
-  payload: Payload
-}
 
 // Story
 export type StoryCreated = {
-  title: string,
-  text: string,
-  userId: string,
-  link: string
+  aggregateId: string,
+  timestamp: number,
+  payload: {
+    userId: string,
+    title: string,
+    text: string,
+    link: string
+  }
 }
 
 export type StoryUpvoted = {
-  userId: string
+  aggregateId: string,
+  timestamp: number,
+  payload: {
+    userId: string
+  }
 }
 
 export type StoryUnvoted = {
-  userId: string
+  aggregateId: string,
+  timestamp: number,
+  payload: {
+    userId: string
+  }
 }
 
 export type CommentCreated = {
-  userId: string,
-  text: string,
-  parentId: string,
-  commentId: string
+  aggregateId: string,
+  timestamp: number,
+  payload: {
+    commentId: string,
+    parentId: string,
+    userId: string,
+    text: string
+  }
 }
 
 // User
 export type UserCreated = {
-  name: string
+  aggregateId: string,
+  timestamp: number,
+  payload: {
+    name: string
+  }
 }

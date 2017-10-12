@@ -29,7 +29,7 @@ export default {
   name: 'story',
   initialState: {},
   commands: {
-    createStory: (state: any, command: any): ResolveEvent<StoryCreated> => {
+    createStory: (state: any, command: any): StoryCreated => {
       validateThatIsAbsent(state)
       const { title, link, userId, text } = command.payload
       validateUserId(userId)
@@ -46,7 +46,7 @@ export default {
       })
     },
 
-    upvoteStory: (state: any, command: any): ResolveEvent<StoryUpvoted> => {
+    upvoteStory: (state: any, command: any): StoryUpvoted => {
       validateThatExists(state)
       const { userId } = command.payload
       validateUserId(userId)
@@ -60,7 +60,7 @@ export default {
       })
     },
 
-    unvoteStory: (state: any, command: any): ResolveEvent<StoryUnvoted> => {
+    unvoteStory: (state: any, command: any): StoryUnvoted => {
       validateThatExists(state)
       const { userId } = command.payload
       validateUserId(userId)
@@ -74,7 +74,7 @@ export default {
       })
     },
 
-    createComment: (state: any, command: any): ResolveEvent<CommentCreated> => {
+    createComment: (state: any, command: any): CommentCreated => {
       validateThatExists(state)
       const { commentId, parentId, userId, text } = command.payload
       validateUserId(userId)
@@ -102,7 +102,7 @@ export default {
   projection: {
     [STORY_CREATED]: (
       state,
-      { timestamp, payload: { userId } }: ResolveEvent<StoryCreated>
+      { timestamp, payload: { userId } }: StoryCreated
     ) => ({
       ...state,
       createdAt: timestamp,
@@ -111,27 +111,18 @@ export default {
       comments: {}
     }),
 
-    [STORY_UPVOTED]: (
-      state,
-      { payload: { userId } }: ResolveEvent<StoryUpvoted>
-    ) => ({
+    [STORY_UPVOTED]: (state, { payload: { userId } }: StoryUpvoted) => ({
       ...state,
       voted: state.voted.concat(userId)
     }),
 
-    [STORY_UNVOTED]: (
-      state,
-      { payload: { userId } }: ResolveEvent<StoryUnvoted>
-    ) => ({
+    [STORY_UNVOTED]: (state, { payload: { userId } }: StoryUnvoted) => ({
       ...state,
       voted: state.voted.filter(curUserId => curUserId !== userId)
     }),
     [COMMENT_CREATED]: (
       state,
-      {
-        timestamp,
-        payload: { commentId, userId }
-      }: ResolveEvent<CommentCreated>
+      { timestamp, payload: { commentId, userId } }: CommentCreated
     ) => ({
       ...state,
       comments: {

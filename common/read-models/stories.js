@@ -38,7 +38,7 @@ export default {
   eventHandlers: {
     [STORY_CREATED]: (
       state: StoriesState,
-      event: ResolveEvent<StoryCreated>
+      event: StoryCreated
     ): StoriesState => {
       const {
         aggregateId,
@@ -65,7 +65,7 @@ export default {
 
     [STORY_UPVOTED]: (
       state: StoriesState,
-      event: ResolveEvent<StoryUpvoted>
+      event: StoryUpvoted
     ): StoriesState => {
       const { aggregateId, payload: { userId } } = event
 
@@ -81,7 +81,7 @@ export default {
 
     [STORY_UNVOTED]: (
       state: StoriesState,
-      event: ResolveEvent<StoryUnvoted>
+      event: StoryUnvoted
     ): StoriesState => {
       const { aggregateId, payload: { userId } } = event
 
@@ -97,7 +97,7 @@ export default {
 
     [COMMENT_CREATED]: (
       state: StoriesState,
-      event: ResolveEvent<CommentCreated>
+      event: CommentCreated
     ): StoriesState => {
       const {
         aggregateId,
