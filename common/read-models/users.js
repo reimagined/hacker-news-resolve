@@ -6,10 +6,7 @@ export default {
   name: 'users',
   initialState: [],
   eventHandlers: {
-    [USER_CREATED]: (
-      state: UsersReadModel,
-      event: UserCreated
-    ): UsersReadModel => {
+    [USER_CREATED]: (state, event: UserCreated) => {
       const { aggregateId, timestamp, payload: { name } } = event
 
       state.push({

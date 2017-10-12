@@ -8,12 +8,6 @@ export type ResolveEvent<Payload> = {
 }
 
 // Story
-export type storyEvents =
-  | STORY_CREATED
-  | STORY_UPVOTED
-  | STORY_UNVOTED
-  | COMMENT_CREATED
-
 export type StoryCreated = ResolveEvent<{
   title: string,
   text: string,
@@ -37,8 +31,6 @@ export type CommentCreated = ResolveEvent<{
 }>
 
 // User
-export type userEvents = USER_CREATED
-
 export type UserCreated = ResolveEvent<{
   name: string
 }>

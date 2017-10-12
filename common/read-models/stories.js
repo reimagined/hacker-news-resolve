@@ -10,10 +10,7 @@ export default {
   name: 'stories',
   initialState: [],
   eventHandlers: {
-    [STORY_CREATED]: (
-      state: StoresReadModel,
-      event: StoryCreated
-    ): StoresReadModel => {
+    [STORY_CREATED]: (state, event: StoryCreated) => {
       const {
         aggregateId,
         timestamp,
@@ -36,10 +33,7 @@ export default {
       return state
     },
 
-    [STORY_UPVOTED]: (
-      state: StoresReadModel,
-      event: StoryUpvoted
-    ): StoresReadModel => {
+    [STORY_UPVOTED]: (state, event: StoryUpvoted) => {
       const { aggregateId, payload: { userId } } = event
 
       const index = state.findIndex(({ id }) => id === aggregateId)
@@ -52,10 +46,7 @@ export default {
       return state
     },
 
-    [STORY_UNVOTED]: (
-      state: StoresReadModel,
-      event: StoryUnvoted
-    ): StoresReadModel => {
+    [STORY_UNVOTED]: (state, event: StoryUnvoted) => {
       const { aggregateId, payload: { userId } } = event
 
       const index = state.findIndex(({ id }) => id === aggregateId)
@@ -68,10 +59,7 @@ export default {
       return state
     },
 
-    [COMMENT_CREATED]: (
-      state: StoresReadModel,
-      event: CommentCreated
-    ): StoresReadModel => {
+    [COMMENT_CREATED]: (state, event: CommentCreated) => {
       const storyIndex = state.findIndex(({ id }) => id === event.aggregateId)
 
       if (storyIndex < 0) {

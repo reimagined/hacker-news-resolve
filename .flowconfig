@@ -1,5 +1,6 @@
 [ignore]
-.*/node_modules
+.*/node_modules/.*
+.*\.json
 .*/dist
 
 [include]
@@ -10,5 +11,6 @@
 [lints]
 
 [options]
+suppress_comment= \\(.\\|\n\\)*\\$FlowIgnore
 module.system.node.resolve_dirname=node_modules
 module.system.node.resolve_dirname=.
