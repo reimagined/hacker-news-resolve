@@ -21,18 +21,7 @@ export default `
     createdAt: String!
     createdBy: String!
     createdByName: String
-  }
-  type StoryDetails {
-    id: ID!
-    type: String
-    title: String
-    text: String
-    link: String
-    comments: [Comment]
-    votes: [String]
-    createdAt: String
-    createdBy: String
-    createdByName: String
+    level: Int
   }
   type User {
     id: ID!

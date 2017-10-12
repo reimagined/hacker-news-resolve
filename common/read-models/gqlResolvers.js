@@ -1,25 +1,21 @@
 import withUserNames from '../helpers/withUserNames'
 import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants'
 
-function hasQueryField(query, field) {
-  return (
-    query.fieldNodes[0].selectionSet.selections.findIndex(
-      selection => selection.name.value === field
-    ) >= 0
-  )
-}
+function getReplies(comments, commentIndex) {
+  const result = []
+  const commentsCount = comments.length
+  const comment = comments[commentIndex]
+  let replyIndex = commentIndex + 1
 
-async function getCommentsTree(read, { parentId }) {
-  const root = await read('comments')
+  while (
+    replyIndex < commentsCount &&
+    comments[replyIndex].level !== comment.level
+  ) {
+    result.push(comments[replyIndex])
+    replyIndex++
+  }
 
-  return Promise.all(
-    root
-      .filter(comment => comment.parentId === parentId)
-      .map(async comment => ({
-        ...comment,
-        replies: await getCommentsTree(read, { parentId: comment.id })
-      }))
-  )
+  return result
 }
 
 export default {
@@ -39,7 +35,7 @@ export default {
 
     return withUserNames(stories, read)
   },
-  story: async (read, { id }, _, query) => {
+  story: async (read, { id }) => {
     const stories = await read('stories')
     const story = stories.find(s => s.id === id)
 
@@ -47,47 +43,31 @@ export default {
       return null
     }
 
-    if (hasQueryField(query, 'comments')) {
-      const comments = await read('comments')
-
-      const storyComments = comments
-        .filter(({ storyId }) => storyId === story.id)
-        .reverse()
-
-      const storyWithComments = {
-        ...story,
-        comments: await withUserNames(storyComments, read)
-      }
-
-      return (await withUserNames([storyWithComments], read))[0]
-    }
-
     return (await withUserNames([story], read))[0]
   },
   comment: async (read, { id }) => {
     const root = await read('comments')
-    const comment = root.find(c => c.id === id)
+    const commentIndex = root.findIndex(c => c.id === id)
 
-    if (!comment) {
+    if (commentIndex === -1) {
       return null
     }
 
+    const comment = root[commentIndex]
     const [resultComment] = await withUserNames([comment], read)
+    const replies = getReplies(root, commentIndex)
 
     return {
       ...resultComment,
-      replies: await getCommentsTree(read, { parentId: comment.id })
+      replies: await withUserNames(replies, read)
     }
   },
   comments: async (read, { page }) => {
     const root = await read('comments')
-    const comments = root
-      .slice(
-        root.length - (+page * NUMBER_OF_ITEMS_PER_PAGE + 1),
-        root.length - (+page - 1) * NUMBER_OF_ITEMS_PER_PAGE
-      )
-      .reverse()
-
+    const comments = root.slice(
+      +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
+      +page * NUMBER_OF_ITEMS_PER_PAGE + 1
+    )
     return withUserNames(comments, read)
   },
   user: async (read, { id, name }) => {

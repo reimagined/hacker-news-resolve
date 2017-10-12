@@ -15,27 +15,25 @@ export class Submit extends React.PureComponent {
     text: ''
   }
 
-  handleChange = (event, name) => {
-    this.setState({ [name]: event.target.value })
-  }
+  handleChange = (event, name) => this.setState({ [name]: event.target.value })
 
   handleSubmit = () => {
     const { title, url, text } = this.state
 
-    if ((title && text) || (title && url)) {
-      if (url && !urlLib.parse(url).hostname) {
-        return this.props.history.push('/error/?text=Enter valid url')
-      }
-
-      return this.props.createStory({
-        userId: this.props.userId,
-        title,
-        text,
-        link: url
-      })
+    if (!title || (!text && !url)) {
+      return this.props.history.push('/error?text=Enter submit data')
     }
 
-    return this.props.history.push('/error/?text=Enter submit data')
+    if (url && !urlLib.parse(url).hostname) {
+      return this.props.history.push('/error?text=Enter valid url')
+    }
+
+    return this.props.createStory({
+      userId: this.props.userId,
+      title,
+      text,
+      link: url
+    })
   }
 
   render() {

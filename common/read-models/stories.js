@@ -8,6 +8,15 @@ import {
 
 type UserId = string
 
+type Comment = {
+  id: string,
+  parentId: string,
+  level: number,
+  text: string,
+  createdAt: number,
+  createdBy: UserId
+}
+
 type StoriesState = Array<{
   id: string,
   type: 'ask' | 'show' | 'story',
@@ -16,6 +25,7 @@ type StoriesState = Array<{
   link: string,
   commentCount: number,
   votes: Array<UserId>,
+  comments: Array<Comment>,
   createdAt: number,
   createdBy: UserId
 }>
@@ -43,6 +53,7 @@ export default {
         text,
         link,
         commentCount: 0,
+        comments: [],
         votes: [],
         createdAt: timestamp,
         createdBy: userId
@@ -86,13 +97,45 @@ export default {
       state: StoriesState,
       event: CommentCreated
     ): StoriesState => {
-      const storyIndex = state.findIndex(({ id }) => id === event.aggregateId)
+      const {
+        aggregateId,
+        timestamp,
+        payload: { parentId, userId, commentId, text }
+      } = event
 
-      if (storyIndex < 0) {
+      const story = state.find(({ id }) => id === aggregateId)
+
+      if (!story) {
         return state
       }
 
-      state[storyIndex].commentCount++
+      story.commentCount++
+
+      const parentIndex =
+        parentId === aggregateId
+          ? -1
+          : story.comments.findIndex(({ id }) => id === parentId)
+
+      const level =
+        parentIndex === -1 ? 0 : story.comments[parentIndex].level + 1
+
+      const comment = {
+        id: commentId,
+        parentId,
+        level,
+        text,
+        createdAt: timestamp,
+        createdBy: userId
+      }
+
+      if (parentIndex === -1) {
+        story.comments.push(comment)
+      } else {
+        story.comments = story.comments
+          .slice(0, parentIndex + 1)
+          .concat(comment, story.comments.slice(parentIndex + 1))
+      }
+
       return state
     }
   }

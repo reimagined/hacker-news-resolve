@@ -7,10 +7,12 @@ const RouteWithSubRoutes = ({
   routes,
   exact,
   redirectTo
-}) =>
-  redirectTo ? (
-    <Redirect from={path} to={redirectTo} />
-  ) : routes ? (
+}) => {
+  if (redirectTo) {
+    return <Redirect from={path} to={redirectTo} />
+  }
+
+  return routes ? (
     <Route
       path={path}
       exact={exact}
@@ -28,5 +30,6 @@ const RouteWithSubRoutes = ({
   ) : (
     <Route path={path} exact={exact} component={Component} />
   )
+}
 
 export default RouteWithSubRoutes

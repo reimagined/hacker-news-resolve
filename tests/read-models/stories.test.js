@@ -13,6 +13,7 @@ describe('read-models', () => {
   describe('stories', () => {
     it('eventHandler "STORY_CREATED" should create a story {type: "story"}', () => {
       const state = []
+
       const event = {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
@@ -33,6 +34,7 @@ describe('read-models', () => {
           createdAt: event.timestamp,
           link: event.payload.link,
           commentCount: 0,
+          comments: [],
           votes: []
         }
       ]
@@ -44,6 +46,7 @@ describe('read-models', () => {
 
     it('eventHandler "STORY_CREATED" should create a story {type: "ask"}', () => {
       const state = []
+
       const event = {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
@@ -65,6 +68,7 @@ describe('read-models', () => {
           createdAt: event.timestamp,
           link: event.payload.link,
           commentCount: 0,
+          comments: [],
           votes: []
         }
       ]
@@ -76,6 +80,7 @@ describe('read-models', () => {
 
     it('eventHandler "STORY_CREATED" should create a story {type: "show"}', () => {
       const state = []
+
       const event = {
         aggregateId: uuid.v4(),
         timestamp: Date.now(),
@@ -96,6 +101,7 @@ describe('read-models', () => {
           createdAt: event.timestamp,
           link: event.payload.link,
           commentCount: 0,
+          comments: [],
           votes: []
         }
       ]
@@ -109,16 +115,20 @@ describe('read-models', () => {
       const aggregateId = uuid.v4()
       const userId = uuid.v4()
       const timestamp = Date.now()
-      const state = stories.initialState.concat({
-        id: aggregateId,
-        type: 'story',
-        title: 'Show HN: Google',
-        link: 'https://google.com',
-        commentCount: 0,
-        votes: [],
-        createdAt: timestamp,
-        createdBy: userId
-      })
+
+      const state = [
+        {
+          id: aggregateId,
+          type: 'story',
+          title: 'Show HN: Google',
+          link: 'https://google.com',
+          commentCount: 0,
+          comments: [],
+          votes: [],
+          createdAt: timestamp,
+          createdBy: userId
+        }
+      ]
 
       const event = {
         aggregateId: aggregateId,
@@ -134,6 +144,7 @@ describe('read-models', () => {
           title: 'Show HN: Google',
           link: 'https://google.com',
           commentCount: 0,
+          comments: [],
           votes: [userId],
           createdAt: timestamp,
           createdBy: userId
@@ -149,16 +160,20 @@ describe('read-models', () => {
       const aggregateId = uuid.v4()
       const userId = uuid.v4()
       const timestamp = Date.now()
-      const state = stories.initialState.concat({
-        id: aggregateId,
-        type: 'story',
-        title: 'Show HN: Google',
-        link: 'https://google.com',
-        commentCount: 0,
-        votes: [],
-        createdAt: timestamp,
-        createdBy: userId
-      })
+
+      const state = [
+        {
+          id: aggregateId,
+          type: 'story',
+          title: 'Show HN: Google',
+          link: 'https://google.com',
+          commentCount: 0,
+          comments: [],
+          votes: [],
+          createdAt: timestamp,
+          createdBy: userId
+        }
+      ]
 
       const event = {
         aggregateId: 'incorrectId',
@@ -174,16 +189,20 @@ describe('read-models', () => {
       const aggregateId = uuid.v4()
       const userId = uuid.v4()
       const timestamp = Date.now()
-      const state = stories.initialState.concat({
-        id: aggregateId,
-        type: 'story',
-        title: 'Show HN: Google',
-        link: 'https://google.com',
-        commentCount: 0,
-        votes: [userId],
-        createdAt: timestamp,
-        createdBy: userId
-      })
+
+      const state = [
+        {
+          id: aggregateId,
+          type: 'story',
+          title: 'Show HN: Google',
+          link: 'https://google.com',
+          commentCount: 0,
+          comments: [],
+          votes: [userId],
+          createdAt: timestamp,
+          createdBy: userId
+        }
+      ]
 
       const event = {
         aggregateId: aggregateId,
@@ -199,6 +218,7 @@ describe('read-models', () => {
           title: 'Show HN: Google',
           link: 'https://google.com',
           commentCount: 0,
+          comments: [],
           votes: [],
           createdAt: timestamp,
           createdBy: userId
@@ -215,16 +235,19 @@ describe('read-models', () => {
       const userId = uuid.v4()
       const timestamp = Date.now()
 
-      const state = stories.initialState.concat({
-        id: aggregateId,
-        type: 'story',
-        title: 'Show HN: Google',
-        link: 'https://google.com',
-        commentCount: 0,
-        votes: [userId],
-        createdAt: timestamp,
-        createdBy: userId
-      })
+      const state = [
+        {
+          id: aggregateId,
+          type: 'story',
+          title: 'Show HN: Google',
+          link: 'https://google.com',
+          commentCount: 0,
+          comments: [],
+          votes: [userId],
+          createdAt: timestamp,
+          createdBy: userId
+        }
+      ]
 
       const event = {
         aggregateId: 'incorrectId',
@@ -241,16 +264,20 @@ describe('read-models', () => {
       const commentId = uuid.v4()
       const userId = uuid.v4()
       const timestamp = Date.now()
-      const state = stories.initialState.concat({
-        id: aggregateId,
-        type: 'story',
-        title: 'Show HN: Google',
-        link: 'https://google.com',
-        commentCount: 0,
-        votes: [],
-        createdAt: timestamp,
-        createdBy: userId
-      })
+
+      const state = [
+        {
+          id: aggregateId,
+          type: 'story',
+          title: 'Show HN: Google',
+          link: 'https://google.com',
+          commentCount: 0,
+          comments: [],
+          votes: [],
+          createdAt: timestamp,
+          createdBy: userId
+        }
+      ]
 
       const event = {
         aggregateId,
@@ -270,6 +297,94 @@ describe('read-models', () => {
           title: 'Show HN: Google',
           link: 'https://google.com',
           commentCount: 1,
+          comments: [
+            {
+              id: event.payload.commentId,
+              parentId: event.payload.parentId,
+              text: event.payload.text,
+              level: 0,
+              createdAt: event.timestamp,
+              createdBy: event.payload.userId
+            }
+          ],
+          votes: [],
+          createdAt: timestamp,
+          createdBy: userId
+        }
+      ]
+
+      expect(stories.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
+        nextState
+      )
+    })
+
+    it('eventHandler "COMMENT_CREATED" for reply', () => {
+      const aggregateId = uuid.v4()
+      const commentId = uuid.v4()
+      const userId = uuid.v4()
+      const parentId = uuid.v4()
+      const timestamp = Date.now()
+      const lastCommentId = uuid.v4()
+
+      const state = [
+        {
+          id: aggregateId,
+          type: 'story',
+          title: 'Show HN: Google',
+          link: 'https://google.com',
+          commentCount: 0,
+          comments: [
+            {
+              id: parentId,
+              level: 0
+            },
+            {
+              id: lastCommentId,
+              level: 0
+            }
+          ],
+          votes: [],
+          createdAt: timestamp,
+          createdBy: userId
+        }
+      ]
+
+      const event = {
+        aggregateId,
+        timestamp: Date.now(),
+        payload: {
+          commentId,
+          parentId,
+          userId,
+          text: 'comment'
+        }
+      }
+
+      const nextState = [
+        {
+          id: aggregateId,
+          type: 'story',
+          title: 'Show HN: Google',
+          link: 'https://google.com',
+          commentCount: 1,
+          comments: [
+            {
+              id: parentId,
+              level: 0
+            },
+            {
+              id: event.payload.commentId,
+              parentId: event.payload.parentId,
+              text: event.payload.text,
+              level: 1,
+              createdAt: event.timestamp,
+              createdBy: event.payload.userId
+            },
+            {
+              id: lastCommentId,
+              level: 0
+            }
+          ],
           votes: [],
           createdAt: timestamp,
           createdBy: userId
@@ -287,16 +402,19 @@ describe('read-models', () => {
       const userId = uuid.v4()
       const timestamp = Date.now()
 
-      const state = stories.initialState.concat({
-        id: aggregateId,
-        type: 'story',
-        title: 'Show HN: Google',
-        link: 'https://google.com',
-        commentCount: 0,
-        votes: [],
-        createdAt: timestamp,
-        createdBy: userId
-      })
+      const state = [
+        {
+          id: aggregateId,
+          type: 'story',
+          title: 'Show HN: Google',
+          link: 'https://google.com',
+          commentCount: 0,
+          comments: [],
+          votes: [],
+          createdAt: timestamp,
+          createdBy: userId
+        }
+      ]
 
       const event = {
         aggregateId: 'incorrectId',
