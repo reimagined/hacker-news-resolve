@@ -96,7 +96,7 @@ export default {
         level
       }
 
-      if (parentId === -1) {
+      if (parentIndex === -1) {
         story.comments.push(comment)
       } else {
         story.comments = story.comments
