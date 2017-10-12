@@ -8,29 +8,29 @@ export type ResolveEvent<Payload> = {
 }
 
 // Story
-export type StoryCreated = ResolveEvent<{
+export type StoryCreated = {
   title: string,
   text: string,
   userId: string,
   link: string
-}>
+}
 
-export type StoryUpvoted = ResolveEvent<{
+export type StoryUpvoted = {
   userId: string
-}>
+}
 
-export type StoryUnvoted = ResolveEvent<{
+export type StoryUnvoted = {
   userId: string
-}>
+}
 
-export type CommentCreated = ResolveEvent<{
+export type CommentCreated = {
   userId: string,
   text: string,
   parentId: string,
   commentId: string
-}>
+}
 
 // User
-export type UserCreated = ResolveEvent<{
+export type UserCreated = {
   name: string
-}>
+}
