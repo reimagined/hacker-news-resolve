@@ -1,7 +1,7 @@
-import { clientRootComponent } from './client/components/App'
+import rootComponent from './client/components/App'
 import createStore from './client/store'
 
 export default {
-  rootComponent: clientRootComponent,
+  rootComponent,
   createStore
 }
