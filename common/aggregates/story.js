@@ -75,10 +75,6 @@ export default {
       const { commentId, parentId, userId, text } = command.payload
       validateUserId(userId)
 
-      if (!userId) {
-        throw new Error('UserId is required')
-      }
-
       if (!parentId) {
         throw new Error('ParentId is required')
       }
