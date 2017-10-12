@@ -88,7 +88,7 @@ export const extendExpress = express => {
         await req.resolve.executeCommand({
           type: 'createUser',
           aggregateId: user.id,
-          aggregateName: 'users',
+          aggregateName: 'user',
           payload: user
         })
 
