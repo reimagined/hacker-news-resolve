@@ -9,19 +9,20 @@ import routes from '../routes'
 
 const networkInterface = createNetworkInterface({ uri: '/api/graphql' })
 const client = new ApolloClient({ networkInterface })
+const isServer = typeof window === 'undefined'
 
-export const clientRootComponent = () => (
-  <ApolloProvider client={client}>
-    <BrowserRouter>
+const App = () => {
+  const children = (
+    <ApolloProvider client={client}>
       <RouteWithSubRoutes routes={routes} />
-    </BrowserRouter>
-  </ApolloProvider>
-)
+    </ApolloProvider>
+  )
 
-export const serverRootComponent = props => (
-  <ApolloProvider client={client}>
-    <StaticRouter location={props.url} context={{}}>
-      <RouteWithSubRoutes routes={routes} />
-    </StaticRouter>
-  </ApolloProvider>
-)
+  return isServer ? (
+    <StaticRouter>{children}</StaticRouter>
+  ) : (
+    <BrowserRouter>{children}</BrowserRouter>
+  )
+}
+
+export default App

@@ -1,17 +1,17 @@
 // @flow
-import Immutable from 'seamless-immutable'
 import { USER_CREATED } from '../events'
 import { Event } from '../helpers'
-import throwIfAggregateAlreadyExists from './validators/throwIfAggregateAlreadyExists'
 
 export default {
-  name: 'users',
-  initialState: Immutable({}),
+  name: 'user',
+  initialState: {},
   commands: {
     createUser: (state: any, command: any) => {
-      const { name } = command.payload
+      if (state.createdAt !== undefined) {
+        throw new Error('User already exists')
+      }
 
-      throwIfAggregateAlreadyExists(state, command)
+      const { name } = command.payload
 
       if (!name) {
         throw new Error('Name is required')
@@ -21,6 +21,9 @@ export default {
     }
   },
   projection: {
-    [USER_CREATED]: (state, { timestamp }) => state.set('createdAt', timestamp)
+    [USER_CREATED]: (state, { timestamp }) => ({
+      ...state,
+      createdAt: timestamp
+    })
   }
 }
