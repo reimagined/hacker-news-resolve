@@ -14,7 +14,7 @@ export default {
   name: 'comments',
   initialState: [],
   eventHandlers: {
-    [COMMENT_CREATED]: (state: any, event: CommentCreated) => {
+    [COMMENT_CREATED]: (state: CommentsState, event: CommentCreated) => {
       const {
         aggregateId,
         timestamp,
