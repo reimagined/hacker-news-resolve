@@ -29,7 +29,7 @@ const {
 } = eventTypes
 
 const addEvent = (type, aggregateId, timestamp, payload) =>
-  eventStore.rawSaveEvent({
+  eventStore.saveEventRaw({
     type,
     aggregateId,
     timestamp,
