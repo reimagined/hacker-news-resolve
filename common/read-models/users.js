@@ -2,11 +2,13 @@
 import type { Event, UserCreated } from '../events'
 import { USER_CREATED } from '../events'
 
-type UsersState = Array<{
+type User = {
   id: string,
   name: string,
   createdAt: number
-}>
+}
+
+type UsersState = Array<User>
 
 export default {
   name: 'users',

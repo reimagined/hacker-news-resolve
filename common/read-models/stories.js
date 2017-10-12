@@ -17,7 +17,7 @@ type Comment = {
   createdBy: UserId
 }
 
-type StoriesState = Array<{
+type Story = {
   id: string,
   type: 'ask' | 'show' | 'story',
   title: string,
@@ -28,7 +28,9 @@ type StoriesState = Array<{
   comments: Array<Comment>,
   createdAt: number,
   createdBy: UserId
-}>
+}
+
+type StoriesState = Array<Story>
 
 export default {
   name: 'stories',
