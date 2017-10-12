@@ -30,6 +30,7 @@ describe('read-models', () => {
           createdAt: event.timestamp,
           link: event.payload.link,
           commentCount: 0,
+          comments: [],
           votes: []
         }
       ]
@@ -62,6 +63,7 @@ describe('read-models', () => {
           createdAt: event.timestamp,
           link: event.payload.link,
           commentCount: 0,
+          comments: [],
           votes: []
         }
       ]
@@ -93,6 +95,7 @@ describe('read-models', () => {
           createdAt: event.timestamp,
           link: event.payload.link,
           commentCount: 0,
+          comments: [],
           votes: []
         }
       ]
@@ -112,6 +115,7 @@ describe('read-models', () => {
         title: 'Show HN: Google',
         link: 'https://google.com',
         commentCount: 0,
+        comments: [],
         votes: [],
         createdAt: timestamp,
         createdBy: userId
@@ -131,6 +135,7 @@ describe('read-models', () => {
           title: 'Show HN: Google',
           link: 'https://google.com',
           commentCount: 0,
+          comments: [],
           votes: [userId],
           createdAt: timestamp,
           createdBy: userId
@@ -152,6 +157,7 @@ describe('read-models', () => {
         title: 'Show HN: Google',
         link: 'https://google.com',
         commentCount: 0,
+        comments: [],
         votes: [],
         createdAt: timestamp,
         createdBy: userId
@@ -177,6 +183,7 @@ describe('read-models', () => {
         title: 'Show HN: Google',
         link: 'https://google.com',
         commentCount: 0,
+        comments: [],
         votes: [userId],
         createdAt: timestamp,
         createdBy: userId
@@ -196,6 +203,7 @@ describe('read-models', () => {
           title: 'Show HN: Google',
           link: 'https://google.com',
           commentCount: 0,
+          comments: [],
           votes: [],
           createdAt: timestamp,
           createdBy: userId
@@ -218,6 +226,7 @@ describe('read-models', () => {
         title: 'Show HN: Google',
         link: 'https://google.com',
         commentCount: 0,
+        comments: [],
         votes: [userId],
         createdAt: timestamp,
         createdBy: userId
@@ -238,12 +247,14 @@ describe('read-models', () => {
       const commentId = uuid.v4()
       const userId = uuid.v4()
       const timestamp = Date.now()
+
       const state = stories.initialState.concat({
         id: aggregateId,
         type: 'story',
         title: 'Show HN: Google',
         link: 'https://google.com',
         commentCount: 0,
+        comments: [],
         votes: [],
         createdAt: timestamp,
         createdBy: userId
@@ -267,6 +278,16 @@ describe('read-models', () => {
           title: 'Show HN: Google',
           link: 'https://google.com',
           commentCount: 1,
+          comments: [
+            {
+              id: event.payload.commentId,
+              parentId: event.payload.parentId,
+              text: event.payload.text,
+              level: 0,
+              createdAt: event.timestamp,
+              createdBy: event.payload.userId
+            }
+          ],
           votes: [],
           createdAt: timestamp,
           createdBy: userId
@@ -290,6 +311,7 @@ describe('read-models', () => {
         title: 'Show HN: Google',
         link: 'https://google.com',
         commentCount: 0,
+        comments: [],
         votes: [],
         createdAt: timestamp,
         createdBy: userId
