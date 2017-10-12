@@ -6,11 +6,28 @@ import {
   COMMENT_CREATED
 } from '../events'
 
+type UserId = string
+
+type StoriesState = Array<{
+  id: string,
+  type: 'ask' | 'show' | 'story',
+  title: string,
+  text: string,
+  link: string,
+  commentCount: number,
+  votes: Array<UserId>,
+  createdAt: number,
+  createdBy: UserId
+}>
+
 export default {
   name: 'stories',
   initialState: [],
   eventHandlers: {
-    [STORY_CREATED]: (state, event: StoryCreated) => {
+    [STORY_CREATED]: (
+      state: StoriesState,
+      event: StoryCreated
+    ): StoriesState => {
       const {
         aggregateId,
         timestamp,
@@ -33,7 +50,10 @@ export default {
       return state
     },
 
-    [STORY_UPVOTED]: (state, event: StoryUpvoted) => {
+    [STORY_UPVOTED]: (
+      state: StoriesState,
+      event: StoryUpvoted
+    ): StoriesState => {
       const { aggregateId, payload: { userId } } = event
 
       const index = state.findIndex(({ id }) => id === aggregateId)
@@ -46,7 +66,10 @@ export default {
       return state
     },
 
-    [STORY_UNVOTED]: (state, event: StoryUnvoted) => {
+    [STORY_UNVOTED]: (
+      state: StoriesState,
+      event: StoryUnvoted
+    ): StoriesState => {
       const { aggregateId, payload: { userId } } = event
 
       const index = state.findIndex(({ id }) => id === aggregateId)
@@ -59,7 +82,10 @@ export default {
       return state
     },
 
-    [COMMENT_CREATED]: (state, event: CommentCreated) => {
+    [COMMENT_CREATED]: (
+      state: StoriesState,
+      event: CommentCreated
+    ): StoriesState => {
       const storyIndex = state.findIndex(({ id }) => id === event.aggregateId)
 
       if (storyIndex < 0) {

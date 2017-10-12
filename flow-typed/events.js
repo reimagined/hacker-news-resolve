@@ -3,7 +3,7 @@ import events from '../common/events'
 
 export type ResolveEvent<Payload> = {
   aggregateId: string,
-  timestamp: string,
+  timestamp: number,
   payload: Payload
 }
 

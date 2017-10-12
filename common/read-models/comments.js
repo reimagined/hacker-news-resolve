@@ -1,6 +1,15 @@
 // @flow
 import { COMMENT_CREATED } from '../events'
 
+type CommentsState = Array<{
+  id: string,
+  text: string,
+  parentId: string,
+  storyId: string,
+  createdAt: number,
+  createdBy: string
+}>
+
 export default {
   name: 'comments',
   initialState: [],
