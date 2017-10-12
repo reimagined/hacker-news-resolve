@@ -37,7 +37,7 @@ describe('aggregates', () => {
       )
     })
 
-    it('command "createStory" should throw Error "Aggregate already exists"', () => {
+    it('command "createStory" should throw Error "Story already exists"', () => {
       const title = 'SomeTitle'
       const text = 'SomeText'
       const link = 'SomeLink'
@@ -57,7 +57,7 @@ describe('aggregates', () => {
       }
 
       expect(() => stories.commands.createStory(state, command)).toThrowError(
-        'Aggregate already exists'
+        'Story already exists'
       )
     })
 
@@ -145,7 +145,7 @@ describe('aggregates', () => {
       )
     })
 
-    it('command "upvoteStory" should throw Error "Aggregate is not exist"', () => {
+    it('command "upvoteStory" should throw Error "Story does not exist"', () => {
       const userId = uuid.v4()
 
       const state = {}
@@ -156,7 +156,7 @@ describe('aggregates', () => {
       }
 
       expect(() => stories.commands.upvoteStory(state, command)).toThrowError(
-        'Aggregate is not exist'
+        'Story does not exist'
       )
     })
 
@@ -202,7 +202,7 @@ describe('aggregates', () => {
       )
     })
 
-    it('command "unvoteStory" should throw Error "User has not voted"', () => {
+    it('command "unvoteStory" should throw Error "User did not voted"', () => {
       const userId = uuid.v4()
 
       const state = {
@@ -217,11 +217,11 @@ describe('aggregates', () => {
       }
 
       expect(() => stories.commands.unvoteStory(state, command)).toThrowError(
-        'User has not voted'
+        'User did not voted'
       )
     })
 
-    it('command "unvoteStory" should throw Error "Aggregate is not exist"', () => {
+    it('command "unvoteStory" should throw Error "Story does not exist"', () => {
       const userId = uuid.v4()
 
       const state = {}
@@ -232,7 +232,7 @@ describe('aggregates', () => {
       }
 
       expect(() => stories.commands.unvoteStory(state, command)).toThrowError(
-        'Aggregate is not exist'
+        'Story does not exist'
       )
     })
 
@@ -259,7 +259,7 @@ describe('aggregates', () => {
       const createdAt = Date.now()
       const userId = uuid.v4()
 
-      const state = stories.initialState
+      const state = {}
       const event = {
         timestamp: createdAt,
         payload: {
@@ -280,11 +280,11 @@ describe('aggregates', () => {
       const createdAt = Date.now()
       const userId = uuid.v4()
 
-      const state = stories.initialState.merge({
+      const state = {
         createdAt,
         createdBy: userId,
         voted: []
-      })
+      }
       const event = {
         payload: {
           userId
@@ -303,11 +303,11 @@ describe('aggregates', () => {
       const createdAt = Date.now()
       const userId = uuid.v4()
 
-      const state = stories.initialState.merge({
+      const state = {
         createdAt,
         createdBy: userId,
         voted: [userId]
-      })
+      }
       const event = {
         payload: {
           userId
@@ -330,7 +330,8 @@ describe('aggregates', () => {
       const userId = uuid.v4()
 
       const state = {
-        createdAt: Date.now()
+        createdAt: Date.now(),
+        comments: {}
       }
 
       const command = {
@@ -349,6 +350,33 @@ describe('aggregates', () => {
           parentId,
           userId
         })
+      )
+    })
+
+    it('command "createComment" should throw Error "Comment already exists"', () => {
+      const text = 'SomeText'
+      const parentId = uuid.v4()
+      const userId = uuid.v4()
+      const commentId = uuid.v4()
+
+      const state = {
+        createdAt: Date.now(),
+        comments: {
+          [commentId]: {}
+        }
+      }
+
+      const command = {
+        payload: {
+          text,
+          parentId,
+          userId,
+          commentId
+        }
+      }
+
+      expect(() => stories.commands.createComment(state, command)).toThrowError(
+        'Comment already exists'
       )
     })
 

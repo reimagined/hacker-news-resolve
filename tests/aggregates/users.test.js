@@ -22,7 +22,7 @@ describe('aggregates', () => {
       expect(event).toEqual(new Event(USER_CREATED, { name }))
     })
 
-    it('command "createUser" should throw Error "Aggregate already exists"', () => {
+    it('command "createUser" should throw Error "User already exists"', () => {
       const name = 'SomeName'
       const passwordHash = 'SomePasswordHash'
 
@@ -37,7 +37,7 @@ describe('aggregates', () => {
       }
 
       expect(() => users.commands.createUser(state, command)).toThrowError(
-        'Aggregate already exists'
+        'User already exists'
       )
     })
 
