@@ -3,7 +3,6 @@ import uuid from 'uuid'
 import '../../common/aggregates'
 import stories from '../../common/aggregates/story'
 import events from '../../common/events'
-import { Event } from '../../common/helpers'
 
 const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
 
@@ -27,14 +26,10 @@ describe('aggregates', () => {
 
       const event = stories.commands.createStory(state, command)
 
-      expect(event).toEqual(
-        new Event(STORY_CREATED, {
-          title,
-          text,
-          link,
-          userId
-        })
-      )
+      expect(event).toEqual({
+        type: STORY_CREATED,
+        payload: { title, text, link, userId }
+      })
     })
 
     it('command "createStory" should throw Error "Story already exists"', () => {
@@ -119,11 +114,7 @@ describe('aggregates', () => {
 
       const event = stories.commands.upvoteStory(state, command)
 
-      expect(event).toEqual(
-        new Event(STORY_UPVOTED, {
-          userId
-        })
-      )
+      expect(event).toEqual({ type: STORY_UPVOTED, payload: { userId } })
     })
 
     it('command "upvoteStory" should throw Error "User already voted"', () => {
@@ -195,11 +186,7 @@ describe('aggregates', () => {
 
       const event = stories.commands.unvoteStory(state, command)
 
-      expect(event).toEqual(
-        new Event(STORY_UNVOTED, {
-          userId
-        })
-      )
+      expect(event).toEqual({ type: STORY_UNVOTED, payload: { userId } })
     })
 
     it('command "unvoteStory" should throw Error "User did not voted"', () => {
@@ -344,13 +331,10 @@ describe('aggregates', () => {
 
       const event = stories.commands.createComment(state, command)
 
-      expect(event).toEqual(
-        new Event(COMMENT_CREATED, {
-          text,
-          parentId,
-          userId
-        })
-      )
+      expect(event).toEqual({
+        type: COMMENT_CREATED,
+        payload: { text, parentId, userId }
+      })
     })
 
     it('command "createComment" should throw Error "Comment already exists"', () => {

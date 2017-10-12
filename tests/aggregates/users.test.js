@@ -1,7 +1,6 @@
 import '../../common/aggregates'
 import users from '../../common/aggregates/user'
 import events from '../../common/events'
-import { Event } from '../../common/helpers'
 
 const { USER_CREATED } = events
 
@@ -19,7 +18,7 @@ describe('aggregates', () => {
 
       const event = users.commands.createUser(state, command)
 
-      expect(event).toEqual(new Event(USER_CREATED, { name }))
+      expect(event).toEqual({ type: USER_CREATED, payload: { name } })
     })
 
     it('command "createUser" should throw Error "User already exists"', () => {

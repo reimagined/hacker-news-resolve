@@ -1,5 +1,4 @@
 import events from '../events'
-import { Event } from '../helpers'
 
 const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
 
@@ -34,12 +33,7 @@ export default {
         throw new Error('Title is required')
       }
 
-      return new Event(STORY_CREATED, {
-        title,
-        text,
-        link,
-        userId
-      })
+      return { type: STORY_CREATED, payload: { title, text, link, userId } }
     },
 
     upvoteStory: (state: any, command) => {
@@ -51,9 +45,7 @@ export default {
         throw new Error('User already voted')
       }
 
-      return new Event(STORY_UPVOTED, {
-        userId
-      })
+      return { type: STORY_UPVOTED, payload: { userId } }
     },
 
     unvoteStory: (state: any, command) => {
@@ -65,9 +57,7 @@ export default {
         throw new Error('User did not voted')
       }
 
-      return new Event(STORY_UNVOTED, {
-        userId
-      })
+      return { type: STORY_UNVOTED, payload: { userId } }
     },
 
     createComment: (state: any, command) => {
@@ -87,12 +77,10 @@ export default {
         throw new Error('Comment already exists')
       }
 
-      return new Event(COMMENT_CREATED, {
-        commentId,
-        parentId,
-        userId,
-        text
-      })
+      return {
+        type: COMMENT_CREATED,
+        payload: { commentId, parentId, userId, text }
+      }
     }
   },
   projection: {
