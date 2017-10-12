@@ -1,17 +1,18 @@
 import events from '../events'
 import { Event } from '../helpers'
-import validate from '../validate'
 
 const { USER_CREATED } = events
 
 export default {
-  name: 'users',
+  name: 'user',
   initialState: {},
   commands: {
     createUser: (state: any, command) => {
-      const { name } = command.payload
+      if (state.createdAt !== undefined) {
+        throw new Error('User already exists')
+      }
 
-      validate.checkAggregateIsNotExists(state, command)
+      const { name } = command.payload
 
       if (!name) {
         throw new Error('Name is required')

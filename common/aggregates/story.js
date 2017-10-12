@@ -1,21 +1,34 @@
 import events from '../events'
 import { Event } from '../helpers'
-import validate from '../validate'
 
 const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
 
+function validateThatExists(story) {
+  if (story.createdAt === undefined) {
+    throw new Error('Story does not exist')
+  }
+}
+
+function validateThatIsAbsent(story) {
+  if (story.createdAt !== undefined) {
+    throw new Error('Story already exists')
+  }
+}
+
+function validateUserId(userId) {
+  if (!userId) {
+    throw new Error('UserId is required')
+  }
+}
+
 export default {
-  name: 'stories',
+  name: 'story',
   initialState: {},
   commands: {
     createStory: (state: any, command) => {
-      validate.checkAggregateIsNotExists(state, command)
-
+      validateThatIsAbsent(state)
       const { title, link, userId, text } = command.payload
-
-      if (!userId) {
-        throw new Error('UserId is required')
-      }
+      validateUserId(userId)
 
       if (!title) {
         throw new Error('Title is required')
@@ -30,13 +43,9 @@ export default {
     },
 
     upvoteStory: (state: any, command) => {
-      validate.checkAggregateIsExists(state, command)
-
+      validateThatExists(state)
       const { userId } = command.payload
-
-      if (!userId) {
-        throw new Error('UserId is required')
-      }
+      validateUserId(userId)
 
       if (state.voted.includes(userId)) {
         throw new Error('User already voted')
@@ -48,16 +57,12 @@ export default {
     },
 
     unvoteStory: (state: any, command) => {
-      validate.checkAggregateIsExists(state, command)
-
+      validateThatExists(state)
       const { userId } = command.payload
-
-      if (!userId) {
-        throw new Error('UserId is required')
-      }
+      validateUserId(userId)
 
       if (!state.voted.includes(userId)) {
-        throw new Error('User has not voted')
+        throw new Error('User did not voted')
       }
 
       return new Event(STORY_UNVOTED, {
@@ -66,9 +71,9 @@ export default {
     },
 
     createComment: (state: any, command) => {
-      validate.checkAggregateIsExists(state, command)
-
+      validateThatExists(state)
       const { commentId, parentId, userId, text } = command.payload
+      validateUserId(userId)
 
       if (!userId) {
         throw new Error('UserId is required')
@@ -80,6 +85,10 @@ export default {
 
       if (!text) {
         throw new Error('Text is required')
+      }
+
+      if (state.comments[commentId]) {
+        throw new Error('Comment already exists')
       }
 
       return new Event(COMMENT_CREATED, {
