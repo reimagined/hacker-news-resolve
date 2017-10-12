@@ -9,7 +9,7 @@ import routes from '../routes'
 
 const networkInterface = createNetworkInterface({ uri: '/api/graphql' })
 const client = new ApolloClient({ networkInterface })
-const isServer = typeof window === 'undefined'
+const isClient = typeof window === 'object'
 
 const App = () => {
   const children = (
@@ -18,10 +18,10 @@ const App = () => {
     </ApolloProvider>
   )
 
-  return isServer ? (
-    <StaticRouter>{children}</StaticRouter>
-  ) : (
+  return isClient ? (
     <BrowserRouter>{children}</BrowserRouter>
+  ) : (
+    <StaticRouter>{children}</StaticRouter>
   )
 }
 
