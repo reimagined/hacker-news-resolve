@@ -2,6 +2,7 @@
 
 // Story
 export type StoryCreated = {
+  type: string,
   aggregateId: string,
   timestamp: number,
   payload: {
@@ -13,6 +14,7 @@ export type StoryCreated = {
 }
 
 export type StoryUpvoted = {
+  type: string,
   aggregateId: string,
   timestamp: number,
   payload: {
@@ -21,6 +23,7 @@ export type StoryUpvoted = {
 }
 
 export type StoryUnvoted = {
+  type: string,
   aggregateId: string,
   timestamp: number,
   payload: {
@@ -29,6 +32,7 @@ export type StoryUnvoted = {
 }
 
 export type CommentCreated = {
+  type: string,
   aggregateId: string,
   timestamp: number,
   payload: {
@@ -41,6 +45,7 @@ export type CommentCreated = {
 
 // User
 export type UserCreated = {
+  type: string,
   aggregateId: string,
   timestamp: number,
   payload: {
