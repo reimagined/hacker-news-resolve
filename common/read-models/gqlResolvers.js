@@ -22,6 +22,11 @@ export default {
   stories: async (read, { page, type }) => {
     const root = await read('stories')
 
+    // TODO: fix initial state in adapter
+    if (root === undefined) {
+      return []
+    }
+
     const filteredStories = type
       ? root.filter(story => story.type === type)
       : root
@@ -36,8 +41,14 @@ export default {
     return withUserNames(stories, read)
   },
   story: async (read, { id }) => {
-    const stories = await read('stories')
-    const story = stories.find(s => s.id === id)
+    const root = await read('stories')
+
+    // TODO: fix initial state in adapter
+    if (root === undefined) {
+      return null
+    }
+
+    const story = root.find(s => s.id === id)
 
     if (!story) {
       return null
@@ -47,6 +58,12 @@ export default {
   },
   comment: async (read, { id }) => {
     const root = await read('comments')
+
+    // TODO: fix initial state in adapter
+    if (root === undefined) {
+      return null
+    }
+
     const commentIndex = root.findIndex(c => c.id === id)
 
     if (commentIndex === -1) {
@@ -64,6 +81,12 @@ export default {
   },
   comments: async (read, { page }) => {
     const root = await read('comments')
+
+    // TODO: fix initial state in adapter
+    if (root === undefined) {
+      return []
+    }
+
     const comments = root.slice(
       +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
       +page * NUMBER_OF_ITEMS_PER_PAGE + 1
@@ -72,6 +95,11 @@ export default {
   },
   user: async (read, { id, name }) => {
     const root = await read('users')
+
+    // TODO: fix initial state in adapter
+    if (root === undefined) {
+      return undefined
+    }
 
     return id
       ? root.find(user => user.id === id)
