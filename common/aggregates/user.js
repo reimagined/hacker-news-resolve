@@ -1,5 +1,4 @@
 import events from '../events'
-import { Event } from '../helpers'
 
 const { USER_CREATED } = events
 
@@ -18,7 +17,7 @@ export default {
         throw new Error('Name is required')
       }
 
-      return new Event(USER_CREATED, { name })
+      return { type: USER_CREATED, payload: { name } }
     }
   },
   projection: {
