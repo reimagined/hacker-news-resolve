@@ -1,20 +1,45 @@
-import events from '../events'
-
-import type {
-  Event,
-  StoryCreated,
-  StoryUpvoted,
-  StoryUnvoted,
-  CommentCreated
+// @flow
+import {
+  STORY_CREATED,
+  STORY_UPVOTED,
+  STORY_UNVOTED,
+  COMMENT_CREATED
 } from '../events'
 
-const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
+type UserId = string
+
+type Comment = {
+  id: string,
+  parentId: string,
+  level: number,
+  text: string,
+  createdAt: number,
+  createdBy: UserId
+}
+
+type Story = {
+  id: string,
+  type: 'ask' | 'show' | 'story',
+  title: string,
+  text: string,
+  link: string,
+  commentCount: number,
+  votes: Array<UserId>,
+  comments: Array<Comment>,
+  createdAt: number,
+  createdBy: UserId
+}
+
+type StoriesState = Array<Story>
 
 export default {
   name: 'stories',
   initialState: [],
   eventHandlers: {
-    [STORY_CREATED]: (state: any, event: Event<StoryCreated>) => {
+    [STORY_CREATED]: (
+      state: StoriesState,
+      event: StoryCreated
+    ): StoriesState => {
       const {
         aggregateId,
         timestamp,
@@ -38,7 +63,10 @@ export default {
       return state
     },
 
-    [STORY_UPVOTED]: (state: any, event: Event<StoryUpvoted>) => {
+    [STORY_UPVOTED]: (
+      state: StoriesState,
+      event: StoryUpvoted
+    ): StoriesState => {
       const { aggregateId, payload: { userId } } = event
 
       const index = state.findIndex(({ id }) => id === aggregateId)
@@ -51,7 +79,10 @@ export default {
       return state
     },
 
-    [STORY_UNVOTED]: (state: any, event: Event<StoryUnvoted>) => {
+    [STORY_UNVOTED]: (
+      state: StoriesState,
+      event: StoryUnvoted
+    ): StoriesState => {
       const { aggregateId, payload: { userId } } = event
 
       const index = state.findIndex(({ id }) => id === aggregateId)
@@ -64,7 +95,10 @@ export default {
       return state
     },
 
-    [COMMENT_CREATED]: (state: any, event: Event<CommentCreated>) => {
+    [COMMENT_CREATED]: (
+      state: StoriesState,
+      event: CommentCreated
+    ): StoriesState => {
       const {
         aggregateId,
         timestamp,
@@ -89,11 +123,11 @@ export default {
 
       const comment = {
         id: commentId,
+        parentId,
+        level,
         text,
-        parentId: parentId,
         createdAt: timestamp,
-        createdBy: userId,
-        level
+        createdBy: userId
       }
 
       if (parentIndex === -1) {

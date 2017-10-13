@@ -1,6 +1,10 @@
-import events from '../events'
-
-const { STORY_CREATED, STORY_UPVOTED, STORY_UNVOTED, COMMENT_CREATED } = events
+// @flow
+import {
+  STORY_CREATED,
+  STORY_UPVOTED,
+  STORY_UNVOTED,
+  COMMENT_CREATED
+} from '../events'
 
 function validateThatExists(story) {
   if (story.createdAt === undefined) {
@@ -24,7 +28,7 @@ export default {
   name: 'story',
   initialState: {},
   commands: {
-    createStory: (state: any, command) => {
+    createStory: (state: any, command: any) => {
       validateThatIsAbsent(state)
       const { title, link, userId, text } = command.payload
       validateUserId(userId)
@@ -33,10 +37,11 @@ export default {
         throw new Error('Title is required')
       }
 
-      return { type: STORY_CREATED, payload: { title, text, link, userId } }
+      const payload: StoryCreatedPayload = { title, text, link, userId }
+      return { type: STORY_CREATED, payload }
     },
 
-    upvoteStory: (state: any, command) => {
+    upvoteStory: (state: any, command: any) => {
       validateThatExists(state)
       const { userId } = command.payload
       validateUserId(userId)
@@ -45,10 +50,11 @@ export default {
         throw new Error('User already voted')
       }
 
-      return { type: STORY_UPVOTED, payload: { userId } }
+      const payload: StoryUpvotedPayload = { userId }
+      return { type: STORY_UPVOTED, payload }
     },
 
-    unvoteStory: (state: any, command) => {
+    unvoteStory: (state: any, command: any) => {
       validateThatExists(state)
       const { userId } = command.payload
       validateUserId(userId)
@@ -57,10 +63,11 @@ export default {
         throw new Error('User did not voted')
       }
 
-      return { type: STORY_UNVOTED, payload: { userId } }
+      const payload: StoryUnvotedPayload = { userId }
+      return { type: STORY_UNVOTED, payload }
     },
 
-    createComment: (state: any, command) => {
+    createComment: (state: any, command: any) => {
       validateThatExists(state)
       const { commentId, parentId, userId, text } = command.payload
       validateUserId(userId)
@@ -77,14 +84,20 @@ export default {
         throw new Error('Comment already exists')
       }
 
-      return {
-        type: COMMENT_CREATED,
-        payload: { commentId, parentId, userId, text }
+      const payload: CommentCreatedPayload = {
+        commentId,
+        parentId,
+        userId,
+        text
       }
+      return { type: COMMENT_CREATED, payload }
     }
   },
   projection: {
-    [STORY_CREATED]: (state, { timestamp, payload: { userId } }) => ({
+    [STORY_CREATED]: (
+      state,
+      { timestamp, payload: { userId } }: StoryCreated
+    ) => ({
       ...state,
       createdAt: timestamp,
       createdBy: userId,
@@ -92,18 +105,18 @@ export default {
       comments: {}
     }),
 
-    [STORY_UPVOTED]: (state, { payload: { userId } }) => ({
+    [STORY_UPVOTED]: (state, { payload: { userId } }: StoryUpvoted) => ({
       ...state,
       voted: state.voted.concat(userId)
     }),
 
-    [STORY_UNVOTED]: (state, { payload: { userId } }) => ({
+    [STORY_UNVOTED]: (state, { payload: { userId } }: StoryUnvoted) => ({
       ...state,
       voted: state.voted.filter(curUserId => curUserId !== userId)
     }),
     [COMMENT_CREATED]: (
       state,
-      { timestamp, payload: { commentId, userId } }
+      { timestamp, payload: { commentId, userId } }: CommentCreated
     ) => ({
       ...state,
       comments: {

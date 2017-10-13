@@ -1,13 +1,22 @@
-import type { Event, CommentCreated } from '../events'
-import events from '../events'
+// @flow
+import { COMMENT_CREATED } from '../events'
 
-const { COMMENT_CREATED } = events
+type Comment = {
+  id: string,
+  text: string,
+  parentId: string,
+  storyId: string,
+  createdAt: number,
+  createdBy: string
+}
+
+type CommentsState = Array<Comment>
 
 export default {
   name: 'comments',
   initialState: [],
   eventHandlers: {
-    [COMMENT_CREATED]: (state: any, event: Event<CommentCreated>) => {
+    [COMMENT_CREATED]: (state: CommentsState, event: CommentCreated) => {
       const {
         aggregateId,
         timestamp,

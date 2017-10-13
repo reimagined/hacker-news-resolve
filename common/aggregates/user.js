@@ -1,12 +1,11 @@
-import events from '../events'
-
-const { USER_CREATED } = events
+// @flow
+import { USER_CREATED } from '../events'
 
 export default {
   name: 'user',
   initialState: {},
   commands: {
-    createUser: (state: any, command) => {
+    createUser: (state: any, command: any) => {
       if (state.createdAt !== undefined) {
         throw new Error('User already exists')
       }
@@ -17,7 +16,8 @@ export default {
         throw new Error('Name is required')
       }
 
-      return { type: USER_CREATED, payload: { name } }
+      const payload: UserCreatedPayload = { name }
+      return { type: USER_CREATED, payload }
     }
   },
   projection: {

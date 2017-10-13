@@ -1,51 +1,16 @@
-/* @flow */
-
-export type Event<Payload> = {
-  aggregateId: string,
-  timestamp: string,
-  payload: Payload
-}
-
 // Story
-const storyEvents = {
-  STORY_CREATED: 'StoryCreated',
-  STORY_UPVOTED: 'StoryUpvoted',
-  STORY_UNVOTED: 'StoryUnvoted',
-  COMMENT_CREATED: 'CommentCreated'
-}
-
-export type StoryCreated = {
-  title: string,
-  text: string,
-  userId: string,
-  link: string
-}
-
-export type StoryUpvoted = {
-  userId: string
-}
-
-export type StoryUnvoted = {
-  userId: string
-}
-
-export type CommentCreated = {
-  userId: string,
-  text: string,
-  parentId: string,
-  commentId: string
-}
+export const STORY_CREATED = 'StoryCreated'
+export const STORY_UPVOTED = 'StoryUpvoted'
+export const STORY_UNVOTED = 'StoryUnvoted'
+export const COMMENT_CREATED = 'CommentCreated'
 
 // User
-const userEvents = {
-  USER_CREATED: 'UserCreated'
-}
-
-export type UserCreated = {
-  name: string
-}
+export const USER_CREATED = 'UserCreated'
 
 export default {
-  ...storyEvents,
-  ...userEvents
+  STORY_CREATED,
+  STORY_UPVOTED,
+  STORY_UNVOTED,
+  COMMENT_CREATED,
+  USER_CREATED
 }

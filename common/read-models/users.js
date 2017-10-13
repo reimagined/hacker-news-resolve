@@ -1,18 +1,24 @@
-import type { Event, UserCreated } from '../events'
-import events from '../events'
+// @flow
+import { USER_CREATED } from '../events'
 
-const { USER_CREATED } = events
+type User = {
+  id: string,
+  name: string,
+  createdAt: number
+}
+
+type UsersState = Array<User>
 
 export default {
   name: 'users',
   initialState: [],
   eventHandlers: {
-    [USER_CREATED]: (state: any, event: Event<UserCreated>) => {
+    [USER_CREATED]: (state: UsersState, event: UserCreated): UsersState => {
       const { aggregateId, timestamp, payload: { name } } = event
 
       state.push({
-        name,
         id: aggregateId,
+        name,
         createdAt: timestamp
       })
       return state
