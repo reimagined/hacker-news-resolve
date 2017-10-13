@@ -1,6 +1,5 @@
 // @flow
 import { USER_CREATED } from '../events'
-import { Event } from '../helpers'
 
 export default {
   name: 'user',
@@ -17,7 +16,7 @@ export default {
         throw new Error('Name is required')
       }
 
-      return new Event(USER_CREATED, { name })
+      return { type: USER_CREATED, payload: { name } }
     }
   },
   projection: {
