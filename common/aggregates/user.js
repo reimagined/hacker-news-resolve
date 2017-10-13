@@ -16,7 +16,8 @@ export default {
         throw new Error('Name is required')
       }
 
-      return { type: USER_CREATED, payload: { name } }
+      const payload: UserCreatedPayload = { name }
+      return { type: USER_CREATED, payload }
     }
   },
   projection: {

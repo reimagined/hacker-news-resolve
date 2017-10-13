@@ -28,7 +28,7 @@ export default {
   name: 'story',
   initialState: {},
   commands: {
-    createStory: (state: any, command: any): StoryCreated => {
+    createStory: (state: any, command: any) => {
       validateThatIsAbsent(state)
       const { title, link, userId, text } = command.payload
       validateUserId(userId)
@@ -37,10 +37,11 @@ export default {
         throw new Error('Title is required')
       }
 
-      return { type: STORY_CREATED, payload: { title, text, link, userId } }
+      const payload: StoryCreatedPayload = { title, text, link, userId }
+      return { type: STORY_CREATED, payload }
     },
 
-    upvoteStory: (state: any, command: any): StoryUpvoted => {
+    upvoteStory: (state: any, command: any) => {
       validateThatExists(state)
       const { userId } = command.payload
       validateUserId(userId)
@@ -49,10 +50,11 @@ export default {
         throw new Error('User already voted')
       }
 
-      return { type: STORY_UPVOTED, payload: { userId } }
+      const payload: StoryUpvotedPayload = { userId }
+      return { type: STORY_UPVOTED, payload }
     },
 
-    unvoteStory: (state: any, command: any): StoryUnvoted => {
+    unvoteStory: (state: any, command: any) => {
       validateThatExists(state)
       const { userId } = command.payload
       validateUserId(userId)
@@ -61,10 +63,11 @@ export default {
         throw new Error('User did not voted')
       }
 
-      return { type: STORY_UNVOTED, payload: { userId } }
+      const payload: StoryUnvotedPayload = { userId }
+      return { type: STORY_UNVOTED, payload }
     },
 
-    createComment: (state: any, command: any): CommentCreated => {
+    createComment: (state: any, command: any) => {
       validateThatExists(state)
       const { commentId, parentId, userId, text } = command.payload
       validateUserId(userId)
@@ -81,10 +84,13 @@ export default {
         throw new Error('Comment already exists')
       }
 
-      return {
-        type: COMMENT_CREATED,
-        payload: { commentId, parentId, userId, text }
+      const payload: CommentCreatedPayload = {
+        commentId,
+        parentId,
+        userId,
+        text
       }
+      return { type: COMMENT_CREATED, payload }
     }
   },
   projection: {
