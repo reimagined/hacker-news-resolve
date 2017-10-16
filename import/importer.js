@@ -5,15 +5,14 @@ import createStorage from 'resolve-storage-lite'
 import createBus from 'resolve-bus-memory'
 
 import eventTypes from '../common/events'
-import HNServiceRest from './services/HNServiceRest'
+import api from './api'
+import { databaseFilePath } from '../common/constants'
 
-const dbPath = './storage.json'
 const USER_CREATED_TIMESTAMP = new Date(2007, 1, 19).getTime()
 
 const users = {}
-const storyIds = []
 
-const storage = createStorage({ pathToFile: dbPath })
+const storage = createStorage({ pathToFile: databaseFilePath })
 const bus = createBus()
 
 const eventStore = createEventStore({
@@ -43,37 +42,42 @@ const generateUserEvents = name => {
   return aggregateId
 }
 
-const userProc = userName => {
+const fetchUser = userName => {
   if (users[userName]) {
     return users[userName]
   }
+
   const aggregateId = generateUserEvents(userName)
   users[userName] = aggregateId
   return aggregateId
 }
 
 const generateCommentEvents = (comment, aggregateId, parentId) => {
-  const userId = userProc(comment.by)
+  const userId = fetchUser(comment.by)
   const commentId = uuid.v4()
+
   addEvent(COMMENT_CREATED, aggregateId, comment.time * 1000, {
     userId,
     text: comment.text,
     commentId,
     parentId
   })
+
   return commentId
 }
 
 const commentProc = async (comment, aggregateId, parentId) => {
   const commentId = generateCommentEvents(comment, aggregateId, parentId)
+
   if (comment.kids) {
     await commentsProc(comment.kids, aggregateId, commentId)
   }
+
   return aggregateId
 }
 
 const fetchItems = async ids => {
-  return HNServiceRest.fetchItems(ids)
+  return await api.fetchItems(ids)
 }
 
 async function commentsProc(ids, aggregateId, parentId) {
@@ -101,37 +105,35 @@ const generatePointEvents = (aggregateId, pointCount) => {
 const generateStoryEvents = async story => {
   if (story && story.by) {
     const aggregateId = uuid.v4()
-    const userId = userProc(story.by)
+    const userId = fetchUser(story.by)
+
     addEvent(STORY_CREATED, aggregateId, story.time * 1000, {
       title: story.title,
       text: story.text,
       userId,
       link: story.url
     })
+
     if (story.score) {
       generatePointEvents(aggregateId, story.score)
     }
+
     if (story.kids) {
       await commentsProc(story.kids, aggregateId, aggregateId)
     }
+
     return aggregateId
   }
 }
 
-const needUpload = id => storyIds.indexOf(id) === -1
-
-const removeDuplicate = ids => {
-  const result = ids.filter(needUpload)
-  result.forEach(id => storyIds.push(id))
-  return result
-}
-
-const storiesProc = async (ids, tickCallback) => {
+const fetchStories = async (ids, tickCallback) => {
   const stories = await fetchItems(ids)
+
   return stories.reduce(
     (promise, story) =>
       promise.then(() => {
         tickCallback()
+
         return story && !story.deleted && story.by
           ? generateStoryEvents(story)
           : null
@@ -140,30 +142,37 @@ const storiesProc = async (ids, tickCallback) => {
   )
 }
 
-const getStories = async path => {
-  const response = await HNServiceRest.storiesRef(path)
-  return response.json()
+const dropDatabase = () => {
+  if (fs.existsSync(databaseFilePath)) {
+    fs.unlinkSync(databaseFilePath)
+  }
+}
+
+const fetchStoryIds = async () => {
+  const categories = await Promise.all([
+    api.fetchStoryIds('topstories'),
+    api.fetchStoryIds('newstories'),
+    api.fetchStoryIds('showstories'),
+    api.fetchStoryIds('askstories')
+  ])
+
+  const resultSet = categories.reduce((set, ids) => {
+    ids.forEach(id => set.add(id))
+    return set
+  }, new Set())
+
+  return [...resultSet]
 }
 
 export const start = async (countCallback, tickCallback) => {
-  if (fs.existsSync(dbPath)) {
-    fs.unlinkSync(dbPath)
-  }
   try {
-    const categories = await Promise.all([
-      getStories('topstories'),
-      getStories('newstories'),
-      getStories('showstories'),
-      getStories('askstories')
-    ])
-    const stories = categories.reduce(
-      (stories, category) => stories.concat(removeDuplicate(category)),
-      []
-    )
-    countCallback(stories.length)
-    return await storiesProc(stories, tickCallback)
+    dropDatabase()
+    const storyIds = await fetchStoryIds()
+    countCallback(storyIds.length)
+    return await fetchStories(storyIds, tickCallback)
   } catch (e) {
     console.error(e)
   }
+
   return null
 }
