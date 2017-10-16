@@ -5,15 +5,17 @@ import rootComponent from './client/components/App'
 import createStore from './client/store'
 import aggregates from './common/aggregates'
 import queries from './common/read-models'
-import events from './common/events'
+import * as events from './common/events'
 import createMemoryAdapter from './common/read-models/createMemoryAdapter'
 import gqlSchema from './common/read-models/gqlSchema'
 import gqlResolvers from './common/read-models/gqlResolvers'
 import { extendExpress, initialState } from './server'
+
 import {
   authorizationSecret,
   cookieName,
-  cookieMaxAge
+  cookieMaxAge,
+  databaseFilePath
 } from './common/constants'
 
 const eventTypes = Object.keys(events).map(key => events[key])
@@ -26,7 +28,7 @@ export default {
   bus: { driver: busDriver },
   storage: {
     driver: storageDriver,
-    params: { pathToFile: './storage.json' }
+    params: { pathToFile: databaseFilePath }
   },
   initialState,
   aggregates,
