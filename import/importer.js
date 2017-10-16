@@ -1,24 +1,12 @@
-import fs from 'fs'
 import uuid from 'uuid'
-import createEventStore from 'resolve-es'
-import createStorage from 'resolve-storage-lite'
-import createBus from 'resolve-bus-memory'
 
 import eventTypes from '../common/events'
 import api from './api'
-import { databaseFilePath } from '../common/constants'
+import eventStore, { dropStore } from './eventStore'
 
 const USER_CREATED_TIMESTAMP = new Date(2007, 1, 19).getTime()
 
 const users = {}
-
-const storage = createStorage({ pathToFile: databaseFilePath })
-const bus = createBus()
-
-const eventStore = createEventStore({
-  storage,
-  bus
-})
 
 const {
   USER_CREATED,
@@ -76,12 +64,8 @@ const commentProc = async (comment, aggregateId, parentId) => {
   return aggregateId
 }
 
-const fetchItems = async ids => {
-  return await api.fetchItems(ids)
-}
-
 async function commentsProc(ids, aggregateId, parentId) {
-  const comments = await fetchItems(ids)
+  const comments = await api.fetchItems(ids)
   return comments.reduce(
     (promise, comment) =>
       promise.then(
@@ -127,7 +111,7 @@ const generateStoryEvents = async story => {
 }
 
 const fetchStories = async (ids, tickCallback) => {
-  const stories = await fetchItems(ids)
+  const stories = await api.fetchItems(ids)
 
   return stories.reduce(
     (promise, story) =>
@@ -140,12 +124,6 @@ const fetchStories = async (ids, tickCallback) => {
       }),
     Promise.resolve()
   )
-}
-
-const dropDatabase = () => {
-  if (fs.existsSync(databaseFilePath)) {
-    fs.unlinkSync(databaseFilePath)
-  }
 }
 
 const fetchStoryIds = async () => {
@@ -166,7 +144,7 @@ const fetchStoryIds = async () => {
 
 export const start = async (countCallback, tickCallback) => {
   try {
-    dropDatabase()
+    dropStore()
     const storyIds = await fetchStoryIds()
     countCallback(storyIds.length)
     return await fetchStories(storyIds, tickCallback)

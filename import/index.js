@@ -4,12 +4,12 @@ import { start } from './importer'
 
 let bar
 
-console.log('Import started. Press Crtl+C to stop import')
+console.log('Import has been started. Press Crtl+C to stop import')
 
 start(
   total => {
     bar = new ProgressBar(
-      'Import stories from news.ycombinator.com [:bar] :current/:total',
+      'Data importing from news.ycombinator.com [:bar] :current/:total',
       { width: 20, total }
     )
   },
