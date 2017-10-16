@@ -1,25 +1,38 @@
 import React from 'react'
+import styled from 'styled-components'
 
-import '../styles/login.css'
+const Wrapper = styled.div`
+  padding-left: 3em;
+  padding-right: 1.25em;
+  margin-top: 1em;
+  margin-bottom: 0.83em;
+`
+
+const Header = styled.div`
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0px;
+  margin-right: 0px;
+  font-weight: bold;
+`
+
+const Content = styled.div`
+  display: block;
+  margin-bottom: 0.83em;
+`
 
 const AuthForm = ({ title, action, buttonText }) => (
-  <div className="auth-form">
-    <h2>{title}</h2>
+  <Wrapper>
+    <Header>{title}</Header>
     <form method="POST" action={action}>
-      <table>
-        <tbody>
-          <tr>
-            <td>username:</td>
-            <td>
-              <input type="text" name="name" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <br />
+      <Content>
+        username: <input type="text" name="name" />
+      </Content>
       <input type="submit" value={buttonText} />
     </form>
-  </div>
+  </Wrapper>
 )
 
 export default AuthForm

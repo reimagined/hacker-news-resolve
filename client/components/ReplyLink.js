@@ -1,19 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
-import '../styles/comment.css'
+const Href = styled.div`
+  text-decoration: underline;
+  margin-top: 0.33em;
+  color: #000;
+`
 
 const ReplyLink = ({ storyId, commentId, level }) => (
-  <div className={`comment--level${Math.min(level, 15)}`}>
-    <div className="comment__reply-link">
-      <Link
-        className="comment__reply"
-        to={`/storyDetails/${storyId}/comments/${commentId}`}
-      >
-        reply
-      </Link>
-    </div>
-  </div>
+  <Link to={`/storyDetails/${storyId}/comments/${commentId}`}>
+    <Href>reply</Href>
+  </Link>
 )
 
 export default ReplyLink
