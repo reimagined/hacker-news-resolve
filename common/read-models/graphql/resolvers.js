@@ -1,5 +1,5 @@
-import withUserNames from '../helpers/withUserNames'
-import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants'
+import withUserNames from '../../helpers/withUserNames'
+import { NUMBER_OF_ITEMS_PER_PAGE } from '../../constants'
 
 function getReplies(comments, commentIndex) {
   const result = []
