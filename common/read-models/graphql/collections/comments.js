@@ -1,5 +1,5 @@
 // @flow
-import { COMMENT_CREATED } from '../events'
+import { COMMENT_CREATED } from '../../../events'
 
 type Comment = {
   id: string,

@@ -1,7 +1,8 @@
 import uuid from 'uuid'
 
-import '../../common/read-models'
-import stories from '../../common/read-models/stories'
+import '../../common/read-models/graphql/collections'
+import stories from '../../common/read-models/graphql/collections/stories'
+
 import {
   STORY_CREATED,
   STORY_UPVOTED,

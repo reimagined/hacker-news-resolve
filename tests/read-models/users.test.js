@@ -1,7 +1,7 @@
 import uuid from 'uuid'
 
-import '../../common/read-models'
-import users from '../../common/read-models/users'
+import '../../common/read-models/graphql/collections'
+import users from '../../common/read-models/graphql/collections/users'
 import { USER_CREATED } from '../../common/events'
 
 describe('read-models', () => {
