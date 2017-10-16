@@ -1,19 +1,18 @@
 import uuid from 'uuid'
 
-import eventTypes from '../common/events'
+import {
+  USER_CREATED,
+  STORY_CREATED,
+  STORY_UPVOTED,
+  COMMENT_CREATED
+} from '../common/events'
+
 import api from './api'
 import eventStore, { dropStore } from './eventStore'
 
 const USER_CREATED_TIMESTAMP = new Date(2007, 1, 19).getTime()
 
 const users = {}
-
-const {
-  USER_CREATED,
-  STORY_CREATED,
-  STORY_UPVOTED,
-  COMMENT_CREATED
-} = eventTypes
 
 const generateUserEvents = name => {
   const aggregateId = uuid.v4()
@@ -166,9 +165,9 @@ const fetchStories = async (ids, tickCallback) => {
 
 export const start = async (countCallback, tickCallback) => {
   try {
-    dropStore()
     const storyIds = await fetchStoryIds()
     countCallback(storyIds.length)
+    dropStore()
     return await fetchStories(storyIds, tickCallback)
   } catch (e) {
     console.error(e)
