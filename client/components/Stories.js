@@ -7,12 +7,7 @@ import Pagination from './Pagination'
 import { NUMBER_OF_ITEMS_PER_PAGE } from '../../common/constants'
 import '../styles/stories.css'
 
-const Wrapper = styled.div`
-  padding-left: 3em;
-  padding-right: 1.25em;
-  margin-top: 1em;
-  margin-bottom: 0.5em;
-`
+const Wrapper = styled.div`padding: 0 0.5em;`
 
 const Item = styled.li`margin-bottom: 12px;`
 

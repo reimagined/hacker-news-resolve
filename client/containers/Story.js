@@ -7,9 +7,24 @@ import TimeAgo from 'react-timeago'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import sanitizer from 'sanitizer'
+import styled from 'styled-components'
 
+import Splitter from '../components/Splitter'
 import actions from '../actions/storiesActions'
 import '../styles/story.css'
+
+const Text = styled.div`
+  color: #666;
+  font-size: 14px;
+  padding-left: 1.25em;
+  padding-top: 1.25em;
+`
+
+const Header = styled.div`
+  display: inline-block;
+  color: #000;
+  font-size: 14px;
+`
 
 const isExternalLink = link => link[0] !== '/'
 
@@ -29,21 +44,17 @@ export const getTitle = ({ title, link }) => {
   if (isExternalLink(link)) {
     return (
       <span>
-        <span className="story__title">
-          <a className="story__title-link" href={link}>
-            {title}
-          </a>
-        </span>{' '}
-        <span className="story__host">({getHostname(link)})</span>
+        <Header>
+          <a href={link}>{title}</a>
+        </Header>{' '}
+        ({getHostname(link)})
       </span>
     )
   }
   return (
-    <span className="story__title">
-      <Link className="story__title-link" to={link}>
-        {title}
-      </Link>
-    </span>
+    <Header>
+      <Link to={link}>{title}</Link>
+    </Header>
   )
 }
 
@@ -78,16 +89,14 @@ export const PostedBy = ({ id, name }) => {
 export const Discuss = ({ id, commentCount }) => {
   return (
     <span>
-      <span>
-        |{' '}
-        <Link className="story__meta-link" to={`/storyDetails/${id}`}>
-          {commentCount > 0 ? (
-            `${commentCount} ${plur('comment', commentCount)}`
-          ) : (
-            'discuss'
-          )}
-        </Link>{' '}
-      </span>
+      <Splitter />
+      <Link className="story__meta-link" to={`/storyDetails/${id}`}>
+        {commentCount > 0 ? (
+          `${commentCount} ${plur('comment', commentCount)}`
+        ) : (
+          'discuss'
+        )}
+      </Link>{' '}
     </span>
   )
 }
@@ -144,37 +153,32 @@ export class Story extends React.PureComponent {
       ? story.comments.length
       : story.commentCount
     return (
-      <div className="story">
-        <div className="story__content">
-          <Title
-            loggedIn={loggedIn}
-            voted={voted}
-            upvoteStory={this.upvoteStory}
-            title={
-              story.type === 'ask' ? `Ask HN: ${story.title}` : story.title
-            }
-            link={story.link || `/storyDetails/${story.id}`}
+      <div>
+        <Title
+          loggedIn={loggedIn}
+          voted={voted}
+          upvoteStory={this.upvoteStory}
+          title={story.type === 'ask' ? `Ask HN: ${story.title}` : story.title}
+          link={story.link || `/storyDetails/${story.id}`}
+        />
+        <Meta
+          voted={voted}
+          id={story.id}
+          votes={story.votes}
+          commentCount={commentCount}
+          unvoteStory={this.unvoteStory}
+          loggedIn={loggedIn}
+          createdAt={story.createdAt}
+          createdBy={story.createdBy}
+          createdByName={story.createdByName}
+        />
+        {story.text ? (
+          <Text
+            dangerouslySetInnerHTML={{
+              __html: sanitizer.sanitize(story.text)
+            }}
           />
-          <Meta
-            voted={voted}
-            id={story.id}
-            votes={story.votes}
-            commentCount={commentCount}
-            unvoteStory={this.unvoteStory}
-            loggedIn={loggedIn}
-            createdAt={story.createdAt}
-            createdBy={story.createdBy}
-            createdByName={story.createdByName}
-          />
-          {story.text ? (
-            <div
-              className="story__text"
-              dangerouslySetInnerHTML={{
-                __html: sanitizer.sanitize(story.text)
-              }}
-            />
-          ) : null}
-        </div>
+        ) : null}
       </div>
     )
   }

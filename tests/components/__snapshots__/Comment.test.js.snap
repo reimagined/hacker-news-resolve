@@ -8,123 +8,119 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
+  "node": <styled.div>
     <styled.div>
-        <styled.div>
-            <styled.div
-                onClick={[Function]}
-                tabIndex="0"
-            >
-                [
-                −
-                ]
-            </styled.div>
-            <Link
-                replace={false}
-                to="/user/SomeUser"
-            >
-                <styled.div>
-                    <b />
-                </styled.div>
-            </Link>
-            <styled.div>
-                <TimeAgo
-                    component="time"
-                    date={1970-01-01T00:00:00.000Z}
-                    formatter={[Function]}
-                    live={true}
-                    maxPeriod={Infinity}
-                    minPeriod={0}
-                    now={[Function]}
-                />
-            </styled.div>
-            <styled.div />
-            <Link
-                replace={false}
-                to="/storyDetails/story-id/comments/SomeId"
-            >
-                <styled.div>
-                    link
-                </styled.div>
-            </Link>
-            <styled.div />
-            <Link
-                replace={false}
-                to="/storyDetails/story-id"
-            >
-                <styled.div>
-                    parent
-                </styled.div>
-            </Link>
+        <styled.div
+            onClick={[Function]}
+            tabIndex="0"
+        >
+            [
+            −
+            ]
         </styled.div>
-        <div
-            dangerouslySetInnerHTML={
-                Object {
-                    "__html": "SomeContent",
-                  }
-            }
-        />
-    </styled.div>
-</div>,
-  "nodes": Array [
-    <div>
-      <styled.div>
+        <Link
+            replace={false}
+            to="/user/SomeUser"
+        >
             <styled.div>
-                  <styled.div
-                        onClick={[Function]}
-                        tabIndex="0"
-                  >
-                        [
-                        −
-                        ]
-                  </styled.div>
-                  <Link
-                        replace={false}
-                        to="/user/SomeUser"
-                  >
-                        <styled.div>
-                              <b />
-                        </styled.div>
-                  </Link>
-                  <styled.div>
-                        <TimeAgo
-                              component="time"
-                              date={1970-01-01T00:00:00.000Z}
-                              formatter={[Function]}
-                              live={true}
-                              maxPeriod={Infinity}
-                              minPeriod={0}
-                              now={[Function]}
-                        />
-                  </styled.div>
-                  <styled.div />
-                  <Link
-                        replace={false}
-                        to="/storyDetails/story-id/comments/SomeId"
-                  >
-                        <styled.div>
-                              link
-                        </styled.div>
-                  </Link>
-                  <styled.div />
-                  <Link
-                        replace={false}
-                        to="/storyDetails/story-id"
-                  >
-                        <styled.div>
-                              parent
-                        </styled.div>
-                  </Link>
+                <b />
             </styled.div>
-            <div
-                  dangerouslySetInnerHTML={
-                        Object {
-                              "__html": "SomeContent",
-                            }
-                  }
+        </Link>
+        <styled.div>
+            <TimeAgo
+                component="time"
+                date={1970-01-01T00:00:00.000Z}
+                formatter={[Function]}
+                live={true}
+                maxPeriod={Infinity}
+                minPeriod={0}
+                now={[Function]}
             />
+        </styled.div>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/SomeId"
+        >
+            <styled.div>
+                link
+            </styled.div>
+        </Link>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id"
+        >
+            <styled.div>
+                parent
+            </styled.div>
+        </Link>
+    </styled.div>
+    <div
+        dangerouslySetInnerHTML={
+            Object {
+                "__html": "SomeContent",
+              }
+        }
+    />
+</styled.div>,
+  "nodes": Array [
+    <styled.div>
+      <styled.div>
+            <styled.div
+                  onClick={[Function]}
+                  tabIndex="0"
+            >
+                  [
+                  −
+                  ]
+            </styled.div>
+            <Link
+                  replace={false}
+                  to="/user/SomeUser"
+            >
+                  <styled.div>
+                        <b />
+                  </styled.div>
+            </Link>
+            <styled.div>
+                  <TimeAgo
+                        component="time"
+                        date={1970-01-01T00:00:00.000Z}
+                        formatter={[Function]}
+                        live={true}
+                        maxPeriod={Infinity}
+                        minPeriod={0}
+                        now={[Function]}
+                  />
+            </styled.div>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/SomeId"
+            >
+                  <styled.div>
+                        link
+                  </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id"
+            >
+                  <styled.div>
+                        parent
+                  </styled.div>
+            </Link>
       </styled.div>
-</div>,
+      <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "SomeContent",
+                      }
+            }
+      />
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -189,125 +185,121 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
+        "_currentElement": <styled.div>
           <styled.div>
-                    <styled.div>
-                              <styled.div
-                                        onClick={[Function]}
-                                        tabIndex="0"
-                              >
-                                        [
-                                        −
-                                        ]
-                              </styled.div>
-                              <Link
-                                        replace={false}
-                                        to="/user/SomeUser"
-                              >
-                                        <styled.div>
-                                                  <b />
-                                        </styled.div>
-                              </Link>
-                              <styled.div>
-                                        <TimeAgo
-                                                  component="time"
-                                                  date={1970-01-01T00:00:00.000Z}
-                                                  formatter={[Function]}
-                                                  live={true}
-                                                  maxPeriod={Infinity}
-                                                  minPeriod={0}
-                                                  now={[Function]}
-                                        />
-                              </styled.div>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                        <styled.div>
-                                                  link
-                                        </styled.div>
-                              </Link>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id"
-                              >
-                                        <styled.div>
-                                                  parent
-                                        </styled.div>
-                              </Link>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
+                    >
+                              [
+                              −
+                              ]
                     </styled.div>
-                    <div
-                              dangerouslySetInnerHTML={
-                                        Object {
-                                                  "__html": "SomeContent",
-                                                }
-                              }
-                    />
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
           </styled.div>
-</div>,
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
         "_debugID": 2,
-        "_renderedOutput": <div>
+        "_renderedOutput": <styled.div>
           <styled.div>
-                    <styled.div>
-                              <styled.div
-                                        onClick={[Function]}
-                                        tabIndex="0"
-                              >
-                                        [
-                                        −
-                                        ]
-                              </styled.div>
-                              <Link
-                                        replace={false}
-                                        to="/user/SomeUser"
-                              >
-                                        <styled.div>
-                                                  <b />
-                                        </styled.div>
-                              </Link>
-                              <styled.div>
-                                        <TimeAgo
-                                                  component="time"
-                                                  date={1970-01-01T00:00:00.000Z}
-                                                  formatter={[Function]}
-                                                  live={true}
-                                                  maxPeriod={Infinity}
-                                                  minPeriod={0}
-                                                  now={[Function]}
-                                        />
-                              </styled.div>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                        <styled.div>
-                                                  link
-                                        </styled.div>
-                              </Link>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id"
-                              >
-                                        <styled.div>
-                                                  parent
-                                        </styled.div>
-                              </Link>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
+                    >
+                              [
+                              −
+                              ]
                     </styled.div>
-                    <div
-                              dangerouslySetInnerHTML={
-                                        Object {
-                                                  "__html": "SomeContent",
-                                                }
-                              }
-                    />
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
           </styled.div>
-</div>,
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -343,123 +335,119 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
+  "node": <styled.div>
     <styled.div>
-        <styled.div>
-            <styled.div
-                onClick={[Function]}
-                tabIndex="0"
-            >
-                [
-                −
-                ]
-            </styled.div>
-            <Link
-                replace={false}
-                to="/user/SomeUser"
-            >
-                <styled.div>
-                    <b />
-                </styled.div>
-            </Link>
-            <styled.div>
-                <TimeAgo
-                    component="time"
-                    date={1970-01-01T00:00:00.000Z}
-                    formatter={[Function]}
-                    live={true}
-                    maxPeriod={Infinity}
-                    minPeriod={0}
-                    now={[Function]}
-                />
-            </styled.div>
-            <styled.div />
-            <Link
-                replace={false}
-                to="/storyDetails/story-id/comments/SomeId"
-            >
-                <styled.div>
-                    link
-                </styled.div>
-            </Link>
-            <styled.div />
-            <Link
-                replace={false}
-                to="/storyDetails/story-id/comments/parent-id"
-            >
-                <styled.div>
-                    parent
-                </styled.div>
-            </Link>
+        <styled.div
+            onClick={[Function]}
+            tabIndex="0"
+        >
+            [
+            −
+            ]
         </styled.div>
-        <div
-            dangerouslySetInnerHTML={
-                Object {
-                    "__html": "SomeContent",
-                  }
-            }
-        />
-    </styled.div>
-</div>,
-  "nodes": Array [
-    <div>
-      <styled.div>
+        <Link
+            replace={false}
+            to="/user/SomeUser"
+        >
             <styled.div>
-                  <styled.div
-                        onClick={[Function]}
-                        tabIndex="0"
-                  >
-                        [
-                        −
-                        ]
-                  </styled.div>
-                  <Link
-                        replace={false}
-                        to="/user/SomeUser"
-                  >
-                        <styled.div>
-                              <b />
-                        </styled.div>
-                  </Link>
-                  <styled.div>
-                        <TimeAgo
-                              component="time"
-                              date={1970-01-01T00:00:00.000Z}
-                              formatter={[Function]}
-                              live={true}
-                              maxPeriod={Infinity}
-                              minPeriod={0}
-                              now={[Function]}
-                        />
-                  </styled.div>
-                  <styled.div />
-                  <Link
-                        replace={false}
-                        to="/storyDetails/story-id/comments/SomeId"
-                  >
-                        <styled.div>
-                              link
-                        </styled.div>
-                  </Link>
-                  <styled.div />
-                  <Link
-                        replace={false}
-                        to="/storyDetails/story-id/comments/parent-id"
-                  >
-                        <styled.div>
-                              parent
-                        </styled.div>
-                  </Link>
+                <b />
             </styled.div>
-            <div
-                  dangerouslySetInnerHTML={
-                        Object {
-                              "__html": "SomeContent",
-                            }
-                  }
+        </Link>
+        <styled.div>
+            <TimeAgo
+                component="time"
+                date={1970-01-01T00:00:00.000Z}
+                formatter={[Function]}
+                live={true}
+                maxPeriod={Infinity}
+                minPeriod={0}
+                now={[Function]}
             />
+        </styled.div>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/SomeId"
+        >
+            <styled.div>
+                link
+            </styled.div>
+        </Link>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/parent-id"
+        >
+            <styled.div>
+                parent
+            </styled.div>
+        </Link>
+    </styled.div>
+    <div
+        dangerouslySetInnerHTML={
+            Object {
+                "__html": "SomeContent",
+              }
+        }
+    />
+</styled.div>,
+  "nodes": Array [
+    <styled.div>
+      <styled.div>
+            <styled.div
+                  onClick={[Function]}
+                  tabIndex="0"
+            >
+                  [
+                  −
+                  ]
+            </styled.div>
+            <Link
+                  replace={false}
+                  to="/user/SomeUser"
+            >
+                  <styled.div>
+                        <b />
+                  </styled.div>
+            </Link>
+            <styled.div>
+                  <TimeAgo
+                        component="time"
+                        date={1970-01-01T00:00:00.000Z}
+                        formatter={[Function]}
+                        live={true}
+                        maxPeriod={Infinity}
+                        minPeriod={0}
+                        now={[Function]}
+                  />
+            </styled.div>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/SomeId"
+            >
+                  <styled.div>
+                        link
+                  </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/parent-id"
+            >
+                  <styled.div>
+                        parent
+                  </styled.div>
+            </Link>
       </styled.div>
-</div>,
+      <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "SomeContent",
+                      }
+            }
+      />
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -524,125 +512,121 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
+        "_currentElement": <styled.div>
           <styled.div>
-                    <styled.div>
-                              <styled.div
-                                        onClick={[Function]}
-                                        tabIndex="0"
-                              >
-                                        [
-                                        −
-                                        ]
-                              </styled.div>
-                              <Link
-                                        replace={false}
-                                        to="/user/SomeUser"
-                              >
-                                        <styled.div>
-                                                  <b />
-                                        </styled.div>
-                              </Link>
-                              <styled.div>
-                                        <TimeAgo
-                                                  component="time"
-                                                  date={1970-01-01T00:00:00.000Z}
-                                                  formatter={[Function]}
-                                                  live={true}
-                                                  maxPeriod={Infinity}
-                                                  minPeriod={0}
-                                                  now={[Function]}
-                                        />
-                              </styled.div>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                        <styled.div>
-                                                  link
-                                        </styled.div>
-                              </Link>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/parent-id"
-                              >
-                                        <styled.div>
-                                                  parent
-                                        </styled.div>
-                              </Link>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
+                    >
+                              [
+                              −
+                              ]
                     </styled.div>
-                    <div
-                              dangerouslySetInnerHTML={
-                                        Object {
-                                                  "__html": "SomeContent",
-                                                }
-                              }
-                    />
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
           </styled.div>
-</div>,
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
         "_debugID": 4,
-        "_renderedOutput": <div>
+        "_renderedOutput": <styled.div>
           <styled.div>
-                    <styled.div>
-                              <styled.div
-                                        onClick={[Function]}
-                                        tabIndex="0"
-                              >
-                                        [
-                                        −
-                                        ]
-                              </styled.div>
-                              <Link
-                                        replace={false}
-                                        to="/user/SomeUser"
-                              >
-                                        <styled.div>
-                                                  <b />
-                                        </styled.div>
-                              </Link>
-                              <styled.div>
-                                        <TimeAgo
-                                                  component="time"
-                                                  date={1970-01-01T00:00:00.000Z}
-                                                  formatter={[Function]}
-                                                  live={true}
-                                                  maxPeriod={Infinity}
-                                                  minPeriod={0}
-                                                  now={[Function]}
-                                        />
-                              </styled.div>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                        <styled.div>
-                                                  link
-                                        </styled.div>
-                              </Link>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/parent-id"
-                              >
-                                        <styled.div>
-                                                  parent
-                                        </styled.div>
-                              </Link>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
+                    >
+                              [
+                              −
+                              ]
                     </styled.div>
-                    <div
-                              dangerouslySetInnerHTML={
-                                        Object {
-                                                  "__html": "SomeContent",
-                                                }
-                              }
-                    />
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
           </styled.div>
-</div>,
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -678,123 +662,119 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
+  "node": <styled.div>
     <styled.div>
-        <styled.div>
-            <styled.div
-                onClick={[Function]}
-                tabIndex="0"
-            >
-                [
-                −
-                ]
-            </styled.div>
-            <Link
-                replace={false}
-                to="/user/SomeUser"
-            >
-                <styled.div>
-                    <b />
-                </styled.div>
-            </Link>
-            <styled.div>
-                <TimeAgo
-                    component="time"
-                    date={1970-01-01T00:00:00.000Z}
-                    formatter={[Function]}
-                    live={true}
-                    maxPeriod={Infinity}
-                    minPeriod={0}
-                    now={[Function]}
-                />
-            </styled.div>
-            <styled.div />
-            <Link
-                replace={false}
-                to="/storyDetails/story-id/comments/SomeId"
-            >
-                <styled.div>
-                    link
-                </styled.div>
-            </Link>
-            <styled.div />
-            <Link
-                replace={false}
-                to="/storyDetails/story-id/comments/parent-id"
-            >
-                <styled.div>
-                    parent
-                </styled.div>
-            </Link>
+        <styled.div
+            onClick={[Function]}
+            tabIndex="0"
+        >
+            [
+            −
+            ]
         </styled.div>
-        <div
-            dangerouslySetInnerHTML={
-                Object {
-                    "__html": "SomeContent",
-                  }
-            }
-        />
-    </styled.div>
-</div>,
-  "nodes": Array [
-    <div>
-      <styled.div>
+        <Link
+            replace={false}
+            to="/user/SomeUser"
+        >
             <styled.div>
-                  <styled.div
-                        onClick={[Function]}
-                        tabIndex="0"
-                  >
-                        [
-                        −
-                        ]
-                  </styled.div>
-                  <Link
-                        replace={false}
-                        to="/user/SomeUser"
-                  >
-                        <styled.div>
-                              <b />
-                        </styled.div>
-                  </Link>
-                  <styled.div>
-                        <TimeAgo
-                              component="time"
-                              date={1970-01-01T00:00:00.000Z}
-                              formatter={[Function]}
-                              live={true}
-                              maxPeriod={Infinity}
-                              minPeriod={0}
-                              now={[Function]}
-                        />
-                  </styled.div>
-                  <styled.div />
-                  <Link
-                        replace={false}
-                        to="/storyDetails/story-id/comments/SomeId"
-                  >
-                        <styled.div>
-                              link
-                        </styled.div>
-                  </Link>
-                  <styled.div />
-                  <Link
-                        replace={false}
-                        to="/storyDetails/story-id/comments/parent-id"
-                  >
-                        <styled.div>
-                              parent
-                        </styled.div>
-                  </Link>
+                <b />
             </styled.div>
-            <div
-                  dangerouslySetInnerHTML={
-                        Object {
-                              "__html": "SomeContent",
-                            }
-                  }
+        </Link>
+        <styled.div>
+            <TimeAgo
+                component="time"
+                date={1970-01-01T00:00:00.000Z}
+                formatter={[Function]}
+                live={true}
+                maxPeriod={Infinity}
+                minPeriod={0}
+                now={[Function]}
             />
+        </styled.div>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/SomeId"
+        >
+            <styled.div>
+                link
+            </styled.div>
+        </Link>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/parent-id"
+        >
+            <styled.div>
+                parent
+            </styled.div>
+        </Link>
+    </styled.div>
+    <div
+        dangerouslySetInnerHTML={
+            Object {
+                "__html": "SomeContent",
+              }
+        }
+    />
+</styled.div>,
+  "nodes": Array [
+    <styled.div>
+      <styled.div>
+            <styled.div
+                  onClick={[Function]}
+                  tabIndex="0"
+            >
+                  [
+                  −
+                  ]
+            </styled.div>
+            <Link
+                  replace={false}
+                  to="/user/SomeUser"
+            >
+                  <styled.div>
+                        <b />
+                  </styled.div>
+            </Link>
+            <styled.div>
+                  <TimeAgo
+                        component="time"
+                        date={1970-01-01T00:00:00.000Z}
+                        formatter={[Function]}
+                        live={true}
+                        maxPeriod={Infinity}
+                        minPeriod={0}
+                        now={[Function]}
+                  />
+            </styled.div>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/SomeId"
+            >
+                  <styled.div>
+                        link
+                  </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/parent-id"
+            >
+                  <styled.div>
+                        parent
+                  </styled.div>
+            </Link>
       </styled.div>
-</div>,
+      <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "SomeContent",
+                      }
+            }
+      />
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -849,125 +829,121 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
+        "_currentElement": <styled.div>
           <styled.div>
-                    <styled.div>
-                              <styled.div
-                                        onClick={[Function]}
-                                        tabIndex="0"
-                              >
-                                        [
-                                        −
-                                        ]
-                              </styled.div>
-                              <Link
-                                        replace={false}
-                                        to="/user/SomeUser"
-                              >
-                                        <styled.div>
-                                                  <b />
-                                        </styled.div>
-                              </Link>
-                              <styled.div>
-                                        <TimeAgo
-                                                  component="time"
-                                                  date={1970-01-01T00:00:00.000Z}
-                                                  formatter={[Function]}
-                                                  live={true}
-                                                  maxPeriod={Infinity}
-                                                  minPeriod={0}
-                                                  now={[Function]}
-                                        />
-                              </styled.div>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                        <styled.div>
-                                                  link
-                                        </styled.div>
-                              </Link>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/parent-id"
-                              >
-                                        <styled.div>
-                                                  parent
-                                        </styled.div>
-                              </Link>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
+                    >
+                              [
+                              −
+                              ]
                     </styled.div>
-                    <div
-                              dangerouslySetInnerHTML={
-                                        Object {
-                                                  "__html": "SomeContent",
-                                                }
-                              }
-                    />
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
           </styled.div>
-</div>,
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
         "_debugID": 6,
-        "_renderedOutput": <div>
+        "_renderedOutput": <styled.div>
           <styled.div>
-                    <styled.div>
-                              <styled.div
-                                        onClick={[Function]}
-                                        tabIndex="0"
-                              >
-                                        [
-                                        −
-                                        ]
-                              </styled.div>
-                              <Link
-                                        replace={false}
-                                        to="/user/SomeUser"
-                              >
-                                        <styled.div>
-                                                  <b />
-                                        </styled.div>
-                              </Link>
-                              <styled.div>
-                                        <TimeAgo
-                                                  component="time"
-                                                  date={1970-01-01T00:00:00.000Z}
-                                                  formatter={[Function]}
-                                                  live={true}
-                                                  maxPeriod={Infinity}
-                                                  minPeriod={0}
-                                                  now={[Function]}
-                                        />
-                              </styled.div>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                        <styled.div>
-                                                  link
-                                        </styled.div>
-                              </Link>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/parent-id"
-                              >
-                                        <styled.div>
-                                                  parent
-                                        </styled.div>
-                              </Link>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
+                    >
+                              [
+                              −
+                              ]
                     </styled.div>
-                    <div
-                              dangerouslySetInnerHTML={
-                                        Object {
-                                                  "__html": "SomeContent",
-                                                }
-                              }
-                    />
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
           </styled.div>
-</div>,
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -997,123 +973,119 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
+  "node": <styled.div>
     <styled.div>
-        <styled.div>
-            <styled.div
-                onClick={[Function]}
-                tabIndex="0"
-            >
-                [
-                −
-                ]
-            </styled.div>
-            <Link
-                replace={false}
-                to="/user/SomeUser"
-            >
-                <styled.div>
-                    <b />
-                </styled.div>
-            </Link>
-            <styled.div>
-                <TimeAgo
-                    component="time"
-                    date={1970-01-01T00:00:00.000Z}
-                    formatter={[Function]}
-                    live={true}
-                    maxPeriod={Infinity}
-                    minPeriod={0}
-                    now={[Function]}
-                />
-            </styled.div>
-            <styled.div />
-            <Link
-                replace={false}
-                to="/storyDetails/story-id/comments/SomeId"
-            >
-                <styled.div>
-                    link
-                </styled.div>
-            </Link>
-            <styled.div />
-            <Link
-                replace={false}
-                to="/storyDetails/story-id/comments/parent-id"
-            >
-                <styled.div>
-                    parent
-                </styled.div>
-            </Link>
+        <styled.div
+            onClick={[Function]}
+            tabIndex="0"
+        >
+            [
+            −
+            ]
         </styled.div>
-        <div
-            dangerouslySetInnerHTML={
-                Object {
-                    "__html": "SomeContent",
-                  }
-            }
-        />
-    </styled.div>
-</div>,
-  "nodes": Array [
-    <div>
-      <styled.div>
+        <Link
+            replace={false}
+            to="/user/SomeUser"
+        >
             <styled.div>
-                  <styled.div
-                        onClick={[Function]}
-                        tabIndex="0"
-                  >
-                        [
-                        −
-                        ]
-                  </styled.div>
-                  <Link
-                        replace={false}
-                        to="/user/SomeUser"
-                  >
-                        <styled.div>
-                              <b />
-                        </styled.div>
-                  </Link>
-                  <styled.div>
-                        <TimeAgo
-                              component="time"
-                              date={1970-01-01T00:00:00.000Z}
-                              formatter={[Function]}
-                              live={true}
-                              maxPeriod={Infinity}
-                              minPeriod={0}
-                              now={[Function]}
-                        />
-                  </styled.div>
-                  <styled.div />
-                  <Link
-                        replace={false}
-                        to="/storyDetails/story-id/comments/SomeId"
-                  >
-                        <styled.div>
-                              link
-                        </styled.div>
-                  </Link>
-                  <styled.div />
-                  <Link
-                        replace={false}
-                        to="/storyDetails/story-id/comments/parent-id"
-                  >
-                        <styled.div>
-                              parent
-                        </styled.div>
-                  </Link>
+                <b />
             </styled.div>
-            <div
-                  dangerouslySetInnerHTML={
-                        Object {
-                              "__html": "SomeContent",
-                            }
-                  }
+        </Link>
+        <styled.div>
+            <TimeAgo
+                component="time"
+                date={1970-01-01T00:00:00.000Z}
+                formatter={[Function]}
+                live={true}
+                maxPeriod={Infinity}
+                minPeriod={0}
+                now={[Function]}
             />
+        </styled.div>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/SomeId"
+        >
+            <styled.div>
+                link
+            </styled.div>
+        </Link>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/parent-id"
+        >
+            <styled.div>
+                parent
+            </styled.div>
+        </Link>
+    </styled.div>
+    <div
+        dangerouslySetInnerHTML={
+            Object {
+                "__html": "SomeContent",
+              }
+        }
+    />
+</styled.div>,
+  "nodes": Array [
+    <styled.div>
+      <styled.div>
+            <styled.div
+                  onClick={[Function]}
+                  tabIndex="0"
+            >
+                  [
+                  −
+                  ]
+            </styled.div>
+            <Link
+                  replace={false}
+                  to="/user/SomeUser"
+            >
+                  <styled.div>
+                        <b />
+                  </styled.div>
+            </Link>
+            <styled.div>
+                  <TimeAgo
+                        component="time"
+                        date={1970-01-01T00:00:00.000Z}
+                        formatter={[Function]}
+                        live={true}
+                        maxPeriod={Infinity}
+                        minPeriod={0}
+                        now={[Function]}
+                  />
+            </styled.div>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/SomeId"
+            >
+                  <styled.div>
+                        link
+                  </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/parent-id"
+            >
+                  <styled.div>
+                        parent
+                  </styled.div>
+            </Link>
       </styled.div>
-</div>,
+      <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "SomeContent",
+                      }
+            }
+      />
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -1168,125 +1140,121 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
+        "_currentElement": <styled.div>
           <styled.div>
-                    <styled.div>
-                              <styled.div
-                                        onClick={[Function]}
-                                        tabIndex="0"
-                              >
-                                        [
-                                        −
-                                        ]
-                              </styled.div>
-                              <Link
-                                        replace={false}
-                                        to="/user/SomeUser"
-                              >
-                                        <styled.div>
-                                                  <b />
-                                        </styled.div>
-                              </Link>
-                              <styled.div>
-                                        <TimeAgo
-                                                  component="time"
-                                                  date={1970-01-01T00:00:00.000Z}
-                                                  formatter={[Function]}
-                                                  live={true}
-                                                  maxPeriod={Infinity}
-                                                  minPeriod={0}
-                                                  now={[Function]}
-                                        />
-                              </styled.div>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                        <styled.div>
-                                                  link
-                                        </styled.div>
-                              </Link>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/parent-id"
-                              >
-                                        <styled.div>
-                                                  parent
-                                        </styled.div>
-                              </Link>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
+                    >
+                              [
+                              −
+                              ]
                     </styled.div>
-                    <div
-                              dangerouslySetInnerHTML={
-                                        Object {
-                                                  "__html": "SomeContent",
-                                                }
-                              }
-                    />
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
           </styled.div>
-</div>,
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
         "_debugID": 8,
-        "_renderedOutput": <div>
+        "_renderedOutput": <styled.div>
           <styled.div>
-                    <styled.div>
-                              <styled.div
-                                        onClick={[Function]}
-                                        tabIndex="0"
-                              >
-                                        [
-                                        −
-                                        ]
-                              </styled.div>
-                              <Link
-                                        replace={false}
-                                        to="/user/SomeUser"
-                              >
-                                        <styled.div>
-                                                  <b />
-                                        </styled.div>
-                              </Link>
-                              <styled.div>
-                                        <TimeAgo
-                                                  component="time"
-                                                  date={1970-01-01T00:00:00.000Z}
-                                                  formatter={[Function]}
-                                                  live={true}
-                                                  maxPeriod={Infinity}
-                                                  minPeriod={0}
-                                                  now={[Function]}
-                                        />
-                              </styled.div>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                        <styled.div>
-                                                  link
-                                        </styled.div>
-                              </Link>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/parent-id"
-                              >
-                                        <styled.div>
-                                                  parent
-                                        </styled.div>
-                              </Link>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
+                    >
+                              [
+                              −
+                              ]
                     </styled.div>
-                    <div
-                              dangerouslySetInnerHTML={
-                                        Object {
-                                                  "__html": "SomeContent",
-                                                }
-                              }
-                    />
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
           </styled.div>
-</div>,
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -1316,123 +1284,119 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
+  "node": <styled.div>
     <styled.div>
-        <styled.div>
-            <styled.div
-                onClick={[Function]}
-                tabIndex="0"
-            >
-                [
-                −
-                ]
-            </styled.div>
-            <Link
-                replace={false}
-                to="/user/SomeUser"
-            >
-                <styled.div>
-                    <b />
-                </styled.div>
-            </Link>
-            <styled.div>
-                <TimeAgo
-                    component="time"
-                    date={1970-01-01T00:00:00.000Z}
-                    formatter={[Function]}
-                    live={true}
-                    maxPeriod={Infinity}
-                    minPeriod={0}
-                    now={[Function]}
-                />
-            </styled.div>
-            <styled.div />
-            <Link
-                replace={false}
-                to="/storyDetails/story-id/comments/SomeId"
-            >
-                <styled.div>
-                    link
-                </styled.div>
-            </Link>
-            <styled.div />
-            <Link
-                replace={false}
-                to="/storyDetails/story-id/comments/parent-id"
-            >
-                <styled.div>
-                    parent
-                </styled.div>
-            </Link>
+        <styled.div
+            onClick={[Function]}
+            tabIndex="0"
+        >
+            [
+            −
+            ]
         </styled.div>
-        <div
-            dangerouslySetInnerHTML={
-                Object {
-                    "__html": "SomeContent",
-                  }
-            }
-        />
-    </styled.div>
-</div>,
-  "nodes": Array [
-    <div>
-      <styled.div>
+        <Link
+            replace={false}
+            to="/user/SomeUser"
+        >
             <styled.div>
-                  <styled.div
-                        onClick={[Function]}
-                        tabIndex="0"
-                  >
-                        [
-                        −
-                        ]
-                  </styled.div>
-                  <Link
-                        replace={false}
-                        to="/user/SomeUser"
-                  >
-                        <styled.div>
-                              <b />
-                        </styled.div>
-                  </Link>
-                  <styled.div>
-                        <TimeAgo
-                              component="time"
-                              date={1970-01-01T00:00:00.000Z}
-                              formatter={[Function]}
-                              live={true}
-                              maxPeriod={Infinity}
-                              minPeriod={0}
-                              now={[Function]}
-                        />
-                  </styled.div>
-                  <styled.div />
-                  <Link
-                        replace={false}
-                        to="/storyDetails/story-id/comments/SomeId"
-                  >
-                        <styled.div>
-                              link
-                        </styled.div>
-                  </Link>
-                  <styled.div />
-                  <Link
-                        replace={false}
-                        to="/storyDetails/story-id/comments/parent-id"
-                  >
-                        <styled.div>
-                              parent
-                        </styled.div>
-                  </Link>
+                <b />
             </styled.div>
-            <div
-                  dangerouslySetInnerHTML={
-                        Object {
-                              "__html": "SomeContent",
-                            }
-                  }
+        </Link>
+        <styled.div>
+            <TimeAgo
+                component="time"
+                date={1970-01-01T00:00:00.000Z}
+                formatter={[Function]}
+                live={true}
+                maxPeriod={Infinity}
+                minPeriod={0}
+                now={[Function]}
             />
+        </styled.div>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/SomeId"
+        >
+            <styled.div>
+                link
+            </styled.div>
+        </Link>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/parent-id"
+        >
+            <styled.div>
+                parent
+            </styled.div>
+        </Link>
+    </styled.div>
+    <div
+        dangerouslySetInnerHTML={
+            Object {
+                "__html": "SomeContent",
+              }
+        }
+    />
+</styled.div>,
+  "nodes": Array [
+    <styled.div>
+      <styled.div>
+            <styled.div
+                  onClick={[Function]}
+                  tabIndex="0"
+            >
+                  [
+                  −
+                  ]
+            </styled.div>
+            <Link
+                  replace={false}
+                  to="/user/SomeUser"
+            >
+                  <styled.div>
+                        <b />
+                  </styled.div>
+            </Link>
+            <styled.div>
+                  <TimeAgo
+                        component="time"
+                        date={1970-01-01T00:00:00.000Z}
+                        formatter={[Function]}
+                        live={true}
+                        maxPeriod={Infinity}
+                        minPeriod={0}
+                        now={[Function]}
+                  />
+            </styled.div>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/SomeId"
+            >
+                  <styled.div>
+                        link
+                  </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/parent-id"
+            >
+                  <styled.div>
+                        parent
+                  </styled.div>
+            </Link>
       </styled.div>
-</div>,
+      <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "SomeContent",
+                      }
+            }
+      />
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -1487,111 +1451,107 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
+        "_currentElement": <styled.div>
           <styled.div>
-                    <styled.div>
-                              <styled.div
-                                        onClick={[Function]}
-                                        tabIndex="0"
-                              >
-                                        [
-                                        +
-                                        ]
-                              </styled.div>
-                              <Link
-                                        replace={false}
-                                        to="/user/SomeUser"
-                              >
-                                        <styled.div>
-                                                  <b />
-                                        </styled.div>
-                              </Link>
-                              <styled.div>
-                                        <TimeAgo
-                                                  component="time"
-                                                  date={1970-01-01T00:00:00.000Z}
-                                                  formatter={[Function]}
-                                                  live={true}
-                                                  maxPeriod={Infinity}
-                                                  minPeriod={0}
-                                                  now={[Function]}
-                                        />
-                              </styled.div>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                        <styled.div>
-                                                  link
-                                        </styled.div>
-                              </Link>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/parent-id"
-                              >
-                                        <styled.div>
-                                                  parent
-                                        </styled.div>
-                              </Link>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
+                    >
+                              [
+                              +
+                              ]
                     </styled.div>
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
           </styled.div>
-</div>,
+</styled.div>,
         "_debugID": 10,
-        "_renderedOutput": <div>
+        "_renderedOutput": <styled.div>
           <styled.div>
-                    <styled.div>
-                              <styled.div
-                                        onClick={[Function]}
-                                        tabIndex="0"
-                              >
-                                        [
-                                        +
-                                        ]
-                              </styled.div>
-                              <Link
-                                        replace={false}
-                                        to="/user/SomeUser"
-                              >
-                                        <styled.div>
-                                                  <b />
-                                        </styled.div>
-                              </Link>
-                              <styled.div>
-                                        <TimeAgo
-                                                  component="time"
-                                                  date={1970-01-01T00:00:00.000Z}
-                                                  formatter={[Function]}
-                                                  live={true}
-                                                  maxPeriod={Infinity}
-                                                  minPeriod={0}
-                                                  now={[Function]}
-                                        />
-                              </styled.div>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                        <styled.div>
-                                                  link
-                                        </styled.div>
-                              </Link>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/parent-id"
-                              >
-                                        <styled.div>
-                                                  parent
-                                        </styled.div>
-                              </Link>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
+                    >
+                              [
+                              +
+                              ]
                     </styled.div>
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
           </styled.div>
-</div>,
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -1621,123 +1581,119 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
+  "node": <styled.div>
     <styled.div>
-        <styled.div>
-            <styled.div
-                onClick={[Function]}
-                tabIndex="0"
-            >
-                [
-                −
-                ]
-            </styled.div>
-            <Link
-                replace={false}
-                to="/user/SomeUser"
-            >
-                <styled.div>
-                    <b />
-                </styled.div>
-            </Link>
-            <styled.div>
-                <TimeAgo
-                    component="time"
-                    date={1970-01-01T00:00:00.000Z}
-                    formatter={[Function]}
-                    live={true}
-                    maxPeriod={Infinity}
-                    minPeriod={0}
-                    now={[Function]}
-                />
-            </styled.div>
-            <styled.div />
-            <Link
-                replace={false}
-                to="/storyDetails/story-id/comments/SomeId"
-            >
-                <styled.div>
-                    link
-                </styled.div>
-            </Link>
-            <styled.div />
-            <Link
-                replace={false}
-                to="/storyDetails/story-id/comments/parent-id"
-            >
-                <styled.div>
-                    parent
-                </styled.div>
-            </Link>
+        <styled.div
+            onClick={[Function]}
+            tabIndex="0"
+        >
+            [
+            −
+            ]
         </styled.div>
-        <div
-            dangerouslySetInnerHTML={
-                Object {
-                    "__html": "SomeContent",
-                  }
-            }
-        />
-    </styled.div>
-</div>,
-  "nodes": Array [
-    <div>
-      <styled.div>
+        <Link
+            replace={false}
+            to="/user/SomeUser"
+        >
             <styled.div>
-                  <styled.div
-                        onClick={[Function]}
-                        tabIndex="0"
-                  >
-                        [
-                        −
-                        ]
-                  </styled.div>
-                  <Link
-                        replace={false}
-                        to="/user/SomeUser"
-                  >
-                        <styled.div>
-                              <b />
-                        </styled.div>
-                  </Link>
-                  <styled.div>
-                        <TimeAgo
-                              component="time"
-                              date={1970-01-01T00:00:00.000Z}
-                              formatter={[Function]}
-                              live={true}
-                              maxPeriod={Infinity}
-                              minPeriod={0}
-                              now={[Function]}
-                        />
-                  </styled.div>
-                  <styled.div />
-                  <Link
-                        replace={false}
-                        to="/storyDetails/story-id/comments/SomeId"
-                  >
-                        <styled.div>
-                              link
-                        </styled.div>
-                  </Link>
-                  <styled.div />
-                  <Link
-                        replace={false}
-                        to="/storyDetails/story-id/comments/parent-id"
-                  >
-                        <styled.div>
-                              parent
-                        </styled.div>
-                  </Link>
+                <b />
             </styled.div>
-            <div
-                  dangerouslySetInnerHTML={
-                        Object {
-                              "__html": "SomeContent",
-                            }
-                  }
+        </Link>
+        <styled.div>
+            <TimeAgo
+                component="time"
+                date={1970-01-01T00:00:00.000Z}
+                formatter={[Function]}
+                live={true}
+                maxPeriod={Infinity}
+                minPeriod={0}
+                now={[Function]}
             />
+        </styled.div>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/SomeId"
+        >
+            <styled.div>
+                link
+            </styled.div>
+        </Link>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/parent-id"
+        >
+            <styled.div>
+                parent
+            </styled.div>
+        </Link>
+    </styled.div>
+    <div
+        dangerouslySetInnerHTML={
+            Object {
+                "__html": "SomeContent",
+              }
+        }
+    />
+</styled.div>,
+  "nodes": Array [
+    <styled.div>
+      <styled.div>
+            <styled.div
+                  onClick={[Function]}
+                  tabIndex="0"
+            >
+                  [
+                  −
+                  ]
+            </styled.div>
+            <Link
+                  replace={false}
+                  to="/user/SomeUser"
+            >
+                  <styled.div>
+                        <b />
+                  </styled.div>
+            </Link>
+            <styled.div>
+                  <TimeAgo
+                        component="time"
+                        date={1970-01-01T00:00:00.000Z}
+                        formatter={[Function]}
+                        live={true}
+                        maxPeriod={Infinity}
+                        minPeriod={0}
+                        now={[Function]}
+                  />
+            </styled.div>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/SomeId"
+            >
+                  <styled.div>
+                        link
+                  </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/parent-id"
+            >
+                  <styled.div>
+                        parent
+                  </styled.div>
+            </Link>
       </styled.div>
-</div>,
+      <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "SomeContent",
+                      }
+            }
+      />
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -1792,125 +1748,121 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
+        "_currentElement": <styled.div>
           <styled.div>
-                    <styled.div>
-                              <styled.div
-                                        onClick={[Function]}
-                                        tabIndex="0"
-                              >
-                                        [
-                                        −
-                                        ]
-                              </styled.div>
-                              <Link
-                                        replace={false}
-                                        to="/user/SomeUser"
-                              >
-                                        <styled.div>
-                                                  <b />
-                                        </styled.div>
-                              </Link>
-                              <styled.div>
-                                        <TimeAgo
-                                                  component="time"
-                                                  date={1970-01-01T00:00:00.000Z}
-                                                  formatter={[Function]}
-                                                  live={true}
-                                                  maxPeriod={Infinity}
-                                                  minPeriod={0}
-                                                  now={[Function]}
-                                        />
-                              </styled.div>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                        <styled.div>
-                                                  link
-                                        </styled.div>
-                              </Link>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/parent-id"
-                              >
-                                        <styled.div>
-                                                  parent
-                                        </styled.div>
-                              </Link>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
+                    >
+                              [
+                              −
+                              ]
                     </styled.div>
-                    <div
-                              dangerouslySetInnerHTML={
-                                        Object {
-                                                  "__html": "SomeContent",
-                                                }
-                              }
-                    />
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
           </styled.div>
-</div>,
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
         "_debugID": 12,
-        "_renderedOutput": <div>
+        "_renderedOutput": <styled.div>
           <styled.div>
-                    <styled.div>
-                              <styled.div
-                                        onClick={[Function]}
-                                        tabIndex="0"
-                              >
-                                        [
-                                        −
-                                        ]
-                              </styled.div>
-                              <Link
-                                        replace={false}
-                                        to="/user/SomeUser"
-                              >
-                                        <styled.div>
-                                                  <b />
-                                        </styled.div>
-                              </Link>
-                              <styled.div>
-                                        <TimeAgo
-                                                  component="time"
-                                                  date={1970-01-01T00:00:00.000Z}
-                                                  formatter={[Function]}
-                                                  live={true}
-                                                  maxPeriod={Infinity}
-                                                  minPeriod={0}
-                                                  now={[Function]}
-                                        />
-                              </styled.div>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                        <styled.div>
-                                                  link
-                                        </styled.div>
-                              </Link>
-                              <styled.div />
-                              <Link
-                                        replace={false}
-                                        to="/storyDetails/story-id/comments/parent-id"
-                              >
-                                        <styled.div>
-                                                  parent
-                                        </styled.div>
-                              </Link>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
+                    >
+                              [
+                              −
+                              ]
                     </styled.div>
-                    <div
-                              dangerouslySetInnerHTML={
-                                        Object {
-                                                  "__html": "SomeContent",
-                                                }
-                              }
-                    />
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
           </styled.div>
-</div>,
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,

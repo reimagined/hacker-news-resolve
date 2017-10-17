@@ -53,7 +53,6 @@ class Comment extends React.PureComponent {
     const {
       id,
       storyId,
-      level,
       text,
       createdBy,
       createdByName,
@@ -72,39 +71,37 @@ class Comment extends React.PureComponent {
         : `/storyDetails/${storyId}/comments/${parentId}`
 
     return (
-      <div>
-        <Wrapper>
-          <Meta>
-            <Collapse onClick={this.expand} tabIndex="0">
-              [{this.state.expanded ? '\u2212' : '\u002b'}]
-            </Collapse>
-            <Link to={`/user/${createdBy}`}>
-              <Href>
-                <b>{createdByName}</b>
-              </Href>
-            </Link>
-            <Time>
-              <TimeAgo date={new Date(+createdAt)} />
-            </Time>
-            <Splitter />
-            <Link to={`/storyDetails/${storyId}/comments/${id}`}>
-              <Href>link</Href>
-            </Link>
-            <Splitter />
-            <Link to={parent}>
-              <Href>parent</Href>
-            </Link>
-          </Meta>
-          {this.state.expanded ? (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: sanitizer.sanitize(text)
-              }}
-            />
-          ) : null}
-          {this.state.expanded ? children : null}
-        </Wrapper>
-      </div>
+      <Wrapper>
+        <Meta>
+          <Collapse onClick={this.expand} tabIndex="0">
+            [{this.state.expanded ? '\u2212' : '\u002b'}]
+          </Collapse>
+          <Link to={`/user/${createdBy}`}>
+            <Href>
+              <b>{createdByName}</b>
+            </Href>
+          </Link>
+          <Time>
+            <TimeAgo date={new Date(+createdAt)} />
+          </Time>
+          <Splitter />
+          <Link to={`/storyDetails/${storyId}/comments/${id}`}>
+            <Href>link</Href>
+          </Link>
+          <Splitter />
+          <Link to={parent}>
+            <Href>parent</Href>
+          </Link>
+        </Meta>
+        {this.state.expanded ? (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: sanitizer.sanitize(text)
+            }}
+          />
+        ) : null}
+        {this.state.expanded ? children : null}
+      </Wrapper>
     )
   }
 
