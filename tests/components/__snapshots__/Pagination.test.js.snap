@@ -84,45 +84,57 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div
-    className="pagination"
->
+  "node": <styled.div>
     <Link
-        className="pagination__link pagination__disabled"
         replace={false}
         to="news/0"
     >
-        Prev
+        <styled.div
+            disabled={true}
+        >
+            Prev
+        </styled.div>
     </Link>
-     | 1 | 
+    <styled.div />
+    1
+    <styled.div />
     <Link
-        className="pagination__link "
         replace={false}
         to="news/2"
     >
-        More
+        <styled.div
+            disabled={false}
+        >
+            More
+        </styled.div>
     </Link>
-</div>,
+</styled.div>,
   "nodes": Array [
-    <div
-      className="pagination"
->
+    <styled.div>
       <Link
-            className="pagination__link pagination__disabled"
             replace={false}
             to="news/0"
       >
-            Prev
+            <styled.div
+                  disabled={true}
+            >
+                  Prev
+            </styled.div>
       </Link>
-       | 1 | 
+      <styled.div />
+      1
+      <styled.div />
       <Link
-            className="pagination__link "
             replace={false}
             to="news/2"
       >
-            More
+            <styled.div
+                  disabled={false}
+            >
+                  More
+            </styled.div>
       </Link>
-</div>,
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -166,47 +178,59 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          className="pagination"
->
+        "_currentElement": <styled.div>
           <Link
-                    className="pagination__link pagination__disabled"
                     replace={false}
                     to="news/0"
           >
-                    Prev
+                    <styled.div
+                              disabled={true}
+                    >
+                              Prev
+                    </styled.div>
           </Link>
-           | 1 | 
+          <styled.div />
+          1
+          <styled.div />
           <Link
-                    className="pagination__link "
                     replace={false}
                     to="news/2"
           >
-                    More
+                    <styled.div
+                              disabled={false}
+                    >
+                              More
+                    </styled.div>
           </Link>
-</div>,
+</styled.div>,
         "_debugID": 10,
-        "_renderedOutput": <div
-          className="pagination"
->
+        "_renderedOutput": <styled.div>
           <Link
-                    className="pagination__link pagination__disabled"
                     replace={false}
                     to="news/0"
           >
-                    Prev
+                    <styled.div
+                              disabled={true}
+                    >
+                              Prev
+                    </styled.div>
           </Link>
-           | 1 | 
+          <styled.div />
+          1
+          <styled.div />
           <Link
-                    className="pagination__link "
                     replace={false}
                     to="news/2"
           >
-                    More
+                    <styled.div
+                              disabled={false}
+                    >
+                              More
+                    </styled.div>
           </Link>
-</div>,
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -232,45 +256,57 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div
-    className="pagination"
->
+  "node": <styled.div>
     <Link
-        className="pagination__link "
         replace={false}
         to="news/1"
     >
-        Prev
+        <styled.div
+            disabled={false}
+        >
+            Prev
+        </styled.div>
     </Link>
-     | 2 | 
+    <styled.div />
+    2
+    <styled.div />
     <Link
-        className="pagination__link "
         replace={false}
         to="news/3"
     >
-        More
+        <styled.div
+            disabled={false}
+        >
+            More
+        </styled.div>
     </Link>
-</div>,
+</styled.div>,
   "nodes": Array [
-    <div
-      className="pagination"
->
+    <styled.div>
       <Link
-            className="pagination__link "
             replace={false}
             to="news/1"
       >
-            Prev
+            <styled.div
+                  disabled={false}
+            >
+                  Prev
+            </styled.div>
       </Link>
-       | 2 | 
+      <styled.div />
+      2
+      <styled.div />
       <Link
-            className="pagination__link "
             replace={false}
             to="news/3"
       >
-            More
+            <styled.div
+                  disabled={false}
+            >
+                  More
+            </styled.div>
       </Link>
-</div>,
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -314,47 +350,59 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          className="pagination"
->
+        "_currentElement": <styled.div>
           <Link
-                    className="pagination__link "
                     replace={false}
                     to="news/1"
           >
-                    Prev
+                    <styled.div
+                              disabled={false}
+                    >
+                              Prev
+                    </styled.div>
           </Link>
-           | 2 | 
+          <styled.div />
+          2
+          <styled.div />
           <Link
-                    className="pagination__link "
                     replace={false}
                     to="news/3"
           >
-                    More
+                    <styled.div
+                              disabled={false}
+                    >
+                              More
+                    </styled.div>
           </Link>
-</div>,
+</styled.div>,
         "_debugID": 4,
-        "_renderedOutput": <div
-          className="pagination"
->
+        "_renderedOutput": <styled.div>
           <Link
-                    className="pagination__link "
                     replace={false}
                     to="news/1"
           >
-                    Prev
+                    <styled.div
+                              disabled={false}
+                    >
+                              Prev
+                    </styled.div>
           </Link>
-           | 2 | 
+          <styled.div />
+          2
+          <styled.div />
           <Link
-                    className="pagination__link "
                     replace={false}
                     to="news/3"
           >
-                    More
+                    <styled.div
+                              disabled={false}
+                    >
+                              More
+                    </styled.div>
           </Link>
-</div>,
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -380,45 +428,57 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div
-    className="pagination"
->
+  "node": <styled.div>
     <Link
-        className="pagination__link "
         replace={false}
         to="news/2"
     >
-        Prev
+        <styled.div
+            disabled={false}
+        >
+            Prev
+        </styled.div>
     </Link>
-     | 3 | 
+    <styled.div />
+    3
+    <styled.div />
     <Link
-        className="pagination__link pagination__disabled"
         replace={false}
         to="news/4"
     >
-        More
+        <styled.div
+            disabled={true}
+        >
+            More
+        </styled.div>
     </Link>
-</div>,
+</styled.div>,
   "nodes": Array [
-    <div
-      className="pagination"
->
+    <styled.div>
       <Link
-            className="pagination__link "
             replace={false}
             to="news/2"
       >
-            Prev
+            <styled.div
+                  disabled={false}
+            >
+                  Prev
+            </styled.div>
       </Link>
-       | 3 | 
+      <styled.div />
+      3
+      <styled.div />
       <Link
-            className="pagination__link pagination__disabled"
             replace={false}
             to="news/4"
       >
-            More
+            <styled.div
+                  disabled={true}
+            >
+                  More
+            </styled.div>
       </Link>
-</div>,
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -462,47 +522,59 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          className="pagination"
->
+        "_currentElement": <styled.div>
           <Link
-                    className="pagination__link "
                     replace={false}
                     to="news/2"
           >
-                    Prev
+                    <styled.div
+                              disabled={false}
+                    >
+                              Prev
+                    </styled.div>
           </Link>
-           | 3 | 
+          <styled.div />
+          3
+          <styled.div />
           <Link
-                    className="pagination__link pagination__disabled"
                     replace={false}
                     to="news/4"
           >
-                    More
+                    <styled.div
+                              disabled={true}
+                    >
+                              More
+                    </styled.div>
           </Link>
-</div>,
+</styled.div>,
         "_debugID": 6,
-        "_renderedOutput": <div
-          className="pagination"
->
+        "_renderedOutput": <styled.div>
           <Link
-                    className="pagination__link "
                     replace={false}
                     to="news/2"
           >
-                    Prev
+                    <styled.div
+                              disabled={false}
+                    >
+                              Prev
+                    </styled.div>
           </Link>
-           | 3 | 
+          <styled.div />
+          3
+          <styled.div />
           <Link
-                    className="pagination__link pagination__disabled"
                     replace={false}
                     to="news/4"
           >
-                    More
+                    <styled.div
+                              disabled={true}
+                    >
+                              More
+                    </styled.div>
           </Link>
-</div>,
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,

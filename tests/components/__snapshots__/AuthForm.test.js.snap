@@ -8,71 +8,49 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div
-    className="auth-form"
->
-    <h2>
+  "node": <styled.div>
+    <styled.div>
         Title
-    </h2>
+    </styled.div>
     <form
         action="/auth"
         method="POST"
     >
-        <table>
-            <tbody>
-                <tr>
-                    <td>
-                        username:
-                    </td>
-                    <td>
-                        <input
-                            name="name"
-                            type="text"
-                        />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <br />
+        <styled.div>
+            username: 
+            <input
+                name="name"
+                type="text"
+            />
+        </styled.div>
         <input
             type="submit"
             value="login"
         />
     </form>
-</div>,
+</styled.div>,
   "nodes": Array [
-    <div
-      className="auth-form"
->
-      <h2>
+    <styled.div>
+      <styled.div>
             Title
-      </h2>
+      </styled.div>
       <form
             action="/auth"
             method="POST"
       >
-            <table>
-                  <tbody>
-                        <tr>
-                              <td>
-                                    username:
-                              </td>
-                              <td>
-                                    <input
-                                          name="name"
-                                          type="text"
-                                    />
-                              </td>
-                        </tr>
-                  </tbody>
-            </table>
-            <br />
+            <styled.div>
+                  username: 
+                  <input
+                        name="name"
+                        type="text"
+                  />
+            </styled.div>
             <input
                   type="submit"
                   value="login"
             />
       </form>
-</div>,
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -116,73 +94,51 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          className="auth-form"
->
-          <h2>
+        "_currentElement": <styled.div>
+          <styled.div>
                     Title
-          </h2>
+          </styled.div>
           <form
                     action="/auth"
                     method="POST"
           >
-                    <table>
-                              <tbody>
-                                        <tr>
-                                                  <td>
-                                                            username:
-                                                  </td>
-                                                  <td>
-                                                            <input
-                                                                      name="name"
-                                                                      type="text"
-                                                            />
-                                                  </td>
-                                        </tr>
-                              </tbody>
-                    </table>
-                    <br />
+                    <styled.div>
+                              username: 
+                              <input
+                                        name="name"
+                                        type="text"
+                              />
+                    </styled.div>
                     <input
                               type="submit"
                               value="login"
                     />
           </form>
-</div>,
+</styled.div>,
         "_debugID": 2,
-        "_renderedOutput": <div
-          className="auth-form"
->
-          <h2>
+        "_renderedOutput": <styled.div>
+          <styled.div>
                     Title
-          </h2>
+          </styled.div>
           <form
                     action="/auth"
                     method="POST"
           >
-                    <table>
-                              <tbody>
-                                        <tr>
-                                                  <td>
-                                                            username:
-                                                  </td>
-                                                  <td>
-                                                            <input
-                                                                      name="name"
-                                                                      type="text"
-                                                            />
-                                                  </td>
-                                        </tr>
-                              </tbody>
-                    </table>
-                    <br />
+                    <styled.div>
+                              username: 
+                              <input
+                                        name="name"
+                                        type="text"
+                              />
+                    </styled.div>
                     <input
                               type="submit"
                               value="login"
                     />
           </form>
-</div>,
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,

@@ -8,37 +8,23 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div
-    className="comment--levelNaN"
+  "node": <Link
+    replace={false}
+    to="/storyDetails/story-id/comments/comment-id"
 >
-    <div
-        className="comment__reply-link"
-    >
-        <Link
-            className="comment__reply"
-            replace={false}
-            to="/storyDetails/story-id/comments/comment-id"
-        >
-            reply
-        </Link>
-    </div>
-</div>,
+    <styled.div>
+        reply
+    </styled.div>
+</Link>,
   "nodes": Array [
-    <div
-      className="comment--levelNaN"
+    <Link
+      replace={false}
+      to="/storyDetails/story-id/comments/comment-id"
 >
-      <div
-            className="comment__reply-link"
-      >
-            <Link
-                  className="comment__reply"
-                  replace={false}
-                  to="/storyDetails/story-id/comments/comment-id"
-            >
-                  reply
-            </Link>
-      </div>
-</div>,
+      <styled.div>
+            reply
+      </styled.div>
+</Link>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -80,39 +66,25 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          className="comment--levelNaN"
+        "_currentElement": <Link
+          replace={false}
+          to="/storyDetails/story-id/comments/comment-id"
 >
-          <div
-                    className="comment__reply-link"
-          >
-                    <Link
-                              className="comment__reply"
-                              replace={false}
-                              to="/storyDetails/story-id/comments/comment-id"
-                    >
-                              reply
-                    </Link>
-          </div>
-</div>,
+          <styled.div>
+                    reply
+          </styled.div>
+</Link>,
         "_debugID": 2,
-        "_renderedOutput": <div
-          className="comment--levelNaN"
+        "_renderedOutput": <Link
+          replace={false}
+          to="/storyDetails/story-id/comments/comment-id"
 >
-          <div
-                    className="comment__reply-link"
-          >
-                    <Link
-                              className="comment__reply"
-                              replace={false}
-                              to="/storyDetails/story-id/comments/comment-id"
-                    >
-                              reply
-                    </Link>
-          </div>
-</div>,
+          <styled.div>
+                    reply
+          </styled.div>
+</Link>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
