@@ -8,18 +8,21 @@ class NewestByPage extends React.PureComponent {
   componentDidUpdate = () => {
     const { refetchStories, onRefetched, data: { refetch } } = this.props
 
-    if (refetchStories) {
+    if (refetchStories.newest) {
       refetch()
       onRefetched()
     }
   }
 
   render() {
-    const { match: { params: { page } }, data: { stories = [] } } = this.props
+    const {
+      match: { params: { page } },
+      data: { stories = [], refetch }
+    } = this.props
 
     return (
       <Stories
-        refetch={this.props.data.refetch}
+        refetch={refetch}
         items={stories}
         page={page || '1'}
         type="newest"
@@ -60,7 +63,8 @@ const mapStateToProps = ({ ui: { refetchStories } }) => ({
 const mapDispatchToProps = dispatch => ({
   onRefetched: () =>
     dispatch({
-      type: 'STORIES_REFETCHED'
+      type: 'STORIES_REFETCHED',
+      page: 'newest'
     })
 })
 

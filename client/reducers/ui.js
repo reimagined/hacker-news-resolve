@@ -21,7 +21,11 @@ export default (
               })
             : state.merge({
                 storyCreation: true,
-                refetchStories: true
+                refetchStories: {
+                  newest: true,
+                  show: true,
+                  ask: true
+                }
               })
         }
         default: {
@@ -47,7 +51,7 @@ export default (
       })
     }
     case 'STORIES_REFETCHED': {
-      return state.set('refetchStories', false)
+      return state.setIn(['refetchStories', action.page], false)
     }
     case 'STORY_REFETCHED': {
       return state.set('refetchStory', false)
