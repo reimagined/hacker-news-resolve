@@ -28,6 +28,10 @@ export default (
                 }
               })
         }
+        case 'unvoteStory':
+        case 'upvoteStory': {
+          return state.set('refetchStory', true)
+        }
         default: {
           return state
         }
@@ -55,9 +59,6 @@ export default (
     }
     case 'STORY_REFETCHED': {
       return state.set('refetchStory', false)
-    }
-    case 'STORY_VOTED': {
-      return state.set('refetchStory', true)
     }
     default: {
       return state

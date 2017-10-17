@@ -136,15 +136,11 @@ export class Story extends React.PureComponent {
     }
   }
 
-  upvoteStory = () => {
+  upvoteStory = () =>
     this.props.upvoteStory(this.props.story.id, this.props.userId)
-    this.props.onVoted()
-  }
 
-  unvoteStory = () => {
+  unvoteStory = () =>
     this.props.unvoteStory(this.props.story.id, this.props.userId)
-    this.props.onVoted()
-  }
 
   render() {
     const { story, loggedIn, voted } = this.props
@@ -221,9 +217,6 @@ export const mapDispatchToProps = dispatch =>
         actions.unvoteStory(id, {
           userId
         }),
-      onVoted: () => ({
-        type: 'STORY_VOTED'
-      }),
       onRefetched: () => ({
         type: 'STORY_REFETCHED'
       })
