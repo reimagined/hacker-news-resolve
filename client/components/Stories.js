@@ -6,7 +6,7 @@ import Pagination from './Pagination'
 import { NUMBER_OF_ITEMS_PER_PAGE } from '../../common/constants'
 import '../styles/stories.css'
 
-const Stories = ({ items, page, type }) =>
+const Stories = ({ items, page, type, refetch }) =>
   page && !Number.isInteger(Number(page)) ? (
     <Redirect push to="/error?text=No such page" />
   ) : (
@@ -18,7 +18,7 @@ const Stories = ({ items, page, type }) =>
         >
           {items.slice(0, NUMBER_OF_ITEMS_PER_PAGE).map(story => (
             <li key={story.id} className="stories__item">
-              <Story story={story} />
+              <Story refetch={refetch} story={story} />
             </li>
           ))}
         </ol>

@@ -17,7 +17,14 @@ class NewestByPage extends React.PureComponent {
   render() {
     const { match: { params: { page } }, data: { stories = [] } } = this.props
 
-    return <Stories items={stories} page={page || '1'} type="newest" />
+    return (
+      <Stories
+        refetch={this.props.data.refetch}
+        items={stories}
+        page={page || '1'}
+        type="newest"
+      />
+    )
   }
 }
 

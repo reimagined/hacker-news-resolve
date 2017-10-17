@@ -1117,6 +1117,7 @@ ShallowWrapper {
       "_hostParent": null,
       "_instance": Story {
         "_reactInternalInstance": [Circular],
+        "componentDidUpdate": [Function],
         "context": Object {},
         "props": Object {
           "loggedIn": true,
@@ -1348,6 +1349,7 @@ ShallowWrapper {
       "_hostParent": null,
       "_instance": Story {
         "_reactInternalInstance": [Circular],
+        "componentDidUpdate": [Function],
         "context": Object {},
         "props": Object {
           "loggedIn": true,
@@ -1588,6 +1590,7 @@ ShallowWrapper {
       "_hostParent": null,
       "_instance": Story {
         "_reactInternalInstance": [Circular],
+        "componentDidUpdate": [Function],
         "context": Object {},
         "props": Object {
           "loggedIn": true,
@@ -1820,6 +1823,7 @@ ShallowWrapper {
       "_hostParent": null,
       "_instance": Story {
         "_reactInternalInstance": [Circular],
+        "componentDidUpdate": [Function],
         "context": Object {},
         "props": Object {
           "loggedIn": true,
