@@ -1274,14 +1274,6 @@ ShallowWrapper {
             voted={0}
             votes={Array []}
         />
-        <div
-            className="story__text"
-            dangerouslySetInnerHTML={
-                Object {
-                    "__html": "Google",
-                  }
-            }
-        />
     </div>
 </div>,
   "nodes": Array [
@@ -1308,14 +1300,6 @@ ShallowWrapper {
                   unvoteStory={[Function]}
                   voted={0}
                   votes={Array []}
-            />
-            <div
-                  className="story__text"
-                  dangerouslySetInnerHTML={
-                        Object {
-                              "__html": "Google",
-                            }
-                  }
             />
       </div>
 </div>,
@@ -1413,14 +1397,6 @@ ShallowWrapper {
                               voted={0}
                               votes={Array []}
                     />
-                    <div
-                              className="story__text"
-                              dangerouslySetInnerHTML={
-                                        Object {
-                                                  "__html": "Google",
-                                                }
-                              }
-                    />
           </div>
 </div>,
         "_debugID": 4,
@@ -1447,14 +1423,6 @@ ShallowWrapper {
                               unvoteStory={[Function]}
                               voted={0}
                               votes={Array []}
-                    />
-                    <div
-                              className="story__text"
-                              dangerouslySetInnerHTML={
-                                        Object {
-                                                  "__html": "Google",
-                                                }
-                              }
                     />
           </div>
 </div>,
