@@ -9,6 +9,15 @@ import ChildrenComments from '../components/ChildrenComments'
 import Comment from '../components/Comment'
 
 export class CommentById extends React.PureComponent {
+  componentDidUpdate = () => {
+    const { refetchStory, onRefetched, data: { refetch } } = this.props
+
+    if (refetchStory) {
+      refetch()
+      onRefetched()
+    }
+  }
+
   saveComment = () => {
     const {
       match: { params: { storyId } },
@@ -75,14 +84,18 @@ const mapDispatchToProps = dispatch =>
           parentId,
           userId,
           text
-        })
+        }),
+      onRefetched: () => ({
+        type: 'STORY_REFETCHED'
+      })
     },
     dispatch
   )
 
-const mapStateToProps = ({ user }) => ({
+const mapStateToProps = ({ user, ui: { refetchStory } }) => ({
   userId: user.id,
-  loggedIn: !!user.id
+  loggedIn: !!user.id,
+  refetchStory
 })
 
 export default graphql(

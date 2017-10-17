@@ -1,51 +1,85 @@
 import Immutable from 'seamless-immutable'
 
+const shouldBeUpdated = (state, action) => {
+  const index = state.updateList.indexOf(action.aggregateId)
+  return index >= 0 && state.userId === action.payload.userId ? index : -1
+}
+
 export default (
   state = Immutable({
     refetchStories: false,
     refetchStory: false,
     storyCreation: false,
     createdStoryId: null,
-    storyCreationError: null
+    storyCreationError: null,
+    updateList: [],
+    userId: null
   }),
   action
 ) => {
   switch (action.type) {
     case '@@resolve/SEND_COMMAND': {
+      let curState = state
+      if (!state.userId) {
+        curState = state.set('userId', action.payload.userId)
+      }
+
       switch (action.command.type) {
         case 'createStory': {
-          return action.command.error
-            ? state.merge({
-                storyCreation: false,
-                storyCreationError: action.command.error
-              })
-            : state.merge({
-                storyCreation: true,
-                refetchStories: {
-                  newest: true,
-                  show: true,
-                  ask: true
-                }
-              })
+          if (action.command.error) {
+            return curState.merge({
+              storyCreation: false,
+              storyCreationError: action.command.error
+            })
+          }
+
+          return curState
+            .merge({
+              storyCreation: true
+            })
+            .update('updateList', items => items.concat(action.aggregateId))
         }
+        case 'createComment':
         case 'unvoteStory':
         case 'upvoteStory': {
-          return state.set('refetchStory', true)
+          return curState.update('updateList', items =>
+            items.concat(action.aggregateId)
+          )
         }
         default: {
-          return state
+          return curState
         }
       }
     }
     case 'StoryCreated': {
-      return state.merge({
-        storyCreation: false,
-        createdStoryId: action.aggregateId,
-        storyCreationError: null
-      })
+      const index = shouldBeUpdated(state, action)
+      if (index >= 0) {
+        return state
+          .update('updateList', items => items.filter((_, i) => i !== index))
+          .merge({
+            storyCreation: false,
+            createdStoryId: action.aggregateId,
+            storyCreationError: null,
+            refetchStories: {
+              newest: true,
+              show: true,
+              ask: true
+            }
+          })
+      }
+
+      return state
     }
+    case 'StoryUpvoted':
+    case 'StoryUnvoted':
     case 'CommentCreated': {
-      return state.set('refetchStory', true)
+      const index = shouldBeUpdated(state, action)
+      if (index >= 0) {
+        return state
+          .update('updateList', items => items.filter((_, i) => i !== index))
+          .set('refetchStory', true)
+      }
+      return state
     }
     case 'SUBMIT_VIEW_SHOWN': {
       return state.merge({

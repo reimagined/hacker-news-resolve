@@ -130,7 +130,7 @@ export class Story extends React.PureComponent {
   componentDidUpdate = () => {
     const { refetchStory, onRefetched, refetch } = this.props
 
-    if (refetchStory) {
+    if (refetch && refetchStory) {
       refetch()
       onRefetched()
     }

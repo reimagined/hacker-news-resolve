@@ -19,10 +19,7 @@ function getReplies(comments, commentIndex) {
   const comment = comments[commentIndex]
   let replyIndex = commentIndex + 1
 
-  while (
-    replyIndex < commentsCount &&
-    comments[replyIndex].level !== comment.level
-  ) {
+  while (replyIndex < commentsCount) {
     result.push(comments[replyIndex])
     replyIndex++
   }
