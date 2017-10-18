@@ -12,7 +12,7 @@ const Item = styled.li`margin-bottom: 12px;`
 
 const ItemList = 'ol'
 
-const Stories = ({ items, page, type }) =>
+const Stories = ({ items, page, type, refetch }) =>
   page && !Number.isInteger(Number(page)) ? (
     <Redirect push to="/error?text=No such page" />
   ) : (
@@ -20,7 +20,7 @@ const Stories = ({ items, page, type }) =>
       <ItemList start={NUMBER_OF_ITEMS_PER_PAGE * (page ? page - 1 : 0) + 1}>
         {items.slice(0, NUMBER_OF_ITEMS_PER_PAGE).map(story => (
           <Item key={story.id}>
-            <Story story={story} />
+            <Story refetch={refetch} story={story} />
           </Item>
         ))}
       </ItemList>

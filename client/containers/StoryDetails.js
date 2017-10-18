@@ -56,7 +56,7 @@ export class StoryDetails extends React.PureComponent {
 
     return (
       <Wrapper>
-        <Story story={story} />
+        <Story showText story={story} />
         {loggedIn ? (
           <Reply>
             <textarea

@@ -4,7 +4,7 @@ import {
   STORY_UPVOTED,
   STORY_UNVOTED,
   COMMENT_CREATED
-} from '../events'
+} from '../../../events'
 
 type UserId = string
 

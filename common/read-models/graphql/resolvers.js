@@ -1,5 +1,17 @@
-import withUserNames from '../helpers/withUserNames'
-import { NUMBER_OF_ITEMS_PER_PAGE } from '../constants'
+import { NUMBER_OF_ITEMS_PER_PAGE } from '../../constants'
+
+async function withUserNames(items, getReadModel) {
+  const users = await getReadModel('users')
+
+  return items.map(item => {
+    const user = users.find(user => user.id === item.createdBy)
+
+    return {
+      ...item,
+      createdByName: user ? user.name : 'unknown'
+    }
+  })
+}
 
 function getReplies(comments, commentIndex) {
   const result = []
@@ -7,10 +19,7 @@ function getReplies(comments, commentIndex) {
   const comment = comments[commentIndex]
   let replyIndex = commentIndex + 1
 
-  while (
-    replyIndex < commentsCount &&
-    comments[replyIndex].level !== comment.level
-  ) {
+  while (replyIndex < commentsCount) {
     result.push(comments[replyIndex])
     replyIndex++
   }
