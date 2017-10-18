@@ -10,9 +10,6 @@ import BaseSplitter from '../components/Splitter'
 import * as userActions from '../actions/userActions'
 import * as uiActions from '../actions/uiActions'
 
-import '../styles/style.css'
-import '../styles/root.css'
-
 const Splitter = () => <BaseSplitter color="#fff" />
 
 const Wrapper = styled.div`
@@ -95,7 +92,7 @@ export class App extends React.PureComponent {
             type="image/x-icon"
             href="/static/img/reSolve-logo.svg"
           />
-          <link rel="stylesheet" type="text/css" href="/static/bundle.css" />
+          <link rel="stylesheet" type="text/css" href="/static/style.css" />
         </Helmet>
         <Wrapper>
           <Header>

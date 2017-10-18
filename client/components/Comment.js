@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import sanitizer from 'sanitizer'
 import TimeAgo from 'react-timeago'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 import Splitter from './Splitter'
 

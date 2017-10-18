@@ -11,10 +11,9 @@ import styled, { css } from 'styled-components'
 
 import Splitter from '../components/Splitter'
 import actions from '../actions/storiesActions'
-import '../styles/story.css'
 
 export const Text = styled.div`
-  color: #666;
+  color: #000;
   font-size: 14px;
   padding-left: 1.25em;
   padding-top: 1.25em;

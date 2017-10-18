@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import Story from '../containers/Story'
 import Pagination from './Pagination'
 import { NUMBER_OF_ITEMS_PER_PAGE } from '../../common/constants'
-import '../styles/stories.css'
 
 const Wrapper = styled.div`padding: 0 0.5em;`
 

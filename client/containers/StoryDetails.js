@@ -8,7 +8,6 @@ import styled from 'styled-components'
 import Story from '../containers/Story'
 import actions from '../actions/storiesActions'
 import ChildrenComments from '../components/ChildrenComments'
-import '../styles/storyDetails.css'
 
 const Wrapper = styled.div`
   padding: 1em 1.25em 0 1.75em;

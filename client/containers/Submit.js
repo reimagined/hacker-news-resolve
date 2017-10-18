@@ -7,7 +7,6 @@ import urlLib from 'url'
 import styled from 'styled-components'
 
 import actions from '../actions/storiesActions'
-import '../styles/submit.css'
 
 const Wrapper = styled.div`
   padding-left: 3em;

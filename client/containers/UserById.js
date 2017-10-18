@@ -2,8 +2,6 @@ import React from 'react'
 import { graphql, gql } from 'react-apollo'
 import styled from 'styled-components'
 
-import '../styles/profile.css'
-
 const Wrapper = styled.div`
   padding-left: 3em;
   padding-right: 1.25em;
