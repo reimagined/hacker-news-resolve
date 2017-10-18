@@ -26,7 +26,7 @@ afterAll(() => {
   uuid.v4 = originalUuidV4
 })
 
-it("Story { type: 'story' } renders correctly", () => {
+it("Story { type: 'story' } with componentDidUpdate renders correctly", () => {
   const story = {
     id: 'story-id',
     type: 'story',
@@ -40,8 +40,17 @@ it("Story { type: 'story' } renders correctly", () => {
   }
 
   const wrapper = shallow(
-    <Story refetch={() => {}} story={story} loggedIn={true} voted={0} />
+    <Story
+      onRefetched={() => {}}
+      refetch={() => {}}
+      refetchStory
+      story={story}
+      loggedIn={true}
+      voted={0}
+    />
   )
+  const prevProp = wrapper.props()
+  wrapper.instance().componentDidUpdate(prevProp)
 
   expect(wrapper).toMatchSnapshot()
 })
@@ -329,4 +338,10 @@ it('mapDispatchToProps unvoteStory', () => {
       userId: 'userId'
     })
   )
+})
+
+it('mapDispatchToProps onRefetched', () => {
+  const props = mapDispatchToProps(value => value)
+
+  expect(props.onRefetched()).toEqual({ type: 'STORY_REFETCHED' })
 })

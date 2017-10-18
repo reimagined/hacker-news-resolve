@@ -1701,7 +1701,7 @@ ShallowWrapper {
 }
 `;
 
-exports[`Story { type: 'story' } renders correctly 1`] = `
+exports[`Story { type: 'story' } with componentDidUpdate renders correctly 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -1771,7 +1771,9 @@ ShallowWrapper {
       "_context": Object {},
       "_currentElement": <Story
         loggedIn={true}
+        onRefetched={[Function]}
         refetch={[Function]}
+        refetchStory={true}
         story={
                 Object {
                         "comments": Array [],
@@ -1796,7 +1798,9 @@ ShallowWrapper {
         "context": Object {},
         "props": Object {
           "loggedIn": true,
+          "onRefetched": [Function],
           "refetch": [Function],
+          "refetchStory": true,
           "story": Object {
             "comments": Array [],
             "createdAt": 1970-01-01T00:00:00.000Z,
@@ -1898,7 +1902,9 @@ ShallowWrapper {
   "root": [Circular],
   "unrendered": <Story
     loggedIn={true}
+    onRefetched={[Function]}
     refetch={[Function]}
+    refetchStory={true}
     story={
         Object {
             "comments": Array [],
