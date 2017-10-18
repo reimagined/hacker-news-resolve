@@ -914,7 +914,7 @@ ShallowWrapper {
 }
 `;
 
-exports[`Story { commentCount: 1 } renders correctly 1`] = `
+exports[`Story { commentCount: 1, text: "Text", showText: true } renders correctly 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -941,6 +941,13 @@ ShallowWrapper {
         voted={0}
         votes={Array []}
     />
+    <styled.div
+        dangerouslySetInnerHTML={
+            Object {
+                "__html": "Text",
+              }
+        }
+    />
 </div>,
   "nodes": Array [
     <div>
@@ -962,6 +969,13 @@ ShallowWrapper {
             voted={0}
             votes={Array []}
       />
+      <styled.div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "Text",
+                      }
+            }
+      />
 </div>,
   ],
   "options": Object {},
@@ -972,6 +986,7 @@ ShallowWrapper {
       "_context": Object {},
       "_currentElement": <Story
         loggedIn={true}
+        showText={true}
         story={
                 Object {
                         "commentCount": 1,
@@ -980,6 +995,7 @@ ShallowWrapper {
                         "createdByName": "user",
                         "id": "story-id",
                         "link": "https://www.google.com",
+                        "text": "Text",
                         "title": "Ask HN: Google",
                         "type": "ask",
                         "votes": Array [],
@@ -997,6 +1013,7 @@ ShallowWrapper {
         "context": Object {},
         "props": Object {
           "loggedIn": true,
+          "showText": true,
           "story": Object {
             "commentCount": 1,
             "createdAt": 1970-01-01T00:00:00.000Z,
@@ -1004,6 +1021,7 @@ ShallowWrapper {
             "createdByName": "user",
             "id": "story-id",
             "link": "https://www.google.com",
+            "text": "Text",
             "title": "Ask HN: Google",
             "type": "ask",
             "votes": Array [],
@@ -1052,6 +1070,13 @@ ShallowWrapper {
                     voted={0}
                     votes={Array []}
           />
+          <styled.div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "Text",
+                                      }
+                    }
+          />
 </div>,
         "_debugID": 10,
         "_renderedOutput": <div>
@@ -1073,6 +1098,13 @@ ShallowWrapper {
                     voted={0}
                     votes={Array []}
           />
+          <styled.div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "Text",
+                                      }
+                    }
+          />
 </div>,
       },
       "_renderedNodeType": 0,
@@ -1087,6 +1119,7 @@ ShallowWrapper {
   "root": [Circular],
   "unrendered": <Story
     loggedIn={true}
+    showText={true}
     story={
         Object {
             "commentCount": 1,
@@ -1095,6 +1128,7 @@ ShallowWrapper {
             "createdByName": "user",
             "id": "story-id",
             "link": "https://www.google.com",
+            "text": "Text",
             "title": "Ask HN: Google",
             "type": "ask",
             "votes": Array [],
@@ -2135,6 +2169,174 @@ ShallowWrapper {
     title="Title"
     voted={true}
 />,
+}
+`;
+
+exports[`Upvote { hidden: true} renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="sc-EHOje chCnSN"
+/>,
+  "nodes": Array [
+    <div
+      className="sc-EHOje chCnSN"
+/>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <styled.div
+        Upvote={true}
+/>,
+      "_debugID": 33,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StyledComponent {
+        "_reactInternalInstance": [Circular],
+        "attrs": Object {},
+        "context": Object {
+          "__styled-components-stylesheet__": undefined,
+          "__styled-components__": undefined,
+          "__styled-components__next__": undefined,
+        },
+        "props": Object {
+          "Upvote": true,
+        },
+        "refs": Object {},
+        "state": Object {
+          "generatedClassName": "chCnSN",
+          "theme": Object {},
+        },
+        "unsubscribeId": -1,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 17,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="sc-EHOje chCnSN"
+/>,
+        "_debugID": 34,
+        "_renderedOutput": <div
+          className="sc-EHOje chCnSN"
+/>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <styled.div
+    Upvote={true}
+/>,
+}
+`;
+
+exports[`Upvote renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="sc-EHOje chCnSN"
+/>,
+  "nodes": Array [
+    <div
+      className="sc-EHOje chCnSN"
+/>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <styled.div />,
+      "_debugID": 31,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StyledComponent {
+        "_reactInternalInstance": [Circular],
+        "attrs": Object {},
+        "context": Object {
+          "__styled-components-stylesheet__": undefined,
+          "__styled-components__": undefined,
+          "__styled-components__next__": undefined,
+        },
+        "props": Object {},
+        "refs": Object {},
+        "state": Object {
+          "generatedClassName": "chCnSN",
+          "theme": Object {},
+        },
+        "unsubscribeId": -1,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 16,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="sc-EHOje chCnSN"
+/>,
+        "_debugID": 32,
+        "_renderedOutput": <div
+          className="sc-EHOje chCnSN"
+/>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <styled.div />,
 }
 `;
 
