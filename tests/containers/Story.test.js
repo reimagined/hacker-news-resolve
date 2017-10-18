@@ -39,7 +39,9 @@ it("Story { type: 'story' } renders correctly", () => {
     createdByName: 'user'
   }
 
-  const wrapper = shallow(<Story story={story} loggedIn={true} voted={0} />)
+  const wrapper = shallow(
+    <Story refetch={() => {}} story={story} loggedIn={true} voted={0} />
+  )
 
   expect(wrapper).toMatchSnapshot()
 })

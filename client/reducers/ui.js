@@ -19,21 +19,21 @@ export default (
 ) => {
   switch (action.type) {
     case '@@resolve/SEND_COMMAND': {
-      let curState = state
+      let newState = state
       if (!state.userId) {
-        curState = state.set('userId', action.payload.userId)
+        newState = state.set('userId', action.payload.userId)
       }
 
       switch (action.command.type) {
         case 'createStory': {
           if (action.command.error) {
-            return curState.merge({
+            return newState.merge({
               storyCreation: false,
               storyCreationError: action.command.error
             })
           }
 
-          return curState
+          return newState
             .merge({
               storyCreation: true
             })
@@ -42,12 +42,12 @@ export default (
         case 'createComment':
         case 'unvoteStory':
         case 'upvoteStory': {
-          return curState.update('updateList', items =>
+          return newState.update('updateList', items =>
             items.concat(action.aggregateId)
           )
         }
         default: {
-          return curState
+          return newState
         }
       }
     }
