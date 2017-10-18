@@ -4,12 +4,12 @@ import styled, { css } from 'styled-components'
 
 import Splitter from './Splitter'
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   margin-left: 3em;
   padding: 0.5em 0;
 `
 
-const Href = styled.div`
+export const Href = styled.div`
   display: inline;
   font-weight: bold;
   color: #000;

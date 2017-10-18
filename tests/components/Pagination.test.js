@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Pagination from '../../client/components/Pagination'
+import Pagination, { Href } from '../../client/components/Pagination'
 
 it('Page 1 renders correctly', () => {
   const markup = shallow(
@@ -33,6 +33,24 @@ it('Page Default renders correctly', () => {
 
 it('Page 1 renders correctly', () => {
   const markup = shallow(<Pagination hasNext={true} location="news" />)
+
+  expect(markup).toMatchSnapshot()
+})
+
+it('Page 1 renders correctly', () => {
+  const markup = shallow(<Pagination hasNext={true} location="news" />)
+
+  expect(markup).toMatchSnapshot()
+})
+
+it('Href renders correctly', () => {
+  const markup = shallow(<Href />)
+
+  expect(markup).toMatchSnapshot()
+})
+
+it('Href { disabled: true } renders correctly', () => {
+  const markup = shallow(<Href disabled />)
 
   expect(markup).toMatchSnapshot()
 })

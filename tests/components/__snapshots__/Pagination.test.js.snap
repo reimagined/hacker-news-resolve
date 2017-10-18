@@ -1,5 +1,177 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Href { disabled: true } renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="sc-htpNat kaZkin"
+    disabled={true}
+/>,
+  "nodes": Array [
+    <div
+      className="sc-htpNat kaZkin"
+      disabled={true}
+/>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <styled.div
+        disabled={true}
+/>,
+      "_debugID": 15,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StyledComponent {
+        "_reactInternalInstance": [Circular],
+        "attrs": Object {},
+        "context": Object {
+          "__styled-components-stylesheet__": undefined,
+          "__styled-components__": undefined,
+          "__styled-components__next__": undefined,
+        },
+        "props": Object {
+          "disabled": true,
+        },
+        "refs": Object {},
+        "state": Object {
+          "generatedClassName": "kaZkin",
+          "theme": Object {},
+        },
+        "unsubscribeId": -1,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 8,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="sc-htpNat kaZkin"
+          disabled={true}
+/>,
+        "_debugID": 16,
+        "_renderedOutput": <div
+          className="sc-htpNat kaZkin"
+          disabled={true}
+/>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <styled.div
+    disabled={true}
+/>,
+}
+`;
+
+exports[`Href renders correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className="sc-htpNat feorIA"
+/>,
+  "nodes": Array [
+    <div
+      className="sc-htpNat feorIA"
+/>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <styled.div />,
+      "_debugID": 13,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StyledComponent {
+        "_reactInternalInstance": [Circular],
+        "attrs": Object {},
+        "context": Object {
+          "__styled-components-stylesheet__": undefined,
+          "__styled-components__": undefined,
+          "__styled-components__next__": undefined,
+        },
+        "props": Object {},
+        "refs": Object {},
+        "state": Object {
+          "generatedClassName": "feorIA",
+          "theme": Object {},
+        },
+        "unsubscribeId": -1,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 7,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className="sc-htpNat feorIA"
+/>,
+        "_debugID": 14,
+        "_renderedOutput": <div
+          className="sc-htpNat feorIA"
+/>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <styled.div />,
+}
+`;
+
 exports[`Page 1 renders correctly 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
@@ -204,6 +376,178 @@ ShallowWrapper {
           </Link>
 </styled.div>,
         "_debugID": 10,
+        "_renderedOutput": <styled.div>
+          <Link
+                    replace={false}
+                    to="news/0"
+          >
+                    <styled.div
+                              disabled={true}
+                    >
+                              Prev
+                    </styled.div>
+          </Link>
+          <styled.div />
+          1
+          <styled.div />
+          <Link
+                    replace={false}
+                    to="news/2"
+          >
+                    <styled.div
+                              disabled={false}
+                    >
+                              More
+                    </styled.div>
+          </Link>
+</styled.div>,
+      },
+      "_renderedNodeType": 1,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Pagination
+    hasNext={true}
+    location="news"
+    page={1}
+/>,
+}
+`;
+
+exports[`Page 1 renders correctly 3`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <styled.div>
+    <Link
+        replace={false}
+        to="news/0"
+    >
+        <styled.div
+            disabled={true}
+        >
+            Prev
+        </styled.div>
+    </Link>
+    <styled.div />
+    1
+    <styled.div />
+    <Link
+        replace={false}
+        to="news/2"
+    >
+        <styled.div
+            disabled={false}
+        >
+            More
+        </styled.div>
+    </Link>
+</styled.div>,
+  "nodes": Array [
+    <styled.div>
+      <Link
+            replace={false}
+            to="news/0"
+      >
+            <styled.div
+                  disabled={true}
+            >
+                  Prev
+            </styled.div>
+      </Link>
+      <styled.div />
+      1
+      <styled.div />
+      <Link
+            replace={false}
+            to="news/2"
+      >
+            <styled.div
+                  disabled={false}
+            >
+                  More
+            </styled.div>
+      </Link>
+</styled.div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Pagination
+        hasNext={true}
+        location="news"
+        page={1}
+/>,
+      "_debugID": 11,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "hasNext": true,
+          "location": "news",
+          "page": 1,
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 6,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <styled.div>
+          <Link
+                    replace={false}
+                    to="news/0"
+          >
+                    <styled.div
+                              disabled={true}
+                    >
+                              Prev
+                    </styled.div>
+          </Link>
+          <styled.div />
+          1
+          <styled.div />
+          <Link
+                    replace={false}
+                    to="news/2"
+          >
+                    <styled.div
+                              disabled={false}
+                    >
+                              More
+                    </styled.div>
+          </Link>
+</styled.div>,
+        "_debugID": 12,
         "_renderedOutput": <styled.div>
           <Link
                     replace={false}
