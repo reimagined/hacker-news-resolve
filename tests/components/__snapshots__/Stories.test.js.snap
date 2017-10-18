@@ -14,6 +14,7 @@ ShallowWrapper {
     >
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -43,6 +44,7 @@ ShallowWrapper {
       >
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -138,6 +140,7 @@ ShallowWrapper {
           >
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -167,6 +170,7 @@ ShallowWrapper {
           >
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -323,6 +327,7 @@ ShallowWrapper {
     >
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -340,6 +345,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -357,6 +363,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -374,6 +381,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -391,6 +399,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -408,6 +417,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -425,6 +435,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -442,6 +453,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -459,6 +471,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -476,6 +489,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -493,6 +507,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -510,6 +525,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -527,6 +543,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -544,6 +561,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -561,6 +579,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -578,6 +597,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -595,6 +615,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -612,6 +633,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -629,6 +651,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -646,6 +669,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -663,6 +687,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -680,6 +705,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -697,6 +723,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -714,6 +741,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -731,6 +759,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -748,6 +777,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -765,6 +795,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -782,6 +813,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -799,6 +831,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -816,6 +849,7 @@ ShallowWrapper {
         </styled.li>
         <styled.li>
             <Connect(Story)
+                refetch={undefined}
                 story={
                     Object {
                         "commentCount": 0,
@@ -845,6 +879,7 @@ ShallowWrapper {
       >
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -862,6 +897,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -879,6 +915,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -896,6 +933,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -913,6 +951,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -930,6 +969,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -947,6 +987,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -964,6 +1005,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -981,6 +1023,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -998,6 +1041,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1015,6 +1059,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1032,6 +1077,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1049,6 +1095,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1066,6 +1113,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1083,6 +1131,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1100,6 +1149,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1117,6 +1167,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1134,6 +1185,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1151,6 +1203,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1168,6 +1221,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1185,6 +1239,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1202,6 +1257,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1219,6 +1275,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1236,6 +1293,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1253,6 +1311,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1270,6 +1329,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1287,6 +1347,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1304,6 +1365,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1321,6 +1383,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -1338,6 +1401,7 @@ ShallowWrapper {
             </styled.li>
             <styled.li>
                   <Connect(Story)
+                        refetch={undefined}
                         story={
                               Object {
                                     "commentCount": 0,
@@ -2513,6 +2577,7 @@ ShallowWrapper {
           >
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2530,6 +2595,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2547,6 +2613,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2564,6 +2631,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2581,6 +2649,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2598,6 +2667,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2615,6 +2685,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2632,6 +2703,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2649,6 +2721,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2666,6 +2739,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2683,6 +2757,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2700,6 +2775,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2717,6 +2793,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2734,6 +2811,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2751,6 +2829,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2768,6 +2847,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2785,6 +2865,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2802,6 +2883,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2819,6 +2901,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2836,6 +2919,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2853,6 +2937,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2870,6 +2955,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2887,6 +2973,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2904,6 +2991,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2921,6 +3009,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2938,6 +3027,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2955,6 +3045,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2972,6 +3063,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -2989,6 +3081,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3006,6 +3099,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3035,6 +3129,7 @@ ShallowWrapper {
           >
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3052,6 +3147,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3069,6 +3165,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3086,6 +3183,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3103,6 +3201,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3120,6 +3219,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3137,6 +3237,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3154,6 +3255,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3171,6 +3273,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3188,6 +3291,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3205,6 +3309,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3222,6 +3327,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3239,6 +3345,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3256,6 +3363,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3273,6 +3381,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3290,6 +3399,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3307,6 +3417,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3324,6 +3435,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3341,6 +3453,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3358,6 +3471,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3375,6 +3489,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3392,6 +3507,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3409,6 +3525,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3426,6 +3543,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3443,6 +3561,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3460,6 +3579,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3477,6 +3597,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3494,6 +3615,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3511,6 +3633,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
@@ -3528,6 +3651,7 @@ ShallowWrapper {
                     </styled.li>
                     <styled.li>
                               <Connect(Story)
+                                        refetch={undefined}
                                         story={
                                                   Object {
                                                             "commentCount": 0,
