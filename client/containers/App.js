@@ -39,10 +39,10 @@ const Header = styled.div`
 const Link = styled(NavLink)`
   color: white;
 
-  &.${props => 'active'} {
+  &.active {
     font-weight: bold;
     text-decoration: underline;
-  } }
+  }
 `
 
 const Title = styled.div`
