@@ -127,6 +127,15 @@ export const Meta = props => {
 }
 
 export class Story extends React.PureComponent {
+  componentDidUpdate = () => {
+    const { refetchStory, onRefetched, refetch } = this.props
+
+    if (refetch && refetchStory) {
+      refetch()
+      onRefetched()
+    }
+  }
+
   upvoteStory = () =>
     this.props.upvoteStory(this.props.story.id, this.props.userId)
 
@@ -134,7 +143,7 @@ export class Story extends React.PureComponent {
     this.props.unvoteStory(this.props.story.id, this.props.userId)
 
   render() {
-    const { story, loggedIn, voted } = this.props
+    const { story, loggedIn, voted, showText } = this.props
 
     if (!story) {
       return null
@@ -166,7 +175,7 @@ export class Story extends React.PureComponent {
             createdBy={story.createdBy}
             createdByName={story.createdByName}
           />
-          {story.text ? (
+          {story.text && showText ? (
             <div
               className="story__text"
               dangerouslySetInnerHTML={{
@@ -180,12 +189,13 @@ export class Story extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = ({ user }, { story }) => {
+export const mapStateToProps = ({ user, ui: { refetchStory } }, { story }) => {
   return {
     story,
     voted: story && story.votes && story.votes.includes(user.id),
     loggedIn: !!user.id,
-    userId: user.id
+    userId: user.id,
+    refetchStory
   }
 }
 
@@ -206,7 +216,10 @@ export const mapDispatchToProps = dispatch =>
       unvoteStory: (id, userId) =>
         actions.unvoteStory(id, {
           userId
-        })
+        }),
+      onRefetched: () => ({
+        type: 'STORY_REFETCHED'
+      })
     },
     dispatch
   )

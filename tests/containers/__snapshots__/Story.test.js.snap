@@ -1117,6 +1117,7 @@ ShallowWrapper {
       "_hostParent": null,
       "_instance": Story {
         "_reactInternalInstance": [Circular],
+        "componentDidUpdate": [Function],
         "context": Object {},
         "props": Object {
           "loggedIn": true,
@@ -1273,14 +1274,6 @@ ShallowWrapper {
             voted={0}
             votes={Array []}
         />
-        <div
-            className="story__text"
-            dangerouslySetInnerHTML={
-                Object {
-                    "__html": "Google",
-                  }
-            }
-        />
     </div>
 </div>,
   "nodes": Array [
@@ -1307,14 +1300,6 @@ ShallowWrapper {
                   unvoteStory={[Function]}
                   voted={0}
                   votes={Array []}
-            />
-            <div
-                  className="story__text"
-                  dangerouslySetInnerHTML={
-                        Object {
-                              "__html": "Google",
-                            }
-                  }
             />
       </div>
 </div>,
@@ -1348,6 +1333,7 @@ ShallowWrapper {
       "_hostParent": null,
       "_instance": Story {
         "_reactInternalInstance": [Circular],
+        "componentDidUpdate": [Function],
         "context": Object {},
         "props": Object {
           "loggedIn": true,
@@ -1411,14 +1397,6 @@ ShallowWrapper {
                               voted={0}
                               votes={Array []}
                     />
-                    <div
-                              className="story__text"
-                              dangerouslySetInnerHTML={
-                                        Object {
-                                                  "__html": "Google",
-                                                }
-                              }
-                    />
           </div>
 </div>,
         "_debugID": 4,
@@ -1445,14 +1423,6 @@ ShallowWrapper {
                               unvoteStory={[Function]}
                               voted={0}
                               votes={Array []}
-                    />
-                    <div
-                              className="story__text"
-                              dangerouslySetInnerHTML={
-                                        Object {
-                                                  "__html": "Google",
-                                                }
-                              }
                     />
           </div>
 </div>,
@@ -1588,6 +1558,7 @@ ShallowWrapper {
       "_hostParent": null,
       "_instance": Story {
         "_reactInternalInstance": [Circular],
+        "componentDidUpdate": [Function],
         "context": Object {},
         "props": Object {
           "loggedIn": true,
@@ -1730,7 +1701,7 @@ ShallowWrapper {
 }
 `;
 
-exports[`Story { type: 'story' } renders correctly 1`] = `
+exports[`Story { type: 'story' } with componentDidUpdate renders correctly 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -1800,6 +1771,9 @@ ShallowWrapper {
       "_context": Object {},
       "_currentElement": <Story
         loggedIn={true}
+        onRefetched={[Function]}
+        refetch={[Function]}
+        refetchStory={true}
         story={
                 Object {
                         "comments": Array [],
@@ -1820,9 +1794,13 @@ ShallowWrapper {
       "_hostParent": null,
       "_instance": Story {
         "_reactInternalInstance": [Circular],
+        "componentDidUpdate": [Function],
         "context": Object {},
         "props": Object {
           "loggedIn": true,
+          "onRefetched": [Function],
+          "refetch": [Function],
+          "refetchStory": true,
           "story": Object {
             "comments": Array [],
             "createdAt": 1970-01-01T00:00:00.000Z,
@@ -1924,6 +1902,9 @@ ShallowWrapper {
   "root": [Circular],
   "unrendered": <Story
     loggedIn={true}
+    onRefetched={[Function]}
+    refetch={[Function]}
+    refetchStory={true}
     story={
         Object {
             "comments": Array [],
