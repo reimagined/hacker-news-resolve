@@ -3,10 +3,16 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { graphql, gql } from 'react-apollo'
 import uuid from 'uuid'
+import styled from 'styled-components'
 
 import actions from '../actions/storiesActions'
 import ChildrenComments from '../components/ChildrenComments'
 import Comment from '../components/Comment'
+
+const Reply = styled.div`
+  padding: 1em 1.25em 0 1.25em;
+  margin-bottom: 1em;
+`
 
 export class CommentById extends React.PureComponent {
   componentDidUpdate = () => {
@@ -49,7 +55,7 @@ export class CommentById extends React.PureComponent {
     return (
       <Comment storyId={storyId} level={0} {...comment}>
         {loggedIn ? (
-          <div className="reply__content">
+          <Reply>
             <textarea
               ref={element => {
                 if (element) {
@@ -61,9 +67,9 @@ export class CommentById extends React.PureComponent {
               cols="70"
             />
             <div>
-              <button onClick={this.saveComment}>Reply</button>
+              <button onClick={this.saveComment}>reply</button>
             </div>
-          </div>
+          </Reply>
         ) : null}
         <ChildrenComments
           storyId={storyId}

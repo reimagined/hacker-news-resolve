@@ -7,9 +7,65 @@ import TimeAgo from 'react-timeago'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import sanitizer from 'sanitizer'
+import styled, { css } from 'styled-components'
 
+import Splitter from '../components/Splitter'
 import actions from '../actions/storiesActions'
-import '../styles/story.css'
+
+export const Text = styled.div`
+  color: #000;
+  font-size: 14px;
+  padding-left: 1.25em;
+  padding-top: 1.25em;
+`
+
+export const Header = styled.div`
+  display: inline-block;
+  color: #000;
+  font-size: 14px;
+`
+
+export const MetaWrapper = styled.div`
+  color: #666;
+  font-size: 8pt;
+  padding-left: 1.25em;
+`
+
+export const Href = styled.div`
+  display: inline-block;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
+export const Upvote = styled.div`
+  display: inline-block;
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+  border: 0px;
+  margin-right: 2px;
+  background: url('/static/img/grayarrow.gif') no-repeat;
+
+  ${props =>
+    props.hidden &&
+    css`
+      cursor: auto;
+      background: none;
+    `};
+`
+
+const Username = styled.a`
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
 
 const isExternalLink = link => link[0] !== '/'
 
@@ -19,9 +75,9 @@ export const getHostname = link => {
 
 export const voteArrow = (visible, upvoteStory) => {
   return visible ? (
-    <span onClick={upvoteStory} className="story__votearrow" title="upvote" />
+    <Upvote onClick={upvoteStory} title="upvote" />
   ) : (
-    <span className="story__votearrow--hidden" />
+    <Upvote hidden />
   )
 }
 
@@ -29,21 +85,17 @@ export const getTitle = ({ title, link }) => {
   if (isExternalLink(link)) {
     return (
       <span>
-        <span className="story__title">
-          <a className="story__title-link" href={link}>
-            {title}
-          </a>
-        </span>{' '}
-        <span className="story__host">({getHostname(link)})</span>
+        <Header>
+          <a href={link}>{title}</a>
+        </Header>{' '}
+        ({getHostname(link)})
       </span>
     )
   }
   return (
-    <span className="story__title">
-      <Link className="story__title-link" to={link}>
-        {title}
-      </Link>
-    </span>
+    <Header>
+      <Link to={link}>{title}</Link>
+    </Header>
   )
 }
 
@@ -58,7 +110,7 @@ export const Title = ({ title, link, upvoteStory, voted, loggedIn }) => {
 
 export const Score = ({ score }) => {
   return (
-    <span className="story__score">
+    <span>
       {score} {plur('point', score)}{' '}
     </span>
   )
@@ -67,10 +119,7 @@ export const Score = ({ score }) => {
 export const PostedBy = ({ id, name }) => {
   return (
     <span>
-      by{' '}
-      <a className="story__meta-link story__by" href={`/user/${id}`}>
-        {name}
-      </a>{' '}
+      by <Username href={`/user/${id}`}>{name}</Username>{' '}
     </span>
   )
 }
@@ -78,16 +127,16 @@ export const PostedBy = ({ id, name }) => {
 export const Discuss = ({ id, commentCount }) => {
   return (
     <span>
-      <span>
-        |{' '}
-        <Link className="story__meta-link" to={`/storyDetails/${id}`}>
+      <Splitter />
+      <Link to={`/storyDetails/${id}`}>
+        <Href>
           {commentCount > 0 ? (
             `${commentCount} ${plur('comment', commentCount)}`
           ) : (
             'discuss'
           )}
-        </Link>{' '}
-      </span>
+        </Href>
+      </Link>{' '}
     </span>
   )
 }
@@ -107,22 +156,18 @@ export const Meta = props => {
   const unvoteIsVisible = voted && loggedIn
 
   return (
-    <div className="story__meta">
+    <MetaWrapper>
       {votes ? <Score score={votes.length} /> : null}
       {createdBy ? <PostedBy id={createdBy} name={createdByName} /> : null}
-      <span className="story__time">
-        <TimeAgo date={new Date(+createdAt)} />{' '}
-      </span>
+      <TimeAgo date={new Date(+createdAt)} />
       {unvoteIsVisible && (
         <span>
-          |{' '}
-          <span className="item__unvote" onClick={unvoteStory}>
-            unvote
-          </span>{' '}
+          <Splitter />
+          <Href onClick={unvoteStory}>unvote</Href>{' '}
         </span>
       )}
       <Discuss id={id} commentCount={commentCount} />
-    </div>
+    </MetaWrapper>
   )
 }
 
@@ -153,37 +198,32 @@ export class Story extends React.PureComponent {
       ? story.comments.length
       : story.commentCount
     return (
-      <div className="story">
-        <div className="story__content">
-          <Title
-            loggedIn={loggedIn}
-            voted={voted}
-            upvoteStory={this.upvoteStory}
-            title={
-              story.type === 'ask' ? `Ask HN: ${story.title}` : story.title
-            }
-            link={story.link || `/storyDetails/${story.id}`}
+      <div>
+        <Title
+          loggedIn={loggedIn}
+          voted={voted}
+          upvoteStory={this.upvoteStory}
+          title={story.type === 'ask' ? `Ask HN: ${story.title}` : story.title}
+          link={story.link || `/storyDetails/${story.id}`}
+        />
+        <Meta
+          voted={voted}
+          id={story.id}
+          votes={story.votes}
+          commentCount={commentCount}
+          unvoteStory={this.unvoteStory}
+          loggedIn={loggedIn}
+          createdAt={story.createdAt}
+          createdBy={story.createdBy}
+          createdByName={story.createdByName}
+        />
+        {story.text && showText ? (
+          <Text
+            dangerouslySetInnerHTML={{
+              __html: sanitizer.sanitize(story.text)
+            }}
           />
-          <Meta
-            voted={voted}
-            id={story.id}
-            votes={story.votes}
-            commentCount={commentCount}
-            unvoteStory={this.unvoteStory}
-            loggedIn={loggedIn}
-            createdAt={story.createdAt}
-            createdBy={story.createdBy}
-            createdByName={story.createdByName}
-          />
-          {story.text && showText ? (
-            <div
-              className="story__text"
-              dangerouslySetInnerHTML={{
-                __html: sanitizer.sanitize(story.text)
-              }}
-            />
-          ) : null}
-        </div>
+        ) : null}
       </div>
     )
   }

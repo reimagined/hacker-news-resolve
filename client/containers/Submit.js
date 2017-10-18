@@ -4,9 +4,30 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Redirect } from 'react-router-dom'
 import urlLib from 'url'
+import styled from 'styled-components'
 
 import actions from '../actions/storiesActions'
-import '../styles/submit.css'
+
+const Wrapper = styled.div`
+  padding-left: 3em;
+  padding-right: 1.25em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+`
+
+const Label = styled.div`
+  display: inline-block;
+  vertical-align: middle;
+  width: 30px;
+  padding: 5px 0;
+`
+
+const Content = styled.div`
+  display: inline-block;
+  vertical-align: middle;
+`
+
+const ErrorMessage = styled.div`color: red;`
 
 export class Submit extends React.PureComponent {
   state = {
@@ -46,83 +67,59 @@ export class Submit extends React.PureComponent {
     }
 
     return (
-      <div className="submit">
-        <table style={{ border: '0' }}>
-          <tbody>
-            <tr>
-              <td>title</td>
-              <td>
-                <input
-                  type="text"
-                  value={this.state.title}
-                  onChange={e => this.handleChange(e, 'title')}
-                  size="50"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>url</td>
-              <td>
-                <input
-                  type="text"
-                  value={this.state.url}
-                  onChange={e => this.handleChange(e, 'url')}
-                  size="50"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td />
-              <td>
-                <b>or</b>
-              </td>
-            </tr>
-            <tr>
-              <td>text</td>
-              <td>
-                <textarea
-                  name="text"
-                  rows="4"
-                  cols="49"
-                  value={this.state.text}
-                  onChange={e => this.handleChange(e, 'text')}
-                />
-              </td>
-            </tr>
-            <tr className="error-message">
-              <td />
-              <td>
-                {this.props.storyCreationError ? (
-                  this.props.storyCreationError
-                ) : (
-                  ''
-                )}
-              </td>
-            </tr>
-            <tr>
-              <td />
-              <td>
-                <button
-                  onClick={this.handleSubmit}
-                  disabled={this.props.storyCreation}
-                >
-                  submit
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td />
-              <td>
-                <p>
-                  Leave url blank to submit a question for discussion. If there
-                  is no url, the text (if any) will appear at the top of the
-                  thread.
-                </p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <Wrapper>
+        <Label>title</Label>
+        <Content>
+          <input
+            type="text"
+            value={this.state.title}
+            onChange={e => this.handleChange(e, 'title')}
+            size="50"
+          />
+        </Content>
+        <br />
+        <Label>url</Label>
+        <Content>
+          <input
+            type="text"
+            value={this.state.url}
+            onChange={e => this.handleChange(e, 'url')}
+            size="50"
+          />
+        </Content>
+        <br />
+        <Label />
+        <Content>
+          <b>or</b>
+        </Content>
+        <br />
+        <Label>text</Label>
+        <Content>
+          <textarea
+            name="text"
+            rows="4"
+            cols="49"
+            value={this.state.text}
+            onChange={e => this.handleChange(e, 'text')}
+          />
+        </Content>
+        <br />
+        <Label />
+        <Content>
+          <ErrorMessage>
+            {this.props.storyCreationError ? this.props.storyCreationError : ''}
+          </ErrorMessage>
+        </Content>
+        <br />
+        <Label />
+        <button onClick={this.handleSubmit} disabled={this.props.storyCreation}>
+          submit
+        </button>
+        <br />
+        <br />
+        Leave url blank to submit a question for discussion. If there is no url,
+        the text (if any) will appear at the top of the thread.
+      </Wrapper>
     )
   }
 }

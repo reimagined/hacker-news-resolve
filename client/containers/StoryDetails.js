@@ -3,11 +3,21 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import uuid from 'uuid'
 import { graphql, gql } from 'react-apollo'
+import styled from 'styled-components'
 
 import Story from '../containers/Story'
 import actions from '../actions/storiesActions'
 import ChildrenComments from '../components/ChildrenComments'
-import '../styles/storyDetails.css'
+
+const Wrapper = styled.div`
+  padding: 1em 1.25em 0 1.75em;
+  margin-bottom: 1em;
+`
+
+const Reply = styled.div`
+  padding: 1em 1.25em 0 1.25em;
+  margin-bottom: 1em;
+`
 
 export class StoryDetails extends React.PureComponent {
   state = {
@@ -45,32 +55,28 @@ export class StoryDetails extends React.PureComponent {
     }
 
     return (
-      <div className="storyDetails">
+      <Wrapper>
         <Story showText story={story} />
         {loggedIn ? (
-          <div className="storyDetails__content">
-            <div className="storyDetails__textarea">
-              <textarea
-                name="text"
-                rows="6"
-                cols="70"
-                value={this.state.text}
-                onChange={this.onChangeText}
-              />
-            </div>
+          <Reply>
+            <textarea
+              name="text"
+              rows="6"
+              cols="70"
+              value={this.state.text}
+              onChange={this.onChangeText}
+            />
             <div>
               <button onClick={this.saveComment}>add comment</button>
             </div>
-          </div>
+          </Reply>
         ) : null}
-        <div>
-          <ChildrenComments
-            storyId={story.id}
-            comments={story.comments}
-            parentId={story.id}
-          />
-        </div>
-      </div>
+        <ChildrenComments
+          storyId={story.id}
+          comments={story.comments}
+          parentId={story.id}
+        />
+      </Wrapper>
     )
   }
 }

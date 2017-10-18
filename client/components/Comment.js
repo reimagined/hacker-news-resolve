@@ -2,8 +2,45 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import sanitizer from 'sanitizer'
 import TimeAgo from 'react-timeago'
+import styled from 'styled-components'
 
-import '../styles/comment.css'
+import Splitter from './Splitter'
+
+const Wrapper = styled.div`
+  margin-bottom: 0.75em;
+  padding-right: 1.25em;
+  padding-top: 0.65em;
+  padding-left: ${2.5}em;
+`
+
+const Meta = styled.div`
+  color: #666;
+  margin-bottom: 0.5em;
+`
+
+const Collapse = styled.div`
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.33em;
+  cursor: pointer;
+`
+
+const Href = styled.div`
+  display: inline-block;
+  vertical-align: middle;
+  text-decoration: none;
+  color: #666;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
+const Time = styled.div`
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.33em;
+`
 
 class Comment extends React.PureComponent {
   state = {
@@ -16,7 +53,6 @@ class Comment extends React.PureComponent {
     const {
       id,
       storyId,
-      level,
       text,
       createdBy,
       createdByName,
@@ -35,61 +71,39 @@ class Comment extends React.PureComponent {
         : `/storyDetails/${storyId}/comments/${parentId}`
 
     return (
-      <div>
-        <div className={`comment comment--level${Math.min(level, 15)}`}>
-          <div className="comment__content">
-            <div className="comment__meta">
-              <span
-                onClick={this.expand}
-                className="comment__collapse"
-                tabIndex="0"
-              >
-                [{this.state.expanded ? '-' : '+'}]
-              </span>
-              <span>
-                {' '}
-                <Link
-                  className="comment__link comment__user"
-                  to={`/user/${createdBy}`}
-                >
-                  {createdByName}
-                </Link>
-              </span>
-              <span>
-                {' '}
-                <TimeAgo date={new Date(+createdAt)} />
-              </span>
-              <span>
-                {' '}
-                |{' '}
-                <Link
-                  className="comment__link"
-                  to={`/storyDetails/${storyId}/comments/${id}`}
-                >
-                  link
-                </Link>
-              </span>
-              <span>
-                {' '}
-                |{' '}
-                <Link className="comment__link" to={parent}>
-                  parent
-                </Link>
-              </span>
-            </div>
-            {this.state.expanded ? (
-              <div className="comment__text">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: sanitizer.sanitize(text)
-                  }}
-                />
-              </div>
-            ) : null}
-          </div>
-        </div>
+      <Wrapper>
+        <Meta>
+          <Collapse onClick={this.expand} tabIndex="0">
+            {'['}
+            {this.state.expanded ? '−' : '+'}
+            {']'}
+          </Collapse>
+          <Link to={`/user/${createdBy}`}>
+            <Href>
+              <b>{createdByName}</b>
+            </Href>
+          </Link>
+          <Time>
+            <TimeAgo date={new Date(+createdAt)} />
+          </Time>
+          <Splitter />
+          <Link to={`/storyDetails/${storyId}/comments/${id}`}>
+            <Href>link</Href>
+          </Link>
+          <Splitter />
+          <Link to={parent}>
+            <Href>parent</Href>
+          </Link>
+        </Meta>
+        {this.state.expanded ? (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: sanitizer.sanitize(text)
+            }}
+          />
+        ) : null}
         {this.state.expanded ? children : null}
-      </div>
+      </Wrapper>
     )
   }
 

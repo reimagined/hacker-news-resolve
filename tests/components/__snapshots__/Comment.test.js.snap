@@ -8,36 +8,83 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
-    <div
-        className="comment comment--level0"
-    >
-        <div
-            className="comment__content"
+  "node": <styled.div>
+    <styled.div>
+        <styled.div
+            onClick={[Function]}
+            tabIndex="0"
         >
-            <div
-                className="comment__meta"
+            [
+            −
+            ]
+        </styled.div>
+        <Link
+            replace={false}
+            to="/user/SomeUser"
+        >
+            <styled.div>
+                <b />
+            </styled.div>
+        </Link>
+        <styled.div>
+            <TimeAgo
+                component="time"
+                date={1970-01-01T00:00:00.000Z}
+                formatter={[Function]}
+                live={true}
+                maxPeriod={Infinity}
+                minPeriod={0}
+                now={[Function]}
+            />
+        </styled.div>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/SomeId"
+        >
+            <styled.div>
+                link
+            </styled.div>
+        </Link>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id"
+        >
+            <styled.div>
+                parent
+            </styled.div>
+        </Link>
+    </styled.div>
+    <div
+        dangerouslySetInnerHTML={
+            Object {
+                "__html": "SomeContent",
+              }
+        }
+    />
+</styled.div>,
+  "nodes": Array [
+    <styled.div>
+      <styled.div>
+            <styled.div
+                  onClick={[Function]}
+                  tabIndex="0"
             >
-                <span
-                    className="comment__collapse"
-                    onClick={[Function]}
-                    tabIndex="0"
-                >
-                    [
-                    -
-                    ]
-                </span>
-                <span>
-                     
-                    <Link
-                        className="comment__link comment__user"
-                        replace={false}
-                        to="/user/SomeUser"
-                    />
-                </span>
-                <span>
-                     
-                    <TimeAgo
+                  [
+                  −
+                  ]
+            </styled.div>
+            <Link
+                  replace={false}
+                  to="/user/SomeUser"
+            >
+                  <styled.div>
+                        <b />
+                  </styled.div>
+            </Link>
+            <styled.div>
+                  <TimeAgo
                         component="time"
                         date={1970-01-01T00:00:00.000Z}
                         formatter={[Function]}
@@ -45,126 +92,35 @@ ShallowWrapper {
                         maxPeriod={Infinity}
                         minPeriod={0}
                         now={[Function]}
-                    />
-                </span>
-                <span>
-                     
-                    |
-                     
-                    <Link
-                        className="comment__link"
-                        replace={false}
-                        to="/storyDetails/story-id/comments/SomeId"
-                    >
+                  />
+            </styled.div>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/SomeId"
+            >
+                  <styled.div>
                         link
-                    </Link>
-                </span>
-                <span>
-                     
-                    |
-                     
-                    <Link
-                        className="comment__link"
-                        replace={false}
-                        to="/storyDetails/story-id"
-                    >
+                  </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id"
+            >
+                  <styled.div>
                         parent
-                    </Link>
-                </span>
-            </div>
-            <div
-                className="comment__text"
-            >
-                <div
-                    dangerouslySetInnerHTML={
-                        Object {
-                            "__html": "SomeContent",
-                          }
-                    }
-                />
-            </div>
-        </div>
-    </div>
-</div>,
-  "nodes": Array [
-    <div>
+                  </styled.div>
+            </Link>
+      </styled.div>
       <div
-            className="comment comment--level0"
-      >
-            <div
-                  className="comment__content"
-            >
-                  <div
-                        className="comment__meta"
-                  >
-                        <span
-                              className="comment__collapse"
-                              onClick={[Function]}
-                              tabIndex="0"
-                        >
-                              [
-                              -
-                              ]
-                        </span>
-                        <span>
-                               
-                              <Link
-                                    className="comment__link comment__user"
-                                    replace={false}
-                                    to="/user/SomeUser"
-                              />
-                        </span>
-                        <span>
-                               
-                              <TimeAgo
-                                    component="time"
-                                    date={1970-01-01T00:00:00.000Z}
-                                    formatter={[Function]}
-                                    live={true}
-                                    maxPeriod={Infinity}
-                                    minPeriod={0}
-                                    now={[Function]}
-                              />
-                        </span>
-                        <span>
-                               
-                              |
-                               
-                              <Link
-                                    className="comment__link"
-                                    replace={false}
-                                    to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                    link
-                              </Link>
-                        </span>
-                        <span>
-                               
-                              |
-                               
-                              <Link
-                                    className="comment__link"
-                                    replace={false}
-                                    to="/storyDetails/story-id"
-                              >
-                                    parent
-                              </Link>
-                        </span>
-                  </div>
-                  <div
-                        className="comment__text"
-                  >
-                        <div
-                              dangerouslySetInnerHTML={
-                                    Object {
-                                          "__html": "SomeContent",
-                                        }
-                              }
-                        />
-                  </div>
-            </div>
-      </div>
-</div>,
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "SomeContent",
+                      }
+            }
+      />
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -229,165 +185,121 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
-          <div
-                    className="comment comment--level0"
-          >
-                    <div
-                              className="comment__content"
+        "_currentElement": <styled.div>
+          <styled.div>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
                     >
-                              <div
-                                        className="comment__meta"
-                              >
-                                        <span
-                                                  className="comment__collapse"
-                                                  onClick={[Function]}
-                                                  tabIndex="0"
-                                        >
-                                                  [
-                                                  -
-                                                  ]
-                                        </span>
-                                        <span>
-                                                   
-                                                  <Link
-                                                            className="comment__link comment__user"
-                                                            replace={false}
-                                                            to="/user/SomeUser"
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  <TimeAgo
-                                                            component="time"
-                                                            date={1970-01-01T00:00:00.000Z}
-                                                            formatter={[Function]}
-                                                            live={true}
-                                                            maxPeriod={Infinity}
-                                                            minPeriod={0}
-                                                            now={[Function]}
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/SomeId"
-                                                  >
-                                                            link
-                                                  </Link>
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id"
-                                                  >
-                                                            parent
-                                                  </Link>
-                                        </span>
-                              </div>
-                              <div
-                                        className="comment__text"
-                              >
-                                        <div
-                                                  dangerouslySetInnerHTML={
-                                                            Object {
-                                                                      "__html": "SomeContent",
-                                                                    }
-                                                  }
-                                        />
-                              </div>
-                    </div>
-          </div>
-</div>,
+                              [
+                              −
+                              ]
+                    </styled.div>
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
+          </styled.div>
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
         "_debugID": 2,
-        "_renderedOutput": <div>
-          <div
-                    className="comment comment--level0"
-          >
-                    <div
-                              className="comment__content"
+        "_renderedOutput": <styled.div>
+          <styled.div>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
                     >
-                              <div
-                                        className="comment__meta"
-                              >
-                                        <span
-                                                  className="comment__collapse"
-                                                  onClick={[Function]}
-                                                  tabIndex="0"
-                                        >
-                                                  [
-                                                  -
-                                                  ]
-                                        </span>
-                                        <span>
-                                                   
-                                                  <Link
-                                                            className="comment__link comment__user"
-                                                            replace={false}
-                                                            to="/user/SomeUser"
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  <TimeAgo
-                                                            component="time"
-                                                            date={1970-01-01T00:00:00.000Z}
-                                                            formatter={[Function]}
-                                                            live={true}
-                                                            maxPeriod={Infinity}
-                                                            minPeriod={0}
-                                                            now={[Function]}
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/SomeId"
-                                                  >
-                                                            link
-                                                  </Link>
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id"
-                                                  >
-                                                            parent
-                                                  </Link>
-                                        </span>
-                              </div>
-                              <div
-                                        className="comment__text"
-                              >
-                                        <div
-                                                  dangerouslySetInnerHTML={
-                                                            Object {
-                                                                      "__html": "SomeContent",
-                                                                    }
-                                                  }
-                                        />
-                              </div>
-                    </div>
-          </div>
-</div>,
+                              [
+                              −
+                              ]
+                    </styled.div>
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
+          </styled.div>
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -423,36 +335,83 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
-    <div
-        className="comment comment--level1"
-    >
-        <div
-            className="comment__content"
+  "node": <styled.div>
+    <styled.div>
+        <styled.div
+            onClick={[Function]}
+            tabIndex="0"
         >
-            <div
-                className="comment__meta"
+            [
+            −
+            ]
+        </styled.div>
+        <Link
+            replace={false}
+            to="/user/SomeUser"
+        >
+            <styled.div>
+                <b />
+            </styled.div>
+        </Link>
+        <styled.div>
+            <TimeAgo
+                component="time"
+                date={1970-01-01T00:00:00.000Z}
+                formatter={[Function]}
+                live={true}
+                maxPeriod={Infinity}
+                minPeriod={0}
+                now={[Function]}
+            />
+        </styled.div>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/SomeId"
+        >
+            <styled.div>
+                link
+            </styled.div>
+        </Link>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/parent-id"
+        >
+            <styled.div>
+                parent
+            </styled.div>
+        </Link>
+    </styled.div>
+    <div
+        dangerouslySetInnerHTML={
+            Object {
+                "__html": "SomeContent",
+              }
+        }
+    />
+</styled.div>,
+  "nodes": Array [
+    <styled.div>
+      <styled.div>
+            <styled.div
+                  onClick={[Function]}
+                  tabIndex="0"
             >
-                <span
-                    className="comment__collapse"
-                    onClick={[Function]}
-                    tabIndex="0"
-                >
-                    [
-                    -
-                    ]
-                </span>
-                <span>
-                     
-                    <Link
-                        className="comment__link comment__user"
-                        replace={false}
-                        to="/user/SomeUser"
-                    />
-                </span>
-                <span>
-                     
-                    <TimeAgo
+                  [
+                  −
+                  ]
+            </styled.div>
+            <Link
+                  replace={false}
+                  to="/user/SomeUser"
+            >
+                  <styled.div>
+                        <b />
+                  </styled.div>
+            </Link>
+            <styled.div>
+                  <TimeAgo
                         component="time"
                         date={1970-01-01T00:00:00.000Z}
                         formatter={[Function]}
@@ -460,126 +419,35 @@ ShallowWrapper {
                         maxPeriod={Infinity}
                         minPeriod={0}
                         now={[Function]}
-                    />
-                </span>
-                <span>
-                     
-                    |
-                     
-                    <Link
-                        className="comment__link"
-                        replace={false}
-                        to="/storyDetails/story-id/comments/SomeId"
-                    >
+                  />
+            </styled.div>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/SomeId"
+            >
+                  <styled.div>
                         link
-                    </Link>
-                </span>
-                <span>
-                     
-                    |
-                     
-                    <Link
-                        className="comment__link"
-                        replace={false}
-                        to="/storyDetails/story-id/comments/parent-id"
-                    >
+                  </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/parent-id"
+            >
+                  <styled.div>
                         parent
-                    </Link>
-                </span>
-            </div>
-            <div
-                className="comment__text"
-            >
-                <div
-                    dangerouslySetInnerHTML={
-                        Object {
-                            "__html": "SomeContent",
-                          }
-                    }
-                />
-            </div>
-        </div>
-    </div>
-</div>,
-  "nodes": Array [
-    <div>
+                  </styled.div>
+            </Link>
+      </styled.div>
       <div
-            className="comment comment--level1"
-      >
-            <div
-                  className="comment__content"
-            >
-                  <div
-                        className="comment__meta"
-                  >
-                        <span
-                              className="comment__collapse"
-                              onClick={[Function]}
-                              tabIndex="0"
-                        >
-                              [
-                              -
-                              ]
-                        </span>
-                        <span>
-                               
-                              <Link
-                                    className="comment__link comment__user"
-                                    replace={false}
-                                    to="/user/SomeUser"
-                              />
-                        </span>
-                        <span>
-                               
-                              <TimeAgo
-                                    component="time"
-                                    date={1970-01-01T00:00:00.000Z}
-                                    formatter={[Function]}
-                                    live={true}
-                                    maxPeriod={Infinity}
-                                    minPeriod={0}
-                                    now={[Function]}
-                              />
-                        </span>
-                        <span>
-                               
-                              |
-                               
-                              <Link
-                                    className="comment__link"
-                                    replace={false}
-                                    to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                    link
-                              </Link>
-                        </span>
-                        <span>
-                               
-                              |
-                               
-                              <Link
-                                    className="comment__link"
-                                    replace={false}
-                                    to="/storyDetails/story-id/comments/parent-id"
-                              >
-                                    parent
-                              </Link>
-                        </span>
-                  </div>
-                  <div
-                        className="comment__text"
-                  >
-                        <div
-                              dangerouslySetInnerHTML={
-                                    Object {
-                                          "__html": "SomeContent",
-                                        }
-                              }
-                        />
-                  </div>
-            </div>
-      </div>
-</div>,
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "SomeContent",
+                      }
+            }
+      />
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -644,165 +512,121 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
-          <div
-                    className="comment comment--level1"
-          >
-                    <div
-                              className="comment__content"
+        "_currentElement": <styled.div>
+          <styled.div>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
                     >
-                              <div
-                                        className="comment__meta"
-                              >
-                                        <span
-                                                  className="comment__collapse"
-                                                  onClick={[Function]}
-                                                  tabIndex="0"
-                                        >
-                                                  [
-                                                  -
-                                                  ]
-                                        </span>
-                                        <span>
-                                                   
-                                                  <Link
-                                                            className="comment__link comment__user"
-                                                            replace={false}
-                                                            to="/user/SomeUser"
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  <TimeAgo
-                                                            component="time"
-                                                            date={1970-01-01T00:00:00.000Z}
-                                                            formatter={[Function]}
-                                                            live={true}
-                                                            maxPeriod={Infinity}
-                                                            minPeriod={0}
-                                                            now={[Function]}
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/SomeId"
-                                                  >
-                                                            link
-                                                  </Link>
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/parent-id"
-                                                  >
-                                                            parent
-                                                  </Link>
-                                        </span>
-                              </div>
-                              <div
-                                        className="comment__text"
-                              >
-                                        <div
-                                                  dangerouslySetInnerHTML={
-                                                            Object {
-                                                                      "__html": "SomeContent",
-                                                                    }
-                                                  }
-                                        />
-                              </div>
-                    </div>
-          </div>
-</div>,
+                              [
+                              −
+                              ]
+                    </styled.div>
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
+          </styled.div>
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
         "_debugID": 4,
-        "_renderedOutput": <div>
-          <div
-                    className="comment comment--level1"
-          >
-                    <div
-                              className="comment__content"
+        "_renderedOutput": <styled.div>
+          <styled.div>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
                     >
-                              <div
-                                        className="comment__meta"
-                              >
-                                        <span
-                                                  className="comment__collapse"
-                                                  onClick={[Function]}
-                                                  tabIndex="0"
-                                        >
-                                                  [
-                                                  -
-                                                  ]
-                                        </span>
-                                        <span>
-                                                   
-                                                  <Link
-                                                            className="comment__link comment__user"
-                                                            replace={false}
-                                                            to="/user/SomeUser"
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  <TimeAgo
-                                                            component="time"
-                                                            date={1970-01-01T00:00:00.000Z}
-                                                            formatter={[Function]}
-                                                            live={true}
-                                                            maxPeriod={Infinity}
-                                                            minPeriod={0}
-                                                            now={[Function]}
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/SomeId"
-                                                  >
-                                                            link
-                                                  </Link>
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/parent-id"
-                                                  >
-                                                            parent
-                                                  </Link>
-                                        </span>
-                              </div>
-                              <div
-                                        className="comment__text"
-                              >
-                                        <div
-                                                  dangerouslySetInnerHTML={
-                                                            Object {
-                                                                      "__html": "SomeContent",
-                                                                    }
-                                                  }
-                                        />
-                              </div>
-                    </div>
-          </div>
-</div>,
+                              [
+                              −
+                              ]
+                    </styled.div>
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
+          </styled.div>
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -838,36 +662,83 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
-    <div
-        className="comment comment--level15"
-    >
-        <div
-            className="comment__content"
+  "node": <styled.div>
+    <styled.div>
+        <styled.div
+            onClick={[Function]}
+            tabIndex="0"
         >
-            <div
-                className="comment__meta"
+            [
+            −
+            ]
+        </styled.div>
+        <Link
+            replace={false}
+            to="/user/SomeUser"
+        >
+            <styled.div>
+                <b />
+            </styled.div>
+        </Link>
+        <styled.div>
+            <TimeAgo
+                component="time"
+                date={1970-01-01T00:00:00.000Z}
+                formatter={[Function]}
+                live={true}
+                maxPeriod={Infinity}
+                minPeriod={0}
+                now={[Function]}
+            />
+        </styled.div>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/SomeId"
+        >
+            <styled.div>
+                link
+            </styled.div>
+        </Link>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/parent-id"
+        >
+            <styled.div>
+                parent
+            </styled.div>
+        </Link>
+    </styled.div>
+    <div
+        dangerouslySetInnerHTML={
+            Object {
+                "__html": "SomeContent",
+              }
+        }
+    />
+</styled.div>,
+  "nodes": Array [
+    <styled.div>
+      <styled.div>
+            <styled.div
+                  onClick={[Function]}
+                  tabIndex="0"
             >
-                <span
-                    className="comment__collapse"
-                    onClick={[Function]}
-                    tabIndex="0"
-                >
-                    [
-                    -
-                    ]
-                </span>
-                <span>
-                     
-                    <Link
-                        className="comment__link comment__user"
-                        replace={false}
-                        to="/user/SomeUser"
-                    />
-                </span>
-                <span>
-                     
-                    <TimeAgo
+                  [
+                  −
+                  ]
+            </styled.div>
+            <Link
+                  replace={false}
+                  to="/user/SomeUser"
+            >
+                  <styled.div>
+                        <b />
+                  </styled.div>
+            </Link>
+            <styled.div>
+                  <TimeAgo
                         component="time"
                         date={1970-01-01T00:00:00.000Z}
                         formatter={[Function]}
@@ -875,126 +746,35 @@ ShallowWrapper {
                         maxPeriod={Infinity}
                         minPeriod={0}
                         now={[Function]}
-                    />
-                </span>
-                <span>
-                     
-                    |
-                     
-                    <Link
-                        className="comment__link"
-                        replace={false}
-                        to="/storyDetails/story-id/comments/SomeId"
-                    >
+                  />
+            </styled.div>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/SomeId"
+            >
+                  <styled.div>
                         link
-                    </Link>
-                </span>
-                <span>
-                     
-                    |
-                     
-                    <Link
-                        className="comment__link"
-                        replace={false}
-                        to="/storyDetails/story-id/comments/parent-id"
-                    >
+                  </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/parent-id"
+            >
+                  <styled.div>
                         parent
-                    </Link>
-                </span>
-            </div>
-            <div
-                className="comment__text"
-            >
-                <div
-                    dangerouslySetInnerHTML={
-                        Object {
-                            "__html": "SomeContent",
-                          }
-                    }
-                />
-            </div>
-        </div>
-    </div>
-</div>,
-  "nodes": Array [
-    <div>
+                  </styled.div>
+            </Link>
+      </styled.div>
       <div
-            className="comment comment--level15"
-      >
-            <div
-                  className="comment__content"
-            >
-                  <div
-                        className="comment__meta"
-                  >
-                        <span
-                              className="comment__collapse"
-                              onClick={[Function]}
-                              tabIndex="0"
-                        >
-                              [
-                              -
-                              ]
-                        </span>
-                        <span>
-                               
-                              <Link
-                                    className="comment__link comment__user"
-                                    replace={false}
-                                    to="/user/SomeUser"
-                              />
-                        </span>
-                        <span>
-                               
-                              <TimeAgo
-                                    component="time"
-                                    date={1970-01-01T00:00:00.000Z}
-                                    formatter={[Function]}
-                                    live={true}
-                                    maxPeriod={Infinity}
-                                    minPeriod={0}
-                                    now={[Function]}
-                              />
-                        </span>
-                        <span>
-                               
-                              |
-                               
-                              <Link
-                                    className="comment__link"
-                                    replace={false}
-                                    to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                    link
-                              </Link>
-                        </span>
-                        <span>
-                               
-                              |
-                               
-                              <Link
-                                    className="comment__link"
-                                    replace={false}
-                                    to="/storyDetails/story-id/comments/parent-id"
-                              >
-                                    parent
-                              </Link>
-                        </span>
-                  </div>
-                  <div
-                        className="comment__text"
-                  >
-                        <div
-                              dangerouslySetInnerHTML={
-                                    Object {
-                                          "__html": "SomeContent",
-                                        }
-                              }
-                        />
-                  </div>
-            </div>
-      </div>
-</div>,
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "SomeContent",
+                      }
+            }
+      />
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -1049,165 +829,121 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
-          <div
-                    className="comment comment--level15"
-          >
-                    <div
-                              className="comment__content"
+        "_currentElement": <styled.div>
+          <styled.div>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
                     >
-                              <div
-                                        className="comment__meta"
-                              >
-                                        <span
-                                                  className="comment__collapse"
-                                                  onClick={[Function]}
-                                                  tabIndex="0"
-                                        >
-                                                  [
-                                                  -
-                                                  ]
-                                        </span>
-                                        <span>
-                                                   
-                                                  <Link
-                                                            className="comment__link comment__user"
-                                                            replace={false}
-                                                            to="/user/SomeUser"
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  <TimeAgo
-                                                            component="time"
-                                                            date={1970-01-01T00:00:00.000Z}
-                                                            formatter={[Function]}
-                                                            live={true}
-                                                            maxPeriod={Infinity}
-                                                            minPeriod={0}
-                                                            now={[Function]}
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/SomeId"
-                                                  >
-                                                            link
-                                                  </Link>
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/parent-id"
-                                                  >
-                                                            parent
-                                                  </Link>
-                                        </span>
-                              </div>
-                              <div
-                                        className="comment__text"
-                              >
-                                        <div
-                                                  dangerouslySetInnerHTML={
-                                                            Object {
-                                                                      "__html": "SomeContent",
-                                                                    }
-                                                  }
-                                        />
-                              </div>
-                    </div>
-          </div>
-</div>,
+                              [
+                              −
+                              ]
+                    </styled.div>
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
+          </styled.div>
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
         "_debugID": 6,
-        "_renderedOutput": <div>
-          <div
-                    className="comment comment--level15"
-          >
-                    <div
-                              className="comment__content"
+        "_renderedOutput": <styled.div>
+          <styled.div>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
                     >
-                              <div
-                                        className="comment__meta"
-                              >
-                                        <span
-                                                  className="comment__collapse"
-                                                  onClick={[Function]}
-                                                  tabIndex="0"
-                                        >
-                                                  [
-                                                  -
-                                                  ]
-                                        </span>
-                                        <span>
-                                                   
-                                                  <Link
-                                                            className="comment__link comment__user"
-                                                            replace={false}
-                                                            to="/user/SomeUser"
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  <TimeAgo
-                                                            component="time"
-                                                            date={1970-01-01T00:00:00.000Z}
-                                                            formatter={[Function]}
-                                                            live={true}
-                                                            maxPeriod={Infinity}
-                                                            minPeriod={0}
-                                                            now={[Function]}
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/SomeId"
-                                                  >
-                                                            link
-                                                  </Link>
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/parent-id"
-                                                  >
-                                                            parent
-                                                  </Link>
-                                        </span>
-                              </div>
-                              <div
-                                        className="comment__text"
-                              >
-                                        <div
-                                                  dangerouslySetInnerHTML={
-                                                            Object {
-                                                                      "__html": "SomeContent",
-                                                                    }
-                                                  }
-                                        />
-                              </div>
-                    </div>
-          </div>
-</div>,
+                              [
+                              −
+                              ]
+                    </styled.div>
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
+          </styled.div>
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -1237,36 +973,83 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
-    <div
-        className="comment comment--level15"
-    >
-        <div
-            className="comment__content"
+  "node": <styled.div>
+    <styled.div>
+        <styled.div
+            onClick={[Function]}
+            tabIndex="0"
         >
-            <div
-                className="comment__meta"
+            [
+            −
+            ]
+        </styled.div>
+        <Link
+            replace={false}
+            to="/user/SomeUser"
+        >
+            <styled.div>
+                <b />
+            </styled.div>
+        </Link>
+        <styled.div>
+            <TimeAgo
+                component="time"
+                date={1970-01-01T00:00:00.000Z}
+                formatter={[Function]}
+                live={true}
+                maxPeriod={Infinity}
+                minPeriod={0}
+                now={[Function]}
+            />
+        </styled.div>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/SomeId"
+        >
+            <styled.div>
+                link
+            </styled.div>
+        </Link>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/parent-id"
+        >
+            <styled.div>
+                parent
+            </styled.div>
+        </Link>
+    </styled.div>
+    <div
+        dangerouslySetInnerHTML={
+            Object {
+                "__html": "SomeContent",
+              }
+        }
+    />
+</styled.div>,
+  "nodes": Array [
+    <styled.div>
+      <styled.div>
+            <styled.div
+                  onClick={[Function]}
+                  tabIndex="0"
             >
-                <span
-                    className="comment__collapse"
-                    onClick={[Function]}
-                    tabIndex="0"
-                >
-                    [
-                    -
-                    ]
-                </span>
-                <span>
-                     
-                    <Link
-                        className="comment__link comment__user"
-                        replace={false}
-                        to="/user/SomeUser"
-                    />
-                </span>
-                <span>
-                     
-                    <TimeAgo
+                  [
+                  −
+                  ]
+            </styled.div>
+            <Link
+                  replace={false}
+                  to="/user/SomeUser"
+            >
+                  <styled.div>
+                        <b />
+                  </styled.div>
+            </Link>
+            <styled.div>
+                  <TimeAgo
                         component="time"
                         date={1970-01-01T00:00:00.000Z}
                         formatter={[Function]}
@@ -1274,126 +1057,35 @@ ShallowWrapper {
                         maxPeriod={Infinity}
                         minPeriod={0}
                         now={[Function]}
-                    />
-                </span>
-                <span>
-                     
-                    |
-                     
-                    <Link
-                        className="comment__link"
-                        replace={false}
-                        to="/storyDetails/story-id/comments/SomeId"
-                    >
+                  />
+            </styled.div>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/SomeId"
+            >
+                  <styled.div>
                         link
-                    </Link>
-                </span>
-                <span>
-                     
-                    |
-                     
-                    <Link
-                        className="comment__link"
-                        replace={false}
-                        to="/storyDetails/story-id/comments/parent-id"
-                    >
+                  </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/parent-id"
+            >
+                  <styled.div>
                         parent
-                    </Link>
-                </span>
-            </div>
-            <div
-                className="comment__text"
-            >
-                <div
-                    dangerouslySetInnerHTML={
-                        Object {
-                            "__html": "SomeContent",
-                          }
-                    }
-                />
-            </div>
-        </div>
-    </div>
-</div>,
-  "nodes": Array [
-    <div>
+                  </styled.div>
+            </Link>
+      </styled.div>
       <div
-            className="comment comment--level15"
-      >
-            <div
-                  className="comment__content"
-            >
-                  <div
-                        className="comment__meta"
-                  >
-                        <span
-                              className="comment__collapse"
-                              onClick={[Function]}
-                              tabIndex="0"
-                        >
-                              [
-                              -
-                              ]
-                        </span>
-                        <span>
-                               
-                              <Link
-                                    className="comment__link comment__user"
-                                    replace={false}
-                                    to="/user/SomeUser"
-                              />
-                        </span>
-                        <span>
-                               
-                              <TimeAgo
-                                    component="time"
-                                    date={1970-01-01T00:00:00.000Z}
-                                    formatter={[Function]}
-                                    live={true}
-                                    maxPeriod={Infinity}
-                                    minPeriod={0}
-                                    now={[Function]}
-                              />
-                        </span>
-                        <span>
-                               
-                              |
-                               
-                              <Link
-                                    className="comment__link"
-                                    replace={false}
-                                    to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                    link
-                              </Link>
-                        </span>
-                        <span>
-                               
-                              |
-                               
-                              <Link
-                                    className="comment__link"
-                                    replace={false}
-                                    to="/storyDetails/story-id/comments/parent-id"
-                              >
-                                    parent
-                              </Link>
-                        </span>
-                  </div>
-                  <div
-                        className="comment__text"
-                  >
-                        <div
-                              dangerouslySetInnerHTML={
-                                    Object {
-                                          "__html": "SomeContent",
-                                        }
-                              }
-                        />
-                  </div>
-            </div>
-      </div>
-</div>,
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "SomeContent",
+                      }
+            }
+      />
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -1448,165 +1140,121 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
-          <div
-                    className="comment comment--level15"
-          >
-                    <div
-                              className="comment__content"
+        "_currentElement": <styled.div>
+          <styled.div>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
                     >
-                              <div
-                                        className="comment__meta"
-                              >
-                                        <span
-                                                  className="comment__collapse"
-                                                  onClick={[Function]}
-                                                  tabIndex="0"
-                                        >
-                                                  [
-                                                  -
-                                                  ]
-                                        </span>
-                                        <span>
-                                                   
-                                                  <Link
-                                                            className="comment__link comment__user"
-                                                            replace={false}
-                                                            to="/user/SomeUser"
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  <TimeAgo
-                                                            component="time"
-                                                            date={1970-01-01T00:00:00.000Z}
-                                                            formatter={[Function]}
-                                                            live={true}
-                                                            maxPeriod={Infinity}
-                                                            minPeriod={0}
-                                                            now={[Function]}
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/SomeId"
-                                                  >
-                                                            link
-                                                  </Link>
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/parent-id"
-                                                  >
-                                                            parent
-                                                  </Link>
-                                        </span>
-                              </div>
-                              <div
-                                        className="comment__text"
-                              >
-                                        <div
-                                                  dangerouslySetInnerHTML={
-                                                            Object {
-                                                                      "__html": "SomeContent",
-                                                                    }
-                                                  }
-                                        />
-                              </div>
-                    </div>
-          </div>
-</div>,
+                              [
+                              −
+                              ]
+                    </styled.div>
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
+          </styled.div>
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
         "_debugID": 8,
-        "_renderedOutput": <div>
-          <div
-                    className="comment comment--level15"
-          >
-                    <div
-                              className="comment__content"
+        "_renderedOutput": <styled.div>
+          <styled.div>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
                     >
-                              <div
-                                        className="comment__meta"
-                              >
-                                        <span
-                                                  className="comment__collapse"
-                                                  onClick={[Function]}
-                                                  tabIndex="0"
-                                        >
-                                                  [
-                                                  -
-                                                  ]
-                                        </span>
-                                        <span>
-                                                   
-                                                  <Link
-                                                            className="comment__link comment__user"
-                                                            replace={false}
-                                                            to="/user/SomeUser"
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  <TimeAgo
-                                                            component="time"
-                                                            date={1970-01-01T00:00:00.000Z}
-                                                            formatter={[Function]}
-                                                            live={true}
-                                                            maxPeriod={Infinity}
-                                                            minPeriod={0}
-                                                            now={[Function]}
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/SomeId"
-                                                  >
-                                                            link
-                                                  </Link>
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/parent-id"
-                                                  >
-                                                            parent
-                                                  </Link>
-                                        </span>
-                              </div>
-                              <div
-                                        className="comment__text"
-                              >
-                                        <div
-                                                  dangerouslySetInnerHTML={
-                                                            Object {
-                                                                      "__html": "SomeContent",
-                                                                    }
-                                                  }
-                                        />
-                              </div>
-                    </div>
-          </div>
-</div>,
+                              [
+                              −
+                              ]
+                    </styled.div>
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
+          </styled.div>
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -1636,36 +1284,83 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
-    <div
-        className="comment comment--level1"
-    >
-        <div
-            className="comment__content"
+  "node": <styled.div>
+    <styled.div>
+        <styled.div
+            onClick={[Function]}
+            tabIndex="0"
         >
-            <div
-                className="comment__meta"
+            [
+            −
+            ]
+        </styled.div>
+        <Link
+            replace={false}
+            to="/user/SomeUser"
+        >
+            <styled.div>
+                <b />
+            </styled.div>
+        </Link>
+        <styled.div>
+            <TimeAgo
+                component="time"
+                date={1970-01-01T00:00:00.000Z}
+                formatter={[Function]}
+                live={true}
+                maxPeriod={Infinity}
+                minPeriod={0}
+                now={[Function]}
+            />
+        </styled.div>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/SomeId"
+        >
+            <styled.div>
+                link
+            </styled.div>
+        </Link>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/parent-id"
+        >
+            <styled.div>
+                parent
+            </styled.div>
+        </Link>
+    </styled.div>
+    <div
+        dangerouslySetInnerHTML={
+            Object {
+                "__html": "SomeContent",
+              }
+        }
+    />
+</styled.div>,
+  "nodes": Array [
+    <styled.div>
+      <styled.div>
+            <styled.div
+                  onClick={[Function]}
+                  tabIndex="0"
             >
-                <span
-                    className="comment__collapse"
-                    onClick={[Function]}
-                    tabIndex="0"
-                >
-                    [
-                    -
-                    ]
-                </span>
-                <span>
-                     
-                    <Link
-                        className="comment__link comment__user"
-                        replace={false}
-                        to="/user/SomeUser"
-                    />
-                </span>
-                <span>
-                     
-                    <TimeAgo
+                  [
+                  −
+                  ]
+            </styled.div>
+            <Link
+                  replace={false}
+                  to="/user/SomeUser"
+            >
+                  <styled.div>
+                        <b />
+                  </styled.div>
+            </Link>
+            <styled.div>
+                  <TimeAgo
                         component="time"
                         date={1970-01-01T00:00:00.000Z}
                         formatter={[Function]}
@@ -1673,126 +1368,35 @@ ShallowWrapper {
                         maxPeriod={Infinity}
                         minPeriod={0}
                         now={[Function]}
-                    />
-                </span>
-                <span>
-                     
-                    |
-                     
-                    <Link
-                        className="comment__link"
-                        replace={false}
-                        to="/storyDetails/story-id/comments/SomeId"
-                    >
+                  />
+            </styled.div>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/SomeId"
+            >
+                  <styled.div>
                         link
-                    </Link>
-                </span>
-                <span>
-                     
-                    |
-                     
-                    <Link
-                        className="comment__link"
-                        replace={false}
-                        to="/storyDetails/story-id/comments/parent-id"
-                    >
+                  </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/parent-id"
+            >
+                  <styled.div>
                         parent
-                    </Link>
-                </span>
-            </div>
-            <div
-                className="comment__text"
-            >
-                <div
-                    dangerouslySetInnerHTML={
-                        Object {
-                            "__html": "SomeContent",
-                          }
-                    }
-                />
-            </div>
-        </div>
-    </div>
-</div>,
-  "nodes": Array [
-    <div>
+                  </styled.div>
+            </Link>
+      </styled.div>
       <div
-            className="comment comment--level1"
-      >
-            <div
-                  className="comment__content"
-            >
-                  <div
-                        className="comment__meta"
-                  >
-                        <span
-                              className="comment__collapse"
-                              onClick={[Function]}
-                              tabIndex="0"
-                        >
-                              [
-                              -
-                              ]
-                        </span>
-                        <span>
-                               
-                              <Link
-                                    className="comment__link comment__user"
-                                    replace={false}
-                                    to="/user/SomeUser"
-                              />
-                        </span>
-                        <span>
-                               
-                              <TimeAgo
-                                    component="time"
-                                    date={1970-01-01T00:00:00.000Z}
-                                    formatter={[Function]}
-                                    live={true}
-                                    maxPeriod={Infinity}
-                                    minPeriod={0}
-                                    now={[Function]}
-                              />
-                        </span>
-                        <span>
-                               
-                              |
-                               
-                              <Link
-                                    className="comment__link"
-                                    replace={false}
-                                    to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                    link
-                              </Link>
-                        </span>
-                        <span>
-                               
-                              |
-                               
-                              <Link
-                                    className="comment__link"
-                                    replace={false}
-                                    to="/storyDetails/story-id/comments/parent-id"
-                              >
-                                    parent
-                              </Link>
-                        </span>
-                  </div>
-                  <div
-                        className="comment__text"
-                  >
-                        <div
-                              dangerouslySetInnerHTML={
-                                    Object {
-                                          "__html": "SomeContent",
-                                        }
-                              }
-                        />
-                  </div>
-            </div>
-      </div>
-</div>,
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "SomeContent",
+                      }
+            }
+      />
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -1847,143 +1451,107 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
-          <div
-                    className="comment comment--level1"
-          >
-                    <div
-                              className="comment__content"
+        "_currentElement": <styled.div>
+          <styled.div>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
                     >
-                              <div
-                                        className="comment__meta"
-                              >
-                                        <span
-                                                  className="comment__collapse"
-                                                  onClick={[Function]}
-                                                  tabIndex="0"
-                                        >
-                                                  [
-                                                  +
-                                                  ]
-                                        </span>
-                                        <span>
-                                                   
-                                                  <Link
-                                                            className="comment__link comment__user"
-                                                            replace={false}
-                                                            to="/user/SomeUser"
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  <TimeAgo
-                                                            component="time"
-                                                            date={1970-01-01T00:00:00.000Z}
-                                                            formatter={[Function]}
-                                                            live={true}
-                                                            maxPeriod={Infinity}
-                                                            minPeriod={0}
-                                                            now={[Function]}
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/SomeId"
-                                                  >
-                                                            link
-                                                  </Link>
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/parent-id"
-                                                  >
-                                                            parent
-                                                  </Link>
-                                        </span>
-                              </div>
-                    </div>
-          </div>
-</div>,
+                              [
+                              +
+                              ]
+                    </styled.div>
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
+          </styled.div>
+</styled.div>,
         "_debugID": 10,
-        "_renderedOutput": <div>
-          <div
-                    className="comment comment--level1"
-          >
-                    <div
-                              className="comment__content"
+        "_renderedOutput": <styled.div>
+          <styled.div>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
                     >
-                              <div
-                                        className="comment__meta"
-                              >
-                                        <span
-                                                  className="comment__collapse"
-                                                  onClick={[Function]}
-                                                  tabIndex="0"
-                                        >
-                                                  [
-                                                  +
-                                                  ]
-                                        </span>
-                                        <span>
-                                                   
-                                                  <Link
-                                                            className="comment__link comment__user"
-                                                            replace={false}
-                                                            to="/user/SomeUser"
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  <TimeAgo
-                                                            component="time"
-                                                            date={1970-01-01T00:00:00.000Z}
-                                                            formatter={[Function]}
-                                                            live={true}
-                                                            maxPeriod={Infinity}
-                                                            minPeriod={0}
-                                                            now={[Function]}
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/SomeId"
-                                                  >
-                                                            link
-                                                  </Link>
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/parent-id"
-                                                  >
-                                                            parent
-                                                  </Link>
-                                        </span>
-                              </div>
-                    </div>
-          </div>
-</div>,
+                              [
+                              +
+                              ]
+                    </styled.div>
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
+          </styled.div>
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -2013,36 +1581,83 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
-    <div
-        className="comment comment--level1"
-    >
-        <div
-            className="comment__content"
+  "node": <styled.div>
+    <styled.div>
+        <styled.div
+            onClick={[Function]}
+            tabIndex="0"
         >
-            <div
-                className="comment__meta"
+            [
+            −
+            ]
+        </styled.div>
+        <Link
+            replace={false}
+            to="/user/SomeUser"
+        >
+            <styled.div>
+                <b />
+            </styled.div>
+        </Link>
+        <styled.div>
+            <TimeAgo
+                component="time"
+                date={1970-01-01T00:00:00.000Z}
+                formatter={[Function]}
+                live={true}
+                maxPeriod={Infinity}
+                minPeriod={0}
+                now={[Function]}
+            />
+        </styled.div>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/SomeId"
+        >
+            <styled.div>
+                link
+            </styled.div>
+        </Link>
+        <styled.div />
+        <Link
+            replace={false}
+            to="/storyDetails/story-id/comments/parent-id"
+        >
+            <styled.div>
+                parent
+            </styled.div>
+        </Link>
+    </styled.div>
+    <div
+        dangerouslySetInnerHTML={
+            Object {
+                "__html": "SomeContent",
+              }
+        }
+    />
+</styled.div>,
+  "nodes": Array [
+    <styled.div>
+      <styled.div>
+            <styled.div
+                  onClick={[Function]}
+                  tabIndex="0"
             >
-                <span
-                    className="comment__collapse"
-                    onClick={[Function]}
-                    tabIndex="0"
-                >
-                    [
-                    -
-                    ]
-                </span>
-                <span>
-                     
-                    <Link
-                        className="comment__link comment__user"
-                        replace={false}
-                        to="/user/SomeUser"
-                    />
-                </span>
-                <span>
-                     
-                    <TimeAgo
+                  [
+                  −
+                  ]
+            </styled.div>
+            <Link
+                  replace={false}
+                  to="/user/SomeUser"
+            >
+                  <styled.div>
+                        <b />
+                  </styled.div>
+            </Link>
+            <styled.div>
+                  <TimeAgo
                         component="time"
                         date={1970-01-01T00:00:00.000Z}
                         formatter={[Function]}
@@ -2050,126 +1665,35 @@ ShallowWrapper {
                         maxPeriod={Infinity}
                         minPeriod={0}
                         now={[Function]}
-                    />
-                </span>
-                <span>
-                     
-                    |
-                     
-                    <Link
-                        className="comment__link"
-                        replace={false}
-                        to="/storyDetails/story-id/comments/SomeId"
-                    >
+                  />
+            </styled.div>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/SomeId"
+            >
+                  <styled.div>
                         link
-                    </Link>
-                </span>
-                <span>
-                     
-                    |
-                     
-                    <Link
-                        className="comment__link"
-                        replace={false}
-                        to="/storyDetails/story-id/comments/parent-id"
-                    >
+                  </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                  replace={false}
+                  to="/storyDetails/story-id/comments/parent-id"
+            >
+                  <styled.div>
                         parent
-                    </Link>
-                </span>
-            </div>
-            <div
-                className="comment__text"
-            >
-                <div
-                    dangerouslySetInnerHTML={
-                        Object {
-                            "__html": "SomeContent",
-                          }
-                    }
-                />
-            </div>
-        </div>
-    </div>
-</div>,
-  "nodes": Array [
-    <div>
+                  </styled.div>
+            </Link>
+      </styled.div>
       <div
-            className="comment comment--level1"
-      >
-            <div
-                  className="comment__content"
-            >
-                  <div
-                        className="comment__meta"
-                  >
-                        <span
-                              className="comment__collapse"
-                              onClick={[Function]}
-                              tabIndex="0"
-                        >
-                              [
-                              -
-                              ]
-                        </span>
-                        <span>
-                               
-                              <Link
-                                    className="comment__link comment__user"
-                                    replace={false}
-                                    to="/user/SomeUser"
-                              />
-                        </span>
-                        <span>
-                               
-                              <TimeAgo
-                                    component="time"
-                                    date={1970-01-01T00:00:00.000Z}
-                                    formatter={[Function]}
-                                    live={true}
-                                    maxPeriod={Infinity}
-                                    minPeriod={0}
-                                    now={[Function]}
-                              />
-                        </span>
-                        <span>
-                               
-                              |
-                               
-                              <Link
-                                    className="comment__link"
-                                    replace={false}
-                                    to="/storyDetails/story-id/comments/SomeId"
-                              >
-                                    link
-                              </Link>
-                        </span>
-                        <span>
-                               
-                              |
-                               
-                              <Link
-                                    className="comment__link"
-                                    replace={false}
-                                    to="/storyDetails/story-id/comments/parent-id"
-                              >
-                                    parent
-                              </Link>
-                        </span>
-                  </div>
-                  <div
-                        className="comment__text"
-                  >
-                        <div
-                              dangerouslySetInnerHTML={
-                                    Object {
-                                          "__html": "SomeContent",
-                                        }
-                              }
-                        />
-                  </div>
-            </div>
-      </div>
-</div>,
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "SomeContent",
+                      }
+            }
+      />
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -2224,165 +1748,121 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
-          <div
-                    className="comment comment--level1"
-          >
-                    <div
-                              className="comment__content"
+        "_currentElement": <styled.div>
+          <styled.div>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
                     >
-                              <div
-                                        className="comment__meta"
-                              >
-                                        <span
-                                                  className="comment__collapse"
-                                                  onClick={[Function]}
-                                                  tabIndex="0"
-                                        >
-                                                  [
-                                                  -
-                                                  ]
-                                        </span>
-                                        <span>
-                                                   
-                                                  <Link
-                                                            className="comment__link comment__user"
-                                                            replace={false}
-                                                            to="/user/SomeUser"
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  <TimeAgo
-                                                            component="time"
-                                                            date={1970-01-01T00:00:00.000Z}
-                                                            formatter={[Function]}
-                                                            live={true}
-                                                            maxPeriod={Infinity}
-                                                            minPeriod={0}
-                                                            now={[Function]}
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/SomeId"
-                                                  >
-                                                            link
-                                                  </Link>
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/parent-id"
-                                                  >
-                                                            parent
-                                                  </Link>
-                                        </span>
-                              </div>
-                              <div
-                                        className="comment__text"
-                              >
-                                        <div
-                                                  dangerouslySetInnerHTML={
-                                                            Object {
-                                                                      "__html": "SomeContent",
-                                                                    }
-                                                  }
-                                        />
-                              </div>
-                    </div>
-          </div>
-</div>,
+                              [
+                              −
+                              ]
+                    </styled.div>
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
+          </styled.div>
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
         "_debugID": 12,
-        "_renderedOutput": <div>
-          <div
-                    className="comment comment--level1"
-          >
-                    <div
-                              className="comment__content"
+        "_renderedOutput": <styled.div>
+          <styled.div>
+                    <styled.div
+                              onClick={[Function]}
+                              tabIndex="0"
                     >
-                              <div
-                                        className="comment__meta"
-                              >
-                                        <span
-                                                  className="comment__collapse"
-                                                  onClick={[Function]}
-                                                  tabIndex="0"
-                                        >
-                                                  [
-                                                  -
-                                                  ]
-                                        </span>
-                                        <span>
-                                                   
-                                                  <Link
-                                                            className="comment__link comment__user"
-                                                            replace={false}
-                                                            to="/user/SomeUser"
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  <TimeAgo
-                                                            component="time"
-                                                            date={1970-01-01T00:00:00.000Z}
-                                                            formatter={[Function]}
-                                                            live={true}
-                                                            maxPeriod={Infinity}
-                                                            minPeriod={0}
-                                                            now={[Function]}
-                                                  />
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/SomeId"
-                                                  >
-                                                            link
-                                                  </Link>
-                                        </span>
-                                        <span>
-                                                   
-                                                  |
-                                                   
-                                                  <Link
-                                                            className="comment__link"
-                                                            replace={false}
-                                                            to="/storyDetails/story-id/comments/parent-id"
-                                                  >
-                                                            parent
-                                                  </Link>
-                                        </span>
-                              </div>
-                              <div
-                                        className="comment__text"
-                              >
-                                        <div
-                                                  dangerouslySetInnerHTML={
-                                                            Object {
-                                                                      "__html": "SomeContent",
-                                                                    }
-                                                  }
-                                        />
-                              </div>
-                    </div>
-          </div>
-</div>,
+                              [
+                              −
+                              ]
+                    </styled.div>
+                    <Link
+                              replace={false}
+                              to="/user/SomeUser"
+                    >
+                              <styled.div>
+                                        <b />
+                              </styled.div>
+                    </Link>
+                    <styled.div>
+                              <TimeAgo
+                                        component="time"
+                                        date={1970-01-01T00:00:00.000Z}
+                                        formatter={[Function]}
+                                        live={true}
+                                        maxPeriod={Infinity}
+                                        minPeriod={0}
+                                        now={[Function]}
+                              />
+                    </styled.div>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/SomeId"
+                    >
+                              <styled.div>
+                                        link
+                              </styled.div>
+                    </Link>
+                    <styled.div />
+                    <Link
+                              replace={false}
+                              to="/storyDetails/story-id/comments/parent-id"
+                    >
+                              <styled.div>
+                                        parent
+                              </styled.div>
+                    </Link>
+          </styled.div>
+          <div
+                    dangerouslySetInnerHTML={
+                              Object {
+                                        "__html": "SomeContent",
+                                      }
+                    }
+          />
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,

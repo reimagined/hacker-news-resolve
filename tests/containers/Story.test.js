@@ -11,7 +11,9 @@ import {
   Meta,
   mapStateToProps,
   mapDispatchToProps,
-  Story
+  Story,
+  Href,
+  Upvote
 } from '../../client/containers/Story'
 
 import actions from '../../client/actions/storiesActions'
@@ -106,7 +108,7 @@ it("Story { type: 'ask' } renders correctly", () => {
   expect(wrapper).toMatchSnapshot()
 })
 
-it('Story { commentCount: 1 } renders correctly', () => {
+it('Story { commentCount: 1, text: "Text", showText: true } renders correctly', () => {
   const story = {
     id: 'story-id',
     type: 'ask',
@@ -116,11 +118,18 @@ it('Story { commentCount: 1 } renders correctly', () => {
     votes: [],
     createdAt: new Date(0),
     createdBy: 'user-id',
-    createdByName: 'user'
+    createdByName: 'user',
+    text: 'Text'
   }
 
   const markup = shallow(
-    <Story story={story} loggedIn={true} voted={0} userId={'user-id'} />
+    <Story
+      story={story}
+      loggedIn={true}
+      voted={0}
+      userId={'user-id'}
+      showText
+    />
   )
   expect(markup).toMatchSnapshot()
 })
@@ -215,6 +224,18 @@ it('Title { external link with www } renders correctly', () => {
   expect(markup).toMatchSnapshot()
 })
 
+it('Upvote renders correctly', () => {
+  const markup = shallow(<Upvote />)
+
+  expect(markup).toMatchSnapshot()
+})
+
+it('Upvote { hidden: true} renders correctly', () => {
+  const markup = shallow(<Upvote Upvote />)
+
+  expect(markup).toMatchSnapshot()
+})
+
 it('getHostname renders correctly', () => {
   const markup = shallow(<getHostname link={'http://www.google.com'} />)
 
@@ -234,7 +255,7 @@ it('upvoteStory', () => {
     createdByName: 'user'
   }
 
-  const wrapper = shallow(<Story story={story} loggedIn={true} voted={0} />)
+  const wrapper = shallow(<Story story={story} loggedIn={true} voted={false} />)
   let upvoteStory = false
   wrapper.setProps({
     upvoteStory: () => (upvoteStory = true),
@@ -244,7 +265,7 @@ it('upvoteStory', () => {
   wrapper
     .find(Title)
     .shallow()
-    .find('.story__votearrow')
+    .find(Upvote)
     .simulate('click')
   expect(upvoteStory).toEqual(true)
 })
@@ -272,7 +293,7 @@ it('unvoteStory', () => {
   wrapper
     .find(Meta)
     .shallow()
-    .find('.item__unvote')
+    .find(Href)
     .simulate('click')
   expect(unvoteStory).toEqual(true)
 })

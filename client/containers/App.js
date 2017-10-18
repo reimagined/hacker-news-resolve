@@ -1,15 +1,71 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router'
+import styled from 'styled-components'
 
+import BaseSplitter from '../components/Splitter'
 import * as userActions from '../actions/userActions'
 import * as uiActions from '../actions/uiActions'
 
-import '../styles/style.css'
-import '../styles/root.css'
+const Splitter = () => <BaseSplitter color="#fff" />
+
+const Wrapper = styled.div`
+  width: 90%;
+  max-width: 1280px;
+  margin: 8px auto;
+  color: #000;
+  background-color: #f5f5f5;
+  font-size: 10pt;
+  font-family: Verdana, Geneva, sans-serif;
+
+  @media only screen and (max-width: 750px) and (min-width: 300px) {
+    width: 100%;
+    margin: 0px auto;
+  }
+`
+
+const Header = styled.div`
+  color: #fff;
+  background-color: #3949ab;
+  padding: 6px;
+  line-height: 18px;
+  vertical-align: middle;
+  position: relative;
+`
+
+const Title = styled.div`
+  display: inline-block;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 0.25em;
+  margin-right: 0.75em;
+
+  @media only screen and (max-width: 750px) and (min-width: 300px) {
+    display: none;
+  }
+`
+
+const Content = styled.div`
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+`
+
+const Footer = styled.div`
+  margin-top: 1em;
+  border-top: 1px solid #e7e7e7;
+  text-align: center;
+  padding: 6px 0;
+`
+
+const FooterLink = styled.a`
+  color: #333;
+  text-decoration: underline;
+`
+
+const RightColumn = styled.div`float: right;`
 
 export class App extends React.PureComponent {
   componentDidMount() {
@@ -24,7 +80,7 @@ export class App extends React.PureComponent {
     const { children, user, loggedIn, logout } = this.props
 
     return (
-      <div className="app">
+      <div>
         <Helmet>
           <title>reSolve Hacker News</title>
           <meta
@@ -36,107 +92,51 @@ export class App extends React.PureComponent {
             type="image/x-icon"
             href="/static/img/reSolve-logo.svg"
           />
-          <link rel="stylesheet" type="text/css" href="/static/bundle.css" />
+          <link rel="stylesheet" type="text/css" href="/static/style.css" />
         </Helmet>
-        <div className="app__wrap">
-          <div className="app__header">
-            <Link to="/" className="app__logo">
+        <Wrapper>
+          <Header>
+            <Link to="/">
               <img
                 src="/static/img/reSolve-logo.svg"
                 width="18"
                 height="18"
                 alt=""
               />
+            </Link>
+            <Link to="/">
+              <Title>reSolve HN</Title>
             </Link>{' '}
-            <NavLink
-              className="app__link app__homelink"
-              to="/"
-              activeClassName="app__link--active"
-            >
-              reSolve HN
-            </NavLink>{' '}
-            <NavLink
-              className="app__link"
-              to="/newest"
-              activeClassName="app__link--active"
-            >
-              new
-            </NavLink>
-            {' | '}
-            <NavLink
-              className="app__link"
-              to="/comments"
-              activeClassName="app__link--active"
-            >
-              comments
-            </NavLink>
-            {' | '}
-            <NavLink
-              className="app__link"
-              to="/show"
-              activeClassName="app__link--active"
-            >
-              show
-            </NavLink>
-            {' | '}
-            <NavLink
-              className="app__link"
-              to="/ask"
-              activeClassName="app__link--active"
-            >
-              ask
-            </NavLink>
-            <span>
-              {' | '}
-              <NavLink
-                className="app__link"
-                to="/submit"
-                activeClassName="app__link--active"
-              >
-                submit
-              </NavLink>
-            </span>
-            <div style={{ float: 'right' }}>
+            <Link to="/newest">new</Link>
+            <Splitter />
+            <Link to="/comments">comments</Link>
+            <Splitter />
+            <Link to="/show">show</Link>
+            <Splitter />
+            <Link to="/ask">ask</Link>
+            <Splitter />
+            <Link to="/submit">submit</Link>
+            <RightColumn>
               {loggedIn ? (
                 <div>
-                  <NavLink
-                    className="app__link"
-                    to={`/user/${user.id}`}
-                    activeClassName="app__link--active"
-                  >
-                    {user.name}
-                  </NavLink>
-                  {' | '}
-                  <NavLink
-                    className="app__link"
-                    to="/"
-                    activeClassName="app__link--active"
-                    onClick={logout}
-                  >
+                  <Link to={`/user/${user.id}`}>{user.name}</Link>
+                  <Splitter />
+                  <Link to="/" onClick={logout}>
                     logout
-                  </NavLink>
+                  </Link>
                 </div>
               ) : (
-                <NavLink
-                  className="app__link"
-                  to="/login"
-                  activeClassName="app__link--active"
-                >
-                  login
-                </NavLink>
+                <Link to="/login">login</Link>
               )}
-            </div>
-          </div>
-          <div className="app__content">{children}</div>
-          <div className="app__footer">
-            <a
-              className="app__footer-link"
-              href="https://github.com/reimagined/hacker-news-resolve"
-            >
+            </RightColumn>
+          </Header>
+          <Content>{children}</Content>
+          <Footer>
+            <FooterLink href="https://github.com/reimagined/hacker-news-resolve">
               reimagined/hacker-news-resolve
-            </a>
-          </div>
-        </div>
+            </FooterLink>
+          </Footer>
+        </Wrapper>
       </div>
     )
   }

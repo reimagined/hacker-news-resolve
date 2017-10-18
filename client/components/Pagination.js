@@ -1,32 +1,52 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import styled, { css } from 'styled-components'
 
-import '../styles/pagination.css'
+import Splitter from './Splitter'
+
+export const Wrapper = styled.div`
+  margin-left: 3em;
+  padding: 0.5em 0;
+`
+
+export const Href = styled.div`
+  display: inline;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+
+  ${props =>
+    props.disabled &&
+    css`
+      pointer-events: none;
+      cursor: default;
+      color: gray;
+    `};
+`
 
 const Pagination = ({ page, hasNext, location }) => {
   if (page === 1 && !hasNext) {
     return null
   }
 
-  const nextDisabledClassName = (!hasNext && 'pagination__disabled') || ''
-  const prevDisabledClassName = (page <= 1 && 'pagination__disabled') || ''
+  const prevDisabled = page <= 1
+  const nextDisabled = !hasNext
 
   return (
-    <div className="pagination">
-      <Link
-        className={`pagination__link ${prevDisabledClassName}`}
-        to={`${location}/${Number(page) - 1}`}
-      >
-        Prev
+    <Wrapper>
+      <Link to={`${location}/${Number(page) - 1}`}>
+        <Href disabled={prevDisabled}>Prev</Href>
       </Link>
-      {` | ${page} | `}
-      <Link
-        className={`pagination__link ${nextDisabledClassName}`}
-        to={`${location}/${Number(page) + 1}`}
-      >
-        More
+      <Splitter />
+      {page}
+      <Splitter />
+      <Link to={`${location}/${Number(page) + 1}`}>
+        <Href disabled={nextDisabled}>More</Href>
       </Link>
-    </div>
+    </Wrapper>
   )
 }
 
