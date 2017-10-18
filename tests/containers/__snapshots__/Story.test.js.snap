@@ -11,11 +11,12 @@ ShallowWrapper {
   "node": <span>
     <styled.div />
     <Link
-        className="story__meta-link"
         replace={false}
         to="/storyDetails/story-id"
     >
-        discuss
+        <styled.div>
+            discuss
+        </styled.div>
     </Link>
      
 </span>,
@@ -23,11 +24,12 @@ ShallowWrapper {
     <span>
       <styled.div />
       <Link
-            className="story__meta-link"
             replace={false}
             to="/storyDetails/story-id"
       >
-            discuss
+            <styled.div>
+                  discuss
+            </styled.div>
       </Link>
        
 </span>,
@@ -75,11 +77,12 @@ ShallowWrapper {
         "_currentElement": <span>
           <styled.div />
           <Link
-                    className="story__meta-link"
                     replace={false}
                     to="/storyDetails/story-id"
           >
-                    discuss
+                    <styled.div>
+                              discuss
+                    </styled.div>
           </Link>
            
 </span>,
@@ -87,11 +90,12 @@ ShallowWrapper {
         "_renderedOutput": <span>
           <styled.div />
           <Link
-                    className="story__meta-link"
                     replace={false}
                     to="/storyDetails/story-id"
           >
-                    discuss
+                    <styled.div>
+                              discuss
+                    </styled.div>
           </Link>
            
 </span>,
@@ -124,11 +128,12 @@ ShallowWrapper {
   "node": <span>
     <styled.div />
     <Link
-        className="story__meta-link"
         replace={false}
         to="/storyDetails/story-id"
     >
-        1 comment
+        <styled.div>
+            1 comment
+        </styled.div>
     </Link>
      
 </span>,
@@ -136,11 +141,12 @@ ShallowWrapper {
     <span>
       <styled.div />
       <Link
-            className="story__meta-link"
             replace={false}
             to="/storyDetails/story-id"
       >
-            1 comment
+            <styled.div>
+                  1 comment
+            </styled.div>
       </Link>
        
 </span>,
@@ -188,11 +194,12 @@ ShallowWrapper {
         "_currentElement": <span>
           <styled.div />
           <Link
-                    className="story__meta-link"
                     replace={false}
                     to="/storyDetails/story-id"
           >
-                    1 comment
+                    <styled.div>
+                              1 comment
+                    </styled.div>
           </Link>
            
 </span>,
@@ -200,11 +207,12 @@ ShallowWrapper {
         "_renderedOutput": <span>
           <styled.div />
           <Link
-                    className="story__meta-link"
                     replace={false}
                     to="/storyDetails/story-id"
           >
-                    1 comment
+                    <styled.div>
+                              1 comment
+                    </styled.div>
           </Link>
            
 </span>,
@@ -234,9 +242,7 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div
-    className="story__meta"
->
+  "node": <styled.div>
     <Score
         score={1}
     />
@@ -244,40 +250,31 @@ ShallowWrapper {
         id="user-id"
         name="user"
     />
-    <span
-        className="story__time"
-    >
-        <TimeAgo
-            component="time"
-            date={1970-01-01T00:00:00.000Z}
-            formatter={[Function]}
-            live={true}
-            maxPeriod={Infinity}
-            minPeriod={0}
-            now={[Function]}
-        />
-         
-    </span>
+    <TimeAgo
+        component="time"
+        date={1970-01-01T00:00:00.000Z}
+        formatter={[Function]}
+        live={true}
+        maxPeriod={Infinity}
+        minPeriod={0}
+        now={[Function]}
+    />
     <span>
-        |
-         
-        <span
-            className="item__unvote"
+        <styled.div />
+        <styled.div
             onClick={undefined}
         >
             unvote
-        </span>
+        </styled.div>
          
     </span>
     <Discuss
         commentCount={0}
         id="story-id"
     />
-</div>,
+</styled.div>,
   "nodes": Array [
-    <div
-      className="story__meta"
->
+    <styled.div>
       <Score
             score={1}
       />
@@ -285,36 +282,29 @@ ShallowWrapper {
             id="user-id"
             name="user"
       />
-      <span
-            className="story__time"
-      >
-            <TimeAgo
-                  component="time"
-                  date={1970-01-01T00:00:00.000Z}
-                  formatter={[Function]}
-                  live={true}
-                  maxPeriod={Infinity}
-                  minPeriod={0}
-                  now={[Function]}
-            />
-             
-      </span>
+      <TimeAgo
+            component="time"
+            date={1970-01-01T00:00:00.000Z}
+            formatter={[Function]}
+            live={true}
+            maxPeriod={Infinity}
+            minPeriod={0}
+            now={[Function]}
+      />
       <span>
-            |
-             
-            <span
-                  className="item__unvote"
+            <styled.div />
+            <styled.div
                   onClick={undefined}
             >
                   unvote
-            </span>
+            </styled.div>
              
       </span>
       <Discuss
             commentCount={0}
             id="story-id"
       />
-</div>,
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -374,9 +364,7 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          className="story__meta"
->
+        "_currentElement": <styled.div>
           <Score
                     score={1}
           />
@@ -384,40 +372,31 @@ ShallowWrapper {
                     id="user-id"
                     name="user"
           />
-          <span
-                    className="story__time"
-          >
-                    <TimeAgo
-                              component="time"
-                              date={1970-01-01T00:00:00.000Z}
-                              formatter={[Function]}
-                              live={true}
-                              maxPeriod={Infinity}
-                              minPeriod={0}
-                              now={[Function]}
-                    />
-                     
-          </span>
+          <TimeAgo
+                    component="time"
+                    date={1970-01-01T00:00:00.000Z}
+                    formatter={[Function]}
+                    live={true}
+                    maxPeriod={Infinity}
+                    minPeriod={0}
+                    now={[Function]}
+          />
           <span>
-                    |
-                     
-                    <span
-                              className="item__unvote"
+                    <styled.div />
+                    <styled.div
                               onClick={undefined}
                     >
                               unvote
-                    </span>
+                    </styled.div>
                      
           </span>
           <Discuss
                     commentCount={0}
                     id="story-id"
           />
-</div>,
+</styled.div>,
         "_debugID": 12,
-        "_renderedOutput": <div
-          className="story__meta"
->
+        "_renderedOutput": <styled.div>
           <Score
                     score={1}
           />
@@ -425,38 +404,31 @@ ShallowWrapper {
                     id="user-id"
                     name="user"
           />
-          <span
-                    className="story__time"
-          >
-                    <TimeAgo
-                              component="time"
-                              date={1970-01-01T00:00:00.000Z}
-                              formatter={[Function]}
-                              live={true}
-                              maxPeriod={Infinity}
-                              minPeriod={0}
-                              now={[Function]}
-                    />
-                     
-          </span>
+          <TimeAgo
+                    component="time"
+                    date={1970-01-01T00:00:00.000Z}
+                    formatter={[Function]}
+                    live={true}
+                    maxPeriod={Infinity}
+                    minPeriod={0}
+                    now={[Function]}
+          />
           <span>
-                    |
-                     
-                    <span
-                              className="item__unvote"
+                    <styled.div />
+                    <styled.div
                               onClick={undefined}
                     >
                               unvote
-                    </span>
+                    </styled.div>
                      
           </span>
           <Discuss
                     commentCount={0}
                     id="story-id"
           />
-</div>,
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -491,13 +463,33 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div
-    className="story__meta"
->
-    <span
-        className="story__time"
-    >
-        <TimeAgo
+  "node": <styled.div>
+    <TimeAgo
+        component="time"
+        date={1970-01-01T00:00:00.000Z}
+        formatter={[Function]}
+        live={true}
+        maxPeriod={Infinity}
+        minPeriod={0}
+        now={[Function]}
+    />
+    <span>
+        <styled.div />
+        <styled.div
+            onClick={undefined}
+        >
+            unvote
+        </styled.div>
+         
+    </span>
+    <Discuss
+        commentCount={0}
+        id="story-id"
+    />
+</styled.div>,
+  "nodes": Array [
+    <styled.div>
+      <TimeAgo
             component="time"
             date={1970-01-01T00:00:00.000Z}
             formatter={[Function]}
@@ -505,59 +497,21 @@ ShallowWrapper {
             maxPeriod={Infinity}
             minPeriod={0}
             now={[Function]}
-        />
-         
-    </span>
-    <span>
-        |
-         
-        <span
-            className="item__unvote"
-            onClick={undefined}
-        >
-            unvote
-        </span>
-         
-    </span>
-    <Discuss
-        commentCount={0}
-        id="story-id"
-    />
-</div>,
-  "nodes": Array [
-    <div
-      className="story__meta"
->
-      <span
-            className="story__time"
-      >
-            <TimeAgo
-                  component="time"
-                  date={1970-01-01T00:00:00.000Z}
-                  formatter={[Function]}
-                  live={true}
-                  maxPeriod={Infinity}
-                  minPeriod={0}
-                  now={[Function]}
-            />
-             
-      </span>
+      />
       <span>
-            |
-             
-            <span
-                  className="item__unvote"
+            <styled.div />
+            <styled.div
                   onClick={undefined}
             >
                   unvote
-            </span>
+            </styled.div>
              
       </span>
       <Discuss
             commentCount={0}
             id="story-id"
       />
-</div>,
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -605,75 +559,57 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          className="story__meta"
->
-          <span
-                    className="story__time"
-          >
-                    <TimeAgo
-                              component="time"
-                              date={1970-01-01T00:00:00.000Z}
-                              formatter={[Function]}
-                              live={true}
-                              maxPeriod={Infinity}
-                              minPeriod={0}
-                              now={[Function]}
-                    />
-                     
-          </span>
+        "_currentElement": <styled.div>
+          <TimeAgo
+                    component="time"
+                    date={1970-01-01T00:00:00.000Z}
+                    formatter={[Function]}
+                    live={true}
+                    maxPeriod={Infinity}
+                    minPeriod={0}
+                    now={[Function]}
+          />
           <span>
-                    |
-                     
-                    <span
-                              className="item__unvote"
+                    <styled.div />
+                    <styled.div
                               onClick={undefined}
                     >
                               unvote
-                    </span>
+                    </styled.div>
                      
           </span>
           <Discuss
                     commentCount={0}
                     id="story-id"
           />
-</div>,
+</styled.div>,
         "_debugID": 14,
-        "_renderedOutput": <div
-          className="story__meta"
->
-          <span
-                    className="story__time"
-          >
-                    <TimeAgo
-                              component="time"
-                              date={1970-01-01T00:00:00.000Z}
-                              formatter={[Function]}
-                              live={true}
-                              maxPeriod={Infinity}
-                              minPeriod={0}
-                              now={[Function]}
-                    />
-                     
-          </span>
+        "_renderedOutput": <styled.div>
+          <TimeAgo
+                    component="time"
+                    date={1970-01-01T00:00:00.000Z}
+                    formatter={[Function]}
+                    live={true}
+                    maxPeriod={Infinity}
+                    minPeriod={0}
+                    now={[Function]}
+          />
           <span>
-                    |
-                     
-                    <span
-                              className="item__unvote"
+                    <styled.div />
+                    <styled.div
                               onClick={undefined}
                     >
                               unvote
-                    </span>
+                    </styled.div>
                      
           </span>
           <Discuss
                     commentCount={0}
                     id="story-id"
           />
-</div>,
+</styled.div>,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -702,26 +638,22 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <span>
-    by
-     
-    <a
-        className="story__meta-link story__by"
+    by 
+    <styled.a
         href="/user/user-id"
     >
         user
-    </a>
+    </styled.a>
      
 </span>,
   "nodes": Array [
     <span>
-      by
-       
-      <a
-            className="story__meta-link story__by"
+      by 
+      <styled.a
             href="/user/user-id"
       >
             user
-      </a>
+      </styled.a>
        
 </span>,
   ],
@@ -766,26 +698,22 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <span>
-          by
-           
-          <a
-                    className="story__meta-link story__by"
+          by 
+          <styled.a
                     href="/user/user-id"
           >
                     user
-          </a>
+          </styled.a>
            
 </span>,
         "_debugID": 20,
         "_renderedOutput": <span>
-          by
-           
-          <a
-                    className="story__meta-link story__by"
+          by 
+          <styled.a
                     href="/user/user-id"
           >
                     user
-          </a>
+          </styled.a>
            
 </span>,
       },
@@ -814,18 +742,14 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <span
-    className="story__score"
->
+  "node": <span>
     0
      
     points
      
 </span>,
   "nodes": Array [
-    <span
-      className="story__score"
->
+    <span>
       0
        
       points
@@ -870,18 +794,14 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <span
-          className="story__score"
->
+        "_currentElement": <span>
           0
            
           points
            
 </span>,
         "_debugID": 22,
-        "_renderedOutput": <span
-          className="story__score"
->
+        "_renderedOutput": <span>
           0
            
           points
@@ -912,18 +832,14 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <span
-    className="story__score"
->
+  "node": <span>
     1
      
     point
      
 </span>,
   "nodes": Array [
-    <span
-      className="story__score"
->
+    <span>
       1
        
       point
@@ -968,18 +884,14 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <span
-          className="story__score"
->
+        "_currentElement": <span>
           1
            
           point
            
 </span>,
         "_debugID": 24,
-        "_renderedOutput": <span
-          className="story__score"
->
+        "_renderedOutput": <span>
           1
            
           point
@@ -1827,8 +1739,7 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div>
-    <span
-        className="story__votearrow"
+    <styled.div
         onClick={undefined}
         title="upvote"
     />
@@ -1848,8 +1759,7 @@ ShallowWrapper {
 </div>,
   "nodes": Array [
     <div>
-      <span
-            className="story__votearrow"
+      <styled.div
             onClick={undefined}
             title="upvote"
       />
@@ -1911,8 +1821,7 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
-          <span
-                    className="story__votearrow"
+          <styled.div
                     onClick={undefined}
                     title="upvote"
           />
@@ -1932,8 +1841,7 @@ ShallowWrapper {
 </div>,
         "_debugID": 28,
         "_renderedOutput": <div>
-          <span
-                    className="story__votearrow"
+          <styled.div
                     onClick={undefined}
                     title="upvote"
           />
@@ -1979,8 +1887,7 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div>
-    <span
-        className="story__votearrow"
+    <styled.div
         onClick={undefined}
         title="upvote"
     />
@@ -2000,8 +1907,7 @@ ShallowWrapper {
 </div>,
   "nodes": Array [
     <div>
-      <span
-            className="story__votearrow"
+      <styled.div
             onClick={undefined}
             title="upvote"
       />
@@ -2063,8 +1969,7 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
-          <span
-                    className="story__votearrow"
+          <styled.div
                     onClick={undefined}
                     title="upvote"
           />
@@ -2084,8 +1989,7 @@ ShallowWrapper {
 </div>,
         "_debugID": 30,
         "_renderedOutput": <div>
-          <span
-                    className="story__votearrow"
+          <styled.div
                     onClick={undefined}
                     title="upvote"
           />
@@ -2131,8 +2035,8 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div>
-    <span
-        className="story__votearrow--hidden"
+    <styled.div
+        hidden={true}
     />
     <styled.div>
         <Link
@@ -2145,8 +2049,8 @@ ShallowWrapper {
 </div>,
   "nodes": Array [
     <div>
-      <span
-            className="story__votearrow--hidden"
+      <styled.div
+            hidden={true}
       />
       <styled.div>
             <Link
@@ -2203,8 +2107,8 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
-          <span
-                    className="story__votearrow--hidden"
+          <styled.div
+                    hidden={true}
           />
           <styled.div>
                     <Link
@@ -2217,8 +2121,8 @@ ShallowWrapper {
 </div>,
         "_debugID": 26,
         "_renderedOutput": <div>
-          <span
-                    className="story__votearrow--hidden"
+          <styled.div
+                    hidden={true}
           />
           <styled.div>
                     <Link

@@ -11,7 +11,9 @@ import {
   Meta,
   mapStateToProps,
   mapDispatchToProps,
-  Story
+  Story,
+  Href,
+  Upvote
 } from '../../client/containers/Story'
 
 import actions from '../../client/actions/storiesActions'
@@ -232,7 +234,7 @@ it('upvoteStory', () => {
   wrapper
     .find(Title)
     .shallow()
-    .find('.story__votearrow')
+    .find(Upvote)
     .simulate('click')
   expect(upvoteStory).toEqual(true)
 })
@@ -259,7 +261,7 @@ it('unvoteStory', () => {
   wrapper
     .find(Meta)
     .shallow()
-    .find('.item__unvote')
+    .find(Href)
     .simulate('click')
   expect(unvoteStory).toEqual(true)
 })
