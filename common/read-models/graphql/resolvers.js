@@ -57,13 +57,14 @@ export default {
       return null
     }
 
-    const story = root.find(s => s.id === id)
+    let story = root.find(s => s.id === id)
 
     if (!story) {
       return null
     }
-
-    return (await withUserNames([story], read))[0]
+    story = (await withUserNames([story], read))[0]
+    story.comments = await withUserNames(story.comments, read)
+    return story
   },
   comment: async (read, { id }) => {
     const root = await read('comments')

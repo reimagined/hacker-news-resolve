@@ -122,8 +122,8 @@ describe('gql-resolvers', () => {
 
   it('story by id', async () => {
     const stories = [
-      { name: 'story-1', id: 'id-1' },
-      { name: 'story-2', id: 'id-2', createdBy: 'user-id' }
+      { name: 'story-1', id: 'id-1', comments: [] },
+      { name: 'story-2', id: 'id-2', createdBy: 'user-id', comments: [] }
     ]
 
     const users = [{ name: 'user', id: 'user-id' }]
@@ -153,7 +153,8 @@ describe('gql-resolvers', () => {
       name: 'story-2',
       id: 'id-2',
       createdBy: 'user-id',
-      createdByName: 'user'
+      createdByName: 'user',
+      comments: []
     })
   })
 
