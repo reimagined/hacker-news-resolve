@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -34,6 +34,15 @@ const Header = styled.div`
   line-height: 18px;
   vertical-align: middle;
   position: relative;
+`
+
+const Link = styled(NavLink)`
+  color: white;
+
+  &.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
 `
 
 const Title = styled.div`
