@@ -75,7 +75,7 @@ class Comment extends React.PureComponent {
         <Meta>
           <Collapse onClick={this.expand} tabIndex="0">
             {'['}
-            {this.state.expanded ? '\u2212' : '\u002b'}
+            {this.state.expanded ? '−' : '+'}
             {']'}
           </Collapse>
           <Link to={`/user/${createdBy}`}>
