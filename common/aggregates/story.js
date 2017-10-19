@@ -7,12 +7,6 @@ import {
 } from '../events'
 import validate from './validation'
 
-function validateUserId(userId) {
-  if (!userId) {
-    throw new Error('UserId is required')
-  }
-}
-
 export default {
   name: 'story',
   initialState: {},
