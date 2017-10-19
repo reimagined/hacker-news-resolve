@@ -35,7 +35,7 @@ type StoriesState = Array<Story>
 export default {
   name: 'stories',
   initialState: [],
-  eventHandlers: {
+  projection: {
     [STORY_CREATED]: (
       state: StoriesState,
       event: StoryCreated

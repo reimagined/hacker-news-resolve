@@ -40,7 +40,7 @@ describe('read-models', () => {
         }
       ]
 
-      expect(stories.eventHandlers[STORY_CREATED](state, event)).toEqual(
+      expect(stories.projection[STORY_CREATED](state, event)).toEqual(
         nextState
       )
     })
@@ -74,7 +74,7 @@ describe('read-models', () => {
         }
       ]
 
-      expect(stories.eventHandlers[STORY_CREATED](state, event)).toEqual(
+      expect(stories.projection[STORY_CREATED](state, event)).toEqual(
         nextState
       )
     })
@@ -107,7 +107,7 @@ describe('read-models', () => {
         }
       ]
 
-      expect(stories.eventHandlers[STORY_CREATED](state, event)).toEqual(
+      expect(stories.projection[STORY_CREATED](state, event)).toEqual(
         nextState
       )
     })
@@ -152,7 +152,7 @@ describe('read-models', () => {
         }
       ]
 
-      expect(stories.eventHandlers[STORY_UPVOTED](state, event)).toEqual(
+      expect(stories.projection[STORY_UPVOTED](state, event)).toEqual(
         nextState
       )
     })
@@ -183,7 +183,7 @@ describe('read-models', () => {
         }
       }
 
-      expect(stories.eventHandlers[STORY_UPVOTED](state, event)).toEqual(state)
+      expect(stories.projection[STORY_UPVOTED](state, event)).toEqual(state)
     })
 
     it('eventHandler "STORY_UNVOTED"', () => {
@@ -226,7 +226,7 @@ describe('read-models', () => {
         }
       ]
 
-      expect(stories.eventHandlers[STORY_UNVOTED](state, event)).toEqual(
+      expect(stories.projection[STORY_UNVOTED](state, event)).toEqual(
         nextState
       )
     })
@@ -257,7 +257,7 @@ describe('read-models', () => {
         }
       }
 
-      expect(stories.eventHandlers[STORY_UNVOTED](state, event)).toEqual(state)
+      expect(stories.projection[STORY_UNVOTED](state, event)).toEqual(state)
     })
 
     it('eventHandler "COMMENT_CREATED"', () => {
@@ -314,7 +314,7 @@ describe('read-models', () => {
         }
       ]
 
-      expect(stories.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
+      expect(stories.projection[COMMENT_CREATED](state, event)).toEqual(
         nextState
       )
     })
@@ -392,7 +392,7 @@ describe('read-models', () => {
         }
       ]
 
-      expect(stories.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
+      expect(stories.projection[COMMENT_CREATED](state, event)).toEqual(
         nextState
       )
     })
@@ -428,7 +428,7 @@ describe('read-models', () => {
         }
       }
 
-      expect(stories.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
+      expect(stories.projection[COMMENT_CREATED](state, event)).toEqual(
         state
       )
     })

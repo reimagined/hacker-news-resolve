@@ -5,7 +5,6 @@ import rootComponent from './client/components/App'
 import createStore from './client/store'
 import aggregates from './common/aggregates'
 import * as events from './common/events'
-import createMemoryAdapter from './common/read-models/createMemoryAdapter'
 
 import {
   collections as gqlCollections,
@@ -40,12 +39,14 @@ export default {
     types: eventTypes,
     ids: []
   },
-  readModel: {
-    projection: gqlCollections,
-    adapter: createMemoryAdapter(),
-    gqlSchema,
-    gqlResolvers
-  },
+  readModels: [
+    {
+      name: 'graphql',
+      projection: gqlCollections,
+      gqlSchema,
+      gqlResolvers
+    }
+  ],
   extendExpress,
   jwt: {
     secret: authorizationSecret,
