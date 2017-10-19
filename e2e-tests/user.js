@@ -1,12 +1,7 @@
 // @flow
 import { Selector } from 'testcafe'
-import {
-  MAIN_PAGE,
-  menuItems,
-  loginPage as page,
-  errorPage
-} from './page-model'
 import { dropStore } from '../import/eventStore'
+import { menuItems, loginPage, errorPage } from './page-model'
 
 fixture`User`
   .before(async () => {
@@ -14,27 +9,24 @@ fixture`User`
   })
   .beforeEach(async (t /*: TestController */) => {
     await t.setNativeDialogHandler(() => true)
-    await t.navigateTo(MAIN_PAGE)
+    await t.navigateTo(loginPage.path)
   })
 
 test('create account', async (t /*: TestController */) => {
-  await t.navigateTo(page.path)
-
   await t.expect(await Selector(menuItems.login).textContent).eql('login')
 
-  const form = page.createAccountForm
+  const form = loginPage.createAccountForm
   await t.typeText(form.usernameInput, '123')
   await t.click(form.submitButton)
 
   await t.expect(await Selector(menuItems.username).textContent).eql('123')
   await t.expect(await Selector(menuItems.logout).textContent).eql('logout')
+})
 
-  // User already exists
-  await t.click(menuItems.logout)
+test('create account: user already exists', async (t /*: TestController */) => {
   await t.expect(await Selector(menuItems.login).textContent).eql('login')
 
-  await t.navigateTo(page.path)
-
+  const form = loginPage.createAccountForm
   await t.typeText(form.usernameInput, '123')
   await t.click(form.submitButton)
 
