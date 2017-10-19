@@ -5,14 +5,17 @@ import { menuItems, loginPage, errorPage } from './page-model'
 
 fixture`User`
   .before(async () => {
+    // WARNING: before start reSolve server
     dropStore()
+    // wait start reSolve server
+    await new Promise(resolve => setTimeout(resolve, 10000))
   })
   .beforeEach(async (t /*: TestController */) => {
     await t.setNativeDialogHandler(() => true)
     await t.navigateTo(loginPage.path)
   })
 
-test('create account', async (t /*: TestController */) => {
+test('create', async (t /*: TestController */) => {
   await t.expect(await Selector(menuItems.login).textContent).eql('login')
 
   const form = loginPage.createAccountForm
@@ -23,7 +26,11 @@ test('create account', async (t /*: TestController */) => {
   await t.expect(await Selector(menuItems.logout).textContent).eql('logout')
 })
 
-test('create account: user already exists', async (t /*: TestController */) => {
+test('login', async (t /*: TestController */) => {
+  await loginPage.login(t)
+})
+
+test('create: is already exists', async (t /*: TestController */) => {
   await t.expect(await Selector(menuItems.login).textContent).eql('login')
 
   const form = loginPage.createAccountForm

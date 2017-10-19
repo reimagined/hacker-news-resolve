@@ -1,3 +1,6 @@
+// @flow
+import { Selector } from 'testcafe'
+
 export const MAIN_PAGE = 'http://localhost:3000'
 
 export const menuItems = {
@@ -21,5 +24,53 @@ export const loginPage = {
   createAccountForm: {
     usernameInput: 'form[action="/signup"] input[name="name"]',
     submitButton: 'form[action="/signup"] input[type="submit"]'
+  },
+  login: async (t /*: TestController */) => {
+    await t.expect(await Selector(menuItems.login).textContent).eql('login')
+
+    const form = loginPage.loginForm
+    await t.typeText(form.usernameInput, '123')
+    await t.click(form.submitButton)
+
+    await t.expect(await Selector(menuItems.username).textContent).eql('123')
+    await t.expect(await Selector(menuItems.logout).textContent).eql('logout')
   }
+}
+
+export const newestPage = {
+  path: `${MAIN_PAGE}/newest`
+}
+
+export const commentsPage = {
+  path: `${MAIN_PAGE}/comments`
+}
+
+export const showPage = {
+  path: `${MAIN_PAGE}/show`
+}
+
+export const askPage = {
+  path: `${MAIN_PAGE}/ask`
+}
+
+export const submitPage = {
+  path: `${MAIN_PAGE}/submit`,
+  form: {
+    titleInput:
+      '#root div div div:nth-child(2) div div:nth-child(2) input[type="text"]',
+    urlInput:
+      '#root div div div:nth-child(2) div div:nth-child(5) input[type="text"]',
+    textInput: '#root div div div:nth-child(2) div div:nth-child(11) textarea',
+    submitButton: '#root div div div:nth-child(2) div button'
+  }
+}
+
+export const storyDetailsPage = {
+  title:
+    '#root div div div:nth-child(2) div div:nth-child(1) div:nth-child(1) div:nth-child(2) a',
+  points:
+    '#root div div div:nth-child(2) div div:nth-child(1) div:nth-child(2) span:nth-child(1)',
+  by:
+    '#root div div div:nth-child(2) div div:nth-child(1) div:nth-child(2) span:nth-child(2) a',
+  text: '#root div div div:nth-child(2) div div:nth-child(1) div:nth-child(3)'
 }

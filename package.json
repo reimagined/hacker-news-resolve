@@ -13,8 +13,8 @@
     "test:update": "jest -u",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watchAll",
-    "test:functional": "testcafe chrome ./e2e-tests --app \"rm ./storage.json & npm run dev\" --app-init-delay 10000",
-    "test:functionalDebugMode": "testcafe chrome ./e2e-tests --app \"rm ./storage.json & npm run dev\" --app-init-delay 10000 --inspect-brk --debug-mode",
+    "test:functional": "testcafe chrome ./e2e-tests --app \"npm run dev\"",
+    "test:functionalDebugMode": "testcafe chrome ./e2e-tests --app \"npm run dev\" --inspect-brk --debug-mode",
     "lint-staged": "lint-staged"
   },
   "pre-commit": [
