@@ -1,6 +1,6 @@
 export default {
   stateExists: (state, type) => {
-    if (Object.keys(state).length === 0) {
+    if (Object.keys(state).length === 0 || !state) {
       throw new Error(`${type} does not exist`)
     }
   },
@@ -13,7 +13,7 @@ export default {
 
   fieldRequired: (payload, field) => {
     if (!payload[field]) {
-      throw new Error(`"${field}" field is required`)
+      throw new Error(`The "${field}" field is required`)
     }
   },
 
@@ -25,7 +25,7 @@ export default {
 
   userVoted: (state, userId) => {
     if (!state.voted.includes(userId)) {
-      throw new Error('User not voted')
+      throw new Error('User did not vote')
     }
   },
 
