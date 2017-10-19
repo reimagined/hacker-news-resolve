@@ -38,7 +38,7 @@ describe('aggregates', () => {
       )
     })
 
-    it('command "createUser" should throw Error "Name is required"', () => {
+    it('command "createUser" should throw Error "name field is required"', () => {
       const name = undefined
       const passwordHash = 'SomePasswordHash'
 
@@ -51,7 +51,7 @@ describe('aggregates', () => {
       }
 
       expect(() => users.commands.createUser(state, command)).toThrowError(
-        'Name is required'
+        '"name" field is required'
       )
     })
 

@@ -59,7 +59,7 @@ describe('aggregates', () => {
       )
     })
 
-    it('command "createStory" should throw Error "Title is required"', () => {
+    it('command "createStory" should throw Error "title field is required"', () => {
       const title = undefined
       const text = 'SomeText'
       const link = 'SomeLink'
@@ -76,11 +76,11 @@ describe('aggregates', () => {
       }
 
       expect(() => stories.commands.createStory(state, command)).toThrowError(
-        'Title is required'
+        '"title" field is required'
       )
     })
 
-    it('command "createStory" should throw Error "UserId is required"', () => {
+    it('command "createStory" should throw Error "userId field is required"', () => {
       const title = 'SomeTitle'
       const text = 'SomeText'
       const link = 'SomeLink'
@@ -97,7 +97,7 @@ describe('aggregates', () => {
       }
 
       expect(() => stories.commands.createStory(state, command)).toThrowError(
-        'UserId is required'
+        '"userId" field is required'
       )
     })
 
@@ -154,7 +154,7 @@ describe('aggregates', () => {
       )
     })
 
-    it('command "upvoteStory" should throw Error "UserId is required"', () => {
+    it('command "upvoteStory" should throw Error "userId field is required"', () => {
       const userId = undefined
 
       const state = {
@@ -169,7 +169,7 @@ describe('aggregates', () => {
       }
 
       expect(() => stories.commands.upvoteStory(state, command)).toThrowError(
-        'UserId is required'
+        '"userId" field is required'
       )
     })
 
@@ -192,7 +192,7 @@ describe('aggregates', () => {
       expect(event).toEqual({ type: STORY_UNVOTED, payload: { userId } })
     })
 
-    it('command "unvoteStory" should throw Error "User did not voted"', () => {
+    it('command "unvoteStory" should throw Error "User not voted"', () => {
       const userId = uuid.v4()
 
       const state = {
@@ -207,7 +207,7 @@ describe('aggregates', () => {
       }
 
       expect(() => stories.commands.unvoteStory(state, command)).toThrowError(
-        'User did not voted'
+        'User not voted'
       )
     })
 
@@ -226,7 +226,7 @@ describe('aggregates', () => {
       )
     })
 
-    it('command "unvoteStory" should throw Error "UserId is required"', () => {
+    it('command "unvoteStory" should throw Error "userId field is required"', () => {
       const userId = undefined
 
       const state = {
@@ -241,7 +241,7 @@ describe('aggregates', () => {
       }
 
       expect(() => stories.commands.unvoteStory(state, command)).toThrowError(
-        'UserId is required'
+        '"userId" field is required'
       )
     })
 
@@ -367,7 +367,7 @@ describe('aggregates', () => {
       )
     })
 
-    it('command "createComment" should throw Error "Text is required"', () => {
+    it('command "createComment" should throw Error "text field is required"', () => {
       const text = undefined
       const parentId = uuid.v4()
       const userId = uuid.v4()
@@ -385,11 +385,11 @@ describe('aggregates', () => {
       }
 
       expect(() => stories.commands.createComment(state, command)).toThrowError(
-        'Text is required'
+        '"text" field is required'
       )
     })
 
-    it('command "createComment" should throw Error "ParentId is required"', () => {
+    it('command "createComment" should throw Error "parentId field is required"', () => {
       const text = 'SomeText'
       const parentId = undefined
       const userId = uuid.v4()
@@ -407,11 +407,11 @@ describe('aggregates', () => {
       }
 
       expect(() => stories.commands.createComment(state, command)).toThrowError(
-        'ParentId is required'
+        '"parentId" field is required'
       )
     })
 
-    it('command "createComment" should throw Error "UserId is required"', () => {
+    it('command "createComment" should throw Error "userId field is required"', () => {
       const text = 'SomeText'
       const parentId = uuid.v4()
       const userId = undefined
@@ -429,7 +429,7 @@ describe('aggregates', () => {
       }
 
       expect(() => stories.commands.createComment(state, command)).toThrowError(
-        'UserId is required'
+        '"userId" field is required'
       )
     })
 

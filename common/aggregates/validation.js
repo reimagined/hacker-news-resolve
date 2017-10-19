@@ -1,0 +1,37 @@
+export default {
+  stateExists: (state, type) => {
+    if (Object.keys(state).length === 0) {
+      throw new Error(`${type} does not exist`)
+    }
+  },
+
+  stateIsAbsent: (state, type) => {
+    if (Object.keys(state).length > 0) {
+      throw new Error(`${type} already exists`)
+    }
+  },
+
+  fieldRequired: (payload, field) => {
+    if (!payload[field]) {
+      throw new Error(`"${field}" field is required`)
+    }
+  },
+
+  userNotVoted: (state, userId) => {
+    if (state.voted.includes(userId)) {
+      throw new Error('User already voted')
+    }
+  },
+
+  userVoted: (state, userId) => {
+    if (!state.voted.includes(userId)) {
+      throw new Error('User not voted')
+    }
+  },
+
+  commentNotExists: (state, commentId) => {
+    if (state.comments[commentId]) {
+      throw new Error('Comment already exists')
+    }
+  }
+}
