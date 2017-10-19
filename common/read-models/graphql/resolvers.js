@@ -16,7 +16,6 @@ async function withUserNames(items, getReadModel) {
 function getReplies(comments, commentIndex) {
   const result = []
   const commentsCount = comments.length
-  const comment = comments[commentIndex]
   let replyIndex = commentIndex + 1
 
   while (replyIndex < commentsCount) {
