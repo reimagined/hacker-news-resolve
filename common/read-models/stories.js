@@ -4,9 +4,9 @@ import {
   STORY_UPVOTED,
   STORY_UNVOTED,
   COMMENT_CREATED
-} from '../events'
+} from "../events";
 
-type UserId = string
+type UserId = string;
 
 type Comment = {
   id: string,
@@ -15,11 +15,11 @@ type Comment = {
   text: string,
   createdAt: number,
   createdBy: UserId
-}
+};
 
 type Story = {
   id: string,
-  type: 'ask' | 'show' | 'story',
+  type: "ask" | "show" | "story",
   title: string,
   text: string,
   link: string,
@@ -28,14 +28,14 @@ type Story = {
   comments: Array<Comment>,
   createdAt: number,
   createdBy: UserId
-}
+};
 
-type StoriesState = Array<Story>
+type StoriesState = Array<Story>;
 
 export default {
-  name: 'stories',
+  name: "stories",
   initialState: [],
-  eventHandlers: {
+  projection: {
     [STORY_CREATED]: (
       state: StoriesState,
       event: StoryCreated
@@ -44,9 +44,9 @@ export default {
         aggregateId,
         timestamp,
         payload: { title, link, userId, text }
-      } = event
+      } = event;
 
-      const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
+      const type = !link ? "ask" : /^(Show HN)/.test(title) ? "show" : "story";
 
       state.push({
         id: aggregateId,
@@ -59,40 +59,40 @@ export default {
         votes: [],
         createdAt: timestamp,
         createdBy: userId
-      })
-      return state
+      });
+      return state;
     },
 
     [STORY_UPVOTED]: (
       state: StoriesState,
       event: StoryUpvoted
     ): StoriesState => {
-      const { aggregateId, payload: { userId } } = event
+      const { aggregateId, payload: { userId } } = event;
 
-      const index = state.findIndex(({ id }) => id === aggregateId)
+      const index = state.findIndex(({ id }) => id === aggregateId);
 
       if (index < 0) {
-        return state
+        return state;
       }
 
-      state[index].votes.push(userId)
-      return state
+      state[index].votes.push(userId);
+      return state;
     },
 
     [STORY_UNVOTED]: (
       state: StoriesState,
       event: StoryUnvoted
     ): StoriesState => {
-      const { aggregateId, payload: { userId } } = event
+      const { aggregateId, payload: { userId } } = event;
 
-      const index = state.findIndex(({ id }) => id === aggregateId)
+      const index = state.findIndex(({ id }) => id === aggregateId);
 
       if (index < 0) {
-        return state
+        return state;
       }
 
-      state[index].votes = state[index].votes.filter(id => id !== userId)
-      return state
+      state[index].votes = state[index].votes.filter(id => id !== userId);
+      return state;
     },
 
     [COMMENT_CREATED]: (
@@ -103,23 +103,23 @@ export default {
         aggregateId,
         timestamp,
         payload: { parentId, userId, commentId, text }
-      } = event
+      } = event;
 
-      const story = state.find(({ id }) => id === aggregateId)
+      const story = state.find(({ id }) => id === aggregateId);
 
       if (!story) {
-        return state
+        return state;
       }
 
-      story.commentCount++
+      story.commentCount++;
 
       const parentIndex =
         parentId === aggregateId
           ? -1
-          : story.comments.findIndex(({ id }) => id === parentId)
+          : story.comments.findIndex(({ id }) => id === parentId);
 
       const level =
-        parentIndex === -1 ? 0 : story.comments[parentIndex].level + 1
+        parentIndex === -1 ? 0 : story.comments[parentIndex].level + 1;
 
       const comment = {
         id: commentId,
@@ -128,17 +128,17 @@ export default {
         text,
         createdAt: timestamp,
         createdBy: userId
-      }
+      };
 
       if (parentIndex === -1) {
-        story.comments.push(comment)
+        story.comments.push(comment);
       } else {
         story.comments = story.comments
           .slice(0, parentIndex + 1)
-          .concat(comment, story.comments.slice(parentIndex + 1))
+          .concat(comment, story.comments.slice(parentIndex + 1));
       }
 
-      return state
+      return state;
     }
   }
-}
+};

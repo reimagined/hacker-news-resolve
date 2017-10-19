@@ -1,22 +1,22 @@
-import busDriver from 'resolve-bus-memory'
-import storageDriver from 'resolve-storage-lite'
+import busDriver from "resolve-bus-memory";
+import storageDriver from "resolve-storage-lite";
 
-import rootComponent from './client/components/App'
-import createStore from './client/store'
-import aggregates from './common/aggregates'
-import queries from './common/read-models'
-import events from './common/events'
-import createMemoryAdapter from './common/read-models/createMemoryAdapter'
-import gqlSchema from './common/read-models/gqlSchema'
-import gqlResolvers from './common/read-models/gqlResolvers'
-import { extendExpress, initialState } from './server'
+import rootComponent from "./client/components/App";
+import createStore from "./client/store";
+import aggregates from "./common/aggregates";
+import projection from "./common/read-models";
+import events from "./common/events";
+import createMemoryAdapter from "./common/read-models/createMemoryAdapter";
+import gqlSchema from "./common/read-models/gqlSchema";
+import gqlResolvers from "./common/read-models/gqlResolvers";
+import { extendExpress, initialState } from "./server";
 import {
   authorizationSecret,
   cookieName,
   cookieMaxAge
-} from './common/constants'
+} from "./common/constants";
 
-const eventTypes = Object.keys(events).map(key => events[key])
+const eventTypes = Object.keys(events).map(key => events[key]);
 
 export default {
   entries: {
@@ -26,7 +26,7 @@ export default {
   bus: { driver: busDriver },
   storage: {
     driver: storageDriver,
-    params: { pathToFile: './storage.json' }
+    params: { pathToFile: "./storage.json" }
   },
   initialState,
   aggregates,
@@ -34,12 +34,14 @@ export default {
     types: eventTypes,
     ids: []
   },
-  readModel: {
-    projection: queries,
-    adapter: createMemoryAdapter(),
-    gqlSchema,
-    gqlResolvers
-  },
+  readModels: [
+    {
+      name: "graphql",
+      projection,
+      gqlSchema,
+      gqlResolvers
+    }
+  ],
   extendExpress,
   jwt: {
     secret: authorizationSecret,
@@ -48,4 +50,4 @@ export default {
       maxAge: cookieMaxAge
     }
   }
-}
+};

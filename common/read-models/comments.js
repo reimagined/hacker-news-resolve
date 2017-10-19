@@ -1,5 +1,5 @@
 // @flow
-import { COMMENT_CREATED } from '../events'
+import { COMMENT_CREATED } from "../events";
 
 type Comment = {
   id: string,
@@ -8,20 +8,20 @@ type Comment = {
   storyId: string,
   createdAt: number,
   createdBy: string
-}
+};
 
-type CommentsState = Array<Comment>
+type CommentsState = Array<Comment>;
 
 export default {
-  name: 'comments',
+  name: "comments",
   initialState: [],
-  eventHandlers: {
+  projection: {
     [COMMENT_CREATED]: (state: CommentsState, event: CommentCreated) => {
       const {
         aggregateId,
         timestamp,
         payload: { parentId, userId, commentId, text }
-      } = event
+      } = event;
 
       state.push({
         id: commentId,
@@ -30,8 +30,8 @@ export default {
         storyId: aggregateId,
         createdAt: timestamp,
         createdBy: userId
-      })
-      return state
+      });
+      return state;
     }
   }
-}
+};

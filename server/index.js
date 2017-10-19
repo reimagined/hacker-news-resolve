@@ -1,19 +1,19 @@
-import bodyParser from 'body-parser'
-import jwt from 'jsonwebtoken'
-import uuid from 'uuid'
+import bodyParser from "body-parser";
+import jwt from "jsonwebtoken";
+import uuid from "uuid";
 
 import {
   authorizationSecret,
   cookieName,
   cookieMaxAge
-} from '../common/constants'
+} from "../common/constants";
 
 export const getCurrentUser = async (executeQuery, cookies) => {
   try {
-    const { id } = jwt.verify(cookies[cookieName], authorizationSecret)
+    const { id } = jwt.verify(cookies[cookieName], authorizationSecret);
 
     if (!id) {
-      return null
+      return null;
     }
 
     const { user } = await executeQuery(
@@ -25,13 +25,13 @@ export const getCurrentUser = async (executeQuery, cookies) => {
         }
       }`,
       { id }
-    )
+    );
 
-    return user
+    return user;
   } catch (error) {
-    return null
+    return null;
   }
-}
+};
 
 export const getUserByName = async (executeQuery, name) => {
   const { user } = await executeQuery(
@@ -43,108 +43,109 @@ export const getUserByName = async (executeQuery, name) => {
       }
     }`,
     { name: name.trim() }
-  )
+  );
 
-  return user
-}
+  return user;
+};
 
 export const authorize = (req, res, user) => {
   try {
-    const authorizationToken = jwt.sign(user, authorizationSecret)
+    const authorizationToken = jwt.sign(user, authorizationSecret);
     res.cookie(cookieName, authorizationToken, {
       maxAge: cookieMaxAge
-    })
+    });
 
-    res.redirect(req.query.redirect || '/')
+    res.redirect(req.query.redirect || "/");
   } catch (error) {
-    res.redirect('/error?text=Unauthorized')
+    res.redirect("/error?text=Unauthorized");
   }
-}
+};
 
 export const extendExpress = express => {
-  express.use('/', authorizationMiddleware)
-  express.use('/api/commands/', commandAuthorizationMiddleware)
+  express.use("/", authorizationMiddleware);
+  express.use("/api/commands/", commandAuthorizationMiddleware);
 
   express.post(
-    '/signup',
+    "/signup",
     bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
       const existingUser = await getUserByName(
         req.resolve.executeQuery,
         req.body.name
-      )
+      );
 
       if (existingUser) {
-        res.redirect('/error?text=User already exists')
-        return
+        res.redirect("/error?text=User already exists");
+        return;
       }
 
       try {
         const user = {
           name: req.body.name.trim(),
           id: uuid.v4()
-        }
+        };
 
         await req.resolve.executeCommand({
-          type: 'createUser',
+          type: "createUser",
           aggregateId: user.id,
-          aggregateName: 'user',
+          aggregateName: "user",
           payload: user
-        })
+        });
 
-        return authorize(req, res, user)
+        return authorize(req, res, user);
       } catch (error) {
-        res.redirect(`/error?text=${error.toString()}`)
+        res.redirect(`/error?text=${error.toString()}`);
       }
     }
-  )
+  );
 
   express.post(
-    '/login',
+    "/login",
     bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
-      const user = await getUserByName(req.resolve.executeQuery, req.body.name)
+      const user = await getUserByName(req.resolve.executeQuery, req.body.name);
 
       if (!user) {
-        res.redirect('/error?text=No such user')
-        return
+        res.redirect("/error?text=No such user");
+        return;
       }
 
-      return authorize(req, res, user)
+      return authorize(req, res, user);
     }
-  )
-}
+  );
+};
 
 export const accessDenied = (req, res) => {
-  res.status(401).send('401 Unauthorized')
-}
+  res.status(401).send("401 Unauthorized");
+};
 
 const authorizationMiddleware = (req, res, next) => {
   req.getJwt((_, user) => {
     if (user) {
-      req.body.userId = user.id
+      req.body.userId = user.id;
     }
-    next()
-  })
-}
+    next();
+  });
+};
 
 export const commandAuthorizationMiddleware = (req, res, next) => {
   try {
-    const user = req.getJwt()
+    const user = req.getJwt();
     if (!user) {
-      throw new Error('Unauthorized')
+      throw new Error("Unauthorized");
     }
-    req.body.userId = user.id
-    next()
+    req.body.userId = user.id;
+    next();
   } catch (error) {
-    accessDenied(req, res)
+    accessDenied(req, res);
   }
-}
+};
 
-export const initialState = async (executeQuery, { cookies }) => {
-  const user = await getCurrentUser(executeQuery, cookies)
+export const initialState = async (readModelsExecutors, { cookies }) => {
+  const executeQuery = readModelsExecutors["graphql"];
+  const user = await getCurrentUser(executeQuery, cookies);
 
   return {
     user: user || {}
-  }
-}
+  };
+};
