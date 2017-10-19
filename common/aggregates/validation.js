@@ -1,6 +1,6 @@
 export default {
   stateExists: (state, type) => {
-    if (Object.keys(state).length === 0 || !state) {
+    if (!state || Object.keys(state).length === 0) {
       throw new Error(`${type} does not exist`)
     }
   },
