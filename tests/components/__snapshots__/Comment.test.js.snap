@@ -2,314 +2,9 @@
 
 exports[`Comment Level 0 renders correctly 1`] = `
 ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
   "length": 1,
-  "node": <styled.div>
-    <styled.div>
-        <styled.div
-            onClick={[Function]}
-            tabIndex="0"
-        >
-            [
-            −
-            ]
-        </styled.div>
-        <Link
-            replace={false}
-            to="/user/SomeUser"
-        >
-            <styled.div>
-                <b />
-            </styled.div>
-        </Link>
-        <styled.div>
-            <TimeAgo
-                component="time"
-                date={1970-01-01T00:00:00.000Z}
-                formatter={[Function]}
-                live={true}
-                maxPeriod={Infinity}
-                minPeriod={0}
-                now={[Function]}
-            />
-        </styled.div>
-        <styled.div />
-        <Link
-            replace={false}
-            to="/storyDetails/story-id/comments/SomeId"
-        >
-            <styled.div>
-                link
-            </styled.div>
-        </Link>
-        <styled.div />
-        <Link
-            replace={false}
-            to="/storyDetails/story-id"
-        >
-            <styled.div>
-                parent
-            </styled.div>
-        </Link>
-    </styled.div>
-    <div
-        dangerouslySetInnerHTML={
-            Object {
-                "__html": "SomeContent",
-              }
-        }
-    />
-</styled.div>,
-  "nodes": Array [
-    <styled.div>
-      <styled.div>
-            <styled.div
-                  onClick={[Function]}
-                  tabIndex="0"
-            >
-                  [
-                  −
-                  ]
-            </styled.div>
-            <Link
-                  replace={false}
-                  to="/user/SomeUser"
-            >
-                  <styled.div>
-                        <b />
-                  </styled.div>
-            </Link>
-            <styled.div>
-                  <TimeAgo
-                        component="time"
-                        date={1970-01-01T00:00:00.000Z}
-                        formatter={[Function]}
-                        live={true}
-                        maxPeriod={Infinity}
-                        minPeriod={0}
-                        now={[Function]}
-                  />
-            </styled.div>
-            <styled.div />
-            <Link
-                  replace={false}
-                  to="/storyDetails/story-id/comments/SomeId"
-            >
-                  <styled.div>
-                        link
-                  </styled.div>
-            </Link>
-            <styled.div />
-            <Link
-                  replace={false}
-                  to="/storyDetails/story-id"
-            >
-                  <styled.div>
-                        parent
-                  </styled.div>
-            </Link>
-      </styled.div>
-      <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "SomeContent",
-                      }
-            }
-      />
-</styled.div>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 1,
-      "_context": Object {},
-      "_currentElement": <Comment
-        createdAt={0}
-        createdBy="SomeUser"
-        id="SomeId"
-        level={0}
-        parentId="story-id"
-        root={
-                Object {
-                        "id": "SomeId",
-                        "title": "SomeTitle",
-                      }
-        }
-        storyId="story-id"
-        text="SomeContent"
-/>,
-      "_debugID": 1,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": Comment {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "expand": [Function],
-        "props": Object {
-          "createdAt": 0,
-          "createdBy": "SomeUser",
-          "id": "SomeId",
-          "level": 0,
-          "parentId": "story-id",
-          "root": Object {
-            "id": "SomeId",
-            "title": "SomeTitle",
-          },
-          "storyId": "story-id",
-          "text": "SomeContent",
-        },
-        "refs": Object {},
-        "state": Object {
-          "expanded": true,
-        },
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 1,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <styled.div>
-          <styled.div>
-                    <styled.div
-                              onClick={[Function]}
-                              tabIndex="0"
-                    >
-                              [
-                              −
-                              ]
-                    </styled.div>
-                    <Link
-                              replace={false}
-                              to="/user/SomeUser"
-                    >
-                              <styled.div>
-                                        <b />
-                              </styled.div>
-                    </Link>
-                    <styled.div>
-                              <TimeAgo
-                                        component="time"
-                                        date={1970-01-01T00:00:00.000Z}
-                                        formatter={[Function]}
-                                        live={true}
-                                        maxPeriod={Infinity}
-                                        minPeriod={0}
-                                        now={[Function]}
-                              />
-                    </styled.div>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/SomeId"
-                    >
-                              <styled.div>
-                                        link
-                              </styled.div>
-                    </Link>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id"
-                    >
-                              <styled.div>
-                                        parent
-                              </styled.div>
-                    </Link>
-          </styled.div>
-          <div
-                    dangerouslySetInnerHTML={
-                              Object {
-                                        "__html": "SomeContent",
-                                      }
-                    }
-          />
-</styled.div>,
-        "_debugID": 2,
-        "_renderedOutput": <styled.div>
-          <styled.div>
-                    <styled.div
-                              onClick={[Function]}
-                              tabIndex="0"
-                    >
-                              [
-                              −
-                              ]
-                    </styled.div>
-                    <Link
-                              replace={false}
-                              to="/user/SomeUser"
-                    >
-                              <styled.div>
-                                        <b />
-                              </styled.div>
-                    </Link>
-                    <styled.div>
-                              <TimeAgo
-                                        component="time"
-                                        date={1970-01-01T00:00:00.000Z}
-                                        formatter={[Function]}
-                                        live={true}
-                                        maxPeriod={Infinity}
-                                        minPeriod={0}
-                                        now={[Function]}
-                              />
-                    </styled.div>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/SomeId"
-                    >
-                              <styled.div>
-                                        link
-                              </styled.div>
-                    </Link>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id"
-                    >
-                              <styled.div>
-                                        parent
-                              </styled.div>
-                    </Link>
-          </styled.div>
-          <div
-                    dangerouslySetInnerHTML={
-                              Object {
-                                        "__html": "SomeContent",
-                                      }
-                    }
-          />
-</styled.div>,
-      },
-      "_renderedNodeType": 1,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
-  },
-  "root": [Circular],
-  "unrendered": <Comment
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Comment
     createdAt={0}
     createdBy="SomeUser"
     id="SomeId"
@@ -324,37 +19,195 @@ ShallowWrapper {
     storyId="story-id"
     text="SomeContent"
 />,
-}
-`;
-
-exports[`Comment Level 1 renders correctly 1`] = `
-ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
   },
-  "length": 1,
-  "node": <styled.div>
-    <styled.div>
-        <styled.div
-            onClick={[Function]}
-            tabIndex="0"
-        >
-            [
-            −
-            ]
-        </styled.div>
-        <Link
-            replace={false}
-            to="/user/SomeUser"
-        >
-            <styled.div>
-                <b />
-            </styled.div>
-        </Link>
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
         <styled.div>
-            <TimeAgo
+          <styled.div
+                    onClick={[Function]}
+                    tabIndex="0"
+          >
+                    [
+                    −
+                    ]
+          </styled.div>
+          <Link
+                    replace={false}
+                    to="/user/SomeUser"
+          >
+                    <styled.div>
+                              <b />
+                    </styled.div>
+          </Link>
+          <styled.div>
+                    <TimeAgo
+                              component="time"
+                              date={1970-01-01T00:00:00.000Z}
+                              formatter={[Function]}
+                              live={true}
+                              maxPeriod={Infinity}
+                              minPeriod={0}
+                              now={[Function]}
+                    />
+          </styled.div>
+          <styled.div />
+          <Link
+                    replace={false}
+                    to="/storyDetails/story-id/comments/SomeId"
+          >
+                    <styled.div>
+                              link
+                    </styled.div>
+          </Link>
+          <styled.div />
+          <Link
+                    replace={false}
+                    to="/storyDetails/story-id"
+          >
+                    <styled.div>
+                              parent
+                    </styled.div>
+          </Link>
+</styled.div>,
+        <div
+          dangerouslySetInnerHTML={
+                    Object {
+                              "__html": "SomeContent",
+                            }
+          }
+/>,
+        undefined,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <styled.div
+              onClick={[Function]}
+              tabIndex="0"
+>
+              [
+              −
+              ]
+</styled.div>,
+            <Link
+              replace={false}
+              to="/user/SomeUser"
+>
+              <styled.div>
+                            <b />
+              </styled.div>
+</Link>,
+            <styled.div>
+              <TimeAgo
+                            component="time"
+                            date={1970-01-01T00:00:00.000Z}
+                            formatter={[Function]}
+                            live={true}
+                            maxPeriod={Infinity}
+                            minPeriod={0}
+                            now={[Function]}
+              />
+</styled.div>,
+            <styled.div />,
+            <Link
+              replace={false}
+              to="/storyDetails/story-id/comments/SomeId"
+>
+              <styled.div>
+                            link
+              </styled.div>
+</Link>,
+            <styled.div />,
+            <Link
+              replace={false}
+              to="/storyDetails/story-id"
+>
+              <styled.div>
+                            parent
+              </styled.div>
+</Link>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                "[",
+                "−",
+                "]",
+              ],
+              "onClick": [Function],
+              "tabIndex": "0",
+            },
+            "ref": null,
+            "rendered": Array [
+              "[",
+              "−",
+              "]",
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                <b />
+</styled.div>,
+              "replace": false,
+              "to": "/user/SomeUser",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <b />,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "host",
+                "props": Object {
+                  "children": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "b",
+              },
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <TimeAgo
                 component="time"
                 date={1970-01-01T00:00:00.000Z}
                 formatter={[Function]}
@@ -362,281 +215,432 @@ ShallowWrapper {
                 maxPeriod={Infinity}
                 minPeriod={0}
                 now={[Function]}
-            />
-        </styled.div>
-        <styled.div />
-        <Link
-            replace={false}
-            to="/storyDetails/story-id/comments/SomeId"
-        >
-            <styled.div>
-                link
-            </styled.div>
-        </Link>
-        <styled.div />
-        <Link
-            replace={false}
-            to="/storyDetails/story-id/comments/parent-id"
-        >
-            <styled.div>
-                parent
-            </styled.div>
-        </Link>
-    </styled.div>
-    <div
-        dangerouslySetInnerHTML={
-            Object {
-                "__html": "SomeContent",
-              }
-        }
-    />
-</styled.div>,
-  "nodes": Array [
-    <styled.div>
-      <styled.div>
-            <styled.div
-                  onClick={[Function]}
-                  tabIndex="0"
-            >
-                  [
-                  −
-                  ]
-            </styled.div>
-            <Link
-                  replace={false}
-                  to="/user/SomeUser"
-            >
-                  <styled.div>
-                        <b />
-                  </styled.div>
-            </Link>
-            <styled.div>
-                  <TimeAgo
-                        component="time"
-                        date={1970-01-01T00:00:00.000Z}
-                        formatter={[Function]}
-                        live={true}
-                        maxPeriod={Infinity}
-                        minPeriod={0}
-                        now={[Function]}
-                  />
-            </styled.div>
-            <styled.div />
-            <Link
-                  replace={false}
-                  to="/storyDetails/story-id/comments/SomeId"
-            >
-                  <styled.div>
-                        link
-                  </styled.div>
-            </Link>
-            <styled.div />
-            <Link
-                  replace={false}
-                  to="/storyDetails/story-id/comments/parent-id"
-            >
-                  <styled.div>
-                        parent
-                  </styled.div>
-            </Link>
-      </styled.div>
-      <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "SomeContent",
-                      }
-            }
-      />
-</styled.div>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 1,
-      "_context": Object {},
-      "_currentElement": <Comment
-        createdAt={0}
-        createdBy="SomeUser"
-        id="SomeId"
-        level={1}
-        parentId="parent-id"
-        root={
-                Object {
-                        "id": "SomeId",
-                        "title": "SomeTitle",
-                      }
-        }
-        storyId="story-id"
-        text="SomeContent"
 />,
-      "_debugID": 3,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": Comment {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "expand": [Function],
-        "props": Object {
-          "createdAt": 0,
-          "createdBy": "SomeUser",
-          "id": "SomeId",
-          "level": 1,
-          "parentId": "parent-id",
-          "root": Object {
-            "id": "SomeId",
-            "title": "SomeTitle",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "component": "time",
+                "date": 1970-01-01T00:00:00.000Z,
+                "formatter": [Function],
+                "live": true,
+                "maxPeriod": Infinity,
+                "minPeriod": 0,
+                "now": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
           },
-          "storyId": "story-id",
-          "text": "SomeContent",
-        },
-        "refs": Object {},
-        "state": Object {
-          "expanded": true,
-        },
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 2,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <styled.div>
-          <styled.div>
-                    <styled.div
-                              onClick={[Function]}
-                              tabIndex="0"
-                    >
-                              [
-                              −
-                              ]
-                    </styled.div>
-                    <Link
-                              replace={false}
-                              to="/user/SomeUser"
-                    >
-                              <styled.div>
-                                        <b />
-                              </styled.div>
-                    </Link>
-                    <styled.div>
-                              <TimeAgo
-                                        component="time"
-                                        date={1970-01-01T00:00:00.000Z}
-                                        formatter={[Function]}
-                                        live={true}
-                                        maxPeriod={Infinity}
-                                        minPeriod={0}
-                                        now={[Function]}
-                              />
-                    </styled.div>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/SomeId"
-                    >
-                              <styled.div>
-                                        link
-                              </styled.div>
-                    </Link>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/parent-id"
-                    >
-                              <styled.div>
-                                        parent
-                              </styled.div>
-                    </Link>
-          </styled.div>
-          <div
-                    dangerouslySetInnerHTML={
-                              Object {
-                                        "__html": "SomeContent",
-                                      }
-                    }
-          />
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                link
 </styled.div>,
-        "_debugID": 4,
-        "_renderedOutput": <styled.div>
-          <styled.div>
-                    <styled.div
-                              onClick={[Function]}
-                              tabIndex="0"
-                    >
-                              [
-                              −
-                              ]
-                    </styled.div>
-                    <Link
-                              replace={false}
-                              to="/user/SomeUser"
-                    >
-                              <styled.div>
-                                        <b />
-                              </styled.div>
-                    </Link>
-                    <styled.div>
-                              <TimeAgo
-                                        component="time"
-                                        date={1970-01-01T00:00:00.000Z}
-                                        formatter={[Function]}
-                                        live={true}
-                                        maxPeriod={Infinity}
-                                        minPeriod={0}
-                                        now={[Function]}
-                              />
-                    </styled.div>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/SomeId"
-                    >
-                              <styled.div>
-                                        link
-                              </styled.div>
-                    </Link>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/parent-id"
-                    >
-                              <styled.div>
-                                        parent
-                              </styled.div>
-                    </Link>
-          </styled.div>
-          <div
-                    dangerouslySetInnerHTML={
-                              Object {
-                                        "__html": "SomeContent",
-                                      }
-                    }
-          />
+              "replace": false,
+              "to": "/storyDetails/story-id/comments/SomeId",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": "link",
+              },
+              "ref": null,
+              "rendered": "link",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                parent
 </styled.div>,
+              "replace": false,
+              "to": "/storyDetails/story-id",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": "parent",
+              },
+              "ref": null,
+              "rendered": "parent",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
       },
-      "_renderedNodeType": 1,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "dangerouslySetInnerHTML": Object {
+            "__html": "SomeContent",
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "div",
+      },
+      undefined,
+    ],
+    "type": [Function],
   },
-  "root": [Circular],
-  "unrendered": <Comment
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <styled.div>
+            <styled.div
+                        onClick={[Function]}
+                        tabIndex="0"
+            >
+                        [
+                        −
+                        ]
+            </styled.div>
+            <Link
+                        replace={false}
+                        to="/user/SomeUser"
+            >
+                        <styled.div>
+                                    <b />
+                        </styled.div>
+            </Link>
+            <styled.div>
+                        <TimeAgo
+                                    component="time"
+                                    date={1970-01-01T00:00:00.000Z}
+                                    formatter={[Function]}
+                                    live={true}
+                                    maxPeriod={Infinity}
+                                    minPeriod={0}
+                                    now={[Function]}
+                        />
+            </styled.div>
+            <styled.div />
+            <Link
+                        replace={false}
+                        to="/storyDetails/story-id/comments/SomeId"
+            >
+                        <styled.div>
+                                    link
+                        </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                        replace={false}
+                        to="/storyDetails/story-id"
+            >
+                        <styled.div>
+                                    parent
+                        </styled.div>
+            </Link>
+</styled.div>,
+          <div
+            dangerouslySetInnerHTML={
+                        Object {
+                                    "__html": "SomeContent",
+                                  }
+            }
+/>,
+          undefined,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <styled.div
+                onClick={[Function]}
+                tabIndex="0"
+>
+                [
+                −
+                ]
+</styled.div>,
+              <Link
+                replace={false}
+                to="/user/SomeUser"
+>
+                <styled.div>
+                                <b />
+                </styled.div>
+</Link>,
+              <styled.div>
+                <TimeAgo
+                                component="time"
+                                date={1970-01-01T00:00:00.000Z}
+                                formatter={[Function]}
+                                live={true}
+                                maxPeriod={Infinity}
+                                minPeriod={0}
+                                now={[Function]}
+                />
+</styled.div>,
+              <styled.div />,
+              <Link
+                replace={false}
+                to="/storyDetails/story-id/comments/SomeId"
+>
+                <styled.div>
+                                link
+                </styled.div>
+</Link>,
+              <styled.div />,
+              <Link
+                replace={false}
+                to="/storyDetails/story-id"
+>
+                <styled.div>
+                                parent
+                </styled.div>
+</Link>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  "[",
+                  "−",
+                  "]",
+                ],
+                "onClick": [Function],
+                "tabIndex": "0",
+              },
+              "ref": null,
+              "rendered": Array [
+                "[",
+                "−",
+                "]",
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  <b />
+</styled.div>,
+                "replace": false,
+                "to": "/user/SomeUser",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <b />,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": undefined,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "b",
+                },
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <TimeAgo
+                  component="time"
+                  date={1970-01-01T00:00:00.000Z}
+                  formatter={[Function]}
+                  live={true}
+                  maxPeriod={Infinity}
+                  minPeriod={0}
+                  now={[Function]}
+/>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "component": "time",
+                  "date": 1970-01-01T00:00:00.000Z,
+                  "formatter": [Function],
+                  "live": true,
+                  "maxPeriod": Infinity,
+                  "minPeriod": 0,
+                  "now": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  link
+</styled.div>,
+                "replace": false,
+                "to": "/storyDetails/story-id/comments/SomeId",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "link",
+                },
+                "ref": null,
+                "rendered": "link",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  parent
+</styled.div>,
+                "replace": false,
+                "to": "/storyDetails/story-id",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "parent",
+                },
+                "ref": null,
+                "rendered": "parent",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "dangerouslySetInnerHTML": Object {
+              "__html": "SomeContent",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
+        undefined,
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`Comment Level 1 renders correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Comment
     createdAt={0}
     createdBy="SomeUser"
     id="SomeId"
@@ -651,309 +655,628 @@ ShallowWrapper {
     storyId="story-id"
     text="SomeContent"
 />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <styled.div>
+          <styled.div
+                    onClick={[Function]}
+                    tabIndex="0"
+          >
+                    [
+                    −
+                    ]
+          </styled.div>
+          <Link
+                    replace={false}
+                    to="/user/SomeUser"
+          >
+                    <styled.div>
+                              <b />
+                    </styled.div>
+          </Link>
+          <styled.div>
+                    <TimeAgo
+                              component="time"
+                              date={1970-01-01T00:00:00.000Z}
+                              formatter={[Function]}
+                              live={true}
+                              maxPeriod={Infinity}
+                              minPeriod={0}
+                              now={[Function]}
+                    />
+          </styled.div>
+          <styled.div />
+          <Link
+                    replace={false}
+                    to="/storyDetails/story-id/comments/SomeId"
+          >
+                    <styled.div>
+                              link
+                    </styled.div>
+          </Link>
+          <styled.div />
+          <Link
+                    replace={false}
+                    to="/storyDetails/story-id/comments/parent-id"
+          >
+                    <styled.div>
+                              parent
+                    </styled.div>
+          </Link>
+</styled.div>,
+        <div
+          dangerouslySetInnerHTML={
+                    Object {
+                              "__html": "SomeContent",
+                            }
+          }
+/>,
+        undefined,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <styled.div
+              onClick={[Function]}
+              tabIndex="0"
+>
+              [
+              −
+              ]
+</styled.div>,
+            <Link
+              replace={false}
+              to="/user/SomeUser"
+>
+              <styled.div>
+                            <b />
+              </styled.div>
+</Link>,
+            <styled.div>
+              <TimeAgo
+                            component="time"
+                            date={1970-01-01T00:00:00.000Z}
+                            formatter={[Function]}
+                            live={true}
+                            maxPeriod={Infinity}
+                            minPeriod={0}
+                            now={[Function]}
+              />
+</styled.div>,
+            <styled.div />,
+            <Link
+              replace={false}
+              to="/storyDetails/story-id/comments/SomeId"
+>
+              <styled.div>
+                            link
+              </styled.div>
+</Link>,
+            <styled.div />,
+            <Link
+              replace={false}
+              to="/storyDetails/story-id/comments/parent-id"
+>
+              <styled.div>
+                            parent
+              </styled.div>
+</Link>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                "[",
+                "−",
+                "]",
+              ],
+              "onClick": [Function],
+              "tabIndex": "0",
+            },
+            "ref": null,
+            "rendered": Array [
+              "[",
+              "−",
+              "]",
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                <b />
+</styled.div>,
+              "replace": false,
+              "to": "/user/SomeUser",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <b />,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "host",
+                "props": Object {
+                  "children": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "b",
+              },
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <TimeAgo
+                component="time"
+                date={1970-01-01T00:00:00.000Z}
+                formatter={[Function]}
+                live={true}
+                maxPeriod={Infinity}
+                minPeriod={0}
+                now={[Function]}
+/>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "component": "time",
+                "date": 1970-01-01T00:00:00.000Z,
+                "formatter": [Function],
+                "live": true,
+                "maxPeriod": Infinity,
+                "minPeriod": 0,
+                "now": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                link
+</styled.div>,
+              "replace": false,
+              "to": "/storyDetails/story-id/comments/SomeId",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": "link",
+              },
+              "ref": null,
+              "rendered": "link",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                parent
+</styled.div>,
+              "replace": false,
+              "to": "/storyDetails/story-id/comments/parent-id",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": "parent",
+              },
+              "ref": null,
+              "rendered": "parent",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "dangerouslySetInnerHTML": Object {
+            "__html": "SomeContent",
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "div",
+      },
+      undefined,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <styled.div>
+            <styled.div
+                        onClick={[Function]}
+                        tabIndex="0"
+            >
+                        [
+                        −
+                        ]
+            </styled.div>
+            <Link
+                        replace={false}
+                        to="/user/SomeUser"
+            >
+                        <styled.div>
+                                    <b />
+                        </styled.div>
+            </Link>
+            <styled.div>
+                        <TimeAgo
+                                    component="time"
+                                    date={1970-01-01T00:00:00.000Z}
+                                    formatter={[Function]}
+                                    live={true}
+                                    maxPeriod={Infinity}
+                                    minPeriod={0}
+                                    now={[Function]}
+                        />
+            </styled.div>
+            <styled.div />
+            <Link
+                        replace={false}
+                        to="/storyDetails/story-id/comments/SomeId"
+            >
+                        <styled.div>
+                                    link
+                        </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                        replace={false}
+                        to="/storyDetails/story-id/comments/parent-id"
+            >
+                        <styled.div>
+                                    parent
+                        </styled.div>
+            </Link>
+</styled.div>,
+          <div
+            dangerouslySetInnerHTML={
+                        Object {
+                                    "__html": "SomeContent",
+                                  }
+            }
+/>,
+          undefined,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <styled.div
+                onClick={[Function]}
+                tabIndex="0"
+>
+                [
+                −
+                ]
+</styled.div>,
+              <Link
+                replace={false}
+                to="/user/SomeUser"
+>
+                <styled.div>
+                                <b />
+                </styled.div>
+</Link>,
+              <styled.div>
+                <TimeAgo
+                                component="time"
+                                date={1970-01-01T00:00:00.000Z}
+                                formatter={[Function]}
+                                live={true}
+                                maxPeriod={Infinity}
+                                minPeriod={0}
+                                now={[Function]}
+                />
+</styled.div>,
+              <styled.div />,
+              <Link
+                replace={false}
+                to="/storyDetails/story-id/comments/SomeId"
+>
+                <styled.div>
+                                link
+                </styled.div>
+</Link>,
+              <styled.div />,
+              <Link
+                replace={false}
+                to="/storyDetails/story-id/comments/parent-id"
+>
+                <styled.div>
+                                parent
+                </styled.div>
+</Link>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  "[",
+                  "−",
+                  "]",
+                ],
+                "onClick": [Function],
+                "tabIndex": "0",
+              },
+              "ref": null,
+              "rendered": Array [
+                "[",
+                "−",
+                "]",
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  <b />
+</styled.div>,
+                "replace": false,
+                "to": "/user/SomeUser",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <b />,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": undefined,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "b",
+                },
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <TimeAgo
+                  component="time"
+                  date={1970-01-01T00:00:00.000Z}
+                  formatter={[Function]}
+                  live={true}
+                  maxPeriod={Infinity}
+                  minPeriod={0}
+                  now={[Function]}
+/>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "component": "time",
+                  "date": 1970-01-01T00:00:00.000Z,
+                  "formatter": [Function],
+                  "live": true,
+                  "maxPeriod": Infinity,
+                  "minPeriod": 0,
+                  "now": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  link
+</styled.div>,
+                "replace": false,
+                "to": "/storyDetails/story-id/comments/SomeId",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "link",
+                },
+                "ref": null,
+                "rendered": "link",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  parent
+</styled.div>,
+                "replace": false,
+                "to": "/storyDetails/story-id/comments/parent-id",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "parent",
+                },
+                "ref": null,
+                "rendered": "parent",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "dangerouslySetInnerHTML": Object {
+              "__html": "SomeContent",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
+        undefined,
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
 }
 `;
 
 exports[`Comment Level 20 renders correctly 1`] = `
 ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
   "length": 1,
-  "node": <styled.div>
-    <styled.div>
-        <styled.div
-            onClick={[Function]}
-            tabIndex="0"
-        >
-            [
-            −
-            ]
-        </styled.div>
-        <Link
-            replace={false}
-            to="/user/SomeUser"
-        >
-            <styled.div>
-                <b />
-            </styled.div>
-        </Link>
-        <styled.div>
-            <TimeAgo
-                component="time"
-                date={1970-01-01T00:00:00.000Z}
-                formatter={[Function]}
-                live={true}
-                maxPeriod={Infinity}
-                minPeriod={0}
-                now={[Function]}
-            />
-        </styled.div>
-        <styled.div />
-        <Link
-            replace={false}
-            to="/storyDetails/story-id/comments/SomeId"
-        >
-            <styled.div>
-                link
-            </styled.div>
-        </Link>
-        <styled.div />
-        <Link
-            replace={false}
-            to="/storyDetails/story-id/comments/parent-id"
-        >
-            <styled.div>
-                parent
-            </styled.div>
-        </Link>
-    </styled.div>
-    <div
-        dangerouslySetInnerHTML={
-            Object {
-                "__html": "SomeContent",
-              }
-        }
-    />
-</styled.div>,
-  "nodes": Array [
-    <styled.div>
-      <styled.div>
-            <styled.div
-                  onClick={[Function]}
-                  tabIndex="0"
-            >
-                  [
-                  −
-                  ]
-            </styled.div>
-            <Link
-                  replace={false}
-                  to="/user/SomeUser"
-            >
-                  <styled.div>
-                        <b />
-                  </styled.div>
-            </Link>
-            <styled.div>
-                  <TimeAgo
-                        component="time"
-                        date={1970-01-01T00:00:00.000Z}
-                        formatter={[Function]}
-                        live={true}
-                        maxPeriod={Infinity}
-                        minPeriod={0}
-                        now={[Function]}
-                  />
-            </styled.div>
-            <styled.div />
-            <Link
-                  replace={false}
-                  to="/storyDetails/story-id/comments/SomeId"
-            >
-                  <styled.div>
-                        link
-                  </styled.div>
-            </Link>
-            <styled.div />
-            <Link
-                  replace={false}
-                  to="/storyDetails/story-id/comments/parent-id"
-            >
-                  <styled.div>
-                        parent
-                  </styled.div>
-            </Link>
-      </styled.div>
-      <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "SomeContent",
-                      }
-            }
-      />
-</styled.div>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 1,
-      "_context": Object {},
-      "_currentElement": <Comment
-        createdAt={0}
-        createdBy="SomeUser"
-        id="SomeId"
-        level={20}
-        parentId="parent-id"
-        storyId="story-id"
-        text="SomeContent"
-/>,
-      "_debugID": 5,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": Comment {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "expand": [Function],
-        "props": Object {
-          "createdAt": 0,
-          "createdBy": "SomeUser",
-          "id": "SomeId",
-          "level": 20,
-          "parentId": "parent-id",
-          "storyId": "story-id",
-          "text": "SomeContent",
-        },
-        "refs": Object {},
-        "state": Object {
-          "expanded": true,
-        },
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 3,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <styled.div>
-          <styled.div>
-                    <styled.div
-                              onClick={[Function]}
-                              tabIndex="0"
-                    >
-                              [
-                              −
-                              ]
-                    </styled.div>
-                    <Link
-                              replace={false}
-                              to="/user/SomeUser"
-                    >
-                              <styled.div>
-                                        <b />
-                              </styled.div>
-                    </Link>
-                    <styled.div>
-                              <TimeAgo
-                                        component="time"
-                                        date={1970-01-01T00:00:00.000Z}
-                                        formatter={[Function]}
-                                        live={true}
-                                        maxPeriod={Infinity}
-                                        minPeriod={0}
-                                        now={[Function]}
-                              />
-                    </styled.div>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/SomeId"
-                    >
-                              <styled.div>
-                                        link
-                              </styled.div>
-                    </Link>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/parent-id"
-                    >
-                              <styled.div>
-                                        parent
-                              </styled.div>
-                    </Link>
-          </styled.div>
-          <div
-                    dangerouslySetInnerHTML={
-                              Object {
-                                        "__html": "SomeContent",
-                                      }
-                    }
-          />
-</styled.div>,
-        "_debugID": 6,
-        "_renderedOutput": <styled.div>
-          <styled.div>
-                    <styled.div
-                              onClick={[Function]}
-                              tabIndex="0"
-                    >
-                              [
-                              −
-                              ]
-                    </styled.div>
-                    <Link
-                              replace={false}
-                              to="/user/SomeUser"
-                    >
-                              <styled.div>
-                                        <b />
-                              </styled.div>
-                    </Link>
-                    <styled.div>
-                              <TimeAgo
-                                        component="time"
-                                        date={1970-01-01T00:00:00.000Z}
-                                        formatter={[Function]}
-                                        live={true}
-                                        maxPeriod={Infinity}
-                                        minPeriod={0}
-                                        now={[Function]}
-                              />
-                    </styled.div>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/SomeId"
-                    >
-                              <styled.div>
-                                        link
-                              </styled.div>
-                    </Link>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/parent-id"
-                    >
-                              <styled.div>
-                                        parent
-                              </styled.div>
-                    </Link>
-          </styled.div>
-          <div
-                    dangerouslySetInnerHTML={
-                              Object {
-                                        "__html": "SomeContent",
-                                      }
-                    }
-          />
-</styled.div>,
-      },
-      "_renderedNodeType": 1,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
-  },
-  "root": [Circular],
-  "unrendered": <Comment
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Comment
     createdAt={0}
     createdBy="SomeUser"
     id="SomeId"
@@ -962,309 +1285,628 @@ ShallowWrapper {
     storyId="story-id"
     text="SomeContent"
 />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <styled.div>
+          <styled.div
+                    onClick={[Function]}
+                    tabIndex="0"
+          >
+                    [
+                    −
+                    ]
+          </styled.div>
+          <Link
+                    replace={false}
+                    to="/user/SomeUser"
+          >
+                    <styled.div>
+                              <b />
+                    </styled.div>
+          </Link>
+          <styled.div>
+                    <TimeAgo
+                              component="time"
+                              date={1970-01-01T00:00:00.000Z}
+                              formatter={[Function]}
+                              live={true}
+                              maxPeriod={Infinity}
+                              minPeriod={0}
+                              now={[Function]}
+                    />
+          </styled.div>
+          <styled.div />
+          <Link
+                    replace={false}
+                    to="/storyDetails/story-id/comments/SomeId"
+          >
+                    <styled.div>
+                              link
+                    </styled.div>
+          </Link>
+          <styled.div />
+          <Link
+                    replace={false}
+                    to="/storyDetails/story-id/comments/parent-id"
+          >
+                    <styled.div>
+                              parent
+                    </styled.div>
+          </Link>
+</styled.div>,
+        <div
+          dangerouslySetInnerHTML={
+                    Object {
+                              "__html": "SomeContent",
+                            }
+          }
+/>,
+        undefined,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <styled.div
+              onClick={[Function]}
+              tabIndex="0"
+>
+              [
+              −
+              ]
+</styled.div>,
+            <Link
+              replace={false}
+              to="/user/SomeUser"
+>
+              <styled.div>
+                            <b />
+              </styled.div>
+</Link>,
+            <styled.div>
+              <TimeAgo
+                            component="time"
+                            date={1970-01-01T00:00:00.000Z}
+                            formatter={[Function]}
+                            live={true}
+                            maxPeriod={Infinity}
+                            minPeriod={0}
+                            now={[Function]}
+              />
+</styled.div>,
+            <styled.div />,
+            <Link
+              replace={false}
+              to="/storyDetails/story-id/comments/SomeId"
+>
+              <styled.div>
+                            link
+              </styled.div>
+</Link>,
+            <styled.div />,
+            <Link
+              replace={false}
+              to="/storyDetails/story-id/comments/parent-id"
+>
+              <styled.div>
+                            parent
+              </styled.div>
+</Link>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                "[",
+                "−",
+                "]",
+              ],
+              "onClick": [Function],
+              "tabIndex": "0",
+            },
+            "ref": null,
+            "rendered": Array [
+              "[",
+              "−",
+              "]",
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                <b />
+</styled.div>,
+              "replace": false,
+              "to": "/user/SomeUser",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <b />,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "host",
+                "props": Object {
+                  "children": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "b",
+              },
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <TimeAgo
+                component="time"
+                date={1970-01-01T00:00:00.000Z}
+                formatter={[Function]}
+                live={true}
+                maxPeriod={Infinity}
+                minPeriod={0}
+                now={[Function]}
+/>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "component": "time",
+                "date": 1970-01-01T00:00:00.000Z,
+                "formatter": [Function],
+                "live": true,
+                "maxPeriod": Infinity,
+                "minPeriod": 0,
+                "now": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                link
+</styled.div>,
+              "replace": false,
+              "to": "/storyDetails/story-id/comments/SomeId",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": "link",
+              },
+              "ref": null,
+              "rendered": "link",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                parent
+</styled.div>,
+              "replace": false,
+              "to": "/storyDetails/story-id/comments/parent-id",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": "parent",
+              },
+              "ref": null,
+              "rendered": "parent",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "dangerouslySetInnerHTML": Object {
+            "__html": "SomeContent",
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "div",
+      },
+      undefined,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <styled.div>
+            <styled.div
+                        onClick={[Function]}
+                        tabIndex="0"
+            >
+                        [
+                        −
+                        ]
+            </styled.div>
+            <Link
+                        replace={false}
+                        to="/user/SomeUser"
+            >
+                        <styled.div>
+                                    <b />
+                        </styled.div>
+            </Link>
+            <styled.div>
+                        <TimeAgo
+                                    component="time"
+                                    date={1970-01-01T00:00:00.000Z}
+                                    formatter={[Function]}
+                                    live={true}
+                                    maxPeriod={Infinity}
+                                    minPeriod={0}
+                                    now={[Function]}
+                        />
+            </styled.div>
+            <styled.div />
+            <Link
+                        replace={false}
+                        to="/storyDetails/story-id/comments/SomeId"
+            >
+                        <styled.div>
+                                    link
+                        </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                        replace={false}
+                        to="/storyDetails/story-id/comments/parent-id"
+            >
+                        <styled.div>
+                                    parent
+                        </styled.div>
+            </Link>
+</styled.div>,
+          <div
+            dangerouslySetInnerHTML={
+                        Object {
+                                    "__html": "SomeContent",
+                                  }
+            }
+/>,
+          undefined,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <styled.div
+                onClick={[Function]}
+                tabIndex="0"
+>
+                [
+                −
+                ]
+</styled.div>,
+              <Link
+                replace={false}
+                to="/user/SomeUser"
+>
+                <styled.div>
+                                <b />
+                </styled.div>
+</Link>,
+              <styled.div>
+                <TimeAgo
+                                component="time"
+                                date={1970-01-01T00:00:00.000Z}
+                                formatter={[Function]}
+                                live={true}
+                                maxPeriod={Infinity}
+                                minPeriod={0}
+                                now={[Function]}
+                />
+</styled.div>,
+              <styled.div />,
+              <Link
+                replace={false}
+                to="/storyDetails/story-id/comments/SomeId"
+>
+                <styled.div>
+                                link
+                </styled.div>
+</Link>,
+              <styled.div />,
+              <Link
+                replace={false}
+                to="/storyDetails/story-id/comments/parent-id"
+>
+                <styled.div>
+                                parent
+                </styled.div>
+</Link>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  "[",
+                  "−",
+                  "]",
+                ],
+                "onClick": [Function],
+                "tabIndex": "0",
+              },
+              "ref": null,
+              "rendered": Array [
+                "[",
+                "−",
+                "]",
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  <b />
+</styled.div>,
+                "replace": false,
+                "to": "/user/SomeUser",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <b />,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": undefined,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "b",
+                },
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <TimeAgo
+                  component="time"
+                  date={1970-01-01T00:00:00.000Z}
+                  formatter={[Function]}
+                  live={true}
+                  maxPeriod={Infinity}
+                  minPeriod={0}
+                  now={[Function]}
+/>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "component": "time",
+                  "date": 1970-01-01T00:00:00.000Z,
+                  "formatter": [Function],
+                  "live": true,
+                  "maxPeriod": Infinity,
+                  "minPeriod": 0,
+                  "now": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  link
+</styled.div>,
+                "replace": false,
+                "to": "/storyDetails/story-id/comments/SomeId",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "link",
+                },
+                "ref": null,
+                "rendered": "link",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  parent
+</styled.div>,
+                "replace": false,
+                "to": "/storyDetails/story-id/comments/parent-id",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "parent",
+                },
+                "ref": null,
+                "rendered": "parent",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "dangerouslySetInnerHTML": Object {
+              "__html": "SomeContent",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
+        undefined,
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
 }
 `;
 
 exports[`Comment Level 20 renders correctly 2`] = `
 ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
   "length": 1,
-  "node": <styled.div>
-    <styled.div>
-        <styled.div
-            onClick={[Function]}
-            tabIndex="0"
-        >
-            [
-            −
-            ]
-        </styled.div>
-        <Link
-            replace={false}
-            to="/user/SomeUser"
-        >
-            <styled.div>
-                <b />
-            </styled.div>
-        </Link>
-        <styled.div>
-            <TimeAgo
-                component="time"
-                date={1970-01-01T00:00:00.000Z}
-                formatter={[Function]}
-                live={true}
-                maxPeriod={Infinity}
-                minPeriod={0}
-                now={[Function]}
-            />
-        </styled.div>
-        <styled.div />
-        <Link
-            replace={false}
-            to="/storyDetails/story-id/comments/SomeId"
-        >
-            <styled.div>
-                link
-            </styled.div>
-        </Link>
-        <styled.div />
-        <Link
-            replace={false}
-            to="/storyDetails/story-id/comments/parent-id"
-        >
-            <styled.div>
-                parent
-            </styled.div>
-        </Link>
-    </styled.div>
-    <div
-        dangerouslySetInnerHTML={
-            Object {
-                "__html": "SomeContent",
-              }
-        }
-    />
-</styled.div>,
-  "nodes": Array [
-    <styled.div>
-      <styled.div>
-            <styled.div
-                  onClick={[Function]}
-                  tabIndex="0"
-            >
-                  [
-                  −
-                  ]
-            </styled.div>
-            <Link
-                  replace={false}
-                  to="/user/SomeUser"
-            >
-                  <styled.div>
-                        <b />
-                  </styled.div>
-            </Link>
-            <styled.div>
-                  <TimeAgo
-                        component="time"
-                        date={1970-01-01T00:00:00.000Z}
-                        formatter={[Function]}
-                        live={true}
-                        maxPeriod={Infinity}
-                        minPeriod={0}
-                        now={[Function]}
-                  />
-            </styled.div>
-            <styled.div />
-            <Link
-                  replace={false}
-                  to="/storyDetails/story-id/comments/SomeId"
-            >
-                  <styled.div>
-                        link
-                  </styled.div>
-            </Link>
-            <styled.div />
-            <Link
-                  replace={false}
-                  to="/storyDetails/story-id/comments/parent-id"
-            >
-                  <styled.div>
-                        parent
-                  </styled.div>
-            </Link>
-      </styled.div>
-      <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "SomeContent",
-                      }
-            }
-      />
-</styled.div>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 1,
-      "_context": Object {},
-      "_currentElement": <Comment
-        createdAt={0}
-        createdBy="SomeUser"
-        id="SomeId"
-        level={20}
-        parentId="parent-id"
-        storyId="story-id"
-        text="SomeContent"
-/>,
-      "_debugID": 7,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": Comment {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "expand": [Function],
-        "props": Object {
-          "createdAt": 0,
-          "createdBy": "SomeUser",
-          "id": "SomeId",
-          "level": 20,
-          "parentId": "parent-id",
-          "storyId": "story-id",
-          "text": "SomeContent",
-        },
-        "refs": Object {},
-        "state": Object {
-          "expanded": true,
-        },
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 4,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <styled.div>
-          <styled.div>
-                    <styled.div
-                              onClick={[Function]}
-                              tabIndex="0"
-                    >
-                              [
-                              −
-                              ]
-                    </styled.div>
-                    <Link
-                              replace={false}
-                              to="/user/SomeUser"
-                    >
-                              <styled.div>
-                                        <b />
-                              </styled.div>
-                    </Link>
-                    <styled.div>
-                              <TimeAgo
-                                        component="time"
-                                        date={1970-01-01T00:00:00.000Z}
-                                        formatter={[Function]}
-                                        live={true}
-                                        maxPeriod={Infinity}
-                                        minPeriod={0}
-                                        now={[Function]}
-                              />
-                    </styled.div>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/SomeId"
-                    >
-                              <styled.div>
-                                        link
-                              </styled.div>
-                    </Link>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/parent-id"
-                    >
-                              <styled.div>
-                                        parent
-                              </styled.div>
-                    </Link>
-          </styled.div>
-          <div
-                    dangerouslySetInnerHTML={
-                              Object {
-                                        "__html": "SomeContent",
-                                      }
-                    }
-          />
-</styled.div>,
-        "_debugID": 8,
-        "_renderedOutput": <styled.div>
-          <styled.div>
-                    <styled.div
-                              onClick={[Function]}
-                              tabIndex="0"
-                    >
-                              [
-                              −
-                              ]
-                    </styled.div>
-                    <Link
-                              replace={false}
-                              to="/user/SomeUser"
-                    >
-                              <styled.div>
-                                        <b />
-                              </styled.div>
-                    </Link>
-                    <styled.div>
-                              <TimeAgo
-                                        component="time"
-                                        date={1970-01-01T00:00:00.000Z}
-                                        formatter={[Function]}
-                                        live={true}
-                                        maxPeriod={Infinity}
-                                        minPeriod={0}
-                                        now={[Function]}
-                              />
-                    </styled.div>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/SomeId"
-                    >
-                              <styled.div>
-                                        link
-                              </styled.div>
-                    </Link>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/parent-id"
-                    >
-                              <styled.div>
-                                        parent
-                              </styled.div>
-                    </Link>
-          </styled.div>
-          <div
-                    dangerouslySetInnerHTML={
-                              Object {
-                                        "__html": "SomeContent",
-                                      }
-                    }
-          />
-</styled.div>,
-      },
-      "_renderedNodeType": 1,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
-  },
-  "root": [Circular],
-  "unrendered": <Comment
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Comment
     createdAt={0}
     createdBy="SomeUser"
     id="SomeId"
@@ -1273,295 +1915,628 @@ ShallowWrapper {
     storyId="story-id"
     text="SomeContent"
 />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <styled.div>
+          <styled.div
+                    onClick={[Function]}
+                    tabIndex="0"
+          >
+                    [
+                    −
+                    ]
+          </styled.div>
+          <Link
+                    replace={false}
+                    to="/user/SomeUser"
+          >
+                    <styled.div>
+                              <b />
+                    </styled.div>
+          </Link>
+          <styled.div>
+                    <TimeAgo
+                              component="time"
+                              date={1970-01-01T00:00:00.000Z}
+                              formatter={[Function]}
+                              live={true}
+                              maxPeriod={Infinity}
+                              minPeriod={0}
+                              now={[Function]}
+                    />
+          </styled.div>
+          <styled.div />
+          <Link
+                    replace={false}
+                    to="/storyDetails/story-id/comments/SomeId"
+          >
+                    <styled.div>
+                              link
+                    </styled.div>
+          </Link>
+          <styled.div />
+          <Link
+                    replace={false}
+                    to="/storyDetails/story-id/comments/parent-id"
+          >
+                    <styled.div>
+                              parent
+                    </styled.div>
+          </Link>
+</styled.div>,
+        <div
+          dangerouslySetInnerHTML={
+                    Object {
+                              "__html": "SomeContent",
+                            }
+          }
+/>,
+        undefined,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <styled.div
+              onClick={[Function]}
+              tabIndex="0"
+>
+              [
+              −
+              ]
+</styled.div>,
+            <Link
+              replace={false}
+              to="/user/SomeUser"
+>
+              <styled.div>
+                            <b />
+              </styled.div>
+</Link>,
+            <styled.div>
+              <TimeAgo
+                            component="time"
+                            date={1970-01-01T00:00:00.000Z}
+                            formatter={[Function]}
+                            live={true}
+                            maxPeriod={Infinity}
+                            minPeriod={0}
+                            now={[Function]}
+              />
+</styled.div>,
+            <styled.div />,
+            <Link
+              replace={false}
+              to="/storyDetails/story-id/comments/SomeId"
+>
+              <styled.div>
+                            link
+              </styled.div>
+</Link>,
+            <styled.div />,
+            <Link
+              replace={false}
+              to="/storyDetails/story-id/comments/parent-id"
+>
+              <styled.div>
+                            parent
+              </styled.div>
+</Link>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                "[",
+                "−",
+                "]",
+              ],
+              "onClick": [Function],
+              "tabIndex": "0",
+            },
+            "ref": null,
+            "rendered": Array [
+              "[",
+              "−",
+              "]",
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                <b />
+</styled.div>,
+              "replace": false,
+              "to": "/user/SomeUser",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <b />,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "host",
+                "props": Object {
+                  "children": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "b",
+              },
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <TimeAgo
+                component="time"
+                date={1970-01-01T00:00:00.000Z}
+                formatter={[Function]}
+                live={true}
+                maxPeriod={Infinity}
+                minPeriod={0}
+                now={[Function]}
+/>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "component": "time",
+                "date": 1970-01-01T00:00:00.000Z,
+                "formatter": [Function],
+                "live": true,
+                "maxPeriod": Infinity,
+                "minPeriod": 0,
+                "now": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                link
+</styled.div>,
+              "replace": false,
+              "to": "/storyDetails/story-id/comments/SomeId",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": "link",
+              },
+              "ref": null,
+              "rendered": "link",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                parent
+</styled.div>,
+              "replace": false,
+              "to": "/storyDetails/story-id/comments/parent-id",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": "parent",
+              },
+              "ref": null,
+              "rendered": "parent",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "dangerouslySetInnerHTML": Object {
+            "__html": "SomeContent",
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "div",
+      },
+      undefined,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <styled.div>
+            <styled.div
+                        onClick={[Function]}
+                        tabIndex="0"
+            >
+                        [
+                        −
+                        ]
+            </styled.div>
+            <Link
+                        replace={false}
+                        to="/user/SomeUser"
+            >
+                        <styled.div>
+                                    <b />
+                        </styled.div>
+            </Link>
+            <styled.div>
+                        <TimeAgo
+                                    component="time"
+                                    date={1970-01-01T00:00:00.000Z}
+                                    formatter={[Function]}
+                                    live={true}
+                                    maxPeriod={Infinity}
+                                    minPeriod={0}
+                                    now={[Function]}
+                        />
+            </styled.div>
+            <styled.div />
+            <Link
+                        replace={false}
+                        to="/storyDetails/story-id/comments/SomeId"
+            >
+                        <styled.div>
+                                    link
+                        </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                        replace={false}
+                        to="/storyDetails/story-id/comments/parent-id"
+            >
+                        <styled.div>
+                                    parent
+                        </styled.div>
+            </Link>
+</styled.div>,
+          <div
+            dangerouslySetInnerHTML={
+                        Object {
+                                    "__html": "SomeContent",
+                                  }
+            }
+/>,
+          undefined,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <styled.div
+                onClick={[Function]}
+                tabIndex="0"
+>
+                [
+                −
+                ]
+</styled.div>,
+              <Link
+                replace={false}
+                to="/user/SomeUser"
+>
+                <styled.div>
+                                <b />
+                </styled.div>
+</Link>,
+              <styled.div>
+                <TimeAgo
+                                component="time"
+                                date={1970-01-01T00:00:00.000Z}
+                                formatter={[Function]}
+                                live={true}
+                                maxPeriod={Infinity}
+                                minPeriod={0}
+                                now={[Function]}
+                />
+</styled.div>,
+              <styled.div />,
+              <Link
+                replace={false}
+                to="/storyDetails/story-id/comments/SomeId"
+>
+                <styled.div>
+                                link
+                </styled.div>
+</Link>,
+              <styled.div />,
+              <Link
+                replace={false}
+                to="/storyDetails/story-id/comments/parent-id"
+>
+                <styled.div>
+                                parent
+                </styled.div>
+</Link>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  "[",
+                  "−",
+                  "]",
+                ],
+                "onClick": [Function],
+                "tabIndex": "0",
+              },
+              "ref": null,
+              "rendered": Array [
+                "[",
+                "−",
+                "]",
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  <b />
+</styled.div>,
+                "replace": false,
+                "to": "/user/SomeUser",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <b />,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": undefined,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "b",
+                },
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <TimeAgo
+                  component="time"
+                  date={1970-01-01T00:00:00.000Z}
+                  formatter={[Function]}
+                  live={true}
+                  maxPeriod={Infinity}
+                  minPeriod={0}
+                  now={[Function]}
+/>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "component": "time",
+                  "date": 1970-01-01T00:00:00.000Z,
+                  "formatter": [Function],
+                  "live": true,
+                  "maxPeriod": Infinity,
+                  "minPeriod": 0,
+                  "now": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  link
+</styled.div>,
+                "replace": false,
+                "to": "/storyDetails/story-id/comments/SomeId",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "link",
+                },
+                "ref": null,
+                "rendered": "link",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  parent
+</styled.div>,
+                "replace": false,
+                "to": "/storyDetails/story-id/comments/parent-id",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "parent",
+                },
+                "ref": null,
+                "rendered": "parent",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "dangerouslySetInnerHTML": Object {
+              "__html": "SomeContent",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
+        undefined,
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
 }
 `;
 
 exports[`Comment with state.expanded=false renders correctly 1`] = `
 ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
   "length": 1,
-  "node": <styled.div>
-    <styled.div>
-        <styled.div
-            onClick={[Function]}
-            tabIndex="0"
-        >
-            [
-            −
-            ]
-        </styled.div>
-        <Link
-            replace={false}
-            to="/user/SomeUser"
-        >
-            <styled.div>
-                <b />
-            </styled.div>
-        </Link>
-        <styled.div>
-            <TimeAgo
-                component="time"
-                date={1970-01-01T00:00:00.000Z}
-                formatter={[Function]}
-                live={true}
-                maxPeriod={Infinity}
-                minPeriod={0}
-                now={[Function]}
-            />
-        </styled.div>
-        <styled.div />
-        <Link
-            replace={false}
-            to="/storyDetails/story-id/comments/SomeId"
-        >
-            <styled.div>
-                link
-            </styled.div>
-        </Link>
-        <styled.div />
-        <Link
-            replace={false}
-            to="/storyDetails/story-id/comments/parent-id"
-        >
-            <styled.div>
-                parent
-            </styled.div>
-        </Link>
-    </styled.div>
-    <div
-        dangerouslySetInnerHTML={
-            Object {
-                "__html": "SomeContent",
-              }
-        }
-    />
-</styled.div>,
-  "nodes": Array [
-    <styled.div>
-      <styled.div>
-            <styled.div
-                  onClick={[Function]}
-                  tabIndex="0"
-            >
-                  [
-                  −
-                  ]
-            </styled.div>
-            <Link
-                  replace={false}
-                  to="/user/SomeUser"
-            >
-                  <styled.div>
-                        <b />
-                  </styled.div>
-            </Link>
-            <styled.div>
-                  <TimeAgo
-                        component="time"
-                        date={1970-01-01T00:00:00.000Z}
-                        formatter={[Function]}
-                        live={true}
-                        maxPeriod={Infinity}
-                        minPeriod={0}
-                        now={[Function]}
-                  />
-            </styled.div>
-            <styled.div />
-            <Link
-                  replace={false}
-                  to="/storyDetails/story-id/comments/SomeId"
-            >
-                  <styled.div>
-                        link
-                  </styled.div>
-            </Link>
-            <styled.div />
-            <Link
-                  replace={false}
-                  to="/storyDetails/story-id/comments/parent-id"
-            >
-                  <styled.div>
-                        parent
-                  </styled.div>
-            </Link>
-      </styled.div>
-      <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "SomeContent",
-                      }
-            }
-      />
-</styled.div>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 1,
-      "_context": Object {},
-      "_currentElement": <Comment
-        createdAt={0}
-        createdBy="SomeUser"
-        id="SomeId"
-        level={1}
-        parentId="parent-id"
-        storyId="story-id"
-        text="SomeContent"
-/>,
-      "_debugID": 9,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": Comment {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "expand": [Function],
-        "props": Object {
-          "createdAt": 0,
-          "createdBy": "SomeUser",
-          "id": "SomeId",
-          "level": 1,
-          "parentId": "parent-id",
-          "storyId": "story-id",
-          "text": "SomeContent",
-        },
-        "refs": Object {},
-        "state": Object {
-          "expanded": false,
-        },
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 5,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <styled.div>
-          <styled.div>
-                    <styled.div
-                              onClick={[Function]}
-                              tabIndex="0"
-                    >
-                              [
-                              +
-                              ]
-                    </styled.div>
-                    <Link
-                              replace={false}
-                              to="/user/SomeUser"
-                    >
-                              <styled.div>
-                                        <b />
-                              </styled.div>
-                    </Link>
-                    <styled.div>
-                              <TimeAgo
-                                        component="time"
-                                        date={1970-01-01T00:00:00.000Z}
-                                        formatter={[Function]}
-                                        live={true}
-                                        maxPeriod={Infinity}
-                                        minPeriod={0}
-                                        now={[Function]}
-                              />
-                    </styled.div>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/SomeId"
-                    >
-                              <styled.div>
-                                        link
-                              </styled.div>
-                    </Link>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/parent-id"
-                    >
-                              <styled.div>
-                                        parent
-                              </styled.div>
-                    </Link>
-          </styled.div>
-</styled.div>,
-        "_debugID": 10,
-        "_renderedOutput": <styled.div>
-          <styled.div>
-                    <styled.div
-                              onClick={[Function]}
-                              tabIndex="0"
-                    >
-                              [
-                              +
-                              ]
-                    </styled.div>
-                    <Link
-                              replace={false}
-                              to="/user/SomeUser"
-                    >
-                              <styled.div>
-                                        <b />
-                              </styled.div>
-                    </Link>
-                    <styled.div>
-                              <TimeAgo
-                                        component="time"
-                                        date={1970-01-01T00:00:00.000Z}
-                                        formatter={[Function]}
-                                        live={true}
-                                        maxPeriod={Infinity}
-                                        minPeriod={0}
-                                        now={[Function]}
-                              />
-                    </styled.div>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/SomeId"
-                    >
-                              <styled.div>
-                                        link
-                              </styled.div>
-                    </Link>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/parent-id"
-                    >
-                              <styled.div>
-                                        parent
-                              </styled.div>
-                    </Link>
-          </styled.div>
-</styled.div>,
-      },
-      "_renderedNodeType": 1,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
-  },
-  "root": [Circular],
-  "unrendered": <Comment
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Comment
     createdAt={0}
     createdBy="SomeUser"
     id="SomeId"
@@ -1570,309 +2545,628 @@ ShallowWrapper {
     storyId="story-id"
     text="SomeContent"
 />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <styled.div>
+          <styled.div
+                    onClick={[Function]}
+                    tabIndex="0"
+          >
+                    [
+                    −
+                    ]
+          </styled.div>
+          <Link
+                    replace={false}
+                    to="/user/SomeUser"
+          >
+                    <styled.div>
+                              <b />
+                    </styled.div>
+          </Link>
+          <styled.div>
+                    <TimeAgo
+                              component="time"
+                              date={1970-01-01T00:00:00.000Z}
+                              formatter={[Function]}
+                              live={true}
+                              maxPeriod={Infinity}
+                              minPeriod={0}
+                              now={[Function]}
+                    />
+          </styled.div>
+          <styled.div />
+          <Link
+                    replace={false}
+                    to="/storyDetails/story-id/comments/SomeId"
+          >
+                    <styled.div>
+                              link
+                    </styled.div>
+          </Link>
+          <styled.div />
+          <Link
+                    replace={false}
+                    to="/storyDetails/story-id/comments/parent-id"
+          >
+                    <styled.div>
+                              parent
+                    </styled.div>
+          </Link>
+</styled.div>,
+        <div
+          dangerouslySetInnerHTML={
+                    Object {
+                              "__html": "SomeContent",
+                            }
+          }
+/>,
+        undefined,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <styled.div
+              onClick={[Function]}
+              tabIndex="0"
+>
+              [
+              −
+              ]
+</styled.div>,
+            <Link
+              replace={false}
+              to="/user/SomeUser"
+>
+              <styled.div>
+                            <b />
+              </styled.div>
+</Link>,
+            <styled.div>
+              <TimeAgo
+                            component="time"
+                            date={1970-01-01T00:00:00.000Z}
+                            formatter={[Function]}
+                            live={true}
+                            maxPeriod={Infinity}
+                            minPeriod={0}
+                            now={[Function]}
+              />
+</styled.div>,
+            <styled.div />,
+            <Link
+              replace={false}
+              to="/storyDetails/story-id/comments/SomeId"
+>
+              <styled.div>
+                            link
+              </styled.div>
+</Link>,
+            <styled.div />,
+            <Link
+              replace={false}
+              to="/storyDetails/story-id/comments/parent-id"
+>
+              <styled.div>
+                            parent
+              </styled.div>
+</Link>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                "[",
+                "−",
+                "]",
+              ],
+              "onClick": [Function],
+              "tabIndex": "0",
+            },
+            "ref": null,
+            "rendered": Array [
+              "[",
+              "−",
+              "]",
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                <b />
+</styled.div>,
+              "replace": false,
+              "to": "/user/SomeUser",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <b />,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "host",
+                "props": Object {
+                  "children": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "b",
+              },
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <TimeAgo
+                component="time"
+                date={1970-01-01T00:00:00.000Z}
+                formatter={[Function]}
+                live={true}
+                maxPeriod={Infinity}
+                minPeriod={0}
+                now={[Function]}
+/>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "component": "time",
+                "date": 1970-01-01T00:00:00.000Z,
+                "formatter": [Function],
+                "live": true,
+                "maxPeriod": Infinity,
+                "minPeriod": 0,
+                "now": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                link
+</styled.div>,
+              "replace": false,
+              "to": "/storyDetails/story-id/comments/SomeId",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": "link",
+              },
+              "ref": null,
+              "rendered": "link",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                parent
+</styled.div>,
+              "replace": false,
+              "to": "/storyDetails/story-id/comments/parent-id",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": "parent",
+              },
+              "ref": null,
+              "rendered": "parent",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "dangerouslySetInnerHTML": Object {
+            "__html": "SomeContent",
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "div",
+      },
+      undefined,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <styled.div>
+            <styled.div
+                        onClick={[Function]}
+                        tabIndex="0"
+            >
+                        [
+                        −
+                        ]
+            </styled.div>
+            <Link
+                        replace={false}
+                        to="/user/SomeUser"
+            >
+                        <styled.div>
+                                    <b />
+                        </styled.div>
+            </Link>
+            <styled.div>
+                        <TimeAgo
+                                    component="time"
+                                    date={1970-01-01T00:00:00.000Z}
+                                    formatter={[Function]}
+                                    live={true}
+                                    maxPeriod={Infinity}
+                                    minPeriod={0}
+                                    now={[Function]}
+                        />
+            </styled.div>
+            <styled.div />
+            <Link
+                        replace={false}
+                        to="/storyDetails/story-id/comments/SomeId"
+            >
+                        <styled.div>
+                                    link
+                        </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                        replace={false}
+                        to="/storyDetails/story-id/comments/parent-id"
+            >
+                        <styled.div>
+                                    parent
+                        </styled.div>
+            </Link>
+</styled.div>,
+          <div
+            dangerouslySetInnerHTML={
+                        Object {
+                                    "__html": "SomeContent",
+                                  }
+            }
+/>,
+          undefined,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <styled.div
+                onClick={[Function]}
+                tabIndex="0"
+>
+                [
+                −
+                ]
+</styled.div>,
+              <Link
+                replace={false}
+                to="/user/SomeUser"
+>
+                <styled.div>
+                                <b />
+                </styled.div>
+</Link>,
+              <styled.div>
+                <TimeAgo
+                                component="time"
+                                date={1970-01-01T00:00:00.000Z}
+                                formatter={[Function]}
+                                live={true}
+                                maxPeriod={Infinity}
+                                minPeriod={0}
+                                now={[Function]}
+                />
+</styled.div>,
+              <styled.div />,
+              <Link
+                replace={false}
+                to="/storyDetails/story-id/comments/SomeId"
+>
+                <styled.div>
+                                link
+                </styled.div>
+</Link>,
+              <styled.div />,
+              <Link
+                replace={false}
+                to="/storyDetails/story-id/comments/parent-id"
+>
+                <styled.div>
+                                parent
+                </styled.div>
+</Link>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  "[",
+                  "−",
+                  "]",
+                ],
+                "onClick": [Function],
+                "tabIndex": "0",
+              },
+              "ref": null,
+              "rendered": Array [
+                "[",
+                "−",
+                "]",
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  <b />
+</styled.div>,
+                "replace": false,
+                "to": "/user/SomeUser",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <b />,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": undefined,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "b",
+                },
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <TimeAgo
+                  component="time"
+                  date={1970-01-01T00:00:00.000Z}
+                  formatter={[Function]}
+                  live={true}
+                  maxPeriod={Infinity}
+                  minPeriod={0}
+                  now={[Function]}
+/>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "component": "time",
+                  "date": 1970-01-01T00:00:00.000Z,
+                  "formatter": [Function],
+                  "live": true,
+                  "maxPeriod": Infinity,
+                  "minPeriod": 0,
+                  "now": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  link
+</styled.div>,
+                "replace": false,
+                "to": "/storyDetails/story-id/comments/SomeId",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "link",
+                },
+                "ref": null,
+                "rendered": "link",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  parent
+</styled.div>,
+                "replace": false,
+                "to": "/storyDetails/story-id/comments/parent-id",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "parent",
+                },
+                "ref": null,
+                "rendered": "parent",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "dangerouslySetInnerHTML": Object {
+              "__html": "SomeContent",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
+        undefined,
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
 }
 `;
 
 exports[`Comment without childrens renders correctly 1`] = `
 ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
   "length": 1,
-  "node": <styled.div>
-    <styled.div>
-        <styled.div
-            onClick={[Function]}
-            tabIndex="0"
-        >
-            [
-            −
-            ]
-        </styled.div>
-        <Link
-            replace={false}
-            to="/user/SomeUser"
-        >
-            <styled.div>
-                <b />
-            </styled.div>
-        </Link>
-        <styled.div>
-            <TimeAgo
-                component="time"
-                date={1970-01-01T00:00:00.000Z}
-                formatter={[Function]}
-                live={true}
-                maxPeriod={Infinity}
-                minPeriod={0}
-                now={[Function]}
-            />
-        </styled.div>
-        <styled.div />
-        <Link
-            replace={false}
-            to="/storyDetails/story-id/comments/SomeId"
-        >
-            <styled.div>
-                link
-            </styled.div>
-        </Link>
-        <styled.div />
-        <Link
-            replace={false}
-            to="/storyDetails/story-id/comments/parent-id"
-        >
-            <styled.div>
-                parent
-            </styled.div>
-        </Link>
-    </styled.div>
-    <div
-        dangerouslySetInnerHTML={
-            Object {
-                "__html": "SomeContent",
-              }
-        }
-    />
-</styled.div>,
-  "nodes": Array [
-    <styled.div>
-      <styled.div>
-            <styled.div
-                  onClick={[Function]}
-                  tabIndex="0"
-            >
-                  [
-                  −
-                  ]
-            </styled.div>
-            <Link
-                  replace={false}
-                  to="/user/SomeUser"
-            >
-                  <styled.div>
-                        <b />
-                  </styled.div>
-            </Link>
-            <styled.div>
-                  <TimeAgo
-                        component="time"
-                        date={1970-01-01T00:00:00.000Z}
-                        formatter={[Function]}
-                        live={true}
-                        maxPeriod={Infinity}
-                        minPeriod={0}
-                        now={[Function]}
-                  />
-            </styled.div>
-            <styled.div />
-            <Link
-                  replace={false}
-                  to="/storyDetails/story-id/comments/SomeId"
-            >
-                  <styled.div>
-                        link
-                  </styled.div>
-            </Link>
-            <styled.div />
-            <Link
-                  replace={false}
-                  to="/storyDetails/story-id/comments/parent-id"
-            >
-                  <styled.div>
-                        parent
-                  </styled.div>
-            </Link>
-      </styled.div>
-      <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "SomeContent",
-                      }
-            }
-      />
-</styled.div>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 1,
-      "_context": Object {},
-      "_currentElement": <Comment
-        createdAt={0}
-        createdBy="SomeUser"
-        id="SomeId"
-        level={1}
-        parentId="parent-id"
-        storyId="story-id"
-        text="SomeContent"
-/>,
-      "_debugID": 11,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": Comment {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "expand": [Function],
-        "props": Object {
-          "createdAt": 0,
-          "createdBy": "SomeUser",
-          "id": "SomeId",
-          "level": 1,
-          "parentId": "parent-id",
-          "storyId": "story-id",
-          "text": "SomeContent",
-        },
-        "refs": Object {},
-        "state": Object {
-          "expanded": true,
-        },
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 6,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <styled.div>
-          <styled.div>
-                    <styled.div
-                              onClick={[Function]}
-                              tabIndex="0"
-                    >
-                              [
-                              −
-                              ]
-                    </styled.div>
-                    <Link
-                              replace={false}
-                              to="/user/SomeUser"
-                    >
-                              <styled.div>
-                                        <b />
-                              </styled.div>
-                    </Link>
-                    <styled.div>
-                              <TimeAgo
-                                        component="time"
-                                        date={1970-01-01T00:00:00.000Z}
-                                        formatter={[Function]}
-                                        live={true}
-                                        maxPeriod={Infinity}
-                                        minPeriod={0}
-                                        now={[Function]}
-                              />
-                    </styled.div>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/SomeId"
-                    >
-                              <styled.div>
-                                        link
-                              </styled.div>
-                    </Link>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/parent-id"
-                    >
-                              <styled.div>
-                                        parent
-                              </styled.div>
-                    </Link>
-          </styled.div>
-          <div
-                    dangerouslySetInnerHTML={
-                              Object {
-                                        "__html": "SomeContent",
-                                      }
-                    }
-          />
-</styled.div>,
-        "_debugID": 12,
-        "_renderedOutput": <styled.div>
-          <styled.div>
-                    <styled.div
-                              onClick={[Function]}
-                              tabIndex="0"
-                    >
-                              [
-                              −
-                              ]
-                    </styled.div>
-                    <Link
-                              replace={false}
-                              to="/user/SomeUser"
-                    >
-                              <styled.div>
-                                        <b />
-                              </styled.div>
-                    </Link>
-                    <styled.div>
-                              <TimeAgo
-                                        component="time"
-                                        date={1970-01-01T00:00:00.000Z}
-                                        formatter={[Function]}
-                                        live={true}
-                                        maxPeriod={Infinity}
-                                        minPeriod={0}
-                                        now={[Function]}
-                              />
-                    </styled.div>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/SomeId"
-                    >
-                              <styled.div>
-                                        link
-                              </styled.div>
-                    </Link>
-                    <styled.div />
-                    <Link
-                              replace={false}
-                              to="/storyDetails/story-id/comments/parent-id"
-                    >
-                              <styled.div>
-                                        parent
-                              </styled.div>
-                    </Link>
-          </styled.div>
-          <div
-                    dangerouslySetInnerHTML={
-                              Object {
-                                        "__html": "SomeContent",
-                                      }
-                    }
-          />
-</styled.div>,
-      },
-      "_renderedNodeType": 1,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
-  },
-  "root": [Circular],
-  "unrendered": <Comment
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Comment
     createdAt={0}
     createdBy="SomeUser"
     id="SomeId"
@@ -1881,78 +3175,647 @@ ShallowWrapper {
     storyId="story-id"
     text="SomeContent"
 />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <styled.div>
+          <styled.div
+                    onClick={[Function]}
+                    tabIndex="0"
+          >
+                    [
+                    −
+                    ]
+          </styled.div>
+          <Link
+                    replace={false}
+                    to="/user/SomeUser"
+          >
+                    <styled.div>
+                              <b />
+                    </styled.div>
+          </Link>
+          <styled.div>
+                    <TimeAgo
+                              component="time"
+                              date={1970-01-01T00:00:00.000Z}
+                              formatter={[Function]}
+                              live={true}
+                              maxPeriod={Infinity}
+                              minPeriod={0}
+                              now={[Function]}
+                    />
+          </styled.div>
+          <styled.div />
+          <Link
+                    replace={false}
+                    to="/storyDetails/story-id/comments/SomeId"
+          >
+                    <styled.div>
+                              link
+                    </styled.div>
+          </Link>
+          <styled.div />
+          <Link
+                    replace={false}
+                    to="/storyDetails/story-id/comments/parent-id"
+          >
+                    <styled.div>
+                              parent
+                    </styled.div>
+          </Link>
+</styled.div>,
+        <div
+          dangerouslySetInnerHTML={
+                    Object {
+                              "__html": "SomeContent",
+                            }
+          }
+/>,
+        undefined,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <styled.div
+              onClick={[Function]}
+              tabIndex="0"
+>
+              [
+              −
+              ]
+</styled.div>,
+            <Link
+              replace={false}
+              to="/user/SomeUser"
+>
+              <styled.div>
+                            <b />
+              </styled.div>
+</Link>,
+            <styled.div>
+              <TimeAgo
+                            component="time"
+                            date={1970-01-01T00:00:00.000Z}
+                            formatter={[Function]}
+                            live={true}
+                            maxPeriod={Infinity}
+                            minPeriod={0}
+                            now={[Function]}
+              />
+</styled.div>,
+            <styled.div />,
+            <Link
+              replace={false}
+              to="/storyDetails/story-id/comments/SomeId"
+>
+              <styled.div>
+                            link
+              </styled.div>
+</Link>,
+            <styled.div />,
+            <Link
+              replace={false}
+              to="/storyDetails/story-id/comments/parent-id"
+>
+              <styled.div>
+                            parent
+              </styled.div>
+</Link>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                "[",
+                "−",
+                "]",
+              ],
+              "onClick": [Function],
+              "tabIndex": "0",
+            },
+            "ref": null,
+            "rendered": Array [
+              "[",
+              "−",
+              "]",
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                <b />
+</styled.div>,
+              "replace": false,
+              "to": "/user/SomeUser",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <b />,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "host",
+                "props": Object {
+                  "children": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "b",
+              },
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <TimeAgo
+                component="time"
+                date={1970-01-01T00:00:00.000Z}
+                formatter={[Function]}
+                live={true}
+                maxPeriod={Infinity}
+                minPeriod={0}
+                now={[Function]}
+/>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "component": "time",
+                "date": 1970-01-01T00:00:00.000Z,
+                "formatter": [Function],
+                "live": true,
+                "maxPeriod": Infinity,
+                "minPeriod": 0,
+                "now": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                link
+</styled.div>,
+              "replace": false,
+              "to": "/storyDetails/story-id/comments/SomeId",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": "link",
+              },
+              "ref": null,
+              "rendered": "link",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": null,
+            "nodeType": "class",
+            "props": Object {
+              "children": <styled.div>
+                parent
+</styled.div>,
+              "replace": false,
+              "to": "/storyDetails/story-id/comments/parent-id",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": "parent",
+              },
+              "ref": null,
+              "rendered": "parent",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "dangerouslySetInnerHTML": Object {
+            "__html": "SomeContent",
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "div",
+      },
+      undefined,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <styled.div>
+            <styled.div
+                        onClick={[Function]}
+                        tabIndex="0"
+            >
+                        [
+                        −
+                        ]
+            </styled.div>
+            <Link
+                        replace={false}
+                        to="/user/SomeUser"
+            >
+                        <styled.div>
+                                    <b />
+                        </styled.div>
+            </Link>
+            <styled.div>
+                        <TimeAgo
+                                    component="time"
+                                    date={1970-01-01T00:00:00.000Z}
+                                    formatter={[Function]}
+                                    live={true}
+                                    maxPeriod={Infinity}
+                                    minPeriod={0}
+                                    now={[Function]}
+                        />
+            </styled.div>
+            <styled.div />
+            <Link
+                        replace={false}
+                        to="/storyDetails/story-id/comments/SomeId"
+            >
+                        <styled.div>
+                                    link
+                        </styled.div>
+            </Link>
+            <styled.div />
+            <Link
+                        replace={false}
+                        to="/storyDetails/story-id/comments/parent-id"
+            >
+                        <styled.div>
+                                    parent
+                        </styled.div>
+            </Link>
+</styled.div>,
+          <div
+            dangerouslySetInnerHTML={
+                        Object {
+                                    "__html": "SomeContent",
+                                  }
+            }
+/>,
+          undefined,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <styled.div
+                onClick={[Function]}
+                tabIndex="0"
+>
+                [
+                −
+                ]
+</styled.div>,
+              <Link
+                replace={false}
+                to="/user/SomeUser"
+>
+                <styled.div>
+                                <b />
+                </styled.div>
+</Link>,
+              <styled.div>
+                <TimeAgo
+                                component="time"
+                                date={1970-01-01T00:00:00.000Z}
+                                formatter={[Function]}
+                                live={true}
+                                maxPeriod={Infinity}
+                                minPeriod={0}
+                                now={[Function]}
+                />
+</styled.div>,
+              <styled.div />,
+              <Link
+                replace={false}
+                to="/storyDetails/story-id/comments/SomeId"
+>
+                <styled.div>
+                                link
+                </styled.div>
+</Link>,
+              <styled.div />,
+              <Link
+                replace={false}
+                to="/storyDetails/story-id/comments/parent-id"
+>
+                <styled.div>
+                                parent
+                </styled.div>
+</Link>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  "[",
+                  "−",
+                  "]",
+                ],
+                "onClick": [Function],
+                "tabIndex": "0",
+              },
+              "ref": null,
+              "rendered": Array [
+                "[",
+                "−",
+                "]",
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  <b />
+</styled.div>,
+                "replace": false,
+                "to": "/user/SomeUser",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <b />,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": null,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": undefined,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "b",
+                },
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <TimeAgo
+                  component="time"
+                  date={1970-01-01T00:00:00.000Z}
+                  formatter={[Function]}
+                  live={true}
+                  maxPeriod={Infinity}
+                  minPeriod={0}
+                  now={[Function]}
+/>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "component": "time",
+                  "date": 1970-01-01T00:00:00.000Z,
+                  "formatter": [Function],
+                  "live": true,
+                  "maxPeriod": Infinity,
+                  "minPeriod": 0,
+                  "now": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  link
+</styled.div>,
+                "replace": false,
+                "to": "/storyDetails/story-id/comments/SomeId",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "link",
+                },
+                "ref": null,
+                "rendered": "link",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": null,
+              "nodeType": "class",
+              "props": Object {
+                "children": <styled.div>
+                  parent
+</styled.div>,
+                "replace": false,
+                "to": "/storyDetails/story-id/comments/parent-id",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": null,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "parent",
+                },
+                "ref": null,
+                "rendered": "parent",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "dangerouslySetInnerHTML": Object {
+              "__html": "SomeContent",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
+        undefined,
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
 }
 `;
 
 exports[`Invalid comment renders correctly 1`] = `
 ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
   "length": 1,
-  "node": null,
-  "nodes": Array [
-    null,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 1,
-      "_context": Object {},
-      "_currentElement": <Comment
-        level={0}
-/>,
-      "_debugID": 13,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": Comment {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "expand": [Function],
-        "props": Object {
-          "level": 0,
-        },
-        "refs": Object {},
-        "state": Object {
-          "expanded": true,
-        },
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 7,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": null,
-        "_debugID": 14,
-        "_renderedOutput": null,
-      },
-      "_renderedNodeType": 2,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
-  },
-  "root": [Circular],
-  "unrendered": <Comment
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Comment
     level={0}
 />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): null,
+  Symbol(enzyme.__nodes__): Array [
+    null,
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
 }
 `;
