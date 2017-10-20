@@ -1,6 +1,12 @@
 // @flow
 import { Selector } from 'testcafe'
-import { loginPage, submitPage, storyDetailsPage } from './page-model'
+import {
+  loginPage,
+  submitPage,
+  newestPage,
+  storyDetailsPage,
+  commentPage
+} from './page-model'
 
 fixture`Story`.beforeEach(async (t /*: TestController */) => {
   await t.setNativeDialogHandler(() => true)
@@ -28,4 +34,47 @@ test('create', async (t /*: TestController */) => {
   await t
     .expect(await Selector(storyDetailsPage.points).textContent)
     .contains('0 points')
+})
+
+test('add comment', async (t /*: TestController */) => {
+  await t.navigateTo(newestPage.path)
+  await t
+    .expect(await Selector(newestPage.getStoryDetailsLink(0)).textContent)
+    .contains('my ask')
+  await t.click(newestPage.getStoryDetailsDiscussLink(0))
+
+  await t.typeText(storyDetailsPage.form.textarea, 'first comment')
+  await t.click(storyDetailsPage.form.submitButton)
+
+  await t
+    .expect(await Selector(storyDetailsPage.getCommentContent(0)).textContent)
+    .contains('first comment')
+  // TODO: check comments page and parent link
+})
+
+test('add reply', async (t /*: TestController */) => {
+  await t.navigateTo(newestPage.path)
+  await t
+    .expect(await Selector(newestPage.getStoryDetailsLink(0)).textContent)
+    .contains('my ask')
+  await t.click(newestPage.getStoryDetailsDiscussLink(0))
+
+  await t
+    .expect(await Selector(storyDetailsPage.getCommentContent(0)).textContent)
+    .contains('first comment')
+  await t.click(storyDetailsPage.getReplyLink(0))
+
+  await t
+    .expect(await Selector(commentPage.text).textContent)
+    .contains('first comment')
+
+  await t.typeText(commentPage.form.textarea, 'first reply')
+  await t.click(commentPage.form.submitButton)
+
+  await t
+    .expect(await Selector(commentPage.getReplyContent(0)).textContent)
+    .contains('first reply')
+
+  // TODO: check comments page and parent link
+  await t.wait(10000)
 })

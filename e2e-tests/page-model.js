@@ -38,19 +38,13 @@ export const loginPage = {
 }
 
 export const newestPage = {
-  path: `${MAIN_PAGE}/newest`
-}
-
-export const commentsPage = {
-  path: `${MAIN_PAGE}/comments`
-}
-
-export const showPage = {
-  path: `${MAIN_PAGE}/show`
-}
-
-export const askPage = {
-  path: `${MAIN_PAGE}/ask`
+  path: `${MAIN_PAGE}/newest`,
+  getStoryDetailsLink: (index /*: number = 0*/) =>
+    `#root div div div:nth-child(2) div ol li:nth-child(${index +
+      1}) div div:nth-child(1) div:nth-child(2) a`,
+  getStoryDetailsDiscussLink: (index /*: number = 0*/) =>
+    `#root div div div:nth-child(2) div ol li:nth-child(${index +
+      1}) div div:nth-child(2) span:nth-child(4) a`
 }
 
 export const submitPage = {
@@ -72,5 +66,28 @@ export const storyDetailsPage = {
     '#root div div div:nth-child(2) div div:nth-child(1) div:nth-child(2) span:nth-child(1)',
   by:
     '#root div div div:nth-child(2) div div:nth-child(1) div:nth-child(2) span:nth-child(2) a',
-  text: '#root div div div:nth-child(2) div div:nth-child(1) div:nth-child(3)'
+  text: '#root div div div:nth-child(2) div div:nth-child(1) div:nth-child(3)',
+  form: {
+    textarea: '#root div div div:nth-child(2) div div:nth-child(2) textarea',
+    submitButton:
+      '#root div div div:nth-child(2) div div:nth-child(2) div button'
+  },
+  getCommentContent: (rootLevelIndex /*: number*/) =>
+    `#root div div div:nth-child(2) div div:nth-child(3) div:nth-child(${rootLevelIndex +
+      1}) div:nth-child(2)`,
+  getReplyLink: (rootLevelIndex /*: number*/) =>
+    `#root div div div:nth-child(2) div div:nth-child(3) div:nth-child(${rootLevelIndex +
+      1}) div a:nth-child(5)`
+}
+
+export const commentPage = {
+  text: '#root div div div:nth-child(2) div div:nth-child(2)',
+  form: {
+    textarea: '#root div div div:nth-child(2) div div:nth-child(3) textarea',
+    submitButton:
+      '#root div div div:nth-child(2) div div:nth-child(3) div button'
+  },
+  getReplyContent: (rootLevelIndex /*: number*/) =>
+    `#root div div div:nth-child(2) div div:nth-child(4) div:nth-child(${rootLevelIndex +
+      1}) div:nth-child(2)`
 }
