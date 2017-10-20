@@ -40,9 +40,7 @@ describe('read-models', () => {
         }
       ]
 
-      expect(stories.projection[STORY_CREATED](state, event)).toEqual(
-        nextState
-      )
+      expect(stories.projection[STORY_CREATED](state, event)).toEqual(nextState)
     })
 
     it('eventHandler "STORY_CREATED" should create a story {type: "ask"}', () => {
@@ -74,9 +72,7 @@ describe('read-models', () => {
         }
       ]
 
-      expect(stories.projection[STORY_CREATED](state, event)).toEqual(
-        nextState
-      )
+      expect(stories.projection[STORY_CREATED](state, event)).toEqual(nextState)
     })
 
     it('eventHandler "STORY_CREATED" should create a story {type: "show"}', () => {
@@ -107,9 +103,7 @@ describe('read-models', () => {
         }
       ]
 
-      expect(stories.projection[STORY_CREATED](state, event)).toEqual(
-        nextState
-      )
+      expect(stories.projection[STORY_CREATED](state, event)).toEqual(nextState)
     })
 
     it('eventHandler "STORY_UPVOTED"', () => {
@@ -152,9 +146,7 @@ describe('read-models', () => {
         }
       ]
 
-      expect(stories.projection[STORY_UPVOTED](state, event)).toEqual(
-        nextState
-      )
+      expect(stories.projection[STORY_UPVOTED](state, event)).toEqual(nextState)
     })
 
     it('eventHandler "STORY_UPVOTED" with incorrect aggregateId', () => {
@@ -226,9 +218,7 @@ describe('read-models', () => {
         }
       ]
 
-      expect(stories.projection[STORY_UNVOTED](state, event)).toEqual(
-        nextState
-      )
+      expect(stories.projection[STORY_UNVOTED](state, event)).toEqual(nextState)
     })
 
     it('eventHandler "STORY_UNVOTED" with incorrect aggregateId', () => {
@@ -428,9 +418,7 @@ describe('read-models', () => {
         }
       }
 
-      expect(stories.projection[COMMENT_CREATED](state, event)).toEqual(
-        state
-      )
+      expect(stories.projection[COMMENT_CREATED](state, event)).toEqual(state)
     })
   })
 })
