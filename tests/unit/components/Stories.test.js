@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Stories from '../../client/components/Stories'
+import Stories from '../../../client/components/Stories'
 
 it('Stories first page renders correctly', () => {
   const items = [

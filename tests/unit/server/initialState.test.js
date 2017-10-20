@@ -1,8 +1,8 @@
 import uuid from 'uuid'
 import jwt from 'jsonwebtoken'
 
-import { authorizationSecret } from '../../common/constants'
-import { initialState, getCurrentUser } from '../../server'
+import { authorizationSecret } from '../../../common/constants'
+import { initialState, getCurrentUser } from '../../../server'
 
 const currentUser = {
   name: 'SomeName',

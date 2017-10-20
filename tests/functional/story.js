@@ -76,5 +76,4 @@ test('add reply', async (t /*: TestController */) => {
     .contains('first reply')
 
   // TODO: check comments page and parent link
-  await t.wait(10000)
 })

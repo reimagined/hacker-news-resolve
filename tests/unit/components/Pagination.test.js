@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Pagination, { Href } from '../../client/components/Pagination'
+import Pagination, { Href } from '../../../client/components/Pagination'
 
 it('Page 1 renders correctly', () => {
   const markup = shallow(

@@ -1,10 +1,10 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Login from '../../client/components/Login'
+import Error from '../../../client/components/Error'
 
 it('renders correctly', () => {
-  const markup = shallow(<Login location={{ search: '' }} />)
+  const markup = shallow(<Error location={{ search: '?text=SomeText' }} />)
 
   expect(markup).toMatchSnapshot()
 })

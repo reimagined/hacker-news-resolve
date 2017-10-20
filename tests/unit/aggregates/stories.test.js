@@ -1,13 +1,13 @@
 import uuid from 'uuid'
 
-import '../../common/aggregates'
-import story from '../../common/aggregates/story'
+import '../../../common/aggregates'
+import story from '../../../common/aggregates/story'
 import {
   STORY_CREATED,
   STORY_UPVOTED,
   STORY_UNVOTED,
   COMMENT_CREATED
-} from '../../common/events'
+} from '../../../common/events'
 
 describe('aggregates', () => {
   describe('story', () => {
