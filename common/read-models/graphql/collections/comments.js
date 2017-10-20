@@ -15,7 +15,7 @@ type CommentsState = Array<Comment>
 export default {
   name: 'comments',
   initialState: [],
-  eventHandlers: {
+  projection: {
     [COMMENT_CREATED]: (state: CommentsState, event: CommentCreated) => {
       const {
         aggregateId,

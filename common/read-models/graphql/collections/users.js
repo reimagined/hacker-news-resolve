@@ -12,7 +12,7 @@ type UsersState = Array<User>
 export default {
   name: 'users',
   initialState: [],
-  eventHandlers: {
+  projection: {
     [USER_CREATED]: (state: UsersState, event: UserCreated): UsersState => {
       const { aggregateId, timestamp, payload: { name } } = event
 
