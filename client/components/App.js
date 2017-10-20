@@ -7,7 +7,7 @@ import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import RouteWithSubRoutes from './RouteWithSubRoutes'
 import routes from '../routes'
 
-const networkInterface = createNetworkInterface({ uri: '/api/graphql' })
+const networkInterface = createNetworkInterface({ uri: '/api/query/graphql' })
 const client = new ApolloClient({ networkInterface })
 const isClient = typeof window === 'object'
 

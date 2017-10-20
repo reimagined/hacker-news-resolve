@@ -25,7 +25,7 @@ describe('read-models', () => {
         }
       ]
 
-      expect(users.eventHandlers[USER_CREATED](state, event)).toEqual(nextState)
+      expect(users.projection[USER_CREATED](state, event)).toEqual(nextState)
     })
   })
 })

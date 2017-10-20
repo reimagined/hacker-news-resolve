@@ -19,7 +19,12 @@ describe('server', () => {
       authorizationToken: jwt.sign(currentUser, authorizationSecret)
     }
 
-    const state = await initialState(executeQuery, { cookies })
+    const state = await initialState(
+      {
+        graphql: executeQuery
+      },
+      { cookies }
+    )
 
     expect(state).toEqual({
       user: currentUser

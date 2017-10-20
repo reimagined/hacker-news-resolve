@@ -70,7 +70,7 @@ export const extendExpress = express => {
     bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
       const existingUser = await getUserByName(
-        req.resolve.executeQuery,
+        req.resolve.readModelExecutors.graphql,
         req.body.name
       )
 
@@ -103,7 +103,10 @@ export const extendExpress = express => {
     '/login',
     bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
-      const user = await getUserByName(req.resolve.executeQuery, req.body.name)
+      const user = await getUserByName(
+        req.resolve.readModelExecutors.graphql,
+        req.body.name
+      )
 
       if (!user) {
         res.redirect('/error?text=No such user')
@@ -141,7 +144,8 @@ export const commandAuthorizationMiddleware = (req, res, next) => {
   }
 }
 
-export const initialState = async (executeQuery, { cookies }) => {
+export const initialState = async (readModelExecutors, { cookies }) => {
+  const executeQuery = readModelExecutors.graphql
   const user = await getCurrentUser(executeQuery, cookies)
 
   return {

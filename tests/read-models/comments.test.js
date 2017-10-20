@@ -31,7 +31,7 @@ describe('read-models', () => {
         }
       ]
 
-      expect(comments.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
+      expect(comments.projection[COMMENT_CREATED](state, event)).toEqual(
         nextState
       )
     })
@@ -93,7 +93,7 @@ describe('read-models', () => {
         }
       ]
 
-      expect(comments.eventHandlers[COMMENT_CREATED](state, event)).toEqual(
+      expect(comments.projection[COMMENT_CREATED](state, event)).toEqual(
         nextState
       )
     })
