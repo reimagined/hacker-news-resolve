@@ -6,7 +6,6 @@ import { initialState, getCurrentUser } from '../../server'
 
 const currentUser = {
   name: 'SomeName',
-  passwordHash: 'SomePasswordHash',
   id: uuid.v4()
 }
 

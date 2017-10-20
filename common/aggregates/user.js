@@ -1,20 +1,17 @@
 // @flow
 import { USER_CREATED } from '../events'
+import validate from './validation'
 
 export default {
   name: 'user',
   initialState: {},
   commands: {
     createUser: (state: any, command: any) => {
-      if (state.createdAt !== undefined) {
-        throw new Error('User already exists')
-      }
+      validate.stateIsAbsent(state, 'User')
 
       const { name } = command.payload
 
-      if (!name) {
-        throw new Error('Name is required')
-      }
+      validate.fieldRequired(command.payload, 'name')
 
       const payload: UserCreatedPayload = { name }
       return { type: USER_CREATED, payload }
