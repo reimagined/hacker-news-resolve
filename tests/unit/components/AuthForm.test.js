@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import AuthForm from '../../client/components/AuthForm'
+import AuthForm from '../../../client/components/AuthForm'
 
 it('renders correctly', () => {
   const markup = shallow(

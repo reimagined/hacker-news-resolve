@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Splitter from '../../client/components/Splitter'
+import Splitter from '../../../client/components/Splitter'
 
 it('Splitter renders correctly', () => {
   const wrapper = shallow(<Splitter />)

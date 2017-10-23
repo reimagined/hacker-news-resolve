@@ -14,9 +14,9 @@ import {
   Story,
   Href,
   Upvote
-} from '../../client/containers/Story'
+} from '../../../client/containers/Story'
 
-import actions from '../../client/actions/storiesActions'
+import actions from '../../../client/actions/storiesActions'
 
 let originalUuidV4 = uuid.v4
 

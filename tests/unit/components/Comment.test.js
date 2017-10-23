@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Comment from '../../client/components/Comment'
+import Comment from '../../../client/components/Comment'
 
 it('Comment Level 0 renders correctly', () => {
   const markup = shallow(
