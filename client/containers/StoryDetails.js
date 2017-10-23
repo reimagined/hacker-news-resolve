@@ -120,6 +120,7 @@ export default graphql(
           createdAt
           createdBy
           createdByName
+          level
         }
         votes
         createdAt

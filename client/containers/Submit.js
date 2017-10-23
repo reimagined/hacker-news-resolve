@@ -124,7 +124,7 @@ export class Submit extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = ({ user, ui }) => ({
+export const mapStateToProps = ({ user = {}, ui }) => ({
   userId: user.id,
   storyCreation: ui.storyCreation,
   storyCreationError: ui.storyCreationError,

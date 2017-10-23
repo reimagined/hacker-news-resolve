@@ -1,15 +1,19 @@
 import App from './containers/App'
+
+import Login from './components/Login'
+import UserById from './containers/UserById'
+
 import NewestByPage from './containers/NewestByPage'
 import ShowByPage from './containers/ShowByPage'
 import AskByPage from './containers/AskByPage'
+import Submit from './containers/Submit'
+import StoryDetails from './containers/StoryDetails'
+
 import CommentsByPage from './containers/CommentsByPage'
 import CommentById from './containers/CommentById'
-import Submit from './containers/Submit'
-import Login from './components/Login'
-import PageNotFound from './components/PageNotFound'
-import UserById from './containers/UserById'
+
 import Error from './components/Error'
-import StoryDetails from './containers/StoryDetails'
+import PageNotFound from './components/PageNotFound'
 
 const routes = [
   {
@@ -17,9 +21,12 @@ const routes = [
     component: App,
     routes: [
       {
-        path: '/',
-        redirectTo: '/newest',
-        exact: true
+        path: '/login',
+        component: Login
+      },
+      {
+        path: '/user/:userId',
+        component: UserById
       },
       {
         path: '/newest/:page?',
@@ -34,8 +41,8 @@ const routes = [
         component: AskByPage
       },
       {
-        path: '/storyDetails/:storyId/comments/:commentId',
-        component: CommentById
+        path: '/submit',
+        component: Submit
       },
       {
         path: '/storyDetails/:storyId',
@@ -46,16 +53,13 @@ const routes = [
         component: CommentsByPage
       },
       {
-        path: '/user/:userId',
-        component: UserById
+        path: '/storyDetails/:storyId/comments/:commentId',
+        component: CommentById
       },
       {
-        path: '/submit',
-        component: Submit
-      },
-      {
-        path: '/login',
-        component: Login
+        path: '/',
+        redirectTo: '/newest',
+        exact: true
       },
       {
         path: '/error',

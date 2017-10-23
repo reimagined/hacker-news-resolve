@@ -12,7 +12,7 @@ const Login = props => {
       />
       <AuthForm
         buttonText="create account"
-        action="/signup"
+        action="/register"
         title="Create account"
       />
     </div>
