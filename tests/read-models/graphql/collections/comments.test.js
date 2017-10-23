@@ -1,7 +1,7 @@
 import uuid from 'uuid'
 
-import comments from '../../common/read-models/graphql/collections/comments'
-import { COMMENT_CREATED } from '../../common/events'
+import comments from '../../../../common/read-models/graphql/collections/comments'
+import { COMMENT_CREATED } from '../../../../common/events'
 
 describe('read-models', () => {
   describe('comments', () => {

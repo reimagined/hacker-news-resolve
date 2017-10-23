@@ -1,4 +1,4 @@
-import gqlResolvers from '../../common/read-models/graphql/resolvers'
+import gqlResolvers from '../../../common/read-models/graphql/resolvers'
 
 describe('gql-resolvers', () => {
   it('comments', async () => {
