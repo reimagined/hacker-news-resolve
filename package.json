@@ -14,7 +14,7 @@
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watchAll",
     "test:functional": "testcafe chrome ./tests/functional --app \"npm run dev\"",
-    "test:functionalDebugMode": "testcafe chrome ./tests/functional --app \"npm run dev\" --inspect-brk --debug-mode",
+    "test:functional:debug": "testcafe chrome ./tests/functional --app \"npm run dev\" --inspect-brk --debug-mode",
     "lint-staged": "lint-staged"
   },
   "pre-commit": [
