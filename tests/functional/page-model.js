@@ -21,8 +21,8 @@ export const loginPage = {
     submitButton: 'form[action="/login"] input[type="submit"]'
   },
   createAccountForm: {
-    usernameInput: 'form[action="/signup"] input[name="name"]',
-    submitButton: 'form[action="/signup"] input[type="submit"]'
+    usernameInput: 'form[action="/register"] input[name="name"]',
+    submitButton: 'form[action="/register"] input[type="submit"]'
   },
   login: async (t /*: TestController */) => {
     await t.expect(await Selector(menuItems.login).textContent).eql('login')
