@@ -45,16 +45,16 @@ const routes = [
         component: Submit
       },
       {
+        path: '/storyDetails/:storyId/comments/:commentId',
+        component: CommentById
+      },
+      {
         path: '/storyDetails/:storyId',
         component: StoryDetails
       },
       {
         path: '/comments/:page?',
         component: CommentsByPage
-      },
-      {
-        path: '/storyDetails/:storyId/comments/:commentId',
-        component: CommentById
       },
       {
         path: '/',
