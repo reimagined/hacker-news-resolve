@@ -1,4 +1,3 @@
-// @flow
 import { Selector } from 'testcafe'
 import {
   loginPage,

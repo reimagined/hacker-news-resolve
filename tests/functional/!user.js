@@ -1,4 +1,3 @@
-// @flow
 import { Selector } from 'testcafe'
 import { dropStore } from '../../import/eventStore'
 import { menuItems, loginPage, errorPage } from './page-model'

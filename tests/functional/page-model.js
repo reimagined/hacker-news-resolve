@@ -1,4 +1,3 @@
-// @flow
 import { Selector } from 'testcafe'
 
 export const MAIN_PAGE = 'http://localhost:3000'
