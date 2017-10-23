@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import uuid from 'uuid'
-import { graphql, gql } from 'react-apollo'
+import { gqlConnector } from 'resolve-redux'
 import styled from 'styled-components'
 
 import Story from '../containers/Story'
@@ -104,8 +104,8 @@ export const mapDispatchToProps = dispatch =>
     dispatch
   )
 
-export default graphql(
-  gql`
+export default gqlConnector(
+  `
     query($id: ID!) {
       story(id: $id) {
         id
@@ -120,6 +120,7 @@ export default graphql(
           createdAt
           createdBy
           createdByName
+          level
         }
         votes
         createdAt
@@ -128,11 +129,7 @@ export default graphql(
       }
     }
   `,
-  {
-    options: ({ match: { params: { storyId } } }) => ({
-      variables: {
-        id: storyId
-      }
-    })
-  }
+  ({ match: { params: { storyId } } }) => ({
+    id: storyId
+  })
 )(connect(mapStateToProps, mapDispatchToProps)(StoryDetails))

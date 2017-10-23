@@ -1,6 +1,6 @@
 import React from 'react'
-import { graphql, gql } from 'react-apollo'
 import { Redirect } from 'react-router-dom'
+import { gqlConnector } from 'resolve-redux'
 
 import Comment from '../components/Comment'
 import { NUMBER_OF_ITEMS_PER_PAGE } from '../../common/constants'
@@ -25,8 +25,8 @@ export const CommentsByPage = ({
     </div>
   )
 
-export default graphql(
-  gql`
+export default gqlConnector(
+  `
     query($page: Int!) {
       comments(page: $page) {
         id
@@ -39,11 +39,7 @@ export default graphql(
       }
     }
   `,
-  {
-    options: ({ match: { params: { page } } }) => ({
-      variables: {
-        page: page || '1'
-      }
-    })
-  }
+  ({ match: { params: { page } } }) => ({
+    page: page || '1'
+  })
 )(CommentsByPage)

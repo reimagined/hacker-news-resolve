@@ -1,6 +1,6 @@
 import React from 'react'
-import { graphql, gql } from 'react-apollo'
 import { connect } from 'react-redux'
+import { gqlConnector } from 'resolve-redux'
 
 import Stories from '../components/Stories'
 
@@ -24,8 +24,20 @@ class ShowByPage extends React.PureComponent {
   }
 }
 
-const withGraphql = graphql(
-  gql`
+const mapStateToProps = ({ ui: { refetchStories } }) => ({
+  refetchStories
+})
+
+const mapDispatchToProps = dispatch => ({
+  onRefetched: () =>
+    dispatch({
+      type: 'STORIES_REFETCHED',
+      page: 'show'
+    })
+})
+
+export default gqlConnector(
+  `
     query($page: Int!) {
       stories(page: $page, type: "show") {
         id
@@ -41,27 +53,7 @@ const withGraphql = graphql(
       }
     }
   `,
-  {
-    options: ({ match: { params: { page } } }) => ({
-      variables: {
-        page: page || '1'
-      }
-    })
-  }
-)
-
-const mapStateToProps = ({ ui: { refetchStories } }) => ({
-  refetchStories
-})
-
-const mapDispatchToProps = dispatch => ({
-  onRefetched: () =>
-    dispatch({
-      type: 'STORIES_REFETCHED',
-      page: 'show'
-    })
-})
-
-export default withGraphql(
-  connect(mapStateToProps, mapDispatchToProps)(ShowByPage)
-)
+  ({ match: { params: { page } } }) => ({
+    page: page || '1'
+  })
+)(connect(mapStateToProps, mapDispatchToProps)(ShowByPage))

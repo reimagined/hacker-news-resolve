@@ -2,36 +2,7 @@ import bodyParser from 'body-parser'
 import jwt from 'jsonwebtoken'
 import uuid from 'uuid'
 
-import {
-  authorizationSecret,
-  cookieName,
-  cookieMaxAge
-} from '../common/constants'
-
-export const getCurrentUser = async (executeQuery, cookies) => {
-  try {
-    const { id } = jwt.verify(cookies[cookieName], authorizationSecret)
-
-    if (!id) {
-      return null
-    }
-
-    const { user } = await executeQuery(
-      `query ($id: ID!) {
-        user(id: $id) {
-          id,
-          name,
-          createdAt
-        }
-      }`,
-      { id }
-    )
-
-    return user
-  } catch (error) {
-    return null
-  }
-}
+import { authorizationSecret, cookieName, cookieMaxAge } from './constants'
 
 export const getUserByName = async (executeQuery, name) => {
   const { user } = await executeQuery(
@@ -61,18 +32,43 @@ export const authorize = (req, res, user) => {
   }
 }
 
-export const extendExpress = express => {
+export const accessDenied = (req, res) => {
+  res.status(401).send('401 Unauthorized')
+}
+
+const authorizationMiddleware = (req, res, next) => {
+  req.getJwt((_, user) => {
+    if (user) {
+      req.body.userId = user.id
+    }
+    next()
+  })
+}
+
+export const commandAuthorizationMiddleware = (req, res, next) => {
+  try {
+    const user = req.getJwt()
+    if (!user) {
+      throw new Error('Unauthorized')
+    }
+    req.body.userId = user.id
+    next()
+  } catch (error) {
+    accessDenied(req, res)
+  }
+}
+
+export default express => {
   express.use('/', authorizationMiddleware)
   express.use('/api/commands/', commandAuthorizationMiddleware)
 
   express.post(
-    '/signup',
+    '/register',
     bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
-      const existingUser = await getUserByName(
-        req.resolve.readModelExecutors.graphql,
-        req.body.name
-      )
+      const executeQuery = req.resolve.readModelExecutors.graphql
+
+      const existingUser = await getUserByName(executeQuery, req.body.name)
 
       if (existingUser) {
         res.redirect('/error?text=User already exists')
@@ -116,39 +112,4 @@ export const extendExpress = express => {
       return authorize(req, res, user)
     }
   )
-}
-
-export const accessDenied = (req, res) => {
-  res.status(401).send('401 Unauthorized')
-}
-
-const authorizationMiddleware = (req, res, next) => {
-  req.getJwt((_, user) => {
-    if (user) {
-      req.body.userId = user.id
-    }
-    next()
-  })
-}
-
-export const commandAuthorizationMiddleware = (req, res, next) => {
-  try {
-    const user = req.getJwt()
-    if (!user) {
-      throw new Error('Unauthorized')
-    }
-    req.body.userId = user.id
-    next()
-  } catch (error) {
-    accessDenied(req, res)
-  }
-}
-
-export const initialState = async (readModelExecutors, { cookies }) => {
-  const executeQuery = readModelExecutors.graphql
-  const user = await getCurrentUser(executeQuery, cookies)
-
-  return {
-    user: user || {}
-  }
 }

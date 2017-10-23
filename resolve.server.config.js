@@ -1,33 +1,26 @@
 import busDriver from 'resolve-bus-memory'
 import storageDriver from 'resolve-storage-lite'
 
-import rootComponent from './client/components/App'
-import createStore from './client/store'
+import clientConfig from './resolve.client.config'
 import aggregates from './common/aggregates'
 import * as events from './common/events'
 
-import {
-  collections as gqlCollections,
-  resolvers as gqlResolvers,
-  schema as gqlSchema
-} from './common/read-models/graphql'
+import readModels from './common/read-models'
 
-import { extendExpress, initialState } from './server'
+import extendExpress from './server/extendExpress'
+import initialState from './server/initialState'
 
 import {
   authorizationSecret,
   cookieName,
   cookieMaxAge,
   databaseFilePath
-} from './common/constants'
+} from './server/constants'
 
 const eventTypes = Object.keys(events).map(key => events[key])
 
 export default {
-  entries: {
-    createStore,
-    rootComponent
-  },
+  entries: clientConfig,
   bus: { driver: busDriver },
   storage: {
     driver: storageDriver,
@@ -39,14 +32,7 @@ export default {
     types: eventTypes,
     ids: []
   },
-  readModels: [
-    {
-      name: 'graphql',
-      projection: gqlCollections,
-      gqlSchema,
-      gqlResolvers
-    }
-  ],
+  readModels,
   extendExpress,
   jwt: {
     secret: authorizationSecret,
