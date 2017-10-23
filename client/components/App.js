@@ -6,14 +6,15 @@ import routes from '../routes'
 
 const isClient = typeof window === 'object'
 
-const App = () => {
-  const children = <RouteWithSubRoutes routes={routes} />
-
-  return isClient ? (
-    <BrowserRouter>{children}</BrowserRouter>
+const App = () =>
+  isClient ? (
+    <BrowserRouter>
+      <RouteWithSubRoutes routes={routes} />
+    </BrowserRouter>
   ) : (
-    <StaticRouter>{children}</StaticRouter>
+    <StaticRouter>
+      <RouteWithSubRoutes routes={routes} />
+    </StaticRouter>
   )
-}
 
 export default App
