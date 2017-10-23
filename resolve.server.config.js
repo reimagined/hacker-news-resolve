@@ -6,11 +6,7 @@ import createStore from './client/store'
 import aggregates from './common/aggregates'
 import * as events from './common/events'
 
-import {
-  collections as gqlCollections,
-  resolvers as gqlResolvers,
-  schema as gqlSchema
-} from './common/read-models/graphql'
+import readModels from './common/read-models'
 
 import { extendExpress, initialState } from './server'
 
@@ -39,14 +35,7 @@ export default {
     types: eventTypes,
     ids: []
   },
-  readModels: [
-    {
-      name: 'graphql',
-      projection: gqlCollections,
-      gqlSchema,
-      gqlResolvers
-    }
-  ],
+  readModels,
   extendExpress,
   jwt: {
     secret: authorizationSecret,

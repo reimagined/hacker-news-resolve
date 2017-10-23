@@ -1,6 +1,6 @@
 import React from 'react'
-import { gql, graphql } from 'react-apollo'
 import { connect } from 'react-redux'
+import { gqlConnector } from 'resolve-redux'
 
 import Stories from '../components/Stories'
 
@@ -31,8 +31,20 @@ class NewestByPage extends React.PureComponent {
   }
 }
 
-const withGraphql = graphql(
-  gql`
+const mapStateToProps = ({ ui: { refetchStories } }) => ({
+  refetchStories
+})
+
+const mapDispatchToProps = dispatch => ({
+  onRefetched: () =>
+    dispatch({
+      type: 'STORIES_REFETCHED',
+      page: 'newest'
+    })
+})
+
+export default gqlConnector(
+  `
     query($page: Int!) {
       stories(page: $page) {
         id
@@ -47,27 +59,7 @@ const withGraphql = graphql(
       }
     }
   `,
-  {
-    options: ({ match: { params: { page } } }) => ({
-      variables: {
-        page: page || '1'
-      }
-    })
-  }
-)
-
-const mapStateToProps = ({ ui: { refetchStories } }) => ({
-  refetchStories
-})
-
-const mapDispatchToProps = dispatch => ({
-  onRefetched: () =>
-    dispatch({
-      type: 'STORIES_REFETCHED',
-      page: 'newest'
-    })
-})
-
-export default withGraphql(
-  connect(mapStateToProps, mapDispatchToProps)(NewestByPage)
-)
+  ({ match: { params: { page } } }) => ({
+    page: page || '1'
+  })
+)(connect(mapStateToProps, mapDispatchToProps)(NewestByPage))
