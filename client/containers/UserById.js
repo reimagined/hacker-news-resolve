@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, gql } from 'react-apollo'
+import { gqlConnector } from 'resolve-redux'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -37,8 +37,8 @@ export const UserById = ({ data: { user } }) => {
   )
 }
 
-export default graphql(
-  gql`
+export default gqlConnector(
+  `
     query($id: ID!) {
       user(id: $id) {
         id
@@ -47,11 +47,7 @@ export default graphql(
       }
     }
   `,
-  {
-    options: ({ match: { params: { userId } } }) => ({
-      variables: {
-        id: userId
-      }
-    })
-  }
+  ({ match: { params: { userId } } }) => ({
+    id: userId
+  })
 )(UserById)

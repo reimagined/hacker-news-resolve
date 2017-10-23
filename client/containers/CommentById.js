@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { graphql, gql } from 'react-apollo'
+import { gqlConnector } from 'resolve-redux'
 import uuid from 'uuid'
 import styled from 'styled-components'
 
@@ -104,8 +104,8 @@ const mapStateToProps = ({ user, ui: { refetchStory } }) => ({
   refetchStory
 })
 
-export default graphql(
-  gql`
+export default gqlConnector(
+  `
     fragment CommentWithReplies on Comment {
       id
       parentId
@@ -124,11 +124,7 @@ export default graphql(
       }
     }
   `,
-  {
-    options: ({ match: { params: { commentId } } }) => ({
-      variables: {
-        id: commentId
-      }
-    })
-  }
+  ({ match: { params: { commentId } } }) => ({
+    id: commentId
+  })
 )(connect(mapStateToProps, mapDispatchToProps)(CommentById))
