@@ -120,6 +120,7 @@ export default gqlConnector(
           createdAt
           createdBy
           createdByName
+          level
         }
         votes
         createdAt

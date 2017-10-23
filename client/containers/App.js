@@ -99,7 +99,7 @@ export class App extends React.PureComponent {
           <link
             rel="shortcut icon"
             type="image/x-icon"
-            href="/static/img/reSolve-logo.svg"
+            href="/static/reSolve-logo.svg"
           />
           <link rel="stylesheet" type="text/css" href="/static/style.css" />
         </Helmet>
@@ -107,7 +107,7 @@ export class App extends React.PureComponent {
           <Header>
             <Link to="/">
               <img
-                src="/static/img/reSolve-logo.svg"
+                src="/static/reSolve-logo.svg"
                 width="18"
                 height="18"
                 alt=""
@@ -151,7 +151,7 @@ export class App extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = ({ user }) => ({
+export const mapStateToProps = ({ user = {} }) => ({
   user,
   loggedIn: !!user.id
 })
