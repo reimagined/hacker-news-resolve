@@ -3,7 +3,7 @@ import createEventStore from 'resolve-es'
 import createStorage from 'resolve-storage-lite'
 import createBus from 'resolve-bus-memory'
 
-import { databaseFilePath } from '../common/constants'
+import { databaseFilePath } from '../server/constants'
 
 const storage = createStorage({ pathToFile: databaseFilePath })
 const bus = createBus()

@@ -1,14 +1,14 @@
 import uuid from 'uuid'
 
-import '../../common/read-models/graphql/collections'
-import stories from '../../common/read-models/graphql/collections/stories'
+import '../../../../common/read-models/graphql/collections/index'
+import stories from '../../../../common/read-models/graphql/collections/stories'
 
 import {
   STORY_CREATED,
   STORY_UPVOTED,
   STORY_UNVOTED,
   COMMENT_CREATED
-} from '../../common/events'
+} from '../../../../common/events'
 
 describe('read-models', () => {
   describe('stories', () => {
