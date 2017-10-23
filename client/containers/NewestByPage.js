@@ -61,6 +61,5 @@ export default gqlConnector(
   `,
   ({ match: { params: { page } } }) => ({
     page: page || '1'
-  }),
-  '/api/query/graphql'
+  })
 )(connect(mapStateToProps, mapDispatchToProps)(NewestByPage))
