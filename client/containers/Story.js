@@ -43,17 +43,22 @@ export const Href = styled.div`
 export const Upvote = styled.div`
   display: inline-block;
   cursor: pointer;
-  width: 10px;
-  height: 10px;
+  width: 0px;
+  height: 0px;
   border: 0px;
-  margin-right: 2px;
-  background: url('/static/img/grayarrow.gif') no-repeat;
+  border-width: 5px;
+  border-bottom-width: 8px;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-color: gray;
+  margin-right: 4px;
 
   ${props =>
     props.hidden &&
     css`
       cursor: auto;
       background: none;
+      border-bottom-color: transparent;
     `};
 `
 
