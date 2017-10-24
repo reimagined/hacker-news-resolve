@@ -1,7 +1,7 @@
 # hacker-news-resolve &middot; [![Build Status](https://travis-ci.org/reimagined/hacker-news-resolve.svg?branch=master)](https://travis-ci.org/reimagined/hacker-news-resolve) [![Coverage Status](https://coveralls.io/repos/github/reimagined/hacker-news-resolve/badge.svg?branch=master)](https://coveralls.io/github/reimagined/hacker-news-resolve?branch=master)
 A React & Redux & Resolve implementation of Hacker News 
 
-[<img src="https://cdn.worldvectorlogo.com/logos/react.svg" height="100">](https://github.com/facebook/react)
+[<img src="https://cdn.worldvectorlogo.com/logos/react.svg" height="110">](https://github.com/facebook/react)
 [<img src="https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png" height="100">](https://github.com/reactjs/redux)
 [<img src="https://avatars2.githubusercontent.com/u/27729046" height="100">](https://github.com/reimagined/resolve/)
 
