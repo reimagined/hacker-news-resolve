@@ -1,6 +1,6 @@
-import '../../common/aggregates'
-import user from '../../common/aggregates/user'
-import { USER_CREATED } from '../../common/events'
+import '../../../common/aggregates'
+import user from '../../../common/aggregates/user'
+import { USER_CREATED } from '../../../common/events'
 
 describe('aggregates', () => {
   describe('user', () => {

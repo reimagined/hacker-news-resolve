@@ -13,6 +13,8 @@
     "test:update": "jest -u",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watchAll",
+    "test:functional": "testcafe chrome ./tests/functional --app \"npm run dev\"",
+    "test:functional:debug": "testcafe chrome ./tests/functional --app \"npm run dev\" --inspect-brk --debug-mode",
     "lint-staged": "lint-staged"
   },
   "pre-commit": [
@@ -82,12 +84,13 @@
     "react-test-renderer": "^16.0.0",
     "sinon": "^3.2.1",
     "style-loader": "^0.18.2",
+    "testcafe": "^0.18.1",
     "url-loader": "^0.5.9"
   },
   "jest": {
     "setupFiles": [
       "raf/polyfill",
-      "<rootDir>/tests/jest-setup.js"
+      "<rootDir>/tests/unit/jest-setup.js"
     ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",

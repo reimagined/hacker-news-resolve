@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import ChildrenComments from '../../client/components/ChildrenComments'
+import ChildrenComments from '../../../client/components/ChildrenComments'
 
 it('ChildrenComments renders correctly', () => {
   const story = {
