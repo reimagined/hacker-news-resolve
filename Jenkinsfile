@@ -12,7 +12,7 @@ pipeline {
     }
 
     stages {
-        stage ('Configure') {
+        stage ('Move Jenkins files') {
             steps {
                 sh 'mv ./scripts/jenkins/Dockerfile ./'
                 sh 'mv ./scripts/jenkins/commit.jenkinsfile ./'
@@ -76,6 +76,7 @@ pipeline {
 
         stage('Push image') {
             when {
+                branch 'master'
                 not { expression { return params.RESOLVE_CHECK } }
             }
             steps {
@@ -89,6 +90,7 @@ pipeline {
 
         stage('Deploy') {
             when {
+                branch 'master'
                 not { expression { return params.RESOLVE_CHECK } }
             }
             steps {
