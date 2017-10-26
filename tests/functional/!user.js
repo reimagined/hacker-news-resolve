@@ -1,11 +1,8 @@
 import { Selector } from 'testcafe'
-import { dropStore } from '../../import/eventStore'
 import { menuItems, loginPage, errorPage } from './page-model'
 
 fixture`User`
   .before(async () => {
-    // WARNING: before start reSolve server
-    dropStore()
     // wait start reSolve server
     await new Promise(resolve => setTimeout(resolve, 10000))
   })
