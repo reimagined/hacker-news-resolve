@@ -21,15 +21,15 @@ npm install
 npm run dev
 ```
 
-Starts the app in the development mode.
-Provide hot reloading, source mapping and other development capabilities.
+Starts the app in development mode.
+Provides hot reloading, source mapping and other development capabilities.
 
 ```bash
 npm run build
 npm start
 ```
 
-Starts the application in the production mode.
+Starts the application in production mode.
 
 After you run the application you can view it at [http://localhost:3000/](http://localhost:3000/).
 
@@ -46,6 +46,7 @@ Press `Crtl-C` to stop importing or wait until it is finished.
 
 This tutorial guides you through the process of creating a Hacker News application.
 It consists of the following steps:
+
 * [Requirements](#requirements)
 * [Creating a New ReSolve Application](#creating-a-new-resolve-application)
 * [Domain Model Analysis](#domain-model-analysis)
@@ -147,18 +148,18 @@ Note that when using CQRS and Event Sourcing, we make a hard and important desig
 To summarize the domain analysis:
 There are two aggregate roots - User and Story with the following commands and events:
 * User
-  * CreateUser generates UserCreated event
+  * CreateUser generates the UserCreated event
 * Story
-  * CreateStory generates StoryCreated event
-  * CreateComment generates CommentCreated event
-  * UpvoteStory generates StoryUpvoted event
-  * UnvoteStory generates StoryUnvoted event
+  * CreateStory generates the StoryCreated event
+  * CreateComment generates the CommentCreated event
+  * UpvoteStory generates the StoryUpvoted event
+  * UnvoteStory generates the StoryUnvoted event
 
 ## Adding Users
 
-Add user registration and authentification functionality to the application.
+Add user registration and authentication functionality to the application.
 For demo purposes, we omitted password checking.
-If needed, you can implement hashing and storing passwords in the application later.
+If needed, you can implement hashing and storing passwords in the later.
 
 User has the following fields:
 * id - a unique user ID created on the server side automatically
@@ -167,7 +168,7 @@ User has the following fields:
 
 ### Login View
 
-The app layout contains meta information, an application header with menu, user info and some content.
+The app layout contains meta information, an application header with a menu, user info and some content.
 
 Install the following packages:
 * `react-helmet` - to pass meta information to the HTML header
@@ -201,16 +202,16 @@ In the [client/store/index.js](./client/store/index.js), add the [devtools](http
 
 Prepare the `App` component by adding router providers.
 
-Now you can follow http://localhost:3000 to see the login view.
+Now you can go to http://localhost:3000 to see the login view.
 
 ### User View
 
-Implement the user view to show an authentificated user.
+Implement the user view to show an authenticated user.
 
 To get user data using GraphQL, import `gqlConnector` from the `resolve-redux` package.
 
 Implement the [UserById](./client/containers/UserById.js) container.
-Uncomment its import from [routes](./client/routes.js) and add the `/user/:userId` path.
+Uncomment its container import in [routes](./client/routes.js) and add the `/user/:userId` path.
 
 ### Write Side
 
@@ -324,7 +325,7 @@ export default {
 }
 ```
 
-Add default export for collections.
+Add the default export for collections.
 
 ```js
 // ./common/read-models/graphql/collections/index.js
@@ -399,7 +400,7 @@ export default [
 ### Authentication
 
 We can create users and get a list of users.
-The last server-side issue is implementing registration and authentification.
+The last server-side issue is implementing registration and authentication.
 
 Install the necessary packages.
 
@@ -550,7 +551,7 @@ export default express => {
 }
 ```
 
-Add authentification middleware to have an authentificated user through all routes.
+Add authentication middleware to have an authenticated user through all routes.
 
 ```js
 // ./server/extendExpress.js
@@ -664,12 +665,12 @@ export default {
 }
 ```
 
-Now we have a server side that works with users: a user can be registered and be authentificated.
+Now we have a server side that works with users: a user can be registered and be authenticated.
 
 ## Adding Stories
 
 A story is news or question a user posts.
-In Hacker News, stories are displayed in the following pages:
+In Hacker News, stories are displayed on the following pages:
 * Newest - the newest stories
 * Ask - users’ questions (Ask HNs)
 * Show - users’ news (Show HNs)
@@ -700,7 +701,7 @@ Add the [Pagination]((./client/components/Pagination.js)) component.
 
 Then add the [Story](./client/containers/Story.js) container.
 In this file, comment the `redux` and actions import.
-Also comment the `mapDispatchToProps` function and temporary delete it from the `connect` function arguments.
+Also comment the `mapDispatchToProps` function and temporarily delete it from the `connect` function arguments.
 
 Create [common constants](./common/constants.js).
 
@@ -712,7 +713,7 @@ In each file, delete the `commentCount` field from `query`.
 In the `client/reducers/` directory, create [UI](./client/reducers/ui.js) and [user](./client/reducers/user.js) reducers.
 Add them to the [root reducer export](./client/reducers/index.js).
 
-Add created containers to [routes](./client/routes.js) with the `/newest/:page?`, `/show/:page?` and `/ask/:page?` paths.
+Add the created containers to [routes](./client/routes.js) with the `/newest/:page?`, `/show/:page?` and `/ask/:page?` paths.
 
 ### Story View
 
@@ -725,7 +726,7 @@ Add the created container to [routes](./client/routes.js) with the `/storyDetail
 ### Submit View
 
 Implement the [Submit](./client/containers/Submit.js) container to add new stories.
-Temporary delete actions import and `mapDispatchToProps`.
+Temporarily delete actions import and `mapDispatchToProps`.
 
 Add the created container to [routes](./client/routes.js) with the `/submit` path.
 
@@ -975,7 +976,7 @@ export default {
 }
 ```
 
-Modify collections export.
+Modify the collections export.
 
 ```js
 // ./common/read-models/graphql/collections
@@ -1091,7 +1092,7 @@ Implement [UI actions](./client/actions/uiActions.js) and import them in the [Ap
 Extend the application logic to allow users to comment.
 Comment is a short message written about news or question.
 So, a comment relates to a story.
-Implement also inner comments which replay to other comments.
+Implement also comments which reply to other comments.
 
 A comment has the following fields:
 * id - a unique ID
@@ -1154,7 +1155,7 @@ export default {
 }
 ```
 
-We can use the existing story aggregate without creation a particular aggregate for a comment, as it is depends on a story.
+We can use the existing story aggregate without creating a particular aggregate for a comment, as it depends on a story.
 You should validate all input fields and check whether an aggregate exists.
 
 ```js
@@ -1427,7 +1428,7 @@ export default {
 
 Extend the GraphQL schema file by adding the `Comment` type and queries.
 A comment contains the `replies` field which is a list of comments.
-It provides the tree-like structure for included comments.
+It provides a tree-like structure for all the included comments.
 
 You need to also an comments array to the `Story` type.
 
