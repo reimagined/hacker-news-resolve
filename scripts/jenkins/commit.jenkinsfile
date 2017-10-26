@@ -1,0 +1,25 @@
+pipeline {
+    agent { docker 'node:8.2.1' }
+    parameters {
+        string(name: 'NPM_CANARY_VERSION')
+    }
+    stages {
+        stage('Change and commit') {
+            steps {
+                script {
+                    sh "/var/scripts/change_resolve_version.js ${params.NPM_CANARY_VERSION}"
+                    withCredentials([
+                        usernameColonPassword(credentialsId: 'DXROBOT_GITHUB', variable: 'CREDS')
+                    ]) {
+                        sh "/var/scripts/commit_changes.sh ${CREDS} ${params.NPM_CANARY_VERSION}"
+                    }
+                }
+            }
+        }
+    }
+    post {
+        always {
+            deleteDir()
+        }
+    }
+}

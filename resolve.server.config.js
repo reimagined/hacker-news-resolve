@@ -19,12 +19,16 @@ import {
 
 const eventTypes = Object.keys(events).map(key => events[key])
 
+const storageDriverParams = process.env.IS_TEST
+  ? {}
+  : { pathToFile: databaseFilePath }
+
 export default {
   entries: clientConfig,
   bus: { driver: busDriver },
   storage: {
     driver: storageDriver,
-    params: { pathToFile: databaseFilePath }
+    params: storageDriverParams
   },
   initialState,
   aggregates,
