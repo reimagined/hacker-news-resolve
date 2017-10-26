@@ -21,7 +21,8 @@ npm install
 npm run dev
 ```
 
-Starts the app in the development mode, providing hot reloading, source map and other development capabilities.
+Starts the app in the development mode.
+Provide hot reloading, source mapping and other development capabilities.
 
 ```bash
 npm run build
@@ -30,7 +31,7 @@ npm start
 
 Starts the application in the production mode.
 
-Running app is available at [http://localhost:3000/](http://localhost:3000/).
+After you run the application you can view it at [http://localhost:3000/](http://localhost:3000/).
 
 ### Data Import
 
@@ -39,13 +40,12 @@ npm run import
 ```
 
 Imports data (up to 500 stories with comments) from [HackerNews](https://news.ycombinator.com/).
-Press `Crtl-C` to stop import or wait until import is finished.
+Press `Crtl-C` to stop importing or wait until it is finished.
 
 # Reproducing Hacker News using ReSolve
 
-This tutorial guides you through the process of creating the current Hacker News application.
+This tutorial guides you through the process of creating a Hacker News application.
 It consists of the following steps:
-
 * [Requirements](#requirements)
 * [Creating a New ReSolve Application](#creating-a-new-resolve-application)
 * [Domain Model Analysis](#domain-model-analysis)
@@ -72,7 +72,7 @@ It consists of the following steps:
 * [Data Importer](#data-importer)
 
 This demo is implemented using the [reSolve](https://github.com/reimagined/resolve) framework.
-It expects you to be familiar with React and Redux, as well as with DDD, CQRS and Event Sourcing.
+You need to be familiar with React and Redux, as well as with DDD, CQRS and Event Sourcing.
 If you are new to these concepts, refer to the following links to learn the basics:
 
 * [Event Sourcing](https://martinfowler.com/eaaDev/EventSourcing.html)
@@ -81,7 +81,7 @@ If you are new to these concepts, refer to the following links to learn the basi
 * [Redux](http://redux.js.org/docs/introduction/)
 * [GraphQL](http://graphql.org/learn/)
 
-Read also the following articles for more information:
+You can also read the following articles for more information:
 
 * [Why using DDD, CQRS and Event Sourcing](https://github.com/cer/event-sourcing-examples/wiki/WhyEventSourcing)
 * [Building Scalable Applications Using Event Sourcing and CQRS](https://medium.com/technology-learning/event-sourcing-and-cqrs-a-look-at-kafka-e0c1b90d17d8)
@@ -92,10 +92,11 @@ Read also the following articles for more information:
 
 node 8.2.0, or later
 
-npm 5.3.0
+npm 5.3.0, or later
 
 ## Creating a New ReSolve Application
-Use [create-resolve-app](https://github.com/reimagined/resolve/tree/master/packages/create-resolve-app) CLI tool to create a new reSolve project:
+
+Use the [create-resolve-app](https://github.com/reimagined/resolve/tree/master/packages/create-resolve-app) CLI tool to create a new reSolve project:
 
 Install create-resolve-app globally.
 
@@ -111,41 +112,40 @@ cd hn-resolve
 npm run dev
 ```
 
-The application will be opened in the browser at [http://localhost:3000/](http://localhost:3000/).
+The application opens in the browser at [http://localhost:3000/](http://localhost:3000/).
 
-After the installation is completed, you will have a project with the initial structure:
+After the installation is completed, your project has the default structure:
 
 ![Project structure](./docs/project-structure.png)
 
 ## Domain Model Analysis
 
 At this point we need to analyze the domain.
-More precisely, Event Sourcing and CQRS require us to identify Domain Aggregates and their corresponding commands and events.
-Then using events, we can build read models that our application needs.
+Event Sourcing and CQRS require identifying Domain Aggregates and their corresponding commands and events.
+We can then use these events to build the required read models.
 
 Hacker News is a social news website focusing on computer science.
-Its users can post news, ask questions and comment.
+Its users can post news, ask questions and comment on news, and reply to other comments.
 Posts are called Stories, so we will use this name in further.
 
 **Users** can post **Stories** and **Comments**.
 * Story - news or question
-* Comment - short message written under news or question
-* User - registered and logged in user that can perform actions (post news, ask questions, write comments)
+* Comment - a short message written about news or question
+* User - a registered and logged in user that can perform actions (post news, ask questions, write comments)
 
-Now it is required to identify domain aggregate roots.
-To do this, detect commands the Hacker News application should perform and entities to which they are addressed.
-
+Now we need to identify domain aggregate roots.
+To do this, detect which commands the Hacker News application should perform and which entities they are addressed to:
 * create a **User**
 * create a **Story**
 * comment a **Story**
 * upvote a **Story**
 * unvote a **Story**
 
-It seems we need User and Story aggregate root and don't need an aggregate for Comment, since there are no commands addressed to Comment.
+We only need the User and Story aggregate roots since there are no commands addressed to Comment.
 Note that when using CQRS and Event Sourcing, we make a hard and important design decision on the Write Side: we identify which events should be captured, and then we can calculate necessary read models from these events.
 
-Summarize the domain analysis.
-We have two aggregate Roots - User and Story with the following commands and events:
+To summarize the domain analysis:
+There are two aggregate roots - User and Story with the following commands and events:
 * User
   * CreateUser generates UserCreated event
 * Story
@@ -156,19 +156,18 @@ We have two aggregate Roots - User and Story with the following commands and eve
 
 ## Adding Users
 
-Add user registration and authorization functionality to the application.
-For demo purposes, we will omit password checking.
+Add user registration and authentification functionality to the application.
+For demo purposes, we omitted password checking.
 If needed, you can implement hashing and storing passwords in the application later.
 
 User has the following fields:
-
 * id - a unique user ID created on the server side automatically
 * name - a unique user name which a user provides in registration form
 * createdAt - a user registration timestamp
 
 ### Login View
 
-The app layout contains meta information, application header with menu, user info and some content.
+The app layout contains meta information, an application header with menu, user info and some content.
 
 Install the following packages:
 * `react-helmet` - to pass meta information to the HTML header
@@ -182,30 +181,33 @@ Install the following packages:
 npm install --save react-helmet react-router react-router-dom seamless-immutable js-cookie styled-components
 ```
 
-Implement the login view. It is based on the [AuthForm](./client/components/AuthForm.js) component and rendered by the [Login](./client/components/Login.js) component.
+Implement the login view.
+It is based on the [AuthForm](./client/components/AuthForm.js) component and rendered by the [Login](./client/components/Login.js) component.
 
-The login view is placed in the main layout. Follow the steps below to implement the layout: 
+The login view is placed in the main layout.
+Follow the steps below to implement the layout:
 * Prepare Redux [user actions](./client/actions/userActions.js).
 * Add the [Splitter](./client/components/Splitter.js) component that serves a vertical menu splitter.
 * Add the [App](./client/containers/App.js) container implementing the layout.
-In the `containers/App.js` file, comment the  `uiActions` import and the `onSubmitViewShown` action in the `mapDispatchToProps` function, and add [logo](./static/reSolve-logo.svg) to be displayed in the header. 
+In the `containers/App.js` file, comment the `uiActions` import and the `onSubmitViewShown` action in the `mapDispatchToProps` function, and add the header's [logo](./static/reSolve-logo.svg). 
 
 Add the layout and login view to the root component.
-* Add routes. To do this, create the client/routes.js file. In this file, comment all imports excluding the App container and the Login component, and all routes excluding the /login path.
-* Implement the RouteWithSubRoutes component to provide routes.
+* Add routes. To do this, create the `client/routes.js` file.
+In this file, comment all imports excluding the `App` container and the `Login` component, and all routes excluding the `/login` path.
+* Implement the `RouteWithSubRoutes` component to provide routes.
 
 Use a Redux store for data storing.
 In the [client/store/index.js](./client/store/index.js), add the [devtools](https://github.com/zalmoxisus/redux-devtools-extension) and [resolve-redux](https://github.com/reimagined/resolve/tree/master/packages/resolve-redux#-utils) middlewares, and implement the logout middleware.
 
-Prepare the App component by adding router providers.
+Prepare the `App` component by adding router providers.
 
 Now you can follow http://localhost:3000 to see the login view.
 
 ### User View
 
-Implement the user view to show an authorized user.
+Implement the user view to show an authentificated user.
 
-To get user data using GraphQL, import gqlConnector from the resolve-redux package.
+To get user data using GraphQL, import `gqlConnector` from the `resolve-redux` package.
 
 Implement the [UserById](./client/containers/UserById.js) container.
 Uncomment its import from [routes](./client/routes.js) and add the `/user/:userId` path.
@@ -288,7 +290,7 @@ export default [user]
 
 Implement a read side.
 
-The simplest way to store users is to have an array of users.
+The simplest way to store users is using a users array.
 
 ```js
 // ./common/read-models/graphql/collections/users.js
@@ -332,7 +334,7 @@ import users from './users'
 export default [users]
 ```
 
-Describe schema and implement resolvers to get data using GraphQL.
+Describe a schema and implement resolvers to get data using GraphQL.
 
 ```js
 // ./common/read-models/graphql/schema.js
@@ -396,16 +398,16 @@ export default [
 
 ### Authentication
 
-We can create users and get list of users.
-The last server-side issue is to implement registration and authorization.
+We can create users and get a list of users.
+The last server-side issue is implementing registration and authentification.
 
-Install necessary packages.
+Install the necessary packages.
 
 ```bash
 npm install --save body-parser jsonwebtoken uuid
 ```
 
-Implement the `getUserByName` util function that uses the `executeQuery` function passed with express request:
+Implement the `getUserByName` util function that uses the `executeQuery` function passed with the express request.
 
 ```js
 // ./server/extendExpress.js
@@ -426,7 +428,7 @@ const getUserByName = async (executeQuery, name) => {
 }
 ```
 
-Add the list of necessary server params.
+Add the list of necessary server parameters.
 
 ```js
 // ./server/constants.js
@@ -436,7 +438,7 @@ export const cookieName = 'authorizationToken'
 export const cookieMaxAge = 1000 * 60 * 60 * 24 * 365
 ```
 
-Sign a user by [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) and pass it to the request cookies.
+Generate a token using the [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) library and pass it to request cookies.
 
 ```js
 // ./server/extendExpress.js
@@ -461,8 +463,8 @@ const authorize = (req, res, user) => {
 }
 ```
 
-Implement the `/register` route in the `extendExpress` function with using of util functions.
-Further this function will be passed to the `resolve.server.config.js`:
+Implement the `/register` route in the `extendExpress` function using util functions.
+This function is passed to `resolve.server.config.js` later:
 
 ```js
 // ./server/extendExpress.js
@@ -514,10 +516,9 @@ export default express => {
 }
 ```
 
-The `readModelExecutors` object and the `executeCommand` function are accessible from each request.
-They are provided by the reSolve lib.
+The reSolve library's `readModelExecutors` object and the `executeCommand` function are accessible from each request.
 
-Add the `/login` route to add possibility for registered users to be logged in:
+Add the `/login` route to allow registered users to log in:
 
 ```js
 // ./server/extendExpress.js
@@ -549,7 +550,7 @@ export default express => {
 }
 ```
 
-Add authorization middleware to have an authorized user through all routes.
+Add authentification middleware to have an authentificated user through all routes.
 
 ```js
 // ./server/extendExpress.js
@@ -616,7 +617,7 @@ export default async ({ graphql: executeQuery }, { cookies }) => {
 }
 ```
 
-Pass the express extension and the `initialState` function to the server config.
+Pass the express extension and `initialState` function to the server config.
 
 ```js
 // ./resolve.server.config.js
@@ -663,23 +664,23 @@ export default {
 }
 ```
 
-Now we have server-side that works with users: we can register and be authorized.
+Now we have a server side that works with users: a user can be registered and be authentificated.
 
 ## Adding Stories
 
-A story is news or question posted by a user.
+A story is news or question a user posts.
 In Hacker News, stories are displayed in the following pages:
 * Newest - the newest stories
 * Ask - users’ questions (Ask HNs)
 * Show - users’ news (Show HNs)
 
-The story can have following fields:
+A story can have the following fields:
 * id - a unique ID
-* title - a story title
-* link - a link to an original news or external website
-* text - a story content
-* createdAt - a story creation timestamp
-* createdBy - a user which is an author of the story
+* title - the story's title
+* link - a link to the original news or external website
+* text - the story's content
+* createdAt - the story's creation timestamp
+* createdBy - the story's author
 
 ### Stories View
 
@@ -698,17 +699,17 @@ npm i --save url plur react-timeago sanitizer
 Add the [Pagination]((./client/components/Pagination.js)) component.
 
 Then add the [Story](./client/containers/Story.js) container.
-In this file, comment the `redux` import and import of actions.
-Comment also the `mapDispatchToProps` function and temporary delete it from the `connect` function arguments.
+In this file, comment the `redux` and actions import.
+Also comment the `mapDispatchToProps` function and temporary delete it from the `connect` function arguments.
 
-Create [the common constants file](./common/constants.js).
+Create [common constants](./common/constants.js).
 
-Implement the [Stories](./client/components/Stories.js) component that is base one for displaying stories.
+Implement the [Stories](./client/components/Stories.js) component for displaying stories.
 
 Implement specific stories containers such as [NewestByPage](./client/containers/NewestByPage.js), [AskByPage](./client/containers/AskByPage.js) and [ShowByPage](./client/containers/ShowByPage.js).
-In each file delete the `commentCount` field from `query`.
+In each file, delete the `commentCount` field from `query`.
 
-In the `client/reducers/` directory create [UI](./client/reducers/ui.js) and [user](./client/reducers/user.js) reducers.
+In the `client/reducers/` directory, create [UI](./client/reducers/ui.js) and [user](./client/reducers/user.js) reducers.
 Add them to the [root reducer export](./client/reducers/index.js).
 
 Add created containers to [routes](./client/routes.js) with the `/newest/:page?`, `/show/:page?` and `/ask/:page?` paths.
@@ -716,14 +717,14 @@ Add created containers to [routes](./client/routes.js) with the `/newest/:page?`
 ### Story View
 
 Implement the [StoryDetails](./client/containers/StoryDetails.js) container to display a story by id with additional information.
-Delete import stories actions and `mapDispatchToProps`.
-`ChildrenComments` will be implemented later, so delete its import and usage in JSX.
+Delete the actions import and `mapDispatchToProps`.
+`ChildrenComments` is implemented later, so delete its import and usage in JSX.
 
 Add the created container to [routes](./client/routes.js) with the `/storyDetails/:storyId` path.
 
 ### Submit View
 
-Implement [the `Submit` container](./client/containers/Submit.js) to add new stories.
+Implement the [Submit](./client/containers/Submit.js) container to add new stories.
 Temporary delete actions import and `mapDispatchToProps`.
 
 Add the created container to [routes](./client/routes.js) with the `/submit` path.
@@ -734,7 +735,7 @@ Add the story aggregate and the `createStory` command for creating a story.
 The command should validate input data and check whether the aggregate exists.
 Add the `storyCreated` handler for this purpose.
 In original Hacker News, users can upvote and unvote stories.
-So add the corresponding commands to the story aggregate.
+This can be accomplished by adding the corresponding commands to the story aggregate.
 
 ```js
 // ./common/aggregates/validation.js
@@ -762,7 +763,7 @@ export default {
 }
 ```
 
-Update events list by adding story event names:
+Update events list by adding story event names.
 
 ```js
 // ./common/events.js
@@ -881,6 +882,7 @@ export default {
 ### Read Side
 
 Implement a read side.
+
 It should store the list of stories.
 
 ```js
@@ -987,7 +989,7 @@ export default [users, stories]
 ### GraphQL
 
 The Hacker News application displays a list of stories without extra information for each one, and provides story details when a user opens the story.
-To meet these needs, support GraphQL with GraphQL resolvers that will work with read model collections.
+For this, support the GraphQL with GraphQL resolvers that works with read model collections.
 
 Add the `./common/read-models/gqlSchema.js` file.
 Describe the `Story` type and two queries to request a list of stories and a single story - the `stories` and `story` queries.
@@ -1020,7 +1022,7 @@ export default `
 `
 ```
 
-Add appropriate resolves.
+Add the appropriate resolves.
 
 ```js
 // ./common/read-models/graphql/resolves.js
@@ -1076,7 +1078,7 @@ export default {
 
 ### Linking Client and Server Sides
 
-The `resolve-redux` package contains functions allowing you to create client side actions by aggregate.
+The `resolve-redux` package contains functions allowing you to create client side actions from aggregates.
 
 Implement [stories actions](./client/actions/storiesActions.js).
 
@@ -1086,30 +1088,30 @@ Implement [UI actions](./client/actions/uiActions.js) and import them in the [Ap
 
 ## Adding Comments
 
-Extend the application logic allowing users to comment stories.
-Comment is a short message written under news or question.
+Extend the application logic to allow users to comment.
+Comment is a short message written about news or question.
 So, a comment relates to a story.
 Implement also inner comments which replay to other comments.
 
 A comment has the following fields:
 * id - a unique ID
-* parentId - a parent comment id, or the story id if it is a root comment
-* storyId - a story id
-* text - a comment content
-* replies - a list of replies to the comment
-* createdAt - a story creation timestamp
-* createdBy - a user which is an author of the comment
+* parentId - the parent comment's id, or the story's id if it is a root comment
+* storyId - the story's id
+* text - the comment's content
+* replies - a list of replies
+* createdAt - the story's creation timestamp
+* createdBy - the comment's author
 
 ### Story View Extension
 
-Add the [Comment](./client/components/Comment.js) component to display comment info.
+Add the [Comment](./client/components/Comment.js) component to display comment information.
 
 Add the [ReplyLink](./client/components/ReplyLink.js) component to implement the 'reply' link.
 
-Add the [ChildrenComments](./client/components/ChildrenComments.js) component to be used for building of the tree of the comments.
+Add the [ChildrenComments](./client/components/ChildrenComments.js) component for building a comments tree.
 
-As a comment depends on a story, extend the existing [StoryDetails](./client/containers/StoryDetails.js) container.
-Add a tree of comments with text area for new comment creation.
+A comment depends on a story, so you need to extend the existing [StoryDetails](./client/containers/StoryDetails.js) container.
+Add a comments tree with text area for new comment creation.
 
 Extend GraphQL query with the `comments` field.
 
@@ -1152,9 +1154,8 @@ export default {
 }
 ```
 
-We don’t need to create a particular aggregate for a comment, as it is depends on a story.
-So, use the existing `story` aggregate.
-As usual, validate all input fields and check whether an aggregate exists.
+We can use the existing story aggregate without creation a particular aggregate for a comment, as it is depends on a story.
+You should validate all input fields and check whether an aggregate exists.
 
 ```js
 // ./common/aggregates/story.js
@@ -1259,7 +1260,7 @@ export default {
 }
 ```
 
-Add the implemented read side to the collections list.
+Add the implemented read side to the list of collections.
 
 ```js
 // ./common/read-models/graphql/collections/index.js
@@ -1424,11 +1425,11 @@ export default {
 
 ### GraphQL
 
-Extend the GraphQL schema file by adding the Comment type and queries.
-Comment contains the `replies` field which is a list of comments.
+Extend the GraphQL schema file by adding the `Comment` type and queries.
+A comment contains the `replies` field which is a list of comments.
 It provides the tree-like structure for included comments.
 
-Add also an array of comments to the Story type.
+You need to also an comments array to the `Story` type.
 
 ```js
 // ./common/read-models/graphql/schema.js
@@ -1542,4 +1543,4 @@ export default {
 ## Data Importer
 
 Implement an importer in the [import](./import) folder to get data from the real Hacker News website.
-This importer uses the website REST API and transforms data to events.
+This importer uses the website's REST API, and transforms data to events.
