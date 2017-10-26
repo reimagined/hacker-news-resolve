@@ -39,7 +39,7 @@ export default (
             })
             .update('updateList', items => items.concat(action.aggregateId))
         }
-        case 'createComment':
+        case 'commentStory':
         case 'unvoteStory':
         case 'upvoteStory': {
           return newState.update('updateList', items =>
@@ -72,7 +72,7 @@ export default (
     }
     case 'StoryUpvoted':
     case 'StoryUnvoted':
-    case 'CommentCreated': {
+    case 'StoryCommented': {
       const index = shouldBeUpdated(state, action)
       if (index >= 0) {
         return state

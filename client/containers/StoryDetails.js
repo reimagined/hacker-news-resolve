@@ -25,7 +25,7 @@ export class StoryDetails extends React.PureComponent {
   }
 
   saveComment = () => {
-    this.props.createComment({
+    this.props.commentStory({
       text: this.state.text,
       parentId: this.props.data.story.id,
       userId: this.props.userId
@@ -90,8 +90,8 @@ export const mapStateToProps = ({ user, ui: { refetchStory } }) => ({
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      createComment: ({ parentId, text, userId }) =>
-        actions.createComment(parentId, {
+      commentStory: ({ parentId, text, userId }) =>
+        actions.commentStory(parentId, {
           text,
           parentId,
           userId,

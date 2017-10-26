@@ -247,8 +247,8 @@ export const mapStateToProps = ({ user, ui: { refetchStory } }, { story }) => {
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      createComment: ({ parentId, text, userId }) =>
-        actions.createComment(parentId, {
+      commentStory: ({ parentId, text, userId }) =>
+        actions.commentStory(parentId, {
           text,
           parentId,
           userId,

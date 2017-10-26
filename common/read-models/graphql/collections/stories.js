@@ -3,7 +3,7 @@ import {
   STORY_CREATED,
   STORY_UPVOTED,
   STORY_UNVOTED,
-  COMMENT_CREATED
+  STORY_COMMENTED
 } from '../../../events'
 
 type UserId = string
@@ -95,9 +95,9 @@ export default {
       return state
     },
 
-    [COMMENT_CREATED]: (
+    [STORY_COMMENTED]: (
       state: StoriesState,
-      event: CommentCreated
+      event: StoryCommented
     ): StoriesState => {
       const {
         aggregateId,

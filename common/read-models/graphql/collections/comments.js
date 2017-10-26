@@ -1,5 +1,5 @@
 // @flow
-import { COMMENT_CREATED } from '../../../events'
+import { STORY_COMMENTED } from '../../../events'
 
 type Comment = {
   id: string,
@@ -16,7 +16,7 @@ export default {
   name: 'comments',
   initialState: [],
   projection: {
-    [COMMENT_CREATED]: (state: CommentsState, event: CommentCreated) => {
+    [STORY_COMMENTED]: (state: CommentsState, event: StoryCommented) => {
       const {
         aggregateId,
         timestamp,

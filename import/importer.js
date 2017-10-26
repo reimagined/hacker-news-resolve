@@ -4,7 +4,7 @@ import {
   USER_CREATED,
   STORY_CREATED,
   STORY_UPVOTED,
-  COMMENT_CREATED
+  STORY_COMMENTED
 } from '../common/events'
 
 import api from './api'
@@ -45,7 +45,7 @@ const generateCommentEvents = (comment, aggregateId, parentId) => {
   const commentId = uuid.v4()
 
   eventStore.saveEventRaw({
-    type: COMMENT_CREATED,
+    type: STORY_COMMENTED,
     aggregateId,
     timestamp: comment.time * 1000,
     payload: {
