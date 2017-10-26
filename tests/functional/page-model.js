@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe'
 
-const HOST = process.env.HACKERNEWS_HOST || 'localhost'
+const HOST = process.env.HOST || 'localhost'
 export const MAIN_PAGE = `http://${HOST}:3000`
 
 export const menuItems = {

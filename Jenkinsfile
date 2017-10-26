@@ -14,12 +14,12 @@ pipeline {
     stages {
         stage ('Move Jenkins files') {
             steps {
-                sh 'mv ./scripts/jenkins/Dockerfile ./'
-                sh 'mv ./scripts/jenkins/commit.jenkinsfile ./'
-                sh 'mv ./scripts/jenkins/docker-compose.test.yml ./'
-                sh 'mv ./scripts/jenkins/docker-compose.yml ./'
-                sh 'mv ./scripts/jenkins/docker-registry-name ./'
-                sh 'mv ./scripts/jenkins/testcafe.dockerfile ./tests'
+                sh 'cp -f ./scripts/jenkins/Dockerfile ./'
+                sh 'cp -f ./scripts/jenkins/commit.jenkinsfile ./'
+                sh 'cp -f ./scripts/jenkins/docker-compose.test.yml ./'
+                sh 'cp -f ./scripts/jenkins/docker-compose.yml ./'
+                sh 'cp -f ./scripts/jenkins/docker-registry-name ./'
+                sh 'cp -f ./scripts/jenkins/testcafe.dockerfile ./tests'
             }
         }
 

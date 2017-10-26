@@ -16,4 +16,4 @@ services:
     depends_on:
       - hackernews
     environment:
-      - HACKERNEWS_HOST=hackernews
+      - HOST=hackernews
