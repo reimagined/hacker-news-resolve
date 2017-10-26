@@ -19,7 +19,8 @@
   },
   "pre-commit": [
     "lint-staged",
-    "test"
+    "test",
+    "flow"
   ],
   "lint-staged": {
     "*.{js,css}": [
