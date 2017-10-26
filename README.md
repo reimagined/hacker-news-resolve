@@ -91,13 +91,12 @@ You can also read the following articles for more information:
 
 ## Requirements
 
-node 8.2.0, or later
-
-npm 5.3.0, or later
+* node 8.2.0, or later
+* npm 5.3.0, or later
 
 ## Creating a New ReSolve Application
 
-Use the [create-resolve-app](https://github.com/reimagined/resolve/tree/master/packages/create-resolve-app) CLI tool to create a new reSolve project:
+Use the [create-resolve-app](https://github.com/reimagined/resolve/tree/master/packages/create-resolve-app) CLI tool to create a new reSolve project.
 
 Install create-resolve-app globally.
 
@@ -121,7 +120,7 @@ After the installation is completed, your project has the default structure:
 
 ## Domain Model Analysis
 
-At this point we need to analyze the domain.
+At this point, we need to analyze the domain.
 Event Sourcing and CQRS require identifying Domain Aggregates and their corresponding commands and events.
 We can then use these events to build the required read models.
 
@@ -159,12 +158,12 @@ There are two aggregate roots - User and Story with the following commands and e
 
 Add user registration and authentication functionality to the application.
 For demo purposes, we omitted password checking.
-If needed, you can implement hashing and storing passwords in the later.
+If needed, you can implement hashing and storing passwords in later.
 
-User has the following fields:
+A user has the following fields:
 * id - a unique user ID created on the server side automatically
-* name - a unique user name which a user provides in registration form
-* createdAt - a user registration timestamp
+* name - a unique user name which a user provides in the registration form
+* createdAt - the user's registration timestamp
 
 ### Login View
 
@@ -175,7 +174,7 @@ Install the following packages:
 * `react-router` - to implement routing
 * `redux` and `react-redux` - to store data 
 * `seamless-immutable` - to enforce state immutability
-* `js-cookie` - to manipulate cookie 
+* `js-cookie` - to manipulate cookies 
 * `styled-components` -  to style components
 
 ```bash
@@ -198,7 +197,7 @@ In this file, comment all imports excluding the `App` container and the `Login` 
 * Implement the `RouteWithSubRoutes` component to provide routes.
 
 Use a Redux store for data storing.
-In the [client/store/index.js](./client/store/index.js), add the [devtools](https://github.com/zalmoxisus/redux-devtools-extension) and [resolve-redux](https://github.com/reimagined/resolve/tree/master/packages/resolve-redux#-utils) middlewares, and implement the logout middleware.
+In the [client/store/index.js](./client/store/index.js) file, add the [devtools](https://github.com/zalmoxisus/redux-devtools-extension) and [resolve-redux](https://github.com/reimagined/resolve/tree/master/packages/resolve-redux#-utils) middlewares, and implement the logout middleware.
 
 Prepare the `App` component by adding router providers.
 
@@ -208,10 +207,10 @@ Now you can go to http://localhost:3000 to see the login view.
 
 Implement the user view to show an authenticated user.
 
-To get user data using GraphQL, import `gqlConnector` from the `resolve-redux` package.
+To get user data using GraphQL, import the `gqlConnector` from the `resolve-redux` package.
 
 Implement the [UserById](./client/containers/UserById.js) container.
-Uncomment its container import in [routes](./client/routes.js) and add the `/user/:userId` path.
+Uncomment this container import in [routes](./client/routes.js) and add the `/user/:userId` path.
 
 ### Write Side
 
@@ -226,7 +225,7 @@ export const USER_CREATED = 'UserCreated'
 
 Add the `createUser` command that should return the `UserCreated` event.
 Validate input data to ensure that a user name exists and it is not empty.
-Add projection handlers and initial state to check whether a user already exists.
+Add projection handlers and an initial state to check whether a user already exists.
 
 ```js
 // ./common/aggregates/validation.js
@@ -290,7 +289,6 @@ export default [user]
 ### Read Side
 
 Implement a read side.
-
 The simplest way to store users is using a users array.
 
 ```js
@@ -517,9 +515,9 @@ export default express => {
 }
 ```
 
-The reSolve library's `readModelExecutors` object and the `executeCommand` function are accessible from each request.
+The reSolve library's `readModelExecutors` object and `executeCommand` function are accessible from each request.
 
-Add the `/login` route to allow registered users to log in:
+Add the `/login` route to allow registered users to log in.
 
 ```js
 // ./server/extendExpress.js
@@ -665,7 +663,7 @@ export default {
 }
 ```
 
-Now we have a server side that works with users: a user can be registered and be authenticated.
+Now we have a server side that works with users: a user can be registered and authenticated.
 
 ## Adding Stories
 
@@ -707,13 +705,13 @@ Create [common constants](./common/constants.js).
 
 Implement the [Stories](./client/components/Stories.js) component for displaying stories.
 
-Implement specific stories containers such as [NewestByPage](./client/containers/NewestByPage.js), [AskByPage](./client/containers/AskByPage.js) and [ShowByPage](./client/containers/ShowByPage.js).
+Implement specific story containers such as [NewestByPage](./client/containers/NewestByPage.js), [AskByPage](./client/containers/AskByPage.js) and [ShowByPage](./client/containers/ShowByPage.js).
 In each file, delete the `commentCount` field from `query`.
 
 In the `client/reducers/` directory, create [UI](./client/reducers/ui.js) and [user](./client/reducers/user.js) reducers.
 Add them to the [root reducer export](./client/reducers/index.js).
 
-Add the created containers to [routes](./client/routes.js) with the `/newest/:page?`, `/show/:page?` and `/ask/:page?` paths.
+Add created containers to [routes](./client/routes.js) with the `/newest/:page?`, `/show/:page?` and `/ask/:page?` paths.
 
 ### Story View
 
@@ -735,7 +733,7 @@ Add the created container to [routes](./client/routes.js) with the `/submit` pat
 Add the story aggregate and the `createStory` command for creating a story.
 The command should validate input data and check whether the aggregate exists.
 Add the `storyCreated` handler for this purpose.
-In original Hacker News, users can upvote and unvote stories.
+In the original Hacker News, users can upvote and unvote stories.
 This can be accomplished by adding the corresponding commands to the story aggregate.
 
 ```js
@@ -764,7 +762,7 @@ export default {
 }
 ```
 
-Update events list by adding story event names.
+Update event list by adding story event names.
 
 ```js
 // ./common/events.js
@@ -864,7 +862,7 @@ import story from './story'
 export default [user, story]
 ```
 
-Add all event names to the server config.
+Add all the event names to the server config.
 
 ```js
 // import list
@@ -883,7 +881,6 @@ export default {
 ### Read Side
 
 Implement a read side.
-
 It should store the list of stories.
 
 ```js
@@ -1430,7 +1427,7 @@ Extend the GraphQL schema file by adding the `Comment` type and queries.
 A comment contains the `replies` field which is a list of comments.
 It provides a tree-like structure for all the included comments.
 
-You need to also an comments array to the `Story` type.
+You need to also add a comments array to the `Story` type.
 
 ```js
 // ./common/read-models/graphql/schema.js
