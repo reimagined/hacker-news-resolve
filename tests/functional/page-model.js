@@ -1,6 +1,7 @@
 import { Selector } from 'testcafe'
 
-export const MAIN_PAGE = 'http://localhost:3000'
+const HOST = process.env.HACKERNEWS_HOST || 'localhost'
+export const MAIN_PAGE = `http://${HOST}:3000`
 
 export const menuItems = {
   username: '#root div div div div div a:nth-child(1)',
