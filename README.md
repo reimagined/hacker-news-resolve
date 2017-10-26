@@ -150,7 +150,7 @@ We have two aggregate Roots - User and Story with the following commands and eve
   * CreateUser generates UserCreated event
 * Story
   * CreateStory generates StoryCreated event
-  * CreateComment generates StoryCommented event
+  * CommentStory generates StoryCommented event
   * UpvoteStory generates StoryUpvoted event
   * UnvoteStory generates StoryUnvoted event
 
