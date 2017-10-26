@@ -145,6 +145,7 @@ We only need the User and Story aggregate roots since there are no commands addr
 Note that when using CQRS and Event Sourcing, we make a hard and important design decision on the Write Side: we identify which events should be captured, and then we can calculate necessary read models from these events.
 
 To summarize the domain analysis:
+
 There are two aggregate roots - User and Story with the following commands and events:
 * User
   * CreateUser generates the UserCreated event
