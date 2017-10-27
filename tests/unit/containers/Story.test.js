@@ -5,15 +5,13 @@ import uuid from 'uuid'
 import {
   getHostname,
   Title,
-  Score,
-  PostedBy,
-  Discuss,
-  Meta,
+  StyledLink,
+  UnvoteLink,
+  StoryInfo,
   mapStateToProps,
   mapDispatchToProps,
   Story,
-  Href,
-  Upvote
+  UpvoteArrow
 } from '../../../client/containers/Story'
 
 import actions from '../../../client/actions/storiesActions'
@@ -103,7 +101,7 @@ it("Story { type: 'ask' } renders correctly", () => {
     <Story story={story} loggedIn={true} voted={0} userId={'user-id'} />
   )
 
-  wrapper.find(Meta).shallow()
+  wrapper.find(StoryInfo).shallow()
 
   expect(wrapper).toMatchSnapshot()
 })
@@ -136,7 +134,7 @@ it('Story { commentCount: 1, text: "Text", showText: true } renders correctly', 
 
 it('Meta renders correctly', () => {
   const markup = shallow(
-    <Meta
+    <StoryInfo
       id={'story-id'}
       votes={['user-id']}
       voted={true}
@@ -153,7 +151,7 @@ it('Meta renders correctly', () => {
 
 it('Meta renders correctly', () => {
   const markup = shallow(
-    <Meta
+    <StoryInfo
       id={'story-id'}
       voted={true}
       loggedIn={true}
@@ -161,36 +159,6 @@ it('Meta renders correctly', () => {
       commentCount={0}
     />
   )
-
-  expect(markup).toMatchSnapshot()
-})
-
-it("Discuss { 'commentCount': 0 } renders correctly", () => {
-  const markup = shallow(<Discuss id={'story-id'} commentCount={0} />)
-
-  expect(markup).toMatchSnapshot()
-})
-
-it("Discuss { 'commentCount': 1 } renders correctly", () => {
-  const markup = shallow(<Discuss id={'story-id'} commentCount={1} />)
-
-  expect(markup).toMatchSnapshot()
-})
-
-it('PostedBy renders correctly', () => {
-  const markup = shallow(<PostedBy id={'user-id'} name={'user'} />)
-
-  expect(markup).toMatchSnapshot()
-})
-
-it("Score { 'score': 0 } renders correctly", () => {
-  const markup = shallow(<Score score={0} />)
-
-  expect(markup).toMatchSnapshot()
-})
-
-it("Score { 'score': 1 } renders correctly", () => {
-  const markup = shallow(<Score score={1} />)
 
   expect(markup).toMatchSnapshot()
 })
@@ -225,13 +193,13 @@ it('Title { external link with www } renders correctly', () => {
 })
 
 it('Upvote renders correctly', () => {
-  const markup = shallow(<Upvote />)
+  const markup = shallow(<UpvoteArrow />)
 
   expect(markup).toMatchSnapshot()
 })
 
 it('Upvote { hidden: true} renders correctly', () => {
-  const markup = shallow(<Upvote Upvote />)
+  const markup = shallow(<UpvoteArrow Upvote />)
 
   expect(markup).toMatchSnapshot()
 })
@@ -241,6 +209,8 @@ it('getHostname renders correctly', () => {
 
   expect(markup).toMatchSnapshot()
 })
+
+it('', () => {})
 
 it('upvoteStory', () => {
   const story = {
@@ -265,7 +235,7 @@ it('upvoteStory', () => {
   wrapper
     .find(Title)
     .shallow()
-    .find(Upvote)
+    .find(UpvoteArrow)
     .simulate('click')
   expect(upvoteStory).toEqual(true)
 })
@@ -291,9 +261,9 @@ it('unvoteStory', () => {
   })
   expect(unvoteStory).toEqual(false)
   wrapper
-    .find(Meta)
+    .find(StoryInfo)
     .shallow()
-    .find(Href)
+    .find(UnvoteLink)
     .simulate('click')
   expect(unvoteStory).toEqual(true)
 })
@@ -365,4 +335,10 @@ it('mapDispatchToProps onRefetched', () => {
   const props = mapDispatchToProps(value => value)
 
   expect(props.onRefetched()).toEqual({ type: 'STORY_REFETCHED' })
+})
+
+it('StyledLink', () => {
+  const styledLink = shallow(<StyledLink to="/" />)
+
+  expect(styledLink).toMatchSnapshot()
 })

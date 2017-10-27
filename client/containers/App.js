@@ -12,7 +12,7 @@ import * as uiActions from '../actions/uiActions'
 
 const Splitter = () => <BaseSplitter color="#fff" />
 
-const Wrapper = styled.div`
+const ContentRoot = styled.div`
   width: 90%;
   max-width: 1280px;
   margin: 8px auto;
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   }
 `
 
-const Header = styled.div`
+const PageHeader = styled.div`
   color: #fff;
   background-color: #3949ab;
   padding: 6px;
@@ -45,7 +45,7 @@ const Link = styled(NavLink)`
   }
 `
 
-const Title = styled.div`
+const PageTitle = styled.div`
   display: inline-block;
   font-weight: bold;
   color: #fff;
@@ -74,7 +74,7 @@ const FooterLink = styled.a`
   text-decoration: underline;
 `
 
-const RightColumn = styled.div`float: right;`
+const PageAuth = styled.div`float: right;`
 
 export class App extends React.PureComponent {
   componentDidMount() {
@@ -103,8 +103,8 @@ export class App extends React.PureComponent {
           />
           <link rel="stylesheet" type="text/css" href="/static/style.css" />
         </Helmet>
-        <Wrapper>
-          <Header>
+        <ContentRoot>
+          <PageHeader>
             <Link to="/">
               <img
                 src="/static/reSolve-logo.svg"
@@ -114,7 +114,7 @@ export class App extends React.PureComponent {
               />
             </Link>
             <Link to="/">
-              <Title>reSolve HN</Title>
+              <PageTitle>reSolve HN</PageTitle>
             </Link>{' '}
             <Link to="/newest">new</Link>
             <Splitter />
@@ -125,7 +125,7 @@ export class App extends React.PureComponent {
             <Link to="/ask">ask</Link>
             <Splitter />
             <Link to="/submit">submit</Link>
-            <RightColumn>
+            <PageAuth>
               {loggedIn ? (
                 <div>
                   <Link to={`/user/${user.id}`}>{user.name}</Link>
@@ -137,15 +137,15 @@ export class App extends React.PureComponent {
               ) : (
                 <Link to="/login">login</Link>
               )}
-            </RightColumn>
-          </Header>
+            </PageAuth>
+          </PageHeader>
           <Content>{children}</Content>
           <Footer>
             <FooterLink href="https://github.com/reimagined/hacker-news-resolve">
               reimagined/hacker-news-resolve
             </FooterLink>
           </Footer>
-        </Wrapper>
+        </ContentRoot>
       </div>
     )
   }

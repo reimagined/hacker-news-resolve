@@ -9,7 +9,7 @@ import Story from '../containers/Story'
 import actions from '../actions/storiesActions'
 import ChildrenComments from '../components/ChildrenComments'
 
-const Wrapper = styled.div`
+const StoryDetailsRoot = styled.div`
   padding: 1em 1.25em 0 1.75em;
   margin-bottom: 1em;
 `
@@ -55,7 +55,7 @@ export class StoryDetails extends React.PureComponent {
     }
 
     return (
-      <Wrapper>
+      <StoryDetailsRoot>
         <Story showText story={story} />
         {loggedIn ? (
           <Reply>
@@ -76,7 +76,7 @@ export class StoryDetails extends React.PureComponent {
           comments={story.comments}
           parentId={story.id}
         />
-      </Wrapper>
+      </StoryDetailsRoot>
     )
   }
 }
