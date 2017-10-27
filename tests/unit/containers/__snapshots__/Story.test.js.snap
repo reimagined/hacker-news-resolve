@@ -324,7 +324,9 @@ ShallowWrapper {
           id="user-id"
           name="user"
 />,
-        "17466 days ago",
+        <span>
+          17466 days ago
+</span>,
         <span>
           <styled.div />
           <styled.div
@@ -365,7 +367,17 @@ ShallowWrapper {
         "rendered": null,
         "type": [Function],
       },
-      "17466 days ago",
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "children": "17466 days ago",
+        },
+        "ref": null,
+        "rendered": "17466 days ago",
+        "type": "span",
+      },
       Object {
         "instance": null,
         "key": null,
@@ -437,7 +449,9 @@ ShallowWrapper {
             id="user-id"
             name="user"
 />,
-          "17466 days ago",
+          <span>
+            17466 days ago
+</span>,
           <span>
             <styled.div />
             <styled.div
@@ -478,7 +492,17 @@ ShallowWrapper {
           "rendered": null,
           "type": [Function],
         },
-        "17466 days ago",
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "children": "17466 days ago",
+          },
+          "ref": null,
+          "rendered": "17466 days ago",
+          "type": "span",
+        },
         Object {
           "instance": null,
           "key": null,
@@ -573,7 +597,9 @@ ShallowWrapper {
       "children": Array [
         null,
         null,
-        "17466 days ago",
+        <span>
+          17466 days ago
+</span>,
         <span>
           <styled.div />
           <styled.div
@@ -593,7 +619,17 @@ ShallowWrapper {
     "rendered": Array [
       null,
       null,
-      "17466 days ago",
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "host",
+        "props": Object {
+          "children": "17466 days ago",
+        },
+        "ref": null,
+        "rendered": "17466 days ago",
+        "type": "span",
+      },
       Object {
         "instance": null,
         "key": null,
@@ -660,7 +696,9 @@ ShallowWrapper {
         "children": Array [
           null,
           null,
-          "17466 days ago",
+          <span>
+            17466 days ago
+</span>,
           <span>
             <styled.div />
             <styled.div
@@ -680,7 +718,17 @@ ShallowWrapper {
       "rendered": Array [
         null,
         null,
-        "17466 days ago",
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "host",
+          "props": Object {
+            "children": "17466 days ago",
+          },
+          "ref": null,
+          "rendered": "17466 days ago",
+          "type": "span",
+        },
         Object {
           "instance": null,
           "key": null,

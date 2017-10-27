@@ -164,7 +164,7 @@ export const Meta = props => {
     <MetaWrapper>
       {votes ? <Score score={votes.length} /> : null}
       {createdBy ? <PostedBy id={createdBy} name={createdByName} /> : null}
-      {timeAgo(createdAt)}
+      <span>{timeAgo(createdAt)}</span>
       {unvoteIsVisible && (
         <span>
           <Splitter />
