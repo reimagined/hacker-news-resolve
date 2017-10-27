@@ -18,7 +18,7 @@ const logoutMiddleware = () => next => action => {
     return
   }
 
-  cookies.remove('authorizationToken')
+  cookies.remove('authenticationToken')
   window.location.reload()
 }
 

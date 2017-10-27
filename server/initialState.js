@@ -1,10 +1,10 @@
 import jwt from 'jsonwebtoken'
 
-import { authorizationSecret, cookieName } from './constants'
+import { authenticationSecret, cookieName } from './constants'
 
 export const getCurrentUser = async (executeQuery, cookies) => {
   try {
-    const { id } = jwt.verify(cookies[cookieName], authorizationSecret)
+    const { id } = jwt.verify(cookies[cookieName], authenticationSecret)
 
     if (!id) {
       return null

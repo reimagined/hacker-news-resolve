@@ -2,7 +2,7 @@ import bodyParser from 'body-parser'
 import jwt from 'jsonwebtoken'
 import uuid from 'uuid'
 
-import { authorizationSecret, cookieName, cookieMaxAge } from './constants'
+import { authenticationSecret, cookieName, cookieMaxAge } from './constants'
 
 export const getUserByName = async (executeQuery, name) => {
   const { user } = await executeQuery(
@@ -19,24 +19,24 @@ export const getUserByName = async (executeQuery, name) => {
   return user
 }
 
-export const authorize = (req, res, user) => {
+export const authenticate = (req, res, user) => {
   try {
-    const authorizationToken = jwt.sign(user, authorizationSecret)
-    res.cookie(cookieName, authorizationToken, {
+    const authenticationToken = jwt.sign(user, authenticationSecret)
+    res.cookie(cookieName, authenticationToken, {
       maxAge: cookieMaxAge
     })
 
     res.redirect(req.query.redirect || '/')
   } catch (error) {
-    res.redirect('/error?text=Unauthorized')
+    res.redirect('/error?text=Unauthenticated')
   }
 }
 
 export const accessDenied = (req, res) => {
-  res.status(401).send('401 Unauthorized')
+  res.status(401).send('401 Unauthenticated')
 }
 
-const authorizationMiddleware = (req, res, next) => {
+const authenticationMiddleware = (req, res, next) => {
   req.getJwt((_, user) => {
     if (user) {
       req.body.userId = user.id
@@ -45,11 +45,11 @@ const authorizationMiddleware = (req, res, next) => {
   })
 }
 
-export const commandAuthorizationMiddleware = (req, res, next) => {
+export const commandAuthenticationMiddleware = (req, res, next) => {
   try {
     const user = req.getJwt()
     if (!user) {
-      throw new Error('Unauthorized')
+      throw new Error('Unauthenticated')
     }
     req.body.userId = user.id
     next()
@@ -59,8 +59,8 @@ export const commandAuthorizationMiddleware = (req, res, next) => {
 }
 
 export default express => {
-  express.use('/', authorizationMiddleware)
-  express.use('/api/commands/', commandAuthorizationMiddleware)
+  express.use('/', authenticationMiddleware)
+  express.use('/api/commands/', commandAuthenticationMiddleware)
 
   express.post(
     '/register',
@@ -88,7 +88,7 @@ export default express => {
           payload: user
         })
 
-        return authorize(req, res, user)
+        return authenticate(req, res, user)
       } catch (error) {
         res.redirect(`/error?text=${error.toString()}`)
       }
@@ -109,7 +109,7 @@ export default express => {
         return
       }
 
-      return authorize(req, res, user)
+      return authenticate(req, res, user)
     }
   )
 }
