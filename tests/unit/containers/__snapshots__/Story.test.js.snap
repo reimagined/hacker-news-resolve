@@ -324,15 +324,7 @@ ShallowWrapper {
           id="user-id"
           name="user"
 />,
-        <TimeAgo
-          component="time"
-          date={1970-01-01T00:00:00.000Z}
-          formatter={[Function]}
-          live={true}
-          maxPeriod={Infinity}
-          minPeriod={0}
-          now={[Function]}
-/>,
+        "17466 days ago",
         <span>
           <styled.div />
           <styled.div
@@ -373,23 +365,7 @@ ShallowWrapper {
         "rendered": null,
         "type": [Function],
       },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "component": "time",
-          "date": 1970-01-01T00:00:00.000Z,
-          "formatter": [Function],
-          "live": true,
-          "maxPeriod": Infinity,
-          "minPeriod": 0,
-          "now": [Function],
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
+      "17466 days ago",
       Object {
         "instance": null,
         "key": null,
@@ -461,15 +437,7 @@ ShallowWrapper {
             id="user-id"
             name="user"
 />,
-          <TimeAgo
-            component="time"
-            date={1970-01-01T00:00:00.000Z}
-            formatter={[Function]}
-            live={true}
-            maxPeriod={Infinity}
-            minPeriod={0}
-            now={[Function]}
-/>,
+          "17466 days ago",
           <span>
             <styled.div />
             <styled.div
@@ -510,23 +478,7 @@ ShallowWrapper {
           "rendered": null,
           "type": [Function],
         },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "component": "time",
-            "date": 1970-01-01T00:00:00.000Z,
-            "formatter": [Function],
-            "live": true,
-            "maxPeriod": Infinity,
-            "minPeriod": 0,
-            "now": [Function],
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
+        "17466 days ago",
         Object {
           "instance": null,
           "key": null,
@@ -621,15 +573,7 @@ ShallowWrapper {
       "children": Array [
         null,
         null,
-        <TimeAgo
-          component="time"
-          date={1970-01-01T00:00:00.000Z}
-          formatter={[Function]}
-          live={true}
-          maxPeriod={Infinity}
-          minPeriod={0}
-          now={[Function]}
-/>,
+        "17466 days ago",
         <span>
           <styled.div />
           <styled.div
@@ -649,23 +593,7 @@ ShallowWrapper {
     "rendered": Array [
       null,
       null,
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "component": "time",
-          "date": 1970-01-01T00:00:00.000Z,
-          "formatter": [Function],
-          "live": true,
-          "maxPeriod": Infinity,
-          "minPeriod": 0,
-          "now": [Function],
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
+      "17466 days ago",
       Object {
         "instance": null,
         "key": null,
@@ -732,15 +660,7 @@ ShallowWrapper {
         "children": Array [
           null,
           null,
-          <TimeAgo
-            component="time"
-            date={1970-01-01T00:00:00.000Z}
-            formatter={[Function]}
-            live={true}
-            maxPeriod={Infinity}
-            minPeriod={0}
-            now={[Function]}
-/>,
+          "17466 days ago",
           <span>
             <styled.div />
             <styled.div
@@ -760,23 +680,7 @@ ShallowWrapper {
       "rendered": Array [
         null,
         null,
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "component": "time",
-            "date": 1970-01-01T00:00:00.000Z,
-            "formatter": [Function],
-            "live": true,
-            "maxPeriod": Infinity,
-            "minPeriod": 0,
-            "now": [Function],
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
+        "17466 days ago",
         Object {
           "instance": null,
           "key": null,
