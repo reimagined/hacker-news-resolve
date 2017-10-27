@@ -6,7 +6,7 @@ const HOUR = MINUTE * 60
 const DAY = HOUR * 24
 
 export default createdAt => {
-  const now = new Date().getTime()
+  const now = Date.now()
   const time = new Date(+createdAt).getTime()
 
   const difference = now - time
