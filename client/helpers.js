@@ -13,10 +13,10 @@ export default createdAt => {
 
   if (difference / MINUTE < 1) {
     return 'less than a minute ago'
-  } else if (difference / MINUTE > 1 && difference / HOUR < 1) {
+  } else if (difference / HOUR < 1) {
     const minutes = Math.floor(difference / MINUTE)
     return `${minutes} ${plur('minute', minutes)} ago`
-  } else if (difference / HOUR > 1 && difference / DAY < 1) {
+  } else if (difference / DAY < 1) {
     const hours = Math.floor(difference / HOUR)
     return `${hours} ${plur('hour', hours)} ago`
   } else {
