@@ -1,11 +1,11 @@
 import uuid from 'uuid'
 
 import comments from '../../../../../common/read-models/graphql/collections/comments'
-import { COMMENT_CREATED } from '../../../../../common/events'
+import { STORY_COMMENTED } from '../../../../../common/events'
 
 describe('read-models', () => {
   describe('comments', () => {
-    it('eventHandler "COMMENT_CREATED" should create a comment', () => {
+    it('eventHandler "STORY_COMMENTED" should create a comment', () => {
       const state = []
       const commentId = uuid.v4()
 
@@ -31,12 +31,12 @@ describe('read-models', () => {
         }
       ]
 
-      expect(comments.projection[COMMENT_CREATED](state, event)).toEqual(
+      expect(comments.projection[STORY_COMMENTED](state, event)).toEqual(
         nextState
       )
     })
 
-    it('eventHandler "COMMENT_CREATED" should create a comment and update parent comment', () => {
+    it('eventHandler "STORY_COMMENTED" should create a comment and update parent comment', () => {
       const parentId = uuid.v4()
 
       const prevEvent = {
@@ -93,7 +93,7 @@ describe('read-models', () => {
         }
       ]
 
-      expect(comments.projection[COMMENT_CREATED](state, event)).toEqual(
+      expect(comments.projection[STORY_COMMENTED](state, event)).toEqual(
         nextState
       )
     })

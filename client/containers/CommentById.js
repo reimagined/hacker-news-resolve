@@ -31,7 +31,7 @@ export class CommentById extends React.PureComponent {
       userId
     } = this.props
 
-    this.props.createComment({
+    this.props.commentStory({
       storyId,
       parentId: comment.id,
       text: this.textarea.value,
@@ -84,8 +84,8 @@ export class CommentById extends React.PureComponent {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      createComment: ({ storyId, parentId, userId, text }) =>
-        actions.createComment(storyId, {
+      commentStory: ({ storyId, parentId, userId, text }) =>
+        actions.commentStory(storyId, {
           commentId: uuid.v4(),
           parentId,
           userId,

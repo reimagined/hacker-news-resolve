@@ -36,18 +36,18 @@ export type StoryUnvoted = {
   payload: StoryUnvotedPayload
 }
 
-export type CommentCreatedPayload = {
+export type StoryCommentedPayload = {
   commentId: string,
   parentId: string,
   userId: string,
   text: string
 }
 
-export type CommentCreated = {
+export type StoryCommented = {
   type: string,
   aggregateId: string,
   timestamp: number,
-  payload: CommentCreatedPayload
+  payload: StoryCommentedPayload
 }
 
 // User

@@ -6,7 +6,7 @@ import {
   STORY_CREATED,
   STORY_UPVOTED,
   STORY_UNVOTED,
-  COMMENT_CREATED
+  STORY_COMMENTED
 } from '../../../common/events'
 
 describe('aggregates', () => {
@@ -314,7 +314,7 @@ describe('aggregates', () => {
   })
 
   describe('comments', () => {
-    it('command "createComment" should create an event to create a comment', () => {
+    it('command "commentStory" should create an event to create a comment', () => {
       const text = 'SomeText'
       const parentId = uuid.v4()
       const userId = uuid.v4()
@@ -332,15 +332,15 @@ describe('aggregates', () => {
         }
       }
 
-      const event = story.commands.createComment(state, command)
+      const event = story.commands.commentStory(state, command)
 
       expect(event).toEqual({
-        type: COMMENT_CREATED,
+        type: STORY_COMMENTED,
         payload: { text, parentId, userId }
       })
     })
 
-    it('command "createComment" should throw Error "Comment already exists"', () => {
+    it('command "commentStory" should throw Error "Comment already exists"', () => {
       const text = 'SomeText'
       const parentId = uuid.v4()
       const userId = uuid.v4()
@@ -362,12 +362,12 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() => story.commands.createComment(state, command)).toThrowError(
+      expect(() => story.commands.commentStory(state, command)).toThrowError(
         'Comment already exists'
       )
     })
 
-    it('command "createComment" should throw Error "The text field is required"', () => {
+    it('command "commentStory" should throw Error "The text field is required"', () => {
       const text = undefined
       const parentId = uuid.v4()
       const userId = uuid.v4()
@@ -384,12 +384,12 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() => story.commands.createComment(state, command)).toThrowError(
+      expect(() => story.commands.commentStory(state, command)).toThrowError(
         'The "text" field is required'
       )
     })
 
-    it('command "createComment" should throw Error "The parentId field is required"', () => {
+    it('command "commentStory" should throw Error "The parentId field is required"', () => {
       const text = 'SomeText'
       const parentId = undefined
       const userId = uuid.v4()
@@ -406,12 +406,12 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() => story.commands.createComment(state, command)).toThrowError(
+      expect(() => story.commands.commentStory(state, command)).toThrowError(
         'The "parentId" field is required'
       )
     })
 
-    it('command "createComment" should throw Error "The userId field is required"', () => {
+    it('command "commentStory" should throw Error "The userId field is required"', () => {
       const text = 'SomeText'
       const parentId = uuid.v4()
       const userId = undefined
@@ -428,12 +428,12 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() => story.commands.createComment(state, command)).toThrowError(
+      expect(() => story.commands.commentStory(state, command)).toThrowError(
         'The "userId" field is required'
       )
     })
 
-    it('eventHandler "COMMENT_CREATED" should set new comment to state', () => {
+    it('eventHandler "STORY_COMMENTED" should set new comment to state', () => {
       const createdAt = Date.now()
       const userId = uuid.v4()
       const commentId = uuid.v4()
@@ -455,7 +455,7 @@ describe('aggregates', () => {
         }
       }
 
-      expect(story.projection[COMMENT_CREATED](state, event)).toEqual(nextState)
+      expect(story.projection[STORY_COMMENTED](state, event)).toEqual(nextState)
     })
   })
 })

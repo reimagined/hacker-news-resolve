@@ -7,7 +7,7 @@ import {
   STORY_CREATED,
   STORY_UPVOTED,
   STORY_UNVOTED,
-  COMMENT_CREATED
+  STORY_COMMENTED
 } from '../../../../../common/events'
 
 describe('read-models', () => {
@@ -250,7 +250,7 @@ describe('read-models', () => {
       expect(stories.projection[STORY_UNVOTED](state, event)).toEqual(state)
     })
 
-    it('eventHandler "COMMENT_CREATED"', () => {
+    it('eventHandler "STORY_COMMENTED"', () => {
       const aggregateId = uuid.v4()
       const commentId = uuid.v4()
       const userId = uuid.v4()
@@ -304,12 +304,12 @@ describe('read-models', () => {
         }
       ]
 
-      expect(stories.projection[COMMENT_CREATED](state, event)).toEqual(
+      expect(stories.projection[STORY_COMMENTED](state, event)).toEqual(
         nextState
       )
     })
 
-    it('eventHandler "COMMENT_CREATED" for reply', () => {
+    it('eventHandler "STORY_COMMENTED" for reply', () => {
       const aggregateId = uuid.v4()
       const commentId = uuid.v4()
       const userId = uuid.v4()
@@ -382,12 +382,12 @@ describe('read-models', () => {
         }
       ]
 
-      expect(stories.projection[COMMENT_CREATED](state, event)).toEqual(
+      expect(stories.projection[STORY_COMMENTED](state, event)).toEqual(
         nextState
       )
     })
 
-    it('eventHandler "COMMENT_CREATED" with incorrect aggregateId', () => {
+    it('eventHandler "STORY_COMMENTED" with incorrect aggregateId', () => {
       const aggregateId = uuid.v4()
       const commentId = uuid.v4()
       const userId = uuid.v4()
@@ -418,7 +418,7 @@ describe('read-models', () => {
         }
       }
 
-      expect(stories.projection[COMMENT_CREATED](state, event)).toEqual(state)
+      expect(stories.projection[STORY_COMMENTED](state, event)).toEqual(state)
     })
   })
 })

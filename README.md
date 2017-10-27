@@ -151,7 +151,7 @@ There are two aggregate roots - User and Story with the following commands and e
   * CreateUser generates the UserCreated event
 * Story
   * CreateStory generates the StoryCreated event
-  * CreateComment generates the CommentCreated event
+  * CommentStory generates the StoryCommented event
   * UpvoteStory generates the StoryUpvoted event
   * UnvoteStory generates the StoryUnvoted event
 
@@ -173,9 +173,9 @@ The app layout contains meta information, an application header with a menu, use
 Install the following packages:
 * `react-helmet` - to pass meta information to the HTML header
 * `react-router` - to implement routing
-* `redux` and `react-redux` - to store data 
+* `redux` and `react-redux` - to store data
 * `seamless-immutable` - to enforce state immutability
-* `js-cookie` - to manipulate cookies 
+* `js-cookie` - to manipulate cookies
 * `styled-components` -  to style components
 
 ```bash
@@ -190,7 +190,7 @@ Follow the steps below to implement the layout:
 * Prepare Redux [user actions](./client/actions/userActions.js).
 * Add the [Splitter](./client/components/Splitter.js) component that serves a vertical menu splitter.
 * Add the [App](./client/containers/App.js) container implementing the layout.
-In the `containers/App.js` file, comment the `uiActions` import and the `onSubmitViewShown` action in the `mapDispatchToProps` function, and add the header's [logo](./static/reSolve-logo.svg). 
+In the `containers/App.js` file, comment the `uiActions` import and the `onSubmitViewShown` action in the `mapDispatchToProps` function, and add the header's [logo](./static/reSolve-logo.svg).
 
 Add the layout and login view to the root component.
 * Add routes. To do this, create the `client/routes.js` file.
@@ -533,7 +533,7 @@ export default express => {
     bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
       const executeQuery = req.resolve.readModelExecutors.graphql
-      
+
       const user = await getUserByName(
 	    executeQuery,
 	    req.body.name
@@ -1046,25 +1046,25 @@ export default {
 
   stories: async (read, { page, type }) => {
     const root = await read('stories')
-  
+
     const filteredStories = type
       ? root.filter(story => story.type === type)
       : root
-  
+
     const stories = filteredStories
       .slice(
         filteredStories.length - (+page * NUMBER_OF_ITEMS_PER_PAGE + 1),
         filteredStories.length - (+page - 1) * NUMBER_OF_ITEMS_PER_PAGE
       )
       .reverse()
-  
+
     return withUserNames(stories, read)
   },
   story: async (read, { id }) => {
     const root = await read('stories')
-  
+
     let story = root.find(s => s.id === id)
-  
+
     if (!story) {
       return null
     }
@@ -1132,7 +1132,7 @@ Add a comment event to the [events](./common/events.js) file.
 export const STORY_CREATED = 'StoryCreated'
 export const STORY_UPVOTED = 'StoryUpvoted'
 export const STORY_UNVOTED = 'StoryUnvoted'
-export const COMMENT_CREATED = 'CommentCreated'
+export const STORY_COMMENTED = 'StoryCommented'
 
 export const USER_CREATED = 'UserCreated'
 ```
@@ -1164,7 +1164,7 @@ import {
   STORY_CREATED,
   STORY_UPVOTED,
   STORY_UNVOTED,
-  COMMENT_CREATED
+  STORY_COMMENTED
 } from '../events'
 
 import validate from './validation'
@@ -1175,7 +1175,7 @@ export default {
   commands: {
     // the createStory,  upvoteStory and unvoteStory implementation
 
-    createComment: (state: any, command: any) => {
+    commentStory: (state: any, command: any) => {
       validate.stateExists(state, 'Story')
 
       const { commentId, parentId, userId, text } = command.payload
@@ -1185,20 +1185,20 @@ export default {
       validate.fieldRequired(command.payload, 'text')
       validate.commentNotExists(state, commentId)
 
-      const payload: CommentCreatedPayload = {
+      const payload: StoryCommentedPayload = {
         commentId,
         parentId,
         userId,
         text
       }
-      return { type: COMMENT_CREATED, payload }
+      return { type: STORY_COMMENTED, payload }
     }
   },
   projection: {
     // the STORY_CREATED, STORY_UPVOTED and STORY_UNVOTED implementation
-    [COMMENT_CREATED]: (
+    [STORY_COMMENTED]: (
       state,
-      { timestamp, payload: { commentId, userId } }: CommentCreated
+      { timestamp, payload: { commentId, userId } }: StoryCommented
     ) => ({
       ...state,
       comments: {
@@ -1221,7 +1221,7 @@ Despite there is a single aggregate for comment and story, provide different col
 // ./common/read-model/graphql/collections/comments.js
 
 // @flow
-import { COMMENT_CREATED } from '../../../events'
+import { STORY_COMMENTED } from '../../../events'
 
 type Comment = {
   id: string,
@@ -1238,7 +1238,7 @@ export default {
   name: 'comments',
   initialState: [],
   projection: {
-    [COMMENT_CREATED]: (state: CommentsState, event: CommentCreated) => {
+    [STORY_COMMENTED]: (state: CommentsState, event: StoryCommented) => {
       const {
         aggregateId,
         timestamp,
@@ -1281,7 +1281,7 @@ import {
   STORY_CREATED,
   STORY_UPVOTED,
   STORY_UNVOTED,
-  COMMENT_CREATED
+  STORY_COMMENTED
 } from '../../../events'
 
 type UserId = string
@@ -1373,9 +1373,9 @@ export default {
       return state
     },
 
-    [COMMENT_CREATED]: (
+    [STORY_COMMENTED]: (
       state: StoriesState,
-      event: CommentCreated
+      event: StoryCommented
     ): StoriesState => {
       const {
         aggregateId,
@@ -1499,9 +1499,9 @@ export default {
 
   story: async (read, { id }) => {
     const root = await read('stories')
-  
+
     let story = root.find(s => s.id === id)
-  
+
     if (!story) {
       return null
     }
@@ -1511,17 +1511,17 @@ export default {
   },
   comment: async (read, { id }) => {
     const root = await read('comments')
-  
+
     const commentIndex = root.findIndex(c => c.id === id)
-  
+
     if (commentIndex === -1) {
       return null
     }
-  
+
     const comment = root[commentIndex]
     const [resultComment] = await withUserNames([comment], read)
     const replies = getReplies(root, commentIndex)
-  
+
     return {
       ...resultComment,
       replies: await withUserNames(replies, read)
@@ -1529,7 +1529,7 @@ export default {
   },
   comments: async (read, { page }) => {
     const root = await read('comments')
-  
+
     const comments = root.slice(
       +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
       +page * NUMBER_OF_ITEMS_PER_PAGE + 1

@@ -3,7 +3,7 @@ import {
   STORY_CREATED,
   STORY_UPVOTED,
   STORY_UNVOTED,
-  COMMENT_CREATED
+  STORY_COMMENTED
 } from '../events'
 import validate from './validation'
 
@@ -47,7 +47,7 @@ export default {
       return { type: STORY_UNVOTED, payload }
     },
 
-    createComment: (state: any, command: any) => {
+    commentStory: (state: any, command: any) => {
       validate.stateExists(state, 'Story')
 
       const { commentId, parentId, userId, text } = command.payload
@@ -57,13 +57,13 @@ export default {
       validate.fieldRequired(command.payload, 'text')
       validate.commentNotExists(state, commentId)
 
-      const payload: CommentCreatedPayload = {
+      const payload: StoryCommentedPayload = {
         commentId,
         parentId,
         userId,
         text
       }
-      return { type: COMMENT_CREATED, payload }
+      return { type: STORY_COMMENTED, payload }
     }
   },
   projection: {
@@ -87,9 +87,9 @@ export default {
       ...state,
       voted: state.voted.filter(curUserId => curUserId !== userId)
     }),
-    [COMMENT_CREATED]: (
+    [STORY_COMMENTED]: (
       state,
-      { timestamp, payload: { commentId, userId } }: CommentCreated
+      { timestamp, payload: { commentId, userId } }: StoryCommented
     ) => ({
       ...state,
       comments: {

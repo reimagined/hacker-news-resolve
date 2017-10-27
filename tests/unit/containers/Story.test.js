@@ -322,17 +322,17 @@ it('mapStateToProps', () => {
   })
 })
 
-it('mapDispatchToProps createComment', () => {
+it('mapDispatchToProps commentStory', () => {
   const props = mapDispatchToProps(value => value)
 
   expect(
-    props.createComment({
+    props.commentStory({
       parentId: 'parentId',
       text: 'text',
       userId: 'userId'
     })
   ).toEqual(
-    actions.createComment('parentId', {
+    actions.commentStory('parentId', {
       parentId: 'parentId',
       text: 'text',
       userId: 'userId',
