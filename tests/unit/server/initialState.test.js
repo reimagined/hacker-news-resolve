@@ -1,7 +1,7 @@
 import uuid from 'uuid'
 import jwt from 'jsonwebtoken'
 
-import { authorizationSecret } from '../../../server/constants'
+import { authenticationSecret } from '../../../server/constants'
 import initialState, { getCurrentUser } from '../../../server/initialState'
 
 const currentUser = {
@@ -16,7 +16,7 @@ const executeQuery = (_, { id }) => ({
 describe('server', () => {
   it('initialState should return initial state', async () => {
     const cookies = {
-      authorizationToken: jwt.sign(currentUser, authorizationSecret)
+      authenticationToken: jwt.sign(currentUser, authenticationSecret)
     }
 
     const state = await initialState(
@@ -33,7 +33,7 @@ describe('server', () => {
 
   it('getCurrentUser should return current user', async () => {
     const cookies = {
-      authorizationToken: jwt.sign(currentUser, authorizationSecret)
+      authenticationToken: jwt.sign(currentUser, authenticationSecret)
     }
 
     const user = await getCurrentUser(executeQuery, cookies)

@@ -433,8 +433,8 @@ Add the list of necessary server parameters.
 ```js
 // ./server/constants.js
 
-export const authorizationSecret = 'auth-secret'
-export const cookieName = 'authorizationToken'
+export const authenticationSecret = 'auth-secret'
+export const cookieName = 'authenticationToken'
 export const cookieMaxAge = 1000 * 60 * 60 * 24 * 365
 ```
 
@@ -445,20 +445,20 @@ Generate a token using the [jsonwebtoken](https://github.com/auth0/node-jsonwebt
 
 import jwt from 'jsonwebtoken'
 
-import { authorizationSecret, cookieName, cookieMaxAge } from './constants'
+import { authenticationSecret, cookieName, cookieMaxAge } from './constants'
 
 // getUserByName implementation
 
-const authorize = (req, res, user) => {
+const authenticate = (req, res, user) => {
   try {
-    const authorizationToken = jwt.sign(user, authorizationSecret)
-    res.cookie(cookieName, authorizationToken, {
+    const authenticationToken = jwt.sign(user, authenticationSecret)
+    res.cookie(cookieName, authenticationToken, {
       maxAge: cookieMaxAge
     })
 
     res.redirect(req.query.redirect || '/')
   } catch (error) {
-    res.redirect('/error?text=Unauthorized')
+    res.redirect('/error?text=Unauthenticated')
   }
 }
 ```
@@ -473,9 +473,9 @@ import jwt from 'jsonwebtoken'
 import bodyParser from 'body-parser'
 import uuid from 'uuid'
 
-import { authorizationSecret, cookieMaxAge, cookieName } from './constants'
+import { authenticationSecret, cookieMaxAge, cookieName } from './constants'
 
-// getUserByName and authorize implementation
+// getUserByName and authenticate implementation
 
 export default express => {
   express.post(
@@ -507,7 +507,7 @@ export default express => {
           payload: user
         })
 
-        return authorize(req, res, user)
+        return authenticate(req, res, user)
       } catch (error) {
         res.redirect(`/error?text=${error.toString()}`)
       }
@@ -523,7 +523,7 @@ Add the `/login` route to allow registered users to log in.
 ```js
 // ./server/extendExpress.js
 
-// imports, getUserByName and authorize implementation
+// imports, getUserByName and authenticate implementation
 
 export default express => {
   // Here should be registration implementation
@@ -544,7 +544,7 @@ export default express => {
         return
       }
 
-      return authorize(req, res, user)
+      return authenticate(req, res, user)
     }
   )
 }
@@ -555,9 +555,9 @@ Add authentication middleware to have an authenticated user through all routes.
 ```js
 // ./server/extendExpress.js
 
-// imports, getUserByName and authorize implementation
+// imports, getUserByName and authenticate implementation
 
-const authorizationMiddleware = (req, res, next) => {
+const authenticationMiddleware = (req, res, next) => {
   req.getJwt((_, user) => {
     if (user) {
       req.body.userId = user.id
@@ -567,7 +567,7 @@ const authorizationMiddleware = (req, res, next) => {
 }
 
 export default express => {
-  express.use('/', authorizationMiddleware)
+  express.use('/', authenticationMiddleware)
 
   // Here should be registration implementation
   // and here should be login implementation
@@ -581,11 +581,11 @@ Add the `initialState` function to pass a user to the client side.
 
 import jwt from 'jsonwebtoken'
 
-import { authorizationSecret, cookieName } from './constants'
+import { authenticationSecret, cookieName } from './constants'
 
 export const getCurrentUser = async (executeQuery, cookies) => {
   try {
-    const { id } = jwt.verify(cookies[cookieName], authorizationSecret)
+    const { id } = jwt.verify(cookies[cookieName], authenticationSecret)
 
     if (!id) {
       return null

@@ -11,7 +11,7 @@ import extendExpress from './server/extendExpress'
 import initialState from './server/initialState'
 
 import {
-  authorizationSecret,
+  authenticationSecret,
   cookieName,
   cookieMaxAge,
   databaseFilePath
@@ -39,7 +39,7 @@ export default {
   readModels,
   extendExpress,
   jwt: {
-    secret: authorizationSecret,
+    secret: authenticationSecret,
     cookieName,
     options: {
       maxAge: cookieMaxAge
