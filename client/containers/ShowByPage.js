@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { gqlConnector } from 'resolve-redux'
 
 import Stories from '../components/Stories'
+import { ITEMS_PER_PAGE } from '../constants'
 
 class ShowByPage extends React.PureComponent {
   componentDidUpdate = () => {
@@ -38,8 +39,8 @@ const mapDispatchToProps = dispatch => ({
 
 export default gqlConnector(
   `
-    query($page: Int!) {
-      stories(page: $page, type: "show") {
+    query($first: Int!, $offset: Int) {
+      stories(type: "show", first: $first, offset: $offset) {
         id
         type
         title
@@ -54,6 +55,7 @@ export default gqlConnector(
     }
   `,
   ({ match: { params: { page } } }) => ({
-    page: page || '1'
+    first: ITEMS_PER_PAGE + 1,
+    offset: (+page - 1) * ITEMS_PER_PAGE
   })
 )(connect(mapStateToProps, mapDispatchToProps)(ShowByPage))

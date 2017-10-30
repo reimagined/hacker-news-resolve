@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Pagination, { Href } from '../../../client/components/Pagination'
+import Pagination, { StyledLink } from '../../../client/components/Pagination'
 
 it('Page 1 renders correctly', () => {
   const markup = shallow(
@@ -44,13 +44,13 @@ it('Page 1 renders correctly', () => {
 })
 
 it('Href renders correctly', () => {
-  const markup = shallow(<Href />)
+  const markup = shallow(<StyledLink to="/" />)
 
   expect(markup).toMatchSnapshot()
 })
 
 it('Href { disabled: true } renders correctly', () => {
-  const markup = shallow(<Href disabled />)
+  const markup = shallow(<StyledLink to="/" disabled />)
 
   expect(markup).toMatchSnapshot()
 })

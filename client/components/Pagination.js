@@ -4,27 +4,30 @@ import styled, { css } from 'styled-components'
 
 import Splitter from './Splitter'
 
-export const Wrapper = styled.div`
+export const PaginationRoot = styled.div`
   margin-left: 3em;
   padding: 0.5em 0;
 `
 
-export const Href = styled.div`
+export const StyledLink = styled(Link)`
   display: inline;
   font-weight: bold;
-  color: #000;
   text-decoration: none;
+
   &:hover {
     text-decoration: underline;
   }
 
   ${props =>
-    props.disabled &&
-    css`
-      pointer-events: none;
-      cursor: default;
-      color: gray;
-    `};
+    props.disabled
+      ? css`
+          pointer-events: none;
+          cursor: default;
+          color: gray;
+        `
+      : css`
+          color: #000;
+        `};
 `
 
 const Pagination = ({ page, hasNext, location }) => {
@@ -36,17 +39,23 @@ const Pagination = ({ page, hasNext, location }) => {
   const nextDisabled = !hasNext
 
   return (
-    <Wrapper>
-      <Link to={`${location}/${Number(page) - 1}`}>
-        <Href disabled={prevDisabled}>Prev</Href>
-      </Link>
+    <PaginationRoot>
+      <StyledLink
+        to={`${location}/${Number(page) - 1}`}
+        disabled={prevDisabled}
+      >
+        Prev
+      </StyledLink>
       <Splitter />
       {page}
       <Splitter />
-      <Link to={`${location}/${Number(page) + 1}`}>
-        <Href disabled={nextDisabled}>More</Href>
-      </Link>
-    </Wrapper>
+      <StyledLink
+        to={`${location}/${Number(page) + 1}`}
+        disabled={nextDisabled}
+      >
+        More
+      </StyledLink>
+    </PaginationRoot>
   )
 }
 

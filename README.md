@@ -702,7 +702,7 @@ Then add the [Story](./client/containers/Story.js) container.
 In this file, comment the `redux` and actions import.
 Also comment the `mapDispatchToProps` function and temporarily delete it from the `connect` function arguments.
 
-Create [common constants](./common/constants.js).
+Create [client constants](./client/constants.js).
 
 Implement the [Stories](./client/components/Stories.js) component for displaying stories.
 

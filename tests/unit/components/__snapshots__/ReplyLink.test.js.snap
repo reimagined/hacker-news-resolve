@@ -20,24 +20,11 @@ ShallowWrapper {
     "key": null,
     "nodeType": "class",
     "props": Object {
-      "children": <styled.div>
-        reply
-</styled.div>,
-      "replace": false,
+      "children": "reply",
       "to": "/storyDetails/story-id/comments/comment-id",
     },
     "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": null,
-      "nodeType": "class",
-      "props": Object {
-        "children": "reply",
-      },
-      "ref": null,
-      "rendered": "reply",
-      "type": [Function],
-    },
+    "rendered": "reply",
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -46,24 +33,11 @@ ShallowWrapper {
       "key": null,
       "nodeType": "class",
       "props": Object {
-        "children": <styled.div>
-          reply
-</styled.div>,
-        "replace": false,
+        "children": "reply",
         "to": "/storyDetails/story-id/comments/comment-id",
       },
       "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "children": "reply",
-        },
-        "ref": null,
-        "rendered": "reply",
-        "type": [Function],
-      },
+      "rendered": "reply",
       "type": [Function],
     },
   ],

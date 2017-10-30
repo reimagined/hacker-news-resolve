@@ -29,9 +29,9 @@ export default `
     createdAt: String
   }
   type Query {
-    comments(page: Int!): [Comment]
+    comments(first: Int!, offset: Int): [Comment]
     comment(id: ID!): Comment
-    stories(page: Int!, type: String): [Story]
+    stories(type: String, first: Int!, offset: Int): [Story]
     story(id: ID!): Story
     user(id: ID, name: String): User
   }

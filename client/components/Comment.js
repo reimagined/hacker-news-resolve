@@ -6,14 +6,14 @@ import styled from 'styled-components'
 
 import Splitter from './Splitter'
 
-const Wrapper = styled.div`
+const CommentRoot = styled.div`
   margin-bottom: 0.75em;
   padding-right: 1.25em;
   padding-top: 0.65em;
   padding-left: ${2.5}em;
 `
 
-const Meta = styled.div`
+const CommentInfo = styled.div`
   color: #666;
   margin-bottom: 0.5em;
 `
@@ -25,16 +25,17 @@ const Collapse = styled.div`
   cursor: pointer;
 `
 
-const Href = styled.div`
-  display: inline-block;
+const linkStyles = `
   vertical-align: middle;
-  text-decoration: none;
-  color: #666;
 
   &:hover {
     text-decoration: underline;
   }
 `
+
+const StyledLink = styled(Link)`${linkStyles};`
+
+const StyledUserLink = styled(Link)`${linkStyles} font-weight: bold;`
 
 const Time = styled.div`
   display: inline-block;
@@ -71,30 +72,26 @@ class Comment extends React.PureComponent {
         : `/storyDetails/${storyId}/comments/${parentId}`
 
     return (
-      <Wrapper>
-        <Meta>
+      <CommentRoot>
+        <CommentInfo>
           <Collapse onClick={this.expand} tabIndex="0">
             {'['}
             {this.state.expanded ? '−' : '+'}
             {']'}
           </Collapse>
-          <Link to={`/user/${createdBy}`}>
-            <Href>
-              <b>{createdByName}</b>
-            </Href>
-          </Link>
+          <StyledUserLink to={`/user/${createdBy}`}>
+            {createdByName}
+          </StyledUserLink>
           <Time>
             <TimeAgo date={new Date(+createdAt)} />
           </Time>
           <Splitter />
-          <Link to={`/storyDetails/${storyId}/comments/${id}`}>
-            <Href>link</Href>
-          </Link>
+          <StyledLink to={`/storyDetails/${storyId}/comments/${id}`}>
+            link
+          </StyledLink>
           <Splitter />
-          <Link to={parent}>
-            <Href>parent</Href>
-          </Link>
-        </Meta>
+          <StyledLink to={parent}>parent</StyledLink>
+        </CommentInfo>
         {this.state.expanded ? (
           <div
             dangerouslySetInnerHTML={{
@@ -103,7 +100,7 @@ class Comment extends React.PureComponent {
           />
         ) : null}
         {this.state.expanded ? children : null}
-      </Wrapper>
+      </CommentRoot>
     )
   }
 
