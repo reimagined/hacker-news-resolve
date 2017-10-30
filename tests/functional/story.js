@@ -1,78 +1,63 @@
 import { Selector } from 'testcafe'
-import {
-  loginPage,
-  submitPage,
-  newestPage,
-  storyDetailsPage,
-  commentPage
-} from './page-model'
+
+import { ROOT_URL, login } from './utils'
 
 fixture`Story`.beforeEach(async (t /*: TestController */) => {
   await t.setNativeDialogHandler(() => true)
-  await t.navigateTo(loginPage.path)
-  await loginPage.login(t)
+  await t.navigateTo(`${ROOT_URL}/login`)
+  await login(t)
 })
 
 test('create', async (t /*: TestController */) => {
-  await t.navigateTo(submitPage.path)
+  await t.navigateTo(`${ROOT_URL}/submit`)
 
-  const form = submitPage.form
-  await t.typeText(form.titleInput, 'my ask')
-  await t.typeText(form.textInput, 'my text')
-  await t.click(form.submitButton)
+  await t.typeText(Selector('input[type=text]').nth(0), 'my ask')
+  await t.typeText('textarea', 'my text')
+  await t.click('button')
 
-  await t
-    .expect(await Selector(storyDetailsPage.title).textContent)
-    .contains('my ask')
-  await t
-    .expect(await Selector(storyDetailsPage.text).textContent)
-    .contains('my text')
-  await t
-    .expect(await Selector(storyDetailsPage.by).textContent)
-    .contains('123')
-  await t
-    .expect(await Selector(storyDetailsPage.points).textContent)
-    .contains('0 points')
+  await t.expect(await Selector('a').withText('my ask').exists).eql(true)
+
+  await t.expect(await Selector('div').withText('my text').exists).eql(true)
+
+  await t.expect(await Selector('a').withText('123').exists).eql(true)
+
+  await t.expect(await Selector('div').withText(/0 points .+/).exists).eql(true)
 })
 
 test('add comment', async (t /*: TestController */) => {
-  await t.navigateTo(newestPage.path)
-  await t
-    .expect(await Selector(newestPage.getStoryDetailsLink(0)).textContent)
-    .contains('my ask')
-  await t.click(newestPage.getStoryDetailsDiscussLink(0))
+  await t.navigateTo(`${ROOT_URL}/newest`)
 
-  await t.typeText(storyDetailsPage.form.textarea, 'first comment')
-  await t.click(storyDetailsPage.form.submitButton)
+  const titleLink = await Selector('a').withText('Ask HN: my ask')
+
+  await t.expect(titleLink.exists).eql(true)
+
+  await t.click(titleLink)
+
+  await t.typeText('textarea', 'first comment')
+  await t.click('button')
 
   await t
-    .expect(await Selector(storyDetailsPage.getCommentContent(0)).textContent)
-    .contains('first comment')
+    .expect(await Selector('div').withText('first comment').exists)
+    .eql(true)
   // TODO: check comments page and parent link
 })
 
 test('add reply', async (t /*: TestController */) => {
-  await t.navigateTo(newestPage.path)
-  await t
-    .expect(await Selector(newestPage.getStoryDetailsLink(0)).textContent)
-    .contains('my ask')
-  await t.click(newestPage.getStoryDetailsDiscussLink(0))
+  await t.navigateTo(`${ROOT_URL}/newest`)
+
+  await t.click(await Selector('a').withText('Ask HN: my ask'))
+  await t.click(await Selector('a').withText('reply'))
+
+  await t.expect(await Selector('div').withText('my text').exists).eql(false)
 
   await t
-    .expect(await Selector(storyDetailsPage.getCommentContent(0)).textContent)
-    .contains('first comment')
-  await t.click(storyDetailsPage.getReplyLink(0))
+    .expect(await Selector('div').withText('first comment').exists)
+    .eql(true)
 
-  await t
-    .expect(await Selector(commentPage.text).textContent)
-    .contains('first comment')
+  await t.typeText('textarea', 'first reply')
+  await t.click('button')
 
-  await t.typeText(commentPage.form.textarea, 'first reply')
-  await t.click(commentPage.form.submitButton)
-
-  await t
-    .expect(await Selector(commentPage.getReplyContent(0)).textContent)
-    .contains('first reply')
+  await t.expect(await Selector('div').withText('first reply').exists).eql(true)
 
   // TODO: check comments page and parent link
 })

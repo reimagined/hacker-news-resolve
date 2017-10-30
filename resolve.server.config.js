@@ -28,7 +28,7 @@ export default {
   bus: { driver: busDriver },
   storage: {
     driver: storageDriver,
-    params: storageDriverParams
+    params: {}
   },
   initialState,
   aggregates,
