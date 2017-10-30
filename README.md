@@ -689,11 +689,10 @@ Implement a component rendering a list of stories.
 Install packages:
 * url - to parse URL
 * plur - to pluralize words
-* react-timeago - to display elapsed time
 * sanitizer - to sanitize story content markup
 
 ```bash
-npm i --save url plur react-timeago sanitizer
+npm i --save url plur sanitizer
 ```
 
 Add the [Pagination]((./client/components/Pagination.js)) component.

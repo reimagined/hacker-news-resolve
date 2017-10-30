@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import sanitizer from 'sanitizer'
-import TimeAgo from 'react-timeago'
 import styled from 'styled-components'
 
 import Splitter from './Splitter'
+import timeAgo from '../helpers'
 
 const CommentRoot = styled.div`
   margin-bottom: 0.75em;
@@ -82,9 +82,7 @@ class Comment extends React.PureComponent {
           <StyledUserLink to={`/user/${createdBy}`}>
             {createdByName}
           </StyledUserLink>
-          <Time>
-            <TimeAgo date={new Date(+createdAt)} />
-          </Time>
+          <Time>{timeAgo(createdAt)}</Time>
           <Splitter />
           <StyledLink to={`/storyDetails/${storyId}/comments/${id}`}>
             link

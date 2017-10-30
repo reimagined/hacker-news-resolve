@@ -3,7 +3,6 @@ import uuid from 'uuid'
 import url from 'url'
 import { Link } from 'react-router-dom'
 import plur from 'plur'
-import TimeAgo from 'react-timeago'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import sanitizer from 'sanitizer'
@@ -11,6 +10,7 @@ import styled, { css } from 'styled-components'
 
 import Splitter from '../components/Splitter'
 import actions from '../actions/storiesActions'
+import timeAgo from '../helpers'
 
 export const StoryText = styled.div`
   color: #000;
@@ -129,7 +129,7 @@ export const StoryInfo = props => {
           ' '
         ]
       ) : null}
-      <TimeAgo date={new Date(+createdAt)} />
+      {timeAgo(createdAt)}
       {unvoteIsVisible && (
         <span>
           <Splitter />

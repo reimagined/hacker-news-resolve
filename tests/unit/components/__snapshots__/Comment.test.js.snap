@@ -45,15 +45,7 @@ ShallowWrapper {
                     to="/user/SomeUser"
           />
           <styled.div>
-                    <TimeAgo
-                              component="time"
-                              date={1970-01-01T00:00:00.000Z}
-                              formatter={[Function]}
-                              live={true}
-                              maxPeriod={Infinity}
-                              minPeriod={0}
-                              now={[Function]}
-                    />
+                    17466 days ago
           </styled.div>
           <styled.div />
           <Styled(Link)
@@ -98,15 +90,7 @@ ShallowWrapper {
               to="/user/SomeUser"
 />,
             <styled.div>
-              <TimeAgo
-                            component="time"
-                            date={1970-01-01T00:00:00.000Z}
-                            formatter={[Function]}
-                            live={true}
-                            maxPeriod={Infinity}
-                            minPeriod={0}
-                            now={[Function]}
-              />
+              17466 days ago
 </styled.div>,
             <styled.div />,
             <Styled(Link)
@@ -162,34 +146,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <TimeAgo
-                component="time"
-                date={1970-01-01T00:00:00.000Z}
-                formatter={[Function]}
-                live={true}
-                maxPeriod={Infinity}
-                minPeriod={0}
-                now={[Function]}
-/>,
+              "children": "17466 days ago",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "component": "time",
-                "date": 1970-01-01T00:00:00.000Z,
-                "formatter": [Function],
-                "live": true,
-                "maxPeriod": Infinity,
-                "minPeriod": 0,
-                "now": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+            "rendered": "17466 days ago",
             "type": [Function],
           },
           Object {
@@ -274,15 +234,7 @@ ShallowWrapper {
                         to="/user/SomeUser"
             />
             <styled.div>
-                        <TimeAgo
-                                    component="time"
-                                    date={1970-01-01T00:00:00.000Z}
-                                    formatter={[Function]}
-                                    live={true}
-                                    maxPeriod={Infinity}
-                                    minPeriod={0}
-                                    now={[Function]}
-                        />
+                        17466 days ago
             </styled.div>
             <styled.div />
             <Styled(Link)
@@ -327,15 +279,7 @@ ShallowWrapper {
                 to="/user/SomeUser"
 />,
               <styled.div>
-                <TimeAgo
-                                component="time"
-                                date={1970-01-01T00:00:00.000Z}
-                                formatter={[Function]}
-                                live={true}
-                                maxPeriod={Infinity}
-                                minPeriod={0}
-                                now={[Function]}
-                />
+                17466 days ago
 </styled.div>,
               <styled.div />,
               <Styled(Link)
@@ -391,34 +335,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <TimeAgo
-                  component="time"
-                  date={1970-01-01T00:00:00.000Z}
-                  formatter={[Function]}
-                  live={true}
-                  maxPeriod={Infinity}
-                  minPeriod={0}
-                  now={[Function]}
-/>,
+                "children": "17466 days ago",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "component": "time",
-                  "date": 1970-01-01T00:00:00.000Z,
-                  "formatter": [Function],
-                  "live": true,
-                  "maxPeriod": Infinity,
-                  "minPeriod": 0,
-                  "now": [Function],
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
+              "rendered": "17466 days ago",
               "type": [Function],
             },
             Object {
@@ -539,15 +459,7 @@ ShallowWrapper {
                     to="/user/SomeUser"
           />
           <styled.div>
-                    <TimeAgo
-                              component="time"
-                              date={1970-01-01T00:00:00.000Z}
-                              formatter={[Function]}
-                              live={true}
-                              maxPeriod={Infinity}
-                              minPeriod={0}
-                              now={[Function]}
-                    />
+                    17466 days ago
           </styled.div>
           <styled.div />
           <Styled(Link)
@@ -592,15 +504,7 @@ ShallowWrapper {
               to="/user/SomeUser"
 />,
             <styled.div>
-              <TimeAgo
-                            component="time"
-                            date={1970-01-01T00:00:00.000Z}
-                            formatter={[Function]}
-                            live={true}
-                            maxPeriod={Infinity}
-                            minPeriod={0}
-                            now={[Function]}
-              />
+              17466 days ago
 </styled.div>,
             <styled.div />,
             <Styled(Link)
@@ -656,34 +560,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <TimeAgo
-                component="time"
-                date={1970-01-01T00:00:00.000Z}
-                formatter={[Function]}
-                live={true}
-                maxPeriod={Infinity}
-                minPeriod={0}
-                now={[Function]}
-/>,
+              "children": "17466 days ago",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "component": "time",
-                "date": 1970-01-01T00:00:00.000Z,
-                "formatter": [Function],
-                "live": true,
-                "maxPeriod": Infinity,
-                "minPeriod": 0,
-                "now": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+            "rendered": "17466 days ago",
             "type": [Function],
           },
           Object {
@@ -768,15 +648,7 @@ ShallowWrapper {
                         to="/user/SomeUser"
             />
             <styled.div>
-                        <TimeAgo
-                                    component="time"
-                                    date={1970-01-01T00:00:00.000Z}
-                                    formatter={[Function]}
-                                    live={true}
-                                    maxPeriod={Infinity}
-                                    minPeriod={0}
-                                    now={[Function]}
-                        />
+                        17466 days ago
             </styled.div>
             <styled.div />
             <Styled(Link)
@@ -821,15 +693,7 @@ ShallowWrapper {
                 to="/user/SomeUser"
 />,
               <styled.div>
-                <TimeAgo
-                                component="time"
-                                date={1970-01-01T00:00:00.000Z}
-                                formatter={[Function]}
-                                live={true}
-                                maxPeriod={Infinity}
-                                minPeriod={0}
-                                now={[Function]}
-                />
+                17466 days ago
 </styled.div>,
               <styled.div />,
               <Styled(Link)
@@ -885,34 +749,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <TimeAgo
-                  component="time"
-                  date={1970-01-01T00:00:00.000Z}
-                  formatter={[Function]}
-                  live={true}
-                  maxPeriod={Infinity}
-                  minPeriod={0}
-                  now={[Function]}
-/>,
+                "children": "17466 days ago",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "component": "time",
-                  "date": 1970-01-01T00:00:00.000Z,
-                  "formatter": [Function],
-                  "live": true,
-                  "maxPeriod": Infinity,
-                  "minPeriod": 0,
-                  "now": [Function],
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
+              "rendered": "17466 days ago",
               "type": [Function],
             },
             Object {
@@ -1027,15 +867,7 @@ ShallowWrapper {
                     to="/user/SomeUser"
           />
           <styled.div>
-                    <TimeAgo
-                              component="time"
-                              date={1970-01-01T00:00:00.000Z}
-                              formatter={[Function]}
-                              live={true}
-                              maxPeriod={Infinity}
-                              minPeriod={0}
-                              now={[Function]}
-                    />
+                    17466 days ago
           </styled.div>
           <styled.div />
           <Styled(Link)
@@ -1080,15 +912,7 @@ ShallowWrapper {
               to="/user/SomeUser"
 />,
             <styled.div>
-              <TimeAgo
-                            component="time"
-                            date={1970-01-01T00:00:00.000Z}
-                            formatter={[Function]}
-                            live={true}
-                            maxPeriod={Infinity}
-                            minPeriod={0}
-                            now={[Function]}
-              />
+              17466 days ago
 </styled.div>,
             <styled.div />,
             <Styled(Link)
@@ -1144,34 +968,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <TimeAgo
-                component="time"
-                date={1970-01-01T00:00:00.000Z}
-                formatter={[Function]}
-                live={true}
-                maxPeriod={Infinity}
-                minPeriod={0}
-                now={[Function]}
-/>,
+              "children": "17466 days ago",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "component": "time",
-                "date": 1970-01-01T00:00:00.000Z,
-                "formatter": [Function],
-                "live": true,
-                "maxPeriod": Infinity,
-                "minPeriod": 0,
-                "now": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+            "rendered": "17466 days ago",
             "type": [Function],
           },
           Object {
@@ -1256,15 +1056,7 @@ ShallowWrapper {
                         to="/user/SomeUser"
             />
             <styled.div>
-                        <TimeAgo
-                                    component="time"
-                                    date={1970-01-01T00:00:00.000Z}
-                                    formatter={[Function]}
-                                    live={true}
-                                    maxPeriod={Infinity}
-                                    minPeriod={0}
-                                    now={[Function]}
-                        />
+                        17466 days ago
             </styled.div>
             <styled.div />
             <Styled(Link)
@@ -1309,15 +1101,7 @@ ShallowWrapper {
                 to="/user/SomeUser"
 />,
               <styled.div>
-                <TimeAgo
-                                component="time"
-                                date={1970-01-01T00:00:00.000Z}
-                                formatter={[Function]}
-                                live={true}
-                                maxPeriod={Infinity}
-                                minPeriod={0}
-                                now={[Function]}
-                />
+                17466 days ago
 </styled.div>,
               <styled.div />,
               <Styled(Link)
@@ -1373,34 +1157,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <TimeAgo
-                  component="time"
-                  date={1970-01-01T00:00:00.000Z}
-                  formatter={[Function]}
-                  live={true}
-                  maxPeriod={Infinity}
-                  minPeriod={0}
-                  now={[Function]}
-/>,
+                "children": "17466 days ago",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "component": "time",
-                  "date": 1970-01-01T00:00:00.000Z,
-                  "formatter": [Function],
-                  "live": true,
-                  "maxPeriod": Infinity,
-                  "minPeriod": 0,
-                  "now": [Function],
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
+              "rendered": "17466 days ago",
               "type": [Function],
             },
             Object {
@@ -1515,15 +1275,7 @@ ShallowWrapper {
                     to="/user/SomeUser"
           />
           <styled.div>
-                    <TimeAgo
-                              component="time"
-                              date={1970-01-01T00:00:00.000Z}
-                              formatter={[Function]}
-                              live={true}
-                              maxPeriod={Infinity}
-                              minPeriod={0}
-                              now={[Function]}
-                    />
+                    17466 days ago
           </styled.div>
           <styled.div />
           <Styled(Link)
@@ -1568,15 +1320,7 @@ ShallowWrapper {
               to="/user/SomeUser"
 />,
             <styled.div>
-              <TimeAgo
-                            component="time"
-                            date={1970-01-01T00:00:00.000Z}
-                            formatter={[Function]}
-                            live={true}
-                            maxPeriod={Infinity}
-                            minPeriod={0}
-                            now={[Function]}
-              />
+              17466 days ago
 </styled.div>,
             <styled.div />,
             <Styled(Link)
@@ -1632,34 +1376,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <TimeAgo
-                component="time"
-                date={1970-01-01T00:00:00.000Z}
-                formatter={[Function]}
-                live={true}
-                maxPeriod={Infinity}
-                minPeriod={0}
-                now={[Function]}
-/>,
+              "children": "17466 days ago",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "component": "time",
-                "date": 1970-01-01T00:00:00.000Z,
-                "formatter": [Function],
-                "live": true,
-                "maxPeriod": Infinity,
-                "minPeriod": 0,
-                "now": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+            "rendered": "17466 days ago",
             "type": [Function],
           },
           Object {
@@ -1744,15 +1464,7 @@ ShallowWrapper {
                         to="/user/SomeUser"
             />
             <styled.div>
-                        <TimeAgo
-                                    component="time"
-                                    date={1970-01-01T00:00:00.000Z}
-                                    formatter={[Function]}
-                                    live={true}
-                                    maxPeriod={Infinity}
-                                    minPeriod={0}
-                                    now={[Function]}
-                        />
+                        17466 days ago
             </styled.div>
             <styled.div />
             <Styled(Link)
@@ -1797,15 +1509,7 @@ ShallowWrapper {
                 to="/user/SomeUser"
 />,
               <styled.div>
-                <TimeAgo
-                                component="time"
-                                date={1970-01-01T00:00:00.000Z}
-                                formatter={[Function]}
-                                live={true}
-                                maxPeriod={Infinity}
-                                minPeriod={0}
-                                now={[Function]}
-                />
+                17466 days ago
 </styled.div>,
               <styled.div />,
               <Styled(Link)
@@ -1861,34 +1565,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <TimeAgo
-                  component="time"
-                  date={1970-01-01T00:00:00.000Z}
-                  formatter={[Function]}
-                  live={true}
-                  maxPeriod={Infinity}
-                  minPeriod={0}
-                  now={[Function]}
-/>,
+                "children": "17466 days ago",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "component": "time",
-                  "date": 1970-01-01T00:00:00.000Z,
-                  "formatter": [Function],
-                  "live": true,
-                  "maxPeriod": Infinity,
-                  "minPeriod": 0,
-                  "now": [Function],
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
+              "rendered": "17466 days ago",
               "type": [Function],
             },
             Object {
@@ -2003,15 +1683,7 @@ ShallowWrapper {
                     to="/user/SomeUser"
           />
           <styled.div>
-                    <TimeAgo
-                              component="time"
-                              date={1970-01-01T00:00:00.000Z}
-                              formatter={[Function]}
-                              live={true}
-                              maxPeriod={Infinity}
-                              minPeriod={0}
-                              now={[Function]}
-                    />
+                    17466 days ago
           </styled.div>
           <styled.div />
           <Styled(Link)
@@ -2056,15 +1728,7 @@ ShallowWrapper {
               to="/user/SomeUser"
 />,
             <styled.div>
-              <TimeAgo
-                            component="time"
-                            date={1970-01-01T00:00:00.000Z}
-                            formatter={[Function]}
-                            live={true}
-                            maxPeriod={Infinity}
-                            minPeriod={0}
-                            now={[Function]}
-              />
+              17466 days ago
 </styled.div>,
             <styled.div />,
             <Styled(Link)
@@ -2120,34 +1784,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <TimeAgo
-                component="time"
-                date={1970-01-01T00:00:00.000Z}
-                formatter={[Function]}
-                live={true}
-                maxPeriod={Infinity}
-                minPeriod={0}
-                now={[Function]}
-/>,
+              "children": "17466 days ago",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "component": "time",
-                "date": 1970-01-01T00:00:00.000Z,
-                "formatter": [Function],
-                "live": true,
-                "maxPeriod": Infinity,
-                "minPeriod": 0,
-                "now": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+            "rendered": "17466 days ago",
             "type": [Function],
           },
           Object {
@@ -2232,15 +1872,7 @@ ShallowWrapper {
                         to="/user/SomeUser"
             />
             <styled.div>
-                        <TimeAgo
-                                    component="time"
-                                    date={1970-01-01T00:00:00.000Z}
-                                    formatter={[Function]}
-                                    live={true}
-                                    maxPeriod={Infinity}
-                                    minPeriod={0}
-                                    now={[Function]}
-                        />
+                        17466 days ago
             </styled.div>
             <styled.div />
             <Styled(Link)
@@ -2285,15 +1917,7 @@ ShallowWrapper {
                 to="/user/SomeUser"
 />,
               <styled.div>
-                <TimeAgo
-                                component="time"
-                                date={1970-01-01T00:00:00.000Z}
-                                formatter={[Function]}
-                                live={true}
-                                maxPeriod={Infinity}
-                                minPeriod={0}
-                                now={[Function]}
-                />
+                17466 days ago
 </styled.div>,
               <styled.div />,
               <Styled(Link)
@@ -2349,34 +1973,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <TimeAgo
-                  component="time"
-                  date={1970-01-01T00:00:00.000Z}
-                  formatter={[Function]}
-                  live={true}
-                  maxPeriod={Infinity}
-                  minPeriod={0}
-                  now={[Function]}
-/>,
+                "children": "17466 days ago",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "component": "time",
-                  "date": 1970-01-01T00:00:00.000Z,
-                  "formatter": [Function],
-                  "live": true,
-                  "maxPeriod": Infinity,
-                  "minPeriod": 0,
-                  "now": [Function],
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
+              "rendered": "17466 days ago",
               "type": [Function],
             },
             Object {
@@ -2491,15 +2091,7 @@ ShallowWrapper {
                     to="/user/SomeUser"
           />
           <styled.div>
-                    <TimeAgo
-                              component="time"
-                              date={1970-01-01T00:00:00.000Z}
-                              formatter={[Function]}
-                              live={true}
-                              maxPeriod={Infinity}
-                              minPeriod={0}
-                              now={[Function]}
-                    />
+                    17466 days ago
           </styled.div>
           <styled.div />
           <Styled(Link)
@@ -2544,15 +2136,7 @@ ShallowWrapper {
               to="/user/SomeUser"
 />,
             <styled.div>
-              <TimeAgo
-                            component="time"
-                            date={1970-01-01T00:00:00.000Z}
-                            formatter={[Function]}
-                            live={true}
-                            maxPeriod={Infinity}
-                            minPeriod={0}
-                            now={[Function]}
-              />
+              17466 days ago
 </styled.div>,
             <styled.div />,
             <Styled(Link)
@@ -2608,34 +2192,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <TimeAgo
-                component="time"
-                date={1970-01-01T00:00:00.000Z}
-                formatter={[Function]}
-                live={true}
-                maxPeriod={Infinity}
-                minPeriod={0}
-                now={[Function]}
-/>,
+              "children": "17466 days ago",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "component": "time",
-                "date": 1970-01-01T00:00:00.000Z,
-                "formatter": [Function],
-                "live": true,
-                "maxPeriod": Infinity,
-                "minPeriod": 0,
-                "now": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+            "rendered": "17466 days ago",
             "type": [Function],
           },
           Object {
@@ -2720,15 +2280,7 @@ ShallowWrapper {
                         to="/user/SomeUser"
             />
             <styled.div>
-                        <TimeAgo
-                                    component="time"
-                                    date={1970-01-01T00:00:00.000Z}
-                                    formatter={[Function]}
-                                    live={true}
-                                    maxPeriod={Infinity}
-                                    minPeriod={0}
-                                    now={[Function]}
-                        />
+                        17466 days ago
             </styled.div>
             <styled.div />
             <Styled(Link)
@@ -2773,15 +2325,7 @@ ShallowWrapper {
                 to="/user/SomeUser"
 />,
               <styled.div>
-                <TimeAgo
-                                component="time"
-                                date={1970-01-01T00:00:00.000Z}
-                                formatter={[Function]}
-                                live={true}
-                                maxPeriod={Infinity}
-                                minPeriod={0}
-                                now={[Function]}
-                />
+                17466 days ago
 </styled.div>,
               <styled.div />,
               <Styled(Link)
@@ -2837,34 +2381,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <TimeAgo
-                  component="time"
-                  date={1970-01-01T00:00:00.000Z}
-                  formatter={[Function]}
-                  live={true}
-                  maxPeriod={Infinity}
-                  minPeriod={0}
-                  now={[Function]}
-/>,
+                "children": "17466 days ago",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "component": "time",
-                  "date": 1970-01-01T00:00:00.000Z,
-                  "formatter": [Function],
-                  "live": true,
-                  "maxPeriod": Infinity,
-                  "minPeriod": 0,
-                  "now": [Function],
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
+              "rendered": "17466 days ago",
               "type": [Function],
             },
             Object {
