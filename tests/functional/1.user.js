@@ -10,8 +10,8 @@ fixture`User`.beforeEach(async (t /*: TestController */) => {
 test('create', async (t /*: TestController */) => {
   await t.expect(await Selector('a').withText('login').exists).eql(true)
 
-  await t.typeText(await Selector('input').nth(0), '123')
-  await t.click(await Selector('input[type=submit]').nth(0))
+  await t.typeText(await Selector('input[type=text]').nth(1), '123')
+  await t.click(await Selector('input[type=submit]').nth(1))
 
   await t.expect(await Selector('a').withText('123').exists).eql(true)
 
@@ -21,7 +21,13 @@ test('create', async (t /*: TestController */) => {
 })
 
 test('login', async (t /*: TestController */) => {
+  await t.expect(await Selector('a').withText('login').exists).eql(true)
+
   await login(t)
+
+  await t.expect(await Selector('a').withText('123').exists).eql(true)
+  await t.expect(await Selector('a').withText('logout').exists).eql(true)
+  await t.expect(await Selector('a').withText('login').exists).eql(false)
 })
 
 test('create: is already exists', async (t /*: TestController */) => {

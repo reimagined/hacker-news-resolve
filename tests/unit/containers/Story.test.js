@@ -17,13 +17,16 @@ import {
 import actions from '../../../client/actions/storiesActions'
 
 let originalUuidV4 = uuid.v4
+let originalNow = Date.now()
 
 beforeAll(() => {
   uuid.v4 = () => 'uuid-v4'
+  Date.now = () => new Date(2017, 9, 30, 8, 0).getTime()
 })
 
 afterAll(() => {
   uuid.v4 = originalUuidV4
+  Date.now = originalNow
 })
 
 it("Story { type: 'story' } with componentDidUpdate renders correctly", () => {

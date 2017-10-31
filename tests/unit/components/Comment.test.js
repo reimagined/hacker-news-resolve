@@ -3,6 +3,16 @@ import { shallow } from 'enzyme'
 
 import Comment from '../../../client/components/Comment'
 
+let originalNow = Date.now
+
+beforeAll(() => {
+  Date.now = () => new Date(2017, 9, 30, 8, 0).getTime()
+})
+
+afterAll(() => {
+  Date.now = originalNow
+})
+
 it('Comment Level 0 renders correctly', () => {
   const markup = shallow(
     <Comment
