@@ -623,8 +623,8 @@ Pass the express extension and `initialState` function to the server config.
 // ./resolve.server.config.js
 
 import path from 'path'
-import fileDriver from 'resolve-storage-lite'
-import busDriver from 'resolve-bus-memory'
+import fileAdapter from 'resolve-storage-lite'
+import busAdapter from 'resolve-bus-memory'
 
 import aggregates from './common/aggregates'
 import clientConfig from './resolve.client.config'
@@ -646,9 +646,9 @@ const dbPath = path.join(__dirname, `${NODE_ENV}.db`)
 
 export default {
   entries: clientConfig,
-  bus: { driver: busDriver },
+  bus: { adapter: busAdapter },
   storage: {
-    driver: fileDriver,
+    adapter: fileAdapter,
     params: { pathToFile: dbPath }
   },
   initialState,
