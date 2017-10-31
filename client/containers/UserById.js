@@ -2,7 +2,7 @@ import React from 'react'
 import { gqlConnector } from 'resolve-redux'
 import styled from 'styled-components'
 
-const Wrapper = styled.div`
+const UserInfoRoot = styled.div`
   padding-left: 3em;
   padding-right: 1.25em;
   margin-top: 1em;
@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 const Label = styled.div`
   display: inline-block;
   vertical-align: middle;
-  width: 55px;
+  width: 60px;
   padding: 5px 0;
 `
 
@@ -27,13 +27,16 @@ export const UserById = ({ data: { user } }) => {
   }
 
   return (
-    <Wrapper>
-      <Label>name:</Label>
-      <Content>{user.name}</Content>
-      <br />
-      <Label>created:</Label>
-      <Content>{new Date(+user.createdAt).toLocaleString('en-US')}</Content>
-    </Wrapper>
+    <UserInfoRoot>
+      <div>
+        <Label>name:</Label>
+        <Content>{user.name}</Content>
+      </div>
+      <div>
+        <Label>created:</Label>
+        <Content>{new Date(+user.createdAt).toLocaleString('en-US')}</Content>
+      </div>
+    </UserInfoRoot>
   )
 }
 

@@ -8,26 +8,41 @@ import styled from 'styled-components'
 
 import actions from '../actions/storiesActions'
 
-const Wrapper = styled.div`
+const labelWidth = '30px'
+
+const SubmitRoot = styled.div`
   padding-left: 3em;
   padding-right: 1.25em;
   margin-top: 1em;
   margin-bottom: 0.5em;
 `
 
-const Label = styled.div`
+const FormLabel = styled.div`
   display: inline-block;
   vertical-align: middle;
-  width: 30px;
+  width: ${labelWidth};
   padding: 5px 0;
 `
 
-const Content = styled.div`
-  display: inline-block;
-  vertical-align: middle;
+const FormBottomMessage = styled.div`margin-top: 1em;`
+
+const ConditionLabel = styled.div`
+  font-weight: bold;
+  margin-left: ${labelWidth};
+  margin-bottom: 5px;
 `
 
-const ErrorMessage = styled.div`color: red;`
+const StoryTextInput = styled.textarea`vertical-align: middle;`
+
+const ErrorMessage = styled.div`
+  color: red;
+  margin-left: ${labelWidth};
+`
+
+const SubmitButton = styled.button`
+  margin-left: ${labelWidth};
+  margin-top: 1em;
+`
 
 export class Submit extends React.PureComponent {
   state = {
@@ -67,59 +82,50 @@ export class Submit extends React.PureComponent {
     }
 
     return (
-      <Wrapper>
-        <Label>title</Label>
-        <Content>
+      <SubmitRoot>
+        <div>
+          <FormLabel>title</FormLabel>
           <input
             type="text"
             value={this.state.title}
             onChange={e => this.handleChange(e, 'title')}
             size="50"
           />
-        </Content>
-        <br />
-        <Label>url</Label>
-        <Content>
+        </div>
+        <div>
+          <FormLabel>url</FormLabel>
           <input
             type="text"
             value={this.state.url}
             onChange={e => this.handleChange(e, 'url')}
             size="50"
           />
-        </Content>
-        <br />
-        <Label />
-        <Content>
-          <b>or</b>
-        </Content>
-        <br />
-        <Label>text</Label>
-        <Content>
-          <textarea
+        </div>
+        <ConditionLabel>or</ConditionLabel>
+        <div>
+          <FormLabel>text</FormLabel>
+          <StoryTextInput
             name="text"
             rows="4"
             cols="49"
             value={this.state.text}
             onChange={e => this.handleChange(e, 'text')}
           />
-        </Content>
-        <br />
-        <Label />
-        <Content>
-          <ErrorMessage>
-            {this.props.storyCreationError ? this.props.storyCreationError : ''}
-          </ErrorMessage>
-        </Content>
-        <br />
-        <Label />
-        <button onClick={this.handleSubmit} disabled={this.props.storyCreation}>
+        </div>
+        <ErrorMessage>
+          {this.props.storyCreationError ? this.props.storyCreationError : ''}
+        </ErrorMessage>
+        <SubmitButton
+          onClick={this.handleSubmit}
+          disabled={this.props.storyCreation}
+        >
           submit
-        </button>
-        <br />
-        <br />
-        Leave url blank to submit a question for discussion. If there is no url,
-        the text (if any) will appear at the top of the thread.
-      </Wrapper>
+        </SubmitButton>
+        <FormBottomMessage>
+          Leave url blank to submit a question for discussion. If there is no
+          url, the text (if any) will appear at the top of the thread.
+        </FormBottomMessage>
+      </SubmitRoot>
     )
   }
 }

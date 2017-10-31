@@ -12,26 +12,30 @@ import Splitter from '../components/Splitter'
 import actions from '../actions/storiesActions'
 import timeAgo from '../helpers'
 
-export const Text = styled.div`
+export const StoryText = styled.div`
   color: #000;
   font-size: 14px;
   padding-left: 1.25em;
   padding-top: 1.25em;
 `
 
-export const Header = styled.div`
+export const TitleRoot = styled.div`
   display: inline-block;
   color: #000;
-  font-size: 14px;
+  font-size: 8pt;
 `
 
-export const MetaWrapper = styled.div`
+export const StyledLink = styled(Link)`font-size: 10pt;`
+
+export const StyledExternalLink = styled.a`font-size: 10pt;`
+
+export const StoryInfoRoot = styled.div`
   color: #666;
   font-size: 8pt;
   padding-left: 1.25em;
 `
 
-export const Href = styled.div`
+const infoLinkStyles = `
   display: inline-block;
   cursor: pointer;
 
@@ -40,25 +44,26 @@ export const Href = styled.div`
   }
 `
 
-export const Upvote = styled.div`
+export const UnvoteLink = styled.div(infoLinkStyles)
+
+export const DiscussLink = styled(Link)(infoLinkStyles)
+
+export const UpvoteArrow = styled.div`
   display: inline-block;
-  cursor: pointer;
   width: 0px;
   height: 0px;
   border: 0px;
-  border-width: 5px;
-  border-bottom-width: 8px;
+  border-width: 4px;
+  border-bottom-width: 7px;
   border-style: solid;
   border-color: transparent;
-  border-bottom-color: gray;
-  margin-right: 4px;
+  margin-right: 5px;
 
   ${props =>
-    props.hidden &&
+    !props.hidden &&
     css`
-      cursor: auto;
-      background: none;
-      border-bottom-color: transparent;
+      border-bottom-color: #9a9a9a;
+      cursor: pointer;
     `};
 `
 
@@ -78,75 +83,27 @@ export const getHostname = link => {
   return url.parse(link).hostname
 }
 
-export const voteArrow = (visible, upvoteStory) => {
-  return visible ? (
-    <Upvote onClick={upvoteStory} title="upvote" />
-  ) : (
-    <Upvote hidden />
-  )
-}
-
-export const getTitle = ({ title, link }) => {
-  if (isExternalLink(link)) {
-    return (
-      <span>
-        <Header>
-          <a href={link}>{title}</a>
-        </Header>{' '}
-        ({getHostname(link)})
-      </span>
-    )
-  }
-  return (
-    <Header>
-      <Link to={link}>{title}</Link>
-    </Header>
-  )
-}
-
 export const Title = ({ title, link, upvoteStory, voted, loggedIn }) => {
+  const isExternal = isExternalLink(link)
+
   return (
-    <div>
-      {voteArrow(loggedIn && !voted, upvoteStory)}
-      {getTitle({ title, link })}
-    </div>
+    <TitleRoot>
+      {loggedIn && !voted ? (
+        <UpvoteArrow onClick={upvoteStory} title="upvote" />
+      ) : (
+        <UpvoteArrow hidden />
+      )}
+      {isExternal ? (
+        <StyledExternalLink href={link}>{title}</StyledExternalLink>
+      ) : (
+        <StyledLink to={link}>{title}</StyledLink>
+      )}{' '}
+      {isExternal ? `(${getHostname(link)})` : null}
+    </TitleRoot>
   )
 }
 
-export const Score = ({ score }) => {
-  return (
-    <span>
-      {score} {plur('point', score)}{' '}
-    </span>
-  )
-}
-
-export const PostedBy = ({ id, name }) => {
-  return (
-    <span>
-      by <Username href={`/user/${id}`}>{name}</Username>{' '}
-    </span>
-  )
-}
-
-export const Discuss = ({ id, commentCount }) => {
-  return (
-    <span>
-      <Splitter />
-      <Link to={`/storyDetails/${id}`}>
-        <Href>
-          {commentCount > 0 ? (
-            `${commentCount} ${plur('comment', commentCount)}`
-          ) : (
-            'discuss'
-          )}
-        </Href>
-      </Link>{' '}
-    </span>
-  )
-}
-
-export const Meta = props => {
+export const StoryInfo = props => {
   const {
     id,
     createdBy,
@@ -161,18 +118,33 @@ export const Meta = props => {
   const unvoteIsVisible = voted && loggedIn
 
   return (
-    <MetaWrapper>
-      {votes ? <Score score={votes.length} /> : null}
-      {createdBy ? <PostedBy id={createdBy} name={createdByName} /> : null}
-      <span>{timeAgo(createdAt)}</span>
+    <StoryInfoRoot>
+      {votes ? `${votes.length} ${plur('point', votes.length)} ` : null}
+      {createdBy ? (
+        [
+          'by ',
+          <Username key="username" href={`/user/${createdBy}`}>
+            {createdByName}
+          </Username>,
+          ' '
+        ]
+      ) : null}
+      {timeAgo(createdAt)}
       {unvoteIsVisible && (
         <span>
           <Splitter />
-          <Href onClick={unvoteStory}>unvote</Href>{' '}
+          <UnvoteLink onClick={unvoteStory}>unvote</UnvoteLink>{' '}
         </span>
       )}
-      <Discuss id={id} commentCount={commentCount} />
-    </MetaWrapper>
+      <Splitter />
+      <DiscussLink to={`/storyDetails/${id}`}>
+        {commentCount > 0 ? (
+          `${commentCount} ${plur('comment', commentCount)}`
+        ) : (
+          'discuss'
+        )}
+      </DiscussLink>{' '}
+    </StoryInfoRoot>
   )
 }
 
@@ -202,6 +174,7 @@ export class Story extends React.PureComponent {
     let commentCount = story.comments
       ? story.comments.length
       : story.commentCount
+
     return (
       <div>
         <Title
@@ -211,7 +184,7 @@ export class Story extends React.PureComponent {
           title={story.type === 'ask' ? `Ask HN: ${story.title}` : story.title}
           link={story.link || `/storyDetails/${story.id}`}
         />
-        <Meta
+        <StoryInfo
           voted={voted}
           id={story.id}
           votes={story.votes}
@@ -223,7 +196,7 @@ export class Story extends React.PureComponent {
           createdByName={story.createdByName}
         />
         {story.text && showText ? (
-          <Text
+          <StoryText
             dangerouslySetInnerHTML={{
               __html: sanitizer.sanitize(story.text)
             }}

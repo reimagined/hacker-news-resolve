@@ -4,32 +4,32 @@ import styled from 'styled-components'
 
 import Story from '../containers/Story'
 import Pagination from './Pagination'
-import { NUMBER_OF_ITEMS_PER_PAGE } from '../../common/constants'
+import { ITEMS_PER_PAGE } from '../constants'
 
-const Wrapper = styled.div`padding: 0 0.5em;`
+const StoriesRoot = styled.div`padding: 0 0.5em;`
 
-const Item = styled.li`margin-bottom: 12px;`
+const StoryList = 'ol'
 
-const ItemList = 'ol'
+const StoryItem = styled.li`margin-bottom: 12px;`
 
 const Stories = ({ items, page, type, refetch }) =>
   page && !Number.isInteger(Number(page)) ? (
     <Redirect push to="/error?text=No such page" />
   ) : (
-    <Wrapper>
-      <ItemList start={NUMBER_OF_ITEMS_PER_PAGE * (page ? page - 1 : 0) + 1}>
-        {items.slice(0, NUMBER_OF_ITEMS_PER_PAGE).map(story => (
-          <Item key={story.id}>
+    <StoriesRoot>
+      <StoryList start={ITEMS_PER_PAGE * (page ? page - 1 : 0) + 1}>
+        {items.slice(0, ITEMS_PER_PAGE).map(story => (
+          <StoryItem key={story.id}>
             <Story refetch={refetch} story={story} />
-          </Item>
+          </StoryItem>
         ))}
-      </ItemList>
+      </StoryList>
       <Pagination
         page={page}
-        hasNext={!!items[NUMBER_OF_ITEMS_PER_PAGE]}
+        hasNext={!!items[ITEMS_PER_PAGE]}
         location={`/${type}`}
       />
-    </Wrapper>
+    </StoriesRoot>
   )
 
 export default Stories

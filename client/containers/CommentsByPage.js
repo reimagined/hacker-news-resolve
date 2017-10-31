@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { gqlConnector } from 'resolve-redux'
 
 import Comment from '../components/Comment'
-import { NUMBER_OF_ITEMS_PER_PAGE } from '../../common/constants'
+import { ITEMS_PER_PAGE } from '../constants'
 import Pagination from '../components/Pagination'
 
 export const CommentsByPage = ({
@@ -15,11 +15,11 @@ export const CommentsByPage = ({
   ) : (
     <div>
       {comments
-        .slice(0, NUMBER_OF_ITEMS_PER_PAGE)
+        .slice(0, ITEMS_PER_PAGE)
         .map(comment => <Comment key={comment.id} {...comment} />)}
       <Pagination
         page={page}
-        hasNext={!!comments[NUMBER_OF_ITEMS_PER_PAGE]}
+        hasNext={!!comments[ITEMS_PER_PAGE]}
         location="/comments"
       />
     </div>
@@ -27,8 +27,8 @@ export const CommentsByPage = ({
 
 export default gqlConnector(
   `
-    query($page: Int!) {
-      comments(page: $page) {
+    query($first: Int!, $offset: Int) {
+      comments(first: $first, offset: $offset) {
         id
         parentId
         storyId
@@ -40,6 +40,7 @@ export default gqlConnector(
     }
   `,
   ({ match: { params: { page } } }) => ({
-    page: page || '1'
+    first: ITEMS_PER_PAGE + 1,
+    offset: (+page - 1) * ITEMS_PER_PAGE
   })
 )(CommentsByPage)

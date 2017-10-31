@@ -1,5 +1,3 @@
-import { NUMBER_OF_ITEMS_PER_PAGE } from '../../constants'
-
 async function withUserNames(items, getReadModel) {
   const users = await getReadModel('users')
 
@@ -27,19 +25,14 @@ function getReplies(comments, commentIndex) {
 }
 
 export default {
-  stories: async (read, { page, type }) => {
+  stories: async (read, { type, first, offset = 0 }) => {
     const root = await read('stories')
 
     const filteredStories = type
-      ? root.filter(story => story.type === type)
-      : root
+      ? root.filter(story => story.type === type).reverse()
+      : root.reverse()
 
-    const stories = filteredStories
-      .slice(
-        filteredStories.length - (+page * NUMBER_OF_ITEMS_PER_PAGE + 1),
-        filteredStories.length - (+page - 1) * NUMBER_OF_ITEMS_PER_PAGE
-      )
-      .reverse()
+    const stories = filteredStories.slice(offset, offset + first)
 
     return withUserNames(stories, read)
   },
@@ -51,6 +44,7 @@ export default {
     if (!story) {
       return null
     }
+
     story = (await withUserNames([story], read))[0]
     story.comments = await withUserNames(story.comments, read)
     return story
@@ -73,13 +67,11 @@ export default {
       replies: await withUserNames(replies, read)
     }
   },
-  comments: async (read, { page }) => {
+  comments: async (read, { first, offset = 0 }) => {
     const root = await read('comments')
 
-    const comments = root.slice(
-      +page * NUMBER_OF_ITEMS_PER_PAGE - NUMBER_OF_ITEMS_PER_PAGE,
-      +page * NUMBER_OF_ITEMS_PER_PAGE + 1
-    )
+    const comments = root.slice(offset, offset + first).reverse()
+
     return withUserNames(comments, read)
   },
   user: async (read, { id, name }) => {

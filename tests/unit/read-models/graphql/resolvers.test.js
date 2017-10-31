@@ -16,7 +16,29 @@ describe('gql-resolvers', () => {
       }
     }
 
-    const result = await gqlResolvers.comments(read, { page: 1 })
+    const result = await gqlResolvers.comments(read, { first: 10, offset: 0 })
+
+    expect(result).toEqual([
+      { id: 'comment-id', createdBy: 'user-id', createdByName: 'username' }
+    ])
+  })
+
+  it('comments without offset', async () => {
+    const users = [{ id: 'user-id', name: 'username' }]
+    const comments = [{ id: 'comment-id', createdBy: 'user-id' }]
+
+    const read = async collectionName => {
+      switch (collectionName) {
+        case 'users':
+          return users
+        case 'comments':
+          return comments
+        default:
+          throw Error()
+      }
+    }
+
+    const result = await gqlResolvers.comments(read, { first: 10 })
 
     expect(result).toEqual([
       { id: 'comment-id', createdBy: 'user-id', createdByName: 'username' }
@@ -189,7 +211,11 @@ describe('gql-resolvers', () => {
       }
     }
 
-    const result = await gqlResolvers.stories(read, { page: 1, type: 'show' })
+    const result = await gqlResolvers.stories(read, {
+      first: 10,
+      offset: 0,
+      type: 'show'
+    })
 
     expect(result).toEqual([
       {
@@ -219,7 +245,43 @@ describe('gql-resolvers', () => {
       }
     }
 
-    const result = await gqlResolvers.stories(read, { page: 1 })
+    const result = await gqlResolvers.stories(read, { first: 10, offset: 0 })
+
+    expect(result).toEqual([
+      {
+        id: 'id-1',
+        name: 'story-1',
+        type: 'ask',
+        createdByName: 'unknown'
+      },
+      {
+        name: 'story-2',
+        id: 'id-2',
+        type: 'show',
+        createdBy: 'user-id',
+        createdByName: 'user'
+      }
+    ])
+  })
+
+  it('stories without offset', async () => {
+    const stories = [
+      { name: 'story-1', id: 'id-1', type: 'ask' },
+      { name: 'story-2', id: 'id-2', createdBy: 'user-id', type: 'show' }
+    ]
+
+    const users = [{ name: 'user', id: 'user-id' }]
+
+    const read = async collectionName => {
+      switch (collectionName) {
+        case 'stories':
+          return stories.reverse()
+        case 'users':
+          return users
+      }
+    }
+
+    const result = await gqlResolvers.stories(read, { first: 10 })
 
     expect(result).toEqual([
       {

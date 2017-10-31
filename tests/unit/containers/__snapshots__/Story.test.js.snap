@@ -1,296 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Discuss { 'commentCount': 0 } renders correctly 1`] = `
-ShallowWrapper {
-  "length": 1,
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Discuss
-    commentCount={0}
-    id="story-id"
-/>,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": null,
-    "nodeType": "host",
-    "props": Object {
-      "children": Array [
-        <styled.div />,
-        <Link
-          replace={false}
-          to="/storyDetails/story-id"
->
-          <styled.div>
-                    discuss
-          </styled.div>
-</Link>,
-        " ",
-      ],
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {},
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "children": <styled.div>
-            discuss
-</styled.div>,
-          "replace": false,
-          "to": "/storyDetails/story-id",
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "children": "discuss",
-          },
-          "ref": null,
-          "rendered": "discuss",
-          "type": [Function],
-        },
-        "type": [Function],
-      },
-      " ",
-    ],
-    "type": "span",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": null,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <styled.div />,
-          <Link
-            replace={false}
-            to="/storyDetails/story-id"
->
-            <styled.div>
-                        discuss
-            </styled.div>
-</Link>,
-          " ",
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {},
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "children": <styled.div>
-              discuss
-</styled.div>,
-            "replace": false,
-            "to": "/storyDetails/story-id",
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "class",
-            "props": Object {
-              "children": "discuss",
-            },
-            "ref": null,
-            "rendered": "discuss",
-            "type": [Function],
-          },
-          "type": [Function],
-        },
-        " ",
-      ],
-      "type": "span",
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-      },
-    },
-  },
-}
-`;
-
-exports[`Discuss { 'commentCount': 1 } renders correctly 1`] = `
-ShallowWrapper {
-  "length": 1,
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Discuss
-    commentCount={1}
-    id="story-id"
-/>,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": null,
-    "nodeType": "host",
-    "props": Object {
-      "children": Array [
-        <styled.div />,
-        <Link
-          replace={false}
-          to="/storyDetails/story-id"
->
-          <styled.div>
-                    1 comment
-          </styled.div>
-</Link>,
-        " ",
-      ],
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {},
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "children": <styled.div>
-            1 comment
-</styled.div>,
-          "replace": false,
-          "to": "/storyDetails/story-id",
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "children": "1 comment",
-          },
-          "ref": null,
-          "rendered": "1 comment",
-          "type": [Function],
-        },
-        "type": [Function],
-      },
-      " ",
-    ],
-    "type": "span",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": null,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <styled.div />,
-          <Link
-            replace={false}
-            to="/storyDetails/story-id"
->
-            <styled.div>
-                        1 comment
-            </styled.div>
-</Link>,
-          " ",
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {},
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "children": <styled.div>
-              1 comment
-</styled.div>,
-            "replace": false,
-            "to": "/storyDetails/story-id",
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "class",
-            "props": Object {
-              "children": "1 comment",
-            },
-            "ref": null,
-            "rendered": "1 comment",
-            "type": [Function],
-          },
-          "type": [Function],
-        },
-        " ",
-      ],
-      "type": "span",
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-      },
-    },
-  },
-}
-`;
-
 exports[`Meta renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Meta
+  Symbol(enzyme.__unrendered__): <StoryInfo
     commentCount={0}
     createdAt={1970-01-01T00:00:00.000Z}
     createdBy="user-id"
@@ -317,16 +31,17 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <Score
-          score={1}
-/>,
-        <PostedBy
-          id="user-id"
-          name="user"
-/>,
-        <span>
-          17466 days ago
-</span>,
+        "1 point ",
+        Array [
+          "by ",
+          <styled.a
+            href="/user/user-id"
+>
+            user
+</styled.a>,
+          " ",
+        ],
+        "17469 days ago",
         <span>
           <styled.div />
           <styled.div
@@ -336,48 +51,33 @@ ShallowWrapper {
           </styled.div>
            
 </span>,
-        <Discuss
-          commentCount={0}
-          id="story-id"
-/>,
+        <styled.div />,
+        <Styled(Link)
+          to="/storyDetails/story-id"
+>
+          discuss
+</Styled(Link)>,
+        " ",
       ],
     },
     "ref": null,
     "rendered": Array [
+      "1 point ",
+      "by ",
       Object {
         "instance": null,
-        "key": null,
-        "nodeType": "function",
+        "key": "username",
+        "nodeType": "class",
         "props": Object {
-          "score": 1,
+          "children": "user",
+          "href": "/user/user-id",
         },
         "ref": null,
-        "rendered": null,
+        "rendered": "user",
         "type": [Function],
       },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "function",
-        "props": Object {
-          "id": "user-id",
-          "name": "user",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "host",
-        "props": Object {
-          "children": "17466 days ago",
-        },
-        "ref": null,
-        "rendered": "17466 days ago",
-        "type": "span",
-      },
+      " ",
+      "17469 days ago",
       Object {
         "instance": null,
         "key": null,
@@ -423,15 +123,25 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": null,
-        "nodeType": "function",
-        "props": Object {
-          "commentCount": 0,
-          "id": "story-id",
-        },
+        "nodeType": "class",
+        "props": Object {},
         "ref": null,
         "rendered": null,
         "type": [Function],
       },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "children": "discuss",
+          "to": "/storyDetails/story-id",
+        },
+        "ref": null,
+        "rendered": "discuss",
+        "type": [Function],
+      },
+      " ",
     ],
     "type": [Function],
   },
@@ -442,16 +152,17 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <Score
-            score={1}
-/>,
-          <PostedBy
-            id="user-id"
-            name="user"
-/>,
-          <span>
-            17466 days ago
-</span>,
+          "1 point ",
+          Array [
+            "by ",
+            <styled.a
+              href="/user/user-id"
+>
+              user
+</styled.a>,
+            " ",
+          ],
+          "17469 days ago",
           <span>
             <styled.div />
             <styled.div
@@ -461,48 +172,33 @@ ShallowWrapper {
             </styled.div>
              
 </span>,
-          <Discuss
-            commentCount={0}
-            id="story-id"
-/>,
+          <styled.div />,
+          <Styled(Link)
+            to="/storyDetails/story-id"
+>
+            discuss
+</Styled(Link)>,
+          " ",
         ],
       },
       "ref": null,
       "rendered": Array [
+        "1 point ",
+        "by ",
         Object {
           "instance": null,
-          "key": null,
-          "nodeType": "function",
+          "key": "username",
+          "nodeType": "class",
           "props": Object {
-            "score": 1,
+            "children": "user",
+            "href": "/user/user-id",
           },
           "ref": null,
-          "rendered": null,
+          "rendered": "user",
           "type": [Function],
         },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "function",
-          "props": Object {
-            "id": "user-id",
-            "name": "user",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "host",
-          "props": Object {
-            "children": "17466 days ago",
-          },
-          "ref": null,
-          "rendered": "17466 days ago",
-          "type": "span",
-        },
+        " ",
+        "17469 days ago",
         Object {
           "instance": null,
           "key": null,
@@ -548,15 +244,25 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": null,
-          "nodeType": "function",
-          "props": Object {
-            "commentCount": 0,
-            "id": "story-id",
-          },
+          "nodeType": "class",
+          "props": Object {},
           "ref": null,
           "rendered": null,
           "type": [Function],
         },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "children": "discuss",
+            "to": "/storyDetails/story-id",
+          },
+          "ref": null,
+          "rendered": "discuss",
+          "type": [Function],
+        },
+        " ",
       ],
       "type": [Function],
     },
@@ -575,7 +281,7 @@ exports[`Meta renders correctly 2`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Meta
+  Symbol(enzyme.__unrendered__): <StoryInfo
     commentCount={0}
     createdAt={1970-01-01T00:00:00.000Z}
     id="story-id"
@@ -597,9 +303,7 @@ ShallowWrapper {
       "children": Array [
         null,
         null,
-        <span>
-          17466 days ago
-</span>,
+        "17469 days ago",
         <span>
           <styled.div />
           <styled.div
@@ -609,27 +313,20 @@ ShallowWrapper {
           </styled.div>
            
 </span>,
-        <Discuss
-          commentCount={0}
-          id="story-id"
-/>,
+        <styled.div />,
+        <Styled(Link)
+          to="/storyDetails/story-id"
+>
+          discuss
+</Styled(Link)>,
+        " ",
       ],
     },
     "ref": null,
     "rendered": Array [
       null,
       null,
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "host",
-        "props": Object {
-          "children": "17466 days ago",
-        },
-        "ref": null,
-        "rendered": "17466 days ago",
-        "type": "span",
-      },
+      "17469 days ago",
       Object {
         "instance": null,
         "key": null,
@@ -675,15 +372,25 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": null,
-        "nodeType": "function",
-        "props": Object {
-          "commentCount": 0,
-          "id": "story-id",
-        },
+        "nodeType": "class",
+        "props": Object {},
         "ref": null,
         "rendered": null,
         "type": [Function],
       },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "children": "discuss",
+          "to": "/storyDetails/story-id",
+        },
+        "ref": null,
+        "rendered": "discuss",
+        "type": [Function],
+      },
+      " ",
     ],
     "type": [Function],
   },
@@ -696,9 +403,7 @@ ShallowWrapper {
         "children": Array [
           null,
           null,
-          <span>
-            17466 days ago
-</span>,
+          "17469 days ago",
           <span>
             <styled.div />
             <styled.div
@@ -708,27 +413,20 @@ ShallowWrapper {
             </styled.div>
              
 </span>,
-          <Discuss
-            commentCount={0}
-            id="story-id"
-/>,
+          <styled.div />,
+          <Styled(Link)
+            to="/storyDetails/story-id"
+>
+            discuss
+</Styled(Link)>,
+          " ",
         ],
       },
       "ref": null,
       "rendered": Array [
         null,
         null,
-        Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "host",
-          "props": Object {
-            "children": "17466 days ago",
-          },
-          "ref": null,
-          "rendered": "17466 days ago",
-          "type": "span",
-        },
+        "17469 days ago",
         Object {
           "instance": null,
           "key": null,
@@ -774,248 +472,27 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": null,
-          "nodeType": "function",
-          "props": Object {
-            "commentCount": 0,
-            "id": "story-id",
-          },
+          "nodeType": "class",
+          "props": Object {},
           "ref": null,
           "rendered": null,
           "type": [Function],
         },
-      ],
-      "type": [Function],
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-      },
-    },
-  },
-}
-`;
-
-exports[`PostedBy renders correctly 1`] = `
-ShallowWrapper {
-  "length": 1,
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <PostedBy
-    id="user-id"
-    name="user"
-/>,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": null,
-    "nodeType": "host",
-    "props": Object {
-      "children": Array [
-        "by ",
-        <styled.a
-          href="/user/user-id"
->
-          user
-</styled.a>,
-        " ",
-      ],
-    },
-    "ref": null,
-    "rendered": Array [
-      "by ",
-      Object {
-        "instance": null,
-        "key": null,
-        "nodeType": "class",
-        "props": Object {
-          "children": "user",
-          "href": "/user/user-id",
-        },
-        "ref": null,
-        "rendered": "user",
-        "type": [Function],
-      },
-      " ",
-    ],
-    "type": "span",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": null,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          "by ",
-          <styled.a
-            href="/user/user-id"
->
-            user
-</styled.a>,
-          " ",
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        "by ",
         Object {
           "instance": null,
           "key": null,
           "nodeType": "class",
           "props": Object {
-            "children": "user",
-            "href": "/user/user-id",
+            "children": "discuss",
+            "to": "/storyDetails/story-id",
           },
           "ref": null,
-          "rendered": "user",
+          "rendered": "discuss",
           "type": [Function],
         },
         " ",
       ],
-      "type": "span",
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-      },
-    },
-  },
-}
-`;
-
-exports[`Score { 'score': 0 } renders correctly 1`] = `
-ShallowWrapper {
-  "length": 1,
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Score
-    score={0}
-/>,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": null,
-    "nodeType": "host",
-    "props": Object {
-      "children": Array [
-        0,
-        " ",
-        "points",
-        " ",
-      ],
-    },
-    "ref": null,
-    "rendered": Array [
-      0,
-      " ",
-      "points",
-      " ",
-    ],
-    "type": "span",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": null,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          0,
-          " ",
-          "points",
-          " ",
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        0,
-        " ",
-        "points",
-        " ",
-      ],
-      "type": "span",
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-      },
-    },
-  },
-}
-`;
-
-exports[`Score { 'score': 1 } renders correctly 1`] = `
-ShallowWrapper {
-  "length": 1,
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Score
-    score={1}
-/>,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": null,
-    "nodeType": "host",
-    "props": Object {
-      "children": Array [
-        1,
-        " ",
-        "point",
-        " ",
-      ],
-    },
-    "ref": null,
-    "rendered": Array [
-      1,
-      " ",
-      "point",
-      " ",
-    ],
-    "type": "span",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": null,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          1,
-          " ",
-          "point",
-          " ",
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        1,
-        " ",
-        "point",
-        " ",
-      ],
-      "type": "span",
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {
@@ -1072,7 +549,7 @@ ShallowWrapper {
           upvoteStory={[Function]}
           voted={0}
 />,
-        <Meta
+        <StoryInfo
           commentCount={1}
           createdAt={1970-01-01T00:00:00.000Z}
           createdBy="user-id"
@@ -1158,7 +635,7 @@ ShallowWrapper {
             upvoteStory={[Function]}
             voted={0}
 />,
-          <Meta
+          <StoryInfo
             commentCount={1}
             createdAt={1970-01-01T00:00:00.000Z}
             createdBy="user-id"
@@ -1283,7 +760,7 @@ ShallowWrapper {
           upvoteStory={[Function]}
           voted={0}
 />,
-        <Meta
+        <StoryInfo
           commentCount={0}
           createdAt={1970-01-01T00:00:00.000Z}
           createdBy="user-id"
@@ -1351,7 +828,7 @@ ShallowWrapper {
             upvoteStory={[Function]}
             voted={0}
 />,
-          <Meta
+          <StoryInfo
             commentCount={0}
             createdAt={1970-01-01T00:00:00.000Z}
             createdBy="user-id"
@@ -1467,7 +944,7 @@ ShallowWrapper {
           upvoteStory={[Function]}
           voted={0}
 />,
-        <Meta
+        <StoryInfo
           commentCount={1}
           createdAt={1970-01-01T00:00:00.000Z}
           createdBy="user-id"
@@ -1535,7 +1012,7 @@ ShallowWrapper {
             upvoteStory={[Function]}
             voted={0}
 />,
-          <Meta
+          <StoryInfo
             commentCount={1}
             createdAt={1970-01-01T00:00:00.000Z}
             createdBy="user-id"
@@ -1644,7 +1121,7 @@ ShallowWrapper {
           upvoteStory={[Function]}
           voted={0}
 />,
-        <Meta
+        <StoryInfo
           commentCount={0}
           createdAt={1970-01-01T00:00:00.000Z}
           createdBy="user-id"
@@ -1712,7 +1189,7 @@ ShallowWrapper {
             upvoteStory={[Function]}
             voted={0}
 />,
-          <Meta
+          <StoryInfo
             commentCount={0}
             createdAt={1970-01-01T00:00:00.000Z}
             createdBy="user-id"
@@ -1777,6 +1254,58 @@ ShallowWrapper {
 }
 `;
 
+exports[`StyledLink 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Styled(Link)
+    to="/"
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "class",
+    "props": Object {
+      "className": "sc-bxivhb brhOvu",
+      "replace": false,
+      "to": "/",
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "class",
+      "props": Object {
+        "className": "sc-bxivhb brhOvu",
+        "replace": false,
+        "to": "/",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
 exports[`Title { external link } renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
@@ -1796,26 +1325,20 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": null,
-    "nodeType": "host",
+    "nodeType": "class",
     "props": Object {
       "children": Array [
         <styled.div
           onClick={undefined}
           title="upvote"
 />,
-        <span>
-          <styled.div>
-                    <a
-                              href="https://google.com"
-                    >
-                              Title
-                    </a>
-          </styled.div>
-           
-          (
-          google.com
-          )
-</span>,
+        <styled.a
+          href="https://google.com"
+>
+          Title
+</styled.a>,
+        " ",
+        "(google.com)",
       ],
     },
     "ref": null,
@@ -1835,84 +1358,38 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": null,
-        "nodeType": "host",
+        "nodeType": "class",
         "props": Object {
-          "children": Array [
-            <styled.div>
-              <a
-                            href="https://google.com"
-              >
-                            Title
-              </a>
-</styled.div>,
-            " ",
-            "(",
-            "google.com",
-            ")",
-          ],
+          "children": "Title",
+          "href": "https://google.com",
         },
         "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "class",
-            "props": Object {
-              "children": <a
-                href="https://google.com"
->
-                Title
-</a>,
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "host",
-              "props": Object {
-                "children": "Title",
-                "href": "https://google.com",
-              },
-              "ref": null,
-              "rendered": "Title",
-              "type": "a",
-            },
-            "type": [Function],
-          },
-          " ",
-          "(",
-          "google.com",
-          ")",
-        ],
-        "type": "span",
+        "rendered": "Title",
+        "type": [Function],
       },
+      " ",
+      "(google.com)",
     ],
-    "type": "div",
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": null,
-      "nodeType": "host",
+      "nodeType": "class",
       "props": Object {
         "children": Array [
           <styled.div
             onClick={undefined}
             title="upvote"
 />,
-          <span>
-            <styled.div>
-                        <a
-                                    href="https://google.com"
-                        >
-                                    Title
-                        </a>
-            </styled.div>
-             
-            (
-            google.com
-            )
-</span>,
+          <styled.a
+            href="https://google.com"
+>
+            Title
+</styled.a>,
+          " ",
+          "(google.com)",
         ],
       },
       "ref": null,
@@ -1932,59 +1409,19 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": null,
-          "nodeType": "host",
+          "nodeType": "class",
           "props": Object {
-            "children": Array [
-              <styled.div>
-                <a
-                                href="https://google.com"
-                >
-                                Title
-                </a>
-</styled.div>,
-              " ",
-              "(",
-              "google.com",
-              ")",
-            ],
+            "children": "Title",
+            "href": "https://google.com",
           },
           "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": <a
-                  href="https://google.com"
->
-                  Title
-</a>,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "Title",
-                  "href": "https://google.com",
-                },
-                "ref": null,
-                "rendered": "Title",
-                "type": "a",
-              },
-              "type": [Function],
-            },
-            " ",
-            "(",
-            "google.com",
-            ")",
-          ],
-          "type": "span",
+          "rendered": "Title",
+          "type": [Function],
         },
+        " ",
+        "(google.com)",
       ],
-      "type": "div",
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {
@@ -2016,26 +1453,20 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": null,
-    "nodeType": "host",
+    "nodeType": "class",
     "props": Object {
       "children": Array [
         <styled.div
           onClick={undefined}
           title="upvote"
 />,
-        <span>
-          <styled.div>
-                    <a
-                              href="https://www.google.com"
-                    >
-                              Title
-                    </a>
-          </styled.div>
-           
-          (
-          www.google.com
-          )
-</span>,
+        <styled.a
+          href="https://www.google.com"
+>
+          Title
+</styled.a>,
+        " ",
+        "(www.google.com)",
       ],
     },
     "ref": null,
@@ -2055,84 +1486,38 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": null,
-        "nodeType": "host",
+        "nodeType": "class",
         "props": Object {
-          "children": Array [
-            <styled.div>
-              <a
-                            href="https://www.google.com"
-              >
-                            Title
-              </a>
-</styled.div>,
-            " ",
-            "(",
-            "www.google.com",
-            ")",
-          ],
+          "children": "Title",
+          "href": "https://www.google.com",
         },
         "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "class",
-            "props": Object {
-              "children": <a
-                href="https://www.google.com"
->
-                Title
-</a>,
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "host",
-              "props": Object {
-                "children": "Title",
-                "href": "https://www.google.com",
-              },
-              "ref": null,
-              "rendered": "Title",
-              "type": "a",
-            },
-            "type": [Function],
-          },
-          " ",
-          "(",
-          "www.google.com",
-          ")",
-        ],
-        "type": "span",
+        "rendered": "Title",
+        "type": [Function],
       },
+      " ",
+      "(www.google.com)",
     ],
-    "type": "div",
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": null,
-      "nodeType": "host",
+      "nodeType": "class",
       "props": Object {
         "children": Array [
           <styled.div
             onClick={undefined}
             title="upvote"
 />,
-          <span>
-            <styled.div>
-                        <a
-                                    href="https://www.google.com"
-                        >
-                                    Title
-                        </a>
-            </styled.div>
-             
-            (
-            www.google.com
-            )
-</span>,
+          <styled.a
+            href="https://www.google.com"
+>
+            Title
+</styled.a>,
+          " ",
+          "(www.google.com)",
         ],
       },
       "ref": null,
@@ -2152,59 +1537,19 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": null,
-          "nodeType": "host",
+          "nodeType": "class",
           "props": Object {
-            "children": Array [
-              <styled.div>
-                <a
-                                href="https://www.google.com"
-                >
-                                Title
-                </a>
-</styled.div>,
-              " ",
-              "(",
-              "www.google.com",
-              ")",
-            ],
+            "children": "Title",
+            "href": "https://www.google.com",
           },
           "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": <a
-                  href="https://www.google.com"
->
-                  Title
-</a>,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "Title",
-                  "href": "https://www.google.com",
-                },
-                "ref": null,
-                "rendered": "Title",
-                "type": "a",
-              },
-              "type": [Function],
-            },
-            " ",
-            "(",
-            "www.google.com",
-            ")",
-          ],
-          "type": "span",
+          "rendered": "Title",
+          "type": [Function],
         },
+        " ",
+        "(www.google.com)",
       ],
-      "type": "div",
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {
@@ -2237,20 +1582,19 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": null,
-    "nodeType": "host",
+    "nodeType": "class",
     "props": Object {
       "children": Array [
         <styled.div
           hidden={true}
 />,
-        <styled.div>
-          <Link
-                    replace={false}
-                    to="/story/story-id"
-          >
-                    Title
-          </Link>
-</styled.div>,
+        <Styled(Link)
+          to="/story/story-id"
+>
+          Title
+</Styled(Link)>,
+        " ",
+        null,
       ],
     },
     "ref": null,
@@ -2271,50 +1615,35 @@ ShallowWrapper {
         "key": null,
         "nodeType": "class",
         "props": Object {
-          "children": <Link
-            replace={false}
-            to="/story/story-id"
->
-            Title
-</Link>,
+          "children": "Title",
+          "to": "/story/story-id",
         },
         "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": null,
-          "nodeType": "class",
-          "props": Object {
-            "children": "Title",
-            "replace": false,
-            "to": "/story/story-id",
-          },
-          "ref": null,
-          "rendered": "Title",
-          "type": [Function],
-        },
+        "rendered": "Title",
         "type": [Function],
       },
+      " ",
+      null,
     ],
-    "type": "div",
+    "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": null,
-      "nodeType": "host",
+      "nodeType": "class",
       "props": Object {
         "children": Array [
           <styled.div
             hidden={true}
 />,
-          <styled.div>
-            <Link
-                        replace={false}
-                        to="/story/story-id"
-            >
-                        Title
-            </Link>
-</styled.div>,
+          <Styled(Link)
+            to="/story/story-id"
+>
+            Title
+</Styled(Link)>,
+          " ",
+          null,
         ],
       },
       "ref": null,
@@ -2335,31 +1664,17 @@ ShallowWrapper {
           "key": null,
           "nodeType": "class",
           "props": Object {
-            "children": <Link
-              replace={false}
-              to="/story/story-id"
->
-              Title
-</Link>,
+            "children": "Title",
+            "to": "/story/story-id",
           },
           "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": null,
-            "nodeType": "class",
-            "props": Object {
-              "children": "Title",
-              "replace": false,
-              "to": "/story/story-id",
-            },
-            "ref": null,
-            "rendered": "Title",
-            "type": [Function],
-          },
+          "rendered": "Title",
           "type": [Function],
         },
+        " ",
+        null,
       ],
-      "type": "div",
+      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {
@@ -2391,7 +1706,7 @@ ShallowWrapper {
     "key": null,
     "nodeType": "host",
     "props": Object {
-      "className": "sc-EHOje kIGcup",
+      "className": "sc-htoDjs iGmGRz",
     },
     "ref": null,
     "rendered": null,
@@ -2403,7 +1718,7 @@ ShallowWrapper {
       "key": null,
       "nodeType": "host",
       "props": Object {
-        "className": "sc-EHOje kIGcup",
+        "className": "sc-htoDjs iGmGRz",
       },
       "ref": null,
       "rendered": null,
@@ -2437,7 +1752,7 @@ ShallowWrapper {
     "key": null,
     "nodeType": "host",
     "props": Object {
-      "className": "sc-EHOje kIGcup",
+      "className": "sc-htoDjs iGmGRz",
     },
     "ref": null,
     "rendered": null,
@@ -2449,7 +1764,7 @@ ShallowWrapper {
       "key": null,
       "nodeType": "host",
       "props": Object {
-        "className": "sc-EHOje kIGcup",
+        "className": "sc-htoDjs iGmGRz",
       },
       "ref": null,
       "rendered": null,

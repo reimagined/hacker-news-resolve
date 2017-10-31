@@ -41,35 +41,24 @@ ShallowWrapper {
                     −
                     ]
           </styled.div>
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/user/SomeUser"
-          >
-                    <styled.div>
-                              <b />
-                    </styled.div>
-          </Link>
+          />
           <styled.div>
-                    17466 days ago
+                    17469 days ago
           </styled.div>
           <styled.div />
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/storyDetails/story-id/comments/SomeId"
           >
-                    <styled.div>
-                              link
-                    </styled.div>
-          </Link>
+                    link
+          </Styled(Link)>
           <styled.div />
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/storyDetails/story-id"
           >
-                    <styled.div>
-                              parent
-                    </styled.div>
-          </Link>
+                    parent
+          </Styled(Link)>
 </styled.div>,
         <div
           dangerouslySetInnerHTML={
@@ -97,35 +86,24 @@ ShallowWrapper {
               −
               ]
 </styled.div>,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/user/SomeUser"
->
-              <styled.div>
-                            <b />
-              </styled.div>
-</Link>,
+/>,
             <styled.div>
-              17466 days ago
+              17469 days ago
 </styled.div>,
             <styled.div />,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
 >
-              <styled.div>
-                            link
-              </styled.div>
-</Link>,
+              link
+</Styled(Link)>,
             <styled.div />,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/storyDetails/story-id"
 >
-              <styled.div>
-                            parent
-              </styled.div>
-</Link>,
+              parent
+</Styled(Link)>,
           ],
         },
         "ref": null,
@@ -156,34 +134,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                <b />
-</styled.div>,
-              "replace": false,
+              "children": undefined,
               "to": "/user/SomeUser",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": <b />,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {
-                  "children": undefined,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "b",
-              },
-              "type": [Function],
-            },
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -191,10 +146,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": "17466 days ago",
+              "children": "17469 days ago",
             },
             "ref": null,
-            "rendered": "17466 days ago",
+            "rendered": "17469 days ago",
             "type": [Function],
           },
           Object {
@@ -211,24 +166,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                link
-</styled.div>,
-              "replace": false,
+              "children": "link",
               "to": "/storyDetails/story-id/comments/SomeId",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": "link",
-              },
-              "ref": null,
-              "rendered": "link",
-              "type": [Function],
-            },
+            "rendered": "link",
             "type": [Function],
           },
           Object {
@@ -245,24 +187,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                parent
-</styled.div>,
-              "replace": false,
+              "children": "parent",
               "to": "/storyDetails/story-id",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": "parent",
-              },
-              "ref": null,
-              "rendered": "parent",
-              "type": [Function],
-            },
+            "rendered": "parent",
             "type": [Function],
           },
         ],
@@ -301,35 +230,24 @@ ShallowWrapper {
                         −
                         ]
             </styled.div>
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/user/SomeUser"
-            >
-                        <styled.div>
-                                    <b />
-                        </styled.div>
-            </Link>
+            />
             <styled.div>
-                        17466 days ago
+                        17469 days ago
             </styled.div>
             <styled.div />
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/storyDetails/story-id/comments/SomeId"
             >
-                        <styled.div>
-                                    link
-                        </styled.div>
-            </Link>
+                        link
+            </Styled(Link)>
             <styled.div />
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/storyDetails/story-id"
             >
-                        <styled.div>
-                                    parent
-                        </styled.div>
-            </Link>
+                        parent
+            </Styled(Link)>
 </styled.div>,
           <div
             dangerouslySetInnerHTML={
@@ -357,35 +275,24 @@ ShallowWrapper {
                 −
                 ]
 </styled.div>,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/user/SomeUser"
->
-                <styled.div>
-                                <b />
-                </styled.div>
-</Link>,
+/>,
               <styled.div>
-                17466 days ago
+                17469 days ago
 </styled.div>,
               <styled.div />,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
 >
-                <styled.div>
-                                link
-                </styled.div>
-</Link>,
+                link
+</Styled(Link)>,
               <styled.div />,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/storyDetails/story-id"
 >
-                <styled.div>
-                                parent
-                </styled.div>
-</Link>,
+                parent
+</Styled(Link)>,
             ],
           },
           "ref": null,
@@ -416,34 +323,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  <b />
-</styled.div>,
-                "replace": false,
+                "children": undefined,
                 "to": "/user/SomeUser",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": <b />,
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": null,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": undefined,
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "b",
-                },
-                "type": [Function],
-              },
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -451,10 +335,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": "17466 days ago",
+                "children": "17469 days ago",
               },
               "ref": null,
-              "rendered": "17466 days ago",
+              "rendered": "17469 days ago",
               "type": [Function],
             },
             Object {
@@ -471,24 +355,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  link
-</styled.div>,
-                "replace": false,
+                "children": "link",
                 "to": "/storyDetails/story-id/comments/SomeId",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "link",
-                },
-                "ref": null,
-                "rendered": "link",
-                "type": [Function],
-              },
+              "rendered": "link",
               "type": [Function],
             },
             Object {
@@ -505,24 +376,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  parent
-</styled.div>,
-                "replace": false,
+                "children": "parent",
                 "to": "/storyDetails/story-id",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "parent",
-                },
-                "ref": null,
-                "rendered": "parent",
-                "type": [Function],
-              },
+              "rendered": "parent",
               "type": [Function],
             },
           ],
@@ -597,35 +455,24 @@ ShallowWrapper {
                     −
                     ]
           </styled.div>
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/user/SomeUser"
-          >
-                    <styled.div>
-                              <b />
-                    </styled.div>
-          </Link>
+          />
           <styled.div>
-                    17466 days ago
+                    17469 days ago
           </styled.div>
           <styled.div />
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/storyDetails/story-id/comments/SomeId"
           >
-                    <styled.div>
-                              link
-                    </styled.div>
-          </Link>
+                    link
+          </Styled(Link)>
           <styled.div />
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/storyDetails/story-id/comments/parent-id"
           >
-                    <styled.div>
-                              parent
-                    </styled.div>
-          </Link>
+                    parent
+          </Styled(Link)>
 </styled.div>,
         <div
           dangerouslySetInnerHTML={
@@ -653,35 +500,24 @@ ShallowWrapper {
               −
               ]
 </styled.div>,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/user/SomeUser"
->
-              <styled.div>
-                            <b />
-              </styled.div>
-</Link>,
+/>,
             <styled.div>
-              17466 days ago
+              17469 days ago
 </styled.div>,
             <styled.div />,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
 >
-              <styled.div>
-                            link
-              </styled.div>
-</Link>,
+              link
+</Styled(Link)>,
             <styled.div />,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/storyDetails/story-id/comments/parent-id"
 >
-              <styled.div>
-                            parent
-              </styled.div>
-</Link>,
+              parent
+</Styled(Link)>,
           ],
         },
         "ref": null,
@@ -712,34 +548,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                <b />
-</styled.div>,
-              "replace": false,
+              "children": undefined,
               "to": "/user/SomeUser",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": <b />,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {
-                  "children": undefined,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "b",
-              },
-              "type": [Function],
-            },
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -747,10 +560,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": "17466 days ago",
+              "children": "17469 days ago",
             },
             "ref": null,
-            "rendered": "17466 days ago",
+            "rendered": "17469 days ago",
             "type": [Function],
           },
           Object {
@@ -767,24 +580,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                link
-</styled.div>,
-              "replace": false,
+              "children": "link",
               "to": "/storyDetails/story-id/comments/SomeId",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": "link",
-              },
-              "ref": null,
-              "rendered": "link",
-              "type": [Function],
-            },
+            "rendered": "link",
             "type": [Function],
           },
           Object {
@@ -801,24 +601,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                parent
-</styled.div>,
-              "replace": false,
+              "children": "parent",
               "to": "/storyDetails/story-id/comments/parent-id",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": "parent",
-              },
-              "ref": null,
-              "rendered": "parent",
-              "type": [Function],
-            },
+            "rendered": "parent",
             "type": [Function],
           },
         ],
@@ -857,35 +644,24 @@ ShallowWrapper {
                         −
                         ]
             </styled.div>
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/user/SomeUser"
-            >
-                        <styled.div>
-                                    <b />
-                        </styled.div>
-            </Link>
+            />
             <styled.div>
-                        17466 days ago
+                        17469 days ago
             </styled.div>
             <styled.div />
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/storyDetails/story-id/comments/SomeId"
             >
-                        <styled.div>
-                                    link
-                        </styled.div>
-            </Link>
+                        link
+            </Styled(Link)>
             <styled.div />
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/storyDetails/story-id/comments/parent-id"
             >
-                        <styled.div>
-                                    parent
-                        </styled.div>
-            </Link>
+                        parent
+            </Styled(Link)>
 </styled.div>,
           <div
             dangerouslySetInnerHTML={
@@ -913,35 +689,24 @@ ShallowWrapper {
                 −
                 ]
 </styled.div>,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/user/SomeUser"
->
-                <styled.div>
-                                <b />
-                </styled.div>
-</Link>,
+/>,
               <styled.div>
-                17466 days ago
+                17469 days ago
 </styled.div>,
               <styled.div />,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
 >
-                <styled.div>
-                                link
-                </styled.div>
-</Link>,
+                link
+</Styled(Link)>,
               <styled.div />,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/storyDetails/story-id/comments/parent-id"
 >
-                <styled.div>
-                                parent
-                </styled.div>
-</Link>,
+                parent
+</Styled(Link)>,
             ],
           },
           "ref": null,
@@ -972,34 +737,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  <b />
-</styled.div>,
-                "replace": false,
+                "children": undefined,
                 "to": "/user/SomeUser",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": <b />,
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": null,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": undefined,
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "b",
-                },
-                "type": [Function],
-              },
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -1007,10 +749,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": "17466 days ago",
+                "children": "17469 days ago",
               },
               "ref": null,
-              "rendered": "17466 days ago",
+              "rendered": "17469 days ago",
               "type": [Function],
             },
             Object {
@@ -1027,24 +769,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  link
-</styled.div>,
-                "replace": false,
+                "children": "link",
                 "to": "/storyDetails/story-id/comments/SomeId",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "link",
-                },
-                "ref": null,
-                "rendered": "link",
-                "type": [Function],
-              },
+              "rendered": "link",
               "type": [Function],
             },
             Object {
@@ -1061,24 +790,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  parent
-</styled.div>,
-                "replace": false,
+                "children": "parent",
                 "to": "/storyDetails/story-id/comments/parent-id",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "parent",
-                },
-                "ref": null,
-                "rendered": "parent",
-                "type": [Function],
-              },
+              "rendered": "parent",
               "type": [Function],
             },
           ],
@@ -1147,35 +863,24 @@ ShallowWrapper {
                     −
                     ]
           </styled.div>
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/user/SomeUser"
-          >
-                    <styled.div>
-                              <b />
-                    </styled.div>
-          </Link>
+          />
           <styled.div>
-                    17466 days ago
+                    17469 days ago
           </styled.div>
           <styled.div />
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/storyDetails/story-id/comments/SomeId"
           >
-                    <styled.div>
-                              link
-                    </styled.div>
-          </Link>
+                    link
+          </Styled(Link)>
           <styled.div />
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/storyDetails/story-id/comments/parent-id"
           >
-                    <styled.div>
-                              parent
-                    </styled.div>
-          </Link>
+                    parent
+          </Styled(Link)>
 </styled.div>,
         <div
           dangerouslySetInnerHTML={
@@ -1203,35 +908,24 @@ ShallowWrapper {
               −
               ]
 </styled.div>,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/user/SomeUser"
->
-              <styled.div>
-                            <b />
-              </styled.div>
-</Link>,
+/>,
             <styled.div>
-              17466 days ago
+              17469 days ago
 </styled.div>,
             <styled.div />,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
 >
-              <styled.div>
-                            link
-              </styled.div>
-</Link>,
+              link
+</Styled(Link)>,
             <styled.div />,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/storyDetails/story-id/comments/parent-id"
 >
-              <styled.div>
-                            parent
-              </styled.div>
-</Link>,
+              parent
+</Styled(Link)>,
           ],
         },
         "ref": null,
@@ -1262,34 +956,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                <b />
-</styled.div>,
-              "replace": false,
+              "children": undefined,
               "to": "/user/SomeUser",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": <b />,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {
-                  "children": undefined,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "b",
-              },
-              "type": [Function],
-            },
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -1297,10 +968,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": "17466 days ago",
+              "children": "17469 days ago",
             },
             "ref": null,
-            "rendered": "17466 days ago",
+            "rendered": "17469 days ago",
             "type": [Function],
           },
           Object {
@@ -1317,24 +988,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                link
-</styled.div>,
-              "replace": false,
+              "children": "link",
               "to": "/storyDetails/story-id/comments/SomeId",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": "link",
-              },
-              "ref": null,
-              "rendered": "link",
-              "type": [Function],
-            },
+            "rendered": "link",
             "type": [Function],
           },
           Object {
@@ -1351,24 +1009,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                parent
-</styled.div>,
-              "replace": false,
+              "children": "parent",
               "to": "/storyDetails/story-id/comments/parent-id",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": "parent",
-              },
-              "ref": null,
-              "rendered": "parent",
-              "type": [Function],
-            },
+            "rendered": "parent",
             "type": [Function],
           },
         ],
@@ -1407,35 +1052,24 @@ ShallowWrapper {
                         −
                         ]
             </styled.div>
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/user/SomeUser"
-            >
-                        <styled.div>
-                                    <b />
-                        </styled.div>
-            </Link>
+            />
             <styled.div>
-                        17466 days ago
+                        17469 days ago
             </styled.div>
             <styled.div />
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/storyDetails/story-id/comments/SomeId"
             >
-                        <styled.div>
-                                    link
-                        </styled.div>
-            </Link>
+                        link
+            </Styled(Link)>
             <styled.div />
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/storyDetails/story-id/comments/parent-id"
             >
-                        <styled.div>
-                                    parent
-                        </styled.div>
-            </Link>
+                        parent
+            </Styled(Link)>
 </styled.div>,
           <div
             dangerouslySetInnerHTML={
@@ -1463,35 +1097,24 @@ ShallowWrapper {
                 −
                 ]
 </styled.div>,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/user/SomeUser"
->
-                <styled.div>
-                                <b />
-                </styled.div>
-</Link>,
+/>,
               <styled.div>
-                17466 days ago
+                17469 days ago
 </styled.div>,
               <styled.div />,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
 >
-                <styled.div>
-                                link
-                </styled.div>
-</Link>,
+                link
+</Styled(Link)>,
               <styled.div />,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/storyDetails/story-id/comments/parent-id"
 >
-                <styled.div>
-                                parent
-                </styled.div>
-</Link>,
+                parent
+</Styled(Link)>,
             ],
           },
           "ref": null,
@@ -1522,34 +1145,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  <b />
-</styled.div>,
-                "replace": false,
+                "children": undefined,
                 "to": "/user/SomeUser",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": <b />,
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": null,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": undefined,
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "b",
-                },
-                "type": [Function],
-              },
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -1557,10 +1157,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": "17466 days ago",
+                "children": "17469 days ago",
               },
               "ref": null,
-              "rendered": "17466 days ago",
+              "rendered": "17469 days ago",
               "type": [Function],
             },
             Object {
@@ -1577,24 +1177,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  link
-</styled.div>,
-                "replace": false,
+                "children": "link",
                 "to": "/storyDetails/story-id/comments/SomeId",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "link",
-                },
-                "ref": null,
-                "rendered": "link",
-                "type": [Function],
-              },
+              "rendered": "link",
               "type": [Function],
             },
             Object {
@@ -1611,24 +1198,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  parent
-</styled.div>,
-                "replace": false,
+                "children": "parent",
                 "to": "/storyDetails/story-id/comments/parent-id",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "parent",
-                },
-                "ref": null,
-                "rendered": "parent",
-                "type": [Function],
-              },
+              "rendered": "parent",
               "type": [Function],
             },
           ],
@@ -1697,35 +1271,24 @@ ShallowWrapper {
                     −
                     ]
           </styled.div>
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/user/SomeUser"
-          >
-                    <styled.div>
-                              <b />
-                    </styled.div>
-          </Link>
+          />
           <styled.div>
-                    17466 days ago
+                    17469 days ago
           </styled.div>
           <styled.div />
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/storyDetails/story-id/comments/SomeId"
           >
-                    <styled.div>
-                              link
-                    </styled.div>
-          </Link>
+                    link
+          </Styled(Link)>
           <styled.div />
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/storyDetails/story-id/comments/parent-id"
           >
-                    <styled.div>
-                              parent
-                    </styled.div>
-          </Link>
+                    parent
+          </Styled(Link)>
 </styled.div>,
         <div
           dangerouslySetInnerHTML={
@@ -1753,35 +1316,24 @@ ShallowWrapper {
               −
               ]
 </styled.div>,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/user/SomeUser"
->
-              <styled.div>
-                            <b />
-              </styled.div>
-</Link>,
+/>,
             <styled.div>
-              17466 days ago
+              17469 days ago
 </styled.div>,
             <styled.div />,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
 >
-              <styled.div>
-                            link
-              </styled.div>
-</Link>,
+              link
+</Styled(Link)>,
             <styled.div />,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/storyDetails/story-id/comments/parent-id"
 >
-              <styled.div>
-                            parent
-              </styled.div>
-</Link>,
+              parent
+</Styled(Link)>,
           ],
         },
         "ref": null,
@@ -1812,34 +1364,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                <b />
-</styled.div>,
-              "replace": false,
+              "children": undefined,
               "to": "/user/SomeUser",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": <b />,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {
-                  "children": undefined,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "b",
-              },
-              "type": [Function],
-            },
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -1847,10 +1376,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": "17466 days ago",
+              "children": "17469 days ago",
             },
             "ref": null,
-            "rendered": "17466 days ago",
+            "rendered": "17469 days ago",
             "type": [Function],
           },
           Object {
@@ -1867,24 +1396,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                link
-</styled.div>,
-              "replace": false,
+              "children": "link",
               "to": "/storyDetails/story-id/comments/SomeId",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": "link",
-              },
-              "ref": null,
-              "rendered": "link",
-              "type": [Function],
-            },
+            "rendered": "link",
             "type": [Function],
           },
           Object {
@@ -1901,24 +1417,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                parent
-</styled.div>,
-              "replace": false,
+              "children": "parent",
               "to": "/storyDetails/story-id/comments/parent-id",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": "parent",
-              },
-              "ref": null,
-              "rendered": "parent",
-              "type": [Function],
-            },
+            "rendered": "parent",
             "type": [Function],
           },
         ],
@@ -1957,35 +1460,24 @@ ShallowWrapper {
                         −
                         ]
             </styled.div>
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/user/SomeUser"
-            >
-                        <styled.div>
-                                    <b />
-                        </styled.div>
-            </Link>
+            />
             <styled.div>
-                        17466 days ago
+                        17469 days ago
             </styled.div>
             <styled.div />
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/storyDetails/story-id/comments/SomeId"
             >
-                        <styled.div>
-                                    link
-                        </styled.div>
-            </Link>
+                        link
+            </Styled(Link)>
             <styled.div />
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/storyDetails/story-id/comments/parent-id"
             >
-                        <styled.div>
-                                    parent
-                        </styled.div>
-            </Link>
+                        parent
+            </Styled(Link)>
 </styled.div>,
           <div
             dangerouslySetInnerHTML={
@@ -2013,35 +1505,24 @@ ShallowWrapper {
                 −
                 ]
 </styled.div>,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/user/SomeUser"
->
-                <styled.div>
-                                <b />
-                </styled.div>
-</Link>,
+/>,
               <styled.div>
-                17466 days ago
+                17469 days ago
 </styled.div>,
               <styled.div />,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
 >
-                <styled.div>
-                                link
-                </styled.div>
-</Link>,
+                link
+</Styled(Link)>,
               <styled.div />,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/storyDetails/story-id/comments/parent-id"
 >
-                <styled.div>
-                                parent
-                </styled.div>
-</Link>,
+                parent
+</Styled(Link)>,
             ],
           },
           "ref": null,
@@ -2072,34 +1553,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  <b />
-</styled.div>,
-                "replace": false,
+                "children": undefined,
                 "to": "/user/SomeUser",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": <b />,
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": null,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": undefined,
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "b",
-                },
-                "type": [Function],
-              },
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -2107,10 +1565,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": "17466 days ago",
+                "children": "17469 days ago",
               },
               "ref": null,
-              "rendered": "17466 days ago",
+              "rendered": "17469 days ago",
               "type": [Function],
             },
             Object {
@@ -2127,24 +1585,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  link
-</styled.div>,
-                "replace": false,
+                "children": "link",
                 "to": "/storyDetails/story-id/comments/SomeId",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "link",
-                },
-                "ref": null,
-                "rendered": "link",
-                "type": [Function],
-              },
+              "rendered": "link",
               "type": [Function],
             },
             Object {
@@ -2161,24 +1606,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  parent
-</styled.div>,
-                "replace": false,
+                "children": "parent",
                 "to": "/storyDetails/story-id/comments/parent-id",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "parent",
-                },
-                "ref": null,
-                "rendered": "parent",
-                "type": [Function],
-              },
+              "rendered": "parent",
               "type": [Function],
             },
           ],
@@ -2247,35 +1679,24 @@ ShallowWrapper {
                     −
                     ]
           </styled.div>
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/user/SomeUser"
-          >
-                    <styled.div>
-                              <b />
-                    </styled.div>
-          </Link>
+          />
           <styled.div>
-                    17466 days ago
+                    17469 days ago
           </styled.div>
           <styled.div />
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/storyDetails/story-id/comments/SomeId"
           >
-                    <styled.div>
-                              link
-                    </styled.div>
-          </Link>
+                    link
+          </Styled(Link)>
           <styled.div />
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/storyDetails/story-id/comments/parent-id"
           >
-                    <styled.div>
-                              parent
-                    </styled.div>
-          </Link>
+                    parent
+          </Styled(Link)>
 </styled.div>,
         <div
           dangerouslySetInnerHTML={
@@ -2303,35 +1724,24 @@ ShallowWrapper {
               −
               ]
 </styled.div>,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/user/SomeUser"
->
-              <styled.div>
-                            <b />
-              </styled.div>
-</Link>,
+/>,
             <styled.div>
-              17466 days ago
+              17469 days ago
 </styled.div>,
             <styled.div />,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
 >
-              <styled.div>
-                            link
-              </styled.div>
-</Link>,
+              link
+</Styled(Link)>,
             <styled.div />,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/storyDetails/story-id/comments/parent-id"
 >
-              <styled.div>
-                            parent
-              </styled.div>
-</Link>,
+              parent
+</Styled(Link)>,
           ],
         },
         "ref": null,
@@ -2362,34 +1772,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                <b />
-</styled.div>,
-              "replace": false,
+              "children": undefined,
               "to": "/user/SomeUser",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": <b />,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {
-                  "children": undefined,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "b",
-              },
-              "type": [Function],
-            },
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -2397,10 +1784,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": "17466 days ago",
+              "children": "17469 days ago",
             },
             "ref": null,
-            "rendered": "17466 days ago",
+            "rendered": "17469 days ago",
             "type": [Function],
           },
           Object {
@@ -2417,24 +1804,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                link
-</styled.div>,
-              "replace": false,
+              "children": "link",
               "to": "/storyDetails/story-id/comments/SomeId",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": "link",
-              },
-              "ref": null,
-              "rendered": "link",
-              "type": [Function],
-            },
+            "rendered": "link",
             "type": [Function],
           },
           Object {
@@ -2451,24 +1825,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                parent
-</styled.div>,
-              "replace": false,
+              "children": "parent",
               "to": "/storyDetails/story-id/comments/parent-id",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": "parent",
-              },
-              "ref": null,
-              "rendered": "parent",
-              "type": [Function],
-            },
+            "rendered": "parent",
             "type": [Function],
           },
         ],
@@ -2507,35 +1868,24 @@ ShallowWrapper {
                         −
                         ]
             </styled.div>
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/user/SomeUser"
-            >
-                        <styled.div>
-                                    <b />
-                        </styled.div>
-            </Link>
+            />
             <styled.div>
-                        17466 days ago
+                        17469 days ago
             </styled.div>
             <styled.div />
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/storyDetails/story-id/comments/SomeId"
             >
-                        <styled.div>
-                                    link
-                        </styled.div>
-            </Link>
+                        link
+            </Styled(Link)>
             <styled.div />
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/storyDetails/story-id/comments/parent-id"
             >
-                        <styled.div>
-                                    parent
-                        </styled.div>
-            </Link>
+                        parent
+            </Styled(Link)>
 </styled.div>,
           <div
             dangerouslySetInnerHTML={
@@ -2563,35 +1913,24 @@ ShallowWrapper {
                 −
                 ]
 </styled.div>,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/user/SomeUser"
->
-                <styled.div>
-                                <b />
-                </styled.div>
-</Link>,
+/>,
               <styled.div>
-                17466 days ago
+                17469 days ago
 </styled.div>,
               <styled.div />,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
 >
-                <styled.div>
-                                link
-                </styled.div>
-</Link>,
+                link
+</Styled(Link)>,
               <styled.div />,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/storyDetails/story-id/comments/parent-id"
 >
-                <styled.div>
-                                parent
-                </styled.div>
-</Link>,
+                parent
+</Styled(Link)>,
             ],
           },
           "ref": null,
@@ -2622,34 +1961,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  <b />
-</styled.div>,
-                "replace": false,
+                "children": undefined,
                 "to": "/user/SomeUser",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": <b />,
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": null,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": undefined,
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "b",
-                },
-                "type": [Function],
-              },
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -2657,10 +1973,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": "17466 days ago",
+                "children": "17469 days ago",
               },
               "ref": null,
-              "rendered": "17466 days ago",
+              "rendered": "17469 days ago",
               "type": [Function],
             },
             Object {
@@ -2677,24 +1993,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  link
-</styled.div>,
-                "replace": false,
+                "children": "link",
                 "to": "/storyDetails/story-id/comments/SomeId",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "link",
-                },
-                "ref": null,
-                "rendered": "link",
-                "type": [Function],
-              },
+              "rendered": "link",
               "type": [Function],
             },
             Object {
@@ -2711,24 +2014,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  parent
-</styled.div>,
-                "replace": false,
+                "children": "parent",
                 "to": "/storyDetails/story-id/comments/parent-id",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "parent",
-                },
-                "ref": null,
-                "rendered": "parent",
-                "type": [Function],
-              },
+              "rendered": "parent",
               "type": [Function],
             },
           ],
@@ -2797,35 +2087,24 @@ ShallowWrapper {
                     −
                     ]
           </styled.div>
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/user/SomeUser"
-          >
-                    <styled.div>
-                              <b />
-                    </styled.div>
-          </Link>
+          />
           <styled.div>
-                    17466 days ago
+                    17469 days ago
           </styled.div>
           <styled.div />
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/storyDetails/story-id/comments/SomeId"
           >
-                    <styled.div>
-                              link
-                    </styled.div>
-          </Link>
+                    link
+          </Styled(Link)>
           <styled.div />
-          <Link
-                    replace={false}
+          <Styled(Link)
                     to="/storyDetails/story-id/comments/parent-id"
           >
-                    <styled.div>
-                              parent
-                    </styled.div>
-          </Link>
+                    parent
+          </Styled(Link)>
 </styled.div>,
         <div
           dangerouslySetInnerHTML={
@@ -2853,35 +2132,24 @@ ShallowWrapper {
               −
               ]
 </styled.div>,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/user/SomeUser"
->
-              <styled.div>
-                            <b />
-              </styled.div>
-</Link>,
+/>,
             <styled.div>
-              17466 days ago
+              17469 days ago
 </styled.div>,
             <styled.div />,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
 >
-              <styled.div>
-                            link
-              </styled.div>
-</Link>,
+              link
+</Styled(Link)>,
             <styled.div />,
-            <Link
-              replace={false}
+            <Styled(Link)
               to="/storyDetails/story-id/comments/parent-id"
 >
-              <styled.div>
-                            parent
-              </styled.div>
-</Link>,
+              parent
+</Styled(Link)>,
           ],
         },
         "ref": null,
@@ -2912,34 +2180,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                <b />
-</styled.div>,
-              "replace": false,
+              "children": undefined,
               "to": "/user/SomeUser",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": <b />,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "host",
-                "props": Object {
-                  "children": undefined,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "b",
-              },
-              "type": [Function],
-            },
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -2947,10 +2192,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": "17466 days ago",
+              "children": "17469 days ago",
             },
             "ref": null,
-            "rendered": "17466 days ago",
+            "rendered": "17469 days ago",
             "type": [Function],
           },
           Object {
@@ -2967,24 +2212,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                link
-</styled.div>,
-              "replace": false,
+              "children": "link",
               "to": "/storyDetails/story-id/comments/SomeId",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": "link",
-              },
-              "ref": null,
-              "rendered": "link",
-              "type": [Function],
-            },
+            "rendered": "link",
             "type": [Function],
           },
           Object {
@@ -3001,24 +2233,11 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": <styled.div>
-                parent
-</styled.div>,
-              "replace": false,
+              "children": "parent",
               "to": "/storyDetails/story-id/comments/parent-id",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": null,
-              "nodeType": "class",
-              "props": Object {
-                "children": "parent",
-              },
-              "ref": null,
-              "rendered": "parent",
-              "type": [Function],
-            },
+            "rendered": "parent",
             "type": [Function],
           },
         ],
@@ -3057,35 +2276,24 @@ ShallowWrapper {
                         −
                         ]
             </styled.div>
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/user/SomeUser"
-            >
-                        <styled.div>
-                                    <b />
-                        </styled.div>
-            </Link>
+            />
             <styled.div>
-                        17466 days ago
+                        17469 days ago
             </styled.div>
             <styled.div />
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/storyDetails/story-id/comments/SomeId"
             >
-                        <styled.div>
-                                    link
-                        </styled.div>
-            </Link>
+                        link
+            </Styled(Link)>
             <styled.div />
-            <Link
-                        replace={false}
+            <Styled(Link)
                         to="/storyDetails/story-id/comments/parent-id"
             >
-                        <styled.div>
-                                    parent
-                        </styled.div>
-            </Link>
+                        parent
+            </Styled(Link)>
 </styled.div>,
           <div
             dangerouslySetInnerHTML={
@@ -3113,35 +2321,24 @@ ShallowWrapper {
                 −
                 ]
 </styled.div>,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/user/SomeUser"
->
-                <styled.div>
-                                <b />
-                </styled.div>
-</Link>,
+/>,
               <styled.div>
-                17466 days ago
+                17469 days ago
 </styled.div>,
               <styled.div />,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
 >
-                <styled.div>
-                                link
-                </styled.div>
-</Link>,
+                link
+</Styled(Link)>,
               <styled.div />,
-              <Link
-                replace={false}
+              <Styled(Link)
                 to="/storyDetails/story-id/comments/parent-id"
 >
-                <styled.div>
-                                parent
-                </styled.div>
-</Link>,
+                parent
+</Styled(Link)>,
             ],
           },
           "ref": null,
@@ -3172,34 +2369,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  <b />
-</styled.div>,
-                "replace": false,
+                "children": undefined,
                 "to": "/user/SomeUser",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": <b />,
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": null,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": undefined,
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "b",
-                },
-                "type": [Function],
-              },
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -3207,10 +2381,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": "17466 days ago",
+                "children": "17469 days ago",
               },
               "ref": null,
-              "rendered": "17466 days ago",
+              "rendered": "17469 days ago",
               "type": [Function],
             },
             Object {
@@ -3227,24 +2401,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  link
-</styled.div>,
-                "replace": false,
+                "children": "link",
                 "to": "/storyDetails/story-id/comments/SomeId",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "link",
-                },
-                "ref": null,
-                "rendered": "link",
-                "type": [Function],
-              },
+              "rendered": "link",
               "type": [Function],
             },
             Object {
@@ -3261,24 +2422,11 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": <styled.div>
-                  parent
-</styled.div>,
-                "replace": false,
+                "children": "parent",
                 "to": "/storyDetails/story-id/comments/parent-id",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": null,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "parent",
-                },
-                "ref": null,
-                "rendered": "parent",
-                "type": [Function],
-              },
+              "rendered": "parent",
               "type": [Function],
             },
           ],

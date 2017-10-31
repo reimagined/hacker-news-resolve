@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Wrapper = styled.div`
+const AuthFormRoot = styled.div`
   padding-left: 3em;
   padding-right: 1.25em;
   margin-top: 1em;
   margin-bottom: 0.83em;
 `
 
-const Header = styled.div`
+const AuthFormTitle = styled.div`
   display: block;
   font-size: 1.5em;
   margin-top: 0.83em;
@@ -18,21 +18,21 @@ const Header = styled.div`
   font-weight: bold;
 `
 
-const Content = styled.div`
+const AuthFormContent = styled.div`
   display: block;
   margin-bottom: 0.83em;
 `
 
 const AuthForm = ({ title, action, buttonText }) => (
-  <Wrapper>
-    <Header>{title}</Header>
+  <AuthFormRoot>
+    <AuthFormTitle>{title}</AuthFormTitle>
     <form method="POST" action={action}>
-      <Content>
+      <AuthFormContent>
         username: <input type="text" name="name" />
-      </Content>
+      </AuthFormContent>
       <input type="submit" value={buttonText} />
     </form>
-  </Wrapper>
+  </AuthFormRoot>
 )
 
 export default AuthForm
