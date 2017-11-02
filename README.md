@@ -166,53 +166,6 @@ A user has the following fields:
 * name - a unique user name which a user provides in the registration form
 * createdAt - the user's registration timestamp
 
-### Login View
-
-The app layout contains meta information, an application header with a menu, user info and some content.
-
-Install the following packages:
-* `react-helmet` - to pass meta information to the HTML header
-* `react-router` - to implement routing
-* `redux` and `react-redux` - to store data
-* `seamless-immutable` - to enforce state immutability
-* `js-cookie` - to manipulate cookies
-* `styled-components` -  to style components
-
-```bash
-npm install --save react-helmet react-router react-router-dom seamless-immutable js-cookie styled-components
-```
-
-Implement the login view.
-It is based on the [AuthForm](./client/components/AuthForm.js) component and rendered by the [Login](./client/components/Login.js) component.
-
-The login view is placed in the main layout.
-Follow the steps below to implement the layout:
-* Prepare Redux [user actions](./client/actions/userActions.js).
-* Add the [Splitter](./client/components/Splitter.js) component that serves a vertical menu splitter.
-* Add the [App](./client/containers/App.js) container implementing the layout.
-In the `containers/App.js` file, comment the `uiActions` import and the `onSubmitViewShown` action in the `mapDispatchToProps` function, and add the header's [logo](./static/reSolve-logo.svg).
-
-Add the layout and login view to the root component.
-* Add routes. To do this, create the `client/routes.js` file.
-In this file, comment all imports excluding the `App` container and the `Login` component, and all routes excluding the `/login` path.
-* Implement the `RouteWithSubRoutes` component to provide routes.
-
-Use a Redux store for data storing.
-In the [client/store/index.js](./client/store/index.js) file, add the [devtools](https://github.com/zalmoxisus/redux-devtools-extension) and [resolve-redux](https://github.com/reimagined/resolve/tree/master/packages/resolve-redux#-utils) middlewares, and implement the logout middleware.
-
-Prepare the `App` component by adding router providers.
-
-Now you can go to http://localhost:3000 to see the login view.
-
-### User View
-
-Implement the user view to show an authenticated user.
-
-To get user data using GraphQL, import the `gqlConnector` from the `resolve-redux` package.
-
-Implement the [UserById](./client/containers/UserById.js) container.
-Uncomment this container import in [routes](./client/routes.js) and add the `/user/:userId` path.
-
 ### Write Side
 
 Create a user aggregate.
@@ -666,6 +619,53 @@ export default {
 
 Now we have a server side that works with users: a user can be registered and authenticated.
 
+### Login View
+
+The app layout contains meta information, an application header with a menu, user info and some content.
+
+Install the following packages:
+* `react-helmet` - to pass meta information to the HTML header
+* `react-router` - to implement routing
+* `redux` and `react-redux` - to store data
+* `seamless-immutable` - to enforce state immutability
+* `js-cookie` - to manipulate cookies
+* `styled-components` -  to style components
+
+```bash
+npm install --save react-helmet react-router react-router-dom seamless-immutable js-cookie styled-components
+```
+
+Implement the login view.
+It is based on the [AuthForm](./client/components/AuthForm.js) component and rendered by the [Login](./client/components/Login.js) component.
+
+The login view is placed in the main layout.
+Follow the steps below to implement the layout:
+* Prepare Redux [user actions](./client/actions/userActions.js).
+* Add the [Splitter](./client/components/Splitter.js) component that serves a vertical menu splitter.
+* Add the [App](./client/containers/App.js) container implementing the layout.
+In the `containers/App.js` file, comment the `uiActions` import and the `onSubmitViewShown` action in the `mapDispatchToProps` function, and add the header's [logo](./static/reSolve-logo.svg).
+
+Add the layout and login view to the root component.
+* Add routes. To do this, create the `client/routes.js` file.
+In this file, comment all imports excluding the `App` container and the `Login` component, and all routes excluding the `/login` path.
+* Implement the `RouteWithSubRoutes` component to provide routes.
+
+Use a Redux store for data storing.
+In the [client/store/index.js](./client/store/index.js) file, add the [devtools](https://github.com/zalmoxisus/redux-devtools-extension) and [resolve-redux](https://github.com/reimagined/resolve/tree/master/packages/resolve-redux#-utils) middlewares, and implement the logout middleware.
+
+Prepare the `App` component by adding router providers.
+
+Now you can go to http://localhost:3000 to see the login view.
+
+### User View
+
+Implement the user view to show an authenticated user.
+
+To get user data using GraphQL, import the `gqlConnector` from the `resolve-redux` package.
+
+Implement the [UserById](./client/containers/UserById.js) container.
+Uncomment this container import in [routes](./client/routes.js) and add the `/user/:userId` path.
+
 ## Adding Stories
 
 A story is news or question a user posts.
@@ -681,52 +681,6 @@ A story can have the following fields:
 * text - the story's content
 * createdAt - the story's creation timestamp
 * createdBy - the story's author
-
-### Stories View
-
-Implement a component rendering a list of stories.
-
-Install packages:
-* url - to parse URL
-* plur - to pluralize words
-* sanitizer - to sanitize story content markup
-
-```bash
-npm i --save url plur sanitizer
-```
-
-Add the [Pagination]((./client/components/Pagination.js)) component.
-
-Then add the [Story](./client/containers/Story.js) container.
-In this file, comment the `redux` and actions import.
-Also comment the `mapDispatchToProps` function and temporarily delete it from the `connect` function arguments.
-
-Create [client constants](./client/constants.js).
-
-Implement the [Stories](./client/components/Stories.js) component for displaying stories.
-
-Implement specific story containers such as [NewestByPage](./client/containers/NewestByPage.js), [AskByPage](./client/containers/AskByPage.js) and [ShowByPage](./client/containers/ShowByPage.js).
-In each file, delete the `commentCount` field from `query`.
-
-In the `client/reducers/` directory, create [UI](./client/reducers/ui.js) and [user](./client/reducers/user.js) reducers.
-Add them to the [root reducer export](./client/reducers/index.js).
-
-Add created containers to [routes](./client/routes.js) with the `/newest/:page?`, `/show/:page?` and `/ask/:page?` paths.
-
-### Story View
-
-Implement the [StoryDetails](./client/containers/StoryDetails.js) container to display a story by id with additional information.
-Delete the actions import and `mapDispatchToProps`.
-`ChildrenComments` is implemented later, so delete its import and usage in JSX.
-
-Add the created container to [routes](./client/routes.js) with the `/storyDetails/:storyId` path.
-
-### Submit View
-
-Implement the [Submit](./client/containers/Submit.js) container to add new stories.
-Temporarily delete actions import and `mapDispatchToProps`.
-
-Add the created container to [routes](./client/routes.js) with the `/submit` path.
 
 ### Write Side
 
@@ -1074,6 +1028,52 @@ export default {
 }
 ```
 
+### Stories View
+
+Implement a component rendering a list of stories.
+
+Install packages:
+* url - to parse URL
+* plur - to pluralize words
+* sanitizer - to sanitize story content markup
+
+```bash
+npm i --save url plur sanitizer
+```
+
+Add the [Pagination]((./client/components/Pagination.js)) component.
+
+Then add the [Story](./client/containers/Story.js) container.
+In this file, comment the `redux` and actions import.
+Also comment the `mapDispatchToProps` function and temporarily delete it from the `connect` function arguments.
+
+Create [client constants](./client/constants.js).
+
+Implement the [Stories](./client/components/Stories.js) component for displaying stories.
+
+Implement specific story containers such as [NewestByPage](./client/containers/NewestByPage.js), [AskByPage](./client/containers/AskByPage.js) and [ShowByPage](./client/containers/ShowByPage.js).
+In each file, delete the `commentCount` field from `query`.
+
+In the `client/reducers/` directory, create [UI](./client/reducers/ui.js) and [user](./client/reducers/user.js) reducers.
+Add them to the [root reducer export](./client/reducers/index.js).
+
+Add created containers to [routes](./client/routes.js) with the `/newest/:page?`, `/show/:page?` and `/ask/:page?` paths.
+
+### Story View
+
+Implement the [StoryDetails](./client/containers/StoryDetails.js) container to display a story by id with additional information.
+Delete the actions import and `mapDispatchToProps`.
+`ChildrenComments` is implemented later, so delete its import and usage in JSX.
+
+Add the created container to [routes](./client/routes.js) with the `/storyDetails/:storyId` path.
+
+### Submit View
+
+Implement the [Submit](./client/containers/Submit.js) container to add new stories.
+Temporarily delete actions import and `mapDispatchToProps`.
+
+Add the created container to [routes](./client/routes.js) with the `/submit` path.
+
 ### Linking Client and Server Sides
 
 The `resolve-redux` package contains functions allowing you to create client side actions from aggregates.
@@ -1099,27 +1099,6 @@ A comment has the following fields:
 * replies - a list of replies
 * createdAt - the story's creation timestamp
 * createdBy - the comment's author
-
-### Story View Extension
-
-Add the [Comment](./client/components/Comment.js) component to display comment information.
-
-Add the [ReplyLink](./client/components/ReplyLink.js) component to implement the 'reply' link.
-
-Add the [ChildrenComments](./client/components/ChildrenComments.js) component for building a comments tree.
-
-A comment depends on a story, so you need to extend the existing [StoryDetails](./client/containers/StoryDetails.js) container.
-Add a comments tree with text area for new comment creation.
-
-Extend GraphQL query with the `comments` field.
-
-### Comments View
-
-Implement the [CommentsByPage](./client/containers/CommentsByPage.js) container to display the list of the latest comments.
-
-Implement the [CommentsById](./client/containers/CommentById.js) container to display the selected comment with replies.
-
-Add the created containers to [routes](./client/routes.js) with the `/comments/:page?` and `/storyDetails/:storyId/comments/:commentId` paths.
 
 ### Write Side
 
@@ -1537,6 +1516,27 @@ export default {
   }
 }
 ```
+
+### Story View Extension
+
+Add the [Comment](./client/components/Comment.js) component to display comment information.
+
+Add the [ReplyLink](./client/components/ReplyLink.js) component to implement the 'reply' link.
+
+Add the [ChildrenComments](./client/components/ChildrenComments.js) component for building a comments tree.
+
+A comment depends on a story, so you need to extend the existing [StoryDetails](./client/containers/StoryDetails.js) container.
+Add a comments tree with text area for new comment creation.
+
+Extend GraphQL query with the `comments` field.
+
+### Comments View
+
+Implement the [CommentsByPage](./client/containers/CommentsByPage.js) container to display the list of the latest comments.
+
+Implement the [CommentsById](./client/containers/CommentById.js) container to display the selected comment with replies.
+
+Add the created containers to [routes](./client/routes.js) with the `/comments/:page?` and `/storyDetails/:storyId/comments/:commentId` paths.
 
 ## Data Importer
 
