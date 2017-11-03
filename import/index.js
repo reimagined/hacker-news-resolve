@@ -1,4 +1,5 @@
 import ProgressBar from 'progress'
+import { EOL } from 'os'
 
 import { start } from './importer'
 
@@ -13,5 +14,10 @@ start(
       { width: 20, total }
     )
   },
-  () => bar.tick()
+  () => {
+    bar.tick()
+    if (bar.complete) {
+      console.log(EOL)
+    }
+  }
 )
