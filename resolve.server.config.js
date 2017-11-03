@@ -1,5 +1,5 @@
-import busDriver from 'resolve-bus-memory'
-import storageDriver from 'resolve-storage-lite'
+import busAdapter from 'resolve-bus-memory'
+import storageAdapter from 'resolve-storage-lite'
 
 import clientConfig from './resolve.client.config'
 import aggregates from './common/aggregates'
@@ -19,16 +19,16 @@ import {
 
 const eventTypes = Object.keys(events).map(key => events[key])
 
-const storageDriverParams = process.env.IS_TEST
+const storageAdapterParams = process.env.IS_TEST
   ? {}
   : { pathToFile: databaseFilePath }
 
 export default {
   entries: clientConfig,
-  bus: { driver: busDriver },
+  bus: { adapter: busAdapter },
   storage: {
-    driver: storageDriver,
-    params: storageDriverParams
+    adapter: storageAdapter,
+    params: storageAdapterParams
   },
   initialState,
   aggregates,
