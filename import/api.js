@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch'
 
 const endPoint = 'https://hacker-news.firebaseio.com/v0'
-const timeout = 10000
+const timeout = 15000
 
 const wait = (time, result) =>
   new Promise(resolve => setTimeout(() => resolve(result), time))
@@ -21,7 +21,7 @@ const fetchWithRetry = async (url, retry = 0) => {
     ])
 
     if (response === waitResult) {
-      console.error(`Fetch timeout (${timeout} ms)`)
+      console.error(`\r\nFetch timeout (${timeout} ms)`)
       process.exit(1)
     }
 
