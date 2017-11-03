@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch'
+import { EOL } from 'os'
 
 const endPoint = 'https://hacker-news.firebaseio.com/v0'
 const timeout = 15000
@@ -21,7 +22,7 @@ const fetchWithRetry = async (url, retry = 0) => {
     ])
 
     if (response === waitResult) {
-      console.error(`\r\nFetch timeout (${timeout} ms)`)
+      console.error(`${EOL}Fetch timeout (${timeout} ms)`)
       process.exit(1)
     }
 
