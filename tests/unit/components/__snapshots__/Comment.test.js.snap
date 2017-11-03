@@ -44,9 +44,9 @@ ShallowWrapper {
           <Styled(Link)
                     to="/user/SomeUser"
           />
-          <styled.div>
-                    17469 days ago
-          </styled.div>
+          <Styled(Component)
+                    createdAt={0}
+          />
           <styled.div />
           <Styled(Link)
                     to="/storyDetails/story-id/comments/SomeId"
@@ -89,9 +89,9 @@ ShallowWrapper {
             <Styled(Link)
               to="/user/SomeUser"
 />,
-            <styled.div>
-              17469 days ago
-</styled.div>,
+            <Styled(Component)
+              createdAt={0}
+/>,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
@@ -146,10 +146,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": "17469 days ago",
+              "createdAt": 0,
             },
             "ref": null,
-            "rendered": "17469 days ago",
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -233,9 +233,9 @@ ShallowWrapper {
             <Styled(Link)
                         to="/user/SomeUser"
             />
-            <styled.div>
-                        17469 days ago
-            </styled.div>
+            <Styled(Component)
+                        createdAt={0}
+            />
             <styled.div />
             <Styled(Link)
                         to="/storyDetails/story-id/comments/SomeId"
@@ -278,9 +278,9 @@ ShallowWrapper {
               <Styled(Link)
                 to="/user/SomeUser"
 />,
-              <styled.div>
-                17469 days ago
-</styled.div>,
+              <Styled(Component)
+                createdAt={0}
+/>,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
@@ -335,10 +335,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": "17469 days ago",
+                "createdAt": 0,
               },
               "ref": null,
-              "rendered": "17469 days ago",
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -458,9 +458,9 @@ ShallowWrapper {
           <Styled(Link)
                     to="/user/SomeUser"
           />
-          <styled.div>
-                    17469 days ago
-          </styled.div>
+          <Styled(Component)
+                    createdAt={0}
+          />
           <styled.div />
           <Styled(Link)
                     to="/storyDetails/story-id/comments/SomeId"
@@ -503,9 +503,9 @@ ShallowWrapper {
             <Styled(Link)
               to="/user/SomeUser"
 />,
-            <styled.div>
-              17469 days ago
-</styled.div>,
+            <Styled(Component)
+              createdAt={0}
+/>,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
@@ -560,10 +560,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": "17469 days ago",
+              "createdAt": 0,
             },
             "ref": null,
-            "rendered": "17469 days ago",
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -647,9 +647,9 @@ ShallowWrapper {
             <Styled(Link)
                         to="/user/SomeUser"
             />
-            <styled.div>
-                        17469 days ago
-            </styled.div>
+            <Styled(Component)
+                        createdAt={0}
+            />
             <styled.div />
             <Styled(Link)
                         to="/storyDetails/story-id/comments/SomeId"
@@ -692,9 +692,9 @@ ShallowWrapper {
               <Styled(Link)
                 to="/user/SomeUser"
 />,
-              <styled.div>
-                17469 days ago
-</styled.div>,
+              <Styled(Component)
+                createdAt={0}
+/>,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
@@ -749,10 +749,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": "17469 days ago",
+                "createdAt": 0,
               },
               "ref": null,
-              "rendered": "17469 days ago",
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -866,9 +866,9 @@ ShallowWrapper {
           <Styled(Link)
                     to="/user/SomeUser"
           />
-          <styled.div>
-                    17469 days ago
-          </styled.div>
+          <Styled(Component)
+                    createdAt={0}
+          />
           <styled.div />
           <Styled(Link)
                     to="/storyDetails/story-id/comments/SomeId"
@@ -911,9 +911,9 @@ ShallowWrapper {
             <Styled(Link)
               to="/user/SomeUser"
 />,
-            <styled.div>
-              17469 days ago
-</styled.div>,
+            <Styled(Component)
+              createdAt={0}
+/>,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
@@ -968,10 +968,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": "17469 days ago",
+              "createdAt": 0,
             },
             "ref": null,
-            "rendered": "17469 days ago",
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -1055,9 +1055,9 @@ ShallowWrapper {
             <Styled(Link)
                         to="/user/SomeUser"
             />
-            <styled.div>
-                        17469 days ago
-            </styled.div>
+            <Styled(Component)
+                        createdAt={0}
+            />
             <styled.div />
             <Styled(Link)
                         to="/storyDetails/story-id/comments/SomeId"
@@ -1100,9 +1100,9 @@ ShallowWrapper {
               <Styled(Link)
                 to="/user/SomeUser"
 />,
-              <styled.div>
-                17469 days ago
-</styled.div>,
+              <Styled(Component)
+                createdAt={0}
+/>,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
@@ -1157,10 +1157,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": "17469 days ago",
+                "createdAt": 0,
               },
               "ref": null,
-              "rendered": "17469 days ago",
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -1274,9 +1274,9 @@ ShallowWrapper {
           <Styled(Link)
                     to="/user/SomeUser"
           />
-          <styled.div>
-                    17469 days ago
-          </styled.div>
+          <Styled(Component)
+                    createdAt={0}
+          />
           <styled.div />
           <Styled(Link)
                     to="/storyDetails/story-id/comments/SomeId"
@@ -1319,9 +1319,9 @@ ShallowWrapper {
             <Styled(Link)
               to="/user/SomeUser"
 />,
-            <styled.div>
-              17469 days ago
-</styled.div>,
+            <Styled(Component)
+              createdAt={0}
+/>,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
@@ -1376,10 +1376,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": "17469 days ago",
+              "createdAt": 0,
             },
             "ref": null,
-            "rendered": "17469 days ago",
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -1463,9 +1463,9 @@ ShallowWrapper {
             <Styled(Link)
                         to="/user/SomeUser"
             />
-            <styled.div>
-                        17469 days ago
-            </styled.div>
+            <Styled(Component)
+                        createdAt={0}
+            />
             <styled.div />
             <Styled(Link)
                         to="/storyDetails/story-id/comments/SomeId"
@@ -1508,9 +1508,9 @@ ShallowWrapper {
               <Styled(Link)
                 to="/user/SomeUser"
 />,
-              <styled.div>
-                17469 days ago
-</styled.div>,
+              <Styled(Component)
+                createdAt={0}
+/>,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
@@ -1565,10 +1565,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": "17469 days ago",
+                "createdAt": 0,
               },
               "ref": null,
-              "rendered": "17469 days ago",
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -1682,9 +1682,9 @@ ShallowWrapper {
           <Styled(Link)
                     to="/user/SomeUser"
           />
-          <styled.div>
-                    17469 days ago
-          </styled.div>
+          <Styled(Component)
+                    createdAt={0}
+          />
           <styled.div />
           <Styled(Link)
                     to="/storyDetails/story-id/comments/SomeId"
@@ -1727,9 +1727,9 @@ ShallowWrapper {
             <Styled(Link)
               to="/user/SomeUser"
 />,
-            <styled.div>
-              17469 days ago
-</styled.div>,
+            <Styled(Component)
+              createdAt={0}
+/>,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
@@ -1784,10 +1784,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": "17469 days ago",
+              "createdAt": 0,
             },
             "ref": null,
-            "rendered": "17469 days ago",
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -1871,9 +1871,9 @@ ShallowWrapper {
             <Styled(Link)
                         to="/user/SomeUser"
             />
-            <styled.div>
-                        17469 days ago
-            </styled.div>
+            <Styled(Component)
+                        createdAt={0}
+            />
             <styled.div />
             <Styled(Link)
                         to="/storyDetails/story-id/comments/SomeId"
@@ -1916,9 +1916,9 @@ ShallowWrapper {
               <Styled(Link)
                 to="/user/SomeUser"
 />,
-              <styled.div>
-                17469 days ago
-</styled.div>,
+              <Styled(Component)
+                createdAt={0}
+/>,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
@@ -1973,10 +1973,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": "17469 days ago",
+                "createdAt": 0,
               },
               "ref": null,
-              "rendered": "17469 days ago",
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -2090,9 +2090,9 @@ ShallowWrapper {
           <Styled(Link)
                     to="/user/SomeUser"
           />
-          <styled.div>
-                    17469 days ago
-          </styled.div>
+          <Styled(Component)
+                    createdAt={0}
+          />
           <styled.div />
           <Styled(Link)
                     to="/storyDetails/story-id/comments/SomeId"
@@ -2135,9 +2135,9 @@ ShallowWrapper {
             <Styled(Link)
               to="/user/SomeUser"
 />,
-            <styled.div>
-              17469 days ago
-</styled.div>,
+            <Styled(Component)
+              createdAt={0}
+/>,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
@@ -2192,10 +2192,10 @@ ShallowWrapper {
             "key": null,
             "nodeType": "class",
             "props": Object {
-              "children": "17469 days ago",
+              "createdAt": 0,
             },
             "ref": null,
-            "rendered": "17469 days ago",
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -2279,9 +2279,9 @@ ShallowWrapper {
             <Styled(Link)
                         to="/user/SomeUser"
             />
-            <styled.div>
-                        17469 days ago
-            </styled.div>
+            <Styled(Component)
+                        createdAt={0}
+            />
             <styled.div />
             <Styled(Link)
                         to="/storyDetails/story-id/comments/SomeId"
@@ -2324,9 +2324,9 @@ ShallowWrapper {
               <Styled(Link)
                 to="/user/SomeUser"
 />,
-              <styled.div>
-                17469 days ago
-</styled.div>,
+              <Styled(Component)
+                createdAt={0}
+/>,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
@@ -2381,10 +2381,10 @@ ShallowWrapper {
               "key": null,
               "nodeType": "class",
               "props": Object {
-                "children": "17469 days ago",
+                "createdAt": 0,
               },
               "ref": null,
-              "rendered": "17469 days ago",
+              "rendered": null,
               "type": [Function],
             },
             Object {

@@ -10,7 +10,7 @@ import styled, { css } from 'styled-components'
 
 import Splitter from '../components/Splitter'
 import actions from '../actions/storiesActions'
-import timeAgo from '../helpers'
+import TimeAgo from '../components/TimeAgo'
 
 export const StoryText = styled.div`
   color: #000;
@@ -129,7 +129,7 @@ export const StoryInfo = props => {
           ' '
         ]
       ) : null}
-      {timeAgo(createdAt)}
+      <TimeAgo createdAt={createdAt} />
       {unvoteIsVisible && (
         <span>
           <Splitter />

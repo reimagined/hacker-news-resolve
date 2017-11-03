@@ -1,4 +1,9 @@
 export default `
+  type User {
+    id: ID!
+    name: String
+    createdAt: String
+  }
   type Story {
     id: ID!
     type: String!
@@ -23,16 +28,11 @@ export default `
     createdByName: String
     level: Int
   }
-  type User {
-    id: ID!
-    name: String
-    createdAt: String
-  }
   type Query {
-    comments(first: Int!, offset: Int): [Comment]
-    comment(id: ID!): Comment
+    user(id: ID, name: String): User
     stories(type: String, first: Int!, offset: Int): [Story]
     story(id: ID!): Story
-    user(id: ID, name: String): User
+    comments(first: Int!, offset: Int): [Comment]
+    comment(id: ID!): Comment
   }
 `

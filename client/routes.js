@@ -1,18 +1,18 @@
 import App from './containers/App'
 
+import Error from './components/Error'
 import Login from './components/Login'
 import UserById from './containers/UserById'
 
 import NewestByPage from './containers/NewestByPage'
 import ShowByPage from './containers/ShowByPage'
 import AskByPage from './containers/AskByPage'
-import Submit from './containers/Submit'
 import StoryDetails from './containers/StoryDetails'
+import Submit from './containers/Submit'
 
 import CommentsByPage from './containers/CommentsByPage'
 import CommentById from './containers/CommentById'
 
-import Error from './components/Error'
 import PageNotFound from './components/PageNotFound'
 
 const routes = [
@@ -21,12 +21,21 @@ const routes = [
     component: App,
     routes: [
       {
+        path: '/error',
+        component: Error
+      },
+      {
         path: '/login',
         component: Login
       },
       {
         path: '/user/:userId',
         component: UserById
+      },
+      {
+        path: '/',
+        component: NewestByPage,
+        exact: true
       },
       {
         path: '/newest/:page?',
@@ -55,15 +64,6 @@ const routes = [
       {
         path: '/comments/:page?',
         component: CommentsByPage
-      },
-      {
-        path: '/',
-        redirectTo: '/newest',
-        exact: true
-      },
-      {
-        path: '/error',
-        component: Error
       },
       {
         component: PageNotFound

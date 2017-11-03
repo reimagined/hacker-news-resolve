@@ -4,7 +4,7 @@ import sanitizer from 'sanitizer'
 import styled from 'styled-components'
 
 import Splitter from './Splitter'
-import timeAgo from '../helpers'
+import TimeAgo from './TimeAgo'
 
 const CommentRoot = styled.div`
   margin-bottom: 0.75em;
@@ -37,8 +37,7 @@ const StyledLink = styled(Link)`${linkStyles};`
 
 const StyledUserLink = styled(Link)`${linkStyles} font-weight: bold;`
 
-const Time = styled.div`
-  display: inline-block;
+const StyledTimeAgo = styled(TimeAgo)`
   vertical-align: middle;
   margin-left: 0.33em;
 `
@@ -82,7 +81,7 @@ class Comment extends React.PureComponent {
           <StyledUserLink to={`/user/${createdBy}`}>
             {createdByName}
           </StyledUserLink>
-          <Time>{timeAgo(createdAt)}</Time>
+          <StyledTimeAgo createdAt={createdAt} />
           <Splitter />
           <StyledLink to={`/storyDetails/${storyId}/comments/${id}`}>
             link

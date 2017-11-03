@@ -1,3 +1,4 @@
+import React from 'react'
 import plur from 'plur'
 
 const SECOND = 1000
@@ -5,7 +6,7 @@ const MINUTE = SECOND * 60
 const HOUR = MINUTE * 60
 const DAY = HOUR * 24
 
-export default createdAt => {
+const getMessage = createdAt => {
   const now = Date.now()
   const time = new Date(+createdAt).getTime()
 
@@ -24,3 +25,7 @@ export default createdAt => {
     return `${days} ${plur('day', days)} ago`
   }
 }
+
+export default ({ className, createdAt }) => (
+  <span className={className}>{getMessage(createdAt)}</span>
+)
