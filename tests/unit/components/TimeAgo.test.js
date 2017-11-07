@@ -11,7 +11,7 @@ const DAY = 24 * HOUR
 const originalNow = Date.now
 
 beforeAll(() => {
-  Date.now = () => new Date(2017, 10, 3).getTime()
+  Date.now = () => Date.UTC(2017, 10, 3)
 })
 
 afterAll(() => {
