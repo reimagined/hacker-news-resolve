@@ -17,21 +17,29 @@ export default {
     }
   },
 
-  userNotVoted: (state, userId) => {
-    if (state.voted.includes(userId)) {
-      throw new Error('User already voted')
+  itemIsNotInArray: (
+    array,
+    item,
+    errorMessage = 'Item is already in array'
+  ) => {
+    if (array.includes(item)) {
+      throw new Error(errorMessage)
     }
   },
 
-  userVoted: (state, userId) => {
-    if (!state.voted.includes(userId)) {
-      throw new Error('User did not vote')
+  itemIsInArray: (array, item, errorMessage = 'Item is not in array') => {
+    if (!array.includes(item)) {
+      throw new Error(errorMessage)
     }
   },
 
-  commentNotExists: (state, commentId) => {
-    if (state.comments[commentId]) {
-      throw new Error('Comment already exists')
+  keyIsNotInObject: (
+    object,
+    key,
+    errorMessage = 'Key is already in object'
+  ) => {
+    if (object[key]) {
+      throw new Error(errorMessage)
     }
   }
 }

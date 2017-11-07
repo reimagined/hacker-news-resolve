@@ -26,7 +26,7 @@ export default {
       state.push({
         id: commentId,
         text,
-        parentId: parentId,
+        parentId,
         storyId: aggregateId,
         createdAt: timestamp,
         createdBy: userId
