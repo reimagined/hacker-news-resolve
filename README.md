@@ -1527,9 +1527,11 @@ Note that the `/storyDetails/:storyId/comments/:commentId` path should be above 
 
 ### Page Not Found View
 
-Implement the [PageNotFound](./client/components/PageNotFound.js) component to display information that the opened page is not found.
+Implement the [PageNotFound](./client/components/PageNotFound.js) component to display a message indicating that the requested page was not found.
 
-Add the created container to [routes](./client/routes.js) at the end of the route list.
+Add the created container to the end of the route list.
+
+Add the created container to the end of the the route list in the [routes](./client/routes.js) file.
 
 ## Data Importer
 
