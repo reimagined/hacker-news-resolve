@@ -25,6 +25,13 @@ function getReplies(comments, commentIndex) {
 }
 
 export default {
+  user: async (read, { id, name }) => {
+    const root = await read('users')
+
+    return id
+      ? root.find(user => user.id === id)
+      : root.find(user => user.name === name)
+  },
   stories: async (read, { type, first, offset = 0 }) => {
     const root = await read('stories')
 
@@ -73,12 +80,5 @@ export default {
     const comments = root.slice(offset, offset + first).reverse()
 
     return withUserNames(comments, read)
-  },
-  user: async (read, { id, name }) => {
-    const root = await read('users')
-
-    return id
-      ? root.find(user => user.id === id)
-      : root.find(user => user.name === name)
   }
 }

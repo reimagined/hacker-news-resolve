@@ -41,7 +41,9 @@ ShallowWrapper {
 </styled.a>,
           " ",
         ],
-        "17469 days ago",
+        <Unknown
+          createdAt={1970-01-01T00:00:00.000Z}
+/>,
         <span>
           <styled.div />
           <styled.div
@@ -77,7 +79,17 @@ ShallowWrapper {
         "type": [Function],
       },
       " ",
-      "17469 days ago",
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "function",
+        "props": Object {
+          "createdAt": 1970-01-01T00:00:00.000Z,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
       Object {
         "instance": null,
         "key": null,
@@ -162,7 +174,9 @@ ShallowWrapper {
 </styled.a>,
             " ",
           ],
-          "17469 days ago",
+          <Unknown
+            createdAt={1970-01-01T00:00:00.000Z}
+/>,
           <span>
             <styled.div />
             <styled.div
@@ -198,7 +212,17 @@ ShallowWrapper {
           "type": [Function],
         },
         " ",
-        "17469 days ago",
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "function",
+          "props": Object {
+            "createdAt": 1970-01-01T00:00:00.000Z,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
         Object {
           "instance": null,
           "key": null,
@@ -303,7 +327,9 @@ ShallowWrapper {
       "children": Array [
         null,
         null,
-        "17469 days ago",
+        <Unknown
+          createdAt={1970-01-01T00:00:00.000Z}
+/>,
         <span>
           <styled.div />
           <styled.div
@@ -326,7 +352,17 @@ ShallowWrapper {
     "rendered": Array [
       null,
       null,
-      "17469 days ago",
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "function",
+        "props": Object {
+          "createdAt": 1970-01-01T00:00:00.000Z,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
       Object {
         "instance": null,
         "key": null,
@@ -403,7 +439,9 @@ ShallowWrapper {
         "children": Array [
           null,
           null,
-          "17469 days ago",
+          <Unknown
+            createdAt={1970-01-01T00:00:00.000Z}
+/>,
           <span>
             <styled.div />
             <styled.div
@@ -426,7 +464,17 @@ ShallowWrapper {
       "rendered": Array [
         null,
         null,
-        "17469 days ago",
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "function",
+          "props": Object {
+            "createdAt": 1970-01-01T00:00:00.000Z,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
         Object {
           "instance": null,
           "key": null,
