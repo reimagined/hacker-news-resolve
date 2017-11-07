@@ -706,15 +706,15 @@ export default {
     }
   },
 
-  userNotVoted: (state, userId) => {
-    if (state.voted.includes(userId)) {
-      throw new Error('User already voted')
+  itemIsNotInArray: (array, item, errorMessage = 'Item is already in array') => {
+    if (array.includes(item)) {
+      throw new Error(errorMessage)
     }
   },
 
-  userVoted: (state, userId) => {
-    if (!state.voted.includes(userId)) {
-      throw new Error('User did not vote')
+  itemIsInArray: (array, item, errorMessage = 'Item is not in array') => {
+    if (!array.includes(item)) {
+      throw new Error(errorMessage)
     }
   }
 }
@@ -766,7 +766,7 @@ export default {
       const { userId } = command.payload
 
       validate.fieldRequired(command.payload, 'userId')
-      validate.userNotVoted(state, userId)
+      validate.itemIsNotInArray(state.voted, userId, 'User already voted')
 
       const payload: StoryUpvotedPayload = { userId }
       return { type: STORY_UPVOTED, payload }
@@ -778,7 +778,7 @@ export default {
       const { userId } = command.payload
 
       validate.fieldRequired(command.payload, 'userId')
-      validate.userVoted(state, userId)
+      validate.itemIsInArray(state.voted, userId, 'User did not vote')
 
       const payload: StoryUnvotedPayload = { userId }
       return { type: STORY_UNVOTED, payload }
@@ -1113,9 +1113,9 @@ Extend [validation](./common/aggregates/validation.js) for commands.
 export default {
   // other validation functions
 
-  commentNotExists: (state, commentId) => {
-    if (state.comments[commentId]) {
-      throw new Error('Comment already exists')
+  keyIsNotInObject: (object, key, errorMessage = 'Key is already in object') => {
+    if (object[key]) {
+      throw new Error(errorMessage)
     }
   }
 }
@@ -1151,7 +1151,7 @@ export default {
       validate.fieldRequired(command.payload, 'userId')
       validate.fieldRequired(command.payload, 'parentId')
       validate.fieldRequired(command.payload, 'text')
-      validate.commentNotExists(state, commentId)
+      validate.keyIsNotInObject(state.comments, commentId, 'Comment already exists')
 
       const payload: StoryCommentedPayload = {
         commentId,
@@ -1528,8 +1528,6 @@ Note that the `/storyDetails/:storyId/comments/:commentId` path should be above 
 ### Page Not Found View
 
 Implement the [PageNotFound](./client/components/PageNotFound.js) component to display a message indicating that the requested page was not found.
-
-Add the created container to the end of the route list.
 
 Add the created container to the end of the the route list in the [routes](./client/routes.js) file.
 

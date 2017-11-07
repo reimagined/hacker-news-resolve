@@ -5,6 +5,7 @@ import {
   STORY_UNVOTED,
   STORY_COMMENTED
 } from '../events'
+
 import validate from './validation'
 
 export default {
@@ -29,7 +30,7 @@ export default {
       const { userId } = command.payload
 
       validate.fieldRequired(command.payload, 'userId')
-      validate.userNotVoted(state, userId)
+      validate.itemIsNotInArray(state.voted, userId, 'User already voted')
 
       const payload: StoryUpvotedPayload = { userId }
       return { type: STORY_UPVOTED, payload }
@@ -41,7 +42,7 @@ export default {
       const { userId } = command.payload
 
       validate.fieldRequired(command.payload, 'userId')
-      validate.userVoted(state, userId)
+      validate.itemIsInArray(state.voted, userId, 'User did not vote')
 
       const payload: StoryUnvotedPayload = { userId }
       return { type: STORY_UNVOTED, payload }
@@ -55,7 +56,11 @@ export default {
       validate.fieldRequired(command.payload, 'userId')
       validate.fieldRequired(command.payload, 'parentId')
       validate.fieldRequired(command.payload, 'text')
-      validate.commentNotExists(state, commentId)
+      validate.keyIsNotInObject(
+        state.comments,
+        commentId,
+        'Comment already exists'
+      )
 
       const payload: StoryCommentedPayload = {
         commentId,
@@ -63,6 +68,7 @@ export default {
         userId,
         text
       }
+
       return { type: STORY_COMMENTED, payload }
     }
   },
