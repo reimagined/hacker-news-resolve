@@ -41,7 +41,6 @@
   "private": true,
   "dependencies": {
     "body-parser": "^1.18.0",
-    "cross-env": "^5.1.1",
     "express": "^4.15.2",
     "isomorphic-fetch": "^2.2.1",
     "js-cookie": "^2.1.4",
@@ -67,6 +66,7 @@
     "uuid": "^3.1.0"
   },
   "devDependencies": {
+    "cross-env": "^5.1.1",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.2",
     "flow-bin": "^0.52.0",
