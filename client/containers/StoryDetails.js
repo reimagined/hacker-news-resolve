@@ -129,7 +129,11 @@ export default gqlConnector(
       }
     }
   `,
-  ({ match: { params: { storyId } } }) => ({
-    id: storyId
-  })
+  {
+    options: ({ match: { params: { storyId } } }) => ({
+      variables: {
+        id: storyId
+      }
+    })
+  }
 )(connect(mapStateToProps, mapDispatchToProps)(StoryDetails))
