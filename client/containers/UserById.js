@@ -50,7 +50,11 @@ export default gqlConnector(
       }
     }
   `,
-  ({ match: { params: { userId } } }) => ({
-    id: userId
-  })
+  {
+    options: ({ match: { params: { userId } } }) => ({
+      variables: {
+        id: userId
+      }
+    })
+  }
 )(UserById)

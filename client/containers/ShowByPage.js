@@ -54,8 +54,12 @@ export default gqlConnector(
       }
     }
   `,
-  ({ match: { params: { page } } }) => ({
-    first: ITEMS_PER_PAGE + 1,
-    offset: (+page - 1) * ITEMS_PER_PAGE
-  })
+  {
+    options: ({ match: { params: { page } } }) => ({
+      variables: {
+        first: ITEMS_PER_PAGE + 1,
+        offset: (+page - 1) * ITEMS_PER_PAGE
+      }
+    })
+  }
 )(connect(mapStateToProps, mapDispatchToProps)(ShowByPage))
