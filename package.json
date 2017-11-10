@@ -13,8 +13,8 @@
     "test:update": "jest -u",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watchAll",
-    "test:functional": "npm run build && testcafe chrome ./tests/functional --app \"IS_TEST=true npm run start\"",
-    "test:functional:debug": "npm run build && testcafe chrome ./tests/functional --app \"IS_TEST=true npm run start\" --inspect-brk --debug-mode",
+    "test:functional": "npm run build && cross-env IS_TEST=true testcafe chrome ./tests/functional --app \"npm run start\"",
+    "test:functional:debug": "npm run build && cross-env IS_TEST=true testcafe chrome ./tests/functional --app \"npm run start\" --inspect-brk --debug-mode",
     "lint-staged": "lint-staged"
   },
   "pre-commit": [
@@ -66,6 +66,7 @@
     "uuid": "^3.1.0"
   },
   "devDependencies": {
+    "cross-env": "^5.1.1",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.2",
     "flow-bin": "^0.52.0",
