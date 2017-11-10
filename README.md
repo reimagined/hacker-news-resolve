@@ -1,6 +1,7 @@
-# hacker-news-resolve &middot; [![Build Status](https://travis-ci.org/reimagined/hacker-news-resolve.svg?branch=master)](https://travis-ci.org/reimagined/hacker-news-resolve) [![Coverage Status](https://coveralls.io/repos/github/reimagined/hacker-news-resolve/badge.svg?branch=master)](https://coveralls.io/github/reimagined/hacker-news-resolve?branch=master)
+# hacker-news-resolve &middot; [![Build Status](https://travis-ci.org/reimagined/hacker-news-resolve.svg?branch=master)](https://travis-ci.org/reimagined/hacker-news-resolve) [![Coverage Status](https://coveralls.io/repos/github/reimagined/hacker-news-resolve/badge.svg?branch=master)](https://coveralls.io/github/reimagined/hacker-news-resolve?branch=master) [![Join the chat at https://gitter.im/reimagined/hacker-news-resolve](https://badges.gitter.im/reimagined/hacker-news-resolve.svg)](https://gitter.im/reimagined/hacker-news-resolve?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-[![Join the chat at https://gitter.im/reimagined/hacker-news-resolve](https://badges.gitter.im/reimagined/hacker-news-resolve.svg)](https://gitter.im/reimagined/hacker-news-resolve?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+
 A React & Redux & Resolve implementation of Hacker News
 
 [<img src="https://user-images.githubusercontent.com/5055654/31942409-d8d6cf98-b8cd-11e7-93f4-613acda010dc.png" height="100">](https://github.com/facebook/react)
@@ -623,7 +624,7 @@ npm install --save query-string
 
 Implement the [Error](./client/components/Error) component to display an error message.
 
-Add the created component to [routes](./client/routes.js) with the `/error` path. 
+Add the created component to [routes](./client/routes.js) with the `/error` path.
 
 ### Login View
 
@@ -701,7 +702,7 @@ This can be accomplished by adding the corresponding commands to the story aggre
 
 export default {
   // stateIsAbsent and fieldRequired implementation
-  
+
   stateExists: (state, type) => {
     if (!state || Object.keys(state).length === 0) {
       throw new Error(`${type} does not exist`)
@@ -1479,13 +1480,13 @@ export default {
   },
   comment: async (read, { id }) => {
     const root = await read('comments')
-    
+
     const commentIndex = root.findIndex(c => c.id === id)
-    
+
     if (commentIndex === -1) {
       return null
     }
-    
+
     const comment = root[commentIndex]
     const [resultComment] = await withUserNames([comment], read)
     const replies = getReplies(root, commentIndex)
@@ -1497,9 +1498,9 @@ export default {
   },
   comments: async (read, { first, offset = 0 }) => {
       const root = await read('comments')
-    
+
       const comments = root.slice(offset, offset + first).reverse()
-    
+
       return withUserNames(comments, read)
   }
 }
