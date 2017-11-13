@@ -32,7 +32,7 @@ export default {
       ? root.find(user => user.id === id)
       : root.find(user => user.name === name)
   },
-  me: async (read, _, { getJwt }) => {
+  me: (read, _, { getJwt }) => {
     try {
       return getJwt()
     } catch (e) {

@@ -299,4 +299,20 @@ describe('gql-resolvers', () => {
       }
     ])
   })
+
+  it('me with getJwt returned user', () => {
+    const user = { id: 'userId' }
+    const result = gqlResolvers.me(null, null, { getJwt: () => user })
+    expect(result).toEqual(user)
+  })
+
+  it('me with getJwt thrown error', () => {
+    const result = gqlResolvers.me(null, null, {
+      getJwt: () => {
+        throw new Error('User not found')
+      }
+    })
+
+    expect(result).toEqual(null)
+  })
 })
