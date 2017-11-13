@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { Redirect } from 'react-router-dom'
 import urlLib from 'url'
 import styled from 'styled-components'
+import { gqlConnector } from 'resolve-redux'
 
 import actions from '../actions/storiesActions'
 
@@ -65,7 +66,7 @@ export class Submit extends React.PureComponent {
     }
 
     return this.props.createStory({
-      userId: this.props.userId,
+      userId: this.props.data.me.id,
       title,
       text,
       link: url
@@ -77,7 +78,7 @@ export class Submit extends React.PureComponent {
       return <Redirect push to={`/storyDetails/${this.props.createdStoryId}`} />
     }
 
-    if (!this.props.userId) {
+    if (!this.props.data.me) {
       return <Redirect to="/login?redirect=/submit" />
     }
 
@@ -131,7 +132,6 @@ export class Submit extends React.PureComponent {
 }
 
 export const mapStateToProps = ({ user = {}, ui }) => ({
-  userId: user.id,
   storyCreation: ui.storyCreation,
   storyCreationError: ui.storyCreationError,
   createdStoryId: ui.createdStoryId
@@ -151,4 +151,12 @@ export const mapDispatchToProps = dispatch =>
     dispatch
   )
 
-export default connect(mapStateToProps, mapDispatchToProps)(Submit)
+export default gqlConnector(
+  `
+    query {
+      me {
+        id
+      }
+    }
+  `
+)(connect(mapStateToProps, mapDispatchToProps)(Submit))
