@@ -124,7 +124,11 @@ export default gqlConnector(
       }
     }
   `,
-  ({ match: { params: { commentId } } }) => ({
-    id: commentId
-  })
+  {
+    options: ({ match: { params: { commentId } } }) => ({
+      variables: {
+        id: commentId
+      }
+    })
+  }
 )(connect(mapStateToProps, mapDispatchToProps)(CommentById))
