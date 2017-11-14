@@ -65,7 +65,8 @@ export default gqlConnector(
       variables: {
         first: ITEMS_PER_PAGE + 1,
         offset: (+page - 1) * ITEMS_PER_PAGE
-      }
+      },
+      fetchPolicy: 'network-only'
     })
   }
 )(connect(mapStateToProps, mapDispatchToProps)(NewestByPage))
