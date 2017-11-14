@@ -5,6 +5,13 @@ import {
   STORY_UNVOTED,
   STORY_COMMENTED
 } from '../../../events'
+import type {
+  Event,
+  StoryCreated,
+  StoryCommented,
+  StoryUnvoted,
+  StoryUpvoted
+} from '../../../../flow-types/events'
 
 type UserId = string
 
@@ -38,14 +45,12 @@ export default {
   projection: {
     [STORY_CREATED]: (
       state: StoriesState,
-      event: StoryCreated
-    ): StoriesState => {
-      const {
+      {
         aggregateId,
         timestamp,
         payload: { title, link, userId, text }
-      } = event
-
+      }: Event<StoryCreated>
+    ): StoriesState => {
       const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
 
       state.push({
@@ -65,10 +70,8 @@ export default {
 
     [STORY_UPVOTED]: (
       state: StoriesState,
-      event: StoryUpvoted
+      { aggregateId, payload: { userId } }: Event<StoryUpvoted>
     ): StoriesState => {
-      const { aggregateId, payload: { userId } } = event
-
       const index = state.findIndex(({ id }) => id === aggregateId)
 
       if (index < 0) {
@@ -81,10 +84,8 @@ export default {
 
     [STORY_UNVOTED]: (
       state: StoriesState,
-      event: StoryUnvoted
+      { aggregateId, payload: { userId } }: Event<StoryUnvoted>
     ): StoriesState => {
-      const { aggregateId, payload: { userId } } = event
-
       const index = state.findIndex(({ id }) => id === aggregateId)
 
       if (index < 0) {
@@ -97,14 +98,12 @@ export default {
 
     [STORY_COMMENTED]: (
       state: StoriesState,
-      event: StoryCommented
-    ): StoriesState => {
-      const {
+      {
         aggregateId,
         timestamp,
         payload: { parentId, userId, commentId, text }
-      } = event
-
+      }: Event<StoryCommented>
+    ): StoriesState => {
       const story = state.find(({ id }) => id === aggregateId)
 
       if (!story) {

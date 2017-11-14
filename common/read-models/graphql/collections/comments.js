@@ -1,5 +1,6 @@
 // @flow
 import { STORY_COMMENTED } from '../../../events'
+import type { Event, StoryCommented } from '../../../../flow-types/events'
 
 type Comment = {
   id: string,
@@ -16,13 +17,14 @@ export default {
   name: 'comments',
   initialState: [],
   projection: {
-    [STORY_COMMENTED]: (state: CommentsState, event: StoryCommented) => {
-      const {
+    [STORY_COMMENTED]: (
+      state: CommentsState,
+      {
         aggregateId,
         timestamp,
         payload: { parentId, userId, commentId, text }
-      } = event
-
+      }: Event<StoryCommented>
+    ) => {
       state.push({
         id: commentId,
         text,

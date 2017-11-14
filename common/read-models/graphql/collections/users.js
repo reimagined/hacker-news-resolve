@@ -1,5 +1,6 @@
 // @flow
 import { USER_CREATED } from '../../../events'
+import type { Event, UserCreated } from '../../../../flow-types/events'
 
 type User = {
   id: string,
@@ -13,9 +14,10 @@ export default {
   name: 'users',
   initialState: [],
   projection: {
-    [USER_CREATED]: (state: UsersState, event: UserCreated): UsersState => {
-      const { aggregateId, timestamp, payload: { name } } = event
-
+    [USER_CREATED]: (
+      state: UsersState,
+      { aggregateId, timestamp, payload: { name } }: Event<UserCreated>
+    ): UsersState => {
       state.push({
         id: aggregateId,
         name,
