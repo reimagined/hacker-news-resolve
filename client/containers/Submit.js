@@ -78,7 +78,7 @@ export class Submit extends React.PureComponent {
       return <Redirect push to={`/storyDetails/${this.props.createdStoryId}`} />
     }
 
-    if (!this.props.data.me) {
+    if (!this.props.data.loading && !this.props.data.me) {
       return <Redirect to="/login?redirect=/submit" />
     }
 

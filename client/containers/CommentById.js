@@ -15,42 +15,31 @@ const Reply = styled.div`
 `
 
 export class CommentById extends React.PureComponent {
-  componentDidUpdate = () => {
-    const { refetchStory, onRefetched, data: { refetch } } = this.props
-
-    if (refetchStory) {
-      refetch()
-      onRefetched()
-    }
-  }
-
   saveComment = () => {
     const {
       match: { params: { storyId } },
-      data: { comment },
-      userId
+      data: { comment, me, refetch }
     } = this.props
 
     this.props.commentStory({
       storyId,
       parentId: comment.id,
       text: this.textarea.value,
-      userId
+      userId: me.id
     })
 
     this.textarea.value = ''
+    refetch()
   }
 
   render() {
-    const {
-      match: { params: { storyId } },
-      data: { comment },
-      loggedIn
-    } = this.props
+    const { match: { params: { storyId } }, data: { comment, me } } = this.props
 
     if (!comment) {
       return null
     }
+
+    const loggedIn = !!me
 
     return (
       <Comment storyId={storyId} level={0} {...comment}>
@@ -90,17 +79,12 @@ const mapDispatchToProps = dispatch =>
           parentId,
           userId,
           text
-        }),
-      onRefetched: () => ({
-        type: 'STORY_REFETCHED'
-      })
+        })
     },
     dispatch
   )
 
-const mapStateToProps = ({ user, ui: { refetchStory } }) => ({
-  userId: user.id,
-  loggedIn: !!user.id,
+const mapStateToProps = ({ ui: { refetchStory } }) => ({
   refetchStory
 })
 
@@ -121,6 +105,9 @@ export default gqlConnector(
     query($id: ID!) {
       comment(id: $id) {
         ...CommentWithReplies
+      }
+      me {
+        id
       }
     }
   `,

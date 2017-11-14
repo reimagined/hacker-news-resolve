@@ -28,7 +28,7 @@ export class StoryDetails extends React.PureComponent {
     this.props.commentStory({
       text: this.state.text,
       parentId: this.props.data.story.id,
-      userId: this.props.userId
+      userId: this.props.data.me.id
     })
     this.setState({ text: '' })
   }
@@ -48,7 +48,8 @@ export class StoryDetails extends React.PureComponent {
   }
 
   render() {
-    const { data: { story }, loggedIn } = this.props
+    const { data: { story, me } } = this.props
+    const loggedIn = !!me
 
     if (!story) {
       return null
@@ -81,9 +82,7 @@ export class StoryDetails extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = ({ user, ui: { refetchStory } }) => ({
-  userId: user.id,
-  loggedIn: !!user.id,
+export const mapStateToProps = ({ ui: { refetchStory } }) => ({
   refetchStory
 })
 
@@ -126,6 +125,9 @@ export default gqlConnector(
         createdAt
         createdBy
         createdByName
+      }
+      me {
+        id
       }
     }
   `,
