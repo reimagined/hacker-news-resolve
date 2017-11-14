@@ -1,24 +1,24 @@
 // @flow
 import { USER_CREATED } from '../events'
 import validate from './validation'
+import type { Event, RawEvent, UserCreated } from '../../flow-types/events'
 
 export default {
   name: 'user',
   initialState: {},
   commands: {
-    createUser: (state: any, command: any) => {
+    createUser: (state: any, command: any): RawEvent<UserCreated> => {
       validate.stateIsAbsent(state, 'User')
 
       const { name } = command.payload
 
       validate.fieldRequired(command.payload, 'name')
 
-      const payload: UserCreatedPayload = { name }
-      return { type: USER_CREATED, payload }
+      return { type: USER_CREATED, payload: { name } }
     }
   },
   projection: {
-    [USER_CREATED]: (state, { timestamp }) => ({
+    [USER_CREATED]: (state, { timestamp }: Event<UserCreated>) => ({
       ...state,
       createdAt: timestamp
     })
