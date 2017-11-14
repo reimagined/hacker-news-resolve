@@ -16,10 +16,7 @@ const Reply = styled.div`
 
 export class CommentById extends React.PureComponent {
   saveComment = () => {
-    const {
-      match: { params: { storyId } },
-      data: { comment, me, refetch }
-    } = this.props
+    const { match: { params: { storyId } }, data: { comment, me } } = this.props
 
     this.props.commentStory({
       storyId,
@@ -28,8 +25,27 @@ export class CommentById extends React.PureComponent {
       userId: me.id
     })
 
-    this.textarea.value = ''
-    refetch()
+    this.textarea.disabled = true
+    this.submit.disabled = true
+  }
+
+  componentWillReceiveProps = nextProps => {
+    if (nextProps.lastCommentedStory === this.props.lastCommentedStory) {
+      return
+    }
+
+    const { data: { me, refetch }, match: { params: { storyId } } } = this.props
+
+    if (
+      nextProps.lastCommentedStory.id === storyId &&
+      nextProps.lastCommentedStory.userId === me.id
+    ) {
+      refetch()
+
+      this.textarea.disabled = false
+      this.submit.disabled = false
+      this.textarea.value = ''
+    }
   }
 
   render() {
@@ -56,7 +72,12 @@ export class CommentById extends React.PureComponent {
               cols="70"
             />
             <div>
-              <button onClick={this.saveComment}>reply</button>
+              <button
+                ref={element => (this.submit = element)}
+                onClick={this.saveComment}
+              >
+                reply
+              </button>
             </div>
           </Reply>
         ) : null}
@@ -84,8 +105,8 @@ const mapDispatchToProps = dispatch =>
     dispatch
   )
 
-const mapStateToProps = ({ ui: { refetchStory } }) => ({
-  refetchStory
+const mapStateToProps = ({ ui: { lastCommentedStory } }) => ({
+  lastCommentedStory
 })
 
 export default gqlConnector(

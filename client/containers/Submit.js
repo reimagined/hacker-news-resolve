@@ -49,7 +49,23 @@ export class Submit extends React.PureComponent {
   state = {
     title: '',
     url: '',
-    text: ''
+    text: '',
+    createdStoryId: null
+  }
+
+  componentWillReceiveProps = nextProps => {
+    if (
+      !this.props.storyCreation ||
+      nextProps.lastCreatedStory === this.props.lastCreatedStory
+    ) {
+      return
+    }
+
+    if (nextProps.lastCreatedStory.userId === this.props.data.me.id) {
+      this.setState({
+        createdStoryId: nextProps.lastCreatedStory.id
+      })
+    }
   }
 
   handleChange = (event, name) => this.setState({ [name]: event.target.value })
@@ -74,12 +90,12 @@ export class Submit extends React.PureComponent {
   }
 
   render() {
-    if (this.props.createdStoryId) {
-      return <Redirect push to={`/storyDetails/${this.props.createdStoryId}`} />
-    }
-
     if (!this.props.data.loading && !this.props.data.me) {
       return <Redirect to="/login?redirect=/submit" />
+    }
+
+    if (this.state.createdStoryId) {
+      return <Redirect push to={`/storyDetails/${this.state.createdStoryId}`} />
     }
 
     return (
@@ -131,10 +147,13 @@ export class Submit extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = ({ user = {}, ui }) => ({
-  storyCreation: ui.storyCreation,
-  storyCreationError: ui.storyCreationError,
-  createdStoryId: ui.createdStoryId
+export const mapStateToProps = ({
+  user = {},
+  ui: { storyCreation, storyCreationError, lastCreatedStory }
+}) => ({
+  storyCreation,
+  storyCreationError,
+  lastCreatedStory
 })
 
 export const mapDispatchToProps = dispatch =>
@@ -158,5 +177,8 @@ export default gqlConnector(
         id
       }
     }
-  `
+  `,
+  {
+    options: { fetchPolicy: 'network-only' }
+  }
 )(connect(mapStateToProps, mapDispatchToProps)(Submit))

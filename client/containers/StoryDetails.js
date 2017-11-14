@@ -20,30 +20,33 @@ const Reply = styled.div`
 `
 
 export class StoryDetails extends React.PureComponent {
-  state = {
-    text: ''
-  }
-
   saveComment = () => {
     this.props.commentStory({
-      text: this.state.text,
+      text: this.textarea.value,
       parentId: this.props.data.story.id,
       userId: this.props.data.me.id
     })
-    this.setState({ text: '' })
+
+    this.textarea.disabled = true
+    this.submit.disabled = true
   }
 
-  onChangeText = event =>
-    this.setState({
-      text: event.target.value
-    })
+  componentWillReceiveProps = nextProps => {
+    if (nextProps.lastCommentedStory === this.props.lastCommentedStory) {
+      return
+    }
 
-  componentDidUpdate = () => {
-    const { refetchStory, onRefetched, data: { refetch } } = this.props
+    const { data: { me, refetch }, match: { params: { storyId } } } = this.props
 
-    if (refetchStory) {
+    if (
+      nextProps.lastCommentedStory.id === storyId &&
+      nextProps.lastCommentedStory.userId === me.id
+    ) {
       refetch()
-      onRefetched()
+
+      this.textarea.disabled = false
+      this.submit.disabled = false
+      this.textarea.value = ''
     }
   }
 
@@ -61,14 +64,18 @@ export class StoryDetails extends React.PureComponent {
         {loggedIn ? (
           <Reply>
             <textarea
+              ref={element => (this.textarea = element)}
               name="text"
               rows="6"
               cols="70"
-              value={this.state.text}
-              onChange={this.onChangeText}
             />
             <div>
-              <button onClick={this.saveComment}>add comment</button>
+              <button
+                ref={element => (this.submit = element)}
+                onClick={this.saveComment}
+              >
+                add comment
+              </button>
             </div>
           </Reply>
         ) : null}
@@ -82,8 +89,8 @@ export class StoryDetails extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = ({ ui: { refetchStory } }) => ({
-  refetchStory
+export const mapStateToProps = ({ ui: { lastCommentedStory } }) => ({
+  lastCommentedStory
 })
 
 export const mapDispatchToProps = dispatch =>
@@ -95,10 +102,7 @@ export const mapDispatchToProps = dispatch =>
           parentId,
           userId,
           commentId: uuid.v4()
-        }),
-      onRefetched: () => ({
-        type: 'STORY_REFETCHED'
-      })
+        })
     },
     dispatch
   )
