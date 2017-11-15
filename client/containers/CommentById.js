@@ -15,42 +15,47 @@ const Reply = styled.div`
 `
 
 export class CommentById extends React.PureComponent {
-  componentDidUpdate = () => {
-    const { refetchStory, onRefetched, data: { refetch } } = this.props
-
-    if (refetchStory) {
-      refetch()
-      onRefetched()
-    }
-  }
-
   saveComment = () => {
-    const {
-      match: { params: { storyId } },
-      data: { comment },
-      userId
-    } = this.props
+    const { match: { params: { storyId } }, data: { comment, me } } = this.props
 
     this.props.commentStory({
       storyId,
       parentId: comment.id,
       text: this.textarea.value,
-      userId
+      userId: me.id
     })
 
-    this.textarea.value = ''
+    this.textarea.disabled = true
+    this.submit.disabled = true
+  }
+
+  componentWillReceiveProps = nextProps => {
+    if (nextProps.lastCommentedStory === this.props.lastCommentedStory) {
+      return
+    }
+
+    const { data: { me, refetch }, match: { params: { storyId } } } = this.props
+
+    if (
+      nextProps.lastCommentedStory.id === storyId &&
+      nextProps.lastCommentedStory.userId === me.id
+    ) {
+      refetch()
+
+      this.textarea.disabled = false
+      this.submit.disabled = false
+      this.textarea.value = ''
+    }
   }
 
   render() {
-    const {
-      match: { params: { storyId } },
-      data: { comment },
-      loggedIn
-    } = this.props
+    const { match: { params: { storyId } }, data: { comment, me } } = this.props
 
     if (!comment) {
       return null
     }
+
+    const loggedIn = !!me
 
     return (
       <Comment storyId={storyId} level={0} {...comment}>
@@ -67,7 +72,12 @@ export class CommentById extends React.PureComponent {
               cols="70"
             />
             <div>
-              <button onClick={this.saveComment}>reply</button>
+              <button
+                ref={element => (this.submit = element)}
+                onClick={this.saveComment}
+              >
+                reply
+              </button>
             </div>
           </Reply>
         ) : null}
@@ -90,18 +100,13 @@ const mapDispatchToProps = dispatch =>
           parentId,
           userId,
           text
-        }),
-      onRefetched: () => ({
-        type: 'STORY_REFETCHED'
-      })
+        })
     },
     dispatch
   )
 
-const mapStateToProps = ({ user, ui: { refetchStory } }) => ({
-  userId: user.id,
-  loggedIn: !!user.id,
-  refetchStory
+const mapStateToProps = ({ ui: { lastCommentedStory } }) => ({
+  lastCommentedStory
 })
 
 export default gqlConnector(
@@ -121,6 +126,9 @@ export default gqlConnector(
     query($id: ID!) {
       comment(id: $id) {
         ...CommentWithReplies
+      }
+      me {
+        id
       }
     }
   `,

@@ -5,43 +5,23 @@ import { gqlConnector } from 'resolve-redux'
 import Stories from '../components/Stories'
 import { ITEMS_PER_PAGE } from '../constants'
 
-class NewestByPage extends React.PureComponent {
-  componentDidUpdate = () => {
-    const { refetchStories, onRefetched, data: { refetch } } = this.props
+const NewestByPage = ({
+  match: { params: { page } },
+  data: { stories = [], me, refetch },
+  lastVotedStory
+}) => (
+  <Stories
+    refetch={refetch}
+    items={stories}
+    page={page || '1'}
+    type="newest"
+    userId={me && me.id}
+    lastVotedStory={lastVotedStory}
+  />
+)
 
-    if (refetchStories.newest) {
-      refetch()
-      onRefetched()
-    }
-  }
-
-  render() {
-    const {
-      match: { params: { page } },
-      data: { stories = [], refetch }
-    } = this.props
-
-    return (
-      <Stories
-        refetch={refetch}
-        items={stories}
-        page={page || '1'}
-        type="newest"
-      />
-    )
-  }
-}
-
-const mapStateToProps = ({ ui: { refetchStories } }) => ({
-  refetchStories
-})
-
-const mapDispatchToProps = dispatch => ({
-  onRefetched: () =>
-    dispatch({
-      type: 'STORIES_REFETCHED',
-      page: 'newest'
-    })
+const mapStateToProps = ({ ui: { lastVotedStory } }) => ({
+  lastVotedStory
 })
 
 export default gqlConnector(
@@ -58,6 +38,9 @@ export default gqlConnector(
         createdBy
         createdByName
       }
+      me {
+        id
+      }
     }
   `,
   {
@@ -65,7 +48,8 @@ export default gqlConnector(
       variables: {
         first: ITEMS_PER_PAGE + 1,
         offset: (+page - 1) * ITEMS_PER_PAGE
-      }
+      },
+      fetchPolicy: 'network-only'
     })
   }
-)(connect(mapStateToProps, mapDispatchToProps)(NewestByPage))
+)(connect(mapStateToProps)(NewestByPage))

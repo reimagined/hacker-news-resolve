@@ -46,11 +46,11 @@ ShallowWrapper {
 />,
         <span>
           <styled.div />
-          <styled.div
+          <styled.span
                     onClick={undefined}
           >
                     unvote
-          </styled.div>
+          </styled.span>
            
 </span>,
         <styled.div />,
@@ -97,11 +97,11 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <styled.div />,
-            <styled.div
+            <styled.span
               onClick={undefined}
 >
               unvote
-</styled.div>,
+</styled.span>,
             " ",
           ],
         },
@@ -179,11 +179,11 @@ ShallowWrapper {
 />,
           <span>
             <styled.div />
-            <styled.div
+            <styled.span
                         onClick={undefined}
             >
                         unvote
-            </styled.div>
+            </styled.span>
              
 </span>,
           <styled.div />,
@@ -230,11 +230,11 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <styled.div />,
-              <styled.div
+              <styled.span
                 onClick={undefined}
 >
                 unvote
-</styled.div>,
+</styled.span>,
               " ",
             ],
           },
@@ -332,11 +332,11 @@ ShallowWrapper {
 />,
         <span>
           <styled.div />
-          <styled.div
+          <styled.span
                     onClick={undefined}
           >
                     unvote
-          </styled.div>
+          </styled.span>
            
 </span>,
         <styled.div />,
@@ -370,11 +370,11 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <styled.div />,
-            <styled.div
+            <styled.span
               onClick={undefined}
 >
               unvote
-</styled.div>,
+</styled.span>,
             " ",
           ],
         },
@@ -444,11 +444,11 @@ ShallowWrapper {
 />,
           <span>
             <styled.div />
-            <styled.div
+            <styled.span
                         onClick={undefined}
             >
                         unvote
-            </styled.div>
+            </styled.span>
              
 </span>,
           <styled.div />,
@@ -482,11 +482,11 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <styled.div />,
-              <styled.div
+              <styled.span
                 onClick={undefined}
 >
                 unvote
-</styled.div>,
+</styled.span>,
               " ",
             ],
           },
@@ -1164,7 +1164,7 @@ ShallowWrapper {
       "children": Array [
         <Title
           link="https://google.com"
-          loggedIn={true}
+          loggedIn={false}
           title="Google"
           upvoteStory={[Function]}
           voted={0}
@@ -1175,7 +1175,7 @@ ShallowWrapper {
           createdBy="user-id"
           createdByName="user"
           id="story-id"
-          loggedIn={true}
+          loggedIn={false}
           unvoteStory={[Function]}
           voted={0}
           votes={Array []}
@@ -1191,7 +1191,7 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "link": "https://google.com",
-          "loggedIn": true,
+          "loggedIn": false,
           "title": "Google",
           "upvoteStory": [Function],
           "voted": 0,
@@ -1210,7 +1210,7 @@ ShallowWrapper {
           "createdBy": "user-id",
           "createdByName": "user",
           "id": "story-id",
-          "loggedIn": true,
+          "loggedIn": false,
           "unvoteStory": [Function],
           "voted": 0,
           "votes": Array [],
@@ -1232,7 +1232,7 @@ ShallowWrapper {
         "children": Array [
           <Title
             link="https://google.com"
-            loggedIn={true}
+            loggedIn={false}
             title="Google"
             upvoteStory={[Function]}
             voted={0}
@@ -1243,7 +1243,7 @@ ShallowWrapper {
             createdBy="user-id"
             createdByName="user"
             id="story-id"
-            loggedIn={true}
+            loggedIn={false}
             unvoteStory={[Function]}
             voted={0}
             votes={Array []}
@@ -1259,7 +1259,7 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "link": "https://google.com",
-            "loggedIn": true,
+            "loggedIn": false,
             "title": "Google",
             "upvoteStory": [Function],
             "voted": 0,
@@ -1278,7 +1278,7 @@ ShallowWrapper {
             "createdBy": "user-id",
             "createdByName": "user",
             "id": "story-id",
-            "loggedIn": true,
+            "loggedIn": false,
             "unvoteStory": [Function],
             "voted": 0,
             "votes": Array [],

@@ -8,7 +8,6 @@ import * as events from './common/events'
 import readModels from './common/read-models'
 
 import extendExpress from './server/extendExpress'
-import initialState from './server/initialState'
 
 import {
   authenticationSecret,
@@ -30,7 +29,6 @@ export default {
     adapter: storageAdapter,
     params: storageAdapterParams
   },
-  initialState,
   aggregates,
   initialSubscribedEvents: {
     types: eventTypes,

@@ -6,11 +6,10 @@ import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router'
 import styled from 'styled-components'
 
-import BaseSplitter from '../components/Splitter'
+import Splitter from '../components/Splitter'
+import LoginInfo from './LoginInfo'
 import * as userActions from '../actions/userActions'
 import * as uiActions from '../actions/uiActions'
-
-const Splitter = () => <BaseSplitter color="#fff" />
 
 const ContentRoot = styled.div`
   width: 90%;
@@ -74,8 +73,6 @@ const FooterLink = styled.a`
   text-decoration: underline;
 `
 
-const PageAuth = styled.div`float: right;`
-
 export class App extends React.PureComponent {
   componentDidMount() {
     this.props.history.listen(({ pathname }) => {
@@ -86,7 +83,7 @@ export class App extends React.PureComponent {
   }
 
   render() {
-    const { children, user, loggedIn, logout } = this.props
+    const { children, logout } = this.props
 
     return (
       <div>
@@ -117,27 +114,15 @@ export class App extends React.PureComponent {
               <PageTitle>reSolve HN</PageTitle>
             </Link>{' '}
             <Link to="/newest">new</Link>
-            <Splitter />
+            <Splitter color="white" />
             <Link to="/comments">comments</Link>
-            <Splitter />
+            <Splitter color="white" />
             <Link to="/show">show</Link>
-            <Splitter />
+            <Splitter color="white" />
             <Link to="/ask">ask</Link>
-            <Splitter />
+            <Splitter color="white" />
             <Link to="/submit">submit</Link>
-            <PageAuth>
-              {loggedIn ? (
-                <div>
-                  <Link to={`/user/${user.id}`}>{user.name}</Link>
-                  <Splitter />
-                  <Link to="/" onClick={logout}>
-                    logout
-                  </Link>
-                </div>
-              ) : (
-                <Link to="/login">login</Link>
-              )}
-            </PageAuth>
+            <LoginInfo logout={logout} />
           </PageHeader>
           <Content>{children}</Content>
           <Footer>

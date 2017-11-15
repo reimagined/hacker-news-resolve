@@ -32,6 +32,13 @@ export default {
       ? root.find(user => user.id === id)
       : root.find(user => user.name === name)
   },
+  me: (read, _, { getJwt }) => {
+    try {
+      return getJwt()
+    } catch (e) {
+      return null
+    }
+  },
   stories: async (read, { type, first, offset = 0 }) => {
     const root = await read('stories')
 

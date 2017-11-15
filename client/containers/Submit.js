@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { Redirect } from 'react-router-dom'
 import urlLib from 'url'
 import styled from 'styled-components'
+import { gqlConnector } from 'resolve-redux'
 
 import actions from '../actions/storiesActions'
 
@@ -48,7 +49,23 @@ export class Submit extends React.PureComponent {
   state = {
     title: '',
     url: '',
-    text: ''
+    text: '',
+    createdStoryId: null
+  }
+
+  componentWillReceiveProps = nextProps => {
+    if (
+      !this.props.storyCreation ||
+      nextProps.lastCreatedStory === this.props.lastCreatedStory
+    ) {
+      return
+    }
+
+    if (nextProps.lastCreatedStory.userId === this.props.data.me.id) {
+      this.setState({
+        createdStoryId: nextProps.lastCreatedStory.id
+      })
+    }
   }
 
   handleChange = (event, name) => this.setState({ [name]: event.target.value })
@@ -65,7 +82,7 @@ export class Submit extends React.PureComponent {
     }
 
     return this.props.createStory({
-      userId: this.props.userId,
+      userId: this.props.data.me.id,
       title,
       text,
       link: url
@@ -73,12 +90,12 @@ export class Submit extends React.PureComponent {
   }
 
   render() {
-    if (this.props.createdStoryId) {
-      return <Redirect push to={`/storyDetails/${this.props.createdStoryId}`} />
+    if (!this.props.data.loading && !this.props.data.me) {
+      return <Redirect to="/login?redirect=/submit" />
     }
 
-    if (!this.props.userId) {
-      return <Redirect to="/login?redirect=/submit" />
+    if (this.state.createdStoryId) {
+      return <Redirect push to={`/storyDetails/${this.state.createdStoryId}`} />
     }
 
     return (
@@ -130,11 +147,13 @@ export class Submit extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = ({ user = {}, ui }) => ({
-  userId: user.id,
-  storyCreation: ui.storyCreation,
-  storyCreationError: ui.storyCreationError,
-  createdStoryId: ui.createdStoryId
+export const mapStateToProps = ({
+  user = {},
+  ui: { storyCreation, storyCreationError, lastCreatedStory }
+}) => ({
+  storyCreation,
+  storyCreationError,
+  lastCreatedStory
 })
 
 export const mapDispatchToProps = dispatch =>
@@ -151,4 +170,15 @@ export const mapDispatchToProps = dispatch =>
     dispatch
   )
 
-export default connect(mapStateToProps, mapDispatchToProps)(Submit)
+export default gqlConnector(
+  `
+    query {
+      me {
+        id
+      }
+    }
+  `,
+  {
+    options: { fetchPolicy: 'network-only' }
+  }
+)(connect(mapStateToProps, mapDispatchToProps)(Submit))

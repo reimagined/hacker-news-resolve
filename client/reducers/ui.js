@@ -13,7 +13,10 @@ export default (
     createdStoryId: null,
     storyCreationError: null,
     updateList: [],
-    userId: null
+    userId: null,
+    lastVotedStory: {},
+    lastCreatedStory: {},
+    lastCommentedStory: {}
   }),
   action
 ) => {
@@ -52,34 +55,23 @@ export default (
       }
     }
     case 'StoryCreated': {
-      const index = shouldBeUpdated(state, action)
-      if (index >= 0) {
-        return state
-          .update('updateList', items => items.filter((_, i) => i !== index))
-          .merge({
-            storyCreation: false,
-            createdStoryId: action.aggregateId,
-            storyCreationError: null,
-            refetchStories: {
-              newest: true,
-              show: true,
-              ask: true
-            }
-          })
-      }
-
-      return state
+      return state.set('lastCreatedStory', {
+        ...action.payload,
+        id: action.aggregateId
+      })
     }
     case 'StoryUpvoted':
-    case 'StoryUnvoted':
+    case 'StoryUnvoted': {
+      return state.set('lastVotedStory', {
+        ...action.payload,
+        id: action.aggregateId
+      })
+    }
     case 'StoryCommented': {
-      const index = shouldBeUpdated(state, action)
-      if (index >= 0) {
-        return state
-          .update('updateList', items => items.filter((_, i) => i !== index))
-          .set('refetchStory', true)
-      }
-      return state
+      return state.set('lastCommentedStory', {
+        ...action.payload,
+        id: action.aggregateId
+      })
     }
     case 'SUBMIT_VIEW_SHOWN': {
       return state.merge({

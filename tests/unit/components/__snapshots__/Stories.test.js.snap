@@ -54,6 +54,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
 </ol>,
@@ -88,6 +89,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
           ],
@@ -115,6 +117,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -135,6 +138,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -187,6 +191,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
 </ol>,
@@ -221,6 +226,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
             ],
@@ -248,6 +254,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -268,6 +275,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -951,6 +959,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -969,6 +978,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -987,6 +997,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -1005,6 +1016,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -1023,6 +1035,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -1041,6 +1054,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -1059,6 +1073,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -1077,6 +1092,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -1095,6 +1111,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -1113,6 +1130,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -1131,6 +1149,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -1149,6 +1168,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -1167,6 +1187,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -1185,6 +1206,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -1203,6 +1225,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -1221,6 +1244,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -1239,6 +1263,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -1257,6 +1282,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -1275,6 +1301,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
           <styled.li>
@@ -1293,6 +1320,7 @@ ShallowWrapper {
                                                   "votes": Array [],
                                                 }
                               }
+                              userId={undefined}
                     />
           </styled.li>
 </ol>,
@@ -1327,6 +1355,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1345,6 +1374,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1363,6 +1393,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1381,6 +1412,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1399,6 +1431,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1417,6 +1450,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1435,6 +1469,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1453,6 +1488,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1471,6 +1507,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1489,6 +1526,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1507,6 +1545,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1525,6 +1564,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1543,6 +1583,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1561,6 +1602,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1579,6 +1621,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1597,6 +1640,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1615,6 +1659,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1633,6 +1678,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1651,6 +1697,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
             <styled.li>
@@ -1669,6 +1716,7 @@ ShallowWrapper {
                                                         "votes": Array [],
                                                       }
                             }
+                            userId={undefined}
               />
 </styled.li>,
           ],
@@ -1696,6 +1744,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -1716,6 +1765,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -1743,6 +1793,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -1763,6 +1814,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -1790,6 +1842,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -1810,6 +1863,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -1837,6 +1891,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -1857,6 +1912,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -1884,6 +1940,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -1904,6 +1961,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -1931,6 +1989,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -1951,6 +2010,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -1978,6 +2038,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -1998,6 +2059,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -2025,6 +2087,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -2045,6 +2108,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -2072,6 +2136,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -2092,6 +2157,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -2119,6 +2185,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -2139,6 +2206,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -2166,6 +2234,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -2186,6 +2255,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -2213,6 +2283,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -2233,6 +2304,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -2260,6 +2332,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -2280,6 +2353,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -2307,6 +2381,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -2327,6 +2402,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -2354,6 +2430,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -2374,6 +2451,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -2401,6 +2479,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -2421,6 +2500,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -2448,6 +2528,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -2468,6 +2549,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -2495,6 +2577,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -2515,6 +2598,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -2542,6 +2626,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -2562,6 +2647,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -2589,6 +2675,7 @@ ShallowWrapper {
                                                 "votes": Array [],
                                               }
                 }
+                userId={undefined}
 />,
             },
             "ref": null,
@@ -2609,6 +2696,7 @@ ShallowWrapper {
                   "type": "story",
                   "votes": Array [],
                 },
+                "userId": undefined,
               },
               "ref": null,
               "rendered": null,
@@ -2661,6 +2749,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2679,6 +2768,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2697,6 +2787,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2715,6 +2806,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2733,6 +2825,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2751,6 +2844,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2769,6 +2863,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2787,6 +2882,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2805,6 +2901,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2823,6 +2920,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2841,6 +2939,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2859,6 +2958,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2877,6 +2977,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2895,6 +2996,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2913,6 +3015,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2931,6 +3034,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2949,6 +3053,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2967,6 +3072,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -2985,6 +3091,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
             <styled.li>
@@ -3003,6 +3110,7 @@ ShallowWrapper {
                                                             "votes": Array [],
                                                           }
                                     }
+                                    userId={undefined}
                         />
             </styled.li>
 </ol>,
@@ -3037,6 +3145,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3055,6 +3164,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3073,6 +3183,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3091,6 +3202,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3109,6 +3221,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3127,6 +3240,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3145,6 +3259,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3163,6 +3278,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3181,6 +3297,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3199,6 +3316,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3217,6 +3335,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3235,6 +3354,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3253,6 +3373,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3271,6 +3392,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3289,6 +3411,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3307,6 +3430,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3325,6 +3449,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3343,6 +3468,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3361,6 +3487,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
               <styled.li>
@@ -3379,6 +3506,7 @@ ShallowWrapper {
                                                                 "votes": Array [],
                                                               }
                                 }
+                                userId={undefined}
                 />
 </styled.li>,
             ],
@@ -3406,6 +3534,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -3426,6 +3555,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -3453,6 +3583,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -3473,6 +3604,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -3500,6 +3632,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -3520,6 +3653,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -3547,6 +3681,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -3567,6 +3702,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -3594,6 +3730,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -3614,6 +3751,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -3641,6 +3779,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -3661,6 +3800,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -3688,6 +3828,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -3708,6 +3849,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -3735,6 +3877,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -3755,6 +3898,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -3782,6 +3926,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -3802,6 +3947,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -3829,6 +3975,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -3849,6 +3996,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -3876,6 +4024,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -3896,6 +4045,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -3923,6 +4073,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -3943,6 +4094,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -3970,6 +4122,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -3990,6 +4143,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -4017,6 +4171,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -4037,6 +4192,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -4064,6 +4220,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -4084,6 +4241,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -4111,6 +4269,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -4131,6 +4290,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -4158,6 +4318,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -4178,6 +4339,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -4205,6 +4367,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -4225,6 +4388,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -4252,6 +4416,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -4272,6 +4437,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -4299,6 +4465,7 @@ ShallowWrapper {
                                                       "votes": Array [],
                                                     }
                   }
+                  userId={undefined}
 />,
               },
               "ref": null,
@@ -4319,6 +4486,7 @@ ShallowWrapper {
                     "type": "story",
                     "votes": Array [],
                   },
+                  "userId": undefined,
                 },
                 "ref": null,
                 "rendered": null,
