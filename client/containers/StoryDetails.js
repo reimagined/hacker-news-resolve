@@ -32,18 +32,29 @@ export class StoryDetails extends React.PureComponent {
   }
 
   componentWillReceiveProps = nextProps => {
-    if (nextProps.lastCommentedStory === this.props.lastCommentedStory) {
+    if (
+      nextProps.lastCommentedStory === this.props.lastCommentedStory &&
+      (nextProps.lastVotedStory === this.props.lastVotedStory ||
+        nextProps.lastVotedStory.id !== this.props.data.story.id)
+    ) {
       return
     }
 
     const { data: { me, refetch }, match: { params: { storyId } } } = this.props
 
-    if (
+    const isStoryCommentedByMe =
       nextProps.lastCommentedStory.id === storyId &&
       nextProps.lastCommentedStory.userId === me.id
-    ) {
-      refetch()
 
+    const isStoryVotedByMe =
+      nextProps.lastVotedStory.id === storyId &&
+      nextProps.lastVotedStory.userId === me.id
+
+    if (isStoryCommentedByMe || isStoryVotedByMe) {
+      refetch()
+    }
+
+    if (isStoryCommentedByMe) {
       this.textarea.disabled = false
       this.submit.disabled = false
       this.textarea.value = ''
@@ -60,7 +71,7 @@ export class StoryDetails extends React.PureComponent {
 
     return (
       <StoryDetailsRoot>
-        <Story showText story={story} />
+        <Story showText story={story} userId={me.id} />
         {loggedIn ? (
           <Reply>
             <textarea
@@ -89,8 +100,11 @@ export class StoryDetails extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = ({ ui: { lastCommentedStory } }) => ({
-  lastCommentedStory
+export const mapStateToProps = ({
+  ui: { lastCommentedStory, lastVotedStory }
+}) => ({
+  lastCommentedStory,
+  lastVotedStory
 })
 
 export const mapDispatchToProps = dispatch =>
