@@ -8,6 +8,11 @@ A React & Redux & Resolve implementation of Hacker News
 [<img src="https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png" height="100">](https://github.com/reactjs/redux)
 [<img src="https://avatars2.githubusercontent.com/u/27729046" height="100">](https://github.com/reimagined/resolve/)
 
+Join us:
+* [GitHub](https://github.com/reimagined/resolve/)
+* [Twitter](https://twitter.com/resolvejs)
+* [Facebook](https://www.facebook.com/resolvejs/)
+
 # Getting Started
 
 ### Installation
