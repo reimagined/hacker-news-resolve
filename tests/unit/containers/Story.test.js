@@ -228,7 +228,9 @@ it('upvoteStory', () => {
     createdByName: 'user'
   }
 
-  const wrapper = shallow(<Story story={story} loggedIn={true} voted={false} />)
+  const wrapper = shallow(
+    <Story story={story} userId="user-id" voted={false} />
+  )
   let upvoteStory = false
   wrapper.setProps({
     upvoteStory: () => (upvoteStory = true),
@@ -256,7 +258,7 @@ it('unvoteStory', () => {
     createdByName: 'user'
   }
 
-  const wrapper = shallow(<Story story={story} loggedIn={true} voted={1} />)
+  const wrapper = shallow(<Story story={story} userId="user-id" voted={true} />)
   let unvoteStory = false
   wrapper.setProps({
     unvoteStory: () => (unvoteStory = true),
@@ -279,19 +281,17 @@ it('Invalid story', () => {
 it('mapStateToProps', () => {
   const user = { id: 'user-id' }
   const story = { id: 'story-id', votes: [] }
-  const ui = { refetchStory: false }
+  const ui = { refetchStory: true, lastVotedStory: { id: 'story-id' } }
 
-  const props = mapStateToProps({ user, ui }, { story })
+  const props = mapStateToProps({ ui }, { story, userId: user.id })
 
   expect(props).toEqual({
     story: {
       id: 'story-id',
       votes: []
     },
-    userId: 'user-id',
-    loggedIn: true,
     voted: false,
-    refetchStory: false
+    refetchStory: true
   })
 })
 

@@ -5,36 +5,23 @@ import { gqlConnector } from 'resolve-redux'
 import Stories from '../components/Stories'
 import { ITEMS_PER_PAGE } from '../constants'
 
-class ShowByPage extends React.PureComponent {
-  componentDidUpdate = () => {
-    const { refetchStories, onRefetched, data: { refetch } } = this.props
+const ShowByPage = ({
+  match: { params: { page } },
+  data: { stories = [], me = {}, refetch },
+  lastVotedStory
+}) => (
+  <Stories
+    refetch={refetch}
+    items={stories}
+    page={page}
+    type="show"
+    userId={me.id}
+    lastVotedStory={lastVotedStory}
+  />
+)
 
-    if (refetchStories.show) {
-      refetch()
-      onRefetched()
-    }
-  }
-
-  render() {
-    const {
-      match: { params: { page } },
-      data: { stories = [], refetch }
-    } = this.props
-
-    return <Stories refetch={refetch} items={stories} page={page} type="show" />
-  }
-}
-
-const mapStateToProps = ({ ui: { refetchStories } }) => ({
-  refetchStories
-})
-
-const mapDispatchToProps = dispatch => ({
-  onRefetched: () =>
-    dispatch({
-      type: 'STORIES_REFETCHED',
-      page: 'show'
-    })
+const mapStateToProps = ({ ui: { lastVotedStory } }) => ({
+  lastVotedStory
 })
 
 export default gqlConnector(
@@ -52,6 +39,9 @@ export default gqlConnector(
         createdBy
         createdByName
       }
+      me {
+        id
+      }
     }
   `,
   {
@@ -63,4 +53,4 @@ export default gqlConnector(
       fetchPolicy: 'network-only'
     })
   }
-)(connect(mapStateToProps, mapDispatchToProps)(ShowByPage))
+)(connect(mapStateToProps)(ShowByPage))

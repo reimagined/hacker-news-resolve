@@ -36,7 +36,6 @@ export const StoryInfoRoot = styled.div`
 `
 
 const infoLinkStyles = `
-  display: inline-block;
   cursor: pointer;
 
   &:hover {
@@ -44,9 +43,9 @@ const infoLinkStyles = `
   }
 `
 
-export const UnvoteLink = styled.div(infoLinkStyles)
+export const UnvoteLink = styled.span`${infoLinkStyles};`
 
-export const DiscussLink = styled(Link)(infoLinkStyles)
+export const DiscussLink = styled(Link)`${infoLinkStyles};`
 
 export const UpvoteArrow = styled.div`
   display: inline-block;
@@ -165,11 +164,13 @@ export class Story extends React.PureComponent {
     this.props.unvoteStory(this.props.story.id, this.props.userId)
 
   render() {
-    const { story, loggedIn, voted, showText } = this.props
+    const { story, userId, voted, showText } = this.props
 
     if (!story) {
       return null
     }
+
+    const loggedIn = !!userId
 
     let commentCount = story.comments
       ? story.comments.length
@@ -207,12 +208,13 @@ export class Story extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = ({ user, ui: { refetchStory } }, { story }) => {
+export const mapStateToProps = (
+  { ui: { refetchStory } },
+  { userId, story }
+) => {
   return {
     story,
-    voted: story && story.votes && story.votes.includes(user.id),
-    loggedIn: !!user.id,
-    userId: user.id,
+    voted: story && story.votes && story.votes.includes(userId),
     refetchStory
   }
 }
