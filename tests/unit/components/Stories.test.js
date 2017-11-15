@@ -51,3 +51,34 @@ it('Stories page renders with error', () => {
 
   expect(wrapper).toMatchSnapshot()
 })
+
+it('Stories calls refresh on lastVotedStory change', () => {
+  let callCount = 0
+  const refetch = () => {
+    callCount++
+  }
+
+  const wrapper = shallow(
+    <Stories lastVotedStory={{}} items={[]} refetch={refetch} />
+  )
+
+  expect(callCount).toEqual(0)
+
+  wrapper.setProps({ lastVotedStory: {} })
+  expect(callCount).toEqual(1)
+})
+
+it('Stories does not call refresh if the lastVotedStory is not changed', () => {
+  let callCount = 0
+  const refetch = () => {
+    callCount++
+  }
+  const lastVotedStory = {}
+
+  const wrapper = shallow(
+    <Stories lastVotedStory={lastVotedStory} items={[]} refetch={refetch} />
+  )
+
+  wrapper.setProps({ lastVotedStory })
+  expect(callCount).toEqual(0)
+})
