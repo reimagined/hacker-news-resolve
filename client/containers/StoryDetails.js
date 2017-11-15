@@ -71,7 +71,7 @@ export class StoryDetails extends React.PureComponent {
 
     return (
       <StoryDetailsRoot>
-        <Story showText story={story} userId={me.id} />
+        <Story showText story={story} userId={me && me.id} />
         {loggedIn ? (
           <Reply>
             <textarea
@@ -153,7 +153,8 @@ export default gqlConnector(
     options: ({ match: { params: { storyId } } }) => ({
       variables: {
         id: storyId
-      }
+      },
+      fetchPolicy: 'network-only'
     })
   }
 )(connect(mapStateToProps, mapDispatchToProps)(StoryDetails))

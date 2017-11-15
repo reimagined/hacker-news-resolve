@@ -7,7 +7,7 @@ import { ITEMS_PER_PAGE } from '../constants'
 
 const NewestByPage = ({
   match: { params: { page } },
-  data: { stories = [], me = {}, refetch },
+  data: { stories = [], me, refetch },
   lastVotedStory
 }) => (
   <Stories
@@ -15,7 +15,7 @@ const NewestByPage = ({
     items={stories}
     page={page || '1'}
     type="newest"
-    userId={me.id}
+    userId={me && me.id}
     lastVotedStory={lastVotedStory}
   />
 )

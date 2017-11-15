@@ -7,7 +7,7 @@ import { ITEMS_PER_PAGE } from '../constants'
 
 const ShowByPage = ({
   match: { params: { page } },
-  data: { stories = [], me = {}, refetch },
+  data: { stories = [], me, refetch },
   lastVotedStory
 }) => (
   <Stories
@@ -15,7 +15,7 @@ const ShowByPage = ({
     items={stories}
     page={page}
     type="show"
-    userId={me.id}
+    userId={me && me.id}
     lastVotedStory={lastVotedStory}
   />
 )
