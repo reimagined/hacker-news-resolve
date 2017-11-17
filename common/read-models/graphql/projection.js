@@ -16,7 +16,7 @@ import type {
 } from '../../../flow-types/events'
 
 export default {
-  Init: async store => {
+  Init: async (store: any) => {
     const stories = await store.collection('stories')
     const comments = await store.collection('comments')
     const users = await store.collection('users')
