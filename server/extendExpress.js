@@ -58,6 +58,11 @@ export const commandAuthenticationMiddleware = (req, res, next) => {
   }
 }
 
+process.on('unhandledRejection', (reason, p) => {
+  console.log('Unhandled Rejection at:', p, 'reason:', reason)
+  // application specific logging, throwing an error, or other logic here
+})
+
 export default express => {
   express.use('/', authenticationMiddleware)
   express.use('/api/commands/', commandAuthenticationMiddleware)
@@ -66,7 +71,7 @@ export default express => {
     '/register',
     bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
-      const executeQuery = req.resolve.readModelExecutors.graphql
+      const executeQuery = req.resolve.queryExecutors.graphql
 
       const existingUser = await getUserByName(executeQuery, req.body.name)
 
@@ -100,7 +105,7 @@ export default express => {
     bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
       const user = await getUserByName(
-        req.resolve.readModelExecutors.graphql,
+        req.resolve.queryExecutors.graphql,
         req.body.name
       )
 

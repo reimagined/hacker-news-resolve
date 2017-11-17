@@ -2,36 +2,33 @@ async function withUserNames(items, store) {
   const users = await store.collection('users')
 
   return await Promise.all(
-      items.map(async (item) => {
-          const user = await users.findOne({ id: item.createdBy })
-          return {
-            ...item,
-            createdByName: user ? user.name : 'unknown'
-          }
-      })
-  );
+    items.map(async item => {
+      const user = await users.findOne({ id: item.createdBy })
+      return {
+        ...item,
+        createdByName: user ? user.name : 'unknown'
+      }
+    })
+  )
 }
 
-function getReplies(comments, commentIndex) {
-  const result = []
-  const commentsCount = comments.length
-  let replyIndex = commentIndex + 1
+async function getCommentTree(comments, id, tree = []) {
+  const comment = await comments.findOne({ id })
+  tree.push(comment)
 
-  while (replyIndex < commentsCount) {
-    result.push(comments[replyIndex])
-    replyIndex++
-  }
-
-  return result
+  const childComments = await comments.find({ parentId: comment.id })
+  return await Promise.all(
+    childComments.map(childComment =>
+      getCommentTree(comments, childComment.id, tree)
+    )
+  )
 }
 
 export default {
   user: async (store, { id, name }) => {
     const users = await store.collection('users')
 
-    return id
-      ? users.find({ id })
-      : users.find({ name })
+    return id ? await users.findOne({ id }) : await users.findOne({ name })
   },
   me: (store, _, { getJwt }) => {
     try {
@@ -44,15 +41,21 @@ export default {
     const stories = await store.collection('stories')
 
     const filteredStories = type
-      ? await stories.find({ type }).skip(offset).limit(first)
-      : await stories.find({}).skip(offset).limit(first)
+      ? await stories
+          .find({ type })
+          .skip(offset)
+          .limit(first)
+      : await stories
+          .find({})
+          .skip(offset)
+          .limit(first)
 
     return await withUserNames(filteredStories, store)
   },
   story: async (store, { id }) => {
     const stories = await store.collection('stories')
 
-    let story = (await stories.findOne({ id }));
+    let story = await stories.findOne({ id })
 
     if (!story) {
       return null
@@ -65,20 +68,23 @@ export default {
   comment: async (store, { id }) => {
     const comments = await store.collection('comments')
 
-    const comment = (await comments.findOne({ id }));
+    const tree = []
+    await getCommentTree(comments, id, tree)
 
-    const [resultComment] = await withUserNames([comment], store)
-    //const replies = getReplies(comments, comment.id)
+    const result = await withUserNames(tree, store)
 
     return {
-      ...resultComment,
-      replies: []//await withUserNames(replies, store)
+      ...result[0],
+      replies: result.slice(1)
     }
   },
   comments: async (store, { first, offset = 0 }) => {
     const comments = await store.collection('comments')
 
-    const result = await comments.find({}).skip(offset).limit(first)
+    const result = await comments
+      .find({})
+      .skip(offset)
+      .limit(first)
 
     return await withUserNames(result, store)
   }
