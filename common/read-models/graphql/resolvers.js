@@ -1,14 +1,15 @@
-async function withUserNames(items, getReadModel) {
-  const users = await getReadModel('users')
+async function withUserNames(items, store) {
+  const users = await store.collection('users')
 
-  return items.map(item => {
-    const user = users.find(user => user.id === item.createdBy)
-
-    return {
-      ...item,
-      createdByName: user ? user.name : 'unknown'
-    }
-  })
+  return await Promise.all(
+      items.map(async (item) => {
+          const user = await users.findOne({ id: item.createdBy })
+          return {
+            ...item,
+            createdByName: user ? user.name : 'unknown'
+          }
+      })
+  );
 }
 
 function getReplies(comments, commentIndex) {
@@ -25,67 +26,60 @@ function getReplies(comments, commentIndex) {
 }
 
 export default {
-  user: async (read, { id, name }) => {
-    const root = await read('users')
+  user: async (store, { id, name }) => {
+    const users = await store.collection('users')
 
     return id
-      ? root.find(user => user.id === id)
-      : root.find(user => user.name === name)
+      ? users.find({ id })
+      : users.find({ name })
   },
-  me: (read, _, { getJwt }) => {
+  me: (store, _, { getJwt }) => {
     try {
       return getJwt()
     } catch (e) {
       return null
     }
   },
-  stories: async (read, { type, first, offset = 0 }) => {
-    const root = await read('stories')
+  stories: async (store, { type, first, offset = 0 }) => {
+    const stories = await store.collection('stories')
 
     const filteredStories = type
-      ? root.filter(story => story.type === type).reverse()
-      : root.reverse()
+      ? await stories.find({ type }).skip(offset).limit(first)
+      : await stories.find({}).skip(offset).limit(first)
 
-    const stories = filteredStories.slice(offset, offset + first)
-
-    return withUserNames(stories, read)
+    return await withUserNames(filteredStories, store)
   },
-  story: async (read, { id }) => {
-    const root = await read('stories')
+  story: async (store, { id }) => {
+    const stories = await store.collection('stories')
 
-    let story = root.find(s => s.id === id)
+    let story = (await stories.findOne({ id }));
 
     if (!story) {
       return null
     }
 
-    story = (await withUserNames([story], read))[0]
-    story.comments = await withUserNames(story.comments, read)
+    story = (await withUserNames([story], store))[0]
+    story.comments = await withUserNames(story.comments, store)
     return story
   },
-  comment: async (read, { id }) => {
-    const root = await read('comments')
+  comment: async (store, { id }) => {
+    const comments = await store.collection('comments')
 
-    const commentIndex = root.findIndex(c => c.id === id)
+    const comment = (await comments.findOne({ id }));
 
-    if (commentIndex === -1) {
-      return null
-    }
-
-    const comment = root[commentIndex]
-    const [resultComment] = await withUserNames([comment], read)
-    const replies = getReplies(root, commentIndex)
+    const [resultComment] = await withUserNames([comment], store)
+    //const replies = getReplies(comments, comment.id)
 
     return {
       ...resultComment,
-      replies: await withUserNames(replies, read)
+      replies: []//await withUserNames(replies, store)
     }
   },
-  comments: async (read, { first, offset = 0 }) => {
-    const root = await read('comments')
+  comments: async (store, { first, offset = 0 }) => {
+    const comments = await store.collection('comments')
 
-    const comments = root.slice(offset, offset + first).reverse()
+    const result = await comments.find({}).skip(offset).limit(first)
 
-    return withUserNames(comments, read)
+    return await withUserNames(result, store)
   }
 }
