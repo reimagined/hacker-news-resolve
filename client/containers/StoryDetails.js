@@ -23,46 +23,19 @@ export class StoryDetails extends React.PureComponent {
   saveComment = () => {
     this.props.commentStory({
       text: this.textarea.value,
-      parentId: this.props.data.story.id,
+      parentId: this.props.story.id,
       userId: this.props.data.me.id
     })
 
-    this.textarea.disabled = true
-    this.submit.disabled = true
+    this.textarea.value = ''
   }
 
-  componentWillReceiveProps = nextProps => {
-    if (
-      nextProps.lastCommentedStory === this.props.lastCommentedStory &&
-      (nextProps.lastVotedStory === this.props.lastVotedStory ||
-        nextProps.lastVotedStory.id !== this.props.data.story.id)
-    ) {
-      return
-    }
-
-    const { data: { me, refetch }, match: { params: { storyId } } } = this.props
-
-    const isStoryCommentedByMe =
-      nextProps.lastCommentedStory.id === storyId &&
-      nextProps.lastCommentedStory.userId === me.id
-
-    const isStoryVotedByMe =
-      nextProps.lastVotedStory.id === storyId &&
-      nextProps.lastVotedStory.userId === me.id
-
-    if (isStoryCommentedByMe || isStoryVotedByMe) {
-      refetch()
-    }
-
-    if (isStoryCommentedByMe) {
-      this.textarea.disabled = false
-      this.submit.disabled = false
-      this.textarea.value = ''
-    }
+  componentWillMount() {
+    this.props.loadStory(this.props.match.params.storyId)
   }
 
   render() {
-    const { data: { story, me } } = this.props
+    const { data: { me }, story } = this.props
     const loggedIn = !!me
 
     if (!story) {
@@ -100,11 +73,8 @@ export class StoryDetails extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = ({
-  ui: { lastCommentedStory, lastVotedStory }
-}) => ({
-  lastCommentedStory,
-  lastVotedStory
+export const mapStateToProps = ({ storyDetails: story }) => ({
+  story
 })
 
 export const mapDispatchToProps = dispatch =>
@@ -116,45 +86,24 @@ export const mapDispatchToProps = dispatch =>
           parentId,
           userId,
           commentId: uuid.v4()
-        })
+        }),
+      loadStory: storyId => ({
+        type: 'LOAD_STORY',
+        storyId
+      })
     },
     dispatch
   )
 
 export default gqlConnector(
   `
-    query($id: ID!) {
-      story(id: $id) {
-        id
-        type
-        title
-        text
-        link
-        comments {
-          id
-          parentId
-          text
-          createdAt
-          createdBy
-          createdByName
-          level
-        }
-        votes
-        createdAt
-        createdBy
-        createdByName
-      }
+    query {
       me {
         id
       }
     }
   `,
   {
-    options: ({ match: { params: { storyId } } }) => ({
-      variables: {
-        id: storyId
-      },
-      fetchPolicy: 'network-only'
-    })
+    options: ({ match: { params: {} } }) => ({})
   }
 )(connect(mapStateToProps, mapDispatchToProps)(StoryDetails))

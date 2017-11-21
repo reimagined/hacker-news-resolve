@@ -6,6 +6,7 @@ import aggregates from './common/aggregates'
 import * as events from './common/events'
 
 import readModels from './common/read-models'
+import viewModels from './common/view-models'
 
 import extendExpress from './server/extendExpress'
 
@@ -35,6 +36,7 @@ export default {
     ids: []
   },
   readModels,
+  viewModels,
   extendExpress,
   jwt: {
     secret: authenticationSecret,
