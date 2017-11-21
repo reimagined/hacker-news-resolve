@@ -52,19 +52,6 @@ export default {
 
     return await withUserNames(filteredStories, store)
   },
-  story: async (store, { id }) => {
-    const stories = await store.collection('stories')
-
-    let story = await stories.findOne({ id })
-
-    if (!story) {
-      return null
-    }
-
-    story = (await withUserNames([story], store))[0]
-    story.comments = await withUserNames(story.comments, store)
-    return story
-  },
   comment: async (store, { id }) => {
     const comments = await store.collection('comments')
 
