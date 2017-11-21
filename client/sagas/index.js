@@ -14,7 +14,7 @@ function* loadStory(action) {
   try {
     yield put(actions.replaceState('storyDetails', null))
     const storyId = action.storyId
-    const state = yield call(() => getState(storyId))
+    const state = yield call(getState, storyId)
     yield put(
       actions.replaceState(
         'storyDetails',
