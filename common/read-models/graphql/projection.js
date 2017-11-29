@@ -60,18 +60,16 @@ export default {
 
     {
       const stories = await store.collection('stories')
-
-      const storyById = await stories.findOne({ id: aggregateId })
-
-      storyById.commentCount++
+      const { comments } = await stories.findOne({ id: aggregateId })
 
       const parentIndex =
         parentId === aggregateId
           ? -1
-          : storyById.comments.findIndex(({ id }) => id === parentId)
+          : comments.findIndex(({ id }) => id === parentId)
 
-      const level =
-        parentIndex === -1 ? 0 : storyById.comments[parentIndex].level + 1
+      const level = parentIndex === -1 ? 0 : comments[parentIndex].level + 1
+
+      const position = parentIndex === -1 ? comments.length : parentIndex
 
       const comment = {
         id: commentId,
@@ -83,14 +81,18 @@ export default {
       }
 
       if (parentIndex === -1) {
-        storyById.comments.push(comment)
+        comments.push(comment)
       } else {
-        storyById.comments = storyById.comments
-          .slice(0, parentIndex + 1)
-          .concat(comment, storyById.comments.slice(parentIndex + 1))
+        comments.splice(position, 0, comment)
       }
 
-      await stories.update({ id: aggregateId }, storyById)
+      await stories.update(
+        { id: aggregateId },
+        {
+          $inc: { commentCount: 1 },
+          $set: { comments }
+        }
+      )
     }
   },
 
