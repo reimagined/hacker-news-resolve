@@ -49,11 +49,13 @@ export default {
       }
 
       await comments.insert(comment)
-      const parentComment = await comments.findOne({ id: parentId })
-      if (parentComment) {
-        parentComment.comments.push(comment)
-        await comments.update({ id: parentId }, parentComment)
-      }
+
+      await comments.update(
+        { id: parentId },
+        {
+          $push: { comments: comment }
+        }
+      )
     }
 
     {
@@ -103,6 +105,7 @@ export default {
     const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
 
     const stories = await store.collection('stories')
+
     await stories.insert({
       id: aggregateId,
       type,
@@ -123,13 +126,10 @@ export default {
   ) => {
     const stories = await store.collection('stories')
 
-    const storyById = await stories.findOne({ id: aggregateId })
-
     await stories.update(
       { id: aggregateId },
       {
-        ...storyById,
-        votes: [...storyById.votes, userId]
+        $push: { votes: userId }
       }
     )
   },
@@ -140,13 +140,12 @@ export default {
   ) => {
     const stories = await store.collection('stories')
 
-    const storyById = await stories.findOne({ id: aggregateId })
-
     await stories.update(
       { id: aggregateId },
       {
-        ...storyById,
-        votes: storyById.votes.filter(id => id !== userId)
+        $pull: {
+          votes: userId
+        }
       }
     )
   },
