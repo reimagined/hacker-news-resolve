@@ -35,65 +35,30 @@ export default {
       payload: { parentId, userId, commentId, text }
     }: Event<StoryCommented>
   ) => {
-    {
-      const comments = await store.collection('comments')
+    const comments = await store.collection('comments')
 
-      const comment = {
-        id: commentId,
-        text,
-        parentId,
-        comments: [],
-        storyId: aggregateId,
-        createdAt: timestamp,
-        createdBy: userId
-      }
-
-      await comments.insert(comment)
-
-      await comments.update(
-        { id: parentId },
-        {
-          $push: { comments: comment }
-        }
-      )
+    const comment = {
+      id: commentId,
+      text,
+      parentId,
+      comments: [],
+      storyId: aggregateId,
+      createdAt: timestamp,
+      createdBy: userId
     }
 
-    {
-      const stories = await store.collection('stories')
-      const { comments } = await stories.findOne({ id: aggregateId })
+    await comments.insert(comment)
 
-      const parentIndex =
-        parentId === aggregateId
-          ? -1
-          : comments.findIndex(({ id }) => id === parentId)
-
-      const level = parentIndex === -1 ? 0 : comments[parentIndex].level + 1
-
-      const position = parentIndex === -1 ? comments.length : parentIndex
-
-      const comment = {
-        id: commentId,
-        parentId,
-        level,
-        text,
-        createdAt: timestamp,
-        createdBy: userId
+    await comments.update(
+      { id: parentId },
+      {
+        $push: { comments: comment }
       }
+    )
 
-      if (parentIndex === -1) {
-        comments.push(comment)
-      } else {
-        comments.splice(position, 0, comment)
-      }
+    const stories = await store.collection('stories')
 
-      await stories.update(
-        { id: aggregateId },
-        {
-          $inc: { commentCount: 1 },
-          $set: { comments }
-        }
-      )
-    }
+    await stories.update({ id: aggregateId }, { $inc: { commentCount: 1 } })
   },
 
   [STORY_CREATED]: async (
