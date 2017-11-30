@@ -91,7 +91,6 @@ export default {
       }
     }
   },
-  serializeState: (state: any) =>
-    JSON.stringify({ storyDetails: state || Immutable({}) }),
-  deserializeState: (serial: any) => JSON.parse(serial)
+  serializeState: (state: any) => JSON.stringify(state || Immutable({})),
+  deserializeState: (serial: any) => Immutable(JSON.parse(serial))
 }

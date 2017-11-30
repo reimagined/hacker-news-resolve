@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux'
-import { sendCommandMiddleware, setSubscriptionMiddleware } from 'resolve-redux'
+import { resolveMiddleware } from 'resolve-redux'
 import Immutable from 'seamless-immutable'
 import createSagaMiddleware from 'redux-saga'
 import cookies from 'js-cookie'
-import saga from '../sagas'
+import viewModels from '../../common/view-models'
 
 import reducer from '../reducers'
 
@@ -24,23 +24,11 @@ const logoutMiddleware = () => next => action => {
   window.location.reload()
 }
 
-const sagaMiddleware = createSagaMiddleware()
-
 export default initialState => {
   const middleware = isClient
-    ? [
-        sendCommandMiddleware(),
-        setSubscriptionMiddleware(),
-        logoutMiddleware,
-        sagaMiddleware
-      ]
+    ? [resolveMiddleware(viewModels), logoutMiddleware]
     : []
 
   const enhancer = composeEnhancers(applyMiddleware(...middleware))
-  const store = createStore(reducer, Immutable(initialState), enhancer)
-  if (typeof window === 'object') {
-    sagaMiddleware.run(saga)
-  }
-
-  return store
+  return createStore(reducer, Immutable(initialState), enhancer)
 }

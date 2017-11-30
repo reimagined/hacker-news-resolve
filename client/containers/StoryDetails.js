@@ -2,9 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import uuid from 'uuid'
-import { gqlConnector } from 'resolve-redux'
+import { gqlConnector, withViewModel } from 'resolve-redux'
 import styled from 'styled-components'
 
+import viewModel from '../../common/view-models/storyDetails'
 import Story from '../containers/Story'
 import actions from '../actions/storiesActions'
 import ChildrenComments from '../components/ChildrenComments'
@@ -28,10 +29,6 @@ export class StoryDetails extends React.PureComponent {
     })
 
     this.textarea.value = ''
-  }
-
-  componentWillMount() {
-    this.props.loadStory(this.props.match.params.storyId)
   }
 
   render() {
@@ -73,8 +70,10 @@ export class StoryDetails extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = ({ storyDetails: story }) => ({
-  story
+export const mapStateToProps = (state, props) => ({
+  story: state.viewModels[viewModel.name][props.match.params.storyId],
+  viewModel: viewModel.name,
+  aggregateId: props.match.params.storyId
 })
 
 export const mapDispatchToProps = dispatch =>
@@ -106,4 +105,4 @@ export default gqlConnector(
   {
     options: ({ match: { params: {} } }) => ({})
   }
-)(connect(mapStateToProps, mapDispatchToProps)(StoryDetails))
+)(connect(mapStateToProps, mapDispatchToProps)(withViewModel(StoryDetails)))
