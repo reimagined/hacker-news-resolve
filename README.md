@@ -70,12 +70,14 @@ It consists of the following steps:
   * [Read Side](#read-side-1)
   * [GraphQL](#graphql)
   * [Stories View](#stories-view)
+  * [View Model](#view-model)
   * [Story View](#story-view)
   * [Submit View](#submit-view)
 * [Adding Comments](#adding-comments)
   * [Write Side](#write-side-2)
   * [Read Side](#read-side-2)
   * [GraphQL](#graphql-1)
+  * [View Model](#view-model-1)
   * [Story View Extension](#story-view-extension)
   * [Comments View](#comments-view)
   * [Page Not Found View](#page-not-found-view)
@@ -252,48 +254,40 @@ export default [user]
 ### Read Side
 
 Implement a read side.
-The simplest way to store users is using a users array.
+The simplest way to store users is using a store collection.
 
 ```js
-// ./common/read-models/graphql/collections/users.js
+// ./common/read-models/graphql/projection.js
 
 // @flow
-import { USER_CREATED } from '../../../events'
-
-type User = {
-  id: string,
-  name: string,
-  createdAt: number
-}
-
-type UsersState = Array<User>
+import {
+  USER_CREATED
+} from '../../events'
+import type {
+  Event,
+  UserCreated
+} from '../../../flow-types/events'
 
 export default {
-  name: 'users',
-  initialState: [],
-  projection: {
-    [USER_CREATED]: (state: UsersState, event: UserCreated): UsersState => {
-      const { aggregateId, timestamp, payload: { name } } = event
+  Init: async (store: any) => {
+    const users = await store.collection('users')
 
-      state.push({
-        id: aggregateId,
-        name,
-        createdAt: timestamp
-      })
-      return state
-    }
+    await users.ensureIndex({ fieldName: 'id' })
+  },
+
+  [USER_CREATED]: async (
+    store,
+    { aggregateId, timestamp, payload: { name } }: Event<UserCreated>
+  ) => {
+    const users = await store.collection('users')
+
+    await users.insert({
+      id: aggregateId,
+      name,
+      createdAt: timestamp
+    })
   }
 }
-```
-
-Add the default export for collections.
-
-```js
-// ./common/read-models/graphql/collections/index.js
-
-import users from './users'
-
-export default [users]
 ```
 
 Describe a schema and implement resolvers to get data using GraphQL.
@@ -319,12 +313,10 @@ Implement resolvers.
 // ./common/read-models/graphql/resolvers.js
 
 export default {
-  user: async (read, { id, name }) => {
-    const root = await read('users')
+ user: async (store, { id, name }) => {
+    const users = await store.collection('users')
 
-    return id
-      ? root.find(user => user.id === id)
-      : root.find(user => user.name === name)
+    return id ? await users.findOne({ id }) : await users.findOne({ name })
   }
 }
 ```
@@ -334,11 +326,15 @@ Export GraphQL parts of the read model from the `graphql` folder root.
 ```js
 // ./common/read-models/graphql/index.js
 
-import collections from './collections'
-import resolvers from './resolvers'
-import schema from './schema'
+import projection from './projection'
+import gqlResolvers from './resolvers'
+import gqlSchema from './schema'
 
-export { collections, resolvers, schema }
+export default {
+  projection,
+  gqlSchema,
+  gqlResolvers
+}
 ```
 
 Update the `read-models` folder export.
@@ -346,16 +342,9 @@ Update the `read-models` folder export.
 ```js
 // ./common/read-models/index.js
 
-import { collections, schema, resolvers } from './graphql'
+import graphqlReadModel from './graphql'
 
-export default [
-  {
-    name: 'graphql',
-    projection: collections,
-    gqlSchema: schema,
-    gqlResolvers: resolvers
-  }
-]
+export default [graphqlReadModel]
 ```
 
 ### Authentication
@@ -478,7 +467,7 @@ export default express => {
 }
 ```
 
-The reSolve library's `readModelExecutors` object and `executeCommand` function are accessible from each request.
+The reSolve library's `queryExecutors` object and `executeCommand` function are accessible from each request.
 
 Add the `/login` route to allow registered users to log in.
 
@@ -494,12 +483,10 @@ export default express => {
     '/login',
     bodyParser.urlencoded({ extended: false }),
     async (req, res) => {
-      const executeQuery = req.resolve.readModelExecutors.graphql
-
       const user = await getUserByName(
-	    executeQuery,
-	    req.body.name
-	  )
+        req.resolve.queryExecutors.graphql,
+        req.body.name
+      )
 
       if (!user) {
         res.redirect('/error?text=No such user')
@@ -536,50 +523,42 @@ export default express => {
 }
 ```
 
-Add the `initialState` function to pass a user to the client side.
+Add the `me` resolver to pass a user to the client side.
 
 ```js
-// ./server/initialState.js
+// ./commmon/read-models/graphql/resolvers.js
 
-import jwt from 'jsonwebtoken'
+export default {
+  // user implementation
 
-import { authenticationSecret, cookieName } from './constants'
-
-export const getCurrentUser = async (executeQuery, cookies) => {
-  try {
-    const { id } = jwt.verify(cookies[cookieName], authenticationSecret)
-
-    if (!id) {
+   me: (store, _, { getJwt }) => {
+    try {
+      return getJwt()
+    } catch (e) {
       return null
     }
-
-    const { user } = await executeQuery(
-      `query ($id: ID!) {
-        user(id: $id) {
-          id,
-          name,
-          createdAt
-        }
-      }`,
-      { id }
-    )
-
-    return user
-  } catch (error) {
-    return null
-  }
-}
-
-export default async ({ graphql: executeQuery }, { cookies }) => {
-  const user = await getCurrentUser(executeQuery, cookies)
-
-  return {
-    user: user || {}
   }
 }
 ```
 
-Pass the express extension and `initialState` function to the server config.
+Update graphql schema
+```js
+// ./common/read-models/graphql/schema.js
+
+export default `
+  type User {
+    id: ID!
+    name: String
+    createdAt: String
+  }
+  type Query {
+    user(id: ID, name: String): User
+    me: User
+  }
+`
+```
+
+Pass the express extension to the server config.
 
 ```js
 // ./resolve.server.config.js
@@ -592,7 +571,6 @@ import aggregates from './common/aggregates'
 import readModels from './common/read-models'
 import clientConfig from './resolve.client.config'
 import extendExpress from './server/extendExpress'
-import initialState from './server/initialState'
 
 if (module.hot) {
   module.hot.accept()
@@ -608,7 +586,6 @@ export default {
     adapter: fileAdapter,
     params: { pathToFile: dbPath }
   },
-  initialState,
   aggregates,
   initialSubscribedEvents: { types: [], ids: [] },
   readModels,
@@ -663,7 +640,7 @@ In this file, comment all imports excluding the `App` container and the `Login` 
 * Implement the `RouteWithSubRoutes` component to provide routes.
 
 Use a Redux store for data storing.
-In the [client/store/index.js](./client/store/index.js) file, add the [devtools](https://github.com/zalmoxisus/redux-devtools-extension) and [resolve-redux](https://github.com/reimagined/resolve/tree/master/packages/resolve-redux#-utils) middlewares, and implement the logout middleware.
+In the [client/store/index.js](./client/store/index.js) file, add the [devtools](https://github.com/zalmoxisus/redux-devtools-extension) and [resolve-redux](https://github.com/reimagined/resolve/tree/master/packages/resolve-redux#-utils) middlewares, and implement the logout middleware. Comment at this stage import and usage of `saga` function.
 
 Prepare the [App](./client/components/App.js) component by adding router providers.
 
@@ -849,116 +826,100 @@ export default {
 ### Read Side
 
 Implement a read side.
-It should store the list of stories.
+Add collection of stories.
 
 ```js
-// ./common/read-models/graphql/collections/stories.js
+// ./common/read-models/graphql/projection.js
 
 // @flow
 import {
   STORY_CREATED,
+  STORY_UNVOTED,
   STORY_UPVOTED,
-  STORY_UNVOTED
-} from '../../../events'
-
-type UserId = string
-
-type Story = {
-  id: string,
-  type: 'ask' | 'show' | 'story',
-  title: string,
-  text: string,
-  link: string,
-  votes: Array<UserId>,
-  createdAt: number,
-  createdBy: UserId
-}
-
-type StoriesState = Array<Story>
+  USER_CREATED
+} from '../../events'
+import type {
+  Event,
+  StoryCreated,
+  StoryUnvoted,
+  StoryUpvoted,
+  UserCreated
+} from '../../../flow-types/events'
 
 export default {
-  name: 'stories',
-  initialState: [],
-  projection: {
-    [STORY_CREATED]: (
-      state: StoriesState,
-      event: StoryCreated
-    ): StoriesState => {
-      const {
-        aggregateId,
-        timestamp,
-        payload: { title, link, userId, text }
-      } = event
+  Init: async (store: any) => {
+    const stories = await store.collection('stories')
+    const users = await store.collection('users')
 
-      const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
+    await stories.ensureIndex({ fieldName: 'id' })
+    await users.ensureIndex({ fieldName: 'id' })
+  },
 
-      state.push({
-        id: aggregateId,
-        type,
-        title,
-        text,
-        link,
-        votes: [],
-        createdAt: timestamp,
-        createdBy: userId
-      })
+  [STORY_CREATED]: async (
+    store,
+    {
+      aggregateId,
+      timestamp,
+      payload: { title, link, userId, text }
+    }: Event<StoryCreated>
+  ) => {
+    const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
 
-      return state
-    },
+    const stories = await store.collection('stories')
 
-    [STORY_UPVOTED]: (
-      state: StoriesState,
-      event: StoryUpvoted
-    ): StoriesState => {
-      const { aggregateId, payload: { userId } } = event
+    await stories.insert({
+      id: aggregateId,
+      type,
+      title,
+      text,
+      link,
+      commentCount: 0,
+      votes: [],
+      createdAt: timestamp,
+      createdBy: userId
+    })
+  },
 
-      const index = state.findIndex(({ id }) => id === aggregateId)
+  [STORY_UPVOTED]: async (
+    store,
+    { aggregateId, payload: { userId } }: Event<StoryUpvoted>
+  ) => {
+    const stories = await store.collection('stories')
 
-      if (index < 0) {
-        return state
+    await stories.update(
+      { id: aggregateId },
+      {
+        $push: { votes: userId }
       }
+    )
+  },
 
-      state[index].votes.push(userId)
-      return state
-    },
+  [STORY_UNVOTED]: async (
+    store,
+    { aggregateId, payload: { userId } }: Event<StoryUnvoted>
+  ) => {
+    const stories = await store.collection('stories')
 
-    [STORY_UNVOTED]: (
-      state: StoriesState,
-      event: StoryUnvoted
-    ): StoriesState => {
-      const { aggregateId, payload: { userId } } = event
-
-      const index = state.findIndex(({ id }) => id === aggregateId)
-
-      if (index < 0) {
-        return state
+    await stories.update(
+      { id: aggregateId },
+      {
+        $pull: {
+          votes: userId
+        }
       }
-
-      state[index].votes = state[index].votes.filter(id => id !== userId)
-      return state
-    }
+    )
   }
+  // USER_CREATED implementation
 }
-```
-
-Modify the collections export.
-
-```js
-// ./common/read-models/graphql/collections
-
-import users from './users'
-import stories from './stories'
-
-export default [users, stories]
 ```
 
 ### GraphQL
 
-The Hacker News application displays a list of stories without extra information for each one, and provides story details when a user opens the story.
+The Hacker News application displays a list of stories without extra information for each one.
 For this, support the GraphQL with GraphQL resolvers that works with read model collections.
 
 Add the `./common/read-models/gqlSchema.js` file.
-Describe the `Story` type and two queries to request a list of stories and a single story - the `stories` and `story` queries.
+Describe the `Story` type and a query to request a list of stories - the `stories` query.
 
 ```js
 // ./common/read-models/graphql/schema.js
@@ -975,6 +936,7 @@ export default `
     title: String!
     link: String
     text: String
+    commentCount: Int!
     votes: [String]
     createdAt: String!
     createdBy: String!
@@ -982,16 +944,16 @@ export default `
   }
   type Query {
     user(id: ID, name: String): User
+    me: User
     stories(type: String, first: Int!, offset: Int): [Story]
-    story(id: ID!): Story
   }
 `
 ```
 
-Add the appropriate resolves.
+Add the appropriate resolvers.
 
 ```js
-// ./common/read-models/graphql/resolves.js
+// ./common/read-models/graphql/resolvers.js
 
 async function withUserNames(items, getReadModel) {
   const users = await getReadModel('users')
@@ -1008,29 +970,21 @@ async function withUserNames(items, getReadModel) {
 
 export default {
   // user implementation
-
-  stories: async (read, { type, first, offset = 0 }) => {
-    const root = await read('stories')
+  // me implementation
+  stories: async (store, { type, first, offset = 0 }) => {
+    const stories = await store.collection('stories')
 
     const filteredStories = type
-      ? root.filter(story => story.type === type).reverse()
-      : root.reverse()
+      ? await stories
+          .find({ type })
+          .skip(offset)
+          .limit(first)
+      : await stories
+          .find({})
+          .skip(offset)
+          .limit(first)
 
-    const stories = filteredStories.slice(offset, offset + first)
-
-    return withUserNames(stories, read)
-  },
-  story: async (read, { id }) => {
-    const root = await read('stories')
-
-    let story = root.find(s => s.id === id)
-
-    if (!story) {
-      return null
-    }
-
-    story = (await withUserNames([story], read))[0]
-    return story
+    return await withUserNames(filteredStories, store)
   }
 }
 ```
@@ -1068,13 +1022,134 @@ Add them to the [root reducer export](./client/reducers/index.js).
 
 Add created containers to [routes](./client/routes.js) with the `/`, `/newest/:page?`, `/show/:page?` and `/ask/:page?` paths.
 
+### View Model
+
+The Hacker News application can display specific story with all extra information for it.
+For this, implement `storyDetails` view model.
+
+Add the `./common/view-models/storyDetails.js` file.
+
+```js
+// ./common/view-models/storyDetails.js
+
+import Immutable from 'seamless-immutable'
+
+import type {
+  Event,
+  StoryCreated,
+  StoryUnvoted,
+  StoryUpvoted
+} from '../../flow-types/events'
+
+import {
+  STORY_CREATED,
+  STORY_UNVOTED,
+  STORY_UPVOTED
+} from '../events'
+
+export default {
+  name: 'storyDetails',
+  projection: {
+    Init: () => Immutable({}),
+    [STORY_CREATED]: (
+      state: any,
+      {
+        aggregateId,
+        timestamp,
+        payload: { title, link, userId, text }
+      }: Event<StoryCreated>
+    ) => {
+      const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
+
+      return Immutable({
+        id: aggregateId,
+        type,
+        title,
+        text,
+        link,
+        commentCount: 0,
+        comments: [],
+        votes: [],
+        createdAt: timestamp,
+        createdBy: userId
+      })
+    },
+
+    [STORY_UPVOTED]: (
+      state: any,
+      { aggregateId, payload: { userId } }: Event<StoryUpvoted>
+    ) => state.update('votes', votes => votes.concat(userId)),
+
+    [STORY_UNVOTED]: (
+      state: any,
+      { aggregateId, payload: { userId } }: Event<StoryUnvoted>
+    ) => state.update('votes', votes => votes.filter(id => id !== userId))
+  },
+  serializeState: (state: any) =>
+    JSON.stringify({ storyDetails: state || Immutable({}) }),
+  deserializeState: (serial: any) => JSON.parse(serial)
+}
+```
+
+Add the default export for view models.
+
+```js
+// ./common/view-models/index.js
+
+import storyDetails from './storyDetails'
+
+export default [storyDetails]
+```
+
+Pass the view model to the server config.
+
+```js
+// ./resolve.server.config.js
+
+import path from 'path'
+import fileAdapter from 'resolve-storage-lite'
+import busAdapter from 'resolve-bus-memory'
+
+import aggregates from './common/aggregates'
+import readModels from './common/read-models'
+import clientConfig from './resolve.client.config'
+import extendExpress from './server/extendExpress'
+import viewModels from './common/view-models'
+
+if (module.hot) {
+  module.hot.accept()
+}
+
+const { NODE_ENV = 'development' } = process.env
+const dbPath = path.join(__dirname, `${NODE_ENV}.db`)
+
+export default {
+  entries: clientConfig,
+  bus: { adapter: busAdapter },
+  storage: {
+    adapter: fileAdapter,
+    params: { pathToFile: dbPath }
+  },
+  aggregates,
+  initialSubscribedEvents: { types: [], ids: [] },
+  readModels,
+  viewModels,
+  extendExpress
+}
+```
+
 ### Story View
 
 Implement the [StoryDetails](./client/containers/StoryDetails.js) container to display a story by id with additional information.
 `ChildrenComments` is implemented later, so delete its import and usage in JSX.
-Delete the `comments` field from `query`.
 
 Add the created container to [routes](./client/routes.js) with the `/storyDetails/:storyId` path.
+
+In the `client/reducers/` directory, create [storyDetails](./client/reducers/storyDetails.js) reducer.
+Add it to the [root reducer export](./client/reducers/index.js).
+
+In the `client/sagas/` directory, create [client/sagas/index.js](./client/sagas/index.js) saga file.
+Uncomment import and usage of `saga` function in the [client/store/index.js](./client/store/index.js) file.
 
 ### Submit View
 
@@ -1191,209 +1266,77 @@ export default {
 
 ### Read Side
 
-Despite there is a single aggregate for comment and story, provide different collections for GraphQL implementation and add an independent `comments` read model.
+Despite there is a single aggregate for comment and story, provide an independent `comments` collection for GraphQL implementation. At the same time update the `stories` collection.
 
 ```js
-// ./common/read-model/graphql/collections/comments.js
-
-// @flow
-import { STORY_COMMENTED } from '../../../events'
-
-type Comment = {
-  id: string,
-  text: string,
-  parentId: string,
-  storyId: string,
-  createdAt: number,
-  createdBy: string
-}
-
-type CommentsState = Array<Comment>
-
-export default {
-  name: 'comments',
-  initialState: [],
-  projection: {
-    [STORY_COMMENTED]: (state: CommentsState, event: StoryCommented) => {
-      const {
-        aggregateId,
-        timestamp,
-        payload: { parentId, userId, commentId, text }
-      } = event
-
-      state.push({
-        id: commentId,
-        text,
-        parentId: parentId,
-        storyId: aggregateId,
-        createdAt: timestamp,
-        createdBy: userId
-      })
-      return state
-    }
-  }
-}
-```
-
-Add the implemented read side to the list of collections.
-
-```js
-// ./common/read-models/graphql/collections/index.js
-
-import users from './users'
-import stories from './stories'
-import comments from './comments'
-
-export default [users, stories, comments]
-```
-
-Update the `stories` read side.
-
-```js
-// ./common/read-models/graphql/collections/stories.js
+// ./common/read-model/graphql/projection.js
 
 // @flow
 import {
+  STORY_COMMENTED,
   STORY_CREATED,
-  STORY_UPVOTED,
   STORY_UNVOTED,
-  STORY_COMMENTED
-} from '../../../events'
-
-type UserId = string
-
-type Comment = {
-  id: string,
-  parentId: string,
-  level: number,
-  text: string,
-  createdAt: number,
-  createdBy: UserId
-}
-
-type Story = {
-  id: string,
-  type: 'ask' | 'show' | 'story',
-  title: string,
-  text: string,
-  link: string,
-  commentCount: number,
-  votes: Array<UserId>,
-  comments: Array<Comment>,
-  createdAt: number,
-  createdBy: UserId
-}
-
-type StoriesState = Array<Story>
+  STORY_UPVOTED,
+  USER_CREATED
+} from '../../events'
+import type {
+  Event,
+  StoryCommented,
+  StoryCreated,
+  StoryUnvoted,
+  StoryUpvoted,
+  UserCreated
+} from '../../../flow-types/events'
 
 export default {
-  name: 'stories',
-  initialState: [],
-  projection: {
-    [STORY_CREATED]: (
-      state: StoriesState,
-      event: StoryCreated
-    ): StoriesState => {
-      const {
-        aggregateId,
-        timestamp,
-        payload: { title, link, userId, text }
-      } = event
+  Init: async (store: any) => {
+    const stories = await store.collection('stories')
+    const comments = await store.collection('comments')
+    const users = await store.collection('users')
 
-      const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
+    await stories.ensureIndex({ fieldName: 'id' })
+    await comments.ensureIndex({ fieldName: 'id' })
+    await comments.ensureIndex({ fieldName: 'parentId' })
+    await users.ensureIndex({ fieldName: 'id' })
+  },
 
-      state.push({
-        id: aggregateId,
-        type,
-        title,
-        text,
-        link,
-        commentCount: 0,
-        comments: [],
-        votes: [],
-        createdAt: timestamp,
-        createdBy: userId
-      })
-      return state
-    },
+  // STORY_CREATED implementation
+  // STORY_UPVOTED implementation
+  // STORY_UNVOTED implementation
+  // USER_CREATED implementation
 
-    [STORY_UPVOTED]: (
-      state: StoriesState,
-      event: StoryUpvoted
-    ): StoriesState => {
-      const { aggregateId, payload: { userId } } = event
+  [STORY_COMMENTED]: async (
+    store,
+    {
+      aggregateId,
+      timestamp,
+      payload: { parentId, userId, commentId, text }
+    }: Event<StoryCommented>
+  ) => {
+    const comments = await store.collection('comments')
 
-      const index = state.findIndex(({ id }) => id === aggregateId)
-
-      if (index < 0) {
-        return state
-      }
-
-      state[index].votes.push(userId)
-      return state
-    },
-
-    [STORY_UNVOTED]: (
-      state: StoriesState,
-      event: StoryUnvoted
-    ): StoriesState => {
-      const { aggregateId, payload: { userId } } = event
-
-      const index = state.findIndex(({ id }) => id === aggregateId)
-
-      if (index < 0) {
-        return state
-      }
-
-      state[index].votes = state[index].votes.filter(id => id !== userId)
-      return state
-    },
-
-    [STORY_COMMENTED]: (
-      state: StoriesState,
-      event: StoryCommented
-    ): StoriesState => {
-      const {
-        aggregateId,
-        timestamp,
-        payload: { parentId, userId, commentId, text }
-      } = event
-
-      const story = state.find(({ id }) => id === aggregateId)
-
-      if (!story) {
-        return state
-      }
-
-      story.commentCount++
-
-      const parentIndex =
-        parentId === aggregateId
-          ? -1
-          : story.comments.findIndex(({ id }) => id === parentId)
-
-      const level =
-        parentIndex === -1 ? 0 : story.comments[parentIndex].level + 1
-
-      const comment = {
-        id: commentId,
-        parentId,
-        level,
-        text,
-        createdAt: timestamp,
-        createdBy: userId
-      }
-
-      if (parentIndex === -1) {
-        story.comments.push(comment)
-      } else {
-        story.comments = story.comments
-          .slice(0, parentIndex + 1)
-          .concat(comment, story.comments.slice(parentIndex + 1))
-      }
-
-      return state
+    const comment = {
+      id: commentId,
+      text,
+      parentId,
+      comments: [],
+      storyId: aggregateId,
+      createdAt: timestamp,
+      createdBy: userId
     }
+
+    await comments.insert(comment)
+
+    await comments.update(
+      { id: parentId },
+      {
+        $push: { comments: comment }
+      }
+    )
+
+    const stories = await store.collection('stories')
+
+    await stories.update({ id: aggregateId }, { $inc: { commentCount: 1 } })
   }
 }
 ```
@@ -1404,7 +1347,6 @@ Extend the GraphQL schema file by adding the `Comment` type and queries.
 A comment contains the `replies` field which is a list of comments.
 It provides a tree-like structure for all the included comments.
 
-You need to also add a comments array to the `Story` type.
 
 ```js
 // ./common/read-models/graphql/schema.js
@@ -1422,7 +1364,6 @@ export default `
     link: String
     text: String
     commentCount: Int!
-    comments: [Comment]
     votes: [String]
     createdAt: String!
     createdBy: String!
@@ -1441,73 +1382,148 @@ export default `
   }
   type Query {
     user(id: ID, name: String): User
+    me: User
     stories(type: String, first: Int!, offset: Int): [Story]
-    story(id: ID!): Story
-    comments(page: Int!): [Comment]
+    comments(first: Int!, offset: Int): [Comment]
     comment(id: ID!): Comment
   }
 `
 ```
 
-Implement comment resolves.
+Implement comment resolvers.
 Extend the stories resolver to get comments.
 
 ```js
 // ./common/read-models/graphql/resolvers.js
 
-function getReplies(comments, commentIndex) {
-  const result = []
-  const commentsCount = comments.length
-  let replyIndex = commentIndex + 1
+async function getCommentTree(comments, id, tree = []) {
+  const comment = await comments.findOne({ id })
+  tree.push(comment)
 
-  while (replyIndex < commentsCount) {
-    result.push(comments[replyIndex])
-    replyIndex++
-  }
-
-  return result
+  const childComments = await comments.find({ parentId: comment.id })
+  return await Promise.all(
+    childComments.map(childComment =>
+      getCommentTree(comments, childComment.id, tree)
+    )
+  )
 }
 
 export default {
   // implemented resolvers
 
-  story: async (read, { id }) => {
-    const root = await read('stories')
+  stories: async (store, { type, first, offset = 0 }) => {
+    const stories = await store.collection('stories')
 
-    let story = root.find(s => s.id === id)
+    const filteredStories = type
+      ? await stories
+          .find({ type })
+          .skip(offset)
+          .limit(first)
+      : await stories
+          .find({})
+          .skip(offset)
+          .limit(first)
 
-    if (!story) {
-      return null
-    }
-    story = (await withUserNames([story], read))[0]
-    story.comments = await withUserNames(story.comments, read)
-    return story
+    return await withUserNames(filteredStories, store)
   },
-  comment: async (read, { id }) => {
-    const root = await read('comments')
+  comment: async (store, { id }) => {
+    const comments = await store.collection('comments')
 
-    const commentIndex = root.findIndex(c => c.id === id)
+    const tree = []
+    await getCommentTree(comments, id, tree)
 
-    if (commentIndex === -1) {
-      return null
-    }
-
-    const comment = root[commentIndex]
-    const [resultComment] = await withUserNames([comment], read)
-    const replies = getReplies(root, commentIndex)
+    const result = await withUserNames(tree, store)
 
     return {
-      ...resultComment,
-      replies: await withUserNames(replies, read)
+      ...result[0],
+      replies: result.slice(1)
     }
   },
-  comments: async (read, { first, offset = 0 }) => {
-      const root = await read('comments')
+  comments: async (store, { first, offset = 0 }) => {
+    const comments = await store.collection('comments')
 
-      const comments = root.slice(offset, offset + first).reverse()
+    const result = await comments
+      .find({})
+      .skip(offset)
+      .limit(first)
 
-      return withUserNames(comments, read)
+    return await withUserNames(result, store)
   }
+}
+```
+
+# View model
+
+Update the `storyDetails` view model.
+
+```js
+// ./common/view-models/storyDetails.js
+
+import Immutable from 'seamless-immutable'
+
+import type {
+  Event,
+  StoryCommented,
+  StoryCreated,
+  StoryUnvoted,
+  StoryUpvoted
+} from '../../flow-types/events'
+
+import {
+  STORY_COMMENTED,
+  STORY_CREATED,
+  STORY_UNVOTED,
+  STORY_UPVOTED
+} from '../events'
+
+export default {
+  name: 'storyDetails',
+  projection: {
+    Init: () => Immutable({}),
+
+    // implemented handlers
+
+    [STORY_COMMENTED]: (
+      state,
+      {
+        aggregateId,
+        timestamp,
+        payload: { parentId, userId, commentId, text }
+      }: Event<StoryCommented>
+    ) => {
+      const parentIndex =
+        parentId === aggregateId
+          ? -1
+          : state.comments.findIndex(({ id }) => id === parentId)
+
+      const level =
+        parentIndex === -1 ? 0 : state.comments[parentIndex].level + 1
+
+      const comment = {
+        id: commentId,
+        parentId,
+        level,
+        text,
+        createdAt: timestamp,
+        createdBy: userId
+      }
+
+      const newState = state.update('commentCount', count => count + 1)
+
+      if (parentIndex === -1) {
+        return newState.update('comments', comments => comments.concat(comment))
+      } else {
+        return newState.update('comments', comments =>
+          comments
+            .slice(0, parentIndex + 1)
+            .concat(comment, comments.slice(parentIndex + 1))
+        )
+      }
+    }
+  },
+  serializeState: (state: any) =>
+    JSON.stringify({ storyDetails: state || Immutable({}) }),
+  deserializeState: (serial: any) => JSON.parse(serial)
 }
 ```
 
@@ -1522,7 +1538,6 @@ Add the [ChildrenComments](./client/components/ChildrenComments.js) component fo
 A comment depends on a story, so you need to extend the existing [StoryDetails](./client/containers/StoryDetails.js) container.
 Add a comments tree with text area for new comment creation.
 
-Extend GraphQL query with the `comments` field.
 
 ### Comments View
 

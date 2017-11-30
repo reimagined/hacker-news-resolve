@@ -11,7 +11,6 @@ export default `
     link: String
     text: String
     commentCount: Int!
-    comments: [Comment]
     votes: [String]
     createdAt: String!
     createdBy: String!

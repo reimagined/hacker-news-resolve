@@ -80,7 +80,6 @@ export default {
       text,
       link,
       commentCount: 0,
-      comments: [],
       votes: [],
       createdAt: timestamp,
       createdBy: userId
