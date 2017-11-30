@@ -5,16 +5,15 @@ import type {
   StoryCommented,
   StoryCreated,
   StoryUnvoted,
-  StoryUpvoted,
-  UserCreated
+  StoryUpvoted
 } from '../../flow-types/events'
+
 import {
   STORY_COMMENTED,
   STORY_CREATED,
   STORY_UNVOTED,
   STORY_UPVOTED
 } from '../events'
-import { log } from 'util'
 
 export default {
   name: 'storyDetails',
