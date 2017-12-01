@@ -640,7 +640,7 @@ In this file, comment all imports excluding the `App` container and the `Login` 
 * Implement the `RouteWithSubRoutes` component to provide routes.
 
 Use a Redux store for data storing.
-In the [client/store/index.js](./client/store/index.js) file, add the [devtools](https://github.com/zalmoxisus/redux-devtools-extension) and [resolve-redux](https://github.com/reimagined/resolve/tree/master/packages/resolve-redux#-utils) middlewares, and implement the logout middleware. Comment at this stage import and usage of `saga` function.
+In the [client/store/index.js](./client/store/index.js) file, add the [devtools](https://github.com/zalmoxisus/redux-devtools-extension) and [resolve-redux](https://github.com/reimagined/resolve/tree/master/packages/resolve-redux#-utils) middlewares, and implement the logout middleware. Comment at this stage import and usage of `viewModels` array, replace it with empty array.
 
 Prepare the [App](./client/components/App.js) component by adding router providers.
 
@@ -1148,8 +1148,7 @@ Add the created container to [routes](./client/routes.js) with the `/storyDetail
 In the `client/reducers/` directory, create [storyDetails](./client/reducers/storyDetails.js) reducer.
 Add it to the [root reducer export](./client/reducers/index.js).
 
-In the `client/sagas/` directory, create [client/sagas/index.js](./client/sagas/index.js) saga file.
-Uncomment import and usage of `saga` function in the [client/store/index.js](./client/store/index.js) file.
+Uncomment import of `viewModels` and add in into `resolveMiddleware(viewModels)` in the [client/store/index.js](./client/store/index.js) file.
 
 ### Submit View
 
