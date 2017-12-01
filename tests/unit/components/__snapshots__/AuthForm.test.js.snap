@@ -32,7 +32,7 @@ ShallowWrapper {
           <styled.div>
                     username: 
                     <input
-                              name="name"
+                              name="username"
                               type="text"
                     />
           </styled.div>
@@ -66,7 +66,7 @@ ShallowWrapper {
             <styled.div>
               username: 
               <input
-                            name="name"
+                            name="username"
                             type="text"
               />
 </styled.div>,
@@ -87,7 +87,7 @@ ShallowWrapper {
               "children": Array [
                 "username: ",
                 <input
-                  name="name"
+                  name="username"
                   type="text"
 />,
               ],
@@ -100,7 +100,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "name": "name",
+                  "name": "username",
                   "type": "text",
                 },
                 "ref": null,
@@ -145,7 +145,7 @@ ShallowWrapper {
             <styled.div>
                         username: 
                         <input
-                                    name="name"
+                                    name="username"
                                     type="text"
                         />
             </styled.div>
@@ -179,7 +179,7 @@ ShallowWrapper {
               <styled.div>
                 username: 
                 <input
-                                name="name"
+                                name="username"
                                 type="text"
                 />
 </styled.div>,
@@ -200,7 +200,7 @@ ShallowWrapper {
                 "children": Array [
                   "username: ",
                   <input
-                    name="name"
+                    name="username"
                     type="text"
 />,
                 ],
@@ -213,7 +213,7 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "name": "name",
+                    "name": "username",
                     "type": "text",
                   },
                   "ref": null,

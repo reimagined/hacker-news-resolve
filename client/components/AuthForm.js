@@ -28,7 +28,7 @@ const AuthForm = ({ title, action, buttonText }) => (
     <AuthFormTitle>{title}</AuthFormTitle>
     <form method="POST" action={action}>
       <AuthFormContent>
-        username: <input type="text" name="name" />
+        username: <input type="text" name="username" />
       </AuthFormContent>
       <input type="submit" value={buttonText} />
     </form>

@@ -27,7 +27,7 @@ describe('aggregates', () => {
         }
       }
 
-      const event = story.commands.createStory(state, command)
+      const event = story.commands.createStory(state, command, () => {})
 
       expect(event).toEqual({
         type: STORY_CREATED,
@@ -54,9 +54,9 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() => story.commands.createStory(state, command)).toThrowError(
-        'Story already exists'
-      )
+      expect(() =>
+        story.commands.createStory(state, command, () => {})
+      ).toThrowError('Story already exists')
     })
 
     it('command "createStory" should throw Error "The title field is required"', () => {
@@ -75,9 +75,9 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() => story.commands.createStory(state, command)).toThrowError(
-        'The "title" field is required'
-      )
+      expect(() =>
+        story.commands.createStory(state, command, () => {})
+      ).toThrowError('The "title" field is required')
     })
 
     it('command "createStory" should throw Error "The userId field is required"', () => {
@@ -96,9 +96,9 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() => story.commands.createStory(state, command)).toThrowError(
-        'The "userId" field is required'
-      )
+      expect(() =>
+        story.commands.createStory(state, command, () => {})
+      ).toThrowError('The "userId" field is required')
     })
 
     it('command "upvoteStory" should create an event to upvote the story', () => {
@@ -115,7 +115,7 @@ describe('aggregates', () => {
         }
       }
 
-      const event = story.commands.upvoteStory(state, command)
+      const event = story.commands.upvoteStory(state, command, () => {})
 
       expect(event).toEqual({ type: STORY_UPVOTED, payload: { userId } })
     })
@@ -134,9 +134,9 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() => story.commands.upvoteStory(state, command)).toThrowError(
-        'User already voted'
-      )
+      expect(() =>
+        story.commands.upvoteStory(state, command, () => {})
+      ).toThrowError('User already voted')
     })
 
     it('command "upvoteStory" should throw Error "Story does not exist"', () => {
@@ -149,9 +149,9 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() => story.commands.upvoteStory(state, command)).toThrowError(
-        'Story does not exist'
-      )
+      expect(() =>
+        story.commands.upvoteStory(state, command, () => {})
+      ).toThrowError('Story does not exist')
     })
 
     it('command "upvoteStory" should throw Error "The userId field is required"', () => {
@@ -168,9 +168,9 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() => story.commands.upvoteStory(state, command)).toThrowError(
-        'The "userId" field is required'
-      )
+      expect(() =>
+        story.commands.upvoteStory(state, command, () => {})
+      ).toThrowError('The "userId" field is required')
     })
 
     it('command "unvoteStory" should create an event to unvote the story', () => {
@@ -187,7 +187,7 @@ describe('aggregates', () => {
         }
       }
 
-      const event = story.commands.unvoteStory(state, command)
+      const event = story.commands.unvoteStory(state, command, () => {})
 
       expect(event).toEqual({ type: STORY_UNVOTED, payload: { userId } })
     })
@@ -206,9 +206,9 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() => story.commands.unvoteStory(state, command)).toThrowError(
-        'User did not vote'
-      )
+      expect(() =>
+        story.commands.unvoteStory(state, command, () => {})
+      ).toThrowError('User did not vote')
     })
 
     it('command "unvoteStory" should throw Error "Story does not exist"', () => {
@@ -221,9 +221,9 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() => story.commands.unvoteStory(state, command)).toThrowError(
-        'Story does not exist'
-      )
+      expect(() =>
+        story.commands.unvoteStory(state, command, () => {})
+      ).toThrowError('Story does not exist')
     })
 
     it('command "unvoteStory" should throw Error "The userId field is required"', () => {
@@ -240,9 +240,9 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() => story.commands.unvoteStory(state, command)).toThrowError(
-        'The "userId" field is required'
-      )
+      expect(() =>
+        story.commands.unvoteStory(state, command, () => {})
+      ).toThrowError('The "userId" field is required')
     })
 
     it('eventHandler "STORY_CREATED" should set createdAt, createdBy and voted to state', () => {
@@ -332,7 +332,7 @@ describe('aggregates', () => {
         }
       }
 
-      const event = story.commands.commentStory(state, command)
+      const event = story.commands.commentStory(state, command, () => {})
 
       expect(event).toEqual({
         type: STORY_COMMENTED,
@@ -362,9 +362,9 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() => story.commands.commentStory(state, command)).toThrowError(
-        'Comment already exists'
-      )
+      expect(() =>
+        story.commands.commentStory(state, command, () => {})
+      ).toThrowError('Comment already exists')
     })
 
     it('command "commentStory" should throw Error "The text field is required"', () => {
@@ -384,9 +384,9 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() => story.commands.commentStory(state, command)).toThrowError(
-        'The "text" field is required'
-      )
+      expect(() =>
+        story.commands.commentStory(state, command, () => {})
+      ).toThrowError('The "text" field is required')
     })
 
     it('command "commentStory" should throw Error "The parentId field is required"', () => {
@@ -406,9 +406,9 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() => story.commands.commentStory(state, command)).toThrowError(
-        'The "parentId" field is required'
-      )
+      expect(() =>
+        story.commands.commentStory(state, command, () => {})
+      ).toThrowError('The "parentId" field is required')
     })
 
     it('command "commentStory" should throw Error "The userId field is required"', () => {
@@ -428,9 +428,9 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() => story.commands.commentStory(state, command)).toThrowError(
-        'The "userId" field is required'
-      )
+      expect(() =>
+        story.commands.commentStory(state, command, () => {})
+      ).toThrowError('The "userId" field is required')
     })
 
     it('eventHandler "STORY_COMMENTED" should set new comment to state', () => {

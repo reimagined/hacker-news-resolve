@@ -20,7 +20,12 @@ export default {
   name: 'story',
   initialState: {},
   commands: {
-    createStory: (state: any, command: any): RawEvent<StoryCreated> => {
+    createStory: (
+      state: any,
+      command: any,
+      getJwt: any
+    ): RawEvent<StoryCreated> => {
+      getJwt()
       validate.stateIsAbsent(state, 'Story')
 
       const { title, link, userId, text } = command.payload
@@ -31,7 +36,12 @@ export default {
       return { type: STORY_CREATED, payload: { title, text, link, userId } }
     },
 
-    upvoteStory: (state: any, command: any): RawEvent<StoryUpvoted> => {
+    upvoteStory: (
+      state: any,
+      command: any,
+      getJwt: any
+    ): RawEvent<StoryUpvoted> => {
+      getJwt()
       validate.stateExists(state, 'Story')
 
       const { userId } = command.payload
@@ -42,7 +52,12 @@ export default {
       return { type: STORY_UPVOTED, payload: { userId } }
     },
 
-    unvoteStory: (state: any, command: any): RawEvent<StoryUnvoted> => {
+    unvoteStory: (
+      state: any,
+      command: any,
+      getJwt: any
+    ): RawEvent<StoryUnvoted> => {
+      getJwt()
       validate.stateExists(state, 'Story')
 
       const { userId } = command.payload
@@ -53,7 +68,12 @@ export default {
       return { type: STORY_UNVOTED, payload: { userId } }
     },
 
-    commentStory: (state: any, command: any): RawEvent<StoryCommented> => {
+    commentStory: (
+      state: any,
+      command: any,
+      getJwt: any
+    ): RawEvent<StoryCommented> => {
+      getJwt()
       validate.stateExists(state, 'Story')
 
       const { commentId, parentId, userId, text } = command.payload
