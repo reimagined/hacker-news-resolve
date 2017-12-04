@@ -826,13 +826,6 @@ import {
   STORY_UPVOTED,
   USER_CREATED
 } from '../../events'
-import type {
-  Event,
-  StoryCreated,
-  StoryUnvoted,
-  StoryUpvoted,
-  UserCreated
-} from '../../../flow-types/events'
 
 export default {
   Init: async (store: any) => {
@@ -849,7 +842,7 @@ export default {
       aggregateId,
       timestamp,
       payload: { title, link, userId, text }
-    }: Event<StoryCreated>
+    }
   ) => {
     const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
 
@@ -870,7 +863,7 @@ export default {
 
   [STORY_UPVOTED]: async (
     store,
-    { aggregateId, payload: { userId } }: Event<StoryUpvoted>
+    { aggregateId, payload: { userId } }
   ) => {
     const stories = await store.collection('stories')
 
@@ -884,7 +877,7 @@ export default {
 
   [STORY_UNVOTED]: async (
     store,
-    { aggregateId, payload: { userId } }: Event<StoryUnvoted>
+    { aggregateId, payload: { userId } }
   ) => {
     const stories = await store.collection('stories')
 
@@ -943,17 +936,18 @@ Add the appropriate resolvers.
 ```js
 // ./common/read-models/graphql/resolvers.js
 
-async function withUserNames(items, getReadModel) {
-  const users = await getReadModel('users')
+async function withUserNames(items, store) {
+  const users = await store.collection('users')
 
-  return items.map(item => {
-    const user = users.find(user => user.id === item.createdBy)
-
-    return {
-      ...item,
-      createdByName: user ? user.name : 'unknown'
-    }
-  })
+  return await Promise.all(
+    items.map(async item => {
+      const user = await users.findOne({ id: item.createdBy })
+      return {
+        ...item,
+        createdByName: user ? user.name : 'unknown'
+      }
+    })
+  )
 }
 
 export default {
@@ -1022,13 +1016,6 @@ Add the `./common/view-models/storyDetails.js` file.
 
 import Immutable from 'seamless-immutable'
 
-import type {
-  Event,
-  StoryCreated,
-  StoryUnvoted,
-  StoryUpvoted
-} from '../../flow-types/events'
-
 import {
   STORY_CREATED,
   STORY_UNVOTED,
@@ -1045,7 +1032,7 @@ export default {
         aggregateId,
         timestamp,
         payload: { title, link, userId, text }
-      }: Event<StoryCreated>
+      }
     ) => {
       const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
 
@@ -1065,16 +1052,16 @@ export default {
 
     [STORY_UPVOTED]: (
       state: any,
-      { aggregateId, payload: { userId } }: Event<StoryUpvoted>
+      { aggregateId, payload: { userId } }
     ) => state.update('votes', votes => votes.concat(userId)),
 
     [STORY_UNVOTED]: (
       state: any,
-      { aggregateId, payload: { userId } }: Event<StoryUnvoted>
+      { aggregateId, payload: { userId } }
     ) => state.update('votes', votes => votes.filter(id => id !== userId))
   },
   serializeState: (state: any) =>
-    JSON.stringify({ storyDetails: state || Immutable({}) }),
+    JSON.stringify(state || Immutable({})),
   deserializeState: (serial: any) => JSON.parse(serial)
 }
 ```
@@ -1103,6 +1090,7 @@ import aggregates from './common/aggregates'
 import readModels from './common/read-models'
 import clientConfig from './resolve.client.config'
 import localStrategyParams from './auth/localStrategy'
+import * as events from './common/events'
 import viewModels from './common/view-models'
 
 import {
@@ -1150,9 +1138,6 @@ Implement the [StoryDetails](./client/containers/StoryDetails.js) container to d
 `ChildrenComments` is implemented later, so delete its import and usage in JSX.
 
 Add the created container to [routes](./client/routes.js) with the `/storyDetails/:storyId` path.
-
-In the `client/reducers/` directory, create [storyDetails](./client/reducers/storyDetails.js) reducer.
-Add it to the [root reducer export](./client/reducers/index.js).
 
 Uncomment import of `viewModels` and add in into `resolveMiddleware(viewModels)` in the [client/store/index.js](./client/store/index.js) file.
 
@@ -1285,14 +1270,6 @@ import {
   STORY_UPVOTED,
   USER_CREATED
 } from '../../events'
-import type {
-  Event,
-  StoryCommented,
-  StoryCreated,
-  StoryUnvoted,
-  StoryUpvoted,
-  UserCreated
-} from '../../../flow-types/events'
 
 export default {
   Init: async (store: any) => {
@@ -1317,7 +1294,7 @@ export default {
       aggregateId,
       timestamp,
       payload: { parentId, userId, commentId, text }
-    }: Event<StoryCommented>
+    }
   ) => {
     const comments = await store.collection('comments')
 
