@@ -351,17 +351,33 @@ export default [graphqlReadModel]
 
 We can create users and get a list of users.
 The last server-side issue is implementing registration and authentication.
+For this purpose we can use local strategy from resolve-scripts-auth package.
 
-Install the necessary packages.
-
-```bash
-npm install --save body-parser jsonwebtoken uuid
-```
-
-Implement the `getUserByName` util function that uses the `executeQuery` function passed with the express request.
+In the `auth/` directory, create `./auth/localStrategy.js` file. Because we don't use password in our app, `passwordField` has same value as `usernameField`.
 
 ```js
-// ./server/extendExpress.js
+// ./auth/localStrategy.js
+
+export default {
+  strategy: {
+    usernameField: 'username',
+    passwordField: 'username',
+    successRedirect: null
+  },
+  registerCallback: async ({ resolve, body }, username, password, done) => {
+    done()
+  },
+  loginCallback: async ({ resolve, body }, username, password, done) => {
+    done()
+  }
+}
+
+```
+
+Implement the `getUserByName` util function that uses the `executeQuery` function passed with `registerCallback` and `loginCallback`.
+
+```js
+// ./auth/localStrategy.js
 
 const getUserByName = async (executeQuery, name) => {
   const { user } = await executeQuery(
@@ -379,148 +395,86 @@ const getUserByName = async (executeQuery, name) => {
 }
 ```
 
-Add the list of necessary server parameters.
+Add the list of necessary auth parameters.
 
 ```js
-// ./server/constants.js
+// ./auth/constants.js
 
 export const authenticationSecret = 'auth-secret'
 export const cookieName = 'authenticationToken'
 export const cookieMaxAge = 1000 * 60 * 60 * 24 * 365
 ```
 
-Generate a token using the [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) library and pass it to request cookies.
+Update the `registerCallback` and `loginCallback` callbacks. Use `resolve` parameter to get access of query and command executors.
+Add `failureCallback` function to provide redirection path in case of failure.
 
 ```js
-// ./server/extendExpress.js
+// ./auth/localStrategy.js
 
-import jwt from 'jsonwebtoken'
-
-import { authenticationSecret, cookieName, cookieMaxAge } from './constants'
-
-// getUserByName implementation
-
-const authenticate = (req, res, user) => {
-  try {
-    const authenticationToken = jwt.sign(user, authenticationSecret)
-    res.cookie(cookieName, authenticationToken, {
-      maxAge: cookieMaxAge
-    })
-
-    res.redirect(req.query.redirect || '/')
-  } catch (error) {
-    res.redirect('/error?text=Unauthenticated')
-  }
-}
-```
-
-Implement the `/register` route in the `extendExpress` function using util functions.
-This function is passed to `resolve.server.config.js` later:
-
-```js
-// ./server/extendExpress.js
-
-import jwt from 'jsonwebtoken'
-import bodyParser from 'body-parser'
 import uuid from 'uuid'
 
-import { authenticationSecret, cookieMaxAge, cookieName } from './constants'
-
-// getUserByName and authenticate implementation
-
-export default express => {
-  express.post(
-    '/register',
-    bodyParser.urlencoded({ extended: false }),
-    async (req, res) => {
-      const executeQuery = req.resolve.readModelExecutors.graphql
-
-      const existingUser = await getUserByName(
-        executeQuery,
-        req.body.name
-      )
-
-      if (existingUser) {
-        res.redirect('/error?text=User already exists')
-        return
+const getUserByName = async (executeQuery, name) => {
+  const { user } = await executeQuery(
+    `query ($name: String!) {
+      user(name: $name) {
+        id,
+        name,
+        createdAt
       }
-
-      try {
-        const user = {
-          name: req.body.name.trim(),
-          id: uuid.v4()
-        }
-
-        await req.resolve.executeCommand({
-          type: 'createUser',
-          aggregateId: user.id,
-          aggregateName: 'user',
-          payload: user
-        })
-
-        return authenticate(req, res, user)
-      } catch (error) {
-        res.redirect(`/error?text=${error.toString()}`)
-      }
-    }
+    }`,
+    { name: name.trim() }
   )
+
+  return user
 }
-```
 
-The reSolve library's `queryExecutors` object and `executeCommand` function are accessible from each request.
+export default {
+  strategy: {
+    usernameField: 'username',
+    passwordField: 'username',
+    successRedirect: null
+  },
+  registerCallback: async ({ resolve, body }, username, password, done) => {
+    const executeQuery = resolve.queryExecutors.graphql
 
-Add the `/login` route to allow registered users to log in.
+    const existingUser = await getUserByName(executeQuery, username)
 
-```js
-// ./server/extendExpress.js
+    if (existingUser) {
+      done('User already exists')
+    }
 
-// imports, getUserByName and authenticate implementation
-
-export default express => {
-  // Here should be registration implementation
-
-  express.post(
-    '/login',
-    bodyParser.urlencoded({ extended: false }),
-    async (req, res) => {
-      const user = await getUserByName(
-        req.resolve.queryExecutors.graphql,
-        req.body.name
-      )
-
-      if (!user) {
-        res.redirect('/error?text=No such user')
-        return
+    try {
+      const user = {
+        name: username.trim(),
+        id: uuid.v4()
       }
 
-      return authenticate(req, res, user)
+      await resolve.executeCommand({
+        type: 'createUser',
+        aggregateId: user.id,
+        aggregateName: 'user',
+        payload: user
+      })
+
+      done(null, user)
+    } catch (error) {
+      done(error.toString())
     }
-  )
-}
-```
+  },
+  loginCallback: async ({ resolve, body }, username, password, done) => {
+    const user = await getUserByName(resolve.queryExecutors.graphql, username)
 
-Add authentication middleware to have an authenticated user through all routes.
-
-```js
-// ./server/extendExpress.js
-
-// imports, getUserByName and authenticate implementation
-
-const authenticationMiddleware = (req, res, next) => {
-  req.getJwt((_, user) => {
-    if (user) {
-      req.body.userId = user.id
+    if (!user) {
+      done('No such user')
     }
-    next()
-  })
+
+    done(null, user)
+  },
+  failureCallback: (error, redirect, { resolve, body }) => {
+    redirect(`/error?text=${error}`)
+  }
 }
 
-export default express => {
-  express.use('/', authenticationMiddleware)
-
-  // Here should be registration implementation
-  // and here should be login implementation
-}
 ```
 
 Add the `me` resolver to pass a user to the client side.
@@ -558,7 +512,7 @@ export default `
 `
 ```
 
-Pass the express extension to the server config.
+Pass the auth and jwt parameters to the server config.
 
 ```js
 // ./resolve.server.config.js
@@ -566,15 +520,23 @@ Pass the express extension to the server config.
 import path from 'path'
 import fileAdapter from 'resolve-storage-lite'
 import busAdapter from 'resolve-bus-memory'
+import { localStrategy } from 'resolve-scripts-auth'
 
 import aggregates from './common/aggregates'
 import readModels from './common/read-models'
 import clientConfig from './resolve.client.config'
-import extendExpress from './server/extendExpress'
+import localStrategyParams from './auth/localStrategy'
+
+import {
+  authenticationSecret,
+  cookieName,
+  cookieMaxAge
+} from './auth/constants'
 
 if (module.hot) {
   module.hot.accept()
 }
+
 
 const { NODE_ENV = 'development' } = process.env
 const dbPath = path.join(__dirname, `${NODE_ENV}.db`)
@@ -589,7 +551,16 @@ export default {
   aggregates,
   initialSubscribedEvents: { types: [], ids: [] },
   readModels,
-  extendExpress
+  jwt: {
+    secret: authenticationSecret,
+    cookieName,
+    options: {
+      maxAge: cookieMaxAge
+    }
+  },
+  auth: {
+    strategies: [localStrategy(localStrategyParams)]
+  }
 }
 ```
 
@@ -733,7 +704,8 @@ export default {
   name: 'story',
   initialState: {},
   commands: {
-    createStory: (state: any, command: any) => {
+    createStory: (state: any, command: any, getJwt: any) => {
+      getJwt()
       validate.stateIsAbsent(state, 'Story')
 
       const { title, link, userId, text } = command.payload
@@ -745,7 +717,8 @@ export default {
       return { type: STORY_CREATED, payload }
     },
 
-    upvoteStory: (state: any, command: any) => {
+    upvoteStory: (state: any, command: any, getJwt: any) => {
+      getJwt()
       validate.stateExists(state, 'Story')
 
       const { userId } = command.payload
@@ -757,7 +730,8 @@ export default {
       return { type: STORY_UPVOTED, payload }
     },
 
-    unvoteStory: (state: any, command: any) => {
+    unvoteStory: (state: any, command: any, getJwt: any) => {
+      getJwt()
       validate.stateExists(state, 'Story')
 
       const { userId } = command.payload
@@ -1109,16 +1083,25 @@ Pass the view model to the server config.
 import path from 'path'
 import fileAdapter from 'resolve-storage-lite'
 import busAdapter from 'resolve-bus-memory'
+import { localStrategy } from 'resolve-scripts-auth'
 
 import aggregates from './common/aggregates'
 import readModels from './common/read-models'
 import clientConfig from './resolve.client.config'
-import extendExpress from './server/extendExpress'
+import localStrategyParams from './auth/localStrategy'
 import viewModels from './common/view-models'
+
+import {
+  authenticationSecret,
+  cookieName,
+  cookieMaxAge
+} from './auth/constants'
 
 if (module.hot) {
   module.hot.accept()
 }
+
+const eventTypes = Object.keys(events).map(key => events[key])
 
 const { NODE_ENV = 'development' } = process.env
 const dbPath = path.join(__dirname, `${NODE_ENV}.db`)
@@ -1131,10 +1114,19 @@ export default {
     params: { pathToFile: dbPath }
   },
   aggregates,
-  initialSubscribedEvents: { types: [], ids: [] },
+  initialSubscribedEvents: { types: eventTypes, ids: [] },
   readModels,
   viewModels,
-  extendExpress
+  jwt: {
+    secret: authenticationSecret,
+    cookieName,
+    options: {
+      maxAge: cookieMaxAge
+    }
+  },
+  auth: {
+    strategies: [localStrategy(localStrategyParams)]
+  }
 }
 ```
 
@@ -1225,7 +1217,8 @@ export default {
   commands: {
     // the createStory,  upvoteStory and unvoteStory implementation
 
-    commentStory: (state: any, command: any) => {
+    commentStory: (state: any, command: any, getJwt: any) => {
+      getJwt()
       validate.stateExists(state, 'Story')
 
       const { commentId, parentId, userId, text } = command.payload

@@ -40,11 +40,9 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "body-parser": "^1.18.0",
     "express": "^4.15.2",
     "isomorphic-fetch": "^2.2.1",
     "js-cookie": "^2.1.4",
-    "jsonwebtoken": "^7.4.3",
     "plur": "^2.1.2",
     "progress": "^2.0.0",
     "query-string": "^5.0.0",
