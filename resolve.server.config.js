@@ -14,9 +14,10 @@ import localStrategyParams from './auth/localStrategy'
 import {
   authenticationSecret,
   cookieName,
-  cookieMaxAge,
-  databaseFilePath
+  cookieMaxAge
 } from './auth/constants'
+
+const databaseFilePath = path.join(__dirname, './storage.json')
 
 const eventTypes = Object.keys(events).map(key => events[key])
 
