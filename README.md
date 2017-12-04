@@ -1062,7 +1062,7 @@ export default {
   },
   serializeState: (state: any) =>
     JSON.stringify(state || Immutable({})),
-  deserializeState: (serial: any) => JSON.parse(serial)
+  deserializeState: (serial: any) => Immutable(JSON.parse(serial))
 }
 ```
 
@@ -1444,14 +1444,6 @@ Update the `storyDetails` view model.
 
 import Immutable from 'seamless-immutable'
 
-import type {
-  Event,
-  StoryCommented,
-  StoryCreated,
-  StoryUnvoted,
-  StoryUpvoted
-} from '../../flow-types/events'
-
 import {
   STORY_COMMENTED,
   STORY_CREATED,
@@ -1472,7 +1464,7 @@ export default {
         aggregateId,
         timestamp,
         payload: { parentId, userId, commentId, text }
-      }: Event<StoryCommented>
+      }
     ) => {
       const parentIndex =
         parentId === aggregateId
@@ -1505,8 +1497,8 @@ export default {
     }
   },
   serializeState: (state: any) =>
-    JSON.stringify({ storyDetails: state || Immutable({}) }),
-  deserializeState: (serial: any) => JSON.parse(serial)
+    JSON.stringify(state || Immutable({})),
+  deserializeState: (serial: any) => Immutable(JSON.parse(serial))
 }
 ```
 
