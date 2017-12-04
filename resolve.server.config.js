@@ -1,3 +1,4 @@
+import path from 'path'
 import busAdapter from 'resolve-bus-memory'
 import storageAdapter from 'resolve-storage-lite'
 import { localStrategy } from 'resolve-scripts-auth'
