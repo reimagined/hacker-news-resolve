@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { resolveMiddleware } from 'resolve-redux'
 import Immutable from 'seamless-immutable'
-import createSagaMiddleware from 'redux-saga'
 import cookies from 'js-cookie'
 import viewModels from '../../common/view-models'
 

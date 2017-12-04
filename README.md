@@ -263,13 +263,9 @@ The simplest way to store users is using a store collection.
 import {
   USER_CREATED
 } from '../../events'
-import type {
-  Event,
-  UserCreated
-} from '../../../flow-types/events'
 
 export default {
-  Init: async (store: any) => {
+  Init: async (store) => {
     const users = await store.collection('users')
 
     await users.ensureIndex({ fieldName: 'id' })
@@ -277,7 +273,7 @@ export default {
 
   [USER_CREATED]: async (
     store,
-    { aggregateId, timestamp, payload: { name } }: Event<UserCreated>
+    { aggregateId, timestamp, payload: { name } }
   ) => {
     const users = await store.collection('users')
 
@@ -288,6 +284,7 @@ export default {
     })
   }
 }
+
 ```
 
 Describe a schema and implement resolvers to get data using GraphQL.
@@ -351,7 +348,12 @@ export default [graphqlReadModel]
 
 We can create users and get a list of users.
 The last server-side issue is implementing registration and authentication.
-For this purpose we can use local strategy from resolve-scripts-auth package.
+For this purpose we can use local strategy from `resolve-scripts-auth` package.
+
+Install `uuid` package.
+```
+npm install --save uuid
+```
 
 In the `auth/` directory, create `./auth/localStrategy.js` file. Because we don't use password in our app, `passwordField` has same value as `usernameField`.
 
@@ -392,6 +394,20 @@ const getUserByName = async (executeQuery, name) => {
   )
 
   return user
+}
+
+export default {
+  strategy: {
+    usernameField: 'username',
+    passwordField: 'username',
+    successRedirect: null
+  },
+  registerCallback: async ({ resolve, body }, username, password, done) => {
+    done()
+  },
+  loginCallback: async ({ resolve, body }, username, password, done) => {
+    done()
+  }
 }
 ```
 
@@ -474,7 +490,6 @@ export default {
     redirect(`/error?text=${error}`)
   }
 }
-
 ```
 
 Add the `me` resolver to pass a user to the client side.
@@ -575,9 +590,7 @@ Install the following packages:
 npm install --save query-string
 ```
 
-Implement the [Error](./client/components/Error) component to display an error message.
-
-Add the created component to [routes](./client/routes.js) with the `/error` path.
+Implement the [Error](./client/components/Error.js) component to display an error message.
 
 ### Login View
 
@@ -603,6 +616,7 @@ Follow the steps below to implement the layout:
 * Prepare Redux [user actions](./client/actions/userActions.js).
 * Add the [Splitter](./client/components/Splitter.js) component that serves a vertical menu splitter.
 * Add the [App](./client/containers/App.js) container implementing the layout.
+* Add the [LoginInfo](./client/containers/LoginInfo.js) container implementing the login/logout menu.
 In the `containers/App.js` file, comment the `uiActions` import and the `onSubmitViewShown` action in the `mapDispatchToProps` function, and add the header's [logo](./static/reSolve-logo.svg).
 
 Add the layout and login view to the root component.
