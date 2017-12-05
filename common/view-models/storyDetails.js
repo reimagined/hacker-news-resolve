@@ -91,6 +91,6 @@ export default {
       }
     }
   },
-  serializeState: (state: any) => JSON.stringify(state || Immutable({})),
-  deserializeState: (serial: any) => Immutable(JSON.parse(serial))
+  serializeState: (state: any) => JSON.stringify(state || {}),
+  deserializeState: (state: any) => Immutable(JSON.parse(state))
 }

@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import Splitter from './Splitter'
 import TimeAgo from './TimeAgo'
+import UserName from '../containers/UserName'
 
 const CommentRoot = styled.div`
   margin-bottom: 0.75em;
@@ -79,7 +80,7 @@ class Comment extends React.PureComponent {
             {']'}
           </Collapse>
           <StyledUserLink to={`/user/${createdBy}`}>
-            {createdByName}
+            {createdByName ? createdByName : <UserName id={createdBy} />}
           </StyledUserLink>
           <StyledTimeAgo createdAt={createdAt} />
           <Splitter />
