@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Redirect } from 'react-router-dom'
 import { gqlConnector } from 'resolve-redux'
 import uuid from 'uuid'
 import styled from 'styled-components'
@@ -29,25 +30,6 @@ export class CommentById extends React.PureComponent {
     this.submit.disabled = true
   }
 
-  componentWillReceiveProps = nextProps => {
-    if (nextProps.lastCommentedStory === this.props.lastCommentedStory) {
-      return
-    }
-
-    const { data: { me, refetch }, match: { params: { storyId } } } = this.props
-
-    if (
-      nextProps.lastCommentedStory.id === storyId &&
-      nextProps.lastCommentedStory.userId === me.id
-    ) {
-      refetch()
-
-      this.textarea.disabled = false
-      this.submit.disabled = false
-      this.textarea.value = ''
-    }
-  }
-
   render() {
     const { match: { params: { storyId } }, data: { comment, me } } = this.props
 
@@ -56,6 +38,10 @@ export class CommentById extends React.PureComponent {
     }
 
     const loggedIn = !!me
+
+    if (this.props.replyCreation) {
+      return <Redirect push to={`/storyDetails/${storyId}`} />
+    }
 
     return (
       <Comment storyId={storyId} level={0} {...comment}>
@@ -105,8 +91,8 @@ const mapDispatchToProps = dispatch =>
     dispatch
   )
 
-const mapStateToProps = ({ ui: { lastCommentedStory } }) => ({
-  lastCommentedStory
+const mapStateToProps = ({ ui: { replyCreation } }) => ({
+  replyCreation
 })
 
 export default gqlConnector(

@@ -15,6 +15,8 @@ test('create', async (t /*: TestController */) => {
   await t.typeText('textarea', 'my text')
   await t.click('button')
 
+  await t.wait(5000) // TODO Fix reactivity
+
   await t.expect(await Selector('a').withText('my ask').exists).eql(true)
 
   await t.expect(await Selector('div').withText('my text').exists).eql(true)
@@ -56,6 +58,8 @@ test('add reply', async (t /*: TestController */) => {
 
   await t.typeText('textarea', 'first reply')
   await t.click('button')
+
+  await t.wait(5000) // TODO Fix reactivity
 
   await t.expect(await Selector('div').withText('first reply').exists).eql(true)
 

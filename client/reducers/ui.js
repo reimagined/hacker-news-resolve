@@ -10,6 +10,7 @@ export default (
     refetchStories: false,
     refetchStory: false,
     storyCreation: false,
+    replyCreation: false,
     createdStoryId: null,
     storyCreationError: null,
     updateList: [],
@@ -36,13 +37,15 @@ export default (
             })
           }
 
-          return newState
-            .merge({
-              storyCreation: true
-            })
-            .update('updateList', items => items.concat(action.aggregateId))
+          return newState.merge({
+            storyCreation: true
+          })
         }
-        case 'commentStory':
+        case 'commentStory': {
+          return newState.merge({
+            replyCreation: true
+          })
+        }
         case 'unvoteStory':
         case 'upvoteStory': {
           return newState.update('updateList', items =>
@@ -78,6 +81,11 @@ export default (
         storyCreation: false,
         createdStoryId: null,
         storyCreationError: null
+      })
+    }
+    case 'REPLY_VIEW_SHOWN': {
+      return state.merge({
+        replyCreation: false
       })
     }
     case 'STORIES_REFETCHED': {

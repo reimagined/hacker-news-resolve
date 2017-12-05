@@ -1,4 +1,5 @@
 import uuid from 'uuid'
+import path from 'path'
 
 import {
   USER_CREATED,

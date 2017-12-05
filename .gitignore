@@ -57,3 +57,5 @@ typings/
 dist
 .idea
 storage.json
+
+.vscode

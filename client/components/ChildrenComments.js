@@ -4,7 +4,7 @@ import Comment from './Comment'
 import ReplyLink from './ReplyLink'
 
 const ChildrenComments = ({ storyId, parentId, comments, level }) => {
-  if (!comments.length) {
+  if (!comments || !comments.length) {
     return null
   }
 

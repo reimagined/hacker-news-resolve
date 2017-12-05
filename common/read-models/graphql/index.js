@@ -1,4 +1,4 @@
-import projection from './collections'
+import projection from './projection'
 import gqlResolvers from './resolvers'
 import gqlSchema from './schema'
 

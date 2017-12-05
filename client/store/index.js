@@ -1,7 +1,8 @@
 import { createStore, applyMiddleware, compose } from 'redux'
-import { sendCommandMiddleware, setSubscriptionMiddleware } from 'resolve-redux'
+import { resolveMiddleware } from 'resolve-redux'
 import Immutable from 'seamless-immutable'
 import cookies from 'js-cookie'
+import viewModels from '../../common/view-models'
 
 import reducer from '../reducers'
 
@@ -24,7 +25,7 @@ const logoutMiddleware = () => next => action => {
 
 export default initialState => {
   const middleware = isClient
-    ? [sendCommandMiddleware(), setSubscriptionMiddleware(), logoutMiddleware]
+    ? [resolveMiddleware(viewModels), logoutMiddleware]
     : []
 
   const enhancer = composeEnhancers(applyMiddleware(...middleware))
