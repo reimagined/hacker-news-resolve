@@ -18,6 +18,7 @@ start(
     bar.tick()
     if (bar.complete) {
       console.log(EOL)
+      process.exit()
     }
   }
 )
