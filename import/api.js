@@ -1,5 +1,4 @@
 import fetch from 'isomorphic-fetch'
-import { EOL } from 'os'
 
 const endPoint = 'https://hacker-news.firebaseio.com/v0'
 const timeout = 15000
@@ -7,44 +6,39 @@ const timeout = 15000
 const wait = (time, result) =>
   new Promise(resolve => setTimeout(() => resolve(result), time))
 
-const fetchWithRetry = async (url, retry = 0) => {
-  try {
-    const waitResult = {}
+const fetchSingle = url =>
+  fetch(url, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json'
+    }
+  }).then(response => {
+    if (!response.ok) {
+      throw new Error(response.text())
+    }
+    return response.json()
+  })
 
-    const response = await Promise.race([
-      fetch(url, {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json'
+const fetchWithRetry = url => {
+  return Promise.race([
+    new Promise(async (resolve, reject) => {
+      let error
+      for (let retry = 0; retry <= 5; retry++) {
+        try {
+          resolve(await fetchSingle(url))
+        } catch (err) {
+          error = err
         }
-      }),
-      wait(timeout, waitResult)
-    ])
-
-    if (response === waitResult) {
-      console.error(`${EOL}Fetch timeout (${timeout} ms)`)
-      process.exit(1)
-    }
-
-    return response
-  } catch (e) {
-    if (retry <= 3) {
-      return fetchWithRetry(url, retry + 1)
-    }
-
-    throw e
-  }
+      }
+      reject(error)
+    }),
+    wait(timeout)
+  ])
 }
 
-const fetchStoryIds = async path => {
-  const response = await fetchWithRetry(`${endPoint}/${path}.json`)
-  return await response.json()
-}
+const fetchStoryIds = path => fetchWithRetry(`${endPoint}/${path}.json`)
 
-const fetchItem = async id => {
-  const response = await fetchWithRetry(`${endPoint}/item/${id}.json`)
-  return await response.json()
-}
+const fetchItem = id => fetchWithRetry(`${endPoint}/item/${id}.json`)
 
 const fetchItems = ids => {
   return Promise.all(ids.map(fetchItem))

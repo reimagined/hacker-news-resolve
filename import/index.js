@@ -21,3 +21,9 @@ start(
     }
   }
 )
+
+process.stdin.resume()
+process.on('SIGINT', () => {
+  console.log(EOL)
+  process.exit()
+})

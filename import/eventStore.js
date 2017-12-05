@@ -1,4 +1,5 @@
 import fs from 'fs'
+import path from 'path'
 import createEventStore from 'resolve-es'
 import createStorage from 'resolve-storage-lite'
 import createBus from 'resolve-bus-memory'
