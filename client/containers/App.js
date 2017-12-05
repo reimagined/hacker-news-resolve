@@ -79,6 +79,9 @@ export class App extends React.PureComponent {
       if (pathname === '/submit') {
         this.props.onSubmitViewShown()
       }
+      if (/\/storyDetails\/.+\/comments\/.+/.test(pathname)) {
+        this.props.onReplyViewShown()
+      }
     })
   }
 
@@ -145,7 +148,8 @@ export const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       logout: userActions.logout,
-      onSubmitViewShown: uiActions.submitViewShown
+      onSubmitViewShown: uiActions.submitViewShown,
+      onReplyViewShown: uiActions.replyViewShown
     },
     dispatch
   )

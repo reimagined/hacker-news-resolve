@@ -50,22 +50,7 @@ export class Submit extends React.PureComponent {
     title: '',
     url: '',
     text: '',
-    createdStoryId: null
-  }
-
-  componentWillReceiveProps = nextProps => {
-    if (
-      !this.props.storyCreation ||
-      nextProps.lastCreatedStory === this.props.lastCreatedStory
-    ) {
-      return
-    }
-
-    if (nextProps.lastCreatedStory.userId === this.props.data.me.id) {
-      this.setState({
-        createdStoryId: nextProps.lastCreatedStory.id
-      })
-    }
+    id: null
   }
 
   handleChange = (event, name) => this.setState({ [name]: event.target.value })
@@ -81,7 +66,12 @@ export class Submit extends React.PureComponent {
       return this.props.history.push('/error?text=Enter valid url')
     }
 
+    const id = uuid.v4()
+
+    this.setState({ id })
+
     return this.props.createStory({
+      id,
       userId: this.props.data.me.id,
       title,
       text,
@@ -90,12 +80,13 @@ export class Submit extends React.PureComponent {
   }
 
   render() {
+    console.log(this.props)
     if (!this.props.data.loading && !this.props.data.me) {
       return <Redirect to="/login?redirect=/submit" />
     }
 
-    if (this.state.createdStoryId) {
-      return <Redirect push to={`/storyDetails/${this.state.createdStoryId}`} />
+    if (this.props.storyCreation) {
+      return <Redirect push to={`/storyDetails/${this.state.id}`} />
     }
 
     return (
@@ -132,12 +123,7 @@ export class Submit extends React.PureComponent {
         <ErrorMessage>
           {this.props.storyCreationError ? this.props.storyCreationError : ''}
         </ErrorMessage>
-        <SubmitButton
-          onClick={this.handleSubmit}
-          disabled={this.props.storyCreation}
-        >
-          submit
-        </SubmitButton>
+        <SubmitButton onClick={this.handleSubmit}>submit</SubmitButton>
         <FormBottomMessage>
           Leave url blank to submit a question for discussion. If there is no
           url, the text (if any) will appear at the top of the thread.
@@ -149,18 +135,17 @@ export class Submit extends React.PureComponent {
 
 export const mapStateToProps = ({
   user = {},
-  ui: { storyCreation, storyCreationError, lastCreatedStory }
+  ui: { storyCreation, storyCreationError }
 }) => ({
   storyCreation,
-  storyCreationError,
-  lastCreatedStory
+  storyCreationError
 })
 
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      createStory: ({ userId, title, text, link }) =>
-        actions.createStory(uuid.v4(), {
+      createStory: ({ id, userId, title, text, link }) =>
+        actions.createStory(id, {
           title,
           text,
           link,
