@@ -30,9 +30,9 @@ export default {
 
     return id ? await users.findOne({ id }) : await users.findOne({ name })
   },
-  me: (store, _, { getJwt }) => {
+  me: (store, _, { getJwtValue }) => {
     try {
-      return getJwt()
+      return getJwtValue()
     } catch (e) {
       return null
     }

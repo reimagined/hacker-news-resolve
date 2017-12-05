@@ -23,9 +23,9 @@ export default {
     createStory: (
       state: any,
       command: any,
-      getJwt: any
+      getJwtValue: any
     ): RawEvent<StoryCreated> => {
-      getJwt()
+      getJwtValue()
       validate.stateIsAbsent(state, 'Story')
 
       const { title, link, userId, text } = command.payload
@@ -39,9 +39,9 @@ export default {
     upvoteStory: (
       state: any,
       command: any,
-      getJwt: any
+      getJwtValue: any
     ): RawEvent<StoryUpvoted> => {
-      getJwt()
+      getJwtValue()
       validate.stateExists(state, 'Story')
 
       const { userId } = command.payload
@@ -55,9 +55,9 @@ export default {
     unvoteStory: (
       state: any,
       command: any,
-      getJwt: any
+      getJwtValue: any
     ): RawEvent<StoryUnvoted> => {
-      getJwt()
+      getJwtValue()
       validate.stateExists(state, 'Story')
 
       const { userId } = command.payload
@@ -71,9 +71,9 @@ export default {
     commentStory: (
       state: any,
       command: any,
-      getJwt: any
+      getJwtValue: any
     ): RawEvent<StoryCommented> => {
-      getJwt()
+      getJwtValue()
       validate.stateExists(state, 'Story')
 
       const { commentId, parentId, userId, text } = command.payload

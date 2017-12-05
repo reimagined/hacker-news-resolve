@@ -500,9 +500,9 @@ Add the `me` resolver to pass a user to the client side.
 export default {
   // user implementation
 
-   me: (store, _, { getJwt }) => {
+   me: (store, _, { getJwtValue }) => {
     try {
-      return getJwt()
+      return getJwtValue()
     } catch (e) {
       return null
     }
@@ -718,8 +718,8 @@ export default {
   name: 'story',
   initialState: {},
   commands: {
-    createStory: (state: any, command: any, getJwt: any) => {
-      getJwt()
+    createStory: (state: any, command: any, getJwtValue: any) => {
+      getJwtValue()
       validate.stateIsAbsent(state, 'Story')
 
       const { title, link, userId, text } = command.payload
@@ -731,8 +731,8 @@ export default {
       return { type: STORY_CREATED, payload }
     },
 
-    upvoteStory: (state: any, command: any, getJwt: any) => {
-      getJwt()
+    upvoteStory: (state: any, command: any, getJwtValue: any) => {
+      getJwtValue()
       validate.stateExists(state, 'Story')
 
       const { userId } = command.payload
@@ -744,8 +744,8 @@ export default {
       return { type: STORY_UPVOTED, payload }
     },
 
-    unvoteStory: (state: any, command: any, getJwt: any) => {
-      getJwt()
+    unvoteStory: (state: any, command: any, getJwtValue: any) => {
+      getJwtValue()
       validate.stateExists(state, 'Story')
 
       const { userId } = command.payload
@@ -1216,8 +1216,8 @@ export default {
   commands: {
     // the createStory,  upvoteStory and unvoteStory implementation
 
-    commentStory: (state: any, command: any, getJwt: any) => {
-      getJwt()
+    commentStory: (state: any, command: any, getJwtValue: any) => {
+      getJwtValue()
       validate.stateExists(state, 'Story')
 
       const { commentId, parentId, userId, text } = command.payload
