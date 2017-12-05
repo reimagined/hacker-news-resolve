@@ -18,6 +18,13 @@ start(
     bar.tick()
     if (bar.complete) {
       console.log(EOL)
+      process.exit()
     }
   }
 )
+
+process.stdin.resume()
+process.on('SIGINT', () => {
+  console.log(EOL)
+  process.exit()
+})
