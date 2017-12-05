@@ -45,12 +45,12 @@ export default {
 
     [STORY_UPVOTED]: (
       state: any,
-      { aggregateId, payload: { userId } }: Event<StoryUpvoted>
+      { payload: { userId } }: Event<StoryUpvoted>
     ) => state.update('votes', votes => votes.concat(userId)),
 
     [STORY_UNVOTED]: (
       state: any,
-      { aggregateId, payload: { userId } }: Event<StoryUnvoted>
+      { payload: { userId } }: Event<StoryUnvoted>
     ) => state.update('votes', votes => votes.filter(id => id !== userId)),
 
     [STORY_COMMENTED]: (

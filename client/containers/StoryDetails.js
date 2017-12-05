@@ -85,11 +85,7 @@ export const mapDispatchToProps = dispatch =>
           parentId,
           userId,
           commentId: uuid.v4()
-        }),
-      loadStory: storyId => ({
-        type: 'LOAD_STORY',
-        storyId
-      })
+        })
     },
     dispatch
   )
@@ -101,8 +97,5 @@ export default gqlConnector(
         id
       }
     }
-  `,
-  {
-    options: ({ match: { params: {} } }) => ({})
-  }
+  `
 )(connect(mapStateToProps, mapDispatchToProps)(withViewModel(StoryDetails)))
