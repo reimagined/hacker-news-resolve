@@ -2,7 +2,7 @@
 
 
 
-A React & Redux & Resolve implementation of Hacker News
+A React & Redux & Resolve implementation of **Hacker News**
 
 [<img src="https://user-images.githubusercontent.com/5055654/31942409-d8d6cf98-b8cd-11e7-93f4-613acda010dc.png" height="100">](https://github.com/facebook/react)
 [<img src="https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png" height="100">](https://github.com/reactjs/redux)
@@ -52,7 +52,7 @@ Press `Crtl-C` to stop importing or wait until it is finished.
 
 # Reproducing Hacker News using ReSolve
 
-This tutorial guides you through the process of creating a Hacker News application.
+This tutorial guides you through the process of creating a **Hacker News** application.
 It consists of the following steps:
 
 * [Requirements](#requirements)
@@ -145,7 +145,7 @@ Posts are called Stories, so we will use this name in further.
 * User - a registered and logged in user that can perform actions (post news, ask questions, write comments)
 
 Now we need to identify domain aggregate roots.
-To do this, detect which commands the Hacker News application should perform and which entities they are addressed to:
+To do this, detect which commands the **Hacker News** application should perform and which entities they are addressed to:
 * create a **User**
 * create a **Story**
 * comment a **Story**
@@ -346,9 +346,8 @@ export default [graphqlReadModel]
 
 ### Authentication
 
-We can create users and get a list of users.
-The last server-side issue is implementing registration and authentication.
-For this purpose we can use local strategy from `resolve-scripts-auth` package.
+After adding a storage for users, we can create the local strategy for authentication and implement the required callbacks.
+
 
 Install `uuid` package.
 ```
@@ -376,7 +375,7 @@ export default {
 
 ```
 
-Implement the `getUserByName` util function that uses the `executeQuery` function passed with `registerCallback` and `loginCallback`.
+Implement the `getUserByName` function that uses the `executeQuery` function passed with the `registerCallback` and `loginCallback`.
 
 ```js
 // ./auth/localStrategy.js
@@ -411,7 +410,7 @@ export default {
 }
 ```
 
-Add the list of necessary auth parameters.
+Add the required authentication parameters.
 
 ```js
 // ./auth/constants.js
@@ -421,8 +420,9 @@ export const cookieName = 'authenticationToken'
 export const cookieMaxAge = 1000 * 60 * 60 * 24 * 365
 ```
 
-Update the `registerCallback` and `loginCallback` callbacks. Use `resolve` parameter to get access of query and command executors.
-Add `failureCallback` function to provide redirection path in case of failure.
+Update the `registerCallback` and `loginCallback` callbacks. Use the `resolve` parameter to access the query and command executors.
+
+Add `failureCallback` function to provide the redirection path in case of failure.
 
 ```js
 // ./auth/localStrategy.js
@@ -527,7 +527,7 @@ export default `
 `
 ```
 
-Pass the auth and jwt parameters to the server config.
+Pass the authentication and JWT parameters to the server config.
 
 ```js
 // ./resolve.server.config.js
@@ -625,7 +625,7 @@ In this file, comment all imports excluding the `App` container and the `Login` 
 * Implement the `RouteWithSubRoutes` component to provide routes.
 
 Use a Redux store for data storing.
-In the [client/store/index.js](./client/store/index.js) file, add the [devtools](https://github.com/zalmoxisus/redux-devtools-extension) and [resolve-redux](https://github.com/reimagined/resolve/tree/master/packages/resolve-redux#-utils) middlewares, and implement the logout middleware. Comment at this stage import and usage of `viewModels` array, replace it with empty array.
+In the [client/store/index.js](./client/store/index.js) file, add the [devtools](https://github.com/zalmoxisus/redux-devtools-extension) and [resolve-redux](https://github.com/reimagined/resolve/tree/master/packages/resolve-redux#-utils) middlewares, and implement the logout middleware. For now, the `viewModels` array should be replaced with the empty array. Comment out its import and usage.
 
 Prepare the [App](./client/components/App.js) component by adding router providers.
 
@@ -643,7 +643,7 @@ Uncomment this container import in [routes](./client/routes.js) and add the `/us
 ## Adding Stories
 
 A story is news or question a user posts.
-In Hacker News, stories are displayed on the following pages:
+In **Hacker News**, stories are displayed on the following pages:
 * Newest - the newest stories
 * Ask - users’ questions (Ask HNs)
 * Show - users’ news (Show HNs)
@@ -661,7 +661,7 @@ A story can have the following fields:
 Add the story aggregate and the `createStory` command for creating a story.
 The command should validate input data and check whether the aggregate exists.
 Add the `storyCreated` handler for this purpose.
-In the original Hacker News, users can upvote and unvote stories.
+In the original **Hacker News**, users can upvote and unvote stories.
 This can be accomplished by adding the corresponding commands to the story aggregate.
 
 ```js
@@ -813,8 +813,7 @@ export default {
 
 ### Read Side
 
-Implement a read side.
-Add collection of stories.
+Add a collection of stories as a first step of the read side implementation.
 
 ```js
 // ./common/read-models/graphql/projection.js
@@ -896,11 +895,11 @@ export default {
 
 ### GraphQL
 
-The Hacker News application displays a list of stories without extra information for each one.
+The **Hacker News** application displays a list of stories without extra information on each one.
 For this, support the GraphQL with GraphQL resolvers that works with read model collections.
 
 Add the `./common/read-models/gqlSchema.js` file.
-Describe the `Story` type and a query to request a list of stories - the `stories` query.
+Describe the `Story` type and a query used to request a list of stories - the `stories` query.
 
 ```js
 // ./common/read-models/graphql/schema.js
@@ -1006,8 +1005,7 @@ Add created containers to [routes](./client/routes.js) with the `/`, `/newest/:p
 
 ### View Model
 
-The Hacker News application can display specific story with all extra information for it.
-For this, implement `storyDetails` view model.
+The **Hacker News** application can display specific story with all extra information on it. To add this feature, start with the `storyDetails` view model implementation.
 
 Add the `./common/view-models/storyDetails.js` file.
 
@@ -1257,7 +1255,7 @@ export default {
 
 ### Read Side
 
-Despite there is a single aggregate for comment and story, provide an independent `comments` collection for GraphQL implementation. At the same time update the `stories` collection.
+Despite there is a single aggregate for **comment** and **story**, provide an independent `comments` collection for GraphQL implementation. You should also update the `stories` collection.
 
 ```js
 // ./common/read-model/graphql/projection.js
@@ -1531,5 +1529,5 @@ Add the created container to the end of the the route list in the [routes](./cli
 
 ## Data Importer
 
-Implement an importer in the [import](./import) folder to get data from the real Hacker News website.
+Implement an importer in the [import](./import) folder to get data from the real **Hacker News** website.
 This importer uses the website's REST API, and transforms data to events.
