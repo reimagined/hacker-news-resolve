@@ -17,13 +17,12 @@ const Reply = styled.div`
 
 export class CommentById extends React.PureComponent {
   saveComment = () => {
-    const { match: { params: { storyId } }, data: { comment, me } } = this.props
+    const { match: { params: { storyId } }, data: { comment } } = this.props
 
     this.props.commentStory({
       storyId,
       parentId: comment.id,
-      text: this.textarea.value,
-      userId: me.id
+      text: this.textarea.value
     })
 
     this.textarea.disabled = true
@@ -80,11 +79,10 @@ export class CommentById extends React.PureComponent {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      commentStory: ({ storyId, parentId, userId, text }) =>
+      commentStory: ({ storyId, parentId, text }) =>
         actions.commentStory(storyId, {
           commentId: uuid.v4(),
           parentId,
-          userId,
           text
         })
     },

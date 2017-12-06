@@ -72,7 +72,6 @@ export class Submit extends React.PureComponent {
 
     return this.props.createStory({
       id,
-      userId: this.props.data.me.id,
       title,
       text,
       link: url
@@ -80,7 +79,6 @@ export class Submit extends React.PureComponent {
   }
 
   render() {
-    console.log(this.props)
     if (!this.props.data.loading && !this.props.data.me) {
       return <Redirect to="/login?redirect=/submit" />
     }
@@ -144,12 +142,11 @@ export const mapStateToProps = ({
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      createStory: ({ id, userId, title, text, link }) =>
+      createStory: ({ id, title, text, link }) =>
         actions.createStory(id, {
           title,
           text,
-          link,
-          userId
+          link
         })
     },
     dispatch
