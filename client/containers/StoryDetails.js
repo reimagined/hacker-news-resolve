@@ -24,8 +24,7 @@ export class StoryDetails extends React.PureComponent {
   saveComment = () => {
     this.props.commentStory({
       text: this.textarea.value,
-      parentId: this.props.story.id,
-      userId: this.props.data.me.id
+      parentId: this.props.story.id
     })
 
     this.textarea.value = ''
@@ -79,11 +78,10 @@ export const mapStateToProps = (state, props) => ({
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      commentStory: ({ parentId, text, userId }) =>
+      commentStory: ({ parentId, text }) =>
         actions.commentStory(parentId, {
           text,
           parentId,
-          userId,
           commentId: uuid.v4()
         }),
       loadStory: storyId => ({

@@ -25,12 +25,11 @@ export default {
       command: any,
       getJwtValue: any
     ): RawEvent<StoryCreated> => {
-      getJwtValue()
+      const { id: userId } = getJwtValue()
       validate.stateIsAbsent(state, 'Story')
 
-      const { title, link, userId, text } = command.payload
+      const { title, link, text } = command.payload
 
-      validate.fieldRequired(command.payload, 'userId')
       validate.fieldRequired(command.payload, 'title')
 
       return { type: STORY_CREATED, payload: { title, text, link, userId } }
@@ -41,12 +40,9 @@ export default {
       command: any,
       getJwtValue: any
     ): RawEvent<StoryUpvoted> => {
-      getJwtValue()
+      const { id: userId } = getJwtValue()
+
       validate.stateExists(state, 'Story')
-
-      const { userId } = command.payload
-
-      validate.fieldRequired(command.payload, 'userId')
       validate.itemIsNotInArray(state.voted, userId, 'User already voted')
 
       return { type: STORY_UPVOTED, payload: { userId } }
@@ -57,12 +53,9 @@ export default {
       command: any,
       getJwtValue: any
     ): RawEvent<StoryUnvoted> => {
-      getJwtValue()
+      const { id: userId } = getJwtValue()
+
       validate.stateExists(state, 'Story')
-
-      const { userId } = command.payload
-
-      validate.fieldRequired(command.payload, 'userId')
       validate.itemIsInArray(state.voted, userId, 'User did not vote')
 
       return { type: STORY_UNVOTED, payload: { userId } }
@@ -73,12 +66,11 @@ export default {
       command: any,
       getJwtValue: any
     ): RawEvent<StoryCommented> => {
-      getJwtValue()
+      const { id: userId } = getJwtValue()
       validate.stateExists(state, 'Story')
 
-      const { commentId, parentId, userId, text } = command.payload
+      const { commentId, parentId, text } = command.payload
 
-      validate.fieldRequired(command.payload, 'userId')
       validate.fieldRequired(command.payload, 'parentId')
       validate.fieldRequired(command.payload, 'text')
       validate.keyIsNotInObject(
