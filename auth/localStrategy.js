@@ -57,7 +57,7 @@ export default {
 
     done(null, user)
   },
-  failureCallback: (error, redirect, { resolve, body }) => {
+  failureCallback: (error, redirect) => {
     redirect(`/error?text=${error}`)
   }
 }

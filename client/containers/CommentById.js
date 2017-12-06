@@ -120,7 +120,8 @@ export default gqlConnector(
     options: ({ match: { params: { commentId } } }) => ({
       variables: {
         id: commentId
-      }
+      },
+      fetchPolicy: 'network-only'
     })
   }
 )(connect(mapStateToProps, mapDispatchToProps)(CommentById))
