@@ -8,7 +8,7 @@ const StyledLink = styled(Link)`
   color: #000;
 `
 
-const ReplyLink = ({ storyId, commentId, level }) => (
+const ReplyLink = ({ storyId, commentId }) => (
   <StyledLink to={`/storyDetails/${storyId}/comments/${commentId}`}>
     reply
   </StyledLink>
