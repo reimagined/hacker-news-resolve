@@ -135,9 +135,9 @@ At this point, we need to analyze the domain.
 Event Sourcing and CQRS require identifying Domain Aggregates and their corresponding commands and events.
 We can then use these events to build the required read models.
 
-Hacker News is a social news website focusing on computer science.
-Its users can post news, ask questions and comment on news, and reply to other comments.
-Posts are called Stories, so we will use this name in further.
+**Hacker News** is a social news website focusing on computer science.
+Its users can post news, ask questions, comment on news, and reply to comments.
+Posts are called **Stories**, so we will also use this term.
 
 **Users** can post **Stories** and **Comments**.
 * Story - news or question
@@ -153,7 +153,7 @@ To do this, detect which commands the **Hacker News** application should perform
 * unvote a **Story**
 
 We only need the User and Story aggregate roots since there are no commands addressed to Comment.
-Note that when using CQRS and Event Sourcing, we make a hard and important design decision on the Write Side: we identify which events should be captured, and then we can calculate necessary read models from these events.
+Note that when using CQRS and Event Sourcing, we need to identify which events should be captured on the Write Side, and then compose a list of Read Side models from these events.
 
 To summarize the domain analysis:
 
