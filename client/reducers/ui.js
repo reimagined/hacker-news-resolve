@@ -24,9 +24,6 @@ export default (
   switch (action.type) {
     case '@@resolve/SEND_COMMAND': {
       let newState = state
-      if (!state.userId) {
-        newState = state.set('userId', action.payload.userId)
-      }
 
       switch (action.command.type) {
         case 'createStory': {

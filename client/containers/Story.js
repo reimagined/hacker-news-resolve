@@ -158,11 +158,9 @@ export class Story extends React.PureComponent {
     }
   }
 
-  upvoteStory = () =>
-    this.props.upvoteStory(this.props.story.id, this.props.userId)
+  upvoteStory = () => this.props.upvoteStory(this.props.story.id)
 
-  unvoteStory = () =>
-    this.props.unvoteStory(this.props.story.id, this.props.userId)
+  unvoteStory = () => this.props.unvoteStory(this.props.story.id)
 
   render() {
     const { story, userId, voted, showText } = this.props
@@ -223,21 +221,8 @@ export const mapStateToProps = (
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      commentStory: ({ parentId, text, userId }) =>
-        actions.commentStory(parentId, {
-          text,
-          parentId,
-          userId,
-          commentId: uuid.v4()
-        }),
-      upvoteStory: (id, userId) =>
-        actions.upvoteStory(id, {
-          userId
-        }),
-      unvoteStory: (id, userId) =>
-        actions.unvoteStory(id, {
-          userId
-        }),
+      upvoteStory: id => actions.upvoteStory(id),
+      unvoteStory: id => actions.unvoteStory(id),
       onRefetched: () => ({
         type: 'STORY_REFETCHED'
       })

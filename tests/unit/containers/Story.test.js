@@ -295,43 +295,16 @@ it('mapStateToProps', () => {
   })
 })
 
-it('mapDispatchToProps commentStory', () => {
-  const props = mapDispatchToProps(value => value)
-
-  expect(
-    props.commentStory({
-      parentId: 'parentId',
-      text: 'text',
-      userId: 'userId'
-    })
-  ).toEqual(
-    actions.commentStory('parentId', {
-      parentId: 'parentId',
-      text: 'text',
-      userId: 'userId',
-      commentId: 'uuid-v4'
-    })
-  )
-})
-
 it('mapDispatchToProps upvoteStory', () => {
   const props = mapDispatchToProps(value => value)
 
-  expect(props.upvoteStory('id', 'userId')).toEqual(
-    actions.upvoteStory('id', {
-      userId: 'userId'
-    })
-  )
+  expect(props.upvoteStory('id')).toEqual(actions.upvoteStory('id'))
 })
 
 it('mapDispatchToProps unvoteStory', () => {
   const props = mapDispatchToProps(value => value)
 
-  expect(props.unvoteStory('id', 'userId')).toEqual(
-    actions.unvoteStory('id', {
-      userId: 'userId'
-    })
-  )
+  expect(props.unvoteStory('id')).toEqual(actions.unvoteStory('id'))
 })
 
 it('mapDispatchToProps onRefetched', () => {
