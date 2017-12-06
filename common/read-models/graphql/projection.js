@@ -36,6 +36,9 @@ export default {
     }: Event<StoryCommented>
   ) => {
     const comments = await store.collection('comments')
+    const users = await store.collection('users')
+
+    const user = await users.findOne({ id: userId })
 
     const comment = {
       id: commentId,
@@ -44,7 +47,8 @@ export default {
       comments: [],
       storyId: aggregateId,
       createdAt: timestamp,
-      createdBy: userId
+      createdBy: userId,
+      createdByName: user.name
     }
 
     await comments.insert(comment)
@@ -72,6 +76,9 @@ export default {
     const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
 
     const stories = await store.collection('stories')
+    const users = await store.collection('users')
+
+    const user = await users.findOne({ id: userId })
 
     await stories.insert({
       id: aggregateId,
@@ -82,7 +89,8 @@ export default {
       commentCount: 0,
       votes: [],
       createdAt: timestamp,
-      createdBy: userId
+      createdBy: userId,
+      createdByName: user.name
     })
   },
 

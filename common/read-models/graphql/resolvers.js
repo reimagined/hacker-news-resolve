@@ -1,17 +1,3 @@
-async function withUserNames(items, store) {
-  const users = await store.collection('users')
-
-  return await Promise.all(
-    items.map(async item => {
-      const user = await users.findOne({ id: item.createdBy })
-      return {
-        ...item,
-        createdByName: user ? user.name : 'unknown'
-      }
-    })
-  )
-}
-
 async function getCommentTree(comments, id, tree = []) {
   const comment = await comments.findOne({ id })
   tree.push(comment)
@@ -40,7 +26,7 @@ export default {
   stories: async (store, { type, first, offset = 0 }) => {
     const stories = await store.collection('stories')
 
-    const filteredStories = type
+    return type
       ? await stories
           .find({ type })
           .skip(offset)
@@ -49,8 +35,6 @@ export default {
           .find({})
           .skip(offset)
           .limit(first)
-
-    return await withUserNames(filteredStories, store)
   },
   comment: async (store, { id }) => {
     const comments = await store.collection('comments')
@@ -58,21 +42,17 @@ export default {
     const tree = []
     await getCommentTree(comments, id, tree)
 
-    const result = await withUserNames(tree, store)
-
     return {
-      ...result[0],
-      replies: result.slice(1)
+      ...tree[0],
+      replies: tree.slice(1)
     }
   },
   comments: async (store, { first, offset = 0 }) => {
     const comments = await store.collection('comments')
 
-    const result = await comments
+    return await comments
       .find({})
       .skip(offset)
       .limit(first)
-
-    return await withUserNames(result, store)
   }
 }
