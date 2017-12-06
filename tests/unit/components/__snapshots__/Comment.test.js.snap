@@ -44,7 +44,7 @@ ShallowWrapper {
           <Styled(Link)
                     to="/user/SomeUser"
           >
-                    <ResolveGraphglConnector
+                    <UserNameById
                               id="SomeUser"
                     />
           </Styled(Link)>
@@ -93,7 +93,7 @@ ShallowWrapper {
             <Styled(Link)
               to="/user/SomeUser"
 >
-              <ResolveGraphglConnector
+              <UserNameById
                             id="SomeUser"
               />
 </Styled(Link)>,
@@ -142,7 +142,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <ResolveGraphglConnector
+              "children": <UserNameById
                 id="SomeUser"
 />,
               "to": "/user/SomeUser",
@@ -151,7 +151,7 @@ ShallowWrapper {
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
                 "id": "SomeUser",
               },
@@ -253,7 +253,7 @@ ShallowWrapper {
             <Styled(Link)
                         to="/user/SomeUser"
             >
-                        <ResolveGraphglConnector
+                        <UserNameById
                                     id="SomeUser"
                         />
             </Styled(Link)>
@@ -302,7 +302,7 @@ ShallowWrapper {
               <Styled(Link)
                 to="/user/SomeUser"
 >
-                <ResolveGraphglConnector
+                <UserNameById
                                 id="SomeUser"
                 />
 </Styled(Link)>,
@@ -351,7 +351,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <ResolveGraphglConnector
+                "children": <UserNameById
                   id="SomeUser"
 />,
                 "to": "/user/SomeUser",
@@ -360,7 +360,7 @@ ShallowWrapper {
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "id": "SomeUser",
                 },
@@ -498,7 +498,7 @@ ShallowWrapper {
           <Styled(Link)
                     to="/user/SomeUser"
           >
-                    <ResolveGraphglConnector
+                    <UserNameById
                               id="SomeUser"
                     />
           </Styled(Link)>
@@ -547,7 +547,7 @@ ShallowWrapper {
             <Styled(Link)
               to="/user/SomeUser"
 >
-              <ResolveGraphglConnector
+              <UserNameById
                             id="SomeUser"
               />
 </Styled(Link)>,
@@ -596,7 +596,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <ResolveGraphglConnector
+              "children": <UserNameById
                 id="SomeUser"
 />,
               "to": "/user/SomeUser",
@@ -605,7 +605,7 @@ ShallowWrapper {
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
                 "id": "SomeUser",
               },
@@ -707,7 +707,7 @@ ShallowWrapper {
             <Styled(Link)
                         to="/user/SomeUser"
             >
-                        <ResolveGraphglConnector
+                        <UserNameById
                                     id="SomeUser"
                         />
             </Styled(Link)>
@@ -756,7 +756,7 @@ ShallowWrapper {
               <Styled(Link)
                 to="/user/SomeUser"
 >
-                <ResolveGraphglConnector
+                <UserNameById
                                 id="SomeUser"
                 />
 </Styled(Link)>,
@@ -805,7 +805,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <ResolveGraphglConnector
+                "children": <UserNameById
                   id="SomeUser"
 />,
                 "to": "/user/SomeUser",
@@ -814,7 +814,7 @@ ShallowWrapper {
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "id": "SomeUser",
                 },
@@ -946,7 +946,7 @@ ShallowWrapper {
           <Styled(Link)
                     to="/user/SomeUser"
           >
-                    <ResolveGraphglConnector
+                    <UserNameById
                               id="SomeUser"
                     />
           </Styled(Link)>
@@ -995,7 +995,7 @@ ShallowWrapper {
             <Styled(Link)
               to="/user/SomeUser"
 >
-              <ResolveGraphglConnector
+              <UserNameById
                             id="SomeUser"
               />
 </Styled(Link)>,
@@ -1044,7 +1044,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <ResolveGraphglConnector
+              "children": <UserNameById
                 id="SomeUser"
 />,
               "to": "/user/SomeUser",
@@ -1053,7 +1053,7 @@ ShallowWrapper {
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
                 "id": "SomeUser",
               },
@@ -1155,7 +1155,7 @@ ShallowWrapper {
             <Styled(Link)
                         to="/user/SomeUser"
             >
-                        <ResolveGraphglConnector
+                        <UserNameById
                                     id="SomeUser"
                         />
             </Styled(Link)>
@@ -1204,7 +1204,7 @@ ShallowWrapper {
               <Styled(Link)
                 to="/user/SomeUser"
 >
-                <ResolveGraphglConnector
+                <UserNameById
                                 id="SomeUser"
                 />
 </Styled(Link)>,
@@ -1253,7 +1253,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <ResolveGraphglConnector
+                "children": <UserNameById
                   id="SomeUser"
 />,
                 "to": "/user/SomeUser",
@@ -1262,7 +1262,7 @@ ShallowWrapper {
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "id": "SomeUser",
                 },
@@ -1394,7 +1394,7 @@ ShallowWrapper {
           <Styled(Link)
                     to="/user/SomeUser"
           >
-                    <ResolveGraphglConnector
+                    <UserNameById
                               id="SomeUser"
                     />
           </Styled(Link)>
@@ -1443,7 +1443,7 @@ ShallowWrapper {
             <Styled(Link)
               to="/user/SomeUser"
 >
-              <ResolveGraphglConnector
+              <UserNameById
                             id="SomeUser"
               />
 </Styled(Link)>,
@@ -1492,7 +1492,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <ResolveGraphglConnector
+              "children": <UserNameById
                 id="SomeUser"
 />,
               "to": "/user/SomeUser",
@@ -1501,7 +1501,7 @@ ShallowWrapper {
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
                 "id": "SomeUser",
               },
@@ -1603,7 +1603,7 @@ ShallowWrapper {
             <Styled(Link)
                         to="/user/SomeUser"
             >
-                        <ResolveGraphglConnector
+                        <UserNameById
                                     id="SomeUser"
                         />
             </Styled(Link)>
@@ -1652,7 +1652,7 @@ ShallowWrapper {
               <Styled(Link)
                 to="/user/SomeUser"
 >
-                <ResolveGraphglConnector
+                <UserNameById
                                 id="SomeUser"
                 />
 </Styled(Link)>,
@@ -1701,7 +1701,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <ResolveGraphglConnector
+                "children": <UserNameById
                   id="SomeUser"
 />,
                 "to": "/user/SomeUser",
@@ -1710,7 +1710,7 @@ ShallowWrapper {
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "id": "SomeUser",
                 },
@@ -1842,7 +1842,7 @@ ShallowWrapper {
           <Styled(Link)
                     to="/user/SomeUser"
           >
-                    <ResolveGraphglConnector
+                    <UserNameById
                               id="SomeUser"
                     />
           </Styled(Link)>
@@ -1891,7 +1891,7 @@ ShallowWrapper {
             <Styled(Link)
               to="/user/SomeUser"
 >
-              <ResolveGraphglConnector
+              <UserNameById
                             id="SomeUser"
               />
 </Styled(Link)>,
@@ -1940,7 +1940,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <ResolveGraphglConnector
+              "children": <UserNameById
                 id="SomeUser"
 />,
               "to": "/user/SomeUser",
@@ -1949,7 +1949,7 @@ ShallowWrapper {
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
                 "id": "SomeUser",
               },
@@ -2051,7 +2051,7 @@ ShallowWrapper {
             <Styled(Link)
                         to="/user/SomeUser"
             >
-                        <ResolveGraphglConnector
+                        <UserNameById
                                     id="SomeUser"
                         />
             </Styled(Link)>
@@ -2100,7 +2100,7 @@ ShallowWrapper {
               <Styled(Link)
                 to="/user/SomeUser"
 >
-                <ResolveGraphglConnector
+                <UserNameById
                                 id="SomeUser"
                 />
 </Styled(Link)>,
@@ -2149,7 +2149,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <ResolveGraphglConnector
+                "children": <UserNameById
                   id="SomeUser"
 />,
                 "to": "/user/SomeUser",
@@ -2158,7 +2158,7 @@ ShallowWrapper {
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "id": "SomeUser",
                 },
@@ -2290,7 +2290,7 @@ ShallowWrapper {
           <Styled(Link)
                     to="/user/SomeUser"
           >
-                    <ResolveGraphglConnector
+                    <UserNameById
                               id="SomeUser"
                     />
           </Styled(Link)>
@@ -2339,7 +2339,7 @@ ShallowWrapper {
             <Styled(Link)
               to="/user/SomeUser"
 >
-              <ResolveGraphglConnector
+              <UserNameById
                             id="SomeUser"
               />
 </Styled(Link)>,
@@ -2388,7 +2388,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <ResolveGraphglConnector
+              "children": <UserNameById
                 id="SomeUser"
 />,
               "to": "/user/SomeUser",
@@ -2397,7 +2397,7 @@ ShallowWrapper {
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
                 "id": "SomeUser",
               },
@@ -2499,7 +2499,7 @@ ShallowWrapper {
             <Styled(Link)
                         to="/user/SomeUser"
             >
-                        <ResolveGraphglConnector
+                        <UserNameById
                                     id="SomeUser"
                         />
             </Styled(Link)>
@@ -2548,7 +2548,7 @@ ShallowWrapper {
               <Styled(Link)
                 to="/user/SomeUser"
 >
-                <ResolveGraphglConnector
+                <UserNameById
                                 id="SomeUser"
                 />
 </Styled(Link)>,
@@ -2597,7 +2597,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <ResolveGraphglConnector
+                "children": <UserNameById
                   id="SomeUser"
 />,
                 "to": "/user/SomeUser",
@@ -2606,7 +2606,7 @@ ShallowWrapper {
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "id": "SomeUser",
                 },
