@@ -615,9 +615,9 @@ The login view is placed in the main layout.
 Follow the steps below to implement the layout:
 * Prepare Redux [user actions](./client/actions/userActions.js).
 * Add the [Splitter](./client/components/Splitter.js) component that serves a vertical menu splitter.
-* Add the [App](./client/containers/App.js) container implementing the layout.
+* Add the [App](client/components/Layout.js) container implementing the layout.
 * Add the [LoginInfo](./client/containers/LoginInfo.js) container implementing the login/logout menu.
-In the `containers/App.js` file, comment the `uiActions` import and the `onSubmitViewShown` action in the `mapDispatchToProps` function, and add the header's [logo](./static/reSolve-logo.svg).
+In the `containers/Layout.js` file, comment the `uiActions` import and the `onSubmitViewShown` action in the `mapDispatchToProps` function, and add the header's [logo](./static/reSolve-logo.svg).
 
 Add the layout and login view to the root component.
 * Add routes. To do this, create the `client/routes.js` file.
@@ -999,7 +999,7 @@ Implement the [Stories](./client/components/Stories.js) component for displaying
 Implement specific story containers such as [NewestByPage](./client/containers/NewestByPage.js), [AskByPage](./client/containers/AskByPage.js) and [ShowByPage](./client/containers/ShowByPage.js).
 In each file, delete the `commentCount` field from `query`.
 
-In the `client/reducers/` directory, create [UI](./client/reducers/ui.js) and [user](./client/reducers/user.js) reducers.
+In the `client/reducers/` directory, create [UI](client/reducers/optimistic.js) and [user](./client/reducers/user.js) reducers.
 Add them to the [root reducer export](./client/reducers/index.js).
 
 Add created containers to [routes](./client/routes.js) with the `/`, `/newest/:page?`, `/show/:page?` and `/ask/:page?` paths.

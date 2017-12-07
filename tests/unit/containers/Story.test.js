@@ -29,7 +29,7 @@ afterAll(() => {
   Date.now = originalNow
 })
 
-it("Story { type: 'story' } with componentDidUpdate renders correctly", () => {
+it("Story { type: 'story' } renders correctly", () => {
   const story = {
     id: 'story-id',
     type: 'story',
@@ -42,18 +42,7 @@ it("Story { type: 'story' } with componentDidUpdate renders correctly", () => {
     createdByName: 'user'
   }
 
-  const wrapper = shallow(
-    <Story
-      onRefetched={() => {}}
-      refetch={() => {}}
-      refetchStory
-      story={story}
-      loggedIn={true}
-      voted={0}
-    />
-  )
-  const prevProp = wrapper.props()
-  wrapper.instance().componentDidUpdate(prevProp)
+  const wrapper = shallow(<Story story={story} loggedIn={true} voted={0} />)
 
   expect(wrapper).toMatchSnapshot()
 })
@@ -228,9 +217,7 @@ it('upvoteStory', () => {
     createdByName: 'user'
   }
 
-  const wrapper = shallow(
-    <Story story={story} userId="user-id" voted={false} />
-  )
+  const wrapper = shallow(<Story story={story} userId="user-id" />)
   let upvoteStory = false
   wrapper.setProps({
     upvoteStory: () => (upvoteStory = true),
@@ -252,19 +239,20 @@ it('unvoteStory', () => {
     title: 'Google',
     link: 'https://google.com',
     comments: [],
-    votes: [],
+    votes: ['user-id'],
     createdAt: new Date(0),
     createdBy: 'user-id',
     createdByName: 'user'
   }
 
-  const wrapper = shallow(<Story story={story} userId="user-id" voted={true} />)
+  const wrapper = shallow(<Story story={story} userId="user-id" />)
   let unvoteStory = false
   wrapper.setProps({
     unvoteStory: () => (unvoteStory = true),
     onVoted: () => {}
   })
   expect(unvoteStory).toEqual(false)
+
   wrapper
     .find(StoryInfo)
     .shallow()
@@ -281,17 +269,12 @@ it('Invalid story', () => {
 it('mapStateToProps', () => {
   const user = { id: 'user-id' }
   const story = { id: 'story-id', votes: [] }
-  const ui = { refetchStory: true, lastVotedStory: { id: 'story-id' } }
 
-  const props = mapStateToProps({ ui }, { story, userId: user.id })
+  const props = mapStateToProps({}, { story, userId: user.id })
 
   expect(props).toEqual({
-    story: {
-      id: 'story-id',
-      votes: []
-    },
-    voted: false,
-    refetchStory: true
+    story,
+    userId: user.id
   })
 })
 
@@ -305,12 +288,6 @@ it('mapDispatchToProps unvoteStory', () => {
   const props = mapDispatchToProps(value => value)
 
   expect(props.unvoteStory('id')).toEqual(actions.unvoteStory('id'))
-})
-
-it('mapDispatchToProps onRefetched', () => {
-  const props = mapDispatchToProps(value => value)
-
-  expect(props.onRefetched()).toEqual({ type: 'STORY_REFETCHED' })
 })
 
 it('StyledLink', () => {

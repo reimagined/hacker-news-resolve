@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { gqlConnector } from 'resolve-redux'
 
 import Stories from '../components/Stories'
@@ -7,22 +6,8 @@ import { ITEMS_PER_PAGE } from '../constants'
 
 const ShowByPage = ({
   match: { params: { page } },
-  data: { stories = [], me, refetch },
-  lastVotedStory
-}) => (
-  <Stories
-    refetch={refetch}
-    items={stories}
-    page={page}
-    type="show"
-    userId={me && me.id}
-    lastVotedStory={lastVotedStory}
-  />
-)
-
-const mapStateToProps = ({ ui: { lastVotedStory } }) => ({
-  lastVotedStory
-})
+  data: { stories = [], me }
+}) => <Stories items={stories} page={page} type="show" userId={me && me.id} />
 
 export default gqlConnector(
   `
@@ -53,4 +38,4 @@ export default gqlConnector(
       fetchPolicy: 'network-only'
     })
   }
-)(connect(mapStateToProps)(ShowByPage))
+)(ShowByPage)

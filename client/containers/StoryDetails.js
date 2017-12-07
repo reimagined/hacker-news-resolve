@@ -50,12 +50,7 @@ export class StoryDetails extends React.PureComponent {
               cols="70"
             />
             <div>
-              <button
-                ref={element => (this.submit = element)}
-                onClick={this.saveComment}
-              >
-                add comment
-              </button>
+              <button onClick={this.saveComment}>add comment</button>
             </div>
           </Reply>
         ) : null}
@@ -63,16 +58,17 @@ export class StoryDetails extends React.PureComponent {
           storyId={story.id}
           comments={story.comments}
           parentId={story.id}
+          loggedIn={loggedIn}
         />
       </StoryDetailsRoot>
     )
   }
 }
 
-export const mapStateToProps = (state, props) => ({
-  story: state.viewModels[viewModel.name][props.match.params.storyId],
+export const mapStateToProps = (state, { match: { params: { storyId } } }) => ({
+  story: state.viewModels[viewModel.name][storyId],
   viewModel: viewModel.name,
-  aggregateId: props.match.params.storyId
+  aggregateId: storyId
 })
 
 export const mapDispatchToProps = dispatch =>

@@ -47,16 +47,10 @@ ShallowWrapper {
           createdBy="user-id"
           createdByName="SomeUser"
           id="comment-id"
-          level={1}
           parentId="story-id"
           storyId="story-id"
           text="comment"
 >
-          <ReplyLink
-                    commentId="comment-id"
-                    level={1}
-                    storyId="story-id"
-          />
           <ChildrenComments
                     comments={
                               Array [
@@ -78,7 +72,7 @@ ShallowWrapper {
                                         },
                                       ]
                     }
-                    level={1}
+                    loggedIn={undefined}
                     parentId="comment-id"
                     storyId="story-id"
           />
@@ -94,11 +88,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": Array [
-            <ReplyLink
-              commentId="comment-id"
-              level={1}
-              storyId="story-id"
-/>,
+            null,
             <ChildrenComments
               comments={
                             Array [
@@ -120,7 +110,7 @@ ShallowWrapper {
                                           },
                                         ]
               }
-              level={1}
+              loggedIn={undefined}
               parentId="comment-id"
               storyId="story-id"
 />,
@@ -129,26 +119,13 @@ ShallowWrapper {
           "createdBy": "user-id",
           "createdByName": "SomeUser",
           "id": "comment-id",
-          "level": 1,
           "parentId": "story-id",
           "storyId": "story-id",
           "text": "comment",
         },
         "ref": null,
         "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "commentId": "comment-id",
-              "level": 1,
-              "storyId": "story-id",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
+          null,
           Object {
             "instance": null,
             "key": undefined,
@@ -172,7 +149,7 @@ ShallowWrapper {
                   "text": "reply",
                 },
               ],
-              "level": 1,
+              "loggedIn": undefined,
               "parentId": "comment-id",
               "storyId": "story-id",
             },
@@ -199,16 +176,10 @@ ShallowWrapper {
             createdBy="user-id"
             createdByName="SomeUser"
             id="comment-id"
-            level={1}
             parentId="story-id"
             storyId="story-id"
             text="comment"
 >
-            <ReplyLink
-                        commentId="comment-id"
-                        level={1}
-                        storyId="story-id"
-            />
             <ChildrenComments
                         comments={
                                     Array [
@@ -230,7 +201,7 @@ ShallowWrapper {
                                                 },
                                               ]
                         }
-                        level={1}
+                        loggedIn={undefined}
                         parentId="comment-id"
                         storyId="story-id"
             />
@@ -246,11 +217,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <ReplyLink
-                commentId="comment-id"
-                level={1}
-                storyId="story-id"
-/>,
+              null,
               <ChildrenComments
                 comments={
                                 Array [
@@ -272,7 +239,7 @@ ShallowWrapper {
                                                 },
                                               ]
                 }
-                level={1}
+                loggedIn={undefined}
                 parentId="comment-id"
                 storyId="story-id"
 />,
@@ -281,26 +248,13 @@ ShallowWrapper {
             "createdBy": "user-id",
             "createdByName": "SomeUser",
             "id": "comment-id",
-            "level": 1,
             "parentId": "story-id",
             "storyId": "story-id",
             "text": "comment",
           },
           "ref": null,
           "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "commentId": "comment-id",
-                "level": 1,
-                "storyId": "story-id",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+            null,
             Object {
               "instance": null,
               "key": undefined,
@@ -324,7 +278,7 @@ ShallowWrapper {
                     "text": "reply",
                   },
                 ],
-                "level": 1,
+                "loggedIn": undefined,
                 "parentId": "comment-id",
                 "storyId": "story-id",
               },
@@ -375,7 +329,7 @@ ShallowWrapper {
             },
           ]
     }
-    level={1}
+    loggedIn={undefined}
     parentId="comment-id"
     storyId="story-id"
 />,
@@ -398,16 +352,10 @@ ShallowWrapper {
           createdBy="user-id"
           createdByName="SomeUser"
           id="reply-id"
-          level={2}
           parentId="comment-id"
           storyId="story-id"
           text="reply"
 >
-          <ReplyLink
-                    commentId="reply-id"
-                    level={2}
-                    storyId="story-id"
-          />
           <ChildrenComments
                     comments={
                               Array [
@@ -429,7 +377,7 @@ ShallowWrapper {
                                         },
                                       ]
                     }
-                    level={2}
+                    loggedIn={undefined}
                     parentId="reply-id"
                     storyId="story-id"
           />
@@ -445,11 +393,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": Array [
-            <ReplyLink
-              commentId="reply-id"
-              level={2}
-              storyId="story-id"
-/>,
+            null,
             <ChildrenComments
               comments={
                             Array [
@@ -471,7 +415,7 @@ ShallowWrapper {
                                           },
                                         ]
               }
-              level={2}
+              loggedIn={undefined}
               parentId="reply-id"
               storyId="story-id"
 />,
@@ -480,26 +424,13 @@ ShallowWrapper {
           "createdBy": "user-id",
           "createdByName": "SomeUser",
           "id": "reply-id",
-          "level": 2,
           "parentId": "comment-id",
           "storyId": "story-id",
           "text": "reply",
         },
         "ref": null,
         "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "commentId": "reply-id",
-              "level": 2,
-              "storyId": "story-id",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
+          null,
           Object {
             "instance": null,
             "key": undefined,
@@ -523,7 +454,7 @@ ShallowWrapper {
                   "text": "reply",
                 },
               ],
-              "level": 2,
+              "loggedIn": undefined,
               "parentId": "reply-id",
               "storyId": "story-id",
             },
@@ -550,16 +481,10 @@ ShallowWrapper {
             createdBy="user-id"
             createdByName="SomeUser"
             id="reply-id"
-            level={2}
             parentId="comment-id"
             storyId="story-id"
             text="reply"
 >
-            <ReplyLink
-                        commentId="reply-id"
-                        level={2}
-                        storyId="story-id"
-            />
             <ChildrenComments
                         comments={
                                     Array [
@@ -581,7 +506,7 @@ ShallowWrapper {
                                                 },
                                               ]
                         }
-                        level={2}
+                        loggedIn={undefined}
                         parentId="reply-id"
                         storyId="story-id"
             />
@@ -597,11 +522,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <ReplyLink
-                commentId="reply-id"
-                level={2}
-                storyId="story-id"
-/>,
+              null,
               <ChildrenComments
                 comments={
                                 Array [
@@ -623,7 +544,7 @@ ShallowWrapper {
                                                 },
                                               ]
                 }
-                level={2}
+                loggedIn={undefined}
                 parentId="reply-id"
                 storyId="story-id"
 />,
@@ -632,26 +553,13 @@ ShallowWrapper {
             "createdBy": "user-id",
             "createdByName": "SomeUser",
             "id": "reply-id",
-            "level": 2,
             "parentId": "comment-id",
             "storyId": "story-id",
             "text": "reply",
           },
           "ref": null,
           "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "commentId": "reply-id",
-                "level": 2,
-                "storyId": "story-id",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+            null,
             Object {
               "instance": null,
               "key": undefined,
@@ -675,7 +583,7 @@ ShallowWrapper {
                     "text": "reply",
                   },
                 ],
-                "level": 2,
+                "loggedIn": undefined,
                 "parentId": "reply-id",
                 "storyId": "story-id",
               },

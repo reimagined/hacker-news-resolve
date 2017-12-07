@@ -1,5 +1,4 @@
 import React from 'react'
-import uuid from 'uuid'
 import url from 'url'
 import { Link } from 'react-router-dom'
 import plur from 'plur'
@@ -149,25 +148,18 @@ export const StoryInfo = props => {
 }
 
 export class Story extends React.PureComponent {
-  componentDidUpdate = () => {
-    const { refetchStory, onRefetched, refetch } = this.props
-
-    if (refetch && refetchStory) {
-      refetch()
-      onRefetched()
-    }
-  }
-
   upvoteStory = () => this.props.upvoteStory(this.props.story.id)
 
   unvoteStory = () => this.props.unvoteStory(this.props.story.id)
 
   render() {
-    const { story, userId, voted, showText } = this.props
+    const { story, userId, showText } = this.props
 
     if (!story) {
       return null
     }
+
+    const voted = story.votes && story.votes.indexOf(userId) !== -1
 
     const loggedIn = !!userId
 
@@ -207,27 +199,9 @@ export class Story extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = (
-  { ui: { refetchStory } },
-  { userId, story }
-) => {
-  return {
-    story,
-    voted: story && story.votes && story.votes.includes(userId),
-    refetchStory
-  }
-}
+export const mapStateToProps = (_, ownProps) => ownProps
 
 export const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      upvoteStory: id => actions.upvoteStory(id),
-      unvoteStory: id => actions.unvoteStory(id),
-      onRefetched: () => ({
-        type: 'STORY_REFETCHED'
-      })
-    },
-    dispatch
-  )
+  bindActionCreators(actions, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Story)

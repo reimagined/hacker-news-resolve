@@ -595,7 +595,7 @@ ShallowWrapper {
           loggedIn={true}
           title="Ask HN: Ask HN: Google"
           upvoteStory={[Function]}
-          voted={0}
+          voted={false}
 />,
         <StoryInfo
           commentCount={1}
@@ -605,7 +605,7 @@ ShallowWrapper {
           id="story-id"
           loggedIn={true}
           unvoteStory={[Function]}
-          voted={0}
+          voted={false}
           votes={Array []}
 />,
         <styled.div
@@ -628,7 +628,7 @@ ShallowWrapper {
           "loggedIn": true,
           "title": "Ask HN: Ask HN: Google",
           "upvoteStory": [Function],
-          "voted": 0,
+          "voted": false,
         },
         "ref": null,
         "rendered": null,
@@ -646,7 +646,7 @@ ShallowWrapper {
           "id": "story-id",
           "loggedIn": true,
           "unvoteStory": [Function],
-          "voted": 0,
+          "voted": false,
           "votes": Array [],
         },
         "ref": null,
@@ -681,7 +681,7 @@ ShallowWrapper {
             loggedIn={true}
             title="Ask HN: Ask HN: Google"
             upvoteStory={[Function]}
-            voted={0}
+            voted={false}
 />,
           <StoryInfo
             commentCount={1}
@@ -691,7 +691,7 @@ ShallowWrapper {
             id="story-id"
             loggedIn={true}
             unvoteStory={[Function]}
-            voted={0}
+            voted={false}
             votes={Array []}
 />,
           <styled.div
@@ -714,7 +714,7 @@ ShallowWrapper {
             "loggedIn": true,
             "title": "Ask HN: Ask HN: Google",
             "upvoteStory": [Function],
-            "voted": 0,
+            "voted": false,
           },
           "ref": null,
           "rendered": null,
@@ -732,7 +732,7 @@ ShallowWrapper {
             "id": "story-id",
             "loggedIn": true,
             "unvoteStory": [Function],
-            "voted": 0,
+            "voted": false,
             "votes": Array [],
           },
           "ref": null,
@@ -806,7 +806,7 @@ ShallowWrapper {
           loggedIn={true}
           title="Ask HN: Ask HN: Google"
           upvoteStory={[Function]}
-          voted={0}
+          voted={false}
 />,
         <StoryInfo
           commentCount={0}
@@ -816,7 +816,7 @@ ShallowWrapper {
           id="story-id"
           loggedIn={true}
           unvoteStory={[Function]}
-          voted={0}
+          voted={false}
           votes={Array []}
 />,
         null,
@@ -833,7 +833,7 @@ ShallowWrapper {
           "loggedIn": true,
           "title": "Ask HN: Ask HN: Google",
           "upvoteStory": [Function],
-          "voted": 0,
+          "voted": false,
         },
         "ref": null,
         "rendered": null,
@@ -851,7 +851,7 @@ ShallowWrapper {
           "id": "story-id",
           "loggedIn": true,
           "unvoteStory": [Function],
-          "voted": 0,
+          "voted": false,
           "votes": Array [],
         },
         "ref": null,
@@ -874,7 +874,7 @@ ShallowWrapper {
             loggedIn={true}
             title="Ask HN: Ask HN: Google"
             upvoteStory={[Function]}
-            voted={0}
+            voted={false}
 />,
           <StoryInfo
             commentCount={0}
@@ -884,7 +884,7 @@ ShallowWrapper {
             id="story-id"
             loggedIn={true}
             unvoteStory={[Function]}
-            voted={0}
+            voted={false}
             votes={Array []}
 />,
           null,
@@ -901,7 +901,7 @@ ShallowWrapper {
             "loggedIn": true,
             "title": "Ask HN: Ask HN: Google",
             "upvoteStory": [Function],
-            "voted": 0,
+            "voted": false,
           },
           "ref": null,
           "rendered": null,
@@ -919,7 +919,7 @@ ShallowWrapper {
             "id": "story-id",
             "loggedIn": true,
             "unvoteStory": [Function],
-            "voted": 0,
+            "voted": false,
             "votes": Array [],
           },
           "ref": null,
@@ -990,7 +990,7 @@ ShallowWrapper {
           loggedIn={true}
           title="Ask HN: Ask HN: Google"
           upvoteStory={[Function]}
-          voted={0}
+          voted={false}
 />,
         <StoryInfo
           commentCount={1}
@@ -1000,7 +1000,7 @@ ShallowWrapper {
           id="story-id"
           loggedIn={true}
           unvoteStory={[Function]}
-          voted={0}
+          voted={false}
           votes={Array []}
 />,
         null,
@@ -1017,7 +1017,7 @@ ShallowWrapper {
           "loggedIn": true,
           "title": "Ask HN: Ask HN: Google",
           "upvoteStory": [Function],
-          "voted": 0,
+          "voted": false,
         },
         "ref": null,
         "rendered": null,
@@ -1035,7 +1035,7 @@ ShallowWrapper {
           "id": "story-id",
           "loggedIn": true,
           "unvoteStory": [Function],
-          "voted": 0,
+          "voted": false,
           "votes": Array [],
         },
         "ref": null,
@@ -1058,7 +1058,7 @@ ShallowWrapper {
             loggedIn={true}
             title="Ask HN: Ask HN: Google"
             upvoteStory={[Function]}
-            voted={0}
+            voted={false}
 />,
           <StoryInfo
             commentCount={1}
@@ -1068,7 +1068,7 @@ ShallowWrapper {
             id="story-id"
             loggedIn={true}
             unvoteStory={[Function]}
-            voted={0}
+            voted={false}
             votes={Array []}
 />,
           null,
@@ -1085,7 +1085,7 @@ ShallowWrapper {
             "loggedIn": true,
             "title": "Ask HN: Ask HN: Google",
             "upvoteStory": [Function],
-            "voted": 0,
+            "voted": false,
           },
           "ref": null,
           "rendered": null,
@@ -1103,7 +1103,7 @@ ShallowWrapper {
             "id": "story-id",
             "loggedIn": true,
             "unvoteStory": [Function],
-            "voted": 0,
+            "voted": false,
             "votes": Array [],
           },
           "ref": null,
@@ -1125,15 +1125,12 @@ ShallowWrapper {
 }
 `;
 
-exports[`Story { type: 'story' } with componentDidUpdate renders correctly 1`] = `
+exports[`Story { type: 'story' } renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Story
     loggedIn={true}
-    onRefetched={[Function]}
-    refetch={[Function]}
-    refetchStory={true}
     story={
         Object {
             "comments": Array [],
@@ -1167,7 +1164,7 @@ ShallowWrapper {
           loggedIn={false}
           title="Google"
           upvoteStory={[Function]}
-          voted={0}
+          voted={false}
 />,
         <StoryInfo
           commentCount={0}
@@ -1177,7 +1174,7 @@ ShallowWrapper {
           id="story-id"
           loggedIn={false}
           unvoteStory={[Function]}
-          voted={0}
+          voted={false}
           votes={Array []}
 />,
         null,
@@ -1194,7 +1191,7 @@ ShallowWrapper {
           "loggedIn": false,
           "title": "Google",
           "upvoteStory": [Function],
-          "voted": 0,
+          "voted": false,
         },
         "ref": null,
         "rendered": null,
@@ -1212,7 +1209,7 @@ ShallowWrapper {
           "id": "story-id",
           "loggedIn": false,
           "unvoteStory": [Function],
-          "voted": 0,
+          "voted": false,
           "votes": Array [],
         },
         "ref": null,
@@ -1235,7 +1232,7 @@ ShallowWrapper {
             loggedIn={false}
             title="Google"
             upvoteStory={[Function]}
-            voted={0}
+            voted={false}
 />,
           <StoryInfo
             commentCount={0}
@@ -1245,7 +1242,7 @@ ShallowWrapper {
             id="story-id"
             loggedIn={false}
             unvoteStory={[Function]}
-            voted={0}
+            voted={false}
             votes={Array []}
 />,
           null,
@@ -1262,7 +1259,7 @@ ShallowWrapper {
             "loggedIn": false,
             "title": "Google",
             "upvoteStory": [Function],
-            "voted": 0,
+            "voted": false,
           },
           "ref": null,
           "rendered": null,
@@ -1280,7 +1277,7 @@ ShallowWrapper {
             "id": "story-id",
             "loggedIn": false,
             "unvoteStory": [Function],
-            "voted": 0,
+            "voted": false,
             "votes": Array [],
           },
           "ref": null,
