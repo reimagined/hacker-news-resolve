@@ -101,10 +101,6 @@ class Comment extends React.PureComponent {
       </CommentRoot>
     )
   }
-
-  static defaultProps = {
-    level: 0
-  }
 }
 
 export default Comment

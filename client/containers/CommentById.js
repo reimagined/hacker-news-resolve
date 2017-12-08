@@ -1,14 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Redirect } from 'react-router-dom'
-import { gqlConnector } from 'resolve-redux'
 import uuid from 'uuid'
+import { gqlConnector, withViewModel } from 'resolve-redux'
 import styled from 'styled-components'
 
+import viewModel from '../../common/view-models/storyDetails'
 import actions from '../actions/storiesActions'
-import ChildrenComments from '../components/ChildrenComments'
 import Comment from '../components/Comment'
+import ChildrenComments from '../components/ChildrenComments'
 
 const Reply = styled.div`
   padding: 1em 1.25em 0 1.25em;
@@ -17,111 +17,83 @@ const Reply = styled.div`
 
 export class CommentById extends React.PureComponent {
   saveComment = () => {
-    const { match: { params: { storyId } }, data: { comment } } = this.props
+    const { parentId, aggregateId } = this.props
 
     this.props.commentStory({
-      storyId,
-      parentId: comment.id,
+      aggregateId,
+      parentId,
       text: this.textarea.value
     })
 
-    this.textarea.disabled = true
-    this.submit.disabled = true
+    this.textarea.value = ''
   }
 
   render() {
-    const { match: { params: { storyId } }, data: { comment, me } } = this.props
+    const { data: { me }, story, parentId } = this.props
+    const loggedIn = !!me
 
-    if (!comment) {
+    if (!story || !story.comments) {
       return null
     }
 
-    const loggedIn = !!me
-
-    if (this.props.replyCreation) {
-      return <Redirect push to={`/storyDetails/${storyId}`} />
-    }
-
     return (
-      <Comment storyId={storyId} level={0} {...comment}>
+      <Comment
+        storyId={story.id}
+        {...story.comments.find(({ id }) => id === parentId)}
+      >
         {loggedIn ? (
           <Reply>
             <textarea
-              ref={element => {
-                if (element) {
-                  this.textarea = element
-                }
-              }}
+              ref={element => (this.textarea = element)}
               name="text"
               rows="6"
               cols="70"
             />
             <div>
-              <button
-                ref={element => (this.submit = element)}
-                onClick={this.saveComment}
-              >
-                reply
-              </button>
+              <button onClick={this.saveComment}>reply</button>
             </div>
           </Reply>
         ) : null}
         <ChildrenComments
-          storyId={storyId}
-          comments={comment.replies}
-          parentId={comment.id}
+          storyId={story.id}
+          comments={story.comments}
+          parentId={parentId}
+          loggedIn={loggedIn}
         />
       </Comment>
     )
   }
 }
 
-const mapDispatchToProps = dispatch =>
+export const mapStateToProps = (
+  state,
+  { match: { params: { storyId, commentId } } }
+) => ({
+  story: state.viewModels[viewModel.name][storyId],
+  viewModel: viewModel.name,
+  aggregateId: storyId,
+  parentId: commentId
+})
+
+export const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      commentStory: ({ storyId, parentId, text }) =>
-        actions.commentStory(storyId, {
-          commentId: uuid.v4(),
+      commentStory: ({ aggregateId, parentId, text }) =>
+        actions.commentStory(aggregateId, {
+          text,
           parentId,
-          text
+          commentId: uuid.v4()
         })
     },
     dispatch
   )
 
-const mapStateToProps = ({ ui: { replyCreation } }) => ({
-  replyCreation
-})
-
 export default gqlConnector(
   `
-    fragment CommentWithReplies on Comment {
-      id
-      parentId
-      text
-      createdAt
-      createdBy
-      createdByName
-      replies {
-        ...CommentWithReplies
-      }
-    }
-
-    query($id: ID!) {
-      comment(id: $id) {
-        ...CommentWithReplies
-      }
+    query {
       me {
         id
       }
     }
-  `,
-  {
-    options: ({ match: { params: { commentId } } }) => ({
-      variables: {
-        id: commentId
-      },
-      fetchPolicy: 'network-only'
-    })
-  }
-)(connect(mapStateToProps, mapDispatchToProps)(CommentById))
+  `
+)(connect(mapStateToProps, mapDispatchToProps)(withViewModel(CommentById)))

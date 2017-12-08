@@ -30,8 +30,7 @@ export default `
   type Query {
     user(id: ID, name: String): User
     me: User
-    stories(type: String, first: Int!, offset: Int): [Story]
-    comments(first: Int!, offset: Int): [Comment]
-    comment(id: ID!): Comment
+    stories(type: String, first: Int, offset: Int!): [Story]
+    comments(first: Int, offset: Int!): [Comment]
   }
 `

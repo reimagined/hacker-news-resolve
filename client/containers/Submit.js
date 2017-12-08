@@ -1,8 +1,8 @@
 import React from 'react'
 import uuid from 'uuid'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 import { bindActionCreators } from 'redux'
-import { Redirect } from 'react-router-dom'
 import urlLib from 'url'
 import styled from 'styled-components'
 import { gqlConnector } from 'resolve-redux'
@@ -48,43 +48,34 @@ const SubmitButton = styled.button`
 export class Submit extends React.PureComponent {
   state = {
     title: '',
-    url: '',
-    text: '',
-    id: null
+    link: '',
+    text: ''
   }
 
   handleChange = (event, name) => this.setState({ [name]: event.target.value })
 
   handleSubmit = () => {
-    const { title, url, text } = this.state
+    const { title, link, text } = this.state
 
-    if (!title || (!text && !url)) {
+    if (!title || (!text && !link)) {
       return this.props.history.push('/error?text=Enter submit data')
     }
 
-    if (url && !urlLib.parse(url).hostname) {
+    if (link && !urlLib.parse(link).hostname) {
       return this.props.history.push('/error?text=Enter valid url')
     }
 
-    const id = uuid.v4()
-
-    this.setState({ id })
-
     return this.props.createStory({
-      id,
+      id: uuid.v4(),
       title,
       text,
-      link: url
+      link
     })
   }
 
   render() {
     if (!this.props.data.loading && !this.props.data.me) {
       return <Redirect to="/login?redirect=/submit" />
-    }
-
-    if (this.props.storyCreation) {
-      return <Redirect push to={`/storyDetails/${this.state.id}`} />
     }
 
     return (
@@ -102,8 +93,8 @@ export class Submit extends React.PureComponent {
           <FormLabel>url</FormLabel>
           <input
             type="text"
-            value={this.state.url}
-            onChange={e => this.handleChange(e, 'url')}
+            value={this.state.link}
+            onChange={e => this.handleChange(e, 'link')}
             size="50"
           />
         </div>
@@ -118,9 +109,6 @@ export class Submit extends React.PureComponent {
             onChange={e => this.handleChange(e, 'text')}
           />
         </div>
-        <ErrorMessage>
-          {this.props.storyCreationError ? this.props.storyCreationError : ''}
-        </ErrorMessage>
         <SubmitButton onClick={this.handleSubmit}>submit</SubmitButton>
         <FormBottomMessage>
           Leave url blank to submit a question for discussion. If there is no
@@ -130,14 +118,6 @@ export class Submit extends React.PureComponent {
     )
   }
 }
-
-export const mapStateToProps = ({
-  user = {},
-  ui: { storyCreation, storyCreationError }
-}) => ({
-  storyCreation,
-  storyCreationError
-})
 
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(
@@ -163,4 +143,4 @@ export default gqlConnector(
   {
     options: { fetchPolicy: 'network-only' }
   }
-)(connect(mapStateToProps, mapDispatchToProps)(Submit))
+)(connect(null, mapDispatchToProps)(Submit))

@@ -615,17 +615,17 @@ The login view is placed in the main layout.
 Follow the steps below to implement the layout:
 * Prepare Redux [user actions](./client/actions/userActions.js).
 * Add the [Splitter](./client/components/Splitter.js) component that serves a vertical menu splitter.
-* Add the [App](./client/containers/App.js) container implementing the layout.
+* Add the [Layout](./client/components/Layout.js) container implementing the layout.
 * Add the [LoginInfo](./client/containers/LoginInfo.js) container implementing the login/logout menu.
-In the `containers/App.js` file, comment the `uiActions` import and the `onSubmitViewShown` action in the `mapDispatchToProps` function, and add the header's [logo](./static/reSolve-logo.svg).
+In the `containers/Layout.js` file, comment the `uiActions` import and the `onSubmitViewShown` action in the `mapDispatchToProps` function, and add the header's [logo](./static/reSolve-logo.svg).
 
 Add the layout and login view to the root component.
-* Add routes. To do this, create the `client/routes.js` file.
-In this file, comment all imports excluding the `App` container and the `Login` component, and all routes excluding the `/login` path.
+* Add routes. To do this, create the `./client/routes.js` file.
+In this file, comment all imports excluding the `Layout` container and the `Login` component, and all routes excluding the `/login` path.
 * Implement the `RouteWithSubRoutes` component to provide routes.
 
 Use a Redux store for data storing.
-In the [client/store/index.js](./client/store/index.js) file, add the [devtools](https://github.com/zalmoxisus/redux-devtools-extension) and [resolve-redux](https://github.com/reimagined/resolve/tree/master/packages/resolve-redux#-utils) middlewares, and implement the logout middleware. Comment at this stage import and usage of `viewModels` array, replace it with empty array.
+In the [./client/store/index.js](./client/store/index.js) file, add the [devtools](https://github.com/zalmoxisus/redux-devtools-extension) and [resolve-redux](https://github.com/reimagined/resolve/tree/master/packages/resolve-redux#-utils) middlewares, and implement the logout middleware. Comment at this stage import and usage of `viewModels` array, replace it with empty array.
 
 Prepare the [App](./client/components/App.js) component by adding router providers.
 
@@ -999,7 +999,7 @@ Implement the [Stories](./client/components/Stories.js) component for displaying
 Implement specific story containers such as [NewestByPage](./client/containers/NewestByPage.js), [AskByPage](./client/containers/AskByPage.js) and [ShowByPage](./client/containers/ShowByPage.js).
 In each file, delete the `commentCount` field from `query`.
 
-In the `client/reducers/` directory, create [UI](./client/reducers/ui.js) and [user](./client/reducers/user.js) reducers.
+In the `client/reducers/` directory, create [optimistic](./client/reducers/optimistic.js) reducer.
 Add them to the [root reducer export](./client/reducers/index.js).
 
 Add created containers to [routes](./client/routes.js) with the `/`, `/newest/:page?`, `/show/:page?` and `/ask/:page?` paths.
@@ -1016,7 +1016,16 @@ Add the `./common/view-models/storyDetails.js` file.
 
 import Immutable from 'seamless-immutable'
 
+import type {
+  Event,
+  StoryCommented,
+  StoryCreated,
+  StoryUnvoted,
+  StoryUpvoted
+} from '../../flow-types/events'
+
 import {
+  STORY_COMMENTED,
   STORY_CREATED,
   STORY_UNVOTED,
   STORY_UPVOTED
@@ -1032,7 +1041,7 @@ export default {
         aggregateId,
         timestamp,
         payload: { title, link, userId, text }
-      }
+      }: Event<StoryCreated>
     ) => {
       const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
 
@@ -1052,17 +1061,54 @@ export default {
 
     [STORY_UPVOTED]: (
       state: any,
-      { aggregateId, payload: { userId } }
+      { payload: { userId } }: Event<StoryUpvoted>
     ) => state.update('votes', votes => votes.concat(userId)),
 
     [STORY_UNVOTED]: (
       state: any,
-      { aggregateId, payload: { userId } }
-    ) => state.update('votes', votes => votes.filter(id => id !== userId))
+      { payload: { userId } }: Event<StoryUnvoted>
+    ) => state.update('votes', votes => votes.filter(id => id !== userId)),
+
+    [STORY_COMMENTED]: (
+      state,
+      {
+        aggregateId,
+        timestamp,
+        payload: { parentId, userId, commentId, text }
+      }: Event<StoryCommented>
+    ) => {
+      const parentIndex =
+        parentId === aggregateId
+          ? -1
+          : state.comments.findIndex(({ id }) => id === parentId)
+
+      const level =
+        parentIndex === -1 ? 0 : state.comments[parentIndex].level + 1
+
+      const comment = {
+        id: commentId,
+        parentId,
+        level,
+        text,
+        createdAt: timestamp,
+        createdBy: userId
+      }
+
+      const newState = state.update('commentCount', count => count + 1)
+
+      if (parentIndex === -1) {
+        return newState.update('comments', comments => comments.concat(comment))
+      } else {
+        return newState.update('comments', comments =>
+          comments
+            .slice(0, parentIndex + 1)
+            .concat(comment, comments.slice(parentIndex + 1))
+        )
+      }
+    }
   },
-  serializeState: (state: any) =>
-    JSON.stringify(state || Immutable({})),
-  deserializeState: (serial: any) => Immutable(JSON.parse(serial))
+  serializeState: (state: any) => JSON.stringify(state || {}),
+  deserializeState: (state: any) => Immutable(JSON.parse(state))
 }
 ```
 
@@ -1082,16 +1128,17 @@ Pass the view model to the server config.
 // ./resolve.server.config.js
 
 import path from 'path'
-import fileAdapter from 'resolve-storage-lite'
 import busAdapter from 'resolve-bus-memory'
+import storageAdapter from 'resolve-storage-lite'
 import { localStrategy } from 'resolve-scripts-auth'
 
-import aggregates from './common/aggregates'
-import readModels from './common/read-models'
 import clientConfig from './resolve.client.config'
-import localStrategyParams from './auth/localStrategy'
-import * as events from './common/events'
+import aggregates from './common/aggregates'
+
+import readModels from './common/read-models'
 import viewModels from './common/view-models'
+
+import localStrategyParams from './auth/localStrategy'
 
 import {
   authenticationSecret,
@@ -1099,24 +1146,20 @@ import {
   cookieMaxAge
 } from './auth/constants'
 
-if (module.hot) {
-  module.hot.accept()
-}
+const databaseFilePath = path.join(__dirname, './storage.json')
 
-const eventTypes = Object.keys(events).map(key => events[key])
-
-const { NODE_ENV = 'development' } = process.env
-const dbPath = path.join(__dirname, `${NODE_ENV}.db`)
+const storageAdapterParams = process.env.IS_TEST
+  ? {}
+  : { pathToFile: databaseFilePath }
 
 export default {
   entries: clientConfig,
   bus: { adapter: busAdapter },
   storage: {
-    adapter: fileAdapter,
-    params: { pathToFile: dbPath }
+    adapter: storageAdapter,
+    params: storageAdapterParams
   },
   aggregates,
-  initialSubscribedEvents: { types: eventTypes, ids: [] },
   readModels,
   viewModels,
   jwt: {

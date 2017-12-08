@@ -1,10 +1,17 @@
 import { createStore, applyMiddleware, compose } from 'redux'
-import { resolveMiddleware } from 'resolve-redux'
+import { resolveMiddleware, actionTypes } from 'resolve-redux'
 import Immutable from 'seamless-immutable'
 import cookies from 'js-cookie'
-import viewModels from '../../common/view-models'
 
+import viewModels from '../../common/view-models'
 import reducer from '../reducers'
+import {
+  USER_LOGOUT,
+  OPTIMISTIC_STORY_UPVOTED,
+  OPTIMISTIC_STORY_UNVOTED
+} from '../actions/actionTypes'
+
+const { SEND_COMMAND } = actionTypes
 
 const isClient = typeof window === 'object'
 
@@ -14,18 +21,53 @@ const composeEnhancers =
     : compose
 
 const logoutMiddleware = () => next => action => {
-  if (action.type !== 'USER_LOGOUT') {
+  if (action.type !== USER_LOGOUT) {
     next(action)
     return
   }
-
   cookies.remove('authenticationToken')
   window.location.reload()
 }
 
+const storyCreateMiddleware = () => next => action => {
+  if (action.type === SEND_COMMAND) {
+    if (action.command.type === 'createStory') {
+      if (action.command.ok) {
+        window.location = `/storyDetails/${action.aggregateId}`
+      } else if (action.command.error) {
+        window.location = '/error?text=Failed to create a story'
+      }
+    }
+  }
+  next(action)
+}
+
+const optimisticVotingMiddleware = store => next => action => {
+  if (action.type === SEND_COMMAND) {
+    if (action.command.type === 'upvoteStory') {
+      store.dispatch({
+        type: OPTIMISTIC_STORY_UPVOTED,
+        storyId: action.aggregateId
+      })
+    }
+    if (action.command.type === 'unvoteStory') {
+      store.dispatch({
+        type: OPTIMISTIC_STORY_UNVOTED,
+        storyId: action.aggregateId
+      })
+    }
+  }
+  next(action)
+}
+
 export default initialState => {
   const middleware = isClient
-    ? [resolveMiddleware(viewModels), logoutMiddleware]
+    ? [
+        resolveMiddleware(viewModels),
+        logoutMiddleware,
+        storyCreateMiddleware,
+        optimisticVotingMiddleware
+      ]
     : []
 
   const enhancer = composeEnhancers(applyMiddleware(...middleware))
