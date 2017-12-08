@@ -13,7 +13,7 @@ export default {
   },
   stories: async (store, { type, first = 0, offset }) => {
     const stories = await store.collection('stories')
-    const count = await stories.count({})
+    const count = type ? await stories.count({ type }) : await stories.count({})
 
     return (type
       ? await stories

@@ -5,7 +5,6 @@ import { localStrategy } from 'resolve-scripts-auth'
 
 import clientConfig from './resolve.client.config'
 import aggregates from './common/aggregates'
-import * as events from './common/events'
 
 import readModels from './common/read-models'
 import viewModels from './common/view-models'
@@ -20,8 +19,6 @@ import {
 
 const databaseFilePath = path.join(__dirname, './storage.json')
 
-const eventTypes = Object.keys(events).map(key => events[key])
-
 const storageAdapterParams = process.env.IS_TEST
   ? {}
   : { pathToFile: databaseFilePath }
@@ -34,10 +31,6 @@ export default {
     params: storageAdapterParams
   },
   aggregates,
-  initialSubscribedEvents: {
-    types: eventTypes,
-    ids: []
-  },
   readModels,
   viewModels,
   jwt: {
