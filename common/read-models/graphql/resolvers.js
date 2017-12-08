@@ -1,15 +1,3 @@
-async function getCommentTree(comments, id, tree = []) {
-  const comment = await comments.findOne({ id })
-  tree.push(comment)
-
-  const childComments = await comments.find({ parentId: comment.id })
-  return await Promise.all(
-    childComments.map(childComment =>
-      getCommentTree(comments, childComment.id, tree)
-    )
-  )
-}
-
 export default {
   user: async (store, { id, name }) => {
     const users = await store.collection('users')
@@ -23,36 +11,27 @@ export default {
       return null
     }
   },
-  stories: async (store, { type, first, offset = 0 }) => {
+  stories: async (store, { type, first = 0, offset }) => {
     const stories = await store.collection('stories')
+    const count = await stories.count({})
 
-    return type
+    return (type
       ? await stories
           .find({ type })
-          .skip(offset)
-          .limit(first)
+          .skip(count - first - offset)
+          .limit(offset)
       : await stories
           .find({})
-          .skip(offset)
-          .limit(first)
+          .skip(count - first - offset)
+          .limit(offset)).reverse()
   },
-  comment: async (store, { id }) => {
+  comments: async (store, { first = 0, offset }) => {
     const comments = await store.collection('comments')
+    const count = await comments.count({})
 
-    const tree = []
-    await getCommentTree(comments, id, tree)
-
-    return {
-      ...tree[0],
-      replies: tree.slice(1)
-    }
-  },
-  comments: async (store, { first, offset = 0 }) => {
-    const comments = await store.collection('comments')
-
-    return await comments
+    return (await comments
       .find({})
-      .skip(offset)
-      .limit(first)
+      .skip(count - first - offset)
+      .limit(offset)).reverse()
   }
 }

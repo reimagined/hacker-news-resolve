@@ -11,7 +11,7 @@ const AskByPage = ({
 
 export default gqlConnector(
   `
-    query($first: Int!, $offset: Int) {
+    query($first: Int, $offset: Int!) {
       stories(type: "ask", first: $first, offset: $offset) {
         id
         type
@@ -32,8 +32,8 @@ export default gqlConnector(
   {
     options: ({ match: { params: { page = 1 } } }) => ({
       variables: {
-        first: ITEMS_PER_PAGE + 1,
-        offset: (+page - 1) * ITEMS_PER_PAGE
+        offset: ITEMS_PER_PAGE + 1,
+        first: (+page - 1) * ITEMS_PER_PAGE
       },
       fetchPolicy: 'network-only'
     })

@@ -559,6 +559,11 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Story
     loggedIn={true}
+    optimistic={
+        Object {
+            "votedStories": Object {},
+          }
+    }
     showText={true}
     story={
         Object {
@@ -772,6 +777,11 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Story
     loggedIn={true}
+    optimistic={
+        Object {
+            "votedStories": Object {},
+          }
+    }
     story={
         Object {
             "comments": Array [],
@@ -947,6 +957,11 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Story
     loggedIn={true}
+    optimistic={
+        Object {
+            "votedStories": Object {},
+          }
+    }
     story={
         Object {
             "comments": Array [
@@ -1131,6 +1146,11 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Story
     loggedIn={true}
+    optimistic={
+        Object {
+            "votedStories": Object {},
+          }
+    }
     story={
         Object {
             "comments": Array [],

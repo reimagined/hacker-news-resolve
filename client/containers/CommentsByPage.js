@@ -27,7 +27,7 @@ export const CommentsByPage = ({
 
 export default gqlConnector(
   `
-    query($first: Int!, $offset: Int) {
+    query($first: Int, $offset: Int!) {
       comments(first: $first, offset: $offset) {
         id
         parentId
@@ -42,8 +42,8 @@ export default gqlConnector(
   {
     options: ({ match: { params: { page } } }) => ({
       variables: {
-        first: ITEMS_PER_PAGE + 1,
-        offset: (+page - 1) * ITEMS_PER_PAGE
+        offset: ITEMS_PER_PAGE + 1,
+        first: (+page - 1) * ITEMS_PER_PAGE
       },
       fetchPolicy: 'network-only'
     })

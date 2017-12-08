@@ -94,7 +94,7 @@ export class Submit extends React.PureComponent {
           <input
             type="text"
             value={this.state.link}
-            onChange={e => this.handleChange(e, 'url')}
+            onChange={e => this.handleChange(e, 'link')}
             size="50"
           />
         </div>

@@ -153,17 +153,24 @@ export class Story extends React.PureComponent {
   unvoteStory = () => this.props.unvoteStory(this.props.story.id)
 
   render() {
-    const { story, userId, showText } = this.props
+    const { story, userId, showText, optimistic } = this.props
 
-    if (!story) {
+    if (!story || !story.id) {
       return null
     }
 
-    const voted = story.votes && story.votes.indexOf(userId) !== -1
-
     const loggedIn = !!userId
 
-    let commentCount = story.comments
+    const voted =
+      optimistic.votedStories[story.id] !== false &&
+      (optimistic.votedStories[story.id] === true ||
+        story.votes.indexOf(userId) !== -1)
+
+    const votes = story.votes
+      .filter(id => id !== userId)
+      .concat(voted ? [userId] : [])
+
+    const commentCount = story.comments
       ? story.comments.length
       : story.commentCount
 
@@ -179,7 +186,7 @@ export class Story extends React.PureComponent {
         <StoryInfo
           voted={voted}
           id={story.id}
-          votes={story.votes}
+          votes={votes}
           commentCount={commentCount}
           unvoteStory={this.unvoteStory}
           loggedIn={loggedIn}
@@ -199,7 +206,7 @@ export class Story extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = (_, ownProps) => ownProps
+export const mapStateToProps = ({ optimistic }) => ({ optimistic })
 
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(actions, dispatch)

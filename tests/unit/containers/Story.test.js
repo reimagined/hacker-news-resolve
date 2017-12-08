@@ -42,7 +42,14 @@ it("Story { type: 'story' } renders correctly", () => {
     createdByName: 'user'
   }
 
-  const wrapper = shallow(<Story story={story} loggedIn={true} voted={0} />)
+  const wrapper = shallow(
+    <Story
+      story={story}
+      loggedIn={true}
+      voted={0}
+      optimistic={{ votedStories: {} }}
+    />
+  )
 
   expect(wrapper).toMatchSnapshot()
 })
@@ -61,7 +68,13 @@ it("Story { type: 'ask' } renders correctly", () => {
   }
 
   const wrapper = shallow(
-    <Story story={story} loggedIn={true} voted={0} userId={'user-id'} />
+    <Story
+      story={story}
+      loggedIn={true}
+      voted={0}
+      userId={'user-id'}
+      optimistic={{ votedStories: {} }}
+    />
   )
 
   expect(wrapper).toMatchSnapshot()
@@ -90,7 +103,13 @@ it("Story { type: 'ask' } renders correctly", () => {
   }
 
   const wrapper = shallow(
-    <Story story={story} loggedIn={true} voted={0} userId={'user-id'} />
+    <Story
+      story={story}
+      loggedIn={true}
+      voted={0}
+      userId={'user-id'}
+      optimistic={{ votedStories: {} }}
+    />
   )
 
   wrapper.find(StoryInfo).shallow()
@@ -119,6 +138,7 @@ it('Story { commentCount: 1, text: "Text", showText: true } renders correctly', 
       voted={0}
       userId={'user-id'}
       showText
+      optimistic={{ votedStories: {} }}
     />
   )
   expect(markup).toMatchSnapshot()
@@ -217,7 +237,9 @@ it('upvoteStory', () => {
     createdByName: 'user'
   }
 
-  const wrapper = shallow(<Story story={story} userId="user-id" />)
+  const wrapper = shallow(
+    <Story story={story} userId="user-id" optimistic={{ votedStories: {} }} />
+  )
   let upvoteStory = false
   wrapper.setProps({
     upvoteStory: () => (upvoteStory = true),
@@ -245,7 +267,9 @@ it('unvoteStory', () => {
     createdByName: 'user'
   }
 
-  const wrapper = shallow(<Story story={story} userId="user-id" />)
+  const wrapper = shallow(
+    <Story story={story} userId="user-id" optimistic={{ votedStories: {} }} />
+  )
   let unvoteStory = false
   wrapper.setProps({
     unvoteStory: () => (unvoteStory = true),
@@ -262,20 +286,18 @@ it('unvoteStory', () => {
 })
 
 it('Invalid story', () => {
-  const wrapper = shallow(<Story loggedIn={true} voted={1} />)
+  const wrapper = shallow(
+    <Story loggedIn={true} voted={1} optimistic={{ votedStories: {} }} />
+  )
   expect(wrapper.find('.story')).toHaveLength(0)
 })
 
 it('mapStateToProps', () => {
-  const user = { id: 'user-id' }
-  const story = { id: 'story-id', votes: [] }
+  const optimistic = { votedStories: { id1: true, id2: false } }
 
-  const props = mapStateToProps({}, { story, userId: user.id })
+  const props = mapStateToProps({ optimistic })
 
-  expect(props).toEqual({
-    story,
-    userId: user.id
-  })
+  expect(props).toEqual({ optimistic })
 })
 
 it('mapDispatchToProps upvoteStory', () => {
