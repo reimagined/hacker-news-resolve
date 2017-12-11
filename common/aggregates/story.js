@@ -25,14 +25,17 @@ export default {
       command: any,
       getJwtValue: any
     ): RawEvent<StoryCreated> => {
-      const { id: userId } = getJwtValue()
+      const { id: userId, name: userName } = getJwtValue()
       validate.stateIsAbsent(state, 'Story')
 
       const { title, link, text } = command.payload
 
       validate.fieldRequired(command.payload, 'title')
 
-      return { type: STORY_CREATED, payload: { title, text, link, userId } }
+      return {
+        type: STORY_CREATED,
+        payload: { title, text, link, userId, userName }
+      }
     },
 
     upvoteStory: (
@@ -66,7 +69,7 @@ export default {
       command: any,
       getJwtValue: any
     ): RawEvent<StoryCommented> => {
-      const { id: userId } = getJwtValue()
+      const { id: userId, name: userName } = getJwtValue()
       validate.stateExists(state, 'Story')
 
       const { commentId, parentId, text } = command.payload
@@ -85,6 +88,7 @@ export default {
           commentId,
           parentId,
           userId,
+          userName,
           text
         }
       }
@@ -111,6 +115,7 @@ export default {
       ...state,
       voted: state.voted.filter(curUserId => curUserId !== userId)
     }),
+
     [STORY_COMMENTED]: (
       state,
       { timestamp, payload: { commentId, userId } }: Event<StoryCommented>

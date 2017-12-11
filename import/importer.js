@@ -41,7 +41,8 @@ const getUserId = userName => {
 }
 
 const generateCommentEvents = (comment, aggregateId, parentId) => {
-  const userId = getUserId(comment.by)
+  const userName = comment.by
+  const userId = getUserId(userName)
   const commentId = uuid.v4()
 
   eventStore.saveEventRaw({
@@ -50,6 +51,7 @@ const generateCommentEvents = (comment, aggregateId, parentId) => {
     timestamp: comment.time * 1000,
     payload: {
       userId,
+      userName,
       text: comment.text,
       commentId,
       parentId
@@ -103,6 +105,7 @@ const generateStoryEvents = async story => {
     return
   }
 
+  const userName = story.by
   const aggregateId = uuid.v4()
 
   eventStore.saveEventRaw({
@@ -112,7 +115,8 @@ const generateStoryEvents = async story => {
     payload: {
       title: story.title,
       text: story.text,
-      userId: getUserId(story.by),
+      userId: getUserId(userName),
+      userName,
       link: story.url
     }
   })

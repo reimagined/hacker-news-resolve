@@ -10,7 +10,6 @@ import styled, { css } from 'styled-components'
 import Splitter from '../components/Splitter'
 import actions from '../actions/storiesActions'
 import TimeAgo from '../components/TimeAgo'
-import UserNameById from './UserNameById'
 
 export const StoryText = styled.div`
   color: #000;
@@ -123,7 +122,7 @@ export const StoryInfo = props => {
         [
           'by ',
           <Username key="username" href={`/user/${createdBy}`}>
-            {createdByName || <UserNameById id={createdBy} />}
+            {createdByName}
           </Username>,
           ' '
         ]

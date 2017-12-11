@@ -24,7 +24,7 @@ export default {
       {
         aggregateId,
         timestamp,
-        payload: { title, link, userId, text }
+        payload: { title, link, userId, userName, text }
       }: Event<StoryCreated>
     ) => {
       const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
@@ -39,7 +39,8 @@ export default {
         comments: [],
         votes: [],
         createdAt: timestamp,
-        createdBy: userId
+        createdBy: userId,
+        createdByName: userName
       })
     },
 
@@ -58,7 +59,7 @@ export default {
       {
         aggregateId,
         timestamp,
-        payload: { parentId, userId, commentId, text }
+        payload: { parentId, userId, userName, commentId, text }
       }: Event<StoryCommented>
     ) => {
       const parentIndex =
@@ -75,7 +76,8 @@ export default {
         level,
         text,
         createdAt: timestamp,
-        createdBy: userId
+        createdBy: userId,
+        createdByName: userName
       }
 
       const newState = state.update('commentCount', count => count + 1)
