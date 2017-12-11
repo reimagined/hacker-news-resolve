@@ -23,7 +23,6 @@ export default {
 
     await stories.ensureIndex({ fieldName: 'id' })
     await comments.ensureIndex({ fieldName: 'id' })
-    await comments.ensureIndex({ fieldName: 'parentId' })
     await users.ensureIndex({ fieldName: 'id' })
   },
 
@@ -32,13 +31,10 @@ export default {
     {
       aggregateId,
       timestamp,
-      payload: { parentId, userId, commentId, text }
+      payload: { parentId, userId, userName, commentId, text }
     }: Event<StoryCommented>
   ) => {
     const comments = await store.collection('comments')
-    const users = await store.collection('users')
-
-    const user = await users.findOne({ id: userId })
 
     const comment = {
       id: commentId,
@@ -48,7 +44,7 @@ export default {
       storyId: aggregateId,
       createdAt: timestamp,
       createdBy: userId,
-      createdByName: user.name
+      createdByName: userName
     }
 
     await comments.insert(comment)
@@ -70,15 +66,12 @@ export default {
     {
       aggregateId,
       timestamp,
-      payload: { title, link, userId, text }
+      payload: { title, link, userId, userName, text }
     }: Event<StoryCreated>
   ) => {
     const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
 
     const stories = await store.collection('stories')
-    const users = await store.collection('users')
-
-    const user = await users.findOne({ id: userId })
 
     await stories.insert({
       id: aggregateId,
@@ -90,7 +83,7 @@ export default {
       votes: [],
       createdAt: timestamp,
       createdBy: userId,
-      createdByName: user.name
+      createdByName: userName
     })
   },
 

@@ -43,11 +43,7 @@ ShallowWrapper {
           </styled.div>
           <Styled(Link)
                     to="/user/SomeUser"
-          >
-                    <UserNameById
-                              id="SomeUser"
-                    />
-          </Styled(Link)>
+          />
           <Styled(Component)
                     createdAt={0}
           />
@@ -92,11 +88,7 @@ ShallowWrapper {
 </styled.div>,
             <Styled(Link)
               to="/user/SomeUser"
->
-              <UserNameById
-                            id="SomeUser"
-              />
-</Styled(Link)>,
+/>,
             <Styled(Component)
               createdAt={0}
 />,
@@ -142,23 +134,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <UserNameById
-                id="SomeUser"
-/>,
+              "children": undefined,
               "to": "/user/SomeUser",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "id": "SomeUser",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -252,11 +232,7 @@ ShallowWrapper {
             </styled.div>
             <Styled(Link)
                         to="/user/SomeUser"
-            >
-                        <UserNameById
-                                    id="SomeUser"
-                        />
-            </Styled(Link)>
+            />
             <Styled(Component)
                         createdAt={0}
             />
@@ -301,11 +277,7 @@ ShallowWrapper {
 </styled.div>,
               <Styled(Link)
                 to="/user/SomeUser"
->
-                <UserNameById
-                                id="SomeUser"
-                />
-</Styled(Link)>,
+/>,
               <Styled(Component)
                 createdAt={0}
 />,
@@ -351,23 +323,11 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <UserNameById
-                  id="SomeUser"
-/>,
+                "children": undefined,
                 "to": "/user/SomeUser",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "id": "SomeUser",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -497,11 +457,7 @@ ShallowWrapper {
           </styled.div>
           <Styled(Link)
                     to="/user/SomeUser"
-          >
-                    <UserNameById
-                              id="SomeUser"
-                    />
-          </Styled(Link)>
+          />
           <Styled(Component)
                     createdAt={0}
           />
@@ -546,11 +502,7 @@ ShallowWrapper {
 </styled.div>,
             <Styled(Link)
               to="/user/SomeUser"
->
-              <UserNameById
-                            id="SomeUser"
-              />
-</Styled(Link)>,
+/>,
             <Styled(Component)
               createdAt={0}
 />,
@@ -596,23 +548,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <UserNameById
-                id="SomeUser"
-/>,
+              "children": undefined,
               "to": "/user/SomeUser",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "id": "SomeUser",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -706,11 +646,7 @@ ShallowWrapper {
             </styled.div>
             <Styled(Link)
                         to="/user/SomeUser"
-            >
-                        <UserNameById
-                                    id="SomeUser"
-                        />
-            </Styled(Link)>
+            />
             <Styled(Component)
                         createdAt={0}
             />
@@ -755,11 +691,7 @@ ShallowWrapper {
 </styled.div>,
               <Styled(Link)
                 to="/user/SomeUser"
->
-                <UserNameById
-                                id="SomeUser"
-                />
-</Styled(Link)>,
+/>,
               <Styled(Component)
                 createdAt={0}
 />,
@@ -805,23 +737,11 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <UserNameById
-                  id="SomeUser"
-/>,
+                "children": undefined,
                 "to": "/user/SomeUser",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "id": "SomeUser",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -945,11 +865,7 @@ ShallowWrapper {
           </styled.div>
           <Styled(Link)
                     to="/user/SomeUser"
-          >
-                    <UserNameById
-                              id="SomeUser"
-                    />
-          </Styled(Link)>
+          />
           <Styled(Component)
                     createdAt={0}
           />
@@ -994,11 +910,7 @@ ShallowWrapper {
 </styled.div>,
             <Styled(Link)
               to="/user/SomeUser"
->
-              <UserNameById
-                            id="SomeUser"
-              />
-</Styled(Link)>,
+/>,
             <Styled(Component)
               createdAt={0}
 />,
@@ -1044,23 +956,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <UserNameById
-                id="SomeUser"
-/>,
+              "children": undefined,
               "to": "/user/SomeUser",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "id": "SomeUser",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -1154,11 +1054,7 @@ ShallowWrapper {
             </styled.div>
             <Styled(Link)
                         to="/user/SomeUser"
-            >
-                        <UserNameById
-                                    id="SomeUser"
-                        />
-            </Styled(Link)>
+            />
             <Styled(Component)
                         createdAt={0}
             />
@@ -1203,11 +1099,7 @@ ShallowWrapper {
 </styled.div>,
               <Styled(Link)
                 to="/user/SomeUser"
->
-                <UserNameById
-                                id="SomeUser"
-                />
-</Styled(Link)>,
+/>,
               <Styled(Component)
                 createdAt={0}
 />,
@@ -1253,23 +1145,11 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <UserNameById
-                  id="SomeUser"
-/>,
+                "children": undefined,
                 "to": "/user/SomeUser",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "id": "SomeUser",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -1393,11 +1273,7 @@ ShallowWrapper {
           </styled.div>
           <Styled(Link)
                     to="/user/SomeUser"
-          >
-                    <UserNameById
-                              id="SomeUser"
-                    />
-          </Styled(Link)>
+          />
           <Styled(Component)
                     createdAt={0}
           />
@@ -1442,11 +1318,7 @@ ShallowWrapper {
 </styled.div>,
             <Styled(Link)
               to="/user/SomeUser"
->
-              <UserNameById
-                            id="SomeUser"
-              />
-</Styled(Link)>,
+/>,
             <Styled(Component)
               createdAt={0}
 />,
@@ -1492,23 +1364,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <UserNameById
-                id="SomeUser"
-/>,
+              "children": undefined,
               "to": "/user/SomeUser",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "id": "SomeUser",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -1602,11 +1462,7 @@ ShallowWrapper {
             </styled.div>
             <Styled(Link)
                         to="/user/SomeUser"
-            >
-                        <UserNameById
-                                    id="SomeUser"
-                        />
-            </Styled(Link)>
+            />
             <Styled(Component)
                         createdAt={0}
             />
@@ -1651,11 +1507,7 @@ ShallowWrapper {
 </styled.div>,
               <Styled(Link)
                 to="/user/SomeUser"
->
-                <UserNameById
-                                id="SomeUser"
-                />
-</Styled(Link)>,
+/>,
               <Styled(Component)
                 createdAt={0}
 />,
@@ -1701,23 +1553,11 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <UserNameById
-                  id="SomeUser"
-/>,
+                "children": undefined,
                 "to": "/user/SomeUser",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "id": "SomeUser",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -1841,11 +1681,7 @@ ShallowWrapper {
           </styled.div>
           <Styled(Link)
                     to="/user/SomeUser"
-          >
-                    <UserNameById
-                              id="SomeUser"
-                    />
-          </Styled(Link)>
+          />
           <Styled(Component)
                     createdAt={0}
           />
@@ -1890,11 +1726,7 @@ ShallowWrapper {
 </styled.div>,
             <Styled(Link)
               to="/user/SomeUser"
->
-              <UserNameById
-                            id="SomeUser"
-              />
-</Styled(Link)>,
+/>,
             <Styled(Component)
               createdAt={0}
 />,
@@ -1940,23 +1772,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <UserNameById
-                id="SomeUser"
-/>,
+              "children": undefined,
               "to": "/user/SomeUser",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "id": "SomeUser",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -2050,11 +1870,7 @@ ShallowWrapper {
             </styled.div>
             <Styled(Link)
                         to="/user/SomeUser"
-            >
-                        <UserNameById
-                                    id="SomeUser"
-                        />
-            </Styled(Link)>
+            />
             <Styled(Component)
                         createdAt={0}
             />
@@ -2099,11 +1915,7 @@ ShallowWrapper {
 </styled.div>,
               <Styled(Link)
                 to="/user/SomeUser"
->
-                <UserNameById
-                                id="SomeUser"
-                />
-</Styled(Link)>,
+/>,
               <Styled(Component)
                 createdAt={0}
 />,
@@ -2149,23 +1961,11 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <UserNameById
-                  id="SomeUser"
-/>,
+                "children": undefined,
                 "to": "/user/SomeUser",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "id": "SomeUser",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -2289,11 +2089,7 @@ ShallowWrapper {
           </styled.div>
           <Styled(Link)
                     to="/user/SomeUser"
-          >
-                    <UserNameById
-                              id="SomeUser"
-                    />
-          </Styled(Link)>
+          />
           <Styled(Component)
                     createdAt={0}
           />
@@ -2338,11 +2134,7 @@ ShallowWrapper {
 </styled.div>,
             <Styled(Link)
               to="/user/SomeUser"
->
-              <UserNameById
-                            id="SomeUser"
-              />
-</Styled(Link)>,
+/>,
             <Styled(Component)
               createdAt={0}
 />,
@@ -2388,23 +2180,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <UserNameById
-                id="SomeUser"
-/>,
+              "children": undefined,
               "to": "/user/SomeUser",
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "id": "SomeUser",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -2498,11 +2278,7 @@ ShallowWrapper {
             </styled.div>
             <Styled(Link)
                         to="/user/SomeUser"
-            >
-                        <UserNameById
-                                    id="SomeUser"
-                        />
-            </Styled(Link)>
+            />
             <Styled(Component)
                         createdAt={0}
             />
@@ -2547,11 +2323,7 @@ ShallowWrapper {
 </styled.div>,
               <Styled(Link)
                 to="/user/SomeUser"
->
-                <UserNameById
-                                id="SomeUser"
-                />
-</Styled(Link)>,
+/>,
               <Styled(Component)
                 createdAt={0}
 />,
@@ -2597,23 +2369,11 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <UserNameById
-                  id="SomeUser"
-/>,
+                "children": undefined,
                 "to": "/user/SomeUser",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "id": "SomeUser",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
+              "rendered": null,
               "type": [Function],
             },
             Object {
