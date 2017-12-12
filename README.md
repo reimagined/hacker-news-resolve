@@ -2,7 +2,7 @@
 
 
 
-A React & Redux & Resolve implementation of **Hacker News**
+A React, Redux & Resolve **Hacker News** implementation
 
 [<img src="https://user-images.githubusercontent.com/5055654/31942409-d8d6cf98-b8cd-11e7-93f4-613acda010dc.png" height="100">](https://github.com/facebook/react)
 [<img src="https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png" height="100">](https://github.com/reactjs/redux)
@@ -52,8 +52,7 @@ Press `Crtl-C` to stop importing or wait until it is finished.
 
 # Reproducing Hacker News using ReSolve
 
-This tutorial guides you through the process of creating a **Hacker News** application.
-It consists of the following steps:
+This tutorial shows you how to create a **Hacker News** application and consists of the following steps:
 
 * [Requirements](#requirements)
 * [Creating a New ReSolve Application](#creating-a-new-resolve-application)
@@ -131,29 +130,27 @@ After the installation is completed, your project has the default structure:
 
 ## Domain Model Analysis
 
-At this point, we need to analyze the domain.
-Event Sourcing and CQRS require identifying Domain Aggregates and their corresponding commands and events.
-We can then use these events to build the required read models.
+At this point, you need to analyze the domain.
+Event Sourcing and CQRS require identifying Domain Aggregates and their corresponding commands and events which are used to build the required read models.
 
 **Hacker News** is a social news website focusing on computer science.
 Its users can post news, ask questions, comment on news, and reply to comments.
-Posts are called **Stories**, so we will also use this term.
+These posts are called **Stories**.
 
 **Users** can post **Stories** and **Comments**.
 * Story - news or question
 * Comment - a short message written about news or question
 * User - a registered and logged in user that can perform actions (post news, ask questions, write comments)
 
-Now we need to identify domain aggregate roots.
-To do this, detect which commands the **Hacker News** application should perform and which entities they are addressed to:
+Next, identify domain aggregate roots by detecting which commands the **Hacker News** application should perform and which entities they are addressed to:
 * create a **User**
 * create a **Story**
 * comment a **Story**
 * upvote a **Story**
 * unvote a **Story**
 
-We only need the User and Story aggregate roots since there are no commands addressed to Comment.
-Note that when using CQRS and Event Sourcing, we need to identify which events should be captured on the Write Side, and then compose a list of Read Side models from these events.
+You only need the User and Story aggregate roots since there are no commands addressed to Comment.
+Note that when using CQRS and Event Sourcing, you need to identify which events should be captured on the Write Side, and then compose a list of Read Side models from these events.
 
 To summarize the domain analysis:
 
@@ -170,10 +167,10 @@ There are two aggregate roots - User and Story with the following commands and e
 
 Add user registration and authentication functionality to the application.
 For demo purposes, we omitted password checking.
-If needed, you can implement hashing and storing passwords in later.
+If needed, you can implement hashing and storing passwords later.
 
 A user has the following fields:
-* id - a unique user ID created on the server side automatically
+* id - a unique user ID automatically created on the server side
 * name - a unique user name which a user provides in the registration form
 * createdAt - the user's registration timestamp
 
@@ -287,7 +284,7 @@ export default {
 
 ```
 
-Describe a schema and implement resolvers to get data using GraphQL.
+Describe a schema and implement resolvers to get data using GraphQL:
 
 ```js
 // ./common/read-models/graphql/schema.js
@@ -304,7 +301,7 @@ export default `
 `
 ```
 
-Implement resolvers.
+Implement resolvers:
 
 ```js
 // ./common/read-models/graphql/resolvers.js
@@ -318,7 +315,7 @@ export default {
 }
 ```
 
-Export GraphQL parts of the read model from the `graphql` folder root.
+Export the read model's GraphQL parts from the `graphql` folder root:
 
 ```js
 // ./common/read-models/graphql/index.js
@@ -334,7 +331,7 @@ export default {
 }
 ```
 
-Update the `read-models` folder export.
+Update the `read-models` folder export:
 
 ```js
 // ./common/read-models/index.js
@@ -346,15 +343,15 @@ export default [graphqlReadModel]
 
 ### Authentication
 
-After adding a storage for users, we can create the local strategy for authentication and implement the required callbacks.
+After adding a storage for users, create the local authentication strategy and implement the required callbacks.
 
 
-Install `uuid` package.
+Install `uuid` package:
 ```
 npm install --save uuid
 ```
 
-In the `auth/` directory, create `./auth/localStrategy.js` file. Because we don't use password in our app, `passwordField` has same value as `usernameField`.
+In the `auth/` directory, create `./auth/localStrategy.js` file. `passwordField` has same value as `usernameField` because this app does not use a password.
 
 ```js
 // ./auth/localStrategy.js
@@ -375,7 +372,7 @@ export default {
 
 ```
 
-Implement the `getUserByName` function that uses the `executeQuery` function passed with the `registerCallback` and `loginCallback`.
+Implement the `getUserByName` function that uses the `executeQuery` function passed with `registerCallback` and `loginCallback`:
 
 ```js
 // ./auth/localStrategy.js
@@ -410,7 +407,7 @@ export default {
 }
 ```
 
-Add the required authentication parameters.
+Add the required authentication parameters:
 
 ```js
 // ./auth/constants.js
@@ -422,7 +419,7 @@ export const cookieMaxAge = 1000 * 60 * 60 * 24 * 365
 
 Update the `registerCallback` and `loginCallback` callbacks. Use the `resolve` parameter to access the query and command executors.
 
-Add `failureCallback` function to provide the redirection path in case of failure.
+Add `failureCallback` function to provide the redirection path in case of a failure:
 
 ```js
 // ./auth/localStrategy.js
@@ -527,7 +524,7 @@ export default `
 `
 ```
 
-Pass the authentication and JWT parameters to the server config.
+Pass the authentication and JWT parameters to the server config:
 
 ```js
 // ./resolve.server.config.js
@@ -579,7 +576,7 @@ export default {
 }
 ```
 
-Now we have a server side that works with users: a user can be registered and authenticated.
+Now the server side works with users: a user can be registered and authenticated.
 
 ### Error View
 
@@ -590,7 +587,7 @@ Install the following packages:
 npm install --save query-string
 ```
 
-Implement the [Error](./client/components/Error.js) component to display an error message.
+Implement the [Error](./client/components/Error.js) component to display error messages.
 
 ### Login View
 
@@ -608,24 +605,23 @@ Install the following packages:
 npm install --save react-helmet react-router react-router-dom seamless-immutable js-cookie styled-components
 ```
 
-Implement the login view.
-It is based on the [AuthForm](./client/components/AuthForm.js) component and rendered by the [Login](./client/components/Login.js) component.
+Implement the login view which is based on the [AuthForm](./client/components/AuthForm.js) component and rendered by the [Login](./client/components/Login.js) component.
 
 The login view is placed in the main layout.
 Follow the steps below to implement the layout:
 * Prepare Redux [user actions](./client/actions/userActions.js).
-* Add the [Splitter](./client/components/Splitter.js) component that serves a vertical menu splitter.
+* Add the [Splitter](./client/components/Splitter.js) component that serves as a vertical menu splitter.
 * Add the [App](./client/containers/App.js) container implementing the layout.
 * Add the [LoginInfo](./client/containers/LoginInfo.js) container implementing the login/logout menu.
 In the `containers/App.js` file, comment the `uiActions` import and the `onSubmitViewShown` action in the `mapDispatchToProps` function, and add the header's [logo](./static/reSolve-logo.svg).
 
 Add the layout and login view to the root component.
 * Add routes. To do this, create the `client/routes.js` file.
-In this file, comment all imports excluding the `App` container and the `Login` component, and all routes excluding the `/login` path.
+In this file, comment all imports except the `App` container and `Login` component, and all routes except the `/login` path.
 * Implement the `RouteWithSubRoutes` component to provide routes.
 
 Use a Redux store for data storing.
-In the [client/store/index.js](./client/store/index.js) file, add the [devtools](https://github.com/zalmoxisus/redux-devtools-extension) and [resolve-redux](https://github.com/reimagined/resolve/tree/master/packages/resolve-redux#-utils) middlewares, and implement the logout middleware. For now, the `viewModels` array should be replaced with the empty array. Comment out its import and usage.
+In the [client/store/index.js](./client/store/index.js) file, add the [devtools](https://github.com/zalmoxisus/redux-devtools-extension) and [resolve-redux](https://github.com/reimagined/resolve/tree/master/packages/resolve-redux#-utils) middlewares and implement the logout middleware. Replace the `viewModels` array with an empty array- comment out its import and usage.
 
 Prepare the [App](./client/components/App.js) component by adding router providers.
 
@@ -637,12 +633,11 @@ Implement the user view to show an authenticated user.
 
 To get user data using GraphQL, import the `gqlConnector` from the `resolve-redux` package.
 
-Implement the [UserById](./client/containers/UserById.js) container.
-Uncomment this container import in [routes](./client/routes.js) and add the `/user/:userId` path.
+Implement the [UserById](./client/containers/UserById.js) container and uncomment this container import in [routes](./client/routes.js) and add the `/user/:userId` path.
 
 ## Adding Stories
 
-A story is news or question a user posts.
+A story is news or a question a user posts.
 In **Hacker News**, stories are displayed on the following pages:
 * Newest - the newest stories
 * Ask - users’ questions (Ask HNs)
@@ -658,11 +653,9 @@ A story can have the following fields:
 
 ### Write Side
 
-Add the story aggregate and the `createStory` command for creating a story.
-The command should validate input data and check whether the aggregate exists.
-Add the `storyCreated` handler for this purpose.
+Add the story aggregate and the `createStory` command to create a story, and the `storyCreated` handler to validate input data and check whether the aggregate exists.
 In the original **Hacker News**, users can upvote and unvote stories.
-This can be accomplished by adding the corresponding commands to the story aggregate.
+This can be accomplished by adding the corresponding commands to the story aggregate:
 
 ```js
 // ./common/aggregates/validation.js
@@ -690,7 +683,7 @@ export default {
 }
 ```
 
-Update event list by adding story event names.
+Update event list by adding story event names:
 
 ```js
 // ./common/events.js
@@ -782,7 +775,7 @@ export default {
 }
 ```
 
-Modify the `aggregates` default export.
+Modify the `aggregates` default export:
 
 ```js
 // ./common/aggregates/index.js
@@ -793,7 +786,7 @@ import story from './story'
 export default [user, story]
 ```
 
-Add all the event names to the server config.
+Add all the event names to the server config:
 
 ```js
 // ./resolve.server.config.js
@@ -813,7 +806,7 @@ export default {
 
 ### Read Side
 
-Add a collection of stories as a first step of the read side implementation.
+Add a collection of stories as the first read side implementation step:
 
 ```js
 // ./common/read-models/graphql/projection.js
@@ -895,11 +888,11 @@ export default {
 
 ### GraphQL
 
-The **Hacker News** application displays a list of stories without extra information on each one.
+The **Hacker News** application displays a list of stories without additional information.
 For this, support the GraphQL with GraphQL resolvers that works with read model collections.
 
 Add the `./common/read-models/gqlSchema.js` file.
-Describe the `Story` type and a query used to request a list of stories - the `stories` query.
+Describe the `Story` type and a query used to request a list of stories - the `stories` query:
 
 ```js
 // ./common/read-models/graphql/schema.js
@@ -930,7 +923,7 @@ export default `
 `
 ```
 
-Add the appropriate resolvers.
+Add the appropriate resolvers:
 
 ```js
 // ./common/read-models/graphql/resolvers.js
@@ -974,8 +967,8 @@ export default {
 
 Implement a component rendering a list of stories.
 
-Install packages:
-* url - to parse URL
+Install the following packages:
+* url - to parse URLs
 * plur - to pluralize words
 * sanitizer - to sanitize story content markup
 
@@ -993,21 +986,20 @@ Then add the [Story](./client/containers/Story.js) container.
 
 Create [client constants](./client/constants.js).
 
-Implement the [Stories](./client/components/Stories.js) component for displaying stories.
+Implement the [Stories](./client/components/Stories.js) component to display stories.
 
-Implement specific story containers such as [NewestByPage](./client/containers/NewestByPage.js), [AskByPage](./client/containers/AskByPage.js) and [ShowByPage](./client/containers/ShowByPage.js).
-In each file, delete the `commentCount` field from `query`.
+Implement story-specific containers such as [NewestByPage](./client/containers/NewestByPage.js), [AskByPage](./client/containers/AskByPage.js) and [ShowByPage](./client/containers/ShowByPage.js).
+In each file, delete the `query`'s `commentCount` field.
 
-In the `client/reducers/` directory, create [UI](./client/reducers/ui.js) and [user](./client/reducers/user.js) reducers.
-Add them to the [root reducer export](./client/reducers/index.js).
+In the `client/reducers/` directory, create the [UI](./client/reducers/ui.js) and [user](./client/reducers/user.js) reducers and add them to the [root reducer export](./client/reducers/index.js).
 
-Add created containers to [routes](./client/routes.js) with the `/`, `/newest/:page?`, `/show/:page?` and `/ask/:page?` paths.
+Add the created containers to the [routes](./client/routes.js) with the `/`, `/newest/:page?`, `/show/:page?` and `/ask/:page?` paths.
 
 ### View Model
 
-The **Hacker News** application can display specific story with all extra information on it. To add this feature, start with the `storyDetails` view model implementation.
+The **Hacker News** application can display a specific story with additional information. To add this feature, implement the `storyDetails` view model.
 
-Add the `./common/view-models/storyDetails.js` file.
+Add the `./common/view-models/storyDetails.js` file:
 
 ```js
 // ./common/view-models/storyDetails.js
@@ -1064,7 +1056,7 @@ export default {
 }
 ```
 
-Add the default export for view models.
+Add view models' default export:
 
 ```js
 // ./common/view-models/index.js
@@ -1074,7 +1066,7 @@ import storyDetails from './storyDetails'
 export default [storyDetails]
 ```
 
-Pass the view model to the server config.
+Pass the view model to the server config:
 
 ```js
 // ./resolve.server.config.js
@@ -1132,25 +1124,24 @@ export default {
 
 ### Story View
 
-Implement the [StoryDetails](./client/containers/StoryDetails.js) container to display a story by id with additional information.
+Implement the [StoryDetails](./client/containers/StoryDetails.js) container to display a story by ID with additional information.
 `ChildrenComments` is implemented later, so delete its import and usage in JSX.
 
-Add the created container to [routes](./client/routes.js) with the `/storyDetails/:storyId` path.
+Add the created container to the [routes](./client/routes.js) with the `/storyDetails/:storyId` path.
 
-Uncomment import of `viewModels` and add in into `resolveMiddleware(viewModels)` in the [client/store/index.js](./client/store/index.js) file.
+Uncomment the `viewModels` import and add it to `resolveMiddleware(viewModels)` in the [client/store/index.js](./client/store/index.js) file.
 
 ### Submit View
 
 Implement the [Submit](./client/containers/Submit.js) container to add new stories.
 
-Add the created container to [routes](./client/routes.js) with the `/submit` path.
+Add the created container to the [routes](./client/routes.js) with the `/submit` path.
 
 ## Adding Comments
 
 Extend the application logic to allow users to comment.
-Comment is a short message written about news or question.
-So, a comment relates to a story.
-Implement also comments which reply to other comments.
+A comment is a short message written about news or question and relates to a story.
+Next, implement comments which reply to other comments.
 
 A comment has the following fields:
 * id - a unique ID
@@ -1163,7 +1154,7 @@ A comment has the following fields:
 
 ### Write Side
 
-Add a comment event to the [events](./common/events.js) file.
+Add a comment event to the [events](./common/events.js) file:
 
 ```js
 // ./common/events.js
@@ -1176,7 +1167,7 @@ export const STORY_COMMENTED = 'StoryCommented'
 export const USER_CREATED = 'UserCreated'
 ```
 
-Extend [validation](./common/aggregates/validation.js) for commands.
+Extend the [validation](./common/aggregates/validation.js) for commands:
 
 ```js
 // ./common/aggregates/validation.js
@@ -1192,8 +1183,8 @@ export default {
 }
 ```
 
-We can use the existing story aggregate without creating a particular aggregate for a comment, as it depends on a story.
-You should validate all input fields and check whether an aggregate exists.
+You can use an existing story's aggregate without creating a particular aggregate for a comment, as it depends on the story.
+Validate all input fields and check whether an aggregate exists:
 
 ```js
 // ./common/aggregates/story.js
@@ -1255,7 +1246,7 @@ export default {
 
 ### Read Side
 
-Despite there is a single aggregate for **comment** and **story**, provide an independent `comments` collection for GraphQL implementation. You should also update the `stories` collection.
+**comment** and **story** have a single aggregate. However, you need to provide an independent `comments` collection for the GraphQL implementation. You should also update the `stories` collection.
 
 ```js
 // ./common/read-model/graphql/projection.js
@@ -1325,8 +1316,7 @@ export default {
 ### GraphQL
 
 Extend the GraphQL schema file by adding the `Comment` type and queries.
-A comment contains the `replies` field which is a list of comments.
-It provides a tree-like structure for all the included comments.
+A comment contains the `replies` field which is a list of comments, and provides a tree-like structure for all the included comments.
 
 
 ```js
@@ -1371,8 +1361,7 @@ export default `
 `
 ```
 
-Implement comment resolvers.
-Extend the stories resolver to get comments.
+Implement comment resolvers and extend the stories resolver to get comments:
 
 ```js
 // ./common/read-models/graphql/resolvers.js
@@ -1435,7 +1424,7 @@ export default {
 
 # View model
 
-Update the `storyDetails` view model.
+Update the `storyDetails` view model:
 
 ```js
 // ./common/view-models/storyDetails.js
@@ -1508,13 +1497,12 @@ Add the [ReplyLink](./client/components/ReplyLink.js) component to implement the
 
 Add the [ChildrenComments](./client/components/ChildrenComments.js) component for building a comments tree.
 
-A comment depends on a story, so you need to extend the existing [StoryDetails](./client/containers/StoryDetails.js) container.
-Add a comments tree with text area for new comment creation.
+A comment depends on a story, so you need to extend the existing [StoryDetails](./client/containers/StoryDetails.js) container and add a comments tree with a text area for new comments.
 
 
 ### Comments View
 
-Implement the [CommentsByPage](./client/containers/CommentsByPage.js) container to display the list of the latest comments.
+Implement the [CommentsByPage](./client/containers/CommentsByPage.js) container to display a list of the latest comments.
 
 Implement the [CommentsById](./client/containers/CommentById.js) container to display the selected comment with replies.
 
@@ -1529,5 +1517,5 @@ Add the created container to the end of the the route list in the [routes](./cli
 
 ## Data Importer
 
-Implement an importer in the [import](./import) folder to get data from the real **Hacker News** website.
-This importer uses the website's REST API, and transforms data to events.
+Implement an importer in the [import](./import) folder to get data from the **Hacker News** website.
+This importer uses the website's REST API and transforms data to events.
