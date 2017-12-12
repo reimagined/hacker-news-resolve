@@ -621,7 +621,7 @@ In this file, comment all imports except the `App` container and `Login` compone
 * Implement the `RouteWithSubRoutes` component to provide routes.
 
 Use a Redux store for data storing.
-In the [client/store/index.js](./client/store/index.js) file, add the [devtools](https://github.com/zalmoxisus/redux-devtools-extension) and [resolve-redux](https://github.com/reimagined/resolve/tree/master/packages/resolve-redux#-utils) middlewares and implement the logout middleware. Replace the `viewModels` array with an empty array- comment out its import and usage.
+In the [client/store/index.js](./client/store/index.js) file, add the [devtools](https://github.com/zalmoxisus/redux-devtools-extension) and [resolve-redux](https://github.com/reimagined/resolve/tree/master/packages/resolve-redux#-utils) middlewares and implement the logout middleware. Replace the `viewModels` array with an empty array (comment out its import and usage).
 
 Prepare the [App](./client/components/App.js) component by adding router providers.
 
@@ -1517,5 +1517,5 @@ Add the created container to the end of the the route list in the [routes](./cli
 
 ## Data Importer
 
-Implement an importer in the [import](./import) folder to get data from the **Hacker News** website.
+Implement an importer in the [import](./import) folder to get data from the original **Hacker News** website.
 This importer uses the website's REST API and transforms data to events.
