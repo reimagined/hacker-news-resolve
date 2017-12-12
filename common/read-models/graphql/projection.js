@@ -23,7 +23,6 @@ export default {
 
     await stories.ensureIndex({ fieldName: 'id' })
     await comments.ensureIndex({ fieldName: 'id' })
-    await comments.ensureIndex({ fieldName: 'parentId' })
     await users.ensureIndex({ fieldName: 'id' })
   },
 
@@ -32,7 +31,7 @@ export default {
     {
       aggregateId,
       timestamp,
-      payload: { parentId, userId, commentId, text }
+      payload: { parentId, userId, userName, commentId, text }
     }: Event<StoryCommented>
   ) => {
     const comments = await store.collection('comments')
@@ -44,7 +43,8 @@ export default {
       comments: [],
       storyId: aggregateId,
       createdAt: timestamp,
-      createdBy: userId
+      createdBy: userId,
+      createdByName: userName
     }
 
     await comments.insert(comment)
@@ -66,7 +66,7 @@ export default {
     {
       aggregateId,
       timestamp,
-      payload: { title, link, userId, text }
+      payload: { title, link, userId, userName, text }
     }: Event<StoryCreated>
   ) => {
     const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
@@ -82,7 +82,8 @@ export default {
       commentCount: 0,
       votes: [],
       createdAt: timestamp,
-      createdBy: userId
+      createdBy: userId,
+      createdByName: userName
     })
   },
 

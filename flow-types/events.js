@@ -14,6 +14,7 @@ export type RawEvent<Payload> = {
 
 export type StoryCreated = {
   userId: string,
+  userName: string,
   title: string,
   text: string,
   link: string
@@ -31,6 +32,7 @@ export type StoryCommented = {
   commentId: string,
   parentId: string,
   userId: string,
+  userName: string,
   text: string
 }
 

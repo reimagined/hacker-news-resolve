@@ -1,5 +1,4 @@
 import React from 'react'
-import uuid from 'uuid'
 import url from 'url'
 import { Link } from 'react-router-dom'
 import plur from 'plur'
@@ -11,7 +10,6 @@ import styled, { css } from 'styled-components'
 import Splitter from '../components/Splitter'
 import actions from '../actions/storiesActions'
 import TimeAgo from '../components/TimeAgo'
-import UserNameById from './UserNameById'
 
 export const StoryText = styled.div`
   color: #000;
@@ -124,7 +122,7 @@ export const StoryInfo = props => {
         [
           'by ',
           <Username key="username" href={`/user/${createdBy}`}>
-            {createdByName || <UserNameById id={createdBy} />}
+            {createdByName}
           </Username>,
           ' '
         ]
@@ -149,29 +147,29 @@ export const StoryInfo = props => {
 }
 
 export class Story extends React.PureComponent {
-  componentDidUpdate = () => {
-    const { refetchStory, onRefetched, refetch } = this.props
-
-    if (refetch && refetchStory) {
-      refetch()
-      onRefetched()
-    }
-  }
-
   upvoteStory = () => this.props.upvoteStory(this.props.story.id)
 
   unvoteStory = () => this.props.unvoteStory(this.props.story.id)
 
   render() {
-    const { story, userId, voted, showText } = this.props
+    const { story, userId, showText, optimistic } = this.props
 
-    if (!story) {
+    if (!story || !story.id) {
       return null
     }
 
     const loggedIn = !!userId
 
-    let commentCount = story.comments
+    const voted =
+      optimistic.votedStories[story.id] !== false &&
+      (optimistic.votedStories[story.id] === true ||
+        story.votes.indexOf(userId) !== -1)
+
+    const votes = story.votes
+      .filter(id => id !== userId)
+      .concat(voted ? [userId] : [])
+
+    const commentCount = story.comments
       ? story.comments.length
       : story.commentCount
 
@@ -187,7 +185,7 @@ export class Story extends React.PureComponent {
         <StoryInfo
           voted={voted}
           id={story.id}
-          votes={story.votes}
+          votes={votes}
           commentCount={commentCount}
           unvoteStory={this.unvoteStory}
           loggedIn={loggedIn}
@@ -207,27 +205,9 @@ export class Story extends React.PureComponent {
   }
 }
 
-export const mapStateToProps = (
-  { ui: { refetchStory } },
-  { userId, story }
-) => {
-  return {
-    story,
-    voted: story && story.votes && story.votes.includes(userId),
-    refetchStory
-  }
-}
+export const mapStateToProps = ({ optimistic }) => ({ optimistic })
 
 export const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      upvoteStory: id => actions.upvoteStory(id),
-      unvoteStory: id => actions.unvoteStory(id),
-      onRefetched: () => ({
-        type: 'STORY_REFETCHED'
-      })
-    },
-    dispatch
-  )
+  bindActionCreators(actions, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Story)

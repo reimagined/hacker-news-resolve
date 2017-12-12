@@ -3,12 +3,11 @@ import React from 'react'
 import Comment from './Comment'
 import ReplyLink from './ReplyLink'
 
-const ChildrenComments = ({ storyId, parentId, comments, level }) => {
+const ChildrenComments = ({ storyId, parentId, comments, loggedIn }) => {
   if (!comments || !comments.length) {
     return null
   }
 
-  const currentLevel = level ? level + 1 : 1
   return (
     <div>
       {comments.map(comment => {
@@ -16,22 +15,15 @@ const ChildrenComments = ({ storyId, parentId, comments, level }) => {
           return null
         }
         return (
-          <Comment
-            key={comment.id}
-            storyId={storyId}
-            level={currentLevel}
-            {...comment}
-          >
-            <ReplyLink
-              storyId={storyId}
-              commentId={comment.id}
-              level={currentLevel}
-            />
+          <Comment key={comment.id} storyId={storyId} {...comment}>
+            {loggedIn ? (
+              <ReplyLink storyId={storyId} commentId={comment.id} />
+            ) : null}
             <ChildrenComments
               storyId={storyId}
               comments={comments}
               parentId={comment.id}
-              level={currentLevel}
+              loggedIn={loggedIn}
             />
           </Comment>
         )

@@ -1,29 +1,3 @@
-async function withUserNames(items, store) {
-  const users = await store.collection('users')
-
-  return await Promise.all(
-    items.map(async item => {
-      const user = await users.findOne({ id: item.createdBy })
-      return {
-        ...item,
-        createdByName: user ? user.name : 'unknown'
-      }
-    })
-  )
-}
-
-async function getCommentTree(comments, id, tree = []) {
-  const comment = await comments.findOne({ id })
-  tree.push(comment)
-
-  const childComments = await comments.find({ parentId: comment.id })
-  return await Promise.all(
-    childComments.map(childComment =>
-      getCommentTree(comments, childComment.id, tree)
-    )
-  )
-}
-
 export default {
   user: async (store, { id, name }) => {
     const users = await store.collection('users')
@@ -37,42 +11,27 @@ export default {
       return null
     }
   },
-  stories: async (store, { type, first, offset = 0 }) => {
+  stories: async (store, { type, first = 0, offset }) => {
     const stories = await store.collection('stories')
+    const count = type ? await stories.count({ type }) : await stories.count({})
 
-    const filteredStories = type
+    return (type
       ? await stories
           .find({ type })
-          .skip(offset)
-          .limit(first)
+          .skip(count - first - offset)
+          .limit(offset)
       : await stories
           .find({})
-          .skip(offset)
-          .limit(first)
-
-    return await withUserNames(filteredStories, store)
+          .skip(count - first - offset)
+          .limit(offset)).reverse()
   },
-  comment: async (store, { id }) => {
+  comments: async (store, { first = 0, offset }) => {
     const comments = await store.collection('comments')
+    const count = await comments.count({})
 
-    const tree = []
-    await getCommentTree(comments, id, tree)
-
-    const result = await withUserNames(tree, store)
-
-    return {
-      ...result[0],
-      replies: result.slice(1)
-    }
-  },
-  comments: async (store, { first, offset = 0 }) => {
-    const comments = await store.collection('comments')
-
-    const result = await comments
+    return (await comments
       .find({})
-      .skip(offset)
-      .limit(first)
-
-    return await withUserNames(result, store)
+      .skip(count - first - offset)
+      .limit(offset)).reverse()
   }
 }
