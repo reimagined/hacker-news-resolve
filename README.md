@@ -1007,13 +1007,6 @@ Add the `./common/view-models/storyDetails.js` file:
 
 import Immutable from 'seamless-immutable'
 
-import type {
-  Event,
-  StoryCommented,
-  StoryCreated,
-  StoryUnvoted,
-  StoryUpvoted
-} from '../../flow-types/events'
 
 import {
   STORY_COMMENTED,
@@ -1058,45 +1051,7 @@ export default {
     [STORY_UNVOTED]: (
       state: any,
       { payload: { userId } }: Event<StoryUnvoted>
-    ) => state.update('votes', votes => votes.filter(id => id !== userId)),
-
-    [STORY_COMMENTED]: (
-      state,
-      {
-        aggregateId,
-        timestamp,
-        payload: { parentId, userId, commentId, text }
-      }: Event<StoryCommented>
-    ) => {
-      const parentIndex =
-        parentId === aggregateId
-          ? -1
-          : state.comments.findIndex(({ id }) => id === parentId)
-
-      const level =
-        parentIndex === -1 ? 0 : state.comments[parentIndex].level + 1
-
-      const comment = {
-        id: commentId,
-        parentId,
-        level,
-        text,
-        createdAt: timestamp,
-        createdBy: userId
-      }
-
-      const newState = state.update('commentCount', count => count + 1)
-
-      if (parentIndex === -1) {
-        return newState.update('comments', comments => comments.concat(comment))
-      } else {
-        return newState.update('comments', comments =>
-          comments
-            .slice(0, parentIndex + 1)
-            .concat(comment, comments.slice(parentIndex + 1))
-        )
-      }
-    }
+    ) => state.update('votes', votes => votes.filter(id => id !== userId))
   },
   serializeState: (state: any) => JSON.stringify(state || {}),
   deserializeState: (state: any) => Immutable(JSON.parse(state))
@@ -1494,7 +1449,7 @@ export default {
       {
         aggregateId,
         timestamp,
-        payload: { parentId, userId, commentId, text }
+        payload: { parentId, userId, userName, commentId, text }
       }
     ) => {
       const parentIndex =
@@ -1511,7 +1466,8 @@ export default {
         level,
         text,
         createdAt: timestamp,
-        createdBy: userId
+        createdBy: userId,
+        createdByName: userName
       }
 
       const newState = state.update('commentCount', count => count + 1)
