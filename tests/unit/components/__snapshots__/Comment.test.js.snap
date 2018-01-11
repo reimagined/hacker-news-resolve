@@ -11,14 +11,14 @@ ShallowWrapper {
     level={0}
     parentId="story-id"
     root={
-        Object {
-            "id": "SomeId",
-            "title": "SomeTitle",
-          }
+      Object {
+        "id": "SomeId",
+        "title": "SomeTitle",
+      }
     }
     storyId="story-id"
     text="SomeContent"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -34,39 +34,39 @@ ShallowWrapper {
       "children": Array [
         <styled.div>
           <styled.div
-                    onClick={[Function]}
-                    tabIndex="0"
+            onClick={[Function]}
+            tabIndex="0"
           >
-                    [
-                    −
-                    ]
+            [
+            −
+            ]
           </styled.div>
           <Styled(Link)
-                    to="/user/SomeUser"
+            to="/user/SomeUser"
           />
           <Styled(Component)
-                    createdAt={0}
+            createdAt={0}
           />
           <styled.div />
           <Styled(Link)
-                    to="/storyDetails/story-id/comments/SomeId"
+            to="/storyDetails/story-id/comments/SomeId"
           >
-                    link
+            link
           </Styled(Link)>
           <styled.div />
           <Styled(Link)
-                    to="/storyDetails/story-id"
+            to="/storyDetails/story-id"
           >
-                    parent
+            parent
           </Styled(Link)>
-</styled.div>,
+        </styled.div>,
         <div
           dangerouslySetInnerHTML={
-                    Object {
-                              "__html": "SomeContent",
-                            }
+            Object {
+              "__html": "SomeContent",
+            }
           }
-/>,
+        />,
         undefined,
       ],
     },
@@ -81,29 +81,29 @@ ShallowWrapper {
             <styled.div
               onClick={[Function]}
               tabIndex="0"
->
+            >
               [
               −
               ]
-</styled.div>,
+            </styled.div>,
             <Styled(Link)
               to="/user/SomeUser"
-/>,
+            />,
             <Styled(Component)
               createdAt={0}
-/>,
+            />,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
->
+            >
               link
-</Styled(Link)>,
+            </Styled(Link)>,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id"
->
+            >
               parent
-</Styled(Link)>,
+            </Styled(Link)>,
           ],
         },
         "ref": null,
@@ -223,39 +223,39 @@ ShallowWrapper {
         "children": Array [
           <styled.div>
             <styled.div
-                        onClick={[Function]}
-                        tabIndex="0"
+              onClick={[Function]}
+              tabIndex="0"
             >
-                        [
-                        −
-                        ]
+              [
+              −
+              ]
             </styled.div>
             <Styled(Link)
-                        to="/user/SomeUser"
+              to="/user/SomeUser"
             />
             <Styled(Component)
-                        createdAt={0}
+              createdAt={0}
             />
             <styled.div />
             <Styled(Link)
-                        to="/storyDetails/story-id/comments/SomeId"
+              to="/storyDetails/story-id/comments/SomeId"
             >
-                        link
+              link
             </Styled(Link)>
             <styled.div />
             <Styled(Link)
-                        to="/storyDetails/story-id"
+              to="/storyDetails/story-id"
             >
-                        parent
+              parent
             </Styled(Link)>
-</styled.div>,
+          </styled.div>,
           <div
             dangerouslySetInnerHTML={
-                        Object {
-                                    "__html": "SomeContent",
-                                  }
+              Object {
+                "__html": "SomeContent",
+              }
             }
-/>,
+          />,
           undefined,
         ],
       },
@@ -270,29 +270,29 @@ ShallowWrapper {
               <styled.div
                 onClick={[Function]}
                 tabIndex="0"
->
+              >
                 [
                 −
                 ]
-</styled.div>,
+              </styled.div>,
               <Styled(Link)
                 to="/user/SomeUser"
-/>,
+              />,
               <Styled(Component)
                 createdAt={0}
-/>,
+              />,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
->
+              >
                 link
-</Styled(Link)>,
+              </Styled(Link)>,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id"
->
+              >
                 parent
-</Styled(Link)>,
+              </Styled(Link)>,
             ],
           },
           "ref": null,
@@ -425,14 +425,14 @@ ShallowWrapper {
     level={1}
     parentId="parent-id"
     root={
-        Object {
-            "id": "SomeId",
-            "title": "SomeTitle",
-          }
+      Object {
+        "id": "SomeId",
+        "title": "SomeTitle",
+      }
     }
     storyId="story-id"
     text="SomeContent"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -448,39 +448,39 @@ ShallowWrapper {
       "children": Array [
         <styled.div>
           <styled.div
-                    onClick={[Function]}
-                    tabIndex="0"
+            onClick={[Function]}
+            tabIndex="0"
           >
-                    [
-                    −
-                    ]
+            [
+            −
+            ]
           </styled.div>
           <Styled(Link)
-                    to="/user/SomeUser"
+            to="/user/SomeUser"
           />
           <Styled(Component)
-                    createdAt={0}
+            createdAt={0}
           />
           <styled.div />
           <Styled(Link)
-                    to="/storyDetails/story-id/comments/SomeId"
+            to="/storyDetails/story-id/comments/SomeId"
           >
-                    link
+            link
           </Styled(Link)>
           <styled.div />
           <Styled(Link)
-                    to="/storyDetails/story-id/comments/parent-id"
+            to="/storyDetails/story-id/comments/parent-id"
           >
-                    parent
+            parent
           </Styled(Link)>
-</styled.div>,
+        </styled.div>,
         <div
           dangerouslySetInnerHTML={
-                    Object {
-                              "__html": "SomeContent",
-                            }
+            Object {
+              "__html": "SomeContent",
+            }
           }
-/>,
+        />,
         undefined,
       ],
     },
@@ -495,29 +495,29 @@ ShallowWrapper {
             <styled.div
               onClick={[Function]}
               tabIndex="0"
->
+            >
               [
               −
               ]
-</styled.div>,
+            </styled.div>,
             <Styled(Link)
               to="/user/SomeUser"
-/>,
+            />,
             <Styled(Component)
               createdAt={0}
-/>,
+            />,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
->
+            >
               link
-</Styled(Link)>,
+            </Styled(Link)>,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id/comments/parent-id"
->
+            >
               parent
-</Styled(Link)>,
+            </Styled(Link)>,
           ],
         },
         "ref": null,
@@ -637,39 +637,39 @@ ShallowWrapper {
         "children": Array [
           <styled.div>
             <styled.div
-                        onClick={[Function]}
-                        tabIndex="0"
+              onClick={[Function]}
+              tabIndex="0"
             >
-                        [
-                        −
-                        ]
+              [
+              −
+              ]
             </styled.div>
             <Styled(Link)
-                        to="/user/SomeUser"
+              to="/user/SomeUser"
             />
             <Styled(Component)
-                        createdAt={0}
+              createdAt={0}
             />
             <styled.div />
             <Styled(Link)
-                        to="/storyDetails/story-id/comments/SomeId"
+              to="/storyDetails/story-id/comments/SomeId"
             >
-                        link
+              link
             </Styled(Link)>
             <styled.div />
             <Styled(Link)
-                        to="/storyDetails/story-id/comments/parent-id"
+              to="/storyDetails/story-id/comments/parent-id"
             >
-                        parent
+              parent
             </Styled(Link)>
-</styled.div>,
+          </styled.div>,
           <div
             dangerouslySetInnerHTML={
-                        Object {
-                                    "__html": "SomeContent",
-                                  }
+              Object {
+                "__html": "SomeContent",
+              }
             }
-/>,
+          />,
           undefined,
         ],
       },
@@ -684,29 +684,29 @@ ShallowWrapper {
               <styled.div
                 onClick={[Function]}
                 tabIndex="0"
->
+              >
                 [
                 −
                 ]
-</styled.div>,
+              </styled.div>,
               <Styled(Link)
                 to="/user/SomeUser"
-/>,
+              />,
               <Styled(Component)
                 createdAt={0}
-/>,
+              />,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
->
+              >
                 link
-</Styled(Link)>,
+              </Styled(Link)>,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id/comments/parent-id"
->
+              >
                 parent
-</Styled(Link)>,
+              </Styled(Link)>,
             ],
           },
           "ref": null,
@@ -840,7 +840,7 @@ ShallowWrapper {
     parentId="parent-id"
     storyId="story-id"
     text="SomeContent"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -856,39 +856,39 @@ ShallowWrapper {
       "children": Array [
         <styled.div>
           <styled.div
-                    onClick={[Function]}
-                    tabIndex="0"
+            onClick={[Function]}
+            tabIndex="0"
           >
-                    [
-                    −
-                    ]
+            [
+            −
+            ]
           </styled.div>
           <Styled(Link)
-                    to="/user/SomeUser"
+            to="/user/SomeUser"
           />
           <Styled(Component)
-                    createdAt={0}
+            createdAt={0}
           />
           <styled.div />
           <Styled(Link)
-                    to="/storyDetails/story-id/comments/SomeId"
+            to="/storyDetails/story-id/comments/SomeId"
           >
-                    link
+            link
           </Styled(Link)>
           <styled.div />
           <Styled(Link)
-                    to="/storyDetails/story-id/comments/parent-id"
+            to="/storyDetails/story-id/comments/parent-id"
           >
-                    parent
+            parent
           </Styled(Link)>
-</styled.div>,
+        </styled.div>,
         <div
           dangerouslySetInnerHTML={
-                    Object {
-                              "__html": "SomeContent",
-                            }
+            Object {
+              "__html": "SomeContent",
+            }
           }
-/>,
+        />,
         undefined,
       ],
     },
@@ -903,29 +903,29 @@ ShallowWrapper {
             <styled.div
               onClick={[Function]}
               tabIndex="0"
->
+            >
               [
               −
               ]
-</styled.div>,
+            </styled.div>,
             <Styled(Link)
               to="/user/SomeUser"
-/>,
+            />,
             <Styled(Component)
               createdAt={0}
-/>,
+            />,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
->
+            >
               link
-</Styled(Link)>,
+            </Styled(Link)>,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id/comments/parent-id"
->
+            >
               parent
-</Styled(Link)>,
+            </Styled(Link)>,
           ],
         },
         "ref": null,
@@ -1045,39 +1045,39 @@ ShallowWrapper {
         "children": Array [
           <styled.div>
             <styled.div
-                        onClick={[Function]}
-                        tabIndex="0"
+              onClick={[Function]}
+              tabIndex="0"
             >
-                        [
-                        −
-                        ]
+              [
+              −
+              ]
             </styled.div>
             <Styled(Link)
-                        to="/user/SomeUser"
+              to="/user/SomeUser"
             />
             <Styled(Component)
-                        createdAt={0}
+              createdAt={0}
             />
             <styled.div />
             <Styled(Link)
-                        to="/storyDetails/story-id/comments/SomeId"
+              to="/storyDetails/story-id/comments/SomeId"
             >
-                        link
+              link
             </Styled(Link)>
             <styled.div />
             <Styled(Link)
-                        to="/storyDetails/story-id/comments/parent-id"
+              to="/storyDetails/story-id/comments/parent-id"
             >
-                        parent
+              parent
             </Styled(Link)>
-</styled.div>,
+          </styled.div>,
           <div
             dangerouslySetInnerHTML={
-                        Object {
-                                    "__html": "SomeContent",
-                                  }
+              Object {
+                "__html": "SomeContent",
+              }
             }
-/>,
+          />,
           undefined,
         ],
       },
@@ -1092,29 +1092,29 @@ ShallowWrapper {
               <styled.div
                 onClick={[Function]}
                 tabIndex="0"
->
+              >
                 [
                 −
                 ]
-</styled.div>,
+              </styled.div>,
               <Styled(Link)
                 to="/user/SomeUser"
-/>,
+              />,
               <Styled(Component)
                 createdAt={0}
-/>,
+              />,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
->
+              >
                 link
-</Styled(Link)>,
+              </Styled(Link)>,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id/comments/parent-id"
->
+              >
                 parent
-</Styled(Link)>,
+              </Styled(Link)>,
             ],
           },
           "ref": null,
@@ -1248,7 +1248,7 @@ ShallowWrapper {
     parentId="parent-id"
     storyId="story-id"
     text="SomeContent"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -1264,39 +1264,39 @@ ShallowWrapper {
       "children": Array [
         <styled.div>
           <styled.div
-                    onClick={[Function]}
-                    tabIndex="0"
+            onClick={[Function]}
+            tabIndex="0"
           >
-                    [
-                    −
-                    ]
+            [
+            −
+            ]
           </styled.div>
           <Styled(Link)
-                    to="/user/SomeUser"
+            to="/user/SomeUser"
           />
           <Styled(Component)
-                    createdAt={0}
+            createdAt={0}
           />
           <styled.div />
           <Styled(Link)
-                    to="/storyDetails/story-id/comments/SomeId"
+            to="/storyDetails/story-id/comments/SomeId"
           >
-                    link
+            link
           </Styled(Link)>
           <styled.div />
           <Styled(Link)
-                    to="/storyDetails/story-id/comments/parent-id"
+            to="/storyDetails/story-id/comments/parent-id"
           >
-                    parent
+            parent
           </Styled(Link)>
-</styled.div>,
+        </styled.div>,
         <div
           dangerouslySetInnerHTML={
-                    Object {
-                              "__html": "SomeContent",
-                            }
+            Object {
+              "__html": "SomeContent",
+            }
           }
-/>,
+        />,
         undefined,
       ],
     },
@@ -1311,29 +1311,29 @@ ShallowWrapper {
             <styled.div
               onClick={[Function]}
               tabIndex="0"
->
+            >
               [
               −
               ]
-</styled.div>,
+            </styled.div>,
             <Styled(Link)
               to="/user/SomeUser"
-/>,
+            />,
             <Styled(Component)
               createdAt={0}
-/>,
+            />,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
->
+            >
               link
-</Styled(Link)>,
+            </Styled(Link)>,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id/comments/parent-id"
->
+            >
               parent
-</Styled(Link)>,
+            </Styled(Link)>,
           ],
         },
         "ref": null,
@@ -1453,39 +1453,39 @@ ShallowWrapper {
         "children": Array [
           <styled.div>
             <styled.div
-                        onClick={[Function]}
-                        tabIndex="0"
+              onClick={[Function]}
+              tabIndex="0"
             >
-                        [
-                        −
-                        ]
+              [
+              −
+              ]
             </styled.div>
             <Styled(Link)
-                        to="/user/SomeUser"
+              to="/user/SomeUser"
             />
             <Styled(Component)
-                        createdAt={0}
+              createdAt={0}
             />
             <styled.div />
             <Styled(Link)
-                        to="/storyDetails/story-id/comments/SomeId"
+              to="/storyDetails/story-id/comments/SomeId"
             >
-                        link
+              link
             </Styled(Link)>
             <styled.div />
             <Styled(Link)
-                        to="/storyDetails/story-id/comments/parent-id"
+              to="/storyDetails/story-id/comments/parent-id"
             >
-                        parent
+              parent
             </Styled(Link)>
-</styled.div>,
+          </styled.div>,
           <div
             dangerouslySetInnerHTML={
-                        Object {
-                                    "__html": "SomeContent",
-                                  }
+              Object {
+                "__html": "SomeContent",
+              }
             }
-/>,
+          />,
           undefined,
         ],
       },
@@ -1500,29 +1500,29 @@ ShallowWrapper {
               <styled.div
                 onClick={[Function]}
                 tabIndex="0"
->
+              >
                 [
                 −
                 ]
-</styled.div>,
+              </styled.div>,
               <Styled(Link)
                 to="/user/SomeUser"
-/>,
+              />,
               <Styled(Component)
                 createdAt={0}
-/>,
+              />,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
->
+              >
                 link
-</Styled(Link)>,
+              </Styled(Link)>,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id/comments/parent-id"
->
+              >
                 parent
-</Styled(Link)>,
+              </Styled(Link)>,
             ],
           },
           "ref": null,
@@ -1656,7 +1656,7 @@ ShallowWrapper {
     parentId="parent-id"
     storyId="story-id"
     text="SomeContent"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -1672,39 +1672,39 @@ ShallowWrapper {
       "children": Array [
         <styled.div>
           <styled.div
-                    onClick={[Function]}
-                    tabIndex="0"
+            onClick={[Function]}
+            tabIndex="0"
           >
-                    [
-                    −
-                    ]
+            [
+            −
+            ]
           </styled.div>
           <Styled(Link)
-                    to="/user/SomeUser"
+            to="/user/SomeUser"
           />
           <Styled(Component)
-                    createdAt={0}
+            createdAt={0}
           />
           <styled.div />
           <Styled(Link)
-                    to="/storyDetails/story-id/comments/SomeId"
+            to="/storyDetails/story-id/comments/SomeId"
           >
-                    link
+            link
           </Styled(Link)>
           <styled.div />
           <Styled(Link)
-                    to="/storyDetails/story-id/comments/parent-id"
+            to="/storyDetails/story-id/comments/parent-id"
           >
-                    parent
+            parent
           </Styled(Link)>
-</styled.div>,
+        </styled.div>,
         <div
           dangerouslySetInnerHTML={
-                    Object {
-                              "__html": "SomeContent",
-                            }
+            Object {
+              "__html": "SomeContent",
+            }
           }
-/>,
+        />,
         undefined,
       ],
     },
@@ -1719,29 +1719,29 @@ ShallowWrapper {
             <styled.div
               onClick={[Function]}
               tabIndex="0"
->
+            >
               [
               −
               ]
-</styled.div>,
+            </styled.div>,
             <Styled(Link)
               to="/user/SomeUser"
-/>,
+            />,
             <Styled(Component)
               createdAt={0}
-/>,
+            />,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
->
+            >
               link
-</Styled(Link)>,
+            </Styled(Link)>,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id/comments/parent-id"
->
+            >
               parent
-</Styled(Link)>,
+            </Styled(Link)>,
           ],
         },
         "ref": null,
@@ -1861,39 +1861,39 @@ ShallowWrapper {
         "children": Array [
           <styled.div>
             <styled.div
-                        onClick={[Function]}
-                        tabIndex="0"
+              onClick={[Function]}
+              tabIndex="0"
             >
-                        [
-                        −
-                        ]
+              [
+              −
+              ]
             </styled.div>
             <Styled(Link)
-                        to="/user/SomeUser"
+              to="/user/SomeUser"
             />
             <Styled(Component)
-                        createdAt={0}
+              createdAt={0}
             />
             <styled.div />
             <Styled(Link)
-                        to="/storyDetails/story-id/comments/SomeId"
+              to="/storyDetails/story-id/comments/SomeId"
             >
-                        link
+              link
             </Styled(Link)>
             <styled.div />
             <Styled(Link)
-                        to="/storyDetails/story-id/comments/parent-id"
+              to="/storyDetails/story-id/comments/parent-id"
             >
-                        parent
+              parent
             </Styled(Link)>
-</styled.div>,
+          </styled.div>,
           <div
             dangerouslySetInnerHTML={
-                        Object {
-                                    "__html": "SomeContent",
-                                  }
+              Object {
+                "__html": "SomeContent",
+              }
             }
-/>,
+          />,
           undefined,
         ],
       },
@@ -1908,29 +1908,29 @@ ShallowWrapper {
               <styled.div
                 onClick={[Function]}
                 tabIndex="0"
->
+              >
                 [
                 −
                 ]
-</styled.div>,
+              </styled.div>,
               <Styled(Link)
                 to="/user/SomeUser"
-/>,
+              />,
               <Styled(Component)
                 createdAt={0}
-/>,
+              />,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
->
+              >
                 link
-</Styled(Link)>,
+              </Styled(Link)>,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id/comments/parent-id"
->
+              >
                 parent
-</Styled(Link)>,
+              </Styled(Link)>,
             ],
           },
           "ref": null,
@@ -2064,7 +2064,7 @@ ShallowWrapper {
     parentId="parent-id"
     storyId="story-id"
     text="SomeContent"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -2080,39 +2080,39 @@ ShallowWrapper {
       "children": Array [
         <styled.div>
           <styled.div
-                    onClick={[Function]}
-                    tabIndex="0"
+            onClick={[Function]}
+            tabIndex="0"
           >
-                    [
-                    −
-                    ]
+            [
+            −
+            ]
           </styled.div>
           <Styled(Link)
-                    to="/user/SomeUser"
+            to="/user/SomeUser"
           />
           <Styled(Component)
-                    createdAt={0}
+            createdAt={0}
           />
           <styled.div />
           <Styled(Link)
-                    to="/storyDetails/story-id/comments/SomeId"
+            to="/storyDetails/story-id/comments/SomeId"
           >
-                    link
+            link
           </Styled(Link)>
           <styled.div />
           <Styled(Link)
-                    to="/storyDetails/story-id/comments/parent-id"
+            to="/storyDetails/story-id/comments/parent-id"
           >
-                    parent
+            parent
           </Styled(Link)>
-</styled.div>,
+        </styled.div>,
         <div
           dangerouslySetInnerHTML={
-                    Object {
-                              "__html": "SomeContent",
-                            }
+            Object {
+              "__html": "SomeContent",
+            }
           }
-/>,
+        />,
         undefined,
       ],
     },
@@ -2127,29 +2127,29 @@ ShallowWrapper {
             <styled.div
               onClick={[Function]}
               tabIndex="0"
->
+            >
               [
               −
               ]
-</styled.div>,
+            </styled.div>,
             <Styled(Link)
               to="/user/SomeUser"
-/>,
+            />,
             <Styled(Component)
               createdAt={0}
-/>,
+            />,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id/comments/SomeId"
->
+            >
               link
-</Styled(Link)>,
+            </Styled(Link)>,
             <styled.div />,
             <Styled(Link)
               to="/storyDetails/story-id/comments/parent-id"
->
+            >
               parent
-</Styled(Link)>,
+            </Styled(Link)>,
           ],
         },
         "ref": null,
@@ -2269,39 +2269,39 @@ ShallowWrapper {
         "children": Array [
           <styled.div>
             <styled.div
-                        onClick={[Function]}
-                        tabIndex="0"
+              onClick={[Function]}
+              tabIndex="0"
             >
-                        [
-                        −
-                        ]
+              [
+              −
+              ]
             </styled.div>
             <Styled(Link)
-                        to="/user/SomeUser"
+              to="/user/SomeUser"
             />
             <Styled(Component)
-                        createdAt={0}
+              createdAt={0}
             />
             <styled.div />
             <Styled(Link)
-                        to="/storyDetails/story-id/comments/SomeId"
+              to="/storyDetails/story-id/comments/SomeId"
             >
-                        link
+              link
             </Styled(Link)>
             <styled.div />
             <Styled(Link)
-                        to="/storyDetails/story-id/comments/parent-id"
+              to="/storyDetails/story-id/comments/parent-id"
             >
-                        parent
+              parent
             </Styled(Link)>
-</styled.div>,
+          </styled.div>,
           <div
             dangerouslySetInnerHTML={
-                        Object {
-                                    "__html": "SomeContent",
-                                  }
+              Object {
+                "__html": "SomeContent",
+              }
             }
-/>,
+          />,
           undefined,
         ],
       },
@@ -2316,29 +2316,29 @@ ShallowWrapper {
               <styled.div
                 onClick={[Function]}
                 tabIndex="0"
->
+              >
                 [
                 −
                 ]
-</styled.div>,
+              </styled.div>,
               <Styled(Link)
                 to="/user/SomeUser"
-/>,
+              />,
               <Styled(Component)
                 createdAt={0}
-/>,
+              />,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id/comments/SomeId"
->
+              >
                 link
-</Styled(Link)>,
+              </Styled(Link)>,
               <styled.div />,
               <Styled(Link)
                 to="/storyDetails/story-id/comments/parent-id"
->
+              >
                 parent
-</Styled(Link)>,
+              </Styled(Link)>,
             ],
           },
           "ref": null,

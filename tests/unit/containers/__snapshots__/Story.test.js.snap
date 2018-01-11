@@ -13,11 +13,11 @@ ShallowWrapper {
     loggedIn={true}
     voted={true}
     votes={
-        Array [
-            "user-id",
-          ]
+      Array [
+        "user-id",
+      ]
     }
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -36,29 +36,29 @@ ShallowWrapper {
           "by ",
           <styled.a
             href="/user/user-id"
->
+          >
             user
-</styled.a>,
+          </styled.a>,
           " ",
         ],
         <Unknown
           createdAt={1970-01-01T00:00:00.000Z}
-/>,
+        />,
         <span>
           <styled.div />
           <styled.span
-                    onClick={undefined}
+            onClick={undefined}
           >
-                    unvote
+            unvote
           </styled.span>
            
-</span>,
+        </span>,
         <styled.div />,
         <Styled(Link)
           to="/storyDetails/story-id"
->
+        >
           discuss
-</Styled(Link)>,
+        </Styled(Link)>,
         " ",
       ],
     },
@@ -99,9 +99,9 @@ ShallowWrapper {
             <styled.div />,
             <styled.span
               onClick={undefined}
->
+            >
               unvote
-</styled.span>,
+            </styled.span>,
             " ",
           ],
         },
@@ -169,29 +169,29 @@ ShallowWrapper {
             "by ",
             <styled.a
               href="/user/user-id"
->
+            >
               user
-</styled.a>,
+            </styled.a>,
             " ",
           ],
           <Unknown
             createdAt={1970-01-01T00:00:00.000Z}
-/>,
+          />,
           <span>
             <styled.div />
             <styled.span
-                        onClick={undefined}
+              onClick={undefined}
             >
-                        unvote
+              unvote
             </styled.span>
              
-</span>,
+          </span>,
           <styled.div />,
           <Styled(Link)
             to="/storyDetails/story-id"
->
+          >
             discuss
-</Styled(Link)>,
+          </Styled(Link)>,
           " ",
         ],
       },
@@ -232,9 +232,9 @@ ShallowWrapper {
               <styled.div />,
               <styled.span
                 onClick={undefined}
->
+              >
                 unvote
-</styled.span>,
+              </styled.span>,
               " ",
             ],
           },
@@ -311,7 +311,7 @@ ShallowWrapper {
     id="story-id"
     loggedIn={true}
     voted={true}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -329,22 +329,22 @@ ShallowWrapper {
         null,
         <Unknown
           createdAt={1970-01-01T00:00:00.000Z}
-/>,
+        />,
         <span>
           <styled.div />
           <styled.span
-                    onClick={undefined}
+            onClick={undefined}
           >
-                    unvote
+            unvote
           </styled.span>
            
-</span>,
+        </span>,
         <styled.div />,
         <Styled(Link)
           to="/storyDetails/story-id"
->
+        >
           discuss
-</Styled(Link)>,
+        </Styled(Link)>,
         " ",
       ],
     },
@@ -372,9 +372,9 @@ ShallowWrapper {
             <styled.div />,
             <styled.span
               onClick={undefined}
->
+            >
               unvote
-</styled.span>,
+            </styled.span>,
             " ",
           ],
         },
@@ -441,22 +441,22 @@ ShallowWrapper {
           null,
           <Unknown
             createdAt={1970-01-01T00:00:00.000Z}
-/>,
+          />,
           <span>
             <styled.div />
             <styled.span
-                        onClick={undefined}
+              onClick={undefined}
             >
-                        unvote
+              unvote
             </styled.span>
              
-</span>,
+          </span>,
           <styled.div />,
           <Styled(Link)
             to="/storyDetails/story-id"
->
+          >
             discuss
-</Styled(Link)>,
+          </Styled(Link)>,
           " ",
         ],
       },
@@ -484,9 +484,9 @@ ShallowWrapper {
               <styled.div />,
               <styled.span
                 onClick={undefined}
->
+              >
                 unvote
-</styled.span>,
+              </styled.span>,
               " ",
             ],
           },
@@ -560,28 +560,28 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Story
     loggedIn={true}
     optimistic={
-        Object {
-            "votedStories": Object {},
-          }
+      Object {
+        "votedStories": Object {},
+      }
     }
     showText={true}
     story={
-        Object {
-            "commentCount": 1,
-            "createdAt": 1970-01-01T00:00:00.000Z,
-            "createdBy": "user-id",
-            "createdByName": "user",
-            "id": "story-id",
-            "link": "https://www.google.com",
-            "text": "Text",
-            "title": "Ask HN: Google",
-            "type": "ask",
-            "votes": Array [],
-          }
+      Object {
+        "commentCount": 1,
+        "createdAt": 1970-01-01T00:00:00.000Z,
+        "createdBy": "user-id",
+        "createdByName": "user",
+        "id": "story-id",
+        "link": "https://www.google.com",
+        "text": "Text",
+        "title": "Ask HN: Google",
+        "type": "ask",
+        "votes": Array [],
+      }
     }
     userId="user-id"
     voted={0}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -601,7 +601,7 @@ ShallowWrapper {
           title="Ask HN: Ask HN: Google"
           upvoteStory={[Function]}
           voted={false}
-/>,
+        />,
         <StoryInfo
           commentCount={1}
           createdAt={1970-01-01T00:00:00.000Z}
@@ -612,14 +612,14 @@ ShallowWrapper {
           unvoteStory={[Function]}
           voted={false}
           votes={Array []}
-/>,
+        />,
         <styled.div
           dangerouslySetInnerHTML={
-                    Object {
-                              "__html": "Text",
-                            }
+            Object {
+              "__html": "Text",
+            }
           }
-/>,
+        />,
       ],
     },
     "ref": null,
@@ -687,7 +687,7 @@ ShallowWrapper {
             title="Ask HN: Ask HN: Google"
             upvoteStory={[Function]}
             voted={false}
-/>,
+          />,
           <StoryInfo
             commentCount={1}
             createdAt={1970-01-01T00:00:00.000Z}
@@ -698,14 +698,14 @@ ShallowWrapper {
             unvoteStory={[Function]}
             voted={false}
             votes={Array []}
-/>,
+          />,
           <styled.div
             dangerouslySetInnerHTML={
-                        Object {
-                                    "__html": "Text",
-                                  }
+              Object {
+                "__html": "Text",
+              }
             }
-/>,
+          />,
         ],
       },
       "ref": null,
@@ -778,26 +778,26 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Story
     loggedIn={true}
     optimistic={
-        Object {
-            "votedStories": Object {},
-          }
+      Object {
+        "votedStories": Object {},
+      }
     }
     story={
-        Object {
-            "comments": Array [],
-            "createdAt": 1970-01-01T00:00:00.000Z,
-            "createdBy": "user-id",
-            "createdByName": "user",
-            "id": "story-id",
-            "text": "Google",
-            "title": "Ask HN: Google",
-            "type": "ask",
-            "votes": Array [],
-          }
+      Object {
+        "comments": Array [],
+        "createdAt": 1970-01-01T00:00:00.000Z,
+        "createdBy": "user-id",
+        "createdByName": "user",
+        "id": "story-id",
+        "text": "Google",
+        "title": "Ask HN: Google",
+        "type": "ask",
+        "votes": Array [],
+      }
     }
     userId="user-id"
     voted={0}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -817,7 +817,7 @@ ShallowWrapper {
           title="Ask HN: Ask HN: Google"
           upvoteStory={[Function]}
           voted={false}
-/>,
+        />,
         <StoryInfo
           commentCount={0}
           createdAt={1970-01-01T00:00:00.000Z}
@@ -828,7 +828,7 @@ ShallowWrapper {
           unvoteStory={[Function]}
           voted={false}
           votes={Array []}
-/>,
+        />,
         null,
       ],
     },
@@ -885,7 +885,7 @@ ShallowWrapper {
             title="Ask HN: Ask HN: Google"
             upvoteStory={[Function]}
             voted={false}
-/>,
+          />,
           <StoryInfo
             commentCount={0}
             createdAt={1970-01-01T00:00:00.000Z}
@@ -896,7 +896,7 @@ ShallowWrapper {
             unvoteStory={[Function]}
             voted={false}
             votes={Array []}
-/>,
+          />,
           null,
         ],
       },
@@ -958,35 +958,35 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Story
     loggedIn={true}
     optimistic={
-        Object {
-            "votedStories": Object {},
-          }
+      Object {
+        "votedStories": Object {},
+      }
     }
     story={
-        Object {
-            "comments": Array [
-              Object {
-                "createdAt": 1970-01-01T00:00:00.000Z,
-                "createdBy": "user-id",
-                "createdByNane": "user",
-                "id": "comment-id",
-                "parentId": "story-id",
-                "text": "comment",
-              },
-            ],
+      Object {
+        "comments": Array [
+          Object {
             "createdAt": 1970-01-01T00:00:00.000Z,
             "createdBy": "user-id",
-            "createdByName": "user",
-            "id": "story-id",
-            "link": "https://www.google.com",
-            "title": "Ask HN: Google",
-            "type": "ask",
-            "votes": Array [],
-          }
+            "createdByNane": "user",
+            "id": "comment-id",
+            "parentId": "story-id",
+            "text": "comment",
+          },
+        ],
+        "createdAt": 1970-01-01T00:00:00.000Z,
+        "createdBy": "user-id",
+        "createdByName": "user",
+        "id": "story-id",
+        "link": "https://www.google.com",
+        "title": "Ask HN: Google",
+        "type": "ask",
+        "votes": Array [],
+      }
     }
     userId="user-id"
     voted={0}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -1006,7 +1006,7 @@ ShallowWrapper {
           title="Ask HN: Ask HN: Google"
           upvoteStory={[Function]}
           voted={false}
-/>,
+        />,
         <StoryInfo
           commentCount={1}
           createdAt={1970-01-01T00:00:00.000Z}
@@ -1017,7 +1017,7 @@ ShallowWrapper {
           unvoteStory={[Function]}
           voted={false}
           votes={Array []}
-/>,
+        />,
         null,
       ],
     },
@@ -1074,7 +1074,7 @@ ShallowWrapper {
             title="Ask HN: Ask HN: Google"
             upvoteStory={[Function]}
             voted={false}
-/>,
+          />,
           <StoryInfo
             commentCount={1}
             createdAt={1970-01-01T00:00:00.000Z}
@@ -1085,7 +1085,7 @@ ShallowWrapper {
             unvoteStory={[Function]}
             voted={false}
             votes={Array []}
-/>,
+          />,
           null,
         ],
       },
@@ -1147,25 +1147,25 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Story
     loggedIn={true}
     optimistic={
-        Object {
-            "votedStories": Object {},
-          }
+      Object {
+        "votedStories": Object {},
+      }
     }
     story={
-        Object {
-            "comments": Array [],
-            "createdAt": 1970-01-01T00:00:00.000Z,
-            "createdBy": "user-id",
-            "createdByName": "user",
-            "id": "story-id",
-            "link": "https://google.com",
-            "title": "Google",
-            "type": "story",
-            "votes": Array [],
-          }
+      Object {
+        "comments": Array [],
+        "createdAt": 1970-01-01T00:00:00.000Z,
+        "createdBy": "user-id",
+        "createdByName": "user",
+        "id": "story-id",
+        "link": "https://google.com",
+        "title": "Google",
+        "type": "story",
+        "votes": Array [],
+      }
     }
     voted={0}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -1185,7 +1185,7 @@ ShallowWrapper {
           title="Google"
           upvoteStory={[Function]}
           voted={false}
-/>,
+        />,
         <StoryInfo
           commentCount={0}
           createdAt={1970-01-01T00:00:00.000Z}
@@ -1196,7 +1196,7 @@ ShallowWrapper {
           unvoteStory={[Function]}
           voted={false}
           votes={Array []}
-/>,
+        />,
         null,
       ],
     },
@@ -1253,7 +1253,7 @@ ShallowWrapper {
             title="Google"
             upvoteStory={[Function]}
             voted={false}
-/>,
+          />,
           <StoryInfo
             commentCount={0}
             createdAt={1970-01-01T00:00:00.000Z}
@@ -1264,7 +1264,7 @@ ShallowWrapper {
             unvoteStory={[Function]}
             voted={false}
             votes={Array []}
-/>,
+          />,
           null,
         ],
       },
@@ -1325,7 +1325,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Styled(Link)
     to="/"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -1338,7 +1338,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "className": "sc-bxivhb brhOvu",
+      "className": "sc-bxivhb cRaLxZ",
       "replace": false,
       "to": "/",
     },
@@ -1352,7 +1352,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "className": "sc-bxivhb brhOvu",
+        "className": "sc-bxivhb cRaLxZ",
         "replace": false,
         "to": "/",
       },
@@ -1379,7 +1379,7 @@ ShallowWrapper {
     link="https://google.com"
     loggedIn={true}
     title="Title"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -1396,12 +1396,12 @@ ShallowWrapper {
         <styled.div
           onClick={undefined}
           title="upvote"
-/>,
+        />,
         <styled.a
           href="https://google.com"
->
+        >
           Title
-</styled.a>,
+        </styled.a>,
         " ",
         "(google.com)",
       ],
@@ -1447,12 +1447,12 @@ ShallowWrapper {
           <styled.div
             onClick={undefined}
             title="upvote"
-/>,
+          />,
           <styled.a
             href="https://google.com"
->
+          >
             Title
-</styled.a>,
+          </styled.a>,
           " ",
           "(google.com)",
         ],
@@ -1507,7 +1507,7 @@ ShallowWrapper {
     link="https://www.google.com"
     loggedIn={true}
     title="Title"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -1524,12 +1524,12 @@ ShallowWrapper {
         <styled.div
           onClick={undefined}
           title="upvote"
-/>,
+        />,
         <styled.a
           href="https://www.google.com"
->
+        >
           Title
-</styled.a>,
+        </styled.a>,
         " ",
         "(www.google.com)",
       ],
@@ -1575,12 +1575,12 @@ ShallowWrapper {
           <styled.div
             onClick={undefined}
             title="upvote"
-/>,
+          />,
           <styled.a
             href="https://www.google.com"
->
+          >
             Title
-</styled.a>,
+          </styled.a>,
           " ",
           "(www.google.com)",
         ],
@@ -1636,7 +1636,7 @@ ShallowWrapper {
     loggedIn={true}
     title="Title"
     voted={true}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -1652,12 +1652,12 @@ ShallowWrapper {
       "children": Array [
         <styled.div
           hidden={true}
-/>,
+        />,
         <Styled(Link)
           to="/story/story-id"
->
+        >
           Title
-</Styled(Link)>,
+        </Styled(Link)>,
         " ",
         null,
       ],
@@ -1701,12 +1701,12 @@ ShallowWrapper {
         "children": Array [
           <styled.div
             hidden={true}
-/>,
+          />,
           <Styled(Link)
             to="/story/story-id"
->
+          >
             Title
-</Styled(Link)>,
+          </Styled(Link)>,
           " ",
           null,
         ],
@@ -1758,7 +1758,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <styled.div
     Upvote={true}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -1852,7 +1852,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <getHostname
     link="http://www.google.com"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],

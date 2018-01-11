@@ -8,7 +8,7 @@ ShallowWrapper {
     action="/auth"
     buttonText="login"
     title="Title"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -24,23 +24,23 @@ ShallowWrapper {
       "children": Array [
         <styled.div>
           Title
-</styled.div>,
+        </styled.div>,
         <form
           action="/auth"
           method="POST"
->
+        >
           <styled.div>
-                    username: 
-                    <input
-                              name="username"
-                              type="text"
-                    />
+            username: 
+            <input
+              name="username"
+              type="text"
+            />
           </styled.div>
           <input
-                    type="submit"
-                    value="login"
+            type="submit"
+            value="login"
           />
-</form>,
+        </form>,
       ],
     },
     "ref": null,
@@ -66,14 +66,14 @@ ShallowWrapper {
             <styled.div>
               username: 
               <input
-                            name="username"
-                            type="text"
+                name="username"
+                type="text"
               />
-</styled.div>,
+            </styled.div>,
             <input
               type="submit"
               value="login"
-/>,
+            />,
           ],
           "method": "POST",
         },
@@ -89,7 +89,7 @@ ShallowWrapper {
                 <input
                   name="username"
                   type="text"
-/>,
+                />,
               ],
             },
             "ref": null,
@@ -137,23 +137,23 @@ ShallowWrapper {
         "children": Array [
           <styled.div>
             Title
-</styled.div>,
+          </styled.div>,
           <form
             action="/auth"
             method="POST"
->
+          >
             <styled.div>
-                        username: 
-                        <input
-                                    name="username"
-                                    type="text"
-                        />
+              username: 
+              <input
+                name="username"
+                type="text"
+              />
             </styled.div>
             <input
-                        type="submit"
-                        value="login"
+              type="submit"
+              value="login"
             />
-</form>,
+          </form>,
         ],
       },
       "ref": null,
@@ -179,14 +179,14 @@ ShallowWrapper {
               <styled.div>
                 username: 
                 <input
-                                name="username"
-                                type="text"
+                  name="username"
+                  type="text"
                 />
-</styled.div>,
+              </styled.div>,
               <input
                 type="submit"
                 value="login"
-/>,
+              />,
             ],
             "method": "POST",
           },
@@ -202,7 +202,7 @@ ShallowWrapper {
                   <input
                     name="username"
                     type="text"
-/>,
+                  />,
                 ],
               },
               "ref": null,

@@ -17,7 +17,9 @@ const Link = styled(NavLink)`
   }
 `
 
-const PageAuth = styled.div`float: right;`
+const PageAuth = styled.div`
+  float: right;
+`
 
 const LoginInfo = ({ data: { me }, logout }) => (
   <PageAuth>

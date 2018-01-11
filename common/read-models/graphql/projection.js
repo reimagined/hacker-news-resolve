@@ -22,6 +22,7 @@ export default {
     const users = await store.collection('users')
 
     await stories.ensureIndex({ fieldName: 'id' })
+    await stories.ensureIndex({ fieldName: 'type' })
     await comments.ensureIndex({ fieldName: 'id' })
     await users.ensureIndex({ fieldName: 'id' })
   },

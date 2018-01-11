@@ -6,11 +6,15 @@ import Story from '../containers/Story'
 import Pagination from './Pagination'
 import { ITEMS_PER_PAGE } from '../constants'
 
-const StoriesRoot = styled.div`padding: 0 0.5em;`
+const StoriesRoot = styled.div`
+  padding: 0 0.5em;
+`
 
 const StoryList = 'ol'
 
-const StoryItem = styled.li`margin-bottom: 12px;`
+const StoryItem = styled.li`
+  margin-bottom: 12px;
+`
 
 const Stories = ({ items, page, type, userId }) => {
   if (page && !Number.isInteger(Number(page))) {

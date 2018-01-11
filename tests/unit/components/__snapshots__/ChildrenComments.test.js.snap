@@ -6,29 +6,29 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChildrenComments
     comments={
-        Array [
-            Object {
-              "createdAt": 1970-01-01T00:00:00.000Z,
-              "createdBy": "user-id",
-              "createdByName": "SomeUser",
-              "id": "comment-id",
-              "parentId": "story-id",
-              "text": "comment",
-            },
-            Object {
-              "createdAt": 1970-01-01T00:00:00.000Z,
-              "createdBy": "user-id",
-              "createdByName": "SomeUser",
-              "id": "reply-id",
-              "parentId": "comment-id",
-              "text": "reply",
-            },
-          ]
+      Array [
+        Object {
+          "createdAt": 1970-01-01T00:00:00.000Z,
+          "createdBy": "user-id",
+          "createdByName": "SomeUser",
+          "id": "comment-id",
+          "parentId": "story-id",
+          "text": "comment",
+        },
+        Object {
+          "createdAt": 1970-01-01T00:00:00.000Z,
+          "createdBy": "user-id",
+          "createdByName": "SomeUser",
+          "id": "reply-id",
+          "parentId": "comment-id",
+          "text": "reply",
+        },
+      ]
     }
     loggedIn={false}
     parentId="story-id"
     storyId="story-id"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -50,33 +50,33 @@ ShallowWrapper {
           parentId="story-id"
           storyId="story-id"
           text="comment"
->
+        >
           <ChildrenComments
-                    comments={
-                              Array [
-                                        Object {
-                                          "createdAt": 1970-01-01T00:00:00.000Z,
-                                          "createdBy": "user-id",
-                                          "createdByName": "SomeUser",
-                                          "id": "comment-id",
-                                          "parentId": "story-id",
-                                          "text": "comment",
-                                        },
-                                        Object {
-                                          "createdAt": 1970-01-01T00:00:00.000Z,
-                                          "createdBy": "user-id",
-                                          "createdByName": "SomeUser",
-                                          "id": "reply-id",
-                                          "parentId": "comment-id",
-                                          "text": "reply",
-                                        },
-                                      ]
-                    }
-                    loggedIn={false}
-                    parentId="comment-id"
-                    storyId="story-id"
+            comments={
+              Array [
+                Object {
+                  "createdAt": 1970-01-01T00:00:00.000Z,
+                  "createdBy": "user-id",
+                  "createdByName": "SomeUser",
+                  "id": "comment-id",
+                  "parentId": "story-id",
+                  "text": "comment",
+                },
+                Object {
+                  "createdAt": 1970-01-01T00:00:00.000Z,
+                  "createdBy": "user-id",
+                  "createdByName": "SomeUser",
+                  "id": "reply-id",
+                  "parentId": "comment-id",
+                  "text": "reply",
+                },
+              ]
+            }
+            loggedIn={false}
+            parentId="comment-id"
+            storyId="story-id"
           />
-</Comment>,
+        </Comment>,
         null,
       ],
     },
@@ -91,29 +91,29 @@ ShallowWrapper {
             null,
             <ChildrenComments
               comments={
-                            Array [
-                                          Object {
-                                            "createdAt": 1970-01-01T00:00:00.000Z,
-                                            "createdBy": "user-id",
-                                            "createdByName": "SomeUser",
-                                            "id": "comment-id",
-                                            "parentId": "story-id",
-                                            "text": "comment",
-                                          },
-                                          Object {
-                                            "createdAt": 1970-01-01T00:00:00.000Z,
-                                            "createdBy": "user-id",
-                                            "createdByName": "SomeUser",
-                                            "id": "reply-id",
-                                            "parentId": "comment-id",
-                                            "text": "reply",
-                                          },
-                                        ]
+                Array [
+                  Object {
+                    "createdAt": 1970-01-01T00:00:00.000Z,
+                    "createdBy": "user-id",
+                    "createdByName": "SomeUser",
+                    "id": "comment-id",
+                    "parentId": "story-id",
+                    "text": "comment",
+                  },
+                  Object {
+                    "createdAt": 1970-01-01T00:00:00.000Z,
+                    "createdBy": "user-id",
+                    "createdByName": "SomeUser",
+                    "id": "reply-id",
+                    "parentId": "comment-id",
+                    "text": "reply",
+                  },
+                ]
               }
               loggedIn={false}
               parentId="comment-id"
               storyId="story-id"
-/>,
+            />,
           ],
           "createdAt": 1970-01-01T00:00:00.000Z,
           "createdBy": "user-id",
@@ -179,33 +179,33 @@ ShallowWrapper {
             parentId="story-id"
             storyId="story-id"
             text="comment"
->
+          >
             <ChildrenComments
-                        comments={
-                                    Array [
-                                                Object {
-                                                  "createdAt": 1970-01-01T00:00:00.000Z,
-                                                  "createdBy": "user-id",
-                                                  "createdByName": "SomeUser",
-                                                  "id": "comment-id",
-                                                  "parentId": "story-id",
-                                                  "text": "comment",
-                                                },
-                                                Object {
-                                                  "createdAt": 1970-01-01T00:00:00.000Z,
-                                                  "createdBy": "user-id",
-                                                  "createdByName": "SomeUser",
-                                                  "id": "reply-id",
-                                                  "parentId": "comment-id",
-                                                  "text": "reply",
-                                                },
-                                              ]
-                        }
-                        loggedIn={false}
-                        parentId="comment-id"
-                        storyId="story-id"
+              comments={
+                Array [
+                  Object {
+                    "createdAt": 1970-01-01T00:00:00.000Z,
+                    "createdBy": "user-id",
+                    "createdByName": "SomeUser",
+                    "id": "comment-id",
+                    "parentId": "story-id",
+                    "text": "comment",
+                  },
+                  Object {
+                    "createdAt": 1970-01-01T00:00:00.000Z,
+                    "createdBy": "user-id",
+                    "createdByName": "SomeUser",
+                    "id": "reply-id",
+                    "parentId": "comment-id",
+                    "text": "reply",
+                  },
+                ]
+              }
+              loggedIn={false}
+              parentId="comment-id"
+              storyId="story-id"
             />
-</Comment>,
+          </Comment>,
           null,
         ],
       },
@@ -220,29 +220,29 @@ ShallowWrapper {
               null,
               <ChildrenComments
                 comments={
-                                Array [
-                                                Object {
-                                                  "createdAt": 1970-01-01T00:00:00.000Z,
-                                                  "createdBy": "user-id",
-                                                  "createdByName": "SomeUser",
-                                                  "id": "comment-id",
-                                                  "parentId": "story-id",
-                                                  "text": "comment",
-                                                },
-                                                Object {
-                                                  "createdAt": 1970-01-01T00:00:00.000Z,
-                                                  "createdBy": "user-id",
-                                                  "createdByName": "SomeUser",
-                                                  "id": "reply-id",
-                                                  "parentId": "comment-id",
-                                                  "text": "reply",
-                                                },
-                                              ]
+                  Array [
+                    Object {
+                      "createdAt": 1970-01-01T00:00:00.000Z,
+                      "createdBy": "user-id",
+                      "createdByName": "SomeUser",
+                      "id": "comment-id",
+                      "parentId": "story-id",
+                      "text": "comment",
+                    },
+                    Object {
+                      "createdAt": 1970-01-01T00:00:00.000Z,
+                      "createdBy": "user-id",
+                      "createdByName": "SomeUser",
+                      "id": "reply-id",
+                      "parentId": "comment-id",
+                      "text": "reply",
+                    },
+                  ]
                 }
                 loggedIn={false}
                 parentId="comment-id"
                 storyId="story-id"
-/>,
+              />,
             ],
             "createdAt": 1970-01-01T00:00:00.000Z,
             "createdBy": "user-id",
@@ -310,29 +310,29 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChildrenComments
     comments={
-        Array [
-            Object {
-              "createdAt": 1970-01-01T00:00:00.000Z,
-              "createdBy": "user-id",
-              "createdByName": "SomeUser",
-              "id": "comment-id",
-              "parentId": "story-id",
-              "text": "comment",
-            },
-            Object {
-              "createdAt": 1970-01-01T00:00:00.000Z,
-              "createdBy": "user-id",
-              "createdByName": "SomeUser",
-              "id": "reply-id",
-              "parentId": "comment-id",
-              "text": "reply",
-            },
-          ]
+      Array [
+        Object {
+          "createdAt": 1970-01-01T00:00:00.000Z,
+          "createdBy": "user-id",
+          "createdByName": "SomeUser",
+          "id": "comment-id",
+          "parentId": "story-id",
+          "text": "comment",
+        },
+        Object {
+          "createdAt": 1970-01-01T00:00:00.000Z,
+          "createdBy": "user-id",
+          "createdByName": "SomeUser",
+          "id": "reply-id",
+          "parentId": "comment-id",
+          "text": "reply",
+        },
+      ]
     }
     loggedIn={false}
     parentId="comment-id"
     storyId="story-id"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -355,33 +355,33 @@ ShallowWrapper {
           parentId="comment-id"
           storyId="story-id"
           text="reply"
->
+        >
           <ChildrenComments
-                    comments={
-                              Array [
-                                        Object {
-                                          "createdAt": 1970-01-01T00:00:00.000Z,
-                                          "createdBy": "user-id",
-                                          "createdByName": "SomeUser",
-                                          "id": "comment-id",
-                                          "parentId": "story-id",
-                                          "text": "comment",
-                                        },
-                                        Object {
-                                          "createdAt": 1970-01-01T00:00:00.000Z,
-                                          "createdBy": "user-id",
-                                          "createdByName": "SomeUser",
-                                          "id": "reply-id",
-                                          "parentId": "comment-id",
-                                          "text": "reply",
-                                        },
-                                      ]
-                    }
-                    loggedIn={false}
-                    parentId="reply-id"
-                    storyId="story-id"
+            comments={
+              Array [
+                Object {
+                  "createdAt": 1970-01-01T00:00:00.000Z,
+                  "createdBy": "user-id",
+                  "createdByName": "SomeUser",
+                  "id": "comment-id",
+                  "parentId": "story-id",
+                  "text": "comment",
+                },
+                Object {
+                  "createdAt": 1970-01-01T00:00:00.000Z,
+                  "createdBy": "user-id",
+                  "createdByName": "SomeUser",
+                  "id": "reply-id",
+                  "parentId": "comment-id",
+                  "text": "reply",
+                },
+              ]
+            }
+            loggedIn={false}
+            parentId="reply-id"
+            storyId="story-id"
           />
-</Comment>,
+        </Comment>,
       ],
     },
     "ref": null,
@@ -396,29 +396,29 @@ ShallowWrapper {
             null,
             <ChildrenComments
               comments={
-                            Array [
-                                          Object {
-                                            "createdAt": 1970-01-01T00:00:00.000Z,
-                                            "createdBy": "user-id",
-                                            "createdByName": "SomeUser",
-                                            "id": "comment-id",
-                                            "parentId": "story-id",
-                                            "text": "comment",
-                                          },
-                                          Object {
-                                            "createdAt": 1970-01-01T00:00:00.000Z,
-                                            "createdBy": "user-id",
-                                            "createdByName": "SomeUser",
-                                            "id": "reply-id",
-                                            "parentId": "comment-id",
-                                            "text": "reply",
-                                          },
-                                        ]
+                Array [
+                  Object {
+                    "createdAt": 1970-01-01T00:00:00.000Z,
+                    "createdBy": "user-id",
+                    "createdByName": "SomeUser",
+                    "id": "comment-id",
+                    "parentId": "story-id",
+                    "text": "comment",
+                  },
+                  Object {
+                    "createdAt": 1970-01-01T00:00:00.000Z,
+                    "createdBy": "user-id",
+                    "createdByName": "SomeUser",
+                    "id": "reply-id",
+                    "parentId": "comment-id",
+                    "text": "reply",
+                  },
+                ]
               }
               loggedIn={false}
               parentId="reply-id"
               storyId="story-id"
-/>,
+            />,
           ],
           "createdAt": 1970-01-01T00:00:00.000Z,
           "createdBy": "user-id",
@@ -484,33 +484,33 @@ ShallowWrapper {
             parentId="comment-id"
             storyId="story-id"
             text="reply"
->
+          >
             <ChildrenComments
-                        comments={
-                                    Array [
-                                                Object {
-                                                  "createdAt": 1970-01-01T00:00:00.000Z,
-                                                  "createdBy": "user-id",
-                                                  "createdByName": "SomeUser",
-                                                  "id": "comment-id",
-                                                  "parentId": "story-id",
-                                                  "text": "comment",
-                                                },
-                                                Object {
-                                                  "createdAt": 1970-01-01T00:00:00.000Z,
-                                                  "createdBy": "user-id",
-                                                  "createdByName": "SomeUser",
-                                                  "id": "reply-id",
-                                                  "parentId": "comment-id",
-                                                  "text": "reply",
-                                                },
-                                              ]
-                        }
-                        loggedIn={false}
-                        parentId="reply-id"
-                        storyId="story-id"
+              comments={
+                Array [
+                  Object {
+                    "createdAt": 1970-01-01T00:00:00.000Z,
+                    "createdBy": "user-id",
+                    "createdByName": "SomeUser",
+                    "id": "comment-id",
+                    "parentId": "story-id",
+                    "text": "comment",
+                  },
+                  Object {
+                    "createdAt": 1970-01-01T00:00:00.000Z,
+                    "createdBy": "user-id",
+                    "createdByName": "SomeUser",
+                    "id": "reply-id",
+                    "parentId": "comment-id",
+                    "text": "reply",
+                  },
+                ]
+              }
+              loggedIn={false}
+              parentId="reply-id"
+              storyId="story-id"
             />
-</Comment>,
+          </Comment>,
         ],
       },
       "ref": null,
@@ -525,29 +525,29 @@ ShallowWrapper {
               null,
               <ChildrenComments
                 comments={
-                                Array [
-                                                Object {
-                                                  "createdAt": 1970-01-01T00:00:00.000Z,
-                                                  "createdBy": "user-id",
-                                                  "createdByName": "SomeUser",
-                                                  "id": "comment-id",
-                                                  "parentId": "story-id",
-                                                  "text": "comment",
-                                                },
-                                                Object {
-                                                  "createdAt": 1970-01-01T00:00:00.000Z,
-                                                  "createdBy": "user-id",
-                                                  "createdByName": "SomeUser",
-                                                  "id": "reply-id",
-                                                  "parentId": "comment-id",
-                                                  "text": "reply",
-                                                },
-                                              ]
+                  Array [
+                    Object {
+                      "createdAt": 1970-01-01T00:00:00.000Z,
+                      "createdBy": "user-id",
+                      "createdByName": "SomeUser",
+                      "id": "comment-id",
+                      "parentId": "story-id",
+                      "text": "comment",
+                    },
+                    Object {
+                      "createdAt": 1970-01-01T00:00:00.000Z,
+                      "createdBy": "user-id",
+                      "createdByName": "SomeUser",
+                      "id": "reply-id",
+                      "parentId": "comment-id",
+                      "text": "reply",
+                    },
+                  ]
                 }
                 loggedIn={false}
                 parentId="reply-id"
                 storyId="story-id"
-/>,
+              />,
             ],
             "createdAt": 1970-01-01T00:00:00.000Z,
             "createdBy": "user-id",
@@ -614,29 +614,29 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChildrenComments
     comments={
-        Array [
-            Object {
-              "createdAt": 1970-01-01T00:00:00.000Z,
-              "createdBy": "user-id",
-              "createdByName": "SomeUser",
-              "id": "comment-id",
-              "parentId": "story-id",
-              "text": "comment",
-            },
-            Object {
-              "createdAt": 1970-01-01T00:00:00.000Z,
-              "createdBy": "user-id",
-              "createdByName": "SomeUser",
-              "id": "reply-id",
-              "parentId": "comment-id",
-              "text": "reply",
-            },
-          ]
+      Array [
+        Object {
+          "createdAt": 1970-01-01T00:00:00.000Z,
+          "createdBy": "user-id",
+          "createdByName": "SomeUser",
+          "id": "comment-id",
+          "parentId": "story-id",
+          "text": "comment",
+        },
+        Object {
+          "createdAt": 1970-01-01T00:00:00.000Z,
+          "createdBy": "user-id",
+          "createdByName": "SomeUser",
+          "id": "reply-id",
+          "parentId": "comment-id",
+          "text": "reply",
+        },
+      ]
     }
     loggedIn={true}
     parentId="story-id"
     storyId="story-id"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -658,37 +658,37 @@ ShallowWrapper {
           parentId="story-id"
           storyId="story-id"
           text="comment"
->
+        >
           <ReplyLink
-                    commentId="comment-id"
-                    storyId="story-id"
+            commentId="comment-id"
+            storyId="story-id"
           />
           <ChildrenComments
-                    comments={
-                              Array [
-                                        Object {
-                                          "createdAt": 1970-01-01T00:00:00.000Z,
-                                          "createdBy": "user-id",
-                                          "createdByName": "SomeUser",
-                                          "id": "comment-id",
-                                          "parentId": "story-id",
-                                          "text": "comment",
-                                        },
-                                        Object {
-                                          "createdAt": 1970-01-01T00:00:00.000Z,
-                                          "createdBy": "user-id",
-                                          "createdByName": "SomeUser",
-                                          "id": "reply-id",
-                                          "parentId": "comment-id",
-                                          "text": "reply",
-                                        },
-                                      ]
-                    }
-                    loggedIn={true}
-                    parentId="comment-id"
-                    storyId="story-id"
+            comments={
+              Array [
+                Object {
+                  "createdAt": 1970-01-01T00:00:00.000Z,
+                  "createdBy": "user-id",
+                  "createdByName": "SomeUser",
+                  "id": "comment-id",
+                  "parentId": "story-id",
+                  "text": "comment",
+                },
+                Object {
+                  "createdAt": 1970-01-01T00:00:00.000Z,
+                  "createdBy": "user-id",
+                  "createdByName": "SomeUser",
+                  "id": "reply-id",
+                  "parentId": "comment-id",
+                  "text": "reply",
+                },
+              ]
+            }
+            loggedIn={true}
+            parentId="comment-id"
+            storyId="story-id"
           />
-</Comment>,
+        </Comment>,
         null,
       ],
     },
@@ -703,32 +703,32 @@ ShallowWrapper {
             <ReplyLink
               commentId="comment-id"
               storyId="story-id"
-/>,
+            />,
             <ChildrenComments
               comments={
-                            Array [
-                                          Object {
-                                            "createdAt": 1970-01-01T00:00:00.000Z,
-                                            "createdBy": "user-id",
-                                            "createdByName": "SomeUser",
-                                            "id": "comment-id",
-                                            "parentId": "story-id",
-                                            "text": "comment",
-                                          },
-                                          Object {
-                                            "createdAt": 1970-01-01T00:00:00.000Z,
-                                            "createdBy": "user-id",
-                                            "createdByName": "SomeUser",
-                                            "id": "reply-id",
-                                            "parentId": "comment-id",
-                                            "text": "reply",
-                                          },
-                                        ]
+                Array [
+                  Object {
+                    "createdAt": 1970-01-01T00:00:00.000Z,
+                    "createdBy": "user-id",
+                    "createdByName": "SomeUser",
+                    "id": "comment-id",
+                    "parentId": "story-id",
+                    "text": "comment",
+                  },
+                  Object {
+                    "createdAt": 1970-01-01T00:00:00.000Z,
+                    "createdBy": "user-id",
+                    "createdByName": "SomeUser",
+                    "id": "reply-id",
+                    "parentId": "comment-id",
+                    "text": "reply",
+                  },
+                ]
               }
               loggedIn={true}
               parentId="comment-id"
               storyId="story-id"
-/>,
+            />,
           ],
           "createdAt": 1970-01-01T00:00:00.000Z,
           "createdBy": "user-id",
@@ -805,37 +805,37 @@ ShallowWrapper {
             parentId="story-id"
             storyId="story-id"
             text="comment"
->
+          >
             <ReplyLink
-                        commentId="comment-id"
-                        storyId="story-id"
+              commentId="comment-id"
+              storyId="story-id"
             />
             <ChildrenComments
-                        comments={
-                                    Array [
-                                                Object {
-                                                  "createdAt": 1970-01-01T00:00:00.000Z,
-                                                  "createdBy": "user-id",
-                                                  "createdByName": "SomeUser",
-                                                  "id": "comment-id",
-                                                  "parentId": "story-id",
-                                                  "text": "comment",
-                                                },
-                                                Object {
-                                                  "createdAt": 1970-01-01T00:00:00.000Z,
-                                                  "createdBy": "user-id",
-                                                  "createdByName": "SomeUser",
-                                                  "id": "reply-id",
-                                                  "parentId": "comment-id",
-                                                  "text": "reply",
-                                                },
-                                              ]
-                        }
-                        loggedIn={true}
-                        parentId="comment-id"
-                        storyId="story-id"
+              comments={
+                Array [
+                  Object {
+                    "createdAt": 1970-01-01T00:00:00.000Z,
+                    "createdBy": "user-id",
+                    "createdByName": "SomeUser",
+                    "id": "comment-id",
+                    "parentId": "story-id",
+                    "text": "comment",
+                  },
+                  Object {
+                    "createdAt": 1970-01-01T00:00:00.000Z,
+                    "createdBy": "user-id",
+                    "createdByName": "SomeUser",
+                    "id": "reply-id",
+                    "parentId": "comment-id",
+                    "text": "reply",
+                  },
+                ]
+              }
+              loggedIn={true}
+              parentId="comment-id"
+              storyId="story-id"
             />
-</Comment>,
+          </Comment>,
           null,
         ],
       },
@@ -850,32 +850,32 @@ ShallowWrapper {
               <ReplyLink
                 commentId="comment-id"
                 storyId="story-id"
-/>,
+              />,
               <ChildrenComments
                 comments={
-                                Array [
-                                                Object {
-                                                  "createdAt": 1970-01-01T00:00:00.000Z,
-                                                  "createdBy": "user-id",
-                                                  "createdByName": "SomeUser",
-                                                  "id": "comment-id",
-                                                  "parentId": "story-id",
-                                                  "text": "comment",
-                                                },
-                                                Object {
-                                                  "createdAt": 1970-01-01T00:00:00.000Z,
-                                                  "createdBy": "user-id",
-                                                  "createdByName": "SomeUser",
-                                                  "id": "reply-id",
-                                                  "parentId": "comment-id",
-                                                  "text": "reply",
-                                                },
-                                              ]
+                  Array [
+                    Object {
+                      "createdAt": 1970-01-01T00:00:00.000Z,
+                      "createdBy": "user-id",
+                      "createdByName": "SomeUser",
+                      "id": "comment-id",
+                      "parentId": "story-id",
+                      "text": "comment",
+                    },
+                    Object {
+                      "createdAt": 1970-01-01T00:00:00.000Z,
+                      "createdBy": "user-id",
+                      "createdByName": "SomeUser",
+                      "id": "reply-id",
+                      "parentId": "comment-id",
+                      "text": "reply",
+                    },
+                  ]
                 }
                 loggedIn={true}
                 parentId="comment-id"
                 storyId="story-id"
-/>,
+              />,
             ],
             "createdAt": 1970-01-01T00:00:00.000Z,
             "createdBy": "user-id",
@@ -954,29 +954,29 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChildrenComments
     comments={
-        Array [
-            Object {
-              "createdAt": 1970-01-01T00:00:00.000Z,
-              "createdBy": "user-id",
-              "createdByName": "SomeUser",
-              "id": "comment-id",
-              "parentId": "story-id",
-              "text": "comment",
-            },
-            Object {
-              "createdAt": 1970-01-01T00:00:00.000Z,
-              "createdBy": "user-id",
-              "createdByName": "SomeUser",
-              "id": "reply-id",
-              "parentId": "comment-id",
-              "text": "reply",
-            },
-          ]
+      Array [
+        Object {
+          "createdAt": 1970-01-01T00:00:00.000Z,
+          "createdBy": "user-id",
+          "createdByName": "SomeUser",
+          "id": "comment-id",
+          "parentId": "story-id",
+          "text": "comment",
+        },
+        Object {
+          "createdAt": 1970-01-01T00:00:00.000Z,
+          "createdBy": "user-id",
+          "createdByName": "SomeUser",
+          "id": "reply-id",
+          "parentId": "comment-id",
+          "text": "reply",
+        },
+      ]
     }
     loggedIn={true}
     parentId="comment-id"
     storyId="story-id"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -999,37 +999,37 @@ ShallowWrapper {
           parentId="comment-id"
           storyId="story-id"
           text="reply"
->
+        >
           <ReplyLink
-                    commentId="reply-id"
-                    storyId="story-id"
+            commentId="reply-id"
+            storyId="story-id"
           />
           <ChildrenComments
-                    comments={
-                              Array [
-                                        Object {
-                                          "createdAt": 1970-01-01T00:00:00.000Z,
-                                          "createdBy": "user-id",
-                                          "createdByName": "SomeUser",
-                                          "id": "comment-id",
-                                          "parentId": "story-id",
-                                          "text": "comment",
-                                        },
-                                        Object {
-                                          "createdAt": 1970-01-01T00:00:00.000Z,
-                                          "createdBy": "user-id",
-                                          "createdByName": "SomeUser",
-                                          "id": "reply-id",
-                                          "parentId": "comment-id",
-                                          "text": "reply",
-                                        },
-                                      ]
-                    }
-                    loggedIn={true}
-                    parentId="reply-id"
-                    storyId="story-id"
+            comments={
+              Array [
+                Object {
+                  "createdAt": 1970-01-01T00:00:00.000Z,
+                  "createdBy": "user-id",
+                  "createdByName": "SomeUser",
+                  "id": "comment-id",
+                  "parentId": "story-id",
+                  "text": "comment",
+                },
+                Object {
+                  "createdAt": 1970-01-01T00:00:00.000Z,
+                  "createdBy": "user-id",
+                  "createdByName": "SomeUser",
+                  "id": "reply-id",
+                  "parentId": "comment-id",
+                  "text": "reply",
+                },
+              ]
+            }
+            loggedIn={true}
+            parentId="reply-id"
+            storyId="story-id"
           />
-</Comment>,
+        </Comment>,
       ],
     },
     "ref": null,
@@ -1044,32 +1044,32 @@ ShallowWrapper {
             <ReplyLink
               commentId="reply-id"
               storyId="story-id"
-/>,
+            />,
             <ChildrenComments
               comments={
-                            Array [
-                                          Object {
-                                            "createdAt": 1970-01-01T00:00:00.000Z,
-                                            "createdBy": "user-id",
-                                            "createdByName": "SomeUser",
-                                            "id": "comment-id",
-                                            "parentId": "story-id",
-                                            "text": "comment",
-                                          },
-                                          Object {
-                                            "createdAt": 1970-01-01T00:00:00.000Z,
-                                            "createdBy": "user-id",
-                                            "createdByName": "SomeUser",
-                                            "id": "reply-id",
-                                            "parentId": "comment-id",
-                                            "text": "reply",
-                                          },
-                                        ]
+                Array [
+                  Object {
+                    "createdAt": 1970-01-01T00:00:00.000Z,
+                    "createdBy": "user-id",
+                    "createdByName": "SomeUser",
+                    "id": "comment-id",
+                    "parentId": "story-id",
+                    "text": "comment",
+                  },
+                  Object {
+                    "createdAt": 1970-01-01T00:00:00.000Z,
+                    "createdBy": "user-id",
+                    "createdByName": "SomeUser",
+                    "id": "reply-id",
+                    "parentId": "comment-id",
+                    "text": "reply",
+                  },
+                ]
               }
               loggedIn={true}
               parentId="reply-id"
               storyId="story-id"
-/>,
+            />,
           ],
           "createdAt": 1970-01-01T00:00:00.000Z,
           "createdBy": "user-id",
@@ -1146,37 +1146,37 @@ ShallowWrapper {
             parentId="comment-id"
             storyId="story-id"
             text="reply"
->
+          >
             <ReplyLink
-                        commentId="reply-id"
-                        storyId="story-id"
+              commentId="reply-id"
+              storyId="story-id"
             />
             <ChildrenComments
-                        comments={
-                                    Array [
-                                                Object {
-                                                  "createdAt": 1970-01-01T00:00:00.000Z,
-                                                  "createdBy": "user-id",
-                                                  "createdByName": "SomeUser",
-                                                  "id": "comment-id",
-                                                  "parentId": "story-id",
-                                                  "text": "comment",
-                                                },
-                                                Object {
-                                                  "createdAt": 1970-01-01T00:00:00.000Z,
-                                                  "createdBy": "user-id",
-                                                  "createdByName": "SomeUser",
-                                                  "id": "reply-id",
-                                                  "parentId": "comment-id",
-                                                  "text": "reply",
-                                                },
-                                              ]
-                        }
-                        loggedIn={true}
-                        parentId="reply-id"
-                        storyId="story-id"
+              comments={
+                Array [
+                  Object {
+                    "createdAt": 1970-01-01T00:00:00.000Z,
+                    "createdBy": "user-id",
+                    "createdByName": "SomeUser",
+                    "id": "comment-id",
+                    "parentId": "story-id",
+                    "text": "comment",
+                  },
+                  Object {
+                    "createdAt": 1970-01-01T00:00:00.000Z,
+                    "createdBy": "user-id",
+                    "createdByName": "SomeUser",
+                    "id": "reply-id",
+                    "parentId": "comment-id",
+                    "text": "reply",
+                  },
+                ]
+              }
+              loggedIn={true}
+              parentId="reply-id"
+              storyId="story-id"
             />
-</Comment>,
+          </Comment>,
         ],
       },
       "ref": null,
@@ -1191,32 +1191,32 @@ ShallowWrapper {
               <ReplyLink
                 commentId="reply-id"
                 storyId="story-id"
-/>,
+              />,
               <ChildrenComments
                 comments={
-                                Array [
-                                                Object {
-                                                  "createdAt": 1970-01-01T00:00:00.000Z,
-                                                  "createdBy": "user-id",
-                                                  "createdByName": "SomeUser",
-                                                  "id": "comment-id",
-                                                  "parentId": "story-id",
-                                                  "text": "comment",
-                                                },
-                                                Object {
-                                                  "createdAt": 1970-01-01T00:00:00.000Z,
-                                                  "createdBy": "user-id",
-                                                  "createdByName": "SomeUser",
-                                                  "id": "reply-id",
-                                                  "parentId": "comment-id",
-                                                  "text": "reply",
-                                                },
-                                              ]
+                  Array [
+                    Object {
+                      "createdAt": 1970-01-01T00:00:00.000Z,
+                      "createdBy": "user-id",
+                      "createdByName": "SomeUser",
+                      "id": "comment-id",
+                      "parentId": "story-id",
+                      "text": "comment",
+                    },
+                    Object {
+                      "createdAt": 1970-01-01T00:00:00.000Z,
+                      "createdBy": "user-id",
+                      "createdByName": "SomeUser",
+                      "id": "reply-id",
+                      "parentId": "comment-id",
+                      "text": "reply",
+                    },
+                  ]
                 }
                 loggedIn={true}
                 parentId="reply-id"
                 storyId="story-id"
-/>,
+              />,
             ],
             "createdAt": 1970-01-01T00:00:00.000Z,
             "createdBy": "user-id",
@@ -1297,7 +1297,7 @@ ShallowWrapper {
     loggedIn={false}
     parentId="story-id"
     storyId="story-id"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],

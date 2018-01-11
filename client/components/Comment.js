@@ -33,9 +33,13 @@ const linkStyles = `
   }
 `
 
-const StyledLink = styled(Link)`${linkStyles};`
+const StyledLink = styled(Link)`
+  ${linkStyles};
+`
 
-const StyledUserLink = styled(Link)`${linkStyles} font-weight: bold;`
+const StyledUserLink = styled(Link)`
+  ${linkStyles} font-weight: bold;
+`
 
 const StyledTimeAgo = styled(TimeAgo)`
   vertical-align: middle;
