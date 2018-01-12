@@ -69,7 +69,7 @@ pipeline {
                 sshagent(['okhotnikov_rsa']) {
                     sh """
                         ssh -o StrictHostKeyChecking=no -l okhotnikov 192.168.98.97 'cd ~/dev/hackernews
-                        sudo pull-image.sh
+                        sudo pull-image.sh 172.22.7.201:6666
                         sudo run-container.sh dev'
                     """
                 }
