@@ -24,9 +24,13 @@ export const TitleRoot = styled.div`
   font-size: 8pt;
 `
 
-export const StyledLink = styled(Link)`font-size: 10pt;`
+export const StyledLink = styled(Link)`
+  font-size: 10pt;
+`
 
-export const StyledExternalLink = styled.a`font-size: 10pt;`
+export const StyledExternalLink = styled.a`
+  font-size: 10pt;
+`
 
 export const StoryInfoRoot = styled.div`
   color: #666;
@@ -42,9 +46,13 @@ const infoLinkStyles = `
   }
 `
 
-export const UnvoteLink = styled.span`${infoLinkStyles};`
+export const UnvoteLink = styled.span`
+  ${infoLinkStyles};
+`
 
-export const DiscussLink = styled(Link)`${infoLinkStyles};`
+export const DiscussLink = styled(Link)`
+  ${infoLinkStyles};
+`
 
 export const UpvoteArrow = styled.div`
   display: inline-block;
@@ -118,15 +126,15 @@ export const StoryInfo = props => {
   return (
     <StoryInfoRoot>
       {votes ? `${votes.length} ${plur('point', votes.length)} ` : null}
-      {createdBy ? (
-        [
-          'by ',
-          <Username key="username" href={`/user/${createdBy}`}>
-            {createdByName}
-          </Username>,
-          ' '
-        ]
-      ) : null}
+      {createdBy
+        ? [
+            'by ',
+            <Username key="username" href={`/user/${createdBy}`}>
+              {createdByName}
+            </Username>,
+            ' '
+          ]
+        : null}
       <TimeAgo createdAt={createdAt} />
       {unvoteIsVisible && (
         <span>
@@ -136,11 +144,9 @@ export const StoryInfo = props => {
       )}
       <Splitter />
       <DiscussLink to={`/storyDetails/${id}`}>
-        {commentCount > 0 ? (
-          `${commentCount} ${plur('comment', commentCount)}`
-        ) : (
-          'discuss'
-        )}
+        {commentCount > 0
+          ? `${commentCount} ${plur('comment', commentCount)}`
+          : 'discuss'}
       </DiscussLink>{' '}
     </StoryInfoRoot>
   )

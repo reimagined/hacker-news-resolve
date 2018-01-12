@@ -52,7 +52,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <styled.div
     color="#fff"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -65,7 +65,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "className": "sc-bdVaJa kwXvfC",
+      "className": "sc-bdVaJa eDdTLw",
       "color": "#fff",
     },
     "ref": null,
@@ -78,7 +78,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "className": "sc-bdVaJa kwXvfC",
+        "className": "sc-bdVaJa eDdTLw",
         "color": "#fff",
       },
       "ref": null,

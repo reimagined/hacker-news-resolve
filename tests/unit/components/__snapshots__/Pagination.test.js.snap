@@ -7,7 +7,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Styled(Link)
     disabled={true}
     to="/"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -61,7 +61,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Styled(Link)
     to="/"
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -115,7 +115,7 @@ ShallowWrapper {
     hasNext={false}
     location="news"
     page={1}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -145,7 +145,7 @@ ShallowWrapper {
     hasNext={true}
     location="news"
     page={1}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -162,18 +162,18 @@ ShallowWrapper {
         <Styled(Link)
           disabled={true}
           to="news/0"
->
+        >
           Prev
-</Styled(Link)>,
+        </Styled(Link)>,
         <styled.div />,
         1,
         <styled.div />,
         <Styled(Link)
           disabled={false}
           to="news/2"
->
+        >
           More
-</Styled(Link)>,
+        </Styled(Link)>,
       ],
     },
     "ref": null,
@@ -236,18 +236,18 @@ ShallowWrapper {
           <Styled(Link)
             disabled={true}
             to="news/0"
->
+          >
             Prev
-</Styled(Link)>,
+          </Styled(Link)>,
           <styled.div />,
           1,
           <styled.div />,
           <Styled(Link)
             disabled={false}
             to="news/2"
->
+          >
             More
-</Styled(Link)>,
+          </Styled(Link)>,
         ],
       },
       "ref": null,
@@ -319,7 +319,7 @@ ShallowWrapper {
     hasNext={true}
     location="news"
     page={1}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -336,18 +336,18 @@ ShallowWrapper {
         <Styled(Link)
           disabled={true}
           to="news/0"
->
+        >
           Prev
-</Styled(Link)>,
+        </Styled(Link)>,
         <styled.div />,
         1,
         <styled.div />,
         <Styled(Link)
           disabled={false}
           to="news/2"
->
+        >
           More
-</Styled(Link)>,
+        </Styled(Link)>,
       ],
     },
     "ref": null,
@@ -410,18 +410,18 @@ ShallowWrapper {
           <Styled(Link)
             disabled={true}
             to="news/0"
->
+          >
             Prev
-</Styled(Link)>,
+          </Styled(Link)>,
           <styled.div />,
           1,
           <styled.div />,
           <Styled(Link)
             disabled={false}
             to="news/2"
->
+          >
             More
-</Styled(Link)>,
+          </Styled(Link)>,
         ],
       },
       "ref": null,
@@ -493,7 +493,7 @@ ShallowWrapper {
     hasNext={true}
     location="news"
     page={2}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -510,18 +510,18 @@ ShallowWrapper {
         <Styled(Link)
           disabled={false}
           to="news/1"
->
+        >
           Prev
-</Styled(Link)>,
+        </Styled(Link)>,
         <styled.div />,
         2,
         <styled.div />,
         <Styled(Link)
           disabled={false}
           to="news/3"
->
+        >
           More
-</Styled(Link)>,
+        </Styled(Link)>,
       ],
     },
     "ref": null,
@@ -584,18 +584,18 @@ ShallowWrapper {
           <Styled(Link)
             disabled={false}
             to="news/1"
->
+          >
             Prev
-</Styled(Link)>,
+          </Styled(Link)>,
           <styled.div />,
           2,
           <styled.div />,
           <Styled(Link)
             disabled={false}
             to="news/3"
->
+          >
             More
-</Styled(Link)>,
+          </Styled(Link)>,
         ],
       },
       "ref": null,
@@ -667,7 +667,7 @@ ShallowWrapper {
     hasNext={false}
     location="news"
     page={3}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -684,18 +684,18 @@ ShallowWrapper {
         <Styled(Link)
           disabled={false}
           to="news/2"
->
+        >
           Prev
-</Styled(Link)>,
+        </Styled(Link)>,
         <styled.div />,
         3,
         <styled.div />,
         <Styled(Link)
           disabled={true}
           to="news/4"
->
+        >
           More
-</Styled(Link)>,
+        </Styled(Link)>,
       ],
     },
     "ref": null,
@@ -758,18 +758,18 @@ ShallowWrapper {
           <Styled(Link)
             disabled={false}
             to="news/2"
->
+          >
             Prev
-</Styled(Link)>,
+          </Styled(Link)>,
           <styled.div />,
           3,
           <styled.div />,
           <Styled(Link)
             disabled={true}
             to="news/4"
->
+          >
             More
-</Styled(Link)>,
+          </Styled(Link)>,
         ],
       },
       "ref": null,
@@ -841,7 +841,7 @@ ShallowWrapper {
     hasNext={false}
     location="news"
     page={1}
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],

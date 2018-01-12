@@ -133,7 +133,7 @@ const generateStoryEvents = async story => {
 }
 
 const getUniqueStoryIds = categories => {
-  const result = categories.reduce((set, ids) => {
+  const result = categories.reduce((set, ids = []) => {
     ids.forEach(id => set.add(id))
     return set
   }, new Set())

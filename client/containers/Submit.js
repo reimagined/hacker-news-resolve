@@ -25,7 +25,9 @@ const FormLabel = styled.div`
   padding: 5px 0;
 `
 
-const FormBottomMessage = styled.div`margin-top: 1em;`
+const FormBottomMessage = styled.div`
+  margin-top: 1em;
+`
 
 const ConditionLabel = styled.div`
   font-weight: bold;
@@ -33,7 +35,9 @@ const ConditionLabel = styled.div`
   margin-bottom: 5px;
 `
 
-const StoryTextInput = styled.textarea`vertical-align: middle;`
+const StoryTextInput = styled.textarea`
+  vertical-align: middle;
+`
 
 const ErrorMessage = styled.div`
   color: red;

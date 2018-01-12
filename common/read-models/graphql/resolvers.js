@@ -18,12 +18,13 @@ export default {
     return (type
       ? await stories
           .find({ type })
-          .skip(count - first - offset)
+          .skip(Math.max(count - first - offset, 0))
           .limit(offset)
       : await stories
           .find({})
-          .skip(count - first - offset)
-          .limit(offset)).reverse()
+          .skip(Math.max(count - first - offset, 0))
+          .limit(offset)
+    ).reverse()
   },
   comments: async (store, { first = 0, offset }) => {
     const comments = await store.collection('comments')
@@ -31,7 +32,7 @@ export default {
 
     return (await comments
       .find({})
-      .skip(count - first - offset)
+      .skip(Math.max(count - first - offset, 0))
       .limit(offset)).reverse()
   }
 }
