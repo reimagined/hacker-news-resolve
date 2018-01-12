@@ -21,10 +21,11 @@ export default {
     const comments = await store.collection('comments')
     const users = await store.collection('users')
 
-    await stories.ensureIndex({ fieldName: 'id' })
-    await stories.ensureIndex({ fieldName: 'type' })
-    await comments.ensureIndex({ fieldName: 'id' })
-    await users.ensureIndex({ fieldName: 'id' })
+    await stories.ensureIndex({ fieldName: 'id', fieldType: 'string' })
+    await stories.ensureIndex({ fieldName: 'type', fieldType: 'string' })
+    await comments.ensureIndex({ fieldName: 'id', fieldType: 'string' })
+    await users.ensureIndex({ fieldName: 'id', fieldType: 'string' })
+    await users.ensureIndex({ fieldName: 'name', fieldType: 'string' })
   },
 
   [STORY_COMMENTED]: async (
