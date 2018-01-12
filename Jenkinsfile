@@ -4,6 +4,7 @@ pipeline {
             agent {
                 docker {
                     image 'reimagined/resolve-ci'
+                    args '-u root:root'
                 }
             }
             steps {
@@ -17,6 +18,7 @@ pipeline {
             agent {
                 docker {
                     image 'reimagined/resolve-ci'
+                    args '-u root:root'
                 }
             }
             steps {
@@ -31,6 +33,7 @@ pipeline {
             agent {
                 docker {
                     image 'reimagined/resolve-ci'
+                    args '-u root:root'
                 }
             }
             steps {
@@ -44,17 +47,15 @@ pipeline {
         }
 
         stage('Push image') {
-            agent {
-                docker {
-                    image 'reimagined/resolve-ci'
-                }
-            }
             when {
                 branch 'master'
             }
             steps {
                 script {
-                    sh "PROJECT_NAME=${PROJECT_NAME} /var/scripts/push-image.js 172.22.6.135:6666"
+                    sh """
+                        export PROJECT_NAME=hackernews_${env.GIT_COMMIT}; \
+                        node scripts/push-image.js 172.22.7.201:6666
+                    """
                 }
             }
         }
@@ -80,10 +81,12 @@ pipeline {
             script {
                 if (!currentBuild.previousBuild || currentBuild.previousBuild.currentResult != currentBuild.currentResult) {
                     withCredentials([string(credentialsId: 'TEAMS_WEBHOOK', variable: 'TEAMS_WEBHOOK')]) {
-                        docker.image('reimagined/resolve-ci').inside {
-                            sh "/var/scripts/notification.js ${currentBuild.currentResult} ${env.BUILD_URL} ${TEAMS_WEBHOOK} ${env.BRANCH_NAME}"
-                        }
+                        sh "node scripts/notification.js ${currentBuild.currentResult} ${env.BUILD_URL} ${TEAMS_WEBHOOK} ${env.BRANCH_NAME}"
                     }
+                }
+
+                docker.image('reimagined/resolve-ci').inside('-u root:root') {
+                    sh 'rm -rf ./*'
                 }
             }
 
