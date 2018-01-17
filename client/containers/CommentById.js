@@ -69,7 +69,7 @@ export const mapStateToProps = (
   { match: { params: { storyId, commentId } } }
 ) => ({
   story: state.viewModels[viewModel.name][storyId],
-  viewModel: viewModel.name,
+  viewModelName: viewModel.name,
   aggregateId: storyId,
   parentId: commentId
 })

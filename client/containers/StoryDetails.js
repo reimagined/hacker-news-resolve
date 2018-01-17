@@ -66,7 +66,7 @@ export class StoryDetails extends React.PureComponent {
 
 export const mapStateToProps = (state, { match: { params: { storyId } } }) => ({
   story: state.viewModels[viewModel.name][storyId],
-  viewModel: viewModel.name,
+  viewModelName: viewModel.name,
   aggregateId: storyId
 })
 
