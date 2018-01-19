@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux'
-import { resolveMiddleware, actionTypes } from 'resolve-redux'
+import { createResolveMiddleware, actionTypes } from 'resolve-redux'
 import Immutable from 'seamless-immutable'
 import cookies from 'js-cookie'
 
@@ -63,7 +63,7 @@ const optimisticVotingMiddleware = store => next => action => {
 export default initialState => {
   const middleware = isClient
     ? [
-        resolveMiddleware(viewModels),
+        createResolveMiddleware({ viewModels }),
         logoutMiddleware,
         storyCreateMiddleware,
         optimisticVotingMiddleware

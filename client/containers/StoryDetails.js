@@ -1,8 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import uuid from 'uuid'
-import { gqlConnector, withViewModel } from 'resolve-redux'
+import { gqlConnector, connect } from 'resolve-redux'
 import styled from 'styled-components'
 
 import viewModel from '../../common/view-models/storyDetails'
@@ -67,7 +66,7 @@ export class StoryDetails extends React.PureComponent {
 
 export const mapStateToProps = (state, { match: { params: { storyId } } }) => ({
   story: state.viewModels[viewModel.name][storyId],
-  viewModel: viewModel.name,
+  viewModelName: viewModel.name,
   aggregateId: storyId
 })
 
@@ -92,4 +91,4 @@ export default gqlConnector(
       }
     }
   `
-)(connect(mapStateToProps, mapDispatchToProps)(withViewModel(StoryDetails)))
+)(connect(mapStateToProps, mapDispatchToProps)(StoryDetails))
