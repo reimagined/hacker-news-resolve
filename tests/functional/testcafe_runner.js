@@ -30,7 +30,11 @@ getInstallations()
             './tests/functional/2.story.js'
           ])
           .browsers(browser)
-          .run()
+          .run({
+            selectorTimeout: 20000,
+            assertionTimeout: 10000,
+            pageLoadTimeout: 10000
+          })
       })
       .then(exitCode => {
         testcafe.close()
