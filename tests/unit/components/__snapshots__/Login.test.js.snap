@@ -25,12 +25,12 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <AuthForm
-          action="undefined/login"
+          action="/login"
           buttonText="login"
           title="Login"
         />,
         <AuthForm
-          action="undefined/register"
+          action="/register"
           buttonText="create account"
           title="Create account"
         />,
@@ -43,7 +43,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "action": "undefined/login",
+          "action": "/login",
           "buttonText": "login",
           "title": "Login",
         },
@@ -56,7 +56,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "action": "undefined/register",
+          "action": "/register",
           "buttonText": "create account",
           "title": "Create account",
         },
@@ -75,12 +75,12 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <AuthForm
-            action="undefined/login"
+            action="/login"
             buttonText="login"
             title="Login"
           />,
           <AuthForm
-            action="undefined/register"
+            action="/register"
             buttonText="create account"
             title="Create account"
           />,
@@ -93,7 +93,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "action": "undefined/login",
+            "action": "/login",
             "buttonText": "login",
             "title": "Login",
           },
@@ -106,7 +106,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "action": "undefined/register",
+            "action": "/register",
             "buttonText": "create account",
             "title": "Create account",
           },

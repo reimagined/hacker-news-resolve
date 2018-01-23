@@ -1,5 +1,7 @@
 import uuid from 'uuid'
 
+import { rootDirectory } from '../client/constants'
+
 const getUserByName = async (executeQuery, name) => {
   const { user } = await executeQuery(
     `query ($name: String!) {
@@ -58,6 +60,6 @@ export default {
     done(null, user)
   },
   failureCallback: (error, redirect) => {
-    redirect(`${process.env.ROOT_DIR}/error?text=${error}`)
+    redirect(`${rootDirectory}/error?text=${error}`)
   }
 }
