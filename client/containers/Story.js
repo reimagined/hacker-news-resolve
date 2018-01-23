@@ -73,7 +73,7 @@ export const UpvoteArrow = styled.div`
     `};
 `
 
-const Username = styled.a`
+const Username = styled(Link)`
   display: inline-block;
   font-weight: bold;
   text-decoration: none;
@@ -129,7 +129,7 @@ export const StoryInfo = props => {
       {createdBy
         ? [
             'by ',
-            <Username key="username" href={`/user/${createdBy}`}>
+            <Username key="username" to={`/user/${createdBy}`}>
               {createdByName}
             </Username>,
             ' '

@@ -7,12 +7,12 @@ const Login = props => {
     <div>
       <AuthForm
         buttonText="login"
-        action={`/login${props.location.search}`}
+        action={`${process.env.ROOT_DIR}/login${props.location.search}`}
         title="Login"
       />
       <AuthForm
         buttonText="create account"
-        action="/register"
+        action={`${process.env.ROOT_DIR}/register`}
         title="Create account"
       />
     </div>

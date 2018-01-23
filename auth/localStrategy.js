@@ -58,6 +58,6 @@ export default {
     done(null, user)
   },
   failureCallback: (error, redirect) => {
-    redirect(`/error?text=${error}`)
+    redirect(`${process.env.ROOT_DIR}/error?text=${error}`)
   }
 }

@@ -33,9 +33,13 @@ const storyCreateMiddleware = () => next => action => {
   if (action.type === SEND_COMMAND) {
     if (action.command.type === 'createStory') {
       if (action.command.ok) {
-        window.location = `/storyDetails/${action.aggregateId}`
+        window.location = `${process.env.ROOT_DIR}/storyDetails/${
+          action.aggregateId
+        }`
       } else if (action.command.error) {
-        window.location = '/error?text=Failed to create a story'
+        window.location = `${
+          process.env.ROOT_DIR
+        }/error?text=Failed to create a story`
       }
     }
   }

@@ -79,14 +79,23 @@ const Layout = ({ children }) => (
       <link
         rel="shortcut icon"
         type="image/x-icon"
-        href="/static/reSolve-logo.svg"
+        href={`${process.env.ROOT_DIR}/static/reSolve-logo.svg`}
       />
-      <link rel="stylesheet" type="text/css" href="/static/style.css" />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href={`${process.env.ROOT_DIR}/static/style.css`}
+      />
     </Helmet>
     <ContentRoot>
       <PageHeader>
         <Link to="/">
-          <img src="/static/reSolve-logo.svg" width="18" height="18" alt="" />
+          <img
+            src={`${process.env.ROOT_DIR}/static/reSolve-logo.svg`}
+            width="18"
+            height="18"
+            alt=""
+          />
         </Link>
         <Link to="/">
           <PageTitle>reSolve HN</PageTitle>
