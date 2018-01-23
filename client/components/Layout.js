@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import Splitter from './Splitter'
 import LoginInfo from '../containers/LoginInfo'
+import { rootDirectory } from '../constants'
 
 const ContentRoot = styled.div`
   width: 90%;
@@ -79,14 +80,23 @@ const Layout = ({ children }) => (
       <link
         rel="shortcut icon"
         type="image/x-icon"
-        href="/static/reSolve-logo.svg"
+        href={`${rootDirectory}/static/reSolve-logo.svg`}
       />
-      <link rel="stylesheet" type="text/css" href="/static/style.css" />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href={`${rootDirectory}/static/style.css`}
+      />
     </Helmet>
     <ContentRoot>
       <PageHeader>
         <Link to="/">
-          <img src="/static/reSolve-logo.svg" width="18" height="18" alt="" />
+          <img
+            src={`${rootDirectory}/static/reSolve-logo.svg`}
+            width="18"
+            height="18"
+            alt=""
+          />
         </Link>
         <Link to="/">
           <PageTitle>reSolve HN</PageTitle>
