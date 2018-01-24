@@ -1,18 +1,19 @@
 import React from 'react'
 
 import AuthForm from './AuthForm'
+import { rootDirectory } from '../constants'
 
 const Login = props => {
   return (
     <div>
       <AuthForm
         buttonText="login"
-        action={`/login${props.location.search}`}
+        action={`${rootDirectory}/login${props.location.search}`}
         title="Login"
       />
       <AuthForm
         buttonText="create account"
-        action="/register"
+        action={`${rootDirectory}/register`}
         title="Create account"
       />
     </div>
