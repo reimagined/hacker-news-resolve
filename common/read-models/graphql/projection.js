@@ -6,13 +6,13 @@ import {
   STORY_UPVOTED,
   USER_CREATED
 } from '../../events'
-import type {
-  Event,
-  StoryCommented,
-  StoryCreated,
-  StoryUnvoted,
-  StoryUpvoted,
-  UserCreated
+import {
+  type Event,
+  type StoryCommented,
+  type StoryCreated,
+  type StoryUnvoted,
+  type StoryUpvoted,
+  type UserCreated
 } from '../../../flow-types/events'
 
 export default {
