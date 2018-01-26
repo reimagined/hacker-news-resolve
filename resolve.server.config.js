@@ -35,12 +35,10 @@ export default {
   aggregates,
   readModels,
   viewModels,
-  jwt: {
-    secret: authenticationSecret,
-    cookieName,
-    options: {
-      maxAge: cookieMaxAge
-    }
+  jwtCookieName: "JWT-COOKIE",
+  jwtCookieOptions: {
+    maxAge: cookieMaxAge,
+    httpOnly: true
   },
   auth: {
     strategies: [localStrategy(localStrategyParams)]
