@@ -1,7 +1,7 @@
-import rootComponent from './client/components/App'
+import routes from './client/routes'
 import createStore from './client/store'
 
 export default {
-  rootComponent,
+  routes,
   createStore
 }
