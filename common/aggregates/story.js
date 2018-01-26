@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+import jwt from 'jsonwebtoken'
 
 // @flow
 import {
@@ -6,7 +6,7 @@ import {
   STORY_UPVOTED,
   STORY_UNVOTED,
   STORY_COMMENTED
-} from "../events";
+} from '../events'
 import type {
   Event,
   RawEvent,
@@ -14,12 +14,12 @@ import type {
   StoryCommented,
   StoryUnvoted,
   StoryUpvoted
-} from "../../flow-types/events";
+} from '../../flow-types/events'
 
-import validate from "./validation";
+import validate from './validation'
 
 export default {
-  name: "story",
+  name: 'story',
   initialState: {},
   commands: {
     createStory: (
@@ -30,17 +30,17 @@ export default {
       const { id: userId, name: userName } = jwt.verify(
         jwtToken,
         process.env.JWT_SECRET
-      );
-      validate.stateIsAbsent(state, "Story");
+      )
+      validate.stateIsAbsent(state, 'Story')
 
-      const { title, link, text } = command.payload;
+      const { title, link, text } = command.payload
 
-      validate.fieldRequired(command.payload, "title");
+      validate.fieldRequired(command.payload, 'title')
 
       return {
         type: STORY_CREATED,
         payload: { title, text, link, userId, userName }
-      };
+      }
     },
 
     upvoteStory: (
@@ -48,12 +48,12 @@ export default {
       command: any,
       jwtToken: any
     ): RawEvent<StoryUpvoted> => {
-      const { id: userId } = jwt.verify(jwtToken, process.env.JWT_SECRET);
+      const { id: userId } = jwt.verify(jwtToken, process.env.JWT_SECRET)
 
-      validate.stateExists(state, "Story");
-      validate.itemIsNotInArray(state.voted, userId, "User already voted");
+      validate.stateExists(state, 'Story')
+      validate.itemIsNotInArray(state.voted, userId, 'User already voted')
 
-      return { type: STORY_UPVOTED, payload: { userId } };
+      return { type: STORY_UPVOTED, payload: { userId } }
     },
 
     unvoteStory: (
@@ -61,12 +61,12 @@ export default {
       command: any,
       jwtToken: any
     ): RawEvent<StoryUnvoted> => {
-      const { id: userId } = jwt.verify(jwtToken, process.env.JWT_SECRET);
+      const { id: userId } = jwt.verify(jwtToken, process.env.JWT_SECRET)
 
-      validate.stateExists(state, "Story");
-      validate.itemIsInArray(state.voted, userId, "User did not vote");
+      validate.stateExists(state, 'Story')
+      validate.itemIsInArray(state.voted, userId, 'User did not vote')
 
-      return { type: STORY_UNVOTED, payload: { userId } };
+      return { type: STORY_UNVOTED, payload: { userId } }
     },
 
     commentStory: (
@@ -77,18 +77,18 @@ export default {
       const { id: userId, name: userName } = jwt.verify(
         jwtToken,
         process.env.JWT_SECRET
-      );
-      validate.stateExists(state, "Story");
+      )
+      validate.stateExists(state, 'Story')
 
-      const { commentId, parentId, text } = command.payload;
+      const { commentId, parentId, text } = command.payload
 
-      validate.fieldRequired(command.payload, "parentId");
-      validate.fieldRequired(command.payload, "text");
+      validate.fieldRequired(command.payload, 'parentId')
+      validate.fieldRequired(command.payload, 'text')
       validate.keyIsNotInObject(
         state.comments,
         commentId,
-        "Comment already exists"
-      );
+        'Comment already exists'
+      )
 
       return {
         type: STORY_COMMENTED,
@@ -99,7 +99,7 @@ export default {
           userName,
           text
         }
-      };
+      }
     }
   },
   projection: {
@@ -138,4 +138,4 @@ export default {
       }
     })
   }
-};
+}
