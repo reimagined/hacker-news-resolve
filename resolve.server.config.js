@@ -2,10 +2,7 @@ import path from 'path'
 import busAdapter from 'resolve-bus-memory'
 import storageAdapter from 'resolve-storage-lite'
 import localStrategy from 'resolve-scripts/dist/server/auth/localStrategy'
-
-import clientConfig from './resolve.client.config'
 import aggregates from './common/aggregates'
-
 import readModels from './common/read-models'
 import viewModels from './common/view-models'
 
@@ -24,7 +21,6 @@ const storageAdapterParams = process.env.IS_TEST
   : { pathToFile: databaseFilePath }
 
 export default {
-  entries: clientConfig,
   bus: { adapter: busAdapter },
   storage: {
     adapter: storageAdapter,
