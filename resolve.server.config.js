@@ -35,8 +35,8 @@ export default {
   aggregates,
   readModels,
   viewModels,
-  jwtCookieName: "JWT-COOKIE",
-  jwtCookieOptions: {
+  jwtCookie: {
+    name: cookieName
     maxAge: cookieMaxAge,
     httpOnly: true
   },
