@@ -36,7 +36,7 @@ export default {
   readModels,
   viewModels,
   jwtCookie: {
-    name: cookieName
+    name: cookieName,
     maxAge: cookieMaxAge,
     httpOnly: true
   },
