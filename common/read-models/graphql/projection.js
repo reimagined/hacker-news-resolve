@@ -1,4 +1,5 @@
 // @flow
+
 import {
   STORY_COMMENTED,
   STORY_CREATED,
@@ -15,19 +16,22 @@ import {
   type UserCreated
 } from '../../../flow-types/events'
 
+const updateStories = async (store, storyType, storyId, handler) => {
+  const stories = (await store.hget('stories', storyType)) || []
+  const i = stories.findIndex(story => story.id === storyId)
+  if (i >= 0) {
+    stories[i] = handler(stories[i])
+    await store.hset('stories', storyType, stories.slice(0, 500))
+  }
+}
+
+const updateAllStories = async (store, aggregateId, handler) => {
+  await updateStories(store, 'story', aggregateId, handler)
+  await updateStories(store, 'show', aggregateId, handler)
+  await updateStories(store, 'ask', aggregateId, handler)
+}
+
 export default {
-  Init: async (store: any) => {
-    const stories = await store.collection('stories')
-    const comments = await store.collection('comments')
-    const users = await store.collection('users')
-
-    await stories.ensureIndex({ fieldName: 'id', fieldType: 'string' })
-    await stories.ensureIndex({ fieldName: 'type', fieldType: 'string' })
-    await comments.ensureIndex({ fieldName: 'id', fieldType: 'string' })
-    await users.ensureIndex({ fieldName: 'id', fieldType: 'string' })
-    await users.ensureIndex({ fieldName: 'name', fieldType: 'string' })
-  },
-
   [STORY_COMMENTED]: async (
     store,
     {
@@ -36,8 +40,6 @@ export default {
       payload: { parentId, userId, userName, commentId, text }
     }: Event<StoryCommented>
   ) => {
-    const comments = await store.collection('comments')
-
     const comment = {
       id: commentId,
       text,
@@ -48,19 +50,15 @@ export default {
       createdBy: userId,
       createdByName: userName
     }
+    let comments = await store.hget('comments', 'all')
+    comments = comments ? comments : []
+    comments.unshift(comment)
+    await store.hset('comments', 'all', comments.slice(0, 500))
 
-    await comments.insert(comment)
-
-    await comments.update(
-      { id: parentId },
-      {
-        $push: { comments: comment }
-      }
-    )
-
-    const stories = await store.collection('stories')
-
-    await stories.update({ id: aggregateId }, { $inc: { commentCount: 1 } })
+    await updateAllStories(store, aggregateId, story => {
+      story.commentCount++
+      return story
+    })
   },
 
   [STORY_CREATED]: async (
@@ -72,10 +70,9 @@ export default {
     }: Event<StoryCreated>
   ) => {
     const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
+    const allStoriesType = 'story'
 
-    const stories = await store.collection('stories')
-
-    await stories.insert({
+    const story = {
       id: aggregateId,
       type,
       title,
@@ -86,49 +83,52 @@ export default {
       createdAt: timestamp,
       createdBy: userId,
       createdByName: userName
-    })
+    }
+
+    const insertToStories = async key => {
+      let stories = await store.hget('stories', key)
+      stories = stories ? stories : []
+      stories.unshift(story)
+      await store.hset('stories', key, stories.slice(0, 500))
+    }
+
+    if (type !== allStoriesType) {
+      await insertToStories(type)
+    }
+    await insertToStories(allStoriesType)
   },
 
   [STORY_UPVOTED]: async (
     store,
     { aggregateId, payload: { userId } }: Event<StoryUpvoted>
   ) => {
-    const stories = await store.collection('stories')
-
-    await stories.update(
-      { id: aggregateId },
-      {
-        $push: { votes: userId }
-      }
-    )
+    await updateAllStories(store, aggregateId, story => {
+      story.votes.push(userId)
+      return story
+    })
   },
 
   [STORY_UNVOTED]: async (
     store,
     { aggregateId, payload: { userId } }: Event<StoryUnvoted>
   ) => {
-    const stories = await store.collection('stories')
-
-    await stories.update(
-      { id: aggregateId },
-      {
-        $pull: {
-          votes: userId
-        }
-      }
-    )
+    await updateAllStories(store, aggregateId, story => {
+      story.votes = story.votes.filter(vote => vote !== userId)
+      return story
+    })
   },
 
   [USER_CREATED]: async (
     store,
     { aggregateId, timestamp, payload: { name } }: Event<UserCreated>
   ) => {
-    const users = await store.collection('users')
-
-    await users.insert({
+    const user = {
       id: aggregateId,
       name,
       createdAt: timestamp
-    })
+    }
+
+    await store.hset('users_id', aggregateId, user)
+    await store.hset('users_name', name, user)
   }
 }
