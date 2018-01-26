@@ -1,14 +1,16 @@
+import jwt from "jsonwebtoken";
+
 export default {
   user: async (store, { id, name }) => {
     return id
       ? await store.hget('users_id', id)
       : await store.hget('users_name', name)
   },
-  me: (store, _, { getJwtValue }) => {
+  me: (store, _, { jwtToken }) => {
     try {
-      return getJwtValue()
+      return jwt.verify(jwtToken, process.env.JWT_SECRET);
     } catch (e) {
-      return null
+      return null;
     }
   },
   stories: async (store, { type = 'story', first = 0, offset }) => {
@@ -27,4 +29,4 @@ export default {
     const begin = first >= 0 ? first : 0
     return comments.slice(begin, begin + offset)
   }
-}
+};
