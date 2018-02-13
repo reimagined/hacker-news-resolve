@@ -1,11 +1,12 @@
+// @flow
 import Immutable from 'seamless-immutable'
 
-import type {
-  Event,
-  StoryCommented,
-  StoryCreated,
-  StoryUnvoted,
-  StoryUpvoted
+import {
+  type Event,
+  type StoryCommented,
+  type StoryCreated,
+  type StoryUnvoted,
+  type StoryUpvoted
 } from '../../flow-types/events'
 
 import {
