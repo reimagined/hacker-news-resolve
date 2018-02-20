@@ -29,35 +29,31 @@ export default {
     const existingUser = await getUserByName(executeQuery, username)
 
     if (existingUser) {
-      done('User already exists')
+      throw new Error('User already exists')
     }
 
-    try {
-      const user = {
-        name: username.trim(),
-        id: uuid.v4()
-      }
-
-      await resolve.executeCommand({
-        type: 'createUser',
-        aggregateId: user.id,
-        aggregateName: 'user',
-        payload: user
-      })
-
-      done(null, user)
-    } catch (error) {
-      done(error.toString())
+    const user = {
+      name: username.trim(),
+      id: uuid.v4()
     }
+
+    await resolve.executeCommand({
+      type: 'createUser',
+      aggregateId: user.id,
+      aggregateName: 'user',
+      payload: user
+    })
+
+    return user
   },
   loginCallback: async ({ resolve, body }, username, password, done) => {
     const user = await getUserByName(resolve.queryExecutors.graphql, username)
 
     if (!user) {
-      done('No such user')
+      throw new Error('No such user')
     }
 
-    done(null, user)
+    return user
   },
   failureCallback: (error, redirect) => {
     redirect(`${rootDirectory}/error?text=${error}`)
