@@ -362,11 +362,11 @@ export default {
     passwordField: 'username',
     successRedirect: null
   },
-  registerCallback: async ({ resolve, body }, username, password, done) => {
-    done()
+  registerCallback: async ({ resolve, body }, username, password) => {
+    // ...
   },
-  loginCallback: async ({ resolve, body }, username, password, done) => {
-    done()
+  loginCallback: async ({ resolve, body }, username, password) => {
+    // ...
   }
 }
 
@@ -398,11 +398,11 @@ export default {
     passwordField: 'username',
     successRedirect: null
   },
-  registerCallback: async ({ resolve, body }, username, password, done) => {
-    done()
+  registerCallback: async ({ resolve, body }, username, password) => {
+    // ...
   },
-  loginCallback: async ({ resolve, body }, username, password, done) => {
-    done()
+  loginCallback: async ({ resolve, body }, username, password) => {
+    // ...
   }
 }
 ```
@@ -447,41 +447,37 @@ export default {
     passwordField: 'username',
     successRedirect: null
   },
-  registerCallback: async ({ resolve, body }, username, password, done) => {
+  registerCallback: async ({ resolve, body }, username, password) => {
     const executeQuery = resolve.queryExecutors.graphql
 
     const existingUser = await getUserByName(executeQuery, username)
 
     if (existingUser) {
-      done('User already exists')
+      throw new Error('User already exists')
     }
 
-    try {
-      const user = {
-        name: username.trim(),
-        id: uuid.v4()
-      }
-
-      await resolve.executeCommand({
-        type: 'createUser',
-        aggregateId: user.id,
-        aggregateName: 'user',
-        payload: user
-      })
-
-      done(null, user)
-    } catch (error) {
-      done(error.toString())
+    const user = {
+      name: username.trim(),
+      id: uuid.v4()
     }
+
+    await resolve.executeCommand({
+      type: 'createUser',
+      aggregateId: user.id,
+      aggregateName: 'user',
+      payload: user
+    })
+
+    return user
   },
-  loginCallback: async ({ resolve, body }, username, password, done) => {
+  loginCallback: async ({ resolve, body }, username, password) => {
     const user = await getUserByName(resolve.queryExecutors.graphql, username)
 
     if (!user) {
-      done('No such user')
+      throw new Error('No such user')
     }
 
-    done(null, user)
+    return user
   },
   failureCallback: (error, redirect, { resolve, body }) => {
     redirect(`/error?text=${error}`)

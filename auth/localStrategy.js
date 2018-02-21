@@ -23,7 +23,7 @@ export default {
     passwordField: 'username',
     successRedirect: null
   },
-  registerCallback: async ({ resolve, body }, username, password, done) => {
+  registerCallback: async ({ resolve, body }, username, password) => {
     const executeQuery = resolve.queryExecutors.graphql
 
     const existingUser = await getUserByName(executeQuery, username)
@@ -46,7 +46,7 @@ export default {
 
     return user
   },
-  loginCallback: async ({ resolve, body }, username, password, done) => {
+  loginCallback: async ({ resolve, body }, username, password) => {
     const user = await getUserByName(resolve.queryExecutors.graphql, username)
 
     if (!user) {
