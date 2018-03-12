@@ -29,7 +29,7 @@ export default {
     ): RawEvent<StoryCreated> => {
       const { id: userId, name: userName } = jwt.verify(
         jwtToken,
-        process.env.JWT_SECRET
+        process.env.JWT_SECRET || 'DefaultSecret'
       )
       validate.stateIsAbsent(state, 'Story')
 
@@ -48,7 +48,10 @@ export default {
       command: any,
       jwtToken: any
     ): RawEvent<StoryUpvoted> => {
-      const { id: userId } = jwt.verify(jwtToken, process.env.JWT_SECRET)
+      const { id: userId } = jwt.verify(
+        jwtToken,
+        process.env.JWT_SECRET || 'DefaultSecret'
+      )
 
       validate.stateExists(state, 'Story')
       validate.itemIsNotInArray(state.voted, userId, 'User already voted')
@@ -61,7 +64,10 @@ export default {
       command: any,
       jwtToken: any
     ): RawEvent<StoryUnvoted> => {
-      const { id: userId } = jwt.verify(jwtToken, process.env.JWT_SECRET)
+      const { id: userId } = jwt.verify(
+        jwtToken,
+        process.env.JWT_SECRET || 'DefaultSecret'
+      )
 
       validate.stateExists(state, 'Story')
       validate.itemIsInArray(state.voted, userId, 'User did not vote')
@@ -76,7 +82,7 @@ export default {
     ): RawEvent<StoryCommented> => {
       const { id: userId, name: userName } = jwt.verify(
         jwtToken,
-        process.env.JWT_SECRET
+        process.env.JWT_SECRET || 'DefaultSecret'
       )
       validate.stateExists(state, 'Story')
 

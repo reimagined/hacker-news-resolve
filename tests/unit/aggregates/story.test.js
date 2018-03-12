@@ -1,4 +1,6 @@
 import uuid from 'uuid'
+import jwt from 'jsonwebtoken'
+import sinon from 'sinon'
 
 import '../../../common/aggregates'
 import story from '../../../common/aggregates/story'
@@ -9,13 +11,24 @@ import {
   STORY_COMMENTED
 } from '../../../common/events'
 
+let sandbox
+let userId
+const token = 'token'
+
 describe('aggregates', () => {
+  beforeEach(() => {
+    userId = uuid.v4()
+    sandbox = sinon.sandbox.create()
+    jwt.verify = sandbox.stub().returns({ id: userId })
+  })
+  afterEach(() => {
+    sandbox.restore()
+  })
   describe('story', () => {
     it('command "createStory" should create an event to create a story', () => {
       const title = 'SomeTitle'
       const text = 'SomeText'
       const link = 'SomeLink'
-      const userId = uuid.v4()
 
       const state = {}
       const command = {
@@ -27,9 +40,7 @@ describe('aggregates', () => {
         }
       }
 
-      const event = story.commands.createStory(state, command, () => ({
-        id: userId
-      }))
+      const event = story.commands.createStory(state, command, token)
 
       expect(event).toEqual({
         type: STORY_CREATED,
@@ -41,7 +52,6 @@ describe('aggregates', () => {
       const title = 'SomeTitle'
       const text = 'SomeText'
       const link = 'SomeLink'
-      const userId = uuid.v4()
 
       const state = {
         createdAt: Date.now(),
@@ -57,7 +67,7 @@ describe('aggregates', () => {
       }
 
       expect(() =>
-        story.commands.createStory(state, command, () => ({ id: userId }))
+        story.commands.createStory(state, command, token)
       ).toThrowError('Story already exists')
     })
 
@@ -65,7 +75,6 @@ describe('aggregates', () => {
       const title = undefined
       const text = 'SomeText'
       const link = 'SomeLink'
-      const userId = uuid.v4()
 
       const state = {}
       const command = {
@@ -78,7 +87,7 @@ describe('aggregates', () => {
       }
 
       expect(() =>
-        story.commands.createStory(state, command, () => ({ id: userId }))
+        story.commands.createStory(state, command, token)
       ).toThrowError('The "title" field is required')
     })
 
@@ -88,6 +97,10 @@ describe('aggregates', () => {
       const link = 'SomeLink'
       const userId = undefined
 
+      jwt.verify = sandbox
+        .stub()
+        .throws(new Error('The "userId" field is required'))
+
       const state = {}
       const command = {
         payload: {
@@ -98,16 +111,12 @@ describe('aggregates', () => {
         }
       }
 
-      expect(() =>
-        story.commands.createStory(state, command, () => {
-          throw new Error('The "userId" field is required')
-        })
-      ).toThrowError('The "userId" field is required')
+      expect(() => story.commands.createStory(state, command, token)).toThrow(
+        /The "userId" field is required/
+      )
     })
 
     it('command "upvoteStory" should create an event to upvote the story', () => {
-      const userId = uuid.v4()
-
       const state = {
         createdAt: Date.now(),
         createdBy: userId,
@@ -119,16 +128,12 @@ describe('aggregates', () => {
         }
       }
 
-      const event = story.commands.upvoteStory(state, command, () => ({
-        id: userId
-      }))
+      const event = story.commands.upvoteStory(state, command, token)
 
       expect(event).toEqual({ type: STORY_UPVOTED, payload: { userId } })
     })
 
     it('command "upvoteStory" should throw Error "User already voted"', () => {
-      const userId = uuid.v4()
-
       const state = {
         createdAt: Date.now(),
         createdBy: userId,
@@ -141,13 +146,11 @@ describe('aggregates', () => {
       }
 
       expect(() =>
-        story.commands.upvoteStory(state, command, () => ({ id: userId }))
+        story.commands.upvoteStory(state, command, token)
       ).toThrowError('User already voted')
     })
 
     it('command "upvoteStory" should throw Error "Story does not exist"', () => {
-      const userId = uuid.v4()
-
       const state = {}
       const command = {
         payload: {
@@ -156,12 +159,15 @@ describe('aggregates', () => {
       }
 
       expect(() =>
-        story.commands.upvoteStory(state, command, () => ({ id: userId }))
+        story.commands.upvoteStory(state, command, token)
       ).toThrowError('Story does not exist')
     })
 
     it('command "upvoteStory" should throw Error "The userId field is required"', () => {
       const userId = undefined
+      jwt.verify = sandbox
+        .stub()
+        .throws(new Error('The "userId" field is required'))
 
       const state = {
         createdAt: Date.now(),
@@ -175,15 +181,11 @@ describe('aggregates', () => {
       }
 
       expect(() =>
-        story.commands.upvoteStory(state, command, () => {
-          throw new Error('The "userId" field is required')
-        })
-      ).toThrowError('The "userId" field is required')
+        story.commands.upvoteStory(state, command, token)
+      ).toThrowError(/The "userId" field is required/)
     })
 
     it('command "unvoteStory" should create an event to unvote the story', () => {
-      const userId = uuid.v4()
-
       const state = {
         createdAt: Date.now(),
         createdBy: userId,
@@ -195,16 +197,12 @@ describe('aggregates', () => {
         }
       }
 
-      const event = story.commands.unvoteStory(state, command, () => ({
-        id: userId
-      }))
+      const event = story.commands.unvoteStory(state, command, token)
 
       expect(event).toEqual({ type: STORY_UNVOTED, payload: { userId } })
     })
 
     it('command "unvoteStory" should throw Error "User did not vote"', () => {
-      const userId = uuid.v4()
-
       const state = {
         createdAt: Date.now(),
         createdBy: userId,
@@ -217,13 +215,11 @@ describe('aggregates', () => {
       }
 
       expect(() =>
-        story.commands.unvoteStory(state, command, () => ({ id: userId }))
+        story.commands.unvoteStory(state, command, token)
       ).toThrowError('User did not vote')
     })
 
     it('command "unvoteStory" should throw Error "Story does not exist"', () => {
-      const userId = uuid.v4()
-
       const state = {}
       const command = {
         payload: {
@@ -232,12 +228,15 @@ describe('aggregates', () => {
       }
 
       expect(() =>
-        story.commands.unvoteStory(state, command, () => ({ id: userId }))
+        story.commands.unvoteStory(state, command, token)
       ).toThrowError('Story does not exist')
     })
 
     it('command "unvoteStory" should throw Error "The userId field is required"', () => {
       const userId = undefined
+      jwt.verify = sandbox
+        .stub()
+        .throws(new Error('The "userId" field is required'))
 
       const state = {
         createdAt: Date.now(),
@@ -251,15 +250,12 @@ describe('aggregates', () => {
       }
 
       expect(() =>
-        story.commands.unvoteStory(state, command, () => {
-          throw new Error('The "userId" field is required')
-        })
+        story.commands.unvoteStory(state, command, token)
       ).toThrowError('The "userId" field is required')
     })
 
     it('eventHandler "STORY_CREATED" should set createdAt, createdBy and voted to state', () => {
       const createdAt = Date.now()
-      const userId = uuid.v4()
 
       const state = {}
       const event = {
@@ -280,7 +276,6 @@ describe('aggregates', () => {
 
     it('eventHandler "STORY_UPVOTED" should add userId to state.voted', () => {
       const createdAt = Date.now()
-      const userId = uuid.v4()
 
       const state = {
         createdAt,
@@ -303,7 +298,6 @@ describe('aggregates', () => {
 
     it('eventHandler "STORY_UNVOTED" should remove userId from state.voted', () => {
       const createdAt = Date.now()
-      const userId = uuid.v4()
 
       const state = {
         createdAt,
@@ -329,7 +323,6 @@ describe('aggregates', () => {
     it('command "commentStory" should create an event to create a comment', () => {
       const text = 'SomeText'
       const parentId = uuid.v4()
-      const userId = uuid.v4()
 
       const state = {
         createdAt: Date.now(),
@@ -357,7 +350,6 @@ describe('aggregates', () => {
     it('command "commentStory" should throw Error "Comment already exists"', () => {
       const text = 'SomeText'
       const parentId = uuid.v4()
-      const userId = uuid.v4()
       const commentId = uuid.v4()
 
       const state = {
@@ -377,14 +369,13 @@ describe('aggregates', () => {
       }
 
       expect(() =>
-        story.commands.commentStory(state, command, () => ({ id: userId }))
+        story.commands.commentStory(state, command, token)
       ).toThrowError('Comment already exists')
     })
 
     it('command "commentStory" should throw Error "The text field is required"', () => {
       const text = undefined
       const parentId = uuid.v4()
-      const userId = uuid.v4()
 
       const state = {
         createdAt: Date.now()
@@ -399,14 +390,13 @@ describe('aggregates', () => {
       }
 
       expect(() =>
-        story.commands.commentStory(state, command, () => ({ id: userId }))
+        story.commands.commentStory(state, command, token)
       ).toThrowError('The "text" field is required')
     })
 
     it('command "commentStory" should throw Error "The parentId field is required"', () => {
       const text = 'SomeText'
       const parentId = undefined
-      const userId = uuid.v4()
 
       const state = {
         createdAt: Date.now()
@@ -421,7 +411,7 @@ describe('aggregates', () => {
       }
 
       expect(() =>
-        story.commands.commentStory(state, command, () => ({ id: userId }))
+        story.commands.commentStory(state, command, token)
       ).toThrowError('The "parentId" field is required')
     })
 
@@ -429,6 +419,9 @@ describe('aggregates', () => {
       const text = 'SomeText'
       const parentId = uuid.v4()
       const userId = undefined
+      jwt.verify = sandbox
+        .stub()
+        .throws(new Error('The "userId" field is required'))
 
       const state = {
         createdAt: Date.now()
@@ -443,15 +436,12 @@ describe('aggregates', () => {
       }
 
       expect(() =>
-        story.commands.commentStory(state, command, () => {
-          throw new Error('The "userId" field is required')
-        })
+        story.commands.commentStory(state, command, token)
       ).toThrowError('The "userId" field is required')
     })
 
     it('eventHandler "STORY_COMMENTED" should set new comment to state', () => {
       const createdAt = Date.now()
-      const userId = uuid.v4()
       const commentId = uuid.v4()
 
       const state = story.initialState

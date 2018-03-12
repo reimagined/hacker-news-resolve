@@ -2,31 +2,54 @@ import jwt from 'jsonwebtoken'
 
 export default {
   user: async (store, { id, name }) => {
-    return id
-      ? await store.hget('users_id', id)
-      : await store.hget('users_name', name)
+    const user = id
+      ? await store.find('Users', { id })
+      : await store.find('Users', { name })
+
+    return user.length > 0 ? user[0] : null
   },
-  me: (store, _, { jwtToken }) => {
-    try {
-      return jwt.verify(jwtToken, process.env.JWT_SECRET)
-    } catch (e) {
+  me: async (store, _, { jwtToken }) => {
+    if (!jwtToken) {
       return null
     }
+
+    const user = await jwt.verify(
+      jwtToken,
+      process.env.JWT_SECRET || 'DefaultSecret'
+    )
+    console.log('user')
+    console.log(user)
+    return user
   },
-  stories: async (store, { type = 'story', first = 0, offset }) => {
-    const stories = await store.hget('stories', type)
+  stories: async (store, { type, first, offset }) => {
+    const skip = first || 0
+    const params = type ? { type } : {}
+    const stories = await store.find(
+      'Stories',
+      params,
+      null,
+      { createdAt: -1 },
+      skip,
+      skip + offset
+    )
     if (!stories) {
       return []
     }
-    const begin = first >= 0 ? first : 0
-    return stories.slice(begin, begin + offset)
+    return stories
   },
-  comments: async (store, { first = 0, offset }) => {
-    const comments = await store.hget('comments', 'all')
+  comments: async (store, { first, offset }) => {
+    const skip = first || 0
+    const comments = await store.find(
+      'Comments',
+      {},
+      null,
+      { createdAt: -1 },
+      skip,
+      skip + offset
+    )
     if (!comments) {
       return []
     }
-    const begin = first >= 0 ? first : 0
-    return comments.slice(begin, begin + offset)
+    return comments
   }
 }

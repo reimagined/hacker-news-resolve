@@ -7,31 +7,47 @@ import {
   STORY_UPVOTED,
   USER_CREATED
 } from '../../events'
-import type {
-  Event,
-  StoryCommented,
-  StoryCreated,
-  StoryUnvoted,
-  StoryUpvoted,
-  UserCreated
+import {
+  type Event,
+  type StoryCommented,
+  type StoryCreated,
+  type StoryUnvoted,
+  type StoryUpvoted,
+  type UserCreated
 } from '../../../flow-types/events'
 
-const updateStories = async (store, storyType, storyId, handler) => {
-  const stories = (await store.hget('stories', storyType)) || []
-  const i = stories.findIndex(story => story.id === storyId)
-  if (i >= 0) {
-    stories[i] = handler(stories[i])
-    await store.hset('stories', storyType, stories.slice(0, 500))
-  }
-}
-
-const updateAllStories = async (store, aggregateId, handler) => {
-  await updateStories(store, 'story', aggregateId, handler)
-  await updateStories(store, 'show', aggregateId, handler)
-  await updateStories(store, 'ask', aggregateId, handler)
-}
-
 export default {
+  Init: async store => {
+    await store.defineStorage('Stories', [
+      { name: 'id', type: 'string', index: 'primary' },
+      { name: 'type', type: 'string', index: 'secondary' },
+      { name: 'title', type: 'string' },
+      { name: 'text', type: 'string' },
+      { name: 'link', type: 'string' },
+      { name: 'commentCount', type: 'number' },
+      { name: 'votes', type: 'json' },
+      { name: 'createdAt', type: 'number' },
+      { name: 'createdBy', type: 'string' },
+      { name: 'createdByName', type: 'string' }
+    ])
+
+    await store.defineStorage('Users', [
+      { name: 'id', type: 'string', index: 'primary' },
+      { name: 'name', type: 'string', index: 'secondary' },
+      { name: 'createdAt', type: 'number' }
+    ])
+
+    await store.defineStorage('Comments', [
+      { name: 'id', type: 'string', index: 'primary' },
+      { name: 'text', type: 'string' },
+      { name: 'parentId', type: 'string' },
+      { name: 'comments', type: 'json' },
+      { name: 'storyId', type: 'string' },
+      { name: 'createdAt', type: 'number' },
+      { name: 'createdBy', type: 'string' },
+      { name: 'createdByName', type: 'string' }
+    ])
+  },
   [STORY_COMMENTED]: async (
     store,
     {
@@ -50,15 +66,13 @@ export default {
       createdBy: userId,
       createdByName: userName
     }
-    let comments = await store.hget('comments', 'all')
-    comments = comments ? comments : []
-    comments.unshift(comment)
-    await store.hset('comments', 'all', comments.slice(0, 500))
 
-    await updateAllStories(store, aggregateId, story => {
-      story.commentCount++
-      return story
-    })
+    await store.insert('Comments', comment)
+    await store.update(
+      'Stories',
+      { id: aggregateId },
+      { $inc: { commentCount: 1 } }
+    )
   },
 
   [STORY_CREATED]: async (
@@ -70,7 +84,6 @@ export default {
     }: Event<StoryCreated>
   ) => {
     const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
-    const allStoriesType = 'story'
 
     const story = {
       id: aggregateId,
@@ -85,37 +98,39 @@ export default {
       createdByName: userName
     }
 
-    const insertToStories = async key => {
-      let stories = await store.hget('stories', key)
-      stories = stories ? stories : []
-      stories.unshift(story)
-      await store.hset('stories', key, stories.slice(0, 500))
-    }
-
-    if (type !== allStoriesType) {
-      await insertToStories(type)
-    }
-    await insertToStories(allStoriesType)
+    await store.insert('Stories', story)
   },
 
   [STORY_UPVOTED]: async (
     store,
     { aggregateId, payload: { userId } }: Event<StoryUpvoted>
   ) => {
-    await updateAllStories(store, aggregateId, story => {
-      story.votes.push(userId)
-      return story
-    })
+    const story = await store.findOne(
+      'Stories',
+      { id: aggregateId },
+      { votes: 1 }
+    )
+    await store.update(
+      'Stories',
+      { id: aggregateId },
+      { $set: { votes: story.votes.concat(userId) } }
+    )
   },
 
   [STORY_UNVOTED]: async (
     store,
     { aggregateId, payload: { userId } }: Event<StoryUnvoted>
   ) => {
-    await updateAllStories(store, aggregateId, story => {
-      story.votes = story.votes.filter(vote => vote !== userId)
-      return story
-    })
+    const story = await store.findOne(
+      'Stories',
+      { id: aggregateId },
+      { votes: 1 }
+    )
+    await store.update(
+      'Stories',
+      { id: aggregateId },
+      { $set: { votes: story.votes.filter(vote => vote !== userId) } }
+    )
   },
 
   [USER_CREATED]: async (
@@ -127,8 +142,6 @@ export default {
       name,
       createdAt: timestamp
     }
-
-    await store.hset('users_id', aggregateId, user)
-    await store.hset('users_name', name, user)
+    await store.insert('Users', user)
   }
 }
