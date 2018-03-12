@@ -1,7 +1,11 @@
 // @flow
 import { USER_CREATED } from '../events'
 import validate from './validation'
-import type { Event, RawEvent, UserCreated } from '../../flow-types/events'
+import {
+  type Event,
+  type RawEvent,
+  type UserCreated
+} from '../../flow-types/events'
 
 export default {
   name: 'user',

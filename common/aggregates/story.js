@@ -7,13 +7,13 @@ import {
   STORY_UNVOTED,
   STORY_COMMENTED
 } from '../events'
-import type {
-  Event,
-  RawEvent,
-  StoryCreated,
-  StoryCommented,
-  StoryUnvoted,
-  StoryUpvoted
+import {
+  type Event,
+  type RawEvent,
+  type StoryCreated,
+  type StoryCommented,
+  type StoryUnvoted,
+  type StoryUpvoted
 } from '../../flow-types/events'
 
 import validate from './validation'
