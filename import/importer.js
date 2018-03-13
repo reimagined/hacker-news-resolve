@@ -113,11 +113,11 @@ const generateStoryEvents = async story => {
     aggregateId,
     timestamp: story.time * 1000,
     payload: {
-      title: story.title,
-      text: story.text,
+      title: story.title || '',
+      text: story.text || '',
       userId: getUserId(userName),
       userName,
-      link: story.url
+      link: story.url || ''
     }
   })
 
