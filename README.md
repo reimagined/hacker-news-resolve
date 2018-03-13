@@ -262,23 +262,24 @@ import {
 } from '../../events'
 
 export default {
-  Init: async (store) => {
-    const users = await store.collection('users')
-
-    await users.ensureIndex({ fieldName: 'id' })
+  Init: async store => {
+    await store.defineStorage('Users', [
+      { name: 'id', type: 'string', index: 'primary' },
+      { name: 'name', type: 'string', index: 'secondary' },
+      { name: 'createdAt', type: 'number' }
+    ])
   },
 
   [USER_CREATED]: async (
     store,
     { aggregateId, timestamp, payload: { name } }
   ) => {
-    const users = await store.collection('users')
-
-    await users.insert({
+    const user = {
       id: aggregateId,
       name,
       createdAt: timestamp
-    })
+    }
+    await store.insert('Users', user)
   }
 }
 
@@ -308,9 +309,11 @@ Implement resolvers:
 
 export default {
  user: async (store, { id, name }) => {
-    const users = await store.collection('users')
+    const user = id
+      ? await store.find('Users', { id })
+      : await store.find('Users', { name })
 
-    return id ? await users.findOne({ id }) : await users.findOne({ name })
+    return user.length > 0 ? user[0] : null
   }
 }
 ```
@@ -485,20 +488,30 @@ export default {
 }
 ```
 
+Install `jsonwebtoken` package in order to get user from cookies.
+
+```
+npm install --save jsonwebtoken
+```
+
 Add the `me` resolver to pass a user to the client side.
 
 ```js
 // ./commmon/read-models/graphql/resolvers.js
+import jwt from 'jsonwebtoken'
 
 export default {
   // user implementation
 
-   me: (store, _, { getJwtValue }) => {
-    try {
-      return getJwtValue()
-    } catch (e) {
+   me: async (store, _, { jwtToken }) => {
+    if (!jwtToken) {
       return null
     }
+    const user = await jwt.verify(
+      jwtToken,
+      process.env.JWT_SECRET || 'DefaultSecret'
+    )
+    return user
   }
 }
 ```
@@ -559,12 +572,10 @@ export default {
   aggregates,
   initialSubscribedEvents: { types: [], ids: [] },
   readModels,
-  jwt: {
-    secret: authenticationSecret,
-    cookieName,
-    options: {
-      maxAge: cookieMaxAge
-    }
+  jwtCookie: {
+    name: cookieName,
+    maxAge: cookieMaxAge,
+    httpOnly: false
   },
   auth: {
     strategies: [localStrategy(localStrategyParams)]
@@ -684,6 +695,7 @@ Update event list by adding story event names:
 
 ```js
 // ./common/events.js
+import jwt from 'jsonwebtoken'
 
 export const STORY_CREATED = 'StoryCreated'
 export const STORY_UPVOTED = 'StoryUpvoted'
@@ -708,43 +720,45 @@ export default {
   name: 'story',
   initialState: {},
   commands: {
-    createStory: (state: any, command: any, getJwtValue: any) => {
-      getJwtValue()
+    createStory: (state: any, command: any, jwtToken: any) => {
+     const { id: userId, name: userName } = jwt.verify(
+        jwtToken,
+        process.env.JWT_SECRET || 'DefaultSecret'
+      )
       validate.stateIsAbsent(state, 'Story')
 
-      const { title, link, userId, text } = command.payload
+      const { title, link, text } = command.payload
 
-      validate.fieldRequired(command.payload, 'userId')
       validate.fieldRequired(command.payload, 'title')
 
-      const payload: StoryCreatedPayload = { title, text, link, userId }
-      return { type: STORY_CREATED, payload }
+      return {
+        type: STORY_CREATED,
+        payload: { title, text, link, userId, userName }
+      }
     },
 
-    upvoteStory: (state: any, command: any, getJwtValue: any) => {
-      getJwtValue()
+    upvoteStory: (state: any, command: any, jwtToken: any) => {
+      const { id: userId } = jwt.verify(
+        jwtToken,
+        process.env.JWT_SECRET || 'DefaultSecret'
+      )
+
       validate.stateExists(state, 'Story')
-
-      const { userId } = command.payload
-
-      validate.fieldRequired(command.payload, 'userId')
       validate.itemIsNotInArray(state.voted, userId, 'User already voted')
 
-      const payload: StoryUpvotedPayload = { userId }
-      return { type: STORY_UPVOTED, payload }
+      return { type: STORY_UPVOTED, payload: { userId } }
     },
 
-    unvoteStory: (state: any, command: any, getJwtValue: any) => {
-      getJwtValue()
+    unvoteStory: (state: any, command: any, jwtToken: any) => {
+     const { id: userId } = jwt.verify(
+        jwtToken,
+        process.env.JWT_SECRET || 'DefaultSecret'
+      )
+
       validate.stateExists(state, 'Story')
-
-      const { userId } = command.payload
-
-      validate.fieldRequired(command.payload, 'userId')
       validate.itemIsInArray(state.voted, userId, 'User did not vote')
 
-      const payload: StoryUnvotedPayload = { userId }
-      return { type: STORY_UNVOTED, payload }
+      return { type: STORY_UNVOTED, payload: { userId } }
     }
   },
   projection: {
@@ -817,12 +831,25 @@ import {
 } from '../../events'
 
 export default {
-  Init: async (store: any) => {
-    const stories = await store.collection('stories')
-    const users = await store.collection('users')
+  Init: async store => {
+    await store.defineStorage('Stories', [
+      { name: 'id', type: 'string', index: 'primary' },
+      { name: 'type', type: 'string', index: 'secondary' },
+      { name: 'title', type: 'string' },
+      { name: 'text', type: 'string' },
+      { name: 'link', type: 'string' },
+      { name: 'commentCount', type: 'number' },
+      { name: 'votes', type: 'json' },
+      { name: 'createdAt', type: 'number' },
+      { name: 'createdBy', type: 'string' },
+      { name: 'createdByName', type: 'string' }
+    ])
 
-    await stories.ensureIndex({ fieldName: 'id' })
-    await users.ensureIndex({ fieldName: 'id' })
+    await store.defineStorage('Users', [
+      { name: 'id', type: 'string', index: 'primary' },
+      { name: 'name', type: 'string', index: 'secondary' },
+      { name: 'createdAt', type: 'number' }
+    ])
   },
 
   [STORY_CREATED]: async (
@@ -830,14 +857,12 @@ export default {
     {
       aggregateId,
       timestamp,
-      payload: { title, link, userId, text }
+      payload: { title, link, userId, userName, text }
     }
   ) => {
     const type = !link ? 'ask' : /^(Show HN)/.test(title) ? 'show' : 'story'
 
-    const stories = await store.collection('stories')
-
-    await stories.insert({
+    const story = {
       id: aggregateId,
       type,
       title,
@@ -846,21 +871,26 @@ export default {
       commentCount: 0,
       votes: [],
       createdAt: timestamp,
-      createdBy: userId
-    })
+      createdBy: userId,
+      createdByName: userName
+    }
+
+    await store.insert('Stories', story)
   },
 
   [STORY_UPVOTED]: async (
     store,
     { aggregateId, payload: { userId } }
   ) => {
-    const stories = await store.collection('stories')
-
-    await stories.update(
+    const story = await store.findOne(
+      'Stories',
       { id: aggregateId },
-      {
-        $push: { votes: userId }
-      }
+      { votes: 1 }
+    )
+    await store.update(
+      'Stories',
+      { id: aggregateId },
+      { $set: { votes: story.votes.concat(userId) } }
     )
   },
 
@@ -868,15 +898,15 @@ export default {
     store,
     { aggregateId, payload: { userId } }
   ) => {
-    const stories = await store.collection('stories')
-
-    await stories.update(
+    const story = await store.findOne(
+      'Stories',
       { id: aggregateId },
-      {
-        $pull: {
-          votes: userId
-        }
-      }
+      { votes: 1 }
+    )
+    await store.update(
+      'Stories',
+      { id: aggregateId },
+      { $set: { votes: story.votes.filter(vote => vote !== userId) } }
     )
   }
   // USER_CREATED implementation
@@ -924,38 +954,26 @@ Add the appropriate resolvers:
 
 ```js
 // ./common/read-models/graphql/resolvers.js
-
-async function withUserNames(items, store) {
-  const users = await store.collection('users')
-
-  return await Promise.all(
-    items.map(async item => {
-      const user = await users.findOne({ id: item.createdBy })
-      return {
-        ...item,
-        createdByName: user ? user.name : 'unknown'
-      }
-    })
-  )
-}
+import jwt from 'jsonwebtoken'
 
 export default {
   // user implementation
   // me implementation
-  stories: async (store, { type, first, offset = 0 }) => {
-    const stories = await store.collection('stories')
-
-    const filteredStories = type
-      ? await stories
-          .find({ type })
-          .skip(offset)
-          .limit(first)
-      : await stories
-          .find({})
-          .skip(offset)
-          .limit(first)
-
-    return await withUserNames(filteredStories, store)
+  stories: async (store, { type, first, offset }) => {
+    const skip = first || 0
+    const params = type ? { type } : {}
+    const stories = await store.find(
+      'Stories',
+      params,
+      null,
+      { createdAt: -1 },
+      skip,
+      skip + offset
+    )
+    if (!stories) {
+      return []
+    }
+    return stories
   }
 }
 ```
@@ -1104,12 +1122,10 @@ export default {
   aggregates,
   readModels,
   viewModels,
-  jwt: {
-    secret: authenticationSecret,
-    cookieName,
-    options: {
-      maxAge: cookieMaxAge
-    }
+  jwtCookie: {
+    name: cookieName,
+    maxAge: cookieMaxAge,
+    httpOnly: false
   },
   auth: {
     strategies: [localStrategy(localStrategyParams)]
@@ -1200,24 +1216,33 @@ export default {
   commands: {
     // the createStory,  upvoteStory and unvoteStory implementation
 
-    commentStory: (state: any, command: any, getJwtValue: any) => {
-      getJwtValue()
+    commentStory: (state: any, command: any, jwtToken: any) => {
+      const { id: userId, name: userName } = jwt.verify(
+        jwtToken,
+        process.env.JWT_SECRET || 'DefaultSecret'
+      )
       validate.stateExists(state, 'Story')
 
-      const { commentId, parentId, userId, text } = command.payload
+      const { commentId, parentId, text } = command.payload
 
-      validate.fieldRequired(command.payload, 'userId')
       validate.fieldRequired(command.payload, 'parentId')
       validate.fieldRequired(command.payload, 'text')
-      validate.keyIsNotInObject(state.comments, commentId, 'Comment already exists')
-
-      const payload: StoryCommentedPayload = {
+      validate.keyIsNotInObject(
+        state.comments,
         commentId,
-        parentId,
-        userId,
-        text
+        'Comment already exists'
+      )
+
+      return {
+        type: STORY_COMMENTED,
+        payload: {
+          commentId,
+          parentId,
+          userId,
+          userName,
+          text
+        }
       }
-      return { type: STORY_COMMENTED, payload }
     }
   },
   projection: {
@@ -1256,15 +1281,20 @@ import {
 } from '../../events'
 
 export default {
-  Init: async (store: any) => {
-    const stories = await store.collection('stories')
-    const comments = await store.collection('comments')
-    const users = await store.collection('users')
+  Init: async store => {
+    // Stories defineStorage implementation
+    // Users defineStorage implementation
 
-    await stories.ensureIndex({ fieldName: 'id' })
-    await comments.ensureIndex({ fieldName: 'id' })
-    await comments.ensureIndex({ fieldName: 'parentId' })
-    await users.ensureIndex({ fieldName: 'id' })
+    await store.defineStorage('Comments', [
+      { name: 'id', type: 'string', index: 'primary' },
+      { name: 'text', type: 'string' },
+      { name: 'parentId', type: 'string' },
+      { name: 'comments', type: 'json' },
+      { name: 'storyId', type: 'string' },
+      { name: 'createdAt', type: 'number' },
+      { name: 'createdBy', type: 'string' },
+      { name: 'createdByName', type: 'string' }
+    ])
   },
 
   // STORY_CREATED implementation
@@ -1277,11 +1307,9 @@ export default {
     {
       aggregateId,
       timestamp,
-      payload: { parentId, userId, commentId, text }
+      payload: { parentId, userId, userName, commentId, text }
     }
   ) => {
-    const comments = await store.collection('comments')
-
     const comment = {
       id: commentId,
       text,
@@ -1289,21 +1317,16 @@ export default {
       comments: [],
       storyId: aggregateId,
       createdAt: timestamp,
-      createdBy: userId
+      createdBy: userId,
+      createdByName: userName
     }
 
-    await comments.insert(comment)
-
-    await comments.update(
-      { id: parentId },
-      {
-        $push: { comments: comment }
-      }
+    await store.insert('Comments', comment)
+    await store.update(
+      'Stories',
+      { id: aggregateId },
+      { $inc: { commentCount: 1 } }
     )
-
-    const stories = await store.collection('stories')
-
-    await stories.update({ id: aggregateId }, { $inc: { commentCount: 1 } })
   }
 }
 ```
@@ -1360,59 +1383,41 @@ Implement comment resolvers and extend the stories resolver to get comments:
 
 ```js
 // ./common/read-models/graphql/resolvers.js
-
-async function getCommentTree(comments, id, tree = []) {
-  const comment = await comments.findOne({ id })
-  tree.push(comment)
-
-  const childComments = await comments.find({ parentId: comment.id })
-  return await Promise.all(
-    childComments.map(childComment =>
-      getCommentTree(comments, childComment.id, tree)
-    )
-  )
-}
+import jwt from 'jsonwebtoken'
 
 export default {
   // implemented resolvers
 
-  stories: async (store, { type, first, offset = 0 }) => {
-    const stories = await store.collection('stories')
-
-    const filteredStories = type
-      ? await stories
-          .find({ type })
-          .skip(offset)
-          .limit(first)
-      : await stories
-          .find({})
-          .skip(offset)
-          .limit(first)
-
-    return await withUserNames(filteredStories, store)
-  },
-  comment: async (store, { id }) => {
-    const comments = await store.collection('comments')
-
-    const tree = []
-    await getCommentTree(comments, id, tree)
-
-    const result = await withUserNames(tree, store)
-
-    return {
-      ...result[0],
-      replies: result.slice(1)
+  stories: async (store, { type, first, offset }) => {
+    const skip = first || 0
+    const params = type ? { type } : {}
+    const stories = await store.find(
+      'Stories',
+      params,
+      null,
+      { createdAt: -1 },
+      skip,
+      skip + offset
+    )
+    if (!stories) {
+      return []
     }
+    return stories
   },
-  comments: async (store, { first, offset = 0 }) => {
-    const comments = await store.collection('comments')
-
-    const result = await comments
-      .find({})
-      .skip(offset)
-      .limit(first)
-
-    return await withUserNames(result, store)
+  comments: async (store, { first, offset }) => {
+    const skip = first || 0
+    const comments = await store.find(
+      'Comments',
+      {},
+      null,
+      { createdAt: -1 },
+      skip,
+      skip + offset
+    )
+    if (!comments) {
+      return []
+    }
+    return comments
   }
 }
 ```

@@ -12,13 +12,10 @@ export default {
     if (!jwtToken) {
       return null
     }
-
     const user = await jwt.verify(
       jwtToken,
       process.env.JWT_SECRET || 'DefaultSecret'
     )
-    console.log('user')
-    console.log(user)
     return user
   },
   stories: async (store, { type, first, offset }) => {
